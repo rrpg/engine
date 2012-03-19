@@ -43,6 +43,7 @@ void Rpg::run()
 {
     //no login/password given, but an action given => not normal
     if (!_authenticate && _action.size() > 0) {
+        cerr << "Command given but no player" << endl;
         return;
     }
 
@@ -58,7 +59,7 @@ void Rpg::run()
         bool quit = false;
         string command;
         while (!quit) {
-            cout << "Command:" << endl;
+            cerr << "Command:" << endl;
             getline (cin, command);
 
             if (command.compare("quit") == 0) {
