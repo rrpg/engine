@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include "Utils.h"
+#include "CommandFactory.h"
 #include "Rpg.h"
 
 using namespace std;
@@ -35,7 +36,10 @@ Rpg::~Rpg()
 
 int Rpg::_runAction()
 {
-    cout << _action[0] << endl;
+    CommandAbstract *command = CommandFactory::create(_player, _action);
+    if (command != NULL) {
+        cout << _action[0] << endl;
+    }
     return 1;
 }
 
