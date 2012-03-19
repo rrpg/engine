@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include "Player.h"
+#include "PlayerModel.h"
 
 using namespace std;
 
@@ -33,6 +34,7 @@ bool Player::connect()
         }
     }
 
-    return true;
-}
+    _model = PlayerModel::loadByLoginAndPassword(_login, _password);
 
+    return _model != NULL;
+}
