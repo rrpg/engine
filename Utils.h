@@ -11,4 +11,3 @@ class Utils
 };
 
 #endif
-

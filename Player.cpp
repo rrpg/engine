@@ -1,4 +1,4 @@
-//      player.cpp
+//      Player.cpp
 //
 
 #include <iostream>
