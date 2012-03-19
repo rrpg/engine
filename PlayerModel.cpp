@@ -40,8 +40,7 @@ PlayerModel* PlayerModel::loadByLoginAndPassword(string login, string password)
 
     if (sqlite3_step(stmt) == SQLITE_ROW) {
         pm = new PlayerModel();
-        //~ pm->setPk(sqlite3_column_int(stmt, 0));
-        pm->_pk = sqlite3_column_int(stmt, 0);
+        pm->setPk(sqlite3_column_int(stmt, 0));
     }
 
     sqlite3_finalize( stmt );
@@ -50,7 +49,7 @@ PlayerModel* PlayerModel::loadByLoginAndPassword(string login, string password)
     return pm;
 }
 
-//~ void setPk(int pk)
-//~ {
-    //~ _pk = pk;
-//~ }
+void PlayerModel::setPk(int pk)
+{
+    _pk = pk;
+}

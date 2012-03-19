@@ -8,7 +8,7 @@ class PlayerModel
     public:
     PlayerModel();
     static PlayerModel *loadByLoginAndPassword(string, string);
-    //~ void setPk(int);
+    void setPk(int);
 
     protected:
     int _pk;
