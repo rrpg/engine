@@ -6,12 +6,10 @@
 #include "Player.h"
 #include "CommandAbstract.h"
 
-using namespace std;
-
 class CommandFactory
 {
         public:
-        static CommandAbstract* create(Player*, vector<string>);
+        static CommandAbstract* create(Player*, std::vector<std::string>);
 }
 
 #endif

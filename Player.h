@@ -1,18 +1,18 @@
 #ifndef DEF_PLAYER
 #define DEF_PLAYER
 
-using namespace std;
+#include <string>
 
 class Player
 {
     public:
-    Player(string, string);
     Player();
+    Player(std::string login, std::string password);
     bool connect();
 
     private:
-    string _login;
-    string _password;
+    std::string _login;
+    std::string _password;
 };
 
 #endif
