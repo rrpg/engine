@@ -1,14 +1,12 @@
 #ifndef DEF_PLAYER_MODEL
 #define DEF_PLAYER_MODEL
 
-using namespace std;
-
 class PlayerModel
 {
     public:
     PlayerModel();
-    static PlayerModel *loadByLoginAndPassword(string, string);
-    void setPk(int);
+    static PlayerModel* loadByLoginAndPassword(std::string login, std::string password);
+    void setPk(int pk);
 
     protected:
     int _pk;

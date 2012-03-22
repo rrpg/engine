@@ -1,6 +1,8 @@
 #ifndef DEF_RPG
 #define DEF_RPG
 
+#include <string>
+#include <vector>
 #include "Player.h"
 
 using namespace std;
@@ -8,7 +10,7 @@ using namespace std;
 class Rpg
 {
     public:
-    Rpg(string, string, vector <string>);
+    Rpg(string login, string password, vector <string> action);
     ~Rpg();
     void run();
 

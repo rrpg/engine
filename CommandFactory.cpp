@@ -7,9 +7,7 @@
 #include "CommandFactory.h"
 #include "Command.h"
 
-using namespace std;
-
-CommandAbstract* CommandFactory::create(Player*, vector<string>)
+CommandAbstract* CommandFactory::create(Player*, std::vector <std::string>)
 {
     return new CommandAbstract();
 }
