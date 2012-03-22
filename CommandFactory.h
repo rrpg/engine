@@ -10,6 +10,6 @@ class CommandFactory
 {
         public:
         static CommandAbstract* create(Player*, std::vector<std::string>);
-}
+};
 
 #endif

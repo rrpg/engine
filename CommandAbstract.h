@@ -5,6 +5,6 @@ class CommandAbstract
 {
     public:
     CommandAbstract();
-}
+};
 
 #endif
