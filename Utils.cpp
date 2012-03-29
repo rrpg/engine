@@ -13,12 +13,14 @@ std::vector<std::string> Utils::explode(std::string str, char sep)
     int sizeStr = str.size();
     unsigned int start = 0, length = 0;
     for (int i = 0 ; i < sizeStr ; i++) {
-        if (str[i] == sep) {
+        if (str[i] != sep) {
+            length++;
+        }
+        else {
             retValue.push_back(str.substr(start, length));
             start = i + 1;
             length = 0;
         }
-        length++;
     }
 
     if (start < str.size()) {
