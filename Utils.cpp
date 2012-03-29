@@ -1,6 +1,7 @@
 // Utils.cpp
 
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 #include "Utils.h"
@@ -25,4 +26,11 @@ std::vector<std::string> Utils::explode(std::string str, char sep)
     }
 
     return retValue;
+}
+
+std::string Utils::itos(int i)
+{
+    std::ostringstream out;
+    out << i;
+    return out.str();
 }
