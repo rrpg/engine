@@ -10,6 +10,13 @@ class Player
     Player();
     Player(std::string login, std::string password);
     bool connect();
+    bool isConnected();
+    void createNewPlayer();
+    PlayerModel* getModel();
+
+    protected:
+    void _setModelFromLoginInfos();
+    void _readLoginAndPassword();
 
     private:
     std::string _login;
