@@ -59,7 +59,7 @@ CharacterModel* CharacterModel::loadByNameAndIdPlayer(std::string name, int play
         WHERE\
             name = '" + name + "'\
         LIMIT 1";
-std::cout << query << std::endl;
+
     character = Model::fetchOneRow(query);
 
     if (character.size() == 0) {

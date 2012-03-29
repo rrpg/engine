@@ -12,7 +12,7 @@ Character::Character()
 Character* Character::searchByNameAndPlayer(std::string characterName, Player* &player)
 {
     Character* character = new Character();
-std::cout << characterName << " " << player->getModel()->getPk() << std::endl;
+
     character->_model = CharacterModel::loadByNameAndIdPlayer(characterName, player->getModel()->getPk());
 
     if (character->_model != NULL) {

@@ -23,7 +23,6 @@ void CommandTalk::run()
     std::string characterName = _args[0];
     std::string triggerWord = _args[1];
 
-    std::cout << "gi" << std::endl;
     Character* character = Character::searchByNameAndPlayer(characterName, _player);
 
     //~ Sentence s = Sentence::loadBy
