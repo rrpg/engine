@@ -7,7 +7,7 @@
 #include "CommandFactory.h"
 #include "Command.h"
 
-CommandAbstract* CommandFactory::create(Player*, std::vector <std::string>)
+CommandAbstract* CommandFactory::create(Player* &player, std::vector <std::string> commandFull)
 {
     std::string cmd = commandFull[0];
     commandFull.erase(commandFull.begin());
