@@ -18,35 +18,24 @@ PlayerModel::PlayerModel()
 PlayerModel* PlayerModel::loadByLoginAndPassword(string login, string password)
 {
     PlayerModel *pm;
-    sqlite3 *db;
-    int rc;
-    sqlite3_stmt *stmt = NULL;
 
-    // Open the test.db file
-    rc = sqlite3_open("database/rpg.sql", &db);
+    string query = "\
+        SELECT\
+            id_player,\
+            login\
+        FROM\
+            player\
+        WHERE\
+            login = '" + login + "' AND password = '" + password + "'\
+    ";
 
-    if(rc){
-        // failed
-        return NULL;
-    }
+    std::vector <std::string> model = Model::fetchOneRow(query);
 
-    string query = "SELECT id_player FROM player WHERE login = '" + login + "' AND password = '" + password + "'";
-
-    rc = sqlite3_prepare(
-        db,
-        query.c_str(),
-        query.size() + 1,
-        &stmt,
-        NULL
-    );
-
-    if (sqlite3_step(stmt) == SQLITE_ROW) {
+    if (model.size() > 0) {
         pm = new PlayerModel();
-        pm->setPk(sqlite3_column_int(stmt, 0));
+        pm->_setPk(std::atoi(model[0].c_str()));
+        pm->setLogin(model[1]);
     }
-
-    sqlite3_finalize( stmt );
-    sqlite3_close( db );
 
     return pm;
 }
