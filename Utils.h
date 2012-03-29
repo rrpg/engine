@@ -1,13 +1,15 @@
 #ifndef DEF_UTILS
 #define DEF_UTILS
 
-
-using namespace std;
+#include <vector>
+#include <string>
 
 class Utils
 {
     public:
-    vector<string> static explode(string, char);
+    static std::vector<std::string> explode(std::string str, char sep);
+    static bool in_array(const std::string &needle, const std::vector< std::string > &haystack);
+    static std::string itos(int i);
 };
 
 #endif

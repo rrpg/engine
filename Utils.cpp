@@ -1,16 +1,15 @@
 // Utils.cpp
 
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 #include "Utils.h"
 
-using namespace std;
 
-
-vector<string> Utils::explode(string str, char sep)
+std::vector<std::string> Utils::explode(std::string str, char sep)
 {
-    vector<string> retValue;
+    std::vector<std::string> retValue;
     int sizeStr = str.size();
     unsigned int start = 0, length = 0;
     for (int i = 0 ; i < sizeStr ; i++) {
@@ -27,4 +26,28 @@ vector<string> Utils::explode(string str, char sep)
     }
 
     return retValue;
+}
+
+bool Utils::in_array(const std::string &needle, const std::vector< std::string > &haystack)
+{
+    int max = haystack.size();
+
+    if (max==0) {
+        return false;
+    }
+
+    for (int i = 0 ; i < max ; i++) {
+        if (haystack[i] == needle) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+std::string Utils::itos(int i)
+{
+    std::ostringstream out;
+    out << i;
+    return out.str();
 }
