@@ -38,7 +38,10 @@ int Rpg::_runAction()
 {
     CommandAbstract *command = CommandFactory::create(_player, _action);
     if (command != NULL) {
-        cout << _action[0] << endl;
+        command->run();
+    }
+    else {
+        std::cout << "Unknown command" << endl;
     }
     return 1;
 }
