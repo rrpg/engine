@@ -9,7 +9,7 @@
 class CommandFactory
 {
         public:
-        static CommandAbstract* create(Player*, std::vector<std::string>);
+        static CommandAbstract* create(Player* &player, std::vector<std::string> commandFull);
 };
 
 #endif
