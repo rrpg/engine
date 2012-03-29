@@ -45,14 +45,7 @@ int Rpg::_runAction()
 
 void Rpg::run()
 {
-    //no login/password given, but an action given => not normal
-    if (!_authenticate && _action.size() > 0) {
-        cerr << "Command given but no player" << endl;
-        return;
-    }
-
-    //we try to connect the member
-    if (!_player->connect()) {
+    if (((!_authenticate && _action.size() == 0) || _authenticate) && !_player->connect()) {
         return;
     }
 
