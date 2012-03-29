@@ -26,16 +26,13 @@ Player::Player()
 
 bool Player::connect()
 {
+    int choice = 0;
     //if the login and password are not defined
     if (_login.compare("") == 0 || _password.compare("") == 0) {
-        while (_login.compare("") == 0) {
-            cout << "Login: ";
-            cin >> _login;
-        }
-        while (_password.compare("") == 0) {
-            cout << "Password: ";
-            cin >> _password;
-        }
+        do {
+            cout << "new account (1) or login (2) ? ";
+            cin >> choice;
+        } while (choice != 1 && choice != 2);
     }
 
     _model = PlayerModel::loadByLoginAndPassword(_login, _password);
