@@ -56,7 +56,7 @@ void Rpg::run()
         bool quit = false;
         string command;
         while (!quit) {
-            cerr << "Command:" << endl;
+            cout << "Command:" << endl;
             getline (cin, command);
 
             if (command.compare("quit") == 0) {
