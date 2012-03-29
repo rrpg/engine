@@ -2,12 +2,10 @@
 #define DEF_UTILS
 
 
-using namespace std;
-
 class Utils
 {
     public:
-    vector<string> static explode(string, char);
+    static std::vector<std::string> explode(std::string str, char sep);
 };
 
 #endif

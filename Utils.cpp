@@ -5,12 +5,10 @@
 #include <vector>
 #include "Utils.h"
 
-using namespace std;
 
-
-vector<string> Utils::explode(string str, char sep)
+std::vector<std::string> Utils::explode(std::string str, char sep)
 {
-    vector<string> retValue;
+    std::vector<std::string> retValue;
     int sizeStr = str.size();
     unsigned int start = 0, length = 0;
     for (int i = 0 ; i < sizeStr ; i++) {
