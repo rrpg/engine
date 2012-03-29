@@ -4,8 +4,12 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <cstdlib>
 #include "Player.h"
 #include "PlayerModel.h"
+#include "GenderModel.h"
+#include "SpeciesModel.h"
+#include "Utils.h"
 
 using namespace std;
 
