@@ -62,7 +62,7 @@ void Rpg::run()
             if (command.compare("quit") == 0) {
                 quit = true;
             }
-            else {
+            else if (command.compare("") != 0) {
                 _action = Utils::explode(command, ' ');
                 _runAction();
             }
