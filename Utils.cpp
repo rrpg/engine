@@ -28,6 +28,23 @@ std::vector<std::string> Utils::explode(std::string str, char sep)
     return retValue;
 }
 
+bool Utils::in_array(const std::string &needle, const std::vector< std::string > &haystack)
+{
+    int max = haystack.size();
+
+    if (max==0) {
+        return false;
+    }
+
+    for (int i = 0 ; i < max ; i++) {
+        if (haystack[i] == needle) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 std::string Utils::itos(int i)
 {
     std::ostringstream out;
