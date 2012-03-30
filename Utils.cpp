@@ -53,3 +53,31 @@ std::string Utils::itos(int i)
     out << i;
     return out.str();
 }
+
+
+std::string Utils::ltrim(std::string str, char c)
+{
+    size_t lastSpace = str.find_first_not_of(c);
+
+    if (lastSpace == std::string::npos) {
+        return str;
+    }
+
+    return str.substr(lastSpace + 1, str.size() - lastSpace + 1);
+}
+
+std::string Utils::rtrim(std::string str, char c)
+{
+    size_t firstSpace = str.find_last_not_of(c);
+
+    if (firstSpace == std::string::npos) {
+        return str;
+    }
+
+    return str.substr(0, firstSpace - 1);
+}
+
+std::string Utils::trim(std::string str, char c)
+{
+    return Utils::rtrim(Utils::ltrim(str, c), c);
+}
