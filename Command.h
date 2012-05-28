@@ -2,5 +2,6 @@
 #define DEF_COMMAND
 
 #include "CommandTalk.h"
+#include "CommandCreatePlayer.h"
 
 #endif
