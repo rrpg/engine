@@ -117,6 +117,7 @@ bool Model::_connect()
     int rc;
 
     if (Model::_db == NULL) {
+        //@TODO move in conf
         rc = sqlite3_open("database/rpg.db", &Model::_db);
 
         if (rc != SQLITE_OK) {
