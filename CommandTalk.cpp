@@ -3,8 +3,9 @@
 #include "CommandTalk.h"
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Character.h"
-//~ #include "Sentence.h"
+#include "Sentence.h"
 
 CommandTalk::CommandTalk()
 {
@@ -25,6 +26,7 @@ void CommandTalk::run()
 
     Character* character = Character::searchByNameAndPlayer(characterName, _player);
 
-    //~ Sentence s = Sentence::loadBy
-    std::cout << character->getName() << std::endl;
+    std::vector <Sentence*> s = Sentence::loadByCharacterIdAndTriggerWord(character->getId(), triggerWord);
+
+    std::cout << s.size() << std::endl;
 }
