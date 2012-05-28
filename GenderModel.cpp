@@ -17,7 +17,7 @@ std::vector <std::vector <std::string> > GenderModel::getGenders()
             gender\
     ";
 
-    genders = Model::fetchAllRow(query);
+    genders = Model::fetchAllRows(query);
 
     return genders;
 }

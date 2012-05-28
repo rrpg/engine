@@ -23,5 +23,5 @@ std::vector< std::vector<std::string> > SpeciesModel::getSpecies(std::string gen
         FROM\
             species";
 
-    return  Model::fetchAllRow(query);
+    return  Model::fetchAllRows(query);
 }

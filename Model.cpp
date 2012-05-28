@@ -10,7 +10,7 @@
 
 sqlite3 *Model::_db;
 
-std::vector <std::vector <std::string> > Model::fetchAllRow(std::string query)
+std::vector <std::vector <std::string> > Model::fetchAllRows(std::string query)
 {
     sqlite3_stmt* stmt = NULL;
     int rc =  Model::_setStatement(query, stmt);

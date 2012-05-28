@@ -9,7 +9,7 @@
 class Model
 {
     public:
-    static std::vector <std::vector <std::string> > fetchAllRow(std::string query);
+    static std::vector <std::vector <std::string> > fetchAllRows(std::string query);
     static std::vector <std::string> fetchOneRow(std::string query);
     static std::string fetchOneField(std::string query);
 
