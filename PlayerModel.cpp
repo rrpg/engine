@@ -35,9 +35,10 @@ PlayerModel* PlayerModel::loadByLoginAndPassword(string login, string password)
         pm = new PlayerModel();
         pm->_setPk(std::atoi(model[0].c_str()));
         pm->setLogin(model[1]);
+        return pm;
     }
 
-    return pm;
+    return NULL;
 }
 
 bool PlayerModel::save()
