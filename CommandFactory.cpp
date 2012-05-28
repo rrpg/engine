@@ -19,6 +19,11 @@ CommandAbstract* CommandFactory::create(Player* &player, std::vector <std::strin
         }
         command = new CommandTalk();
     }
+    else if (cmd.compare("createPlayer") == 0) {
+        if (player->isConnected()) {
+            throw "There must not be a connected player to create a new player";
+        }
+    }
     else {
         return NULL;
     }
