@@ -27,3 +27,8 @@ std::string Character::getName()
 {
     return _model->getName();
 }
+
+int Character::getId()
+{
+    return _model->getPk();
+}
