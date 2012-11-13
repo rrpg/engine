@@ -10,25 +10,23 @@ def main(argv):
     shortOptions = 'l:'
     longOptions = ('login=', 'password=')
 
-    # handle command-line parameters
-    try:
-        options, action = getopt.getopt(argv, shortOptions, longOptions)
-    except getopt.GetoptError:
-        usage()
-        sys.exit(1)
+    parser = ArgumentParser()
 
-    login = ''
-    password = ''
+    parser.add_argument(
+        "-l", "--login",
+        dest="login", help="Player login",metavar="LOGIN"
+    )
+    parser.add_argument(
+        "-p", "--password",
+        dest="password", help="Player password", metavar="PASSWORD"
+    )
+    parser.add_argument(
+        "action",
+        metavar="A", nargs='*', help="Action to execute"
+    )
 
-    for opt, arg in options:
-        if opt == '--login':
-            login = arg
-        if opt == '--password':
-            password = arg
+    args = parser.parse_args()
 
-    print login
-    print password
-    print action
 
 if __name__ == "__main__":
     main(sys.argv[1:])
