@@ -27,6 +27,7 @@ def main(argv):
 
     args = parser.parse_args()
 
+    rpg = Rpg(args.login, args.password, args.action)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
