@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
 
-import os
-import sys
-import getopt
+import os, sys, getopt
+from Rpg import Rpg
+from argparse import ArgumentParser
 
 def main(argv):
     # shortOptions = 'v:i:'
