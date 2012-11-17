@@ -30,6 +30,28 @@ class PlayerModel(CharacterModel):
 
         return None
 
+    @staticmethod
+    def loadByLogin(login):
+        query = "\
+            SELECT\
+                id_player,\
+                login\
+            FROM\
+                player\
+            WHERE\
+                login = ?\
+        "
+
+        model = Model.fetchOneRow(query, [login])
+
+        if len(model) > 0:
+            pm = PlayerModel()
+            pm._setPk(model[0])
+            pm.setLogin(model[1])
+            return pm
+
+        return None
+
     def _setPk(self, pk):
         self._playerFields["id_player"] = pk;
 
