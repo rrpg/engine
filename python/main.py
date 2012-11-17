@@ -6,10 +6,6 @@ from Rpg import Rpg
 from argparse import ArgumentParser
 
 def main(argv):
-    # shortOptions = 'v:i:'
-    shortOptions = 'l:'
-    longOptions = ('login=', 'password=')
-
     parser = ArgumentParser()
 
     parser.add_argument(
