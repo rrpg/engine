@@ -30,7 +30,7 @@ class Player:
 
     def _setModelFromLoginInfos(self):
         if self._login == None or self._password == None:
-            self._readLoginAndPassword()
+            self._readLoginAndPassword(False)
 
         self._model = PlayerModel.loadByLoginAndPassword(self._login, self._password)
 
@@ -39,17 +39,20 @@ class Player:
             self._password = None
             raise BaseException("Invalid login or password")
 
-    def _readLoginAndPassword(self):
+    def _readLoginAndPassword(self, checkLogin):
         while self._login == None or self._login == '':
             print "Login: "
             self._login = raw_input()
+
+        if checkLogin and PlayerModel.loadByLogin(self._login) != None:
+            raise BaseException('This login is already used')
 
         while self._password == None or self._password == '':
             print "Password: "
             self._password = raw_input()
 
     def createNewPlayer(self):
-        self._readLoginAndPassword()
+        self._readLoginAndPassword(True)
 
         #~ int gender, genderId;
         genders = GenderModel.getGenders()
