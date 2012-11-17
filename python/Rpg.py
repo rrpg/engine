@@ -16,3 +16,34 @@ class Rpg:
 
         self._action = action
 
+    def run(self):
+        if ((not self._authenticate and len(self._action) == 0) or self._authenticate):
+            #~ try:
+            self._player.connect()
+            #~ except BaseException, e:
+                #~ print e
+                #~ return
+
+        if len(self._action) > 0:
+            self._runAction()
+        else:
+            q = False
+            command = ''
+            while not q:
+                print "Command:"
+                command = raw_input()
+
+                if command == "quit":
+                    q = True
+                elif command != "":
+                    self._action = command.split(' ')
+                    self._runAction()
+
+    def _runAction(self):
+        command = CommandFactory.create(self._player, self._action)
+        if command != None:
+            command.run()
+        else:
+            print "Unknown command"
+            return 0
+        return 1
