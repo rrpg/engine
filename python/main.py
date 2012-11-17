@@ -10,7 +10,7 @@ def main(argv):
 
     parser.add_argument(
         "-l", "--login",
-        dest="login", help="Player login",metavar="LOGIN"
+        dest="login", help="Player login", metavar="LOGIN"
     )
     parser.add_argument(
         "-p", "--password",
