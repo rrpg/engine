@@ -18,11 +18,11 @@ class Rpg:
 
     def run(self):
         if ((not self._authenticate and len(self._action) == 0) or self._authenticate):
-            #~ try:
-            self._player.connect()
-            #~ except BaseException, e:
-                #~ print e
-                #~ return
+            try:
+                self._player.connect()
+            except BaseException, e:
+                print e
+                return
 
         if len(self._action) > 0:
             self._runAction()
