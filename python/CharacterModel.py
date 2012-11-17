@@ -55,3 +55,8 @@ class CharacterModel(Model):
 
             return model
 
+    #protected:
+    def _setPk(self, pk):
+        self._characterFields["id_character"] = str(pk);
+
+    __setPk = _setPk
