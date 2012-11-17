@@ -30,6 +30,35 @@ class Model(object):
         return result
 
     @staticmethod
+    def insert(table, fields):
+        Model._connect()
+        c = Model._db.cursor()
+
+        query = "INSERT INTO " + table
+
+        nbFields = len(fields)
+        current = 0
+        fieldsStr = ''
+        valuesStr = ''
+
+        for k, v in fields.items():
+            fieldsStr += '"' + k + '"'
+            valuesStr += '?'
+            if current < nbFields - 1:
+                fieldsStr += ', '
+                valuesStr += ', '
+            current += 1
+
+        query = query + " (" + fieldsStr + ") VALUES (" + valuesStr + ")"
+
+        c.execute(query, fields.values())
+        Model._db.commit()
+
+        return c.lastrowid
+
+
+    #protected:
+    @staticmethod
     def _connect():
         if Model._db == None:
             Model._db = sqlite3.connect(config.db)
