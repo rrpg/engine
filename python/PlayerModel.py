@@ -61,4 +61,14 @@ class PlayerModel(CharacterModel):
     def setPassword(self, password):
         self._playerFields["password"] = password;
 
+    def save(self):
+        self._playerFields["date_creation"] = datetime.datetime.now()
+        self.setName(self._playerFields["login"])
+
+        super(PlayerModel, self).save()
+
+        self._playerFields["id_character"] = CharacterModel.getPk(self)
+        self._setPk(Model.insert("player", self._playerFields))
+
+        return True
 
