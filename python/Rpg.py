@@ -9,22 +9,30 @@ class Rpg:
         #if the game is launched with login/password, the player is directly fetched
         if login != None and password != None:
             self._player = Player(login, password)
-            self._authenticate = True
-        #else an empty player is created
-        else:
+        elif action == []:
+            #else an empty player is created
             self._player = Player(None, None)
-            self._authenticate = False
+            self._doInteractiveAuth()
 
         self._action = action
 
-    def run(self):
-        if ((not self._authenticate and len(self._action) == 0) or self._authenticate):
-            try:
-                self._player.connect()
-            except BaseException, e:
-                print e
-                return
+        self._player.connect()
 
+    #~ This method asks the player to login or to create a new account
+    def _doInteractiveAuth(self):
+        choice = 0
+        while choice != '1' and choice != '2':
+            choice = raw_input("new account (1) or login (2) ? ")
+
+        if choice == '1':
+            self._player.createNewPlayerFromStdIn()
+        elif choice == '2':
+            self._player.loadPlayerFromStdIn()
+
+
+    #~ Main method of the Rpg Class, will run the action if it is given,
+    #~ else ask the player to enter a command
+    def run(self):
         if len(self._action) > 0:
             self._runAction()
         else:
