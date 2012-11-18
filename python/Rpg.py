@@ -2,6 +2,7 @@
 
 from Player import Player
 from CommandFactory import CommandFactory
+import Command
 
 class Rpg:
     def __init__(self, login, password, action):
@@ -27,23 +28,21 @@ class Rpg:
         if len(self._action) > 0:
             self._runAction()
         else:
-            q = False
             command = ''
-            while not q:
-                print "Command:"
-                command = raw_input()
+            result = 0
+            while True:
+                command = raw_input("Command: ")
 
-                if command == "quit":
-                    q = True
-                elif command != "":
+                if command != "":
                     self._action = command.split(' ')
-                    self._runAction()
+                    result = self._runAction()
+
+                if result == command.quit:
+                    break
 
     def _runAction(self):
         command = CommandFactory.create(self._player, self._action)
-        if command != None:
-            command.run()
-        else:
-            print "Unknown command"
-            return 0
-        return 1
+        if command == None:
+            raise BaseException("Unknown command")
+
+        return command.run()
