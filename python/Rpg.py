@@ -38,14 +38,14 @@ class Rpg:
         else:
             command = ''
             result = 0
-            while True:
+            while 1:
                 command = raw_input("Command: ")
 
                 if command != "":
                     self._action = command.split(' ')
                     result = self._runAction()
 
-                if result == command.quit:
+                if result == Command.quit:
                     break
 
     def _runAction(self):
@@ -53,4 +53,7 @@ class Rpg:
         if command == None:
             raise BaseException("Unknown command")
 
-        return command.run()
+        if command != Command.quit:
+            return command.run()
+
+        return command

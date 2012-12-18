@@ -26,9 +26,6 @@ def main(argv):
     try:
         rpg = Rpg(args.login, args.password, args.action)
         rpg.run()
-    except BaseException, e:
-        print e
-        sys.exit()
     except KeyboardInterrupt:
         sys.exit()
 

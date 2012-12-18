@@ -1,5 +1,7 @@
 # -*- coding: utf8 -*-
 
+import Command
+
 class CommandFactory:
 
     @staticmethod
@@ -14,6 +16,9 @@ class CommandFactory:
         elif cmd == "createPlayer":
             if player.isConnected():
                 raise "There must not be a connected player to create a new player"
+        #~ use in_array equivalent here
+        elif cmd == 'quit' or cmd == 'exit' or cmd == 'q':
+            return Command.quit
         else:
             return None
 
