@@ -45,7 +45,7 @@ class Rpg:
                     self._action = command.split(' ')
                     result = self._runAction()
 
-                if result == command.quit:
+                if result == Command.quit:
                     break
 
     def _runAction(self):
