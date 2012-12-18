@@ -53,4 +53,7 @@ class Rpg:
         if command == None:
             raise BaseException("Unknown command")
 
-        return command.run()
+        if command != Command.quit:
+            return command.run()
+
+        return command
