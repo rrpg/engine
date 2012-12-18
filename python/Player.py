@@ -11,13 +11,15 @@ class Player:
         self._password = password
         self._model = None
 
+    def isConnected(self):
+        return self._model != None
 
     #~ Connect the player by asking him to enter his login and his password
     def loadPlayerFromStdIn(self):
         print self._login
         print self._password
         if self._login == None or self._password == None:
-            self._readLoginAndPassword(False)
+            self._readLoginAndPassword(False, False)
 
     #~ Method to connect the player
     def connect(self):
@@ -29,7 +31,7 @@ class Player:
             raise BaseException("Invalid login or password")
 
     #~ Read the login and the password from stdin
-    def _readLoginAndPassword(self, checkLogin):
+    def _readLoginAndPassword(self, checkLogin, confirmPassword):
         while self._login == None or self._login == '':
             self._login = raw_input("Login: ")
 
@@ -40,14 +42,18 @@ class Player:
         confirmPassword = ''
         while (self._password == None or self._password == ''):
             self._password = getpass.getpass("Password: ")
-            confirmPassword = getpass.getpass("Confirm password: ")
+
+            if confirmPassword:
+                confirmPassword = getpass.getpass("Confirm password: ")
+            else:
+                confirmPassword = self._password
 
             if self._password != confirmPassword:
                 print 'The passwords do not match'
                 self._password = None
 
     def createNewPlayerFromStdIn(self):
-        self._readLoginAndPassword(True)
+        self._readLoginAndPassword(True, True)
 
         #~ int gender, genderId;
         genders = GenderModel.getGenders()
