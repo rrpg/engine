@@ -38,7 +38,7 @@ class Rpg:
         else:
             command = ''
             result = 0
-            while True:
+            while 1:
                 command = raw_input("Command: ")
 
                 if command != "":
