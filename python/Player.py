@@ -17,8 +17,6 @@ class Player:
 
     #~ Connect the player by asking him to enter his login and his password
     def loadPlayerFromStdIn(self):
-        print self._login
-        print self._password
         if self._login == None or self._password == None:
             self._readLoginAndPassword(False, False)
 
