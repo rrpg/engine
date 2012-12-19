@@ -1,6 +1,7 @@
 # -*- coding: utf8 -*-
 
 import Command
+from CommandTalk import CommandTalk
 from PlayerException import PlayerException
 from CommandHelp import CommandHelp
 
