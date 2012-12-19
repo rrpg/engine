@@ -2,6 +2,7 @@
 # -*- coding: utf8 -*-
 
 import os, sys, getopt
+from PlayerException import PlayerException
 from Rpg import Rpg
 from argparse import ArgumentParser
 
@@ -26,6 +27,9 @@ def main(argv):
     try:
         rpg = Rpg(args.login, args.password, args.action)
         rpg.run()
+    except PlayerException, e:
+        print e
+        sys.exit()
     except KeyboardInterrupt:
         sys.exit()
 

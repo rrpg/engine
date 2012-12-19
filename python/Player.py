@@ -2,6 +2,7 @@
 
 import sys, getpass
 from PlayerModel import PlayerModel
+from PlayerException import PlayerException
 from GenderModel import GenderModel
 from SpeciesModel import SpeciesModel
 
@@ -28,7 +29,7 @@ class Player:
         if self._model == None:
             self._login = None
             self._password = None
-            raise BaseException("Invalid login or password")
+            raise PlayerException("Invalid login or password")
 
     #~ Read the login and the password from stdin
     def _readLoginAndPassword(self, checkLogin, confirmPassword):

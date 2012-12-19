@@ -1,6 +1,7 @@
 # -*- coding: utf8 -*-
 
 import Command
+from PlayerException import PlayerException
 
 class CommandFactory:
 
@@ -11,11 +12,11 @@ class CommandFactory:
 
         if cmd == "talk":
             if not player.isConnected() or not player.connect():
-                raise "A player must be connected to launch the command talk"
+                raise PlayerException("A player must be connected to launch the command talk")
             command = CommandTalk()
         elif cmd == "createPlayer":
             if player.isConnected():
-                raise "There must not be a connected player to create a new player"
+                raise PlayerException("You cannot create a new player when you're connected")
         #~ use in_array equivalent here
         elif cmd == 'quit' or cmd == 'exit' or cmd == 'q':
             return Command.quit
