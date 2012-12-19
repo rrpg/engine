@@ -41,12 +41,15 @@ class Rpg:
             while 1:
                 command = raw_input("Command: ")
 
-                if command != "":
-                    self._action = command.split(' ')
-                    result = self._runAction()
+                try:
+                    if command != "":
+                        self._action = command.split(' ')
+                        result = self._runAction()
 
-                if result == Command.quit:
-                    break
+                    if result == Command.quit:
+                        break
+                except BaseException, e:
+                    print e
 
     def _runAction(self):
         command = CommandFactory.create(self._player, self._action)
