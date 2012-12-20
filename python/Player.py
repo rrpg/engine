@@ -56,7 +56,6 @@ class Player:
     def createNewPlayerFromStdIn(self):
         self._readLoginAndPassword(True, True)
 
-        #~ int gender, genderId;
         genders = GenderModel.getGenders()
         nbGenders = len(genders)
 
@@ -74,7 +73,6 @@ class Player:
         genderId = genders[gender]['id']
 
 
-        #~ int gender, genderId;
         species = SpeciesModel.getSpecies(genders[gender]['name'])
         nbSpecies = len(species)
 
