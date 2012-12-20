@@ -99,3 +99,5 @@ class Player:
         self._model.setGender(genderId)
         self._model.save()
 
+    def getModel(self):
+        return self._model
