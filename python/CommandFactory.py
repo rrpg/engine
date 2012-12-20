@@ -28,4 +28,4 @@ class CommandFactory:
 
         command.setArgs(commandFull)
         command.setPlayer(player)
-        return command;
+        return command

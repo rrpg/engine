@@ -65,16 +65,16 @@ class PlayerModel(CharacterModel):
         return None
 
     def _setPk(self, pk):
-        self._playerFields["id_player"] = pk;
+        self._playerFields["id_player"] = pk
 
     def setLogin(self, login):
-        self._playerFields["login"] = login;
+        self._playerFields["login"] = login
 
     def setIdCharacter(self, idCharacter):
-        self._playerFields["id_character"] = idCharacter;
+        self._playerFields["id_character"] = idCharacter
 
     def setPassword(self, password):
-        self._playerFields["password"] = password;
+        self._playerFields["password"] = password
 
     def save(self):
         self._playerFields["date_creation"] = datetime.datetime.now()

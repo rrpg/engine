@@ -10,7 +10,7 @@ class SpeciesModel:
         query = "\
             SELECT\
                 id_species,\
-                ";
+                "
         if gender == "male":
             query += "name_m,"
         else:

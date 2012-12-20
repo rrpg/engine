@@ -22,7 +22,7 @@ class CharacterModel(Model):
         return self._characterFields["id_character"]
 
     def save(self):
-        self.__setPk(Model.insert("character", self._characterFields));
+        self.__setPk(Model.insert("character", self._characterFields))
         return True
 
     @staticmethod
@@ -78,6 +78,6 @@ class CharacterModel(Model):
 
     #protected:
     def _setPk(self, pk):
-        self._characterFields["id_character"] = str(pk);
+        self._characterFields["id_character"] = str(pk)
 
     __setPk = _setPk
