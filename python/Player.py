@@ -29,6 +29,8 @@ class Player:
             self._password = None
             raise PlayerException("Invalid login or password")
 
+        return True
+
     #~ Read the login and the password from stdin
     def _readLoginAndPassword(self, checkLogin, confirmPassword):
         while self._login == None or self._login == '':
