@@ -3,7 +3,7 @@
 from Model import Model
 
 class CharacterModel(Model):
-    _characterFields = {}
+    _characterFields = dict()
 
     #public
     def setSpecies(self, species):
@@ -40,7 +40,7 @@ class CharacterModel(Model):
 
     @staticmethod
     def loadByIdCharacter(idChar):
-        character = {};
+        character = dict()
 
         query = "\
             SELECT\
