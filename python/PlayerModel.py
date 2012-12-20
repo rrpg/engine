@@ -8,6 +8,9 @@ class PlayerModel(CharacterModel):
     def __init__(self):
         self._playerFields = {}
 
+    def getPk(self):
+        return self._playerFields["id_player"]
+
     @staticmethod
     def loadByLoginAndPassword(login, password):
         query = "\
