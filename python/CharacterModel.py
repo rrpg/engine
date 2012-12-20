@@ -23,7 +23,7 @@ class CharacterModel(Model):
 
     def save(self):
         self.__setPk(Model.insert("character", self._characterFields));
-        return True;
+        return True
 
     @staticmethod
     def _createFromData(data):
