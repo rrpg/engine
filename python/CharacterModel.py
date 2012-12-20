@@ -25,6 +25,18 @@ class CharacterModel(Model):
         self.__setPk(Model.insert("character", self._characterFields));
         return True;
 
+    @staticmethod
+    def _createFromData(data):
+        if len(data) == 0:
+            return None
+        else:
+            model = CharacterModel()
+            model._setPk(data[0])
+            model.setName(data[1])
+            model.setSpecies(data[2])
+            model.setGender(data[3])
+
+            return model
 
     @staticmethod
     def loadByNameAndIdPlayer(name, playerId):
