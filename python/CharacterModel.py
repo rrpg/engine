@@ -39,7 +39,7 @@ class CharacterModel(Model):
             return model
 
     @staticmethod
-    def loadByNameAndIdPlayer(name, playerId):
+    def loadByIdCharacter(idChar):
         character = {};
 
         query = "\
@@ -51,21 +51,30 @@ class CharacterModel(Model):
             FROM\
                 `character`\
             WHERE\
+                id_character = ?\
+            "
+
+        character = Model.fetchOneRow(query, [idChar])
+        return CharacterModel._createFromData(character)
+
+    @staticmethod
+    def loadByNameAndIdPlayer(name, playerId):
+        character = {}
+
+        query = "\
+            SELECT\
+                id_character,\
+                name,\
+                id_species,\
+                id_gender\
+            FROM\
+                `character`\
+            WHERE\
                 name = ?\
-            LIMIT 1";
+            LIMIT 1"
 
-        character = Model.fetchOneRow(query, (name));
-
-        if len(character) == 0:
-            return None
-        else:
-            model = CharacterModel()
-            model._setPk(character[0].atoi())
-            model.setName(character[1])
-            model.setSpecies(character[2].atoi())
-            model.setGender(character[3].atoi())
-
-            return model
+        character = Model.fetchOneRow(query, [name])
+        return CharacterModel._createFromData(character)
 
     #protected:
     def _setPk(self, pk):
