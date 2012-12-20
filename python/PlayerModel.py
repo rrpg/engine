@@ -70,6 +70,9 @@ class PlayerModel(CharacterModel):
     def setLogin(self, login):
         self._playerFields["login"] = login;
 
+    def setIdCharacter(self, idCharacter):
+        self._playerFields["id_character"] = idCharacter;
+
     def setPassword(self, password):
         self._playerFields["password"] = password;
 
