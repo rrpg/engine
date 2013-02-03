@@ -2,6 +2,7 @@
 
 import Command
 from PlayerException import PlayerException
+from CommandHelp import CommandHelp
 
 class CommandFactory:
 
@@ -20,6 +21,8 @@ class CommandFactory:
         #~ use in_array equivalent here
         elif cmd == 'quit' or cmd == 'exit' or cmd == 'q':
             return Command.quit
+        elif cmd == 'help':
+            command = CommandHelp()
         else:
             return None
 
