@@ -10,7 +10,7 @@ class Sentence:
         sentencesModels = SentenceModel.loadByCharacterIdAndTriggerWord(idCharacter, triggerWord)
         for index, sentence in enumerate(sentencesModels):
             sentences.append(Sentence())
-            sentences[index]._model = sentencesModels
+            sentences[index]._model = sentence
 
         return sentences
 
