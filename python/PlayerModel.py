@@ -6,7 +6,8 @@ import datetime
 
 class PlayerModel(CharacterModel):
     def __init__(self):
-        self._playerFields = {}
+        super(PlayerModel, self).__init__()
+        self._playerFields = dict()
 
     def getPk(self):
         return self._playerFields["id_player"]
