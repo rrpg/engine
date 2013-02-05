@@ -13,7 +13,7 @@ class Player:
         self._model = None
 
     def isConnected(self):
-        return self._model != None
+        return self._model is not None
 
     #~ Connect the player by asking him to enter his login and his password
     def loadPlayerFromStdIn(self):
