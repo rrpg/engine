@@ -18,8 +18,7 @@ class CommandFactory:
         elif cmd == "createPlayer":
             if player.isConnected():
                 raise PlayerException("You cannot create a new player when you're connected")
-        #~ use in_array equivalent here
-        elif cmd == 'quit' or cmd == 'exit' or cmd == 'q':
+        elif cmd in ('quit', 'exit', 'q'):
             return Command.quit
         elif cmd == 'help':
             command = CommandHelp()
