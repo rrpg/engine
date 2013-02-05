@@ -13,7 +13,7 @@ class Player:
         self._model = None
 
     def isConnected(self):
-        return self._model != None
+        return self._model is not None
 
     #~ Connect the player by asking him to enter his login and his password
     def loadPlayerFromStdIn(self):
@@ -28,6 +28,8 @@ class Player:
             self._login = None
             self._password = None
             raise PlayerException("Invalid login or password")
+
+        return True
 
     #~ Read the login and the password from stdin
     def _readLoginAndPassword(self, checkLogin, confirmPassword):
@@ -54,7 +56,6 @@ class Player:
     def createNewPlayerFromStdIn(self):
         self._readLoginAndPassword(True, True)
 
-        #~ int gender, genderId;
         genders = GenderModel.getGenders()
         nbGenders = len(genders)
 
@@ -72,7 +73,6 @@ class Player:
         genderId = genders[gender]['id']
 
 
-        #~ int gender, genderId;
         species = SpeciesModel.getSpecies(genders[gender]['name'])
         nbSpecies = len(species)
 
@@ -97,3 +97,5 @@ class Player:
         self._model.setGender(genderId)
         self._model.save()
 
+    def getModel(self):
+        return self._model

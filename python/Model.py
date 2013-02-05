@@ -20,8 +20,8 @@ class Model(object):
     def fetchOneRow(query, params):
         Model._connect()
         c = Model._db.cursor()
-        result = [];
-        nbCols = 0;
+        result = list()
+        nbCols = 0
         c.execute(query, params)
         r = c.fetchone()
         if r != None:
