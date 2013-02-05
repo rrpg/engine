@@ -3,7 +3,9 @@
 from Model import Model
 
 class CharacterModel(Model):
-    _characterFields = dict()
+    def __init__(self):
+        super(CharacterModel, self).__init__()
+        self._characterFields = dict()
 
     #public
     def setSpecies(self, species):
