@@ -5,6 +5,9 @@ from CommandException import CommandException
 from CharacterException import CharacterException
 from Character import Character
 from Sentence import Sentence
+import random
+import string
+
 
 class CommandTalk(CommandAbstract):
     def run(self):
@@ -25,3 +28,8 @@ class CommandTalk(CommandAbstract):
             print "What ?"
             return
 
+        sentence = sentence[random.randint(0, len(sentence) - 1)]
+        print self.processSentence(sentence.getSentence(), self._player._model.getName())
+
+    def processSentence(self, sentence, characterName):
+        return string.replace(sentence, '%player_name%', characterName)
