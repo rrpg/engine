@@ -5,6 +5,7 @@ from CommandTalk import CommandTalk
 from PlayerException import PlayerException
 from CommandHelp import CommandHelp
 
+
 class CommandFactory:
 
     @staticmethod
@@ -18,7 +19,9 @@ class CommandFactory:
             command = CommandTalk()
         elif cmd == "createPlayer":
             if player.isConnected():
-                raise PlayerException("You cannot create a new player when you're connected")
+                raise PlayerException(
+                    "You cannot create a new player when you're connected"
+                )
         elif cmd in ('quit', 'exit', 'q'):
             return Command.quit
         elif cmd == 'help':

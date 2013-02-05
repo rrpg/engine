@@ -2,6 +2,7 @@
 
 from Model import Model
 
+
 class CharacterModel(Model):
     def __init__(self):
         super(CharacterModel, self).__init__()

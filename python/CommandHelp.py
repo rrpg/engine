@@ -3,6 +3,7 @@
 from CommandAbstract import CommandAbstract
 from CommandException import CommandException
 
+
 class CommandHelp(CommandAbstract):
     def run(self):
         print 'Available commands:'
@@ -11,4 +12,3 @@ class CommandHelp(CommandAbstract):
         print 'createPlayer: Not Yet Implemented'
         print 'help: Display this help'
         print 'quit|exit|q: Quit the game'
-

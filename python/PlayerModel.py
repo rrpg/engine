@@ -4,6 +4,7 @@ from CharacterModel import CharacterModel
 from Model import Model
 import datetime
 
+
 class PlayerModel(CharacterModel):
     def __init__(self):
         super(PlayerModel, self).__init__()
@@ -87,4 +88,3 @@ class PlayerModel(CharacterModel):
         self._setPk(Model.insert("player", self._playerFields))
 
         return True
-

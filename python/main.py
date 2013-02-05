@@ -1,10 +1,13 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
 
-import os, sys, getopt
+import os
+import sys
+import getopt
 from PlayerException import PlayerException
 from Rpg import Rpg
 from argparse import ArgumentParser
+
 
 def main(argv):
     parser = ArgumentParser()

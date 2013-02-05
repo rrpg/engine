@@ -18,18 +18,24 @@ class CommandTalk(CommandAbstract):
 
         characterName = self._args[0]
         triggerWord = self._args[1]
-        character = Character.searchByNameAndPlayer(characterName, self._player)
+        character = Character.searchByNameAndPlayer(
+            characterName, self._player
+        )
 
         if character is None:
             raise CharacterException("Unknown Character")
-        sentence = Sentence.loadByCharacterIdAndTriggerWord(character.getId(), triggerWord)
+        sentence = Sentence.loadByCharacterIdAndTriggerWord(
+            character.getId(), triggerWord
+        )
 
         if len(sentence) is 0:
             print "What ?"
             return
 
         sentence = sentence[random.randint(0, len(sentence) - 1)]
-        print self.processSentence(sentence.getSentence(), self._player._model.getName())
+        print self.processSentence(
+            sentence.getSentence(), self._player._model.getName()
+        )
 
     def processSentence(self, sentence, characterName):
         return string.replace(sentence, '%player_name%', characterName)

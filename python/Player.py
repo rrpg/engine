@@ -1,10 +1,12 @@
 # -*- coding: utf8 -*-
 
-import sys, getpass
+import sys
+import getpass
 from PlayerModel import PlayerModel
 from PlayerException import PlayerException
 from GenderModel import GenderModel
 from SpeciesModel import SpeciesModel
+
 
 class Player:
     def __init__(self, login, password):
@@ -17,14 +19,16 @@ class Player:
 
     #~ Connect the player by asking him to enter his login and his password
     def loadPlayerFromStdIn(self):
-        if self._login == None or self._password == None:
+        if self._login is None or self._password is None:
             self._readLoginAndPassword(False, False)
 
     #~ Method to connect the player
     def connect(self):
-        self._model = PlayerModel.loadByLoginAndPassword(self._login, self._password)
+        self._model = PlayerModel.loadByLoginAndPassword(
+            self._login, self._password
+        )
 
-        if self._model == None:
+        if self._model is None:
             self._login = None
             self._password = None
             raise PlayerException("Invalid login or password")
@@ -33,15 +37,15 @@ class Player:
 
     #~ Read the login and the password from stdin
     def _readLoginAndPassword(self, checkLogin, confirmPassword):
-        while self._login == None or self._login == '':
+        while self._login is None or self._login == '':
             self._login = raw_input("Login: ")
 
-            if checkLogin and PlayerModel.loadByLogin(self._login) != None:
+            if checkLogin and PlayerModel.loadByLogin(self._login) is not None:
                 print 'This login is already used'
                 self._login = None
 
         confirmPassword = ''
-        while (self._password == None or self._password == ''):
+        while (self._password is None or self._password == ''):
             self._password = getpass.getpass("Password: ")
 
             if confirmPassword:
@@ -71,7 +75,6 @@ class Player:
                 gender = -1
 
         genderId = genders[gender]['id']
-
 
         species = SpeciesModel.getSpecies(genders[gender]['name'])
         nbSpecies = len(species)

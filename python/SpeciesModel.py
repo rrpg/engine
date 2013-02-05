@@ -2,6 +2,7 @@
 
 from Model import Model
 
+
 class SpeciesModel:
     @staticmethod
     def getSpecies(gender):
@@ -31,4 +32,3 @@ class SpeciesModel:
             })
 
         return species
-

@@ -4,10 +4,12 @@ from Player import Player
 from CommandFactory import CommandFactory
 import Command
 
+
 class Rpg:
     def __init__(self, login, password, action):
-        #if the game is launched with login/password, the player is directly fetched
-        if login != None and password != None:
+        #~ if the game is launched with login/password,
+        #~ the player is directly fetched
+        if login is not None and password is not None:
             self._player = Player(login, password)
         elif action == []:
             #else an empty player is created
@@ -28,7 +30,6 @@ class Rpg:
             self._player.createNewPlayerFromStdIn()
         elif choice == '2':
             self._player.loadPlayerFromStdIn()
-
 
     #~ Main method of the Rpg Class, will run the action if it is given,
     #~ else ask the player to enter a command
@@ -53,7 +54,7 @@ class Rpg:
 
     def _runAction(self):
         command = CommandFactory.create(self._player, self._action)
-        if command == None:
+        if command is None:
             raise BaseException("Unknown command")
 
         if command != Command.quit:

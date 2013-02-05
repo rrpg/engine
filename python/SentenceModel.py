@@ -2,6 +2,7 @@
 
 from Model import Model
 
+
 class SentenceModel(Model):
     _sentenceFields = dict()
 
@@ -17,7 +18,8 @@ class SentenceModel(Model):
                 condition\
             FROM\
                 talk_answer ta\
-                INNER JOIN character_answer ca ON ca.id_talk_answer = ta.id_talk_answer\
+                INNER JOIN character_answer ca\
+                    ON ca.id_talk_answer = ta.id_talk_answer\
             WHERE\
                 trigger_word = ?\
                 AND id_character = ?\

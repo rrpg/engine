@@ -2,10 +2,13 @@
 
 from CharacterModel import CharacterModel
 
+
 class Character:
     @staticmethod
     def searchByNameAndPlayer(name, player):
-        model = CharacterModel.loadByNameAndIdPlayer(name, player.getModel().getPk())
+        model = CharacterModel.loadByNameAndIdPlayer(
+            name, player.getModel().getPk()
+        )
 
         if model is None:
             return None

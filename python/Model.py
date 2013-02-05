@@ -1,6 +1,8 @@
 # -*- coding: utf8 -*-
 
-import config, sqlite3
+import config
+import sqlite3
+
 
 class Model(object):
     _db = None
@@ -24,7 +26,7 @@ class Model(object):
         nbCols = 0
         c.execute(query, params)
         r = c.fetchone()
-        if r != None:
+        if r is not None:
             result = Model._createRow(r)
 
         return result
@@ -56,17 +58,16 @@ class Model(object):
 
         return c.lastrowid
 
-
     #protected:
     @staticmethod
     def _connect():
-        if Model._db == None:
+        if Model._db is None:
             Model._db = sqlite3.connect(config.db)
 
         return True
 
     @staticmethod
-    def _createRow(sqliteRow, nbCols = None):
+    def _createRow(sqliteRow, nbCols=None):
         if nbCols == 0:
             nbCols = len(sqliteRow)
 
@@ -75,5 +76,3 @@ class Model(object):
             row[i] = v
 
         return row
-
-

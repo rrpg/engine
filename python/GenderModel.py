@@ -2,6 +2,7 @@
 
 from Model import Model
 
+
 class GenderModel:
     @staticmethod
     def getGenders():
@@ -23,4 +24,3 @@ class GenderModel:
             })
 
         return genders
-
