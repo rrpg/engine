@@ -15,11 +15,13 @@ class CommandTalk(CommandAbstract):
 
         characterName = self._args[0]
         triggerWord = self._args[1]
-
         character = Character.searchByNameAndPlayer(characterName, self._player)
 
         if character is None:
             raise CharacterException("Unknown Character")
         sentence = Sentence.loadByCharacterIdAndTriggerWord(character.getId(), triggerWord)
 
-        print sentence
+        if len(sentence) is 0:
+            print "What ?"
+            return
+
