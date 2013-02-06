@@ -21,6 +21,8 @@ class CommandFactory:
 
         if cmd == "talk":
             command = CommandTalk()
+        elif cmd == "move":
+            command = CommandMove()
         elif cmd == "createPlayer":
             if player.isConnected():
                 raise PlayerException(
