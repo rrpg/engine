@@ -9,4 +9,4 @@ server['services'] = {}
 server['services']['auth'] = '/auth'
 
 rootPath = os.path.dirname(__file__)
-db = rootPath + '/../database/rpg.db'
+db = rootPath + '/database/rpg.db'
