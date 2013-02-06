@@ -50,7 +50,7 @@ class Rpg:
                     if result == Command.quit:
                         break
                 except BaseException, e:
-                    print e
+                    print(e)
 
     def _runAction(self):
         command = CommandFactory.create(self._player, self._action)

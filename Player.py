@@ -41,7 +41,7 @@ class Player:
             self._login = raw_input("Login: ")
 
             if checkLogin and PlayerModel.loadByLogin(self._login) is not None:
-                print 'This login is already used'
+                print('This login is already used')
                 self._login = None
 
         confirmPassword = ''
@@ -54,7 +54,7 @@ class Player:
                 confirmPassword = self._password
 
             if self._password != confirmPassword:
-                print 'The passwords do not match'
+                print('The passwords do not match')
                 self._password = None
 
     def createNewPlayerFromStdIn(self):
@@ -64,7 +64,7 @@ class Player:
         nbGenders = len(genders)
 
         for k, v in enumerate(genders):
-            print v['name'] + " (" + str(k) + ")"
+            print(v['name'] + " (" + str(k) + ")")
 
         gender = -1
         while gender < 0 or gender >= nbGenders:
@@ -80,8 +80,8 @@ class Player:
         nbSpecies = len(species)
 
         for k, v in enumerate(species):
-            print v['name'] + " (" + str(k) + ")"
-            print v['description']
+            print(v['name'] + " (" + str(k) + ")")
+            print(v['description'])
 
         sp = -1
         while sp < 0 or sp >= nbSpecies:
