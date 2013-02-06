@@ -66,17 +66,20 @@ class CharacterModel(Model):
 
         query = "\
             SELECT\
-                id_character,\
-                name,\
-                id_species,\
-                id_gender\
+                c1.id_character,\
+                c1.name,\
+                c1.id_species,\
+                c1.id_gender\
             FROM\
-                `character`\
+                `character` AS c1\
+                JOIN character AS cp ON cp.id_area = c1.id_area\
+                JOIN player ON id_player = ?\
+                    AND player.id_character = cp.id_character\
             WHERE\
-                name = ?\
+                c1.name = ?\
             LIMIT 1"
 
-        character = Model.fetchOneRow(query, [name])
+        character = Model.fetchOneRow(query, [playerId, name])
         return CharacterModel._createFromData(character)
 
     #protected:
