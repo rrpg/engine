@@ -38,4 +38,4 @@ class CommandTalk(CommandAbstract):
         ))
 
     def processSentence(self, sentence, characterName):
-        return string.replace(sentence, '%player_name%', characterName)
+        return sentence % {'player_name': characterName}
