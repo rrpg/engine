@@ -3,6 +3,7 @@
 from Player import Player
 from CommandFactory import CommandFactory
 import Command
+import utils
 
 
 class Rpg:
@@ -24,7 +25,7 @@ class Rpg:
     def _doInteractiveAuth(self):
         choice = 0
         while choice != '1' and choice != '2':
-            choice = raw_input("new account (1) or login (2) ? ")
+            choice = utils.read("new account (1) or login (2) ? ")
 
         if choice == '1':
             self._player.createNewPlayerFromStdIn()
@@ -40,7 +41,7 @@ class Rpg:
             command = ''
             result = 0
             while 1:
-                command = raw_input("Command: ")
+                command = utils.read("Command: ")
 
                 try:
                     if command != "":

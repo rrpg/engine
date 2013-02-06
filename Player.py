@@ -2,6 +2,7 @@
 
 import sys
 import getpass
+import utils
 from PlayerModel import PlayerModel
 from PlayerException import PlayerException
 from GenderModel import GenderModel
@@ -38,7 +39,7 @@ class Player:
     #~ Read the login and the password from stdin
     def _readLoginAndPassword(self, checkLogin, confirmPassword):
         while self._login is None or self._login == '':
-            self._login = raw_input("Login: ")
+            self._login = utils.read("Login: ")
 
             if checkLogin and PlayerModel.loadByLogin(self._login) is not None:
                 print('This login is already used')
@@ -68,7 +69,7 @@ class Player:
 
         gender = -1
         while gender < 0 or gender >= nbGenders:
-            gender = raw_input("Character gender: ")
+            gender = utils.read("Character gender: ")
             try:
                 gender = int(gender)
             except:
@@ -85,7 +86,7 @@ class Player:
 
         sp = -1
         while sp < 0 or sp >= nbSpecies:
-            sp = raw_input("Character species: ")
+            sp = utils.read("Character species: ")
             try:
                 sp = int(sp)
             except:
