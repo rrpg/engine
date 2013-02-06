@@ -30,7 +30,7 @@ def main(argv):
     try:
         rpg = Rpg(args.login, args.password, args.action)
         rpg.run()
-    except PlayerException, e:
+    except PlayerException as e:
         print(e)
         sys.exit()
     except KeyboardInterrupt:

@@ -49,7 +49,7 @@ class Rpg:
 
                     if result == Command.quit:
                         break
-                except BaseException, e:
+                except BaseException as e:
                     print(e)
 
     def _runAction(self):
