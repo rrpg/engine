@@ -29,13 +29,13 @@ class CommandTalk(CommandAbstract):
         )
 
         if len(sentence) is 0:
-            print "What ?"
+            print("What ?")
             return
 
         sentence = sentence[random.randint(0, len(sentence) - 1)]
-        print self.processSentence(
+        print(self.processSentence(
             sentence.getSentence(), self._player._model.getName()
-        )
+        ))
 
     def processSentence(self, sentence, characterName):
-        return string.replace(sentence, '%player_name%', characterName)
+        return sentence % {'player_name': characterName}
