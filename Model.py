@@ -47,7 +47,7 @@ class Model(object):
         #~ insert
         if len(where) == 0:
             Model.insert(table, fields)
-        else: # update
+        else:  # update
             Model.insert(table, update)
 
     @staticmethod

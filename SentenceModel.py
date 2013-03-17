@@ -31,10 +31,14 @@ class SentenceModel(Model):
         if len(sentences) > 0:
             for index, sentence in enumerate(sentences):
                 sentencesModels.append(SentenceModel())
-                sentencesModels[index]._setPk(sentences[index]['id_talk_answer'])
-                sentencesModels[index].setWord(sentences[index]['trigger_word'])
-                sentencesModels[index].setSentence(sentences[index]['sentence'])
-                sentencesModels[index].setCondition(sentences[index]['condition'])
+                sentencesModels[index]._setPk(
+                    sentences[index]['id_talk_answer'])
+                sentencesModels[index].setWord(
+                    sentences[index]['trigger_word'])
+                sentencesModels[index].setSentence(
+                    sentences[index]['sentence'])
+                sentencesModels[index].setCondition(
+                    sentences[index]['condition'])
 
         return sentencesModels
 

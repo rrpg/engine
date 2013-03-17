@@ -7,7 +7,9 @@ class CharacterModel(Model):
     def __init__(self, idCharacter=None):
         super(CharacterModel, self).__init__()
         if idCharacter is not None:
-            self._characterFields = CharacterModel.getCharacterInfosFromId(idCharacter)
+            self._characterFields = CharacterModel.getCharacterInfosFromId(
+                idCharacter
+            )
         else:
             self._characterFields = dict()
 

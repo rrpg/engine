@@ -1,5 +1,6 @@
 # -*- coding: utf8 -*-
 
+
 def read(prompt):
     try:
         s = raw_input(prompt)
