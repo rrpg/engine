@@ -62,7 +62,8 @@ class CharacterModel(Model):
                 id_character,\
                 name,\
                 id_species,\
-                id_gender\
+                id_gender,\
+                id_area\
             FROM\
                 `character`\
             WHERE\
@@ -80,7 +81,8 @@ class CharacterModel(Model):
                 c1.id_character,\
                 c1.name,\
                 c1.id_species,\
-                c1.id_gender\
+                c1.id_gender,\
+                c1.id_area\
             FROM\
                 `character` AS c1\
                 JOIN character AS cp ON cp.id_area = c1.id_area\
