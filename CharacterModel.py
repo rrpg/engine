@@ -34,8 +34,23 @@ class CharacterModel(Model):
         return self._characterFields["id_character"]
 
     def save(self):
-        self.__setPk(Model.insert("character", self._characterFields))
+        if 'id_character' not in self._characterFields:
+            self.__setPk(Model.insert("character", self._characterFields))
+        else:
+            Model.update(
+                "character",
+                self._characterFields,
+                ('id_character = ?', [self._characterFields['id_character']])
+            )
+
         return True
+
+    def savePosition(self):
+        Model.update(
+            "character",
+            {'id_area': self._characterFields['id_area']},
+            ('id_character = ?', [self._characterFields['id_character']])
+        )
 
     @staticmethod
     def _createFromData(data):
@@ -43,10 +58,11 @@ class CharacterModel(Model):
             return None
         else:
             model = CharacterModel()
-            model._setPk(data[0])
-            model.setName(data[1])
-            model.setSpecies(data[2])
-            model.setGender(data[3])
+            model._setPk(data['id_character'])
+            model.setName(data['name'])
+            model.setSpecies(data['id_species'])
+            model.setGender(data['id_gender'])
+            model.setIdArea(data['id_area'])
 
             return model
 

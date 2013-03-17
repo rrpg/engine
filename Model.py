@@ -16,7 +16,15 @@ class Model(object):
         currentRow = {}
         nbCols = 0
         c.execute(query, params)
-        return c.fetchall()
+
+        #~ Get the columns names
+        column_names = [d[0] for d in c.description]
+        result = c.fetchall()
+        resultList = list()
+        for r in result:
+            resultList.append(Model._createRow(r, column_names))
+
+        return resultList
 
     @staticmethod
     def fetchOneRow(query, params):
@@ -26,8 +34,11 @@ class Model(object):
         nbCols = 0
         c.execute(query, params)
         r = c.fetchone()
+
+        #~ Get the colums names
+        column_names = [d[0] for d in c.description]
         if r is not None:
-            result = Model._createRow(r)
+            result = Model._createRow(r, column_names)
 
         return result
 
@@ -89,12 +100,9 @@ class Model(object):
         return True
 
     @staticmethod
-    def _createRow(sqliteRow, nbCols=None):
-        if nbCols == 0:
-            nbCols = len(sqliteRow)
-
+    def _createRow(sqliteRow, columns):
         row = {}
         for i, v in enumerate(sqliteRow):
-            row[i] = v
+            row[columns[i]] = v
 
         return row

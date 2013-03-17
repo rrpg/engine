@@ -6,16 +6,14 @@ from Model import Model
 class SpeciesModel:
     @staticmethod
     def getSpecies(gender):
-        species = []
-
         query = "\
             SELECT\
                 id_species,\
                 "
         if gender == "male":
-            query += "name_m,"
+            query += "name_m AS name,"
         else:
-            query += "name_f,"
+            query += "name_f AS name,"
 
         query += "\
                 description\
@@ -23,12 +21,4 @@ class SpeciesModel:
                 species\
         "
 
-        results = Model.fetchAllRows(query, {})
-        for v in results:
-            species.append({
-                'id': v[0],
-                'name': str(v[1]),
-                'description': str(v[2])
-            })
-
-        return species
+        return Model.fetchAllRows(query, {})

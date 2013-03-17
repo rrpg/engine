@@ -6,8 +6,8 @@ import datetime
 
 
 class PlayerModel(CharacterModel):
-    def __init__(self):
-        super(PlayerModel, self).__init__()
+    def __init__(self, idCharacter=None):
+        super(PlayerModel, self).__init__(idCharacter)
         self._playerFields = dict()
 
     def getPk(self):
@@ -33,13 +33,10 @@ class PlayerModel(CharacterModel):
         model = Model.fetchOneRow(query, (login, password))
 
         if len(model) > 0:
-            pm = PlayerModel()
-            pm._setPk(model[0])
-            pm.setLogin(model[1])
-            pm.setIdCharacter(model[2])
-            pm.setName(model[3])
-            pm.setSpecies(model[4])
-            pm.setGender(model[5])
+            pm = PlayerModel(model['id_character'])
+            pm._setPk(model['id_player'])
+            pm.setLogin(model['login'])
+            pm.setIdCharacter(model['id_character'])
             return pm
 
         return None
@@ -59,9 +56,10 @@ class PlayerModel(CharacterModel):
         model = Model.fetchOneRow(query, [login])
 
         if len(model) > 0:
-            pm = PlayerModel()
-            pm._setPk(model[0])
-            pm.setLogin(model[1])
+            pm = PlayerModel(model['id_character'])
+            pm._setPk(model['id_player'])
+            pm.setLogin(model['login'])
+            pm.setIdCharacter(model['id_character'])
             return pm
 
         return None
