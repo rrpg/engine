@@ -43,6 +43,14 @@ class Model(object):
         return result
 
     @staticmethod
+    def save(table, fields, where=list()):
+        #~ insert
+        if len(where) == 0:
+            Model.insert(table, fields)
+        else: # update
+            Model.insert(table, update)
+
+    @staticmethod
     def insert(table, fields):
         Model._connect()
         c = Model._db.cursor()
