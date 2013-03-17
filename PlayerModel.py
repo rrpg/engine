@@ -73,6 +73,9 @@ class PlayerModel(CharacterModel):
     def setIdCharacter(self, idCharacter):
         self._playerFields["id_character"] = idCharacter
 
+    def getIdCharacter(self):
+        return self._playerFields["id_character"]
+
     def setPassword(self, password):
         self._playerFields["password"] = password
 
