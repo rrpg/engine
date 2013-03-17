@@ -52,8 +52,11 @@ class CharacterModel(Model):
 
     @staticmethod
     def loadByIdCharacter(idChar):
-        character = dict()
+        character = CharacterModel.getCharacterInfosFromId(idChar)
+        return CharacterModel._createFromData(character)
 
+    @staticmethod
+    def getCharacterInfosFromId(idCharacter):
         query = "\
             SELECT\
                 id_character,\
@@ -66,8 +69,7 @@ class CharacterModel(Model):
                 id_character = ?\
             "
 
-        character = Model.fetchOneRow(query, [idChar])
-        return CharacterModel._createFromData(character)
+        return Model.fetchOneRow(query, [idCharacter])
 
     @staticmethod
     def loadByNameAndIdPlayer(name, playerId):
