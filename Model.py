@@ -58,6 +58,28 @@ class Model(object):
 
         return c.lastrowid
 
+    @staticmethod
+    def update(table, fields, where):
+        Model._connect()
+        c = Model._db.cursor()
+
+        nbFields = len(fields)
+        current = 0
+        fieldsStr = ''
+
+        params = list()
+        for k, v in fields.items():
+            fieldsStr += '"' + k + '" = ?'
+            params.append(v)
+            if current < nbFields - 1:
+                fieldsStr += ', '
+            current += 1
+
+        query = "UPDATE %s SET %s WHERE %s" % (table, fieldsStr, where[0])
+        c.execute(query, params + where[1])
+
+        return c.lastrowid
+
     #protected:
     @staticmethod
     def _connect():
