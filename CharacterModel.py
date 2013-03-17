@@ -18,8 +18,14 @@ class CharacterModel(Model):
     def setName(self, name):
         self._characterFields["name"] = name
 
+    def setIdArea(self, idArea):
+        self._characterFields["id_area"] = idArea
+
     def getName(self):
         return self._characterFields["name"]
+
+    def getIdArea(self):
+        return self._characterFields["id_area"]
 
     def getPk(self):
         return self._characterFields["id_character"]
