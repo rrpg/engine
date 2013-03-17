@@ -77,11 +77,10 @@ class PlayerModel(CharacterModel):
         self._playerFields["password"] = password
 
     def save(self):
-        self._playerFields["date_creation"] = datetime.datetime.now()
         self.setName(self._playerFields["login"])
-
         super(PlayerModel, self).save()
 
+        self._playerFields["date_creation"] = datetime.datetime.now()
         self._playerFields["id_character"] = CharacterModel.getPk(self)
 
         if 'id_player' not in self._playerFields:
