@@ -96,6 +96,7 @@ class Model(object):
 
         query = "UPDATE %s SET %s WHERE %s" % (table, fieldsStr, where[0])
         c.execute(query, params + where[1])
+        Model._db.commit()
 
         return c.lastrowid
 
