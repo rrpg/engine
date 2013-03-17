@@ -18,6 +18,8 @@ CREATE TABLE `character` (
     id_area INT REFERENCES area (id_area)
 );
 
+CREATE INDEX character_id_area ON character (id_area);
+
 CREATE TABLE player (
     id_player INTEGER PRIMARY KEY AUTOINCREMENT,
     login VARCHAR(30) NOT NULL,

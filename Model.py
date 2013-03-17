@@ -16,7 +16,15 @@ class Model(object):
         currentRow = {}
         nbCols = 0
         c.execute(query, params)
-        return c.fetchall()
+
+        #~ Get the columns names
+        column_names = [d[0] for d in c.description]
+        result = c.fetchall()
+        resultList = list()
+        for r in result:
+            resultList.append(Model._createRow(r, column_names))
+
+        return resultList
 
     @staticmethod
     def fetchOneRow(query, params):
@@ -26,10 +34,21 @@ class Model(object):
         nbCols = 0
         c.execute(query, params)
         r = c.fetchone()
+
+        #~ Get the colums names
+        column_names = [d[0] for d in c.description]
         if r is not None:
-            result = Model._createRow(r)
+            result = Model._createRow(r, column_names)
 
         return result
+
+    @staticmethod
+    def save(table, fields, where=list()):
+        #~ insert
+        if len(where) == 0:
+            Model.insert(table, fields)
+        else: # update
+            Model.insert(table, update)
 
     @staticmethod
     def insert(table, fields):
@@ -58,6 +77,29 @@ class Model(object):
 
         return c.lastrowid
 
+    @staticmethod
+    def update(table, fields, where):
+        Model._connect()
+        c = Model._db.cursor()
+
+        nbFields = len(fields)
+        current = 0
+        fieldsStr = ''
+
+        params = list()
+        for k, v in fields.items():
+            fieldsStr += '"' + k + '" = ?'
+            params.append(v)
+            if current < nbFields - 1:
+                fieldsStr += ', '
+            current += 1
+
+        query = "UPDATE %s SET %s WHERE %s" % (table, fieldsStr, where[0])
+        c.execute(query, params + where[1])
+        Model._db.commit()
+
+        return c.lastrowid
+
     #protected:
     @staticmethod
     def _connect():
@@ -67,12 +109,9 @@ class Model(object):
         return True
 
     @staticmethod
-    def _createRow(sqliteRow, nbCols=None):
-        if nbCols == 0:
-            nbCols = len(sqliteRow)
-
+    def _createRow(sqliteRow, columns):
         row = {}
         for i, v in enumerate(sqliteRow):
-            row[i] = v
+            row[columns[i]] = v
 
         return row

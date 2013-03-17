@@ -4,12 +4,13 @@ import sys
 import getpass
 import utils
 from PlayerModel import PlayerModel
+from Character import Character
 from PlayerException import PlayerException
 from GenderModel import GenderModel
 from SpeciesModel import SpeciesModel
 
 
-class Player:
+class Player(Character):
     def __init__(self, login, password):
         self._login = login
         self._password = password
@@ -75,7 +76,7 @@ class Player:
             except:
                 gender = -1
 
-        genderId = genders[gender]['id']
+        genderId = genders[gender]['id_gender']
 
         species = SpeciesModel.getSpecies(genders[gender]['name'])
         nbSpecies = len(species)
@@ -92,7 +93,7 @@ class Player:
             except:
                 sp = -1
 
-        speciesId = species[sp]['id']
+        speciesId = species[sp]['id_species']
 
         self._model = PlayerModel()
         self._model.setLogin(self._login)

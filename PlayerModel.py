@@ -6,8 +6,8 @@ import datetime
 
 
 class PlayerModel(CharacterModel):
-    def __init__(self):
-        super(PlayerModel, self).__init__()
+    def __init__(self, idCharacter=None):
+        super(PlayerModel, self).__init__(idCharacter)
         self._playerFields = dict()
 
     def getPk(self):
@@ -19,13 +19,9 @@ class PlayerModel(CharacterModel):
             SELECT\
                 id_player,\
                 login,\
-                p.id_character,\
-                name,\
-                id_species,\
-                id_gender\
+                id_character\
             FROM\
-                player AS p\
-                join 'character' AS c ON p.id_character = c.id_character\
+                player\
             WHERE\
                 login = ? AND password = ?\
         "
@@ -33,13 +29,10 @@ class PlayerModel(CharacterModel):
         model = Model.fetchOneRow(query, (login, password))
 
         if len(model) > 0:
-            pm = PlayerModel()
-            pm._setPk(model[0])
-            pm.setLogin(model[1])
-            pm.setIdCharacter(model[2])
-            pm.setName(model[3])
-            pm.setSpecies(model[4])
-            pm.setGender(model[5])
+            pm = PlayerModel(model['id_character'])
+            pm._setPk(model['id_player'])
+            pm.setLogin(model['login'])
+            pm.setIdCharacter(model['id_character'])
             return pm
 
         return None
@@ -49,7 +42,8 @@ class PlayerModel(CharacterModel):
         query = "\
             SELECT\
                 id_player,\
-                login\
+                login,\
+                id_character\
             FROM\
                 player\
             WHERE\
@@ -59,9 +53,10 @@ class PlayerModel(CharacterModel):
         model = Model.fetchOneRow(query, [login])
 
         if len(model) > 0:
-            pm = PlayerModel()
-            pm._setPk(model[0])
-            pm.setLogin(model[1])
+            pm = PlayerModel(model['id_character'])
+            pm._setPk(model['id_player'])
+            pm.setLogin(model['login'])
+            pm.setIdCharacter(model['id_character'])
             return pm
 
         return None
@@ -75,16 +70,22 @@ class PlayerModel(CharacterModel):
     def setIdCharacter(self, idCharacter):
         self._playerFields["id_character"] = idCharacter
 
+    def getIdCharacter(self):
+        return self._playerFields["id_character"]
+
     def setPassword(self, password):
         self._playerFields["password"] = password
 
     def save(self):
-        self._playerFields["date_creation"] = datetime.datetime.now()
         self.setName(self._playerFields["login"])
-
         super(PlayerModel, self).save()
 
+        self._playerFields["date_creation"] = datetime.datetime.now()
         self._playerFields["id_character"] = CharacterModel.getPk(self)
-        self._setPk(Model.insert("player", self._playerFields))
+
+        if 'id_player' not in self._playerFields:
+            self._setPk(Model.insert("player", self._playerFields))
+        else:
+            Model.update("player", self._playerFields, ('id_player = ?', [self.getPk()]))
 
         return True

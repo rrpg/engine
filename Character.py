@@ -19,3 +19,7 @@ class Character:
 
     def getId(self):
         return self._model.getPk()
+
+    def goTo(self, idArea):
+        self._model.setIdArea(idArea)
+        self._model.savePosition()

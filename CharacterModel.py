@@ -4,9 +4,12 @@ from Model import Model
 
 
 class CharacterModel(Model):
-    def __init__(self):
+    def __init__(self, idCharacter=None):
         super(CharacterModel, self).__init__()
-        self._characterFields = dict()
+        if idCharacter is not None:
+            self._characterFields = CharacterModel.getCharacterInfosFromId(idCharacter)
+        else:
+            self._characterFields = dict()
 
     #public
     def setSpecies(self, species):
@@ -18,15 +21,36 @@ class CharacterModel(Model):
     def setName(self, name):
         self._characterFields["name"] = name
 
+    def setIdArea(self, idArea):
+        self._characterFields["id_area"] = idArea
+
     def getName(self):
         return self._characterFields["name"]
+
+    def getIdArea(self):
+        return self._characterFields["id_area"]
 
     def getPk(self):
         return self._characterFields["id_character"]
 
     def save(self):
-        self.__setPk(Model.insert("character", self._characterFields))
+        if 'id_character' not in self._characterFields:
+            self.__setPk(Model.insert("character", self._characterFields))
+        else:
+            Model.update(
+                "character",
+                self._characterFields,
+                ('id_character = ?', [self._characterFields['id_character']])
+            )
+
         return True
+
+    def savePosition(self):
+        Model.update(
+            "character",
+            {'id_area': self._characterFields['id_area']},
+            ('id_character = ?', [self._characterFields['id_character']])
+        )
 
     @staticmethod
     def _createFromData(data):
@@ -34,31 +58,35 @@ class CharacterModel(Model):
             return None
         else:
             model = CharacterModel()
-            model._setPk(data[0])
-            model.setName(data[1])
-            model.setSpecies(data[2])
-            model.setGender(data[3])
+            model._setPk(data['id_character'])
+            model.setName(data['name'])
+            model.setSpecies(data['id_species'])
+            model.setGender(data['id_gender'])
+            model.setIdArea(data['id_area'])
 
             return model
 
     @staticmethod
     def loadByIdCharacter(idChar):
-        character = dict()
+        character = CharacterModel.getCharacterInfosFromId(idChar)
+        return CharacterModel._createFromData(character)
 
+    @staticmethod
+    def getCharacterInfosFromId(idCharacter):
         query = "\
             SELECT\
                 id_character,\
                 name,\
                 id_species,\
-                id_gender\
+                id_gender,\
+                id_area\
             FROM\
                 `character`\
             WHERE\
                 id_character = ?\
             "
 
-        character = Model.fetchOneRow(query, [idChar])
-        return CharacterModel._createFromData(character)
+        return Model.fetchOneRow(query, [idCharacter])
 
     @staticmethod
     def loadByNameAndIdPlayer(name, playerId):
@@ -66,17 +94,21 @@ class CharacterModel(Model):
 
         query = "\
             SELECT\
-                id_character,\
-                name,\
-                id_species,\
-                id_gender\
+                c1.id_character,\
+                c1.name,\
+                c1.id_species,\
+                c1.id_gender,\
+                c1.id_area\
             FROM\
-                `character`\
+                `character` AS c1\
+                JOIN character AS cp ON cp.id_area = c1.id_area\
+                JOIN player ON id_player = ?\
+                    AND player.id_character = cp.id_character\
             WHERE\
-                name = ?\
+                c1.name = ?\
             LIMIT 1"
 
-        character = Model.fetchOneRow(query, [name])
+        character = Model.fetchOneRow(query, [playerId, name])
         return CharacterModel._createFromData(character)
 
     #protected:

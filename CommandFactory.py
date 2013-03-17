@@ -2,8 +2,9 @@
 
 import Command
 from CommandTalk import CommandTalk
-from PlayerException import PlayerException
 from CommandHelp import CommandHelp
+from CommandMove import CommandMove
+from PlayerException import PlayerException
 
 
 class CommandFactory:
@@ -13,10 +14,16 @@ class CommandFactory:
         cmd = commandFull[0]
         del commandFull[0]
 
+        if cmd in ("talk", "move")\
+            and (not player.isConnected() or not player.connect()):
+            raise PlayerException(
+                "A player must be connected to launch the command %s" % cmd
+            )
+
         if cmd == "talk":
-            if not player.isConnected() or not player.connect():
-                raise PlayerException("A player must be connected to launch the command talk")
             command = CommandTalk()
+        elif cmd == "move":
+            command = CommandMove()
         elif cmd == "createPlayer":
             if player.isConnected():
                 raise PlayerException(
