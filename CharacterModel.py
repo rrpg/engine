@@ -4,9 +4,12 @@ from Model import Model
 
 
 class CharacterModel(Model):
-    def __init__(self):
+    def __init__(self, idCharacter=None):
         super(CharacterModel, self).__init__()
-        self._characterFields = dict()
+        if idCharacter is not None:
+            self._characterFields = CharacterModel.getCharacterInfosFromId(idCharacter)
+        else:
+            self._characterFields = dict()
 
     #public
     def setSpecies(self, species):
