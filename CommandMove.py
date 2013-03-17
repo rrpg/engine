@@ -7,7 +7,7 @@ from CommandException import CommandException
 class CommandMove(CommandAbstract):
     def run(self):
         if len(self._args) == 0:
-            raise CommandException("Where shall I go")
+            raise CommandException("Where shall I go ?")
 
         direction = self._args[0]
         if direction not in ("north", "east", "south", "west"):
