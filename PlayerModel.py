@@ -19,13 +19,9 @@ class PlayerModel(CharacterModel):
             SELECT\
                 id_player,\
                 login,\
-                p.id_character,\
-                name,\
-                id_species,\
-                id_gender\
+                id_character\
             FROM\
-                player AS p\
-                join 'character' AS c ON p.id_character = c.id_character\
+                player\
             WHERE\
                 login = ? AND password = ?\
         "
@@ -46,7 +42,8 @@ class PlayerModel(CharacterModel):
         query = "\
             SELECT\
                 id_player,\
-                login\
+                login,\
+                id_character\
             FROM\
                 player\
             WHERE\
