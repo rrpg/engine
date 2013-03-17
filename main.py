@@ -5,6 +5,7 @@ import os
 import sys
 import getopt
 from PlayerException import PlayerException
+from CommandException import CommandException
 from Rpg import Rpg
 from argparse import ArgumentParser
 
@@ -30,8 +31,11 @@ def main(argv):
     try:
         rpg = Rpg(args.login, args.password, args.action)
         rpg.run()
+    except CommandException as e:
+        print(e.message)
+        sys.exit()
     except PlayerException as e:
-        print(e)
+        print(e.message)
         sys.exit()
     except KeyboardInterrupt:
         sys.exit()
