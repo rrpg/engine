@@ -4,12 +4,13 @@ import sys
 import getpass
 import utils
 from PlayerModel import PlayerModel
+from Character import Character
 from PlayerException import PlayerException
 from GenderModel import GenderModel
 from SpeciesModel import SpeciesModel
 
 
-class Player:
+class Player(Character):
     def __init__(self, login, password):
         self._login = login
         self._password = password
