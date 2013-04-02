@@ -5,8 +5,8 @@ from AreaModel import AreaModel
 
 class Area:
 	@staticmethod
-	def getByIdCHaracterAndDirection(idCharacter, direction):
-		model = AreaModel.loadByIdCHaracterAndDirection(idCharacter, direction)
+	def getByIdCharacterAndDirection(idCharacter, direction):
+		model = AreaModel.loadByIdCharacterAndDirection(idCharacter, direction)
 
 		if model is None:
 			return None

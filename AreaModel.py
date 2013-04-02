@@ -8,7 +8,7 @@ class AreaModel(Model):
 		self._areaFields = dict()
 
 	@staticmethod
-	def loadByIdCHaracterAndDirection(idCharacter, direction):
+	def loadByIdCharacterAndDirection(idCharacter, direction):
 		if direction not in ('north', 'south', 'east', 'west'):
 			raise BaseException('Unknown direction')
 
