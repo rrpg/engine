@@ -41,6 +41,22 @@ class AreaModel(Model):
 
 		return None
 
+	@staticmethod
+	def getSurroundingAreas(idArea):
+		query = "\
+			SELECT\
+				id_next_area_north IS NOT NULL AS north,\
+				id_next_area_south IS NOT NULL AS south,\
+				id_next_area_east IS NOT NULL AS east,\
+				id_next_area_west IS NOT NULL AS west\
+			FROM\
+				area\
+			WHERE\
+				id_area = ?\
+		"
+
+		return Model.fetchOneRow(query, [idArea])
+
 	def getPk(self):
 		return self._areaFields["id_area"]
 
