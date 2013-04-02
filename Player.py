@@ -101,6 +101,7 @@ class Player(Character):
         self._model.setSpecies(speciesId)
         self._model.setGender(genderId)
         self._model.save()
+        self.goTo(1)
 
     def getModel(self):
         return self._model
