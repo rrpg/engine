@@ -8,6 +8,7 @@ class CommandHelp(CommandAbstract):
 	def run(self):
 		print('Available commands:')
 		print('talk <Character name> "<Sentence>": Talk to a character')
+		print('move <south|east|west|north>: Go to the indicated direction')
 		print('createPlayer: Not Yet Implemented')
 		print('help: Display this help')
 		print('quit|exit|q: Quit the game')
