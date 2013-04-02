@@ -17,6 +17,15 @@ class Character:
 			character._model = model
 			return character
 
+	@staticmethod
+	def searchByPlayer(player):
+		models = CharacterModel.loadNeighboursFromIdCharacter(
+			player.getModel().getIdCharacter())
+		chars = list()
+		for m in models:
+			chars.append(Character.loadFromModel(m))
+		return chars
+
 	def getId(self):
 		return self._model.getPk()
 

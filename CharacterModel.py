@@ -113,6 +113,31 @@ class CharacterModel(Model):
 		character = Model.fetchOneRow(query, [playerId, name])
 		return CharacterModel._createFromData(character)
 
+	@staticmethod
+	def loadNeighboursFromIdCharacter(characterId):
+		character = {}
+
+		query = "\
+			SELECT\
+				c1.id_character,\
+				c1.name,\
+				c1.id_species,\
+				c1.id_gender,\
+				c1.id_area\
+			FROM\
+				character AS c1\
+				JOIN character AS cp ON\
+					cp.id_area = c1.id_area\
+					AND cp.id_character = ?\
+					AND cp.id_character != c1.id_character\
+			"
+
+		cModels = list()
+		characters = Model.fetchAllRows(query, [characterId])
+		for c in characters:
+			cModels.append(CharacterModel._createFromData(c))
+		return cModels
+
 	#protected:
 	def _setPk(self, pk):
 		self._characterFields["id_character"] = str(pk)

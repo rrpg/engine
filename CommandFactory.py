@@ -4,6 +4,7 @@ import Command
 from CommandTalk import CommandTalk
 from CommandHelp import CommandHelp
 from CommandMove import CommandMove
+from CommandLook import CommandLook
 from PlayerException import PlayerException
 
 
@@ -20,7 +21,9 @@ class CommandFactory:
 				"A player must be connected to launch the command %s" % cmd
 			)
 
-		if cmd == "talk":
+		if cmd == "look":
+			command = CommandLook()
+		elif cmd == "talk":
 			command = CommandTalk()
 		elif cmd == "move":
 			command = CommandMove()
