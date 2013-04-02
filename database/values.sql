@@ -11,7 +11,7 @@ UPDATE area SET id_next_area_west = 1 WHERE id_area = 2;
 
 INSERT INTO `character` (name, id_species, id_gender, id_area) VALUES ('Tom', 1, 1, 2);
 INSERT INTO talk_answer (trigger_word, sentence, condition) VALUES ('hi', "Hi, my name is Tom, I'm a butcher", '{"met":0}');
-INSERT INTO talk_answer (trigger_word, sentence, condition) VALUES ('hi', 'Hi, %player_name%', '{"met":1}');
+INSERT INTO talk_answer (trigger_word, sentence, condition) VALUES ('hi', 'Hi, %(player_name)s', '{"met":1}');
 
 INSERT INTO character_answer (id_character, id_talk_answer) VALUES (1, 1);
 INSERT INTO character_answer (id_character, id_talk_answer) VALUES (1, 2);
