@@ -2,4 +2,4 @@
 
 
 class PlayerException(BaseException):
-    pass
+	pass

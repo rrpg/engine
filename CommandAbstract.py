@@ -3,8 +3,8 @@
 
 #~ Abstract class ?
 class CommandAbstract():
-    def setArgs(self, args):
-        self._args = args
+	def setArgs(self, args):
+		self._args = args
 
-    def setPlayer(self, player):
-        self._player = player
+	def setPlayer(self, player):
+		self._player = player

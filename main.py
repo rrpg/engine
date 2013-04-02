@@ -11,34 +11,34 @@ from argparse import ArgumentParser
 
 
 def main(argv):
-    parser = ArgumentParser()
+	parser = ArgumentParser()
 
-    parser.add_argument(
-        "-l", "--login",
-        dest="login", help="Player login", metavar="LOGIN"
-    )
-    parser.add_argument(
-        "-p", "--password",
-        dest="password", help="Player password", metavar="PASSWORD"
-    )
-    parser.add_argument(
-        "action",
-        metavar="A", nargs='*', help="Action to execute"
-    )
+	parser.add_argument(
+		"-l", "--login",
+		dest="login", help="Player login", metavar="LOGIN"
+	)
+	parser.add_argument(
+		"-p", "--password",
+		dest="password", help="Player password", metavar="PASSWORD"
+	)
+	parser.add_argument(
+		"action",
+		metavar="A", nargs='*', help="Action to execute"
+	)
 
-    args = parser.parse_args()
+	args = parser.parse_args()
 
-    try:
-        rpg = Rpg(args.login, args.password, args.action)
-        rpg.run()
-    except CommandException as e:
-        print(e.message)
-        sys.exit()
-    except PlayerException as e:
-        print(e.message)
-        sys.exit()
-    except KeyboardInterrupt:
-        sys.exit()
+	try:
+		rpg = Rpg(args.login, args.password, args.action)
+		rpg.run()
+	except CommandException as e:
+		print(e.message)
+		sys.exit()
+	except PlayerException as e:
+		print(e.message)
+		sys.exit()
+	except KeyboardInterrupt:
+		sys.exit()
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+	main(sys.argv[1:])

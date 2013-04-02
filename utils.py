@@ -2,9 +2,9 @@
 
 
 def read(prompt):
-    try:
-        s = raw_input(prompt)
-    except NameError:
-        s = input(prompt)
+	try:
+		s = raw_input(prompt)
+	except NameError:
+		s = input(prompt)
 
-    return s
+	return s
