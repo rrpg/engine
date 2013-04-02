@@ -2,4 +2,4 @@
 
 
 class CharacterException(BaseException):
-    pass
+	pass

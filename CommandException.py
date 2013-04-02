@@ -2,4 +2,4 @@
 
 
 class CommandException(BaseException):
-    pass
+	pass
