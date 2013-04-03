@@ -115,3 +115,14 @@ class Model(object):
 			row[columns[i]] = v
 
 		return row
+
+	@classmethod
+	def loadAll(cls):
+		query = "\
+			SELECT\
+				%(fields)s\
+			FROM\
+				%(table)s\
+		" % {'fields': ', '.join(cls.fields), 'table': cls.__module__}
+
+		return Model.fetchAllRows(query, {})
