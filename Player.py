@@ -62,7 +62,7 @@ class Player(Character):
 	def createNewPlayerFromStdIn(self):
 		self._readLoginAndPassword(True, True)
 
-		genders = gender.model.getGenders()
+		genders = gender.model.loadAll()
 		nbGenders = len(genders)
 
 		for k, v in enumerate(genders):
