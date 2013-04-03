@@ -24,18 +24,18 @@ class CommandTalk(CommandAbstract):
 
 		if character is None:
 			raise CharacterException("Unknown Character")
-		sentence = Sentence.loadByCharacterIdAndTriggerWord(
+		s = Sentence.loadByCharacterIdAndTriggerWord(
 			character.getId(), triggerWord
 		)
 
-		if len(sentence) is 0:
+		if len(s) is 0:
 			print("What ?")
 			return
 
-		sentence = sentence[random.randint(0, len(sentence) - 1)]
+		s = s[random.randint(0, len(s) - 1)]
 		print(self.processSentence(
-			sentence.getSentence(), self._player._model.getName()
+			s.getSentence(), self._player._model.getName()
 		))
 
-	def processSentence(self, sentence, characterName):
-		return sentence % {'player_name': characterName}
+	def processSentence(self, s, characterName):
+		return s % {'player_name': characterName}
