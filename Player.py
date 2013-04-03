@@ -4,10 +4,10 @@ import sys
 import getpass
 import utils
 import gender
+import species
 from PlayerModel import PlayerModel
 from Character import Character
 from PlayerException import PlayerException
-from SpeciesModel import SpeciesModel
 
 
 class Player(Character):
@@ -78,7 +78,7 @@ class Player(Character):
 
 		genderId = genders[g]['id_gender']
 
-		sps = SpeciesModel.getSpecies(genders[g]['name'])
+		sps = species.model.getSpecies(genders[g]['name'])
 		nbSpecies = len(sps)
 
 		for k, v in enumerate(sps):
