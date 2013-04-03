@@ -32,10 +32,10 @@ def main(argv):
 		rpg = Rpg(args.login, args.password, args.action)
 		rpg.run()
 	except CommandException as e:
-		print(e.message)
+		print(e)
 		sys.exit()
 	except PlayerException as e:
-		print(e.message)
+		print(e)
 		sys.exit()
 	except KeyboardInterrupt:
 		sys.exit()
