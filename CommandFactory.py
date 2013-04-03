@@ -5,6 +5,7 @@ from CommandTalk import CommandTalk
 from CommandHelp import CommandHelp
 from CommandMove import CommandMove
 from CommandLook import CommandLook
+from CommandException import CommandException
 from PlayerException import PlayerException
 
 
@@ -37,7 +38,7 @@ class CommandFactory:
 		elif cmd == 'help':
 			command = CommandHelp()
 		else:
-			return None
+			raise CommandException('Unknown command')
 
 		command.setArgs(commandFull)
 		command.setPlayer(player)

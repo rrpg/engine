@@ -55,8 +55,6 @@ class Rpg:
 
 	def _runAction(self):
 		command = CommandFactory.create(self._player, self._action)
-		if command is None:
-			raise BaseException("Unknown command")
 
 		if command != Command.quit:
 			return command.run()
