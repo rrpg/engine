@@ -3,7 +3,7 @@
 from Model import Model
 
 
-class GenderModel:
+class model(Model):
 	@staticmethod
 	def getGenders():
 		query = "\

@@ -3,10 +3,10 @@
 import sys
 import getpass
 import utils
+import gender
 from PlayerModel import PlayerModel
 from Character import Character
 from PlayerException import PlayerException
-from GenderModel import GenderModel
 from SpeciesModel import SpeciesModel
 
 
@@ -62,7 +62,7 @@ class Player(Character):
 	def createNewPlayerFromStdIn(self):
 		self._readLoginAndPassword(True, True)
 
-		genders = GenderModel.getGenders()
+		genders = gender.model.getGenders()
 		nbGenders = len(genders)
 
 		for k, v in enumerate(genders):
