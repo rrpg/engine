@@ -4,21 +4,14 @@ from Model import Model
 
 
 class model(Model):
+	fields = ['id_species', 'description', 'name_m', 'name_f']
+
 	@staticmethod
 	def getSpecies(gender):
-		query = "\
-			SELECT\
-				id_species,\
-				"
+		fields = {'id_species': 'id_species', 'description': 'description'}
 		if gender == "male":
-			query += "name_m AS name,"
+			fields['name'] = "name_m"
 		else:
-			query += "name_f AS name,"
+			fields['name'] = "name_f"
 
-		query += "\
-				description\
-			FROM\
-				species\
-		"
-
-		return Model.fetchAllRows(query, {})
+		return model.loadAll(fields)
