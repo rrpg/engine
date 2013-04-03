@@ -4,7 +4,7 @@ from CommandAbstract import CommandAbstract
 from CommandException import CommandException
 from CharacterException import CharacterException
 from Character import Character
-from Sentence import Sentence
+from sentence import sentence
 import random
 import string
 
@@ -24,7 +24,7 @@ class CommandTalk(CommandAbstract):
 
 		if character is None:
 			raise CharacterException("Unknown Character")
-		s = Sentence.loadByCharacterIdAndTriggerWord(
+		s = sentence.loadByCharacterIdAndTriggerWord(
 			character.getId(), triggerWord
 		)
 

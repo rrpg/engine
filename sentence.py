@@ -3,7 +3,25 @@
 from Model import Model
 
 
-class SentenceModel(Model):
+class sentence:
+	@staticmethod
+	def loadByCharacterIdAndTriggerWord(idCharacter, triggerWord):
+		sentences = list()
+
+		sentencesModels = model.loadByCharacterIdAndTriggerWord(
+			idCharacter, triggerWord
+		)
+		for index, s in enumerate(sentencesModels):
+			sentences.append(sentence())
+			sentences[index]._model = s
+
+		return sentences
+
+	def getSentence(self):
+		return self._model.getSentence()
+
+
+class model(Model):
 	_sentenceFields = dict()
 
 	@staticmethod
@@ -30,7 +48,7 @@ class SentenceModel(Model):
 
 		if len(sentences) > 0:
 			for index, sentence in enumerate(sentences):
-				sentencesModels.append(SentenceModel())
+				sentencesModels.append(model())
 				sentencesModels[index]._setPk(
 					sentences[index]['id_talk_answer'])
 				sentencesModels[index].setWord(
