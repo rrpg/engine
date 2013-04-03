@@ -39,6 +39,9 @@ def main(argv):
 		sys.exit()
 	except KeyboardInterrupt:
 		sys.exit()
+	except BaseException as e:
+		print(e)
+		sys.exit()
 
 if __name__ == "__main__":
 	main(sys.argv[1:])
