@@ -68,17 +68,17 @@ class Player(Character):
 		for k, v in enumerate(genders):
 			print(v['name'] + " (" + str(k) + ")")
 
-		gender = -1
-		while gender < 0 or gender >= nbGenders:
-			gender = utils.read("Character gender: ")
+		g = -1
+		while g < 0 or g >= nbGenders:
+			g = utils.read("Character gender: ")
 			try:
-				gender = int(gender)
+				g = int(g)
 			except:
-				gender = -1
+				g = -1
 
-		genderId = genders[gender]['id_gender']
+		genderId = genders[g]['id_gender']
 
-		species = SpeciesModel.getSpecies(genders[gender]['name'])
+		species = SpeciesModel.getSpecies(genders[g]['name'])
 		nbSpecies = len(species)
 
 		for k, v in enumerate(species):
