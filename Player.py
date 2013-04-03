@@ -78,10 +78,10 @@ class Player(Character):
 
 		genderId = genders[g]['id_gender']
 
-		species = SpeciesModel.getSpecies(genders[g]['name'])
-		nbSpecies = len(species)
+		sps = SpeciesModel.getSpecies(genders[g]['name'])
+		nbSpecies = len(sps)
 
-		for k, v in enumerate(species):
+		for k, v in enumerate(sps):
 			print(v['name'] + " (" + str(k) + ")")
 			print(v['description'])
 
@@ -93,7 +93,7 @@ class Player(Character):
 			except:
 				sp = -1
 
-		speciesId = species[sp]['id_species']
+		speciesId = sps[sp]['id_species']
 
 		self._model = PlayerModel()
 		self._model.setLogin(self._login)
