@@ -117,7 +117,9 @@ class Model(object):
 		return row
 
 	@classmethod
-	def loadAll(cls):
+	def loadAll(cls, fields=None):
+		if not fields:
+			fields = cls.fields
 		query = "\
 			SELECT\
 				%(fields)s\
