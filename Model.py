@@ -120,11 +120,19 @@ class Model(object):
 	def loadAll(cls, fields=None):
 		if not fields:
 			fields = cls.fields
+
+		if isinstance(fields, list):
+			fields = ', '.join(fields)
+		elif isinstance(fields, dict):
+			fields = ', '.join(map(lambda x: fields[x] + ' AS ' + x, fields))
+		elif not isinstance(fields, basestring):
+			raise TypeError('Unexpected type of fields (%s)' % type(fields))
+
 		query = "\
 			SELECT\
 				%(fields)s\
 			FROM\
 				%(table)s\
-		" % {'fields': ', '.join(cls.fields), 'table': cls.__module__}
+		" % {'fields': fields, 'table': cls.__module__}
 
 		return Model.fetchAllRows(query, {})
