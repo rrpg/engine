@@ -27,7 +27,7 @@ class model(Model):
 	@staticmethod
 	def loadByIdCharacterAndDirection(idCharacter, direction):
 		if direction not in ('north', 'south', 'east', 'west'):
-			raise BaseException('Unknown direction')
+			raise exception('Unknown direction')
 
 		query = "\
 			SELECT\
@@ -94,3 +94,7 @@ class model(Model):
 
 	def setIdNextAreaWest(self, west):
 		self._areaFields["id_next_area_west"] = west
+
+
+class exception(BaseException):
+	pass
