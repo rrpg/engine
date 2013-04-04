@@ -60,27 +60,6 @@ class model(Model):
 
 		return Model.fetchOneRow(query, [idArea])
 
-	def getPk(self):
-		return self._areaFields["id_area"]
-
-	def _setPk(self, pk):
-		self._areaFields["id_area"] = pk
-
-	def setIdRegion(self, region):
-		self._areaFields["id_region"] = region
-
-	def setIdNextAreaNorth(self, north):
-		self._areaFields["id_next_area_north"] = north
-
-	def setIdNextAreaEast(self, east):
-		self._areaFields["id_next_area_east"] = east
-
-	def setIdNextAreaSouth(self, south):
-		self._areaFields["id_next_area_south"] = south
-
-	def setIdNextAreaWest(self, west):
-		self._areaFields["id_next_area_west"] = west
-
 
 class exception(BaseException):
 	pass
