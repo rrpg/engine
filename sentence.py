@@ -22,12 +22,8 @@ class sentence:
 
 
 class model(Model):
-	_sentenceFields = dict()
-
 	@staticmethod
 	def loadByCharacterIdAndTriggerWord(idCharacter, triggerWord):
-		sentencesModels = list()
-
 		query = "\
 			SELECT\
 				ta.id_talk_answer,\
