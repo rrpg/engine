@@ -3,7 +3,24 @@
 from Model import Model
 
 
-class AreaModel(Model):
+class area:
+	@staticmethod
+	def getByIdCharacterAndDirection(idCharacter, direction):
+		model = model.loadByIdCharacterAndDirection(idCharacter, direction)
+
+		if model is None:
+			return None
+		else:
+			area = area()
+			area._model = model
+			return area
+
+	@staticmethod
+	def getSurroundingAreas(idArea):
+		return model.getSurroundingAreas(idArea)
+
+
+class model(Model):
 	def __init__(self):
 		self._areaFields = dict()
 

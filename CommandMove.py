@@ -2,7 +2,7 @@
 
 from CommandAbstract import CommandAbstract
 from CommandException import CommandException
-from Area import Area
+from area import area
 
 
 class CommandMove(CommandAbstract):
@@ -14,7 +14,7 @@ class CommandMove(CommandAbstract):
 		if direction not in ("north", "east", "south", "west"):
 			raise CommandException("%s is not a valid direction" % direction)
 
-		area = Area.getByIdCharacterAndDirection(
+		area = area.getByIdCharacterAndDirection(
 			self._player._model.getIdCharacter(), direction
 		)
 
