@@ -6,14 +6,14 @@ from Model import Model
 class area:
 	@staticmethod
 	def getByIdCharacterAndDirection(idCharacter, direction):
-		model = model.loadByIdCharacterAndDirection(idCharacter, direction)
+		m = model.loadByIdCharacterAndDirection(idCharacter, direction)
 
-		if model is None:
+		if len(m) == 0:
 			return None
 		else:
-			area = area()
-			area._model = model
-			return area
+			a = area()
+			a._model = m
+			return a
 
 	@staticmethod
 	def getSurroundingAreas(idArea):
