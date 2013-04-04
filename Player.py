@@ -6,11 +6,11 @@ import utils
 import gender
 import species
 from PlayerModel import PlayerModel
-from Character import Character
+from character import character
 from PlayerException import PlayerException
 
 
-class Player(Character):
+class Player(character):
 	def __init__(self, login, password):
 		self._login = login
 		self._password = password

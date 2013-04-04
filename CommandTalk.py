@@ -2,9 +2,8 @@
 
 from CommandAbstract import CommandAbstract
 from CommandException import CommandException
-from CharacterException import CharacterException
-from Character import Character
 from sentence import sentence
+import character
 import random
 import string
 
@@ -18,14 +17,15 @@ class CommandTalk(CommandAbstract):
 
 		characterName = self._args[0]
 		triggerWord = self._args[1]
-		character = Character.searchByNameAndPlayer(
+		c = character.character.searchByNameAndPlayer(
 			characterName, self._player
 		)
 
-		if character is None:
-			raise CharacterException("Unknown Character")
+		if c is None:
+			raise character.exception("Unknown Character")
+
 		s = sentence.loadByCharacterIdAndTriggerWord(
-			character.getId(), triggerWord
+			c.getId(), triggerWord
 		)
 
 		if len(s) is 0:

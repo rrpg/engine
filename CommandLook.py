@@ -1,19 +1,19 @@
 # -*- coding: utf8 -*-
 
 from CommandAbstract import CommandAbstract
-from Character import Character
+from character import character
 from area import area
 
 
 class CommandLook(CommandAbstract):
 	def run(self):
 		# Display surrounding characters
-		characters = Character.searchByPlayer(self._player)
+		characters = character.searchByPlayer(self._player)
 		if len(characters) == 0:
 			print("You're alone here.")
 		else:
 			print("Characters arround:")
-			for c in Character.searchByPlayer(self._player):
+			for c in character.searchByPlayer(self._player):
 				print(c._model.getName())
 
 		# Display accessible areas

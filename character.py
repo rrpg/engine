@@ -3,11 +3,46 @@
 from Model import Model
 
 
-class CharacterModel(Model):
+class character:
+	@staticmethod
+	def searchByNameAndPlayer(name, player):
+		m = model.loadByNameAndIdPlayer(
+			name, player.getModel().getPk()
+		)
+		return character.loadFromModel(m)
+
+	@staticmethod
+	def searchByPlayer(player):
+		models = model.loadNeighboursFromIdCharacter(
+			player.getModel().getIdCharacter()
+		)
+		chars = list()
+		for m in models:
+			chars.append(character.loadFromModel(m))
+		return chars
+
+	@staticmethod
+	def loadFromModel(m):
+		if m is None:
+			return None
+		else:
+			c = character()
+			c._model = m
+			return c
+
+	def getId(self):
+		return self._model.getPk()
+
+	def goTo(self, idArea):
+		self._model.setIdArea(idArea)
+		self._model.savePosition()
+
+
+class model(Model):
 	def __init__(self, idCharacter=None):
-		super(CharacterModel, self).__init__()
+		super(model, self).__init__()
 		if idCharacter is not None:
-			self._characterFields = CharacterModel.getCharacterInfosFromId(
+			self._characterFields = model.getCharacterInfosFromId(
 				idCharacter
 			)
 		else:
@@ -59,19 +94,19 @@ class CharacterModel(Model):
 		if len(data) == 0:
 			return None
 		else:
-			model = CharacterModel()
-			model._setPk(data['id_character'])
-			model.setName(data['name'])
-			model.setSpecies(data['id_species'])
-			model.setGender(data['id_gender'])
-			model.setIdArea(data['id_area'])
+			m = model()
+			m._setPk(data['id_character'])
+			m.setName(data['name'])
+			m.setSpecies(data['id_species'])
+			m.setGender(data['id_gender'])
+			m.setIdArea(data['id_area'])
 
-			return model
+			return m
 
 	@staticmethod
 	def loadByIdCharacter(idChar):
-		character = CharacterModel.getCharacterInfosFromId(idChar)
-		return CharacterModel._createFromData(character)
+		c = model.getCharacterInfosFromId(idChar)
+		return model._createFromData(c)
 
 	@staticmethod
 	def getCharacterInfosFromId(idCharacter):
@@ -110,8 +145,8 @@ class CharacterModel(Model):
 				c1.name = ?\
 			LIMIT 1"
 
-		character = Model.fetchOneRow(query, [playerId, name])
-		return CharacterModel._createFromData(character)
+		c = Model.fetchOneRow(query, [playerId, name])
+		return model._createFromData(c)
 
 	@staticmethod
 	def loadNeighboursFromIdCharacter(characterId):
@@ -135,7 +170,7 @@ class CharacterModel(Model):
 		cModels = list()
 		characters = Model.fetchAllRows(query, [characterId])
 		for c in characters:
-			cModels.append(CharacterModel._createFromData(c))
+			cModels.append(model._createFromData(c))
 		return cModels
 
 	#protected:
@@ -143,3 +178,7 @@ class CharacterModel(Model):
 		self._characterFields["id_character"] = str(pk)
 
 	__setPk = _setPk
+
+
+class exception(BaseException):
+	pass
