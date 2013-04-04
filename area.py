@@ -21,9 +21,6 @@ class area:
 
 
 class model(Model):
-	def __init__(self):
-		self._areaFields = dict()
-
 	@staticmethod
 	def loadByIdCharacterAndDirection(idCharacter, direction):
 		if direction not in ('north', 'south', 'east', 'west'):
@@ -45,18 +42,7 @@ class model(Model):
 				id_character = ?\
 		" % direction
 
-		model = Model.fetchOneRow(query, [idCharacter])
-		if len(model) > 0:
-			am = AreaModel()
-			am._setPk(model['id_area'])
-			am.setIdRegion(model['id_region'])
-			am.setIdNextAreaNorth(model['id_next_area_north'])
-			am.setIdNextAreaEast(model['id_next_area_east'])
-			am.setIdNextAreaSouth(model['id_next_area_south'])
-			am.setIdNextAreaWest(model['id_next_area_west'])
-			return am
-
-		return None
+		return Model.fetchOneRow(query, [idCharacter])
 
 	@staticmethod
 	def getSurroundingAreas(idArea):

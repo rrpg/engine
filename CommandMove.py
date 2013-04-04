@@ -21,6 +21,6 @@ class CommandMove(CommandAbstract):
 		if a is None:
 			raise CommandException('I cannot go there')
 		else:
-			self._player.goTo(a._model.getPk())
+			self._player.goTo(a._model['id_area'])
 			print('lets go %s' % direction)
 		#~ Get the area to go from the player (current area) and the direction
