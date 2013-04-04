@@ -23,4 +23,3 @@ class CommandMove(CommandAbstract):
 		else:
 			self._player.goTo(a._model['id_area'])
 			print('lets go %s' % direction)
-		#~ Get the area to go from the player (current area) and the direction
