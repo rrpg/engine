@@ -30,7 +30,7 @@ class Model(object):
 	def fetchOneRow(query, params):
 		Model._connect()
 		c = Model._db.cursor()
-		result = list()
+		result = dict()
 		nbCols = 0
 		c.execute(query, params)
 		r = c.fetchone()
