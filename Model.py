@@ -81,7 +81,6 @@ class Model(object):
 		c.execute(query, fields.values() + where[1])
 		Model._db.commit()
 
-
 	#protected:
 	@staticmethod
 	def _connect():
@@ -141,7 +140,11 @@ class Model(object):
 				%(table)s\
 			WHERE\
 				%(where)s\
-		" % {'fields': fields, 'table': cls.__module__, 'where': ' AND '.join(filtersNames)}
+		" % {
+			'fields': fields,
+			'table': cls.__module__,
+			'where': ' AND '.join(filtersNames)
+		}
 
 		return Model.fetchAllRows(query, filters.values())
 
