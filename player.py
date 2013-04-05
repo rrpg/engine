@@ -107,6 +107,7 @@ class player(character.character):
 
 
 class model(character.model):
+	fields = ['id_player', 'login', 'password', 'id_character', 'date_creation']
 	def __init__(self, idCharacter=None):
 		super(model, self).__init__(idCharacter)
 		self._playerFields = dict()

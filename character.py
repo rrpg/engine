@@ -39,6 +39,7 @@ class character:
 
 
 class model(Model):
+	fields = ['id_character', 'name', 'id_species', 'id_gender', 'id_area']
 	def __init__(self, idCharacter=None):
 		super(model, self).__init__()
 		if idCharacter is not None:
