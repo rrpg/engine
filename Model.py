@@ -100,6 +100,53 @@ class Model(object):
 
 	@classmethod
 	def loadAll(cls, fields=None):
+		fields = cls.prepareFieldsForSelect(fields)
+
+		query = "\
+			SELECT\
+				%(fields)s\
+			FROM\
+				%(table)s\
+		" % {'fields': fields, 'table': cls.__module__}
+
+		return Model.fetchAllRows(query, {})
+
+	@classmethod
+	def loadById(cls, id, fields=None):
+		fields = cls.prepareFieldsForSelect(fields)
+
+		table = cls.__module__
+		query = "\
+			SELECT\
+				%(fields)s\
+			FROM\
+				%(table)s\
+			WHERE\
+				%(where)s\
+		" % {'fields': fields, 'table': table, 'where': 'id_' + table + ' = ?'}
+
+		return Model.fetchOneRow(query, [id])
+
+	@classmethod
+	def loadBy(cls, filters, fields=None):
+		fields = cls.prepareFieldsForSelect(fields)
+
+		filters = cls.filterFields(filters)
+		filtersNames = map(lambda x: '"' + x + '" = ?', filters.keys())
+
+		query = "\
+			SELECT\
+				%(fields)s\
+			FROM\
+				%(table)s\
+			WHERE\
+				%(where)s\
+		" % {'fields': fields, 'table': cls.__module__, 'where': ' AND '.join(filtersNames)}
+
+		return Model.fetchAllRows(query, filters.values())
+
+	@classmethod
+	def prepareFieldsForSelect(cls, fields=None):
 		if not fields:
 			fields = cls.fields
 
@@ -110,14 +157,7 @@ class Model(object):
 		elif not isinstance(fields, basestring):
 			raise TypeError('Unexpected type of fields (%s)' % type(fields))
 
-		query = "\
-			SELECT\
-				%(fields)s\
-			FROM\
-				%(table)s\
-		" % {'fields': fields, 'table': cls.__module__}
-
-		return Model.fetchAllRows(query, {})
+		return fields
 
 	@classmethod
 	def filterFields(cls, fields):

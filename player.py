@@ -40,7 +40,7 @@ class player(character.character):
 		while self._login is None or self._login == '':
 			self._login = utils.read("Login: ")
 
-			if checkLogin and len(model.loadByLogin(self._login)):
+			if checkLogin and len(model.loadBy({'login': self._login})):
 				print('This login is already used')
 				self._login = None
 
@@ -114,18 +114,7 @@ class model(character.model):
 
 	@staticmethod
 	def loadByLoginAndPassword(login, password):
-		query = "\
-			SELECT\
-				id_player,\
-				login,\
-				id_character\
-			FROM\
-				player\
-			WHERE\
-				login = ? AND password = ?\
-		"
-
-		pm = Model.fetchOneRow(query, (login, password))
+		pm = model.loadBy({'login': login, 'password': password})[0]
 
 		if len(pm) == 0:
 			return dict()
@@ -134,21 +123,6 @@ class model(character.model):
 		cm.update(pm)
 
 		return cm
-
-	@staticmethod
-	def loadByLogin(login):
-		query = "\
-			SELECT\
-				id_player,\
-				login,\
-				id_character\
-			FROM\
-				player\
-			WHERE\
-				login = ?\
-		"
-
-		return Model.fetchOneRow(query, [login])
 
 
 class exception(BaseException):

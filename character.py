@@ -53,23 +53,6 @@ class model(Model):
 		return model.getCharacterInfosFromId(idChar)
 
 	@staticmethod
-	def loadById(idCharacter):
-		query = "\
-			SELECT\
-				id_character,\
-				name,\
-				id_species,\
-				id_gender,\
-				id_area\
-			FROM\
-				`character`\
-			WHERE\
-				id_character = ?\
-			"
-
-		return Model.fetchOneRow(query, [idCharacter])
-
-	@staticmethod
 	def loadByNameAndIdPlayer(name, playerId):
 		character = {}
 
