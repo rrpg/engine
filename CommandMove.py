@@ -15,7 +15,7 @@ class CommandMove(CommandAbstract):
 			raise CommandException("%s is not a valid direction" % direction)
 
 		a = area.getByIdCharacterAndDirection(
-			self._player._model.getIdCharacter(), direction
+			self._player._model['id_character'], direction
 		)
 
 		if a is None:

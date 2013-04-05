@@ -34,7 +34,7 @@ class CommandTalk(CommandAbstract):
 
 		s = s[random.randint(0, len(s) - 1)]
 		print(self.processSentence(
-			s.getSentence(), self._player._model.getName()
+			s.getSentence(), self._player._model['name']
 		))
 
 	def processSentence(self, s, characterName):

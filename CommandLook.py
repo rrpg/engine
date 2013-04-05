@@ -14,10 +14,10 @@ class CommandLook(CommandAbstract):
 		else:
 			print("Characters arround:")
 			for c in character.searchByPlayer(self._player):
-				print(c._model.getName())
+				print(c._model['name'])
 
 		# Display accessible areas
-		areas = area.getSurroundingAreas(self._player._model.getIdArea())
+		areas = area.getSurroundingAreas(self._player._model['id_area'])
 		print("You can go " +
 			', '.join(filter(lambda k: areas[k] == 1, areas)) + '.')
 

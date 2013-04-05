@@ -25,11 +25,9 @@ class player(character.character):
 
 	#~ Method to connect the player
 	def connect(self):
-		self._model = model.loadByLoginAndPassword(
-			self._login, self._password
-		)
+		self._model = model.loadByLoginAndPassword(self._login, self._password)
 
-		if self._model is None:
+		if len(self._model) == 0:
 			self._login = None
 			self._password = None
 			raise exception("Invalid login or password")
@@ -41,7 +39,7 @@ class player(character.character):
 		while self._login is None or self._login == '':
 			self._login = utils.read("Login: ")
 
-			if checkLogin and model.loadByLogin(self._login) is not None:
+			if checkLogin and len(model.loadByLogin(self._login)):
 				print('This login is already used')
 				self._login = None
 
@@ -94,13 +92,17 @@ class player(character.character):
 
 		speciesId = sps[sp]['id_species']
 
-		self._model = model()
-		self._model.setLogin(self._login)
-		self._model.setPassword(self._password)
-		self._model.setSpecies(speciesId)
-		self._model.setGender(genderId)
-		self._model.save()
-		self.goTo(1)
+		self._model = {
+			'login': self._login,
+			'name': self._login,
+			'password': self._password,
+			'id_species': speciesId,
+			'id_gender': genderId,
+			'id_area': 1
+		}
+
+		self._model['id_character'] = character.model.insert(self._model)
+		model.insert(self._model)
 
 	def getModel(self):
 		return self._model
@@ -108,12 +110,6 @@ class player(character.character):
 
 class model(character.model):
 	fields = ['id_player', 'login', 'password', 'id_character', 'date_creation']
-	def __init__(self, idCharacter=None):
-		super(model, self).__init__(idCharacter)
-		self._playerFields = dict()
-
-	def getPk(self):
-		return self._playerFields["id_player"]
 
 	@staticmethod
 	def loadByLoginAndPassword(login, password):
@@ -128,16 +124,15 @@ class model(character.model):
 				login = ? AND password = ?\
 		"
 
-		m = Model.fetchOneRow(query, (login, password))
+		pm = Model.fetchOneRow(query, (login, password))
 
-		if len(m) > 0:
-			pm = model(m['id_character'])
-			pm._setPk(m['id_player'])
-			pm.setLogin(m['login'])
-			pm.setIdCharacter(m['id_character'])
-			return pm
+		if len(pm) == 0:
+			return dict()
 
-		return None
+		cm = character.model.loadById(pm['id_character'])
+		cm.update(pm)
+
+		return cm
 
 	@staticmethod
 	def loadByLogin(login):
@@ -152,48 +147,7 @@ class model(character.model):
 				login = ?\
 		"
 
-		model = Model.fetchOneRow(query, [login])
-
-		if len(model) > 0:
-			pm = model(model['id_character'])
-			pm._setPk(model['id_player'])
-			pm.setLogin(model['login'])
-			pm.setIdCharacter(model['id_character'])
-			return pm
-
-		return None
-
-	def _setPk(self, pk):
-		self._playerFields["id_player"] = pk
-
-	def setLogin(self, login):
-		self._playerFields["login"] = login
-
-	def setIdCharacter(self, idCharacter):
-		self._playerFields["id_character"] = idCharacter
-
-	def getIdCharacter(self):
-		return self._playerFields["id_character"]
-
-	def setPassword(self, password):
-		self._playerFields["password"] = password
-
-	def save(self):
-		self.setName(self._playerFields["login"])
-		super(model, self).save()
-
-		self._playerFields["date_creation"] = datetime.datetime.now()
-		self._playerFields["id_character"] = character.model.getPk(self)
-
-		if 'id_player' not in self._playerFields:
-			self._setPk(model.insert(self._playerFields))
-		else:
-			model.update(
-				self._playerFields,
-				('id_player = ?', [self.getPk()])
-			)
-
-		return True
+		return Model.fetchOneRow(query, [login])
 
 
 class exception(BaseException):
