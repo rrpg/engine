@@ -24,8 +24,7 @@ CREATE TABLE player (
     id_player INTEGER PRIMARY KEY AUTOINCREMENT,
     login VARCHAR(30) NOT NULL,
     password VARCHAR(40) NOT NULL,
-    id_character INT REFERENCES `character` (id_character),
-    date_creation TIMESTAMP WITH TIME ZONE NOT NULL
+    id_character INT REFERENCES `character` (id_character)
 );
 
 CREATE TABLE met (

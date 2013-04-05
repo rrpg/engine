@@ -109,7 +109,7 @@ class player(character.character):
 
 
 class model(character.model):
-	fields = ['id_player', 'login', 'password', 'id_character', 'date_creation']
+	fields = ['id_player', 'login', 'password', 'id_character']
 
 	@staticmethod
 	def loadByLoginAndPassword(login, password):
