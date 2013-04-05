@@ -111,11 +111,12 @@ class model(character.model):
 
 	@staticmethod
 	def loadByLoginAndPassword(login, password):
-		pm = model.loadBy({'login': login, 'password': password})[0]
+		pm = model.loadBy({'login': login, 'password': password})
 
 		if len(pm) == 0:
 			return dict()
 
+		pm = pm[0]
 		cm = character.model.loadById(pm['id_character'])
 		cm.update(pm)
 
