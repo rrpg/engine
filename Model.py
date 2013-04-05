@@ -55,7 +55,7 @@ class Model(object):
 		Model._connect()
 		c = Model._db.cursor()
 
-		fields = dict((k, fields[k]) for k in cls.fields if k in fields)
+		fields = cls.filterFields(fields)
 		fieldsNames = map(lambda x: '"' + x + '"', fields.keys())
 		values = ['?'] * len(fieldsNames)
 
@@ -73,7 +73,7 @@ class Model(object):
 		Model._connect()
 		c = Model._db.cursor()
 
-		fields = dict((k, fields[k]) for k in cls.fields if k in fields)
+		fields = cls.filterFields(fields)
 		fieldsNames = map(lambda x: '"' + x + '" = ?', fields.keys())
 
 		query = "UPDATE %s SET %s WHERE %s" %\
@@ -118,3 +118,7 @@ class Model(object):
 		" % {'fields': fields, 'table': cls.__module__}
 
 		return Model.fetchAllRows(query, {})
+
+	@classmethod
+	def filterFields(cls, fields):
+		return dict((k, fields[k]) for k in cls.fields if k in fields)
