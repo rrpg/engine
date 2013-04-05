@@ -6,19 +6,19 @@ from CommandHelp import CommandHelp
 from CommandMove import CommandMove
 from CommandLook import CommandLook
 from CommandException import CommandException
-from PlayerException import PlayerException
+import player
 
 
 class CommandFactory:
 
 	@staticmethod
-	def create(player, commandFull):
+	def create(p, commandFull):
 		cmd = commandFull[0]
 		del commandFull[0]
 
 		if cmd in ("talk", "move")\
-			and (not player.isConnected() or not player.connect()):
-			raise PlayerException(
+			and (not p.isConnected() or not p.connect()):
+			raise player.exception(
 				"A player must be connected to launch the command %s" % cmd
 			)
 
@@ -29,8 +29,8 @@ class CommandFactory:
 		elif cmd == "move":
 			command = CommandMove()
 		elif cmd == "createPlayer":
-			if player.isConnected():
-				raise PlayerException(
+			if p.isConnected():
+				raise player.exception(
 					"You cannot create a new player when you're connected"
 				)
 		elif cmd in ('quit', 'exit', 'q'):
@@ -41,5 +41,5 @@ class CommandFactory:
 			raise CommandException('Unknown command')
 
 		command.setArgs(commandFull)
-		command.setPlayer(player)
+		command.setPlayer(p)
 		return command

@@ -3,14 +3,14 @@
 import sys
 import getpass
 import utils
-from PlayerModel import PlayerModel
-from Character import Character
-from PlayerException import PlayerException
-from GenderModel import GenderModel
-from SpeciesModel import SpeciesModel
+import gender
+import species
+import character
+from Model import Model
+import datetime
 
 
-class Player(Character):
+class player(character.character):
 	def __init__(self, login, password):
 		self._login = login
 		self._password = password
@@ -26,14 +26,12 @@ class Player(Character):
 
 	#~ Method to connect the player
 	def connect(self):
-		self._model = PlayerModel.loadByLoginAndPassword(
-			self._login, self._password
-		)
+		self._model = model.loadByLoginAndPassword(self._login, self._password)
 
-		if self._model is None:
+		if len(self._model) == 0:
 			self._login = None
 			self._password = None
-			raise PlayerException("Invalid login or password")
+			raise exception("Invalid login or password")
 
 		return True
 
@@ -42,7 +40,7 @@ class Player(Character):
 		while self._login is None or self._login == '':
 			self._login = utils.read("Login: ")
 
-			if checkLogin and PlayerModel.loadByLogin(self._login) is not None:
+			if checkLogin and len(model.loadBy({'login': self._login})):
 				print('This login is already used')
 				self._login = None
 
@@ -62,26 +60,26 @@ class Player(Character):
 	def createNewPlayerFromStdIn(self):
 		self._readLoginAndPassword(True, True)
 
-		genders = GenderModel.getGenders()
+		genders = gender.model.loadAll()
 		nbGenders = len(genders)
 
 		for k, v in enumerate(genders):
 			print(v['name'] + " (" + str(k) + ")")
 
-		gender = -1
-		while gender < 0 or gender >= nbGenders:
-			gender = utils.read("Character gender: ")
+		g = -1
+		while g < 0 or g >= nbGenders:
+			g = utils.read("Character gender: ")
 			try:
-				gender = int(gender)
+				g = int(g)
 			except:
-				gender = -1
+				g = -1
 
-		genderId = genders[gender]['id_gender']
+		genderId = genders[g]['id_gender']
 
-		species = SpeciesModel.getSpecies(genders[gender]['name'])
-		nbSpecies = len(species)
+		sps = species.model.getSpecies(genders[g]['name'])
+		nbSpecies = len(sps)
 
-		for k, v in enumerate(species):
+		for k, v in enumerate(sps):
 			print(v['name'] + " (" + str(k) + ")")
 			print(v['description'])
 
@@ -93,15 +91,36 @@ class Player(Character):
 			except:
 				sp = -1
 
-		speciesId = species[sp]['id_species']
+		speciesId = sps[sp]['id_species']
 
-		self._model = PlayerModel()
-		self._model.setLogin(self._login)
-		self._model.setPassword(self._password)
-		self._model.setSpecies(speciesId)
-		self._model.setGender(genderId)
-		self._model.save()
-		self.goTo(1)
+		self._model = {
+			'login': self._login,
+			'name': self._login,
+			'password': self._password,
+			'id_species': speciesId,
+			'id_gender': genderId,
+			'id_area': 1
+		}
 
-	def getModel(self):
-		return self._model
+		self._model['id_character'] = character.model.insert(self._model)
+		model.insert(self._model)
+
+
+class model(character.model):
+	fields = ['id_player', 'login', 'password', 'id_character']
+
+	@staticmethod
+	def loadByLoginAndPassword(login, password):
+		pm = model.loadBy({'login': login, 'password': password})[0]
+
+		if len(pm) == 0:
+			return dict()
+
+		cm = character.model.loadById(pm['id_character'])
+		cm.update(pm)
+
+		return cm
+
+
+class exception(BaseException):
+	pass

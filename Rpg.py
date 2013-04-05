@@ -1,6 +1,6 @@
 # -*- coding: utf8 -*-
 
-from Player import Player
+from player import player
 from CommandFactory import CommandFactory
 import Command
 import utils
@@ -11,10 +11,10 @@ class Rpg:
 		#~ if the game is launched with login/password,
 		#~ the player is directly fetched
 		if login is not None and password is not None:
-			self._player = Player(login, password)
+			self._player = player(login, password)
 		elif action == []:
 			#else an empty player is created
-			self._player = Player(None, None)
+			self._player = player(None, None)
 			self._doInteractiveAuth()
 
 		self._action = action

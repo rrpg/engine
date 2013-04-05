@@ -4,7 +4,7 @@
 import os
 import sys
 import getopt
-from PlayerException import PlayerException
+from player import exception as pException
 from CommandException import CommandException
 from Rpg import Rpg
 from argparse import ArgumentParser
@@ -34,7 +34,7 @@ def main(argv):
 	except CommandException as e:
 		print(e)
 		sys.exit()
-	except PlayerException as e:
+	except pException as e:
 		print(e)
 		sys.exit()
 	except KeyboardInterrupt:
