@@ -1,8 +1,7 @@
 # -*- coding: utf8 -*-
 
 from player import player
-from CommandFactory import CommandFactory
-import Command
+import command
 import utils
 
 
@@ -38,25 +37,25 @@ class Rpg:
 		if len(self._action) > 0:
 			self._runAction()
 		else:
-			command = ''
+			c = ''
 			result = 0
 			while 1:
-				command = utils.read("Command: ")
+				c = utils.read("Command: ")
 
 				try:
 					if command != "":
-						self._action = command.split(' ')
+						self._action = c.split(' ')
 						result = self._runAction()
 
-					if result == Command.quit:
+					if result == command.quit:
 						break
 				except BaseException as e:
 					print(e)
 
 	def _runAction(self):
-		command = CommandFactory.create(self._player, self._action)
+		c = command.factory.create(self._player, self._action)
 
-		if command != Command.quit:
-			return command.run()
+		if c != command.quit:
+			return c.run()
 
-		return command
+		return c
