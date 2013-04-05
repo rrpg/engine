@@ -49,10 +49,6 @@ class model(Model):
 		)
 
 	@staticmethod
-	def loadByIdCharacter(idChar):
-		return model.getCharacterInfosFromId(idChar)
-
-	@staticmethod
 	def loadByNameAndIdPlayer(name, playerId):
 		character = {}
 

@@ -105,9 +105,6 @@ class player(character.character):
 		self._model['id_character'] = character.model.insert(self._model)
 		model.insert(self._model)
 
-	def getModel(self):
-		return self._model
-
 
 class model(character.model):
 	fields = ['id_player', 'login', 'password', 'id_character']
