@@ -9,6 +9,7 @@ import character
 from Model import Model
 import datetime
 
+
 class player(character.character):
 	def __init__(self, login, password):
 		self._login = login
