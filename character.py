@@ -73,10 +73,9 @@ class model(Model):
 
 	def save(self):
 		if 'id_character' not in self._characterFields:
-			self.__setPk(Model.insert("character", self._characterFields))
+			self.__setPk(model.insert(self._characterFields))
 		else:
-			Model.update(
-				"character",
+			model.update(
 				self._characterFields,
 				('id_character = ?', [self._characterFields['id_character']])
 			)
@@ -84,8 +83,7 @@ class model(Model):
 		return True
 
 	def savePosition(self):
-		Model.update(
-			"character",
+		model.update(
 			{'id_area': self._characterFields['id_area']},
 			('id_character = ?', [self._characterFields['id_character']])
 		)

@@ -42,63 +42,45 @@ class Model(object):
 
 		return result
 
-	@staticmethod
-	def save(table, fields, where=list()):
+	@classmethod
+	def save(cls, fields, where=list()):
 		#~ insert
 		if len(where) == 0:
-			Model.insert(table, fields)
+			cls.insert(fields)
 		else:  # update
-			Model.insert(table, update)
+			cls.update(fields, where)
 
-	@staticmethod
-	def insert(table, fields):
+	@classmethod
+	def insert(cls, fields):
 		Model._connect()
 		c = Model._db.cursor()
 
-		query = "INSERT INTO " + table
+		fields = dict((k, fields[k]) for k in cls.fields if k in fields)
+		fieldsNames = map(lambda x: '"' + x + '"', fields.keys())
+		values = ['?'] * len(fieldsNames)
 
-		nbFields = len(fields)
-		current = 0
-		fieldsStr = ''
-		valuesStr = ''
-
-		for k, v in fields.items():
-			fieldsStr += '"' + k + '"'
-			valuesStr += '?'
-			if current < nbFields - 1:
-				fieldsStr += ', '
-				valuesStr += ', '
-			current += 1
-
-		query = query + " (" + fieldsStr + ") VALUES (" + valuesStr + ")"
+		query = "INSERT INTO %s (%s) VALUES (%s)" % (
+			cls.__module__, ','.join(fieldsNames), ','.join(values)
+		)
 
 		c.execute(query, fields.values())
 		Model._db.commit()
 
 		return c.lastrowid
 
-	@staticmethod
-	def update(table, fields, where):
+	@classmethod
+	def update(cls, fields, where):
 		Model._connect()
 		c = Model._db.cursor()
 
-		nbFields = len(fields)
-		current = 0
-		fieldsStr = ''
+		fields = dict((k, fields[k]) for k in cls.fields if k in fields)
+		fieldsNames = map(lambda x: '"' + x + '" = ?', fields.keys())
 
-		params = list()
-		for k, v in fields.items():
-			fieldsStr += '"' + k + '" = ?'
-			params.append(v)
-			if current < nbFields - 1:
-				fieldsStr += ', '
-			current += 1
-
-		query = "UPDATE %s SET %s WHERE %s" % (table, fieldsStr, where[0])
-		c.execute(query, params + where[1])
+		query = "UPDATE %s SET %s WHERE %s" %\
+			(cls.__module__, ','.join(fieldsNames), where[0])
+		c.execute(query, fields.values() + where[1])
 		Model._db.commit()
 
-		return c.lastrowid
 
 	#protected:
 	@staticmethod

@@ -186,10 +186,9 @@ class model(character.model):
 		self._playerFields["id_character"] = character.model.getPk(self)
 
 		if 'id_player' not in self._playerFields:
-			self._setPk(Model.insert("player", self._playerFields))
+			self._setPk(model.insert(self._playerFields))
 		else:
-			Model.update(
-				"player",
+			model.update(
 				self._playerFields,
 				('id_player = ?', [self.getPk()])
 			)
