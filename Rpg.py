@@ -43,7 +43,7 @@ class Rpg:
 				c = utils.read("Command: ")
 
 				try:
-					if command != "":
+					if c != "":
 						self._action = c.split(' ')
 						result = self._runAction()
 
