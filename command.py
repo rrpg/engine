@@ -14,9 +14,8 @@ class command():
 	def setArgs(self, args):
 		self._args = args
 
-	def setPlayer(self, player):
-		self._player = player
-
+	def setPlayer(self, p):
+		self._player = p
 
 
 class factory:
