@@ -44,53 +44,6 @@ class model(Model):
 			('id_character = ?', [idCharacter])
 		)
 
-	@staticmethod
-	def loadByNameAndIdPlayer(name, playerId):
-		character = {}
-
-		query = "\
-			SELECT\
-				c1.id_character,\
-				c1.name,\
-				c1.id_species,\
-				c1.id_gender,\
-				c1.id_area\
-			FROM\
-				`character` AS c1\
-				JOIN character AS cp ON cp.id_area = c1.id_area\
-				JOIN player ON id_player = ?\
-					AND player.id_character = cp.id_character\
-			WHERE\
-				c1.name = ?\
-			LIMIT 1"
-
-		return Model.fetchOneRow(query, [playerId, name])
-
-	@staticmethod
-	def loadNeighboursFromIdCharacter(characterId):
-		character = {}
-
-		query = "\
-			SELECT\
-				c1.id_character,\
-				c1.name,\
-				c1.id_species,\
-				c1.id_gender,\
-				c1.id_area\
-			FROM\
-				character AS c1\
-				JOIN character AS cp ON\
-					cp.id_area = c1.id_area\
-					AND cp.id_character = ?\
-					AND cp.id_character != c1.id_character\
-			"
-
-		cModels = list()
-		characters = Model.fetchAllRows(query, [characterId])
-		for c in characters:
-			cModels.append(c)
-		return cModels
-
 
 class exception(BaseException):
 	pass
