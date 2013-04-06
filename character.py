@@ -7,7 +7,9 @@ class character:
 	@staticmethod
 	def searchByNameAndIdArea(name, idArea):
 		m = model.loadBy({'name': name, 'id_area': idArea})
-		return character.loadFromModel(m[0])
+		if len(m) > 0:
+			return character.loadFromModel(m[0])
+		return None
 
 	@staticmethod
 	def searchByIdArea(idArea):
