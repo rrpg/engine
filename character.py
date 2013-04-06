@@ -10,10 +10,8 @@ class character:
 		return character.loadFromModel(m[0])
 
 	@staticmethod
-	def searchByPlayer(player):
-		models = model.loadNeighboursFromIdCharacter(
-			player._model['id_character']
-		)
+	def searchByIdArea(idArea):
+		models = model.loadBy({'id_area': idArea})
 		chars = list()
 		for m in models:
 			chars.append(character.loadFromModel(m))
