@@ -74,7 +74,7 @@ class look(command):
 			print("You're alone here.")
 		else:
 			print("Characters arround:")
-			for c in character.character.searchByPlayer(self._player):
+			for c in characters:
 				print(c._model['name'])
 
 		# Display accessible areas
