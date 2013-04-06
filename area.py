@@ -2,6 +2,7 @@
 
 from Model import Model
 
+directions = ['north', 'south', 'east', 'west']
 
 class area:
 	@staticmethod
@@ -23,7 +24,7 @@ class area:
 class model(Model):
 	@staticmethod
 	def loadByIdCharacterAndDirection(idCharacter, direction):
-		if direction not in ('north', 'south', 'east', 'west'):
+		if direction not in (directions):
 			raise exception('Unknown direction')
 
 		query = "\

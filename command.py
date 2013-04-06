@@ -1,7 +1,7 @@
 # -*- coding: utf8 -*-
 
 import character
-from area import area
+import area
 from sentence import sentence
 import random
 import string
@@ -58,7 +58,7 @@ class help(command):
 	def run(self):
 		print('Available commands:')
 		print('talk <Character name> "<Sentence>": Talk to a character')
-		print('move <south|east|west|north>: Go to the indicated direction')
+		print('move <%s>: Go to the indicated direction' % '|'.join(area.directions))
 		print('look: See what is in the current area' +
 			' (characters, items, neighbour areas...)')
 		print('createPlayer: Not Yet Implemented')
@@ -78,7 +78,7 @@ class look(command):
 				print(c._model['name'])
 
 		# Display accessible areas
-		areas = area.getSurroundingAreas(self._player._model['id_area'])
+		areas = area.area.getSurroundingAreas(self._player._model['id_area'])
 		print("You can go " +
 			', '.join(filter(lambda k: areas[k] == 1, areas)) + '.')
 
@@ -92,10 +92,10 @@ class move(command):
 			raise exception("Where shall I go ?")
 
 		direction = self._args[0]
-		if direction not in ("north", "east", "south", "west"):
+		if direction not in area.directions:
 			raise exception("%s is not a valid direction" % direction)
 
-		a = area.getByIdCharacterAndDirection(
+		a = area.area.getByIdCharacterAndDirection(
 			self._player._model['id_character'], direction
 		)
 
