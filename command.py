@@ -1,29 +1,76 @@
 # -*- coding: utf8 -*-
 
+"""
+Module containing the available commands of the game, the factory class to
+create the commands...
+Today, the available commands are:
+- help
+- look
+- move
+- quit|q|exit
+- talk
+"""
+
 import character
 import area
 import random
 import string
 import player
 import item
+import json
 from sentence import sentence
 
-import json
-
+"""
+Code corresponding to the quit command
+"""
 quit = -1
 
 
 class command():
+	"""
+	Base class for the commands
+	"""
+
 	def setArgs(self, args):
+		"""
+		c.setArgs(args)
+
+		Define the arguments of the command.
+
+		@params list arguments of the command to run
+		"""
 		self._args = args
 
 	def setPlayer(self, p):
+		"""
+		c.setPlayer(p)
+
+		Define the current player in the command's context.
+
+		@params player.player
+		"""
 		self._player = p
 
 
 class factory:
+	"""
+	Class to instanciate a command from a string.
+	"""
+
 	@staticmethod
 	def create(p, commandFull):
+		"""
+		command.factory.create(p, commandFull) -> command.command
+
+		Create the desired command.
+
+		@param p player.player Current player.
+		@param commandFull list command to run, the first element of the list
+			is the command, the other elements are the command's arguments.
+
+		@return the created command
+		"""
+
 		cmd = commandFull[0]
 		del commandFull[0]
 
@@ -59,7 +106,16 @@ class factory:
 
 
 class help(command):
+	"""
+	Help command
+	"""
+
 	def run(self):
+		"""
+		c.run()
+
+		Display a help message.
+		"""
 		print('Available commands:')
 		print('talk <Character name> "<Sentence>": Talk to a character')
 		print('move <%s>: Go to the indicated direction' % '|'.join(area.directions))
@@ -71,7 +127,16 @@ class help(command):
 
 
 class look(command):
+	"""
+	Look command
+	"""
 	def run(self):
+		"""
+		c.run()
+
+		Display some informations about the player's current position
+		(characters arround, availables directions...).
+		"""
 		# Display surrounding characters
 		characters = character.character.searchByIdArea(self._player._model['id_area'])
 		# the player is in the result list
@@ -99,7 +164,16 @@ class look(command):
 
 
 class move(command):
+	"""
+	Move command
+	"""
+
 	def run(self):
+		"""
+		c.run()
+
+		Move the player in the desired direction.
+		"""
 		if len(self._args) == 0:
 			raise exception("Where shall I go ?")
 
@@ -119,7 +193,14 @@ class move(command):
 
 
 class talk(command):
+	"""
+	Talk command
+	"""
+
 	def run(self):
+		"""
+		Say something to a character in the player's area.
+		"""
 		if len(self._args) == 0:
 			raise exception("Who must I talk to ?")
 		elif len(self._args) == 1:
@@ -180,4 +261,7 @@ class take(command):
 
 
 class exception(BaseException):
+	"""
+	Class for the exceptions concerning commands.
+	"""
 	pass
