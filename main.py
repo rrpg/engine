@@ -5,7 +5,7 @@ import os
 import sys
 import getopt
 from player import exception as pException
-from CommandException import CommandException
+from command import exception as CommandException
 from Rpg import Rpg
 from argparse import ArgumentParser
 
