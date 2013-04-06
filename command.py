@@ -95,8 +95,8 @@ class move(command):
 		if direction not in area.directions:
 			raise exception("%s is not a valid direction" % direction)
 
-		a = area.area.getByIdCharacterAndDirection(
-			self._player._model['id_character'], direction
+		a = area.area.getNeighbourgFromDirection(
+			self._player._model['id_area'], direction
 		)
 
 		if a is None:
