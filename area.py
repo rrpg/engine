@@ -2,11 +2,12 @@
 
 from Model import Model
 
+directions = ['north', 'south', 'east', 'west']
 
 class area:
 	@staticmethod
-	def getByIdCharacterAndDirection(idCharacter, direction):
-		m = model.loadByIdCharacterAndDirection(idCharacter, direction)
+	def getNeighbourgFromDirection(idArea, direction):
+		m = model.getNeighbourgFromDirection(idArea, direction)
 
 		if len(m) == 0:
 			return None
@@ -22,8 +23,8 @@ class area:
 
 class model(Model):
 	@staticmethod
-	def loadByIdCharacterAndDirection(idCharacter, direction):
-		if direction not in ('north', 'south', 'east', 'west'):
+	def getNeighbourgFromDirection(idArea, direction):
+		if direction not in (directions):
 			raise exception('Unknown direction')
 
 		query = "\
@@ -37,12 +38,11 @@ class model(Model):
 			FROM\
 				area AS ad\
 				JOIN area AS ap ON ad.id_area = ap.id_next_area_%s\
-				JOIN character AS c ON c.id_area = ap.id_area\
 			WHERE\
-				id_character = ?\
+				ap.id_area = ?\
 		" % direction
 
-		return Model.fetchOneRow(query, [idCharacter])
+		return Model.fetchOneRow(query, [idArea])
 
 	@staticmethod
 	def getSurroundingAreas(idArea):
