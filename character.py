@@ -5,11 +5,9 @@ from Model import Model
 
 class character:
 	@staticmethod
-	def searchByNameAndPlayer(name, player):
-		m = model.loadByNameAndIdPlayer(
-			name, player._model['id_player']
-		)
-		return character.loadFromModel(m)
+	def searchByNameAndIdArea(name, idArea):
+		m = model.loadBy({'name': name, 'id_area': idArea})
+		return character.loadFromModel(m[0])
 
 	@staticmethod
 	def searchByPlayer(player):

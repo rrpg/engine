@@ -115,8 +115,8 @@ class talk(command):
 
 		characterName = self._args[0]
 		triggerWord = self._args[1]
-		c = character.character.searchByNameAndPlayer(
-			characterName, self._player
+		c = character.character.searchByNameAndIdArea(
+			characterName, self._player._model['id_area']
 		)
 
 		if c is None:
