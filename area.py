@@ -4,6 +4,7 @@ from Model import Model
 
 directions = ['north', 'south', 'east', 'west']
 
+
 class area:
 	@staticmethod
 	def getNeighbourgFromDirection(idArea, direction):
