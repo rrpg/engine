@@ -1,17 +1,42 @@
 # -*- coding: utf8 -*-
 
+"""
+Module to handle the areas in the game.
+The world is divided in a grid of areas.
+An area can have up to 4 neighbours (one for each cardinal point).
+"""
+
 from Model import Model
 
 import json
 
+"""
+Available directions
+"""
 directions = ['north', 'south', 'east', 'west']
 
 
 class area:
+	"""
+	Class to interact with the areas in the game.
+	"""
+
 	items = dict()
 
 	@staticmethod
 	def getNeighbourgFromDirection(idArea, direction):
+		"""
+		area.area.getNeighbourgFromDirection(idArea, direction) -> area.area
+
+		Return the neighbourg area of the given area according to the given
+		direction.
+
+		@param idArea integer id of the reference area
+		@param direction string direction of the area to return, must be in
+			area.directions.
+
+		@return area.area if an area is found, None else.
+		"""
 		m = model.getNeighbourgFromDirection(idArea, direction)
 
 		if len(m) == 0:
@@ -35,6 +60,10 @@ class area:
 
 
 class model(Model):
+	"""
+	Class to interact with the values in the database.
+	"""
+
 	fields = [
 		'id_area', 'id_region',
 		'id_next_area_north', 'id_next_area_east', 'id_next_area_south', 'id_next_area_west',
@@ -43,6 +72,18 @@ class model(Model):
 
 	@staticmethod
 	def getNeighbourgFromDirection(idArea, direction):
+		"""
+		area.model.getNeighbourgFromDirection(idArea, direction) -> dict()
+
+		Returns the neighbourg of the area given in arguments from a given
+		direction.
+
+		@param idArea integer id of the reference area
+		@direction string direction (from the reference area) of the area to
+		return, must be a value of area.directions.
+
+		@return dict informations of the found area, empty dict if not found.
+		"""
 		if direction not in (directions):
 			raise exception('Unknown direction')
 
@@ -65,6 +106,16 @@ class model(Model):
 
 	@staticmethod
 	def getSurroundingAreas(idArea):
+		"""
+		area.getSurroundingAreas(idArea) -> dict()
+
+		Return the available neighbourg areas of the area given in argument.
+
+		@param idArea integer id of the reference area
+
+		@return dict a list of directions, with for each direction, True if
+			there is an area in this direction, False else.
+		"""
 		query = "\
 			SELECT\
 				id_next_area_north IS NOT NULL AS north,\
@@ -87,4 +138,7 @@ class model(Model):
 		)
 
 class exception(BaseException):
+	"""
+	Class for the exceptions concerning areas.
+	"""
 	pass
