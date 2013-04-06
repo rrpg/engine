@@ -2,9 +2,10 @@
 
 import character
 import area
-from sentence import sentence
 import random
 import string
+import player
+from sentence import sentence
 
 quit = -1
 
@@ -16,7 +17,6 @@ class command():
 	def setPlayer(self, player):
 		self._player = player
 
-import player
 
 
 class factory:
