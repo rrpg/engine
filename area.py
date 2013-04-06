@@ -16,10 +16,6 @@ class area:
 			a._model = m
 			return a
 
-	@staticmethod
-	def getSurroundingAreas(idArea):
-		return model.getSurroundingAreas(idArea)
-
 
 class model(Model):
 	@staticmethod

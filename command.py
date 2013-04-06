@@ -78,7 +78,7 @@ class look(command):
 				print(c._model['name'])
 
 		# Display accessible areas
-		areas = area.area.getSurroundingAreas(self._player._model['id_area'])
+		areas = area.model.getSurroundingAreas(self._player._model['id_area'])
 		print("You can go " +
 			', '.join(filter(lambda k: areas[k] == 1, areas)) + '.')
 
