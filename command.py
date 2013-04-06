@@ -69,13 +69,15 @@ class help(command):
 class look(command):
 	def run(self):
 		# Display surrounding characters
-		characters = character.character.searchByPlayer(self._player)
-		if len(characters) == 0:
+		characters = character.character.searchByIdArea(self._player._model['id_area'])
+		# the player is in the result list
+		if len(characters) == 1:
 			print("You're alone here.")
 		else:
 			print("Characters arround:")
-			for c in character.character.searchByPlayer(self._player):
-				print(c._model['name'])
+			for c in characters:
+				if c._model['id_character'] != self._player._model['id_character']:
+					print(c._model['name'])
 
 		# Display accessible areas
 		areas = area.model.getSurroundingAreas(self._player._model['id_area'])
@@ -115,8 +117,8 @@ class talk(command):
 
 		characterName = self._args[0]
 		triggerWord = self._args[1]
-		c = character.character.searchByNameAndPlayer(
-			characterName, self._player
+		c = character.character.searchByNameAndIdArea(
+			characterName, self._player._model['id_area']
 		)
 
 		if c is None:

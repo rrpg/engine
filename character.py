@@ -5,17 +5,15 @@ from Model import Model
 
 class character:
 	@staticmethod
-	def searchByNameAndPlayer(name, player):
-		m = model.loadByNameAndIdPlayer(
-			name, player._model['id_player']
-		)
-		return character.loadFromModel(m)
+	def searchByNameAndIdArea(name, idArea):
+		m = model.loadBy({'name': name, 'id_area': idArea})
+		if len(m) > 0:
+			return character.loadFromModel(m[0])
+		return None
 
 	@staticmethod
-	def searchByPlayer(player):
-		models = model.loadNeighboursFromIdCharacter(
-			player._model['id_character']
-		)
+	def searchByIdArea(idArea):
+		models = model.loadBy({'id_area': idArea})
 		chars = list()
 		for m in models:
 			chars.append(character.loadFromModel(m))
@@ -47,53 +45,6 @@ class model(Model):
 			{'id_area': idArea},
 			('id_character = ?', [idCharacter])
 		)
-
-	@staticmethod
-	def loadByNameAndIdPlayer(name, playerId):
-		character = {}
-
-		query = "\
-			SELECT\
-				c1.id_character,\
-				c1.name,\
-				c1.id_species,\
-				c1.id_gender,\
-				c1.id_area\
-			FROM\
-				`character` AS c1\
-				JOIN character AS cp ON cp.id_area = c1.id_area\
-				JOIN player ON id_player = ?\
-					AND player.id_character = cp.id_character\
-			WHERE\
-				c1.name = ?\
-			LIMIT 1"
-
-		return Model.fetchOneRow(query, [playerId, name])
-
-	@staticmethod
-	def loadNeighboursFromIdCharacter(characterId):
-		character = {}
-
-		query = "\
-			SELECT\
-				c1.id_character,\
-				c1.name,\
-				c1.id_species,\
-				c1.id_gender,\
-				c1.id_area\
-			FROM\
-				character AS c1\
-				JOIN character AS cp ON\
-					cp.id_area = c1.id_area\
-					AND cp.id_character = ?\
-					AND cp.id_character != c1.id_character\
-			"
-
-		cModels = list()
-		characters = Model.fetchAllRows(query, [characterId])
-		for c in characters:
-			cModels.append(c)
-		return cModels
 
 
 class exception(BaseException):
