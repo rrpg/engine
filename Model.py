@@ -81,6 +81,17 @@ class Model(object):
 		c.execute(query, fields.values() + where[1])
 		Model._db.commit()
 
+	@classmethod
+	def delete(cls, where):
+		Model._connect()
+		c = Model._db.cursor()
+
+		query = "DELETE FROM %(table)s WHERE %(where)s" %\
+			{'table': cls.__module__, 'where': where[0]}
+		r = c.execute(query, where[1])
+		Model._db.commit()
+		return r
+
 	#protected:
 	@staticmethod
 	def _connect():
