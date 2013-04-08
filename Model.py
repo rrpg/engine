@@ -76,8 +76,8 @@ class Model(object):
 		fields = cls.filterFields(fields)
 		fieldsNames = map(lambda x: '"' + x + '" = ?', fields.keys())
 
-		query = "UPDATE %s SET %s WHERE %s" %\
-			(cls.__module__, ','.join(fieldsNames), where[0])
+		query = "UPDATE %(table)s SET %(values)s WHERE %(where)s" %\
+			{'table': cls.__module__, 'values': ','.join(fieldsNames), 'where': where[0]}
 		c.execute(query, fields.values() + where[1])
 		Model._db.commit()
 
