@@ -9,7 +9,7 @@ class Model(object):
 
 	#public:
 	@staticmethod
-	def fetchAllRows(query, params):
+	def fetchAllRows(query, params={}):
 		Model._connect()
 		c = Model._db.cursor()
 		result = []
@@ -27,7 +27,7 @@ class Model(object):
 		return resultList
 
 	@staticmethod
-	def fetchOneRow(query, params):
+	def fetchOneRow(query, params={}):
 		Model._connect()
 		c = Model._db.cursor()
 		result = dict()
