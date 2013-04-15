@@ -56,14 +56,14 @@ class Model(object):
 		c = Model._db.cursor()
 
 		fields = cls.filterFields(fields)
-		fieldsNames = map(lambda x: '"' + x + '"', fields.keys())
+		fieldsNames = list(map(lambda x: '"' + x + '"', fields.keys()))
 		values = ['?'] * len(fieldsNames)
 
 		query = "INSERT INTO %s (%s) VALUES (%s)" % (
 			cls.__module__, ','.join(fieldsNames), ','.join(values)
 		)
 
-		c.execute(query, fields.values())
+		c.execute(query, list(fields.values()))
 		Model._db.commit()
 
 		return c.lastrowid
