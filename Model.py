@@ -1,15 +1,40 @@
 # -*- coding: utf8 -*-
 
+"""
+This module provides the needed tools to execute the basic CRUD operations
+on a sqlite database (Insert, update, delete, load all elements, load
+elements from a pk, load rows from a given condition...).
+"""
+
 import config
 import sqlite3
 
 
 class Model(object):
+	"""
+	This is the base class.
+	If a model class has to use it, it must extends it.
+	From this point, the table associated to the class will be the module name,
+	the table's primary key will be id_<module-name>
+	"""
+
 	_db = None
 
 	#public:
 	@staticmethod
 	def fetchAllRows(query, params={}):
+		"""
+		c.fetchAllRows(query, params) -> list()
+
+		Returns all the rows of the given query with the given parameters.
+
+		@param query string Sql query to execute
+		@param params dict the query's parameters
+
+		@return list the result of the query, will be a list of dict, and
+			an empty list if there's no result.
+		"""
+
 		Model._connect()
 		c = Model._db.cursor()
 		result = []
@@ -28,6 +53,18 @@ class Model(object):
 
 	@staticmethod
 	def fetchOneRow(query, params={}):
+		"""
+		c.fetchOneRow(query, params) -> dict()
+
+		Returns the first row of the given query with the given parameters.
+
+		@param query string Sql query to execute
+		@param params dict the query's parameters
+
+		@return dict the result of the query, will be a dict, and
+			an empty dict if there's no result.
+		"""
+
 		Model._connect()
 		c = Model._db.cursor()
 		result = dict()
@@ -44,6 +81,19 @@ class Model(object):
 
 	@classmethod
 	def save(cls, fields, where=list()):
+		"""
+		c.save(fields, where)
+
+		Save a row in the database.
+		If the where parameter is not null, an update will be executed, else
+		the row will be inserted.
+
+		@param fields dict of fields with as keys the table's fields and as
+			values, the row's values.
+		@param where tuple with as first element the SQL where and as second
+			element the where's params
+		"""
+
 		#~ insert
 		if len(where) == 0:
 			cls.insert(fields)
@@ -52,6 +102,9 @@ class Model(object):
 
 	@classmethod
 	def insert(cls, fields):
+		"""
+		Insert a new row in the database
+		"""
 		Model._connect()
 		c = Model._db.cursor()
 
