@@ -21,37 +21,43 @@ An item has one row in the database, but can have multiple instances in the prog
 
 """
 
+equipableFlag = 0b001
+hasEffectsFlag = 0b010
+isConsumableFlag = 0b100
+
+
+# Shortcut flags
+weaponFlags = equipableFlag
+armorFlags = equipableFlag | hasEffectsFlag
+
 class item(object):
     name = ''
     weight = .0
-
-    equipableFlag = 0b001
-    hasEffectsFlag = 0b010
-    isConsumableFlag = 0b100
+    effects = dict()
     flags = 0
 
-    def __init__(self, name, weight):
+    def __init__(self, name, weight, flags):
         self.name = name
         self.weight = weight
+        self.flags = flags
 
-    @classmethod
-    def isEquipable(cls):
-        return cls.flags & item.equipableFlag == item.equipableFlag
+    def isEquipable(self):
+        return self.flags & equipableFlag == equipableFlag
 
-    @classmethod
-    def hasEffects(cls):
-        return cls.flags & item.hasEffectsFlag == item.hasEffectsFlag
+    def hasEffects(self):
+        return self.flags & hasEffectsFlag == hasEffectsFlag
 
-    @classmethod
-    def isConsumable(cls):
-        return cls.flags & item.isConsumableFlag == item.isConsumableFlag
+    def isConsumable(self):
+        return self.flags & isConsumableFlag == isConsumableFlag
 
+    def setEquipable(self):
+        self.flags = self.flags | equipableFlag
 
-class effectness(item):
-    flags = item.flags | item.hasEffectsFlag
+    def setHasEffects(self):
+        self.flags = self.flags | hasEffectsFlag
 
-    # for example: {maxhealth: 10, defense: -3}
-    effects = dict()
+    def setConsumable(self):
+        self.flags = self.flags | isConsumableFlag
 
     def setEffect(self, effect, value):
         self.effects[effect] = value
@@ -61,21 +67,12 @@ class effectness(item):
             self.setEffect(e, effects[e])
 
 
-class consumable(effectness):
-    pass
-
-
-class equipable(item):
-    flags = item.flags | item.equipableFlag
-
-
-class weapon(equipable, effectness):
+class weapon():
     def __init__(self, name, weight, damages):
-        self.setEffect('damagesCoefficient', damages)
-        super(weapon, self).__init__(name, weight)
+        self.item = item(name, weight, weaponFlags)
 
 
 class armor(equipable, effectness):
     def __init__(self, name, weight, defense):
-        self.setEffect('defenseCoefficient', defense)
-        super(armor, self).__init__(name, weight)
+        self.item = item(name, weight, armorFlags)
+        self.item.setEffect('defense', defense)
