@@ -2,6 +2,8 @@
 
 from Model import Model
 
+import json
+
 directions = ['north', 'south', 'east', 'west']
 
 
@@ -16,6 +18,10 @@ class area:
 			a = area()
 			a._model = m
 			return a
+
+	@staticmethod
+	def getItems(idArea):
+		return json.loads(model.loadById(idArea, ['items'])['items'])
 
 
 class model(Model):
