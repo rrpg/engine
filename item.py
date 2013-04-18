@@ -72,7 +72,7 @@ class weapon():
         self.item = item(name, weight, weaponFlags)
 
 
-class armor(equipable, effectness):
+class armor():
     def __init__(self, name, weight, defense):
         self.item = item(name, weight, armorFlags)
         self.item.setEffect('defense', defense)
