@@ -39,6 +39,8 @@ class factory:
 			command = talk()
 		elif cmd == "move":
 			command = move()
+		elif cmd == "take":
+			command = take()
 		elif cmd == "createPlayer":
 			if p.isConnected():
 				raise player.exception(
@@ -147,6 +149,25 @@ class talk(command):
 
 	def processSentence(self, s, characterName):
 		return s % {'player_name': characterName}
+
+
+class take(command):
+	def run(self):
+		if len(self._args) == 0:
+			raise exception("What shall I take ?")
+
+		name = self._args[0]
+		#~ Item the player want to take
+		i = [v['id_item'] for v in item.model.loadBy({'name': name}, ['id_item'])]
+		#~ Available items in the area
+		items = area.area.getItems(self._player._model['id_area'])
+
+		availableItems = list(filter(lambda x: x in i, items))
+		if len(availableItems) == 0:
+			raise item.exception("I don't see this here.")
+
+		print i
+		print items
 
 
 class exception(BaseException):
