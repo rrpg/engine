@@ -60,7 +60,8 @@ CREATE TABLE area (
     id_next_area_north INTEGER REFERENCES area (id_area),
     id_next_area_east INTEGER REFERENCES area (id_area),
     id_next_area_south INTEGER REFERENCES area (id_area),
-    id_next_area_west INTEGER REFERENCES area (id_area)
+    id_next_area_west INTEGER REFERENCES area (id_area),
+    items TEXT
 );
 
 CREATE TABLE item (
