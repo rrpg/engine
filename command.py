@@ -27,7 +27,7 @@ class factory:
 		cmd = commandFull[0]
 		del commandFull[0]
 
-		if cmd in ("talk", "move")\
+		if cmd not in ("createPlayer", "help")\
 			and (not p.isConnected() or not p.connect()):
 			raise player.exception(
 				"A player must be connected to launch the command %s" % cmd
