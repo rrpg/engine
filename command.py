@@ -5,7 +5,10 @@ import area
 import random
 import string
 import player
+import item
 from sentence import sentence
+
+import json
 
 quit = -1
 
@@ -84,7 +87,13 @@ class look(command):
 			', '.join(filter(lambda k: areas[k] == 1, areas)) + '.')
 
 		# Display surrounding objects
-		#@TODO
+		items = json.loads(
+			area.model.loadById(self._player._model['id_area'], ['items'])['items']
+		)
+		if len(items) > 0:
+			print("You see the following items:")
+			for i in items:
+				print(item.model.loadById(i, ['name'])['name'])
 
 
 class move(command):
