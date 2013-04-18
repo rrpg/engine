@@ -3,6 +3,9 @@ INSERT INTO species (name_m, name_f, description) VALUES ('humain', 'humaine', '
 INSERT INTO gender (name) VALUES ('male');
 INSERT INTO gender (name) VALUES ('female');
 
+INSERT INTO item (name, weight, flags, effects) VALUES ('Heavy breastplate', 5, 3, '{"defense": 10, "speed": -5}');
+INSERT INTO item (name, weight, flags, effects) VALUES ('Mist potion', .1, 6, '{"stealth": 7}');
+
 INSERT INTO region (region_name) VALUES ('Balmora');
 INSERT INTO area (id_region) VALUES (1); -- ID 1
 INSERT INTO area (id_region) VALUES (1); -- ID 2

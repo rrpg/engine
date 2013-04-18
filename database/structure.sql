@@ -62,3 +62,11 @@ CREATE TABLE area (
     id_next_area_south INTEGER REFERENCES area (id_area),
     id_next_area_west INTEGER REFERENCES area (id_area)
 );
+
+CREATE TABLE item (
+	id_item INTEGER PRIMARY KEY AUTOINCREMENT,
+	name VARCHAR(50) NOT NULL,
+	weight FLOAT NOT NULL DEFAULT 0.0,
+	flags LONG INTEGER NOT NULL DEFAULT 0,
+	effects TEXT
+);
