@@ -21,6 +21,8 @@ An item has one row in the database, but can have multiple instances in the prog
 
 """
 
+from Model import Model
+
 equipableFlag = 0b001
 hasEffectsFlag = 0b010
 isConsumableFlag = 0b100
@@ -29,6 +31,7 @@ isConsumableFlag = 0b100
 # Shortcut flags
 weaponFlags = equipableFlag
 armorFlags = equipableFlag | hasEffectsFlag
+
 
 class item(object):
     name = ''
@@ -76,3 +79,11 @@ class armor():
     def __init__(self, name, weight, defense):
         self.item = item(name, weight, armorFlags)
         self.item.setEffect('defense', defense)
+
+
+class model(Model):
+	fields = ['id_item', 'name', 'weight', 'flags', 'effects']
+
+
+class exception(BaseException):
+	pass
