@@ -1,6 +1,7 @@
 # -*- coding: utf8 -*-
 
 from Model import Model
+import json
 
 
 class character:
@@ -34,6 +35,11 @@ class character:
 	def goTo(self, idArea):
 		self._model['id_area'] = idArea
 		model.savePosition(self._model['id_character'], self._model['id_area'])
+
+	def getInventory(self):
+		if self.inventory is None:
+			self.inventory = json.loads(self._model['inventory'])
+		return self.inventory
 
 
 class model(Model):
