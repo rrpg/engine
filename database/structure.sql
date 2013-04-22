@@ -13,6 +13,7 @@ CREATE TABLE gender (
 CREATE TABLE `character` (
     id_character INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(30) NOT NULL,
+    inventory TEXT,
     id_species INT REFERENCES species (id_species),
     id_gender INT REFERENCES gender (id_gender),
     id_area INT REFERENCES area (id_area)

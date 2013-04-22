@@ -45,7 +45,7 @@ class character:
 
 
 class model(Model):
-	fields = ['id_character', 'name', 'id_species', 'id_gender', 'id_area']
+	fields = ['id_character', 'name', 'id_species', 'id_gender', 'id_area', 'inventory']
 
 	@staticmethod
 	def savePosition(idCharacter, idArea):
