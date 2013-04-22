@@ -158,7 +158,7 @@ class take(command):
 
 		name = self._args[0]
 		#~ Item the player want to take
-		i = [v['id_item'] for v in item.model.loadBy({'name': name}, ['id_item'])]
+		i = list(v['id_item'] for v in item.model.loadBy({'name': name}, ['id_item']))
 		#~ Available items in the area
 		items = area.area.getItems(self._player._model['id_area'])
 
