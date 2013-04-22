@@ -44,7 +44,7 @@ class Rpg:
 
 				try:
 					if c != "":
-						self._action = c.split(' ')
+						self._action = self.parseTypedAction(c)
 						result = self._runAction()
 
 					if result == command.quit:
@@ -59,3 +59,32 @@ class Rpg:
 			return c.run()
 
 		return c
+
+	def parseTypedAction(self, action):
+		inOption = False
+
+		commands, sep, option, optionStart = list(), ' ', '', 0
+		commandLen = len(action)
+		for k,i in enumerate(action):
+			# first letter of the option
+			if i != ' ' and not inOption:
+				#~ Set the start index of the option
+				optionStart = k
+				inOption = True
+				#~ Set the option delimiter
+				sep = i if i in ("'", '"') else ' '
+			if inOption:
+				#~ If the current char is the option delimiter, but not the
+				#~ stat one
+				if i == sep and k > optionStart:
+					#~ The option is ended
+					inOption = False
+				elif i != sep:
+					option += i
+
+				#~ The option is complete, append it in the list
+				if not inOption or k == commandLen - 1:
+					commands.append(option)
+					option = ''
+
+		return commands
