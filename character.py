@@ -40,7 +40,10 @@ class character:
 
 	def getInventory(self):
 		if self.inventory is None:
-			self.inventory = json.loads(self._model['inventory'])
+			try:
+				self.inventory = json.loads(str(self._model['inventory']))
+			except:
+				self.inventory = dict()
 		return self.inventory
 
 
