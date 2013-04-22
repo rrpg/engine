@@ -5,6 +5,8 @@ import json
 
 
 class character:
+	inventory = None
+
 	@staticmethod
 	def searchByNameAndIdArea(name, idArea):
 		m = model.loadBy({'name': name, 'id_area': idArea})
