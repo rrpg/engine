@@ -8,6 +8,8 @@ directions = ['north', 'south', 'east', 'west']
 
 
 class area:
+	items = dict()
+
 	@staticmethod
 	def getNeighbourgFromDirection(idArea, direction):
 		m = model.getNeighbourgFromDirection(idArea, direction)
@@ -21,7 +23,9 @@ class area:
 
 	@staticmethod
 	def getItems(idArea):
-		return json.loads(model.loadById(idArea, ['items'])['items'])
+		if idArea not in items.keys():
+			items[idArea] = json.loads(model.loadById(idArea, ['items'])['items'])
+		return items[idArea]
 
 
 class model(Model):
