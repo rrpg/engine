@@ -157,14 +157,23 @@ class take(command):
 			raise exception("What shall I take ?")
 
 		name = self._args[0]
+		quantity = 1
+		if len(self._args) > 1:
+			quantity = int(self._args[1])
+
 		#~ Item the player want to take
-		i = list(v['id_item'] for v in item.model.loadBy({'name': name}, ['id_item']))
+		i = list(
+			v['id_item'] for v in item.model.loadBy({'name': name}, ['id_item'])
+		) * quantity
 		#~ Available items in the area
 		items = area.area.getItems(self._player._model['id_area'])
 
 		availableItems = list(filter(lambda x: x in i, items))
 		if len(availableItems) == 0:
 			raise item.exception("I don't see this here.")
+
+		if len(i) > len(availableItems):
+			raise item.exception("There is not enough items of this kind.")
 
 		print i
 		print items
