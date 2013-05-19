@@ -46,6 +46,18 @@ class character:
 				self.inventory = dict()
 		return self.inventory
 
+	def addItemsToInventory(self, itemsId):
+		inventory = self.getInventory()
+		for i in itemsId:
+			i = str(i)
+			if i in inventory.keys():
+				inventory[i]['quantity'] += 1
+			else:
+				inventory[i] = {'quantity': 1}
+
+		model.saveInventory(self._model['id_character'], inventory)
+
+
 
 class model(Model):
 	fields = ['id_character', 'name', 'id_species', 'id_gender', 'id_area', 'inventory']
@@ -54,6 +66,13 @@ class model(Model):
 	def savePosition(idCharacter, idArea):
 		model.update(
 			{'id_area': idArea},
+			('id_character = ?', [idCharacter])
+		)
+
+	@staticmethod
+	def saveInventory(idCharacter, inventory):
+		model.update(
+			{'inventory': json.dumps(inventory)},
 			('id_character = ?', [idCharacter])
 		)
 
