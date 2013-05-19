@@ -175,8 +175,6 @@ class take(command):
 		if len(i) > len(availableItems):
 			raise item.exception("There is not enough items of this kind.")
 
-		print i
-		print items
 		self._player.addItemsToInventory(i)
 
 
