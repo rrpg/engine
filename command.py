@@ -177,6 +177,7 @@ class take(command):
 
 		print i
 		print items
+		self._player.addItemsToInventory(i)
 
 
 class exception(BaseException):
