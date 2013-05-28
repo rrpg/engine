@@ -21,6 +21,11 @@ class area:
 	Class to interact with the areas in the game.
 	"""
 
+	"""
+	Available items of the area.
+
+	@param dict
+	"""
 	items = dict()
 
 	@staticmethod
@@ -48,14 +53,31 @@ class area:
 
 	@staticmethod
 	def getItems(idArea):
+		"""
+		area.area.getItems(idArea) -> list()
+
+		Method to get the items available in an area.
+
+		@param idArea id of the desired area.
+
+		@return list
+		"""
 		if idArea not in area.items.keys():
 			area.items[idArea] = json.loads(model.loadById(idArea, ['items'])['items'])
 		return area.items[idArea]
 
 	@staticmethod
 	def removeItems(idArea, items):
+		"""
+		area.area.removeItems(idArea, items)
+
+		Method to remove some items in an area.
+		Items not in the area will be ignored.
+
+		@param idArea id of the area the items must be removed from.
+		@param items list of items to remove
+		"""
 		availableItems = area.getItems(idArea)
-		#~ Remove from availableItems the items in items
 		model.saveAvailableItems(idArea, filter(lambda k: k not in items, availableItems))
 
 
@@ -132,6 +154,14 @@ class model(Model):
 
 	@staticmethod
 	def saveAvailableItems(idArea, items):
+		"""
+		area.model.saveAvailableItems(idArea, items)
+
+		Update an area's items list.
+
+		@param idArea id of the area the items must be removed from.
+		@param items list of items to remove
+		"""
 		model.update(
 			{'items': json.dumps(items)},
 			('id_area = ?', [idArea])
