@@ -176,6 +176,7 @@ class take(command):
 			raise item.exception("There is not enough items of this kind.")
 
 		self._player.addItemsToInventory(i)
+		area.area.removeItems(self._player._model['id_area'], i)
 
 
 class exception(BaseException):

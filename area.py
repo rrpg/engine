@@ -27,6 +27,12 @@ class area:
 			area.items[idArea] = json.loads(model.loadById(idArea, ['items'])['items'])
 		return area.items[idArea]
 
+	@staticmethod
+	def removeItems(idArea, items):
+		availableItems = area.getItems(idArea)
+		#~ Remove from availableItems the items in items
+		model.saveAvailableItems(idArea, filter(lambda k: k not in items, availableItems))
+
 
 class model(Model):
 	fields = [
@@ -73,6 +79,12 @@ class model(Model):
 
 		return Model.fetchOneRow(query, [idArea])
 
+	@staticmethod
+	def saveAvailableItems(idArea, items):
+		model.update(
+			{'items': json.dumps(items)},
+			('id_area = ?', [idArea])
+		)
 
 class exception(BaseException):
 	pass
