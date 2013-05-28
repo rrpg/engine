@@ -23,9 +23,9 @@ class area:
 
 	@staticmethod
 	def getItems(idArea):
-		if idArea not in items.keys():
-			items[idArea] = json.loads(model.loadById(idArea, ['items'])['items'])
-		return items[idArea]
+		if idArea not in area.items.keys():
+			area.items[idArea] = json.loads(model.loadById(idArea, ['items'])['items'])
+		return area.items[idArea]
 
 
 class model(Model):
