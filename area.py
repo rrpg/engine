@@ -29,6 +29,12 @@ class area:
 
 
 class model(Model):
+	fields = [
+		'id_area', 'id_region',
+		'id_next_area_north', 'id_next_area_east', 'id_next_area_south', 'id_next_area_west',
+		'items'
+	]
+
 	@staticmethod
 	def getNeighbourgFromDirection(idArea, direction):
 		if direction not in (directions):
