@@ -89,6 +89,17 @@ class character:
 		model.savePosition(self._model['id_character'], self._model['id_area'])
 
 	def getInventory(self):
+		"""
+		character.character.getInventory() -> dict()
+
+		Returns the character's items.
+		The inventory has the following format:
+		{
+			idItem: {'quantity': number}
+		}
+
+		@return dict the character's inventory
+		"""
 		if self.inventory is None:
 			try:
 				self.inventory = json.loads(str(self._model['inventory']))
@@ -97,6 +108,13 @@ class character:
 		return self.inventory
 
 	def addItemsToInventory(self, itemsId):
+		"""
+		character.character.addItemsToInventory(itemsIds)
+
+		Add a list of items in the character's inventory.
+
+		@param itemsId ids of the items to add
+		"""
 		inventory = self.getInventory()
 		for i in itemsId:
 			i = str(i)
@@ -133,6 +151,14 @@ class model(Model):
 
 	@staticmethod
 	def saveInventory(idCharacter, inventory):
+		"""
+		character.model.saveInventory(idCharacter, inventory)
+
+		Save the character's inventory in the database.
+
+		@param idCharacter character's id.
+		@param inventory list items to add.
+		"""
 		model.update(
 			{'inventory': json.dumps(inventory)},
 			('id_character = ?', [idCharacter])
