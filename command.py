@@ -5,7 +5,10 @@ import area
 import random
 import string
 import player
+import item
 from sentence import sentence
+
+import json
 
 quit = -1
 
@@ -24,7 +27,7 @@ class factory:
 		cmd = commandFull[0]
 		del commandFull[0]
 
-		if cmd in ("talk", "move")\
+		if cmd not in ("createPlayer", "help")\
 			and (not p.isConnected() or not p.connect()):
 			raise player.exception(
 				"A player must be connected to launch the command %s" % cmd
@@ -36,6 +39,8 @@ class factory:
 			command = talk()
 		elif cmd == "move":
 			command = move()
+		elif cmd == "take":
+			command = take()
 		elif cmd == "createPlayer":
 			if p.isConnected():
 				raise player.exception(
@@ -84,7 +89,13 @@ class look(command):
 			', '.join(filter(lambda k: areas[k] == 1, areas)) + '.')
 
 		# Display surrounding objects
-		#@TODO
+		items = json.loads(
+			area.model.loadById(self._player._model['id_area'], ['items'])['items']
+		)
+		if len(items) > 0:
+			print("You see the following items:")
+			for i in items:
+				print(item.model.loadById(i, ['name'])['name'])
 
 
 class move(command):
@@ -138,6 +149,34 @@ class talk(command):
 
 	def processSentence(self, s, characterName):
 		return s % {'player_name': characterName}
+
+
+class take(command):
+	def run(self):
+		if len(self._args) == 0:
+			raise exception("What shall I take ?")
+
+		name = self._args[0]
+		quantity = 1
+		if len(self._args) > 1:
+			quantity = int(self._args[1])
+
+		#~ Item the player want to take
+		i = list(
+			v['id_item'] for v in item.model.loadBy({'name': name}, ['id_item'])
+		) * quantity
+		#~ Available items in the area
+		items = area.area.getItems(self._player._model['id_area'])
+
+		availableItems = list(filter(lambda x: x in i, items))
+		if len(availableItems) == 0:
+			raise item.exception("I don't see this here.")
+
+		if len(i) > len(availableItems):
+			raise item.exception("There is not enough items of this kind.")
+
+		self._player.addItemsToInventory(i)
+		area.area.removeItems(self._player._model['id_area'], i)
 
 
 class exception(BaseException):

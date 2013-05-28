@@ -2,10 +2,14 @@
 
 from Model import Model
 
+import json
+
 directions = ['north', 'south', 'east', 'west']
 
 
 class area:
+	items = dict()
+
 	@staticmethod
 	def getNeighbourgFromDirection(idArea, direction):
 		m = model.getNeighbourgFromDirection(idArea, direction)
@@ -17,8 +21,26 @@ class area:
 			a._model = m
 			return a
 
+	@staticmethod
+	def getItems(idArea):
+		if idArea not in area.items.keys():
+			area.items[idArea] = json.loads(model.loadById(idArea, ['items'])['items'])
+		return area.items[idArea]
+
+	@staticmethod
+	def removeItems(idArea, items):
+		availableItems = area.getItems(idArea)
+		#~ Remove from availableItems the items in items
+		model.saveAvailableItems(idArea, filter(lambda k: k not in items, availableItems))
+
 
 class model(Model):
+	fields = [
+		'id_area', 'id_region',
+		'id_next_area_north', 'id_next_area_east', 'id_next_area_south', 'id_next_area_west',
+		'items'
+	]
+
 	@staticmethod
 	def getNeighbourgFromDirection(idArea, direction):
 		if direction not in (directions):
@@ -57,6 +79,12 @@ class model(Model):
 
 		return Model.fetchOneRow(query, [idArea])
 
+	@staticmethod
+	def saveAvailableItems(idArea, items):
+		model.update(
+			{'items': json.dumps(items)},
+			('id_area = ?', [idArea])
+		)
 
 class exception(BaseException):
 	pass

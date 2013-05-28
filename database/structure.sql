@@ -13,6 +13,7 @@ CREATE TABLE gender (
 CREATE TABLE `character` (
     id_character INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(30) NOT NULL,
+    inventory TEXT,
     id_species INT REFERENCES species (id_species),
     id_gender INT REFERENCES gender (id_gender),
     id_area INT REFERENCES area (id_area)
@@ -60,5 +61,14 @@ CREATE TABLE area (
     id_next_area_north INTEGER REFERENCES area (id_area),
     id_next_area_east INTEGER REFERENCES area (id_area),
     id_next_area_south INTEGER REFERENCES area (id_area),
-    id_next_area_west INTEGER REFERENCES area (id_area)
+    id_next_area_west INTEGER REFERENCES area (id_area),
+    items TEXT
+);
+
+CREATE TABLE item (
+	id_item INTEGER PRIMARY KEY AUTOINCREMENT,
+	name VARCHAR(50) NOT NULL,
+	weight FLOAT NOT NULL DEFAULT 0.0,
+	flags LONG INTEGER NOT NULL DEFAULT 0,
+	effects TEXT
 );
