@@ -77,8 +77,8 @@ class area:
 		@param idArea id of the area the items must be removed from.
 		@param items list of items to remove
 		"""
-		availableItems = area.getItems(idArea)
-		model.saveAvailableItems(idArea, filter(lambda k: k not in items, availableItems))
+		area.items[idArea] = filter(lambda k: k not in items, area.getItems(idArea))
+		model.saveAvailableItems(idArea, area.items[idArea])
 
 
 class model(Model):

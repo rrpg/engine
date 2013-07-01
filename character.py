@@ -123,6 +123,7 @@ class character:
 			else:
 				inventory[i] = {'quantity': 1}
 
+		self.inventory = inventory
 		model.saveInventory(self._model['id_character'], inventory)
 
 
