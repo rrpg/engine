@@ -264,6 +264,12 @@ class take(command):
 
 class drop(command):
 	def run(self):
+		"""
+		c.run()
+
+		Drop an item being in the inventory. The item will be let on the floor
+		of the player's current area.
+		"""
 		# Check an item to drop is provided
 		if len(self._args) == 0:
 			raise exception("What shall I drop ?")
