@@ -88,6 +88,8 @@ class factory:
 			command = move()
 		elif cmd == "take":
 			command = take()
+		elif cmd == "drop":
+			command = drop()
 		elif cmd == "createPlayer":
 			if p.isConnected():
 				raise player.exception(
@@ -258,6 +260,28 @@ class take(command):
 
 		self._player.addItemsToInventory(i)
 		area.area.removeItems(self._player._model['id_area'], i)
+
+
+class drop(command):
+	def run(self):
+		# Check an item to drop is provided
+		if len(self._args) == 0:
+			raise exception("What shall I drop ?")
+		name = self._args[0]
+
+		# check if a quantity is provided
+		quantity = 1
+		if len(self._args) > 1:
+			quantity = int(self._args[1])
+
+		# Item the player want to take
+		i = list(
+			v['id_item'] for v in item.model.loadBy({'name': name}, ['id_item'])
+		) * quantity
+
+		# Drop it
+		self._player.removeItemsFromInventory(i)
+		area.area.addItems(self._player._model['id_area'], i)
 
 
 class exception(BaseException):

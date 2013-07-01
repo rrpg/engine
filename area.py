@@ -80,6 +80,11 @@ class area:
 		area.items[idArea] = filter(lambda k: k not in items, area.getItems(idArea))
 		model.saveAvailableItems(idArea, area.items[idArea])
 
+	@staticmethod
+	def addItems(idArea, items):
+		area.items[idArea] = area.getItems(idArea) + items
+		model.saveAvailableItems(idArea, area.items[idArea])
+
 
 class model(Model):
 	"""

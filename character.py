@@ -126,6 +126,19 @@ class character:
 		self.inventory = inventory
 		model.saveInventory(self._model['id_character'], inventory)
 
+	def removeItemsFromInventory(self, itemsId):
+		inventory = self.getInventory()
+		for i in itemsId:
+			i = str(i)
+			if i not in inventory.keys():
+				continue
+
+			inventory[i]['quantity'] -= 1
+
+		inventory = {i: inventory[i] for i in inventory if inventory[i]['quantity'] > 0}
+		self.inventory = inventory
+		model.saveInventory(self._model['id_character'], inventory)
+
 
 
 class model(Model):
