@@ -22,6 +22,7 @@ An item has one row in the database, but can have multiple instances in the prog
 """
 
 from Model import Model
+import json
 
 equipableFlag = 0b001
 hasEffectsFlag = 0b010
@@ -87,3 +88,55 @@ class model(Model):
 
 class exception(BaseException):
 	pass
+
+
+class inventory:
+	@staticmethod
+	def fromStr(s):
+		try:
+			s = json.loads(s)
+		except:
+			s = dict()
+		return s
+
+	@staticmethod
+	def toStr(s):
+		return json.dumps(s)
+
+	@staticmethod
+	def addItems(inv, itemsId):
+		"""
+		item.inventory.addItems(inv, itemsId) -> dict()
+
+		Add items in the given inventory
+
+		@param inv inventory
+		@param items items to add
+		"""
+		for i in itemsId:
+			i = str(i)
+			if i in inv.keys():
+				inv[i]['quantity'] += 1
+			else:
+				inv[i] = {'quantity': 1}
+
+		return inv
+
+	@staticmethod
+	def removeItems(inv, itemsId):
+		"""
+		item.inventory.removeItems(inv, itemsId) -> dict()
+
+		Remove items from the given inventory
+
+		@param inv inventory
+		@param items items to remove
+		"""
+		for i in itemsId:
+			i = str(i)
+			if i not in inv.keys():
+				continue
+
+			inv[i]['quantity'] -= 1
+
+		return {i: inv[i] for i in inv if inv[i]['quantity'] > 0}
