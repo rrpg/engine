@@ -164,7 +164,8 @@ class look(command):
 		if len(items) > 0:
 			print("You see the following items:")
 			for i in items:
-				print(item.model.loadById(i, ['name'])['name'])
+				it = item.model.loadById(i)
+				print(str(items[i]['quantity']).rjust(3) + ' ' + it['name'])
 
 
 class move(command):
