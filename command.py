@@ -80,17 +80,17 @@ class factory:
 				"A player must be connected to launch the command %s" % cmd
 			)
 
-		if cmd == "look":
+		if cmd == 'look':
 			command = look()
-		elif cmd == "talk":
+		elif cmd == 'talk':
 			command = talk()
-		elif cmd == "move":
+		elif cmd == 'move':
 			command = move()
-		elif cmd == "take":
+		elif cmd == 'take':
 			command = take()
-		elif cmd == "drop":
+		elif cmd == 'drop':
 			command = drop()
-		elif cmd == "createPlayer":
+		elif cmd == 'createPlayer':
 			if p.isConnected():
 				raise player.exception(
 					"You cannot create a new player when you're connected"
