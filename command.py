@@ -95,6 +95,8 @@ class factory:
 				raise player.exception(
 					"You cannot create a new player when you're connected"
 				)
+		elif cmd in ('inventory', 'inv'):
+			command = inventory()
 		elif cmd in ('quit', 'exit', 'q'):
 			return quit
 		elif cmd == 'help':
@@ -307,6 +309,21 @@ class drop(command):
 		area.area.addItems(self._player._model['id_area'], i)
 
 		print("You dropped {0} {1}".format(quantity, name))
+
+
+
+class inventory(command):
+	def run(self):
+		"""
+		c.run()
+
+		Display the player's inventory.
+		"""
+
+		i = self._player.getInventory()
+		for itemId in i:
+			it = item.model.loadById(itemId)
+			print(str(i[itemId]['quantity']).rjust(3) + ' ' + it['name'])
 
 
 class exception(BaseException):
