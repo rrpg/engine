@@ -7,6 +7,7 @@ An area can have up to 4 neighbours (one for each cardinal point).
 """
 
 from Model import Model
+import item
 
 import json
 
@@ -63,7 +64,7 @@ class area:
 		@return list
 		"""
 		if idArea not in area.items.keys():
-			area.items[idArea] = json.loads(model.loadById(idArea, ['items'])['items'])
+			area.items[idArea] = item.inventory.fromStr(model.loadById(idArea, ['items'])['items'])
 		return area.items[idArea]
 
 	@staticmethod
@@ -77,12 +78,12 @@ class area:
 		@param idArea id of the area the items must be removed from.
 		@param items list of items to remove
 		"""
-		area.items[idArea] = filter(lambda k: k not in items, area.getItems(idArea))
+		area.items[idArea] = item.inventory.removeItems(area.getItems(idArea), items)
 		model.saveAvailableItems(idArea, area.items[idArea])
 
 	@staticmethod
 	def addItems(idArea, items):
-		area.items[idArea] = area.getItems(idArea) + items
+		area.items[idArea] = item.inventory.addItems(area.getItems(idArea), items)
 		model.saveAvailableItems(idArea, area.items[idArea])
 
 

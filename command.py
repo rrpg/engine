@@ -239,27 +239,34 @@ class take(command):
 		if len(self._args) == 0:
 			raise exception("What shall I take ?")
 
-		name = self._args[0]
-		quantity = 1
-		if len(self._args) > 1:
-			quantity = int(self._args[1])
+		if len(self._args) == 1:
+			quantity = 1
+			name = self._args[0]
+		else:
+			quantity = int(self._args[0])
+			name = self._args[1]
 
 		#~ Item the player want to take
-		i = list(
-			v['id_item'] for v in item.model.loadBy({'name': name}, ['id_item'])
-		) * quantity
+		i = item.model.loadBy({'name': name}, ['id_item'])
+
+		if len(i) == 0:
+			raise item.exception("I don't see this here.")
+
+		i = str(i[0]['id_item'])
 		#~ Available items in the area
 		items = area.area.getItems(self._player._model['id_area'])
 
-		availableItems = list(filter(lambda x: x in i, items))
-		if len(availableItems) == 0:
+		if i not in items.keys():
 			raise item.exception("I don't see this here.")
 
-		if len(i) > len(availableItems):
+		if quantity > items[i]['quantity']:
 			raise item.exception("There is not enough items of this kind.")
 
+		i = [int(i)] * quantity
 		self._player.addItemsToInventory(i)
 		area.area.removeItems(self._player._model['id_area'], i)
+
+		print("You took {0} {1}".format(quantity, name))
 
 
 class drop(command):
@@ -273,21 +280,33 @@ class drop(command):
 		# Check an item to drop is provided
 		if len(self._args) == 0:
 			raise exception("What shall I drop ?")
-		name = self._args[0]
 
 		# check if a quantity is provided
-		quantity = 1
-		if len(self._args) > 1:
-			quantity = int(self._args[1])
+		if len(self._args) == 1:
+			quantity = 1
+			name = self._args[0]
+		else:
+			quantity = int(self._args[0])
+			name = self._args[1]
 
-		# Item the player want to take
-		i = list(
-			v['id_item'] for v in item.model.loadBy({'name': name}, ['id_item'])
-		) * quantity
+		# Item the player want to drop
+		i = item.model.loadBy({'name': name}, ['id_item'])
+
+		if len(i) == 0:
+			raise item.exception("You have none of those.")
+
+		i = str(i[0]['id_item'])
+		inv = self._player.getInventory()
+		if i not in inv.keys():
+			raise item.exception("You have none of those.")
+		elif quantity > inv[i]['quantity']:
+			raise item.exception("You don't have enough {0} to drop.".format(name))
 
 		# Drop it
 		self._player.removeItemsFromInventory(i)
 		area.area.addItems(self._player._model['id_area'], i)
+
+		print("You dropped {0} {1}".format(quantity, name))
 
 
 class exception(BaseException):
