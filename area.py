@@ -83,6 +83,14 @@ class area:
 
 	@staticmethod
 	def addItems(idArea, items):
+		"""
+		area.area.addItems(idArea, items)
+
+		Method to add some items in an area.
+
+		@param idArea id of the area the items must be added to.
+		@param items list of items to add
+		"""
 		area.items[idArea] = item.inventory.addItems(area.getItems(idArea), items)
 		model.saveAvailableItems(idArea, area.items[idArea])
 

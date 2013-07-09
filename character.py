@@ -116,8 +116,13 @@ class character:
 		model.saveInventory(self._model['id_character'], self.inventory)
 
 	def removeItemsFromInventory(self, itemsId):
+		"""
+		character.character.removeItemsFromInventory(itemsIds)
 
+		Remove a list of items from the character's inventory.
 
+		@param itemsId ids of the items to remove
+		"""
 		self.inventory = item.inventory.removeItems(self.getInventory(), itemsId)
 		model.saveInventory(self._model['id_character'], self.inventory)
 
