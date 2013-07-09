@@ -125,6 +125,7 @@ class help(command):
 		print('move <%s>: Go to the indicated direction' % '|'.join(area.directions))
 		print('look: See what is in the current area' +
 			' (characters, items, neighbour areas...)')
+		print('inv|inventory: List the items the player has in his inventory')
 		print('createPlayer: Not Yet Implemented')
 		print('help: Display this help')
 		print('quit|exit|q: Quit the game')
