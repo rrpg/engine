@@ -5,7 +5,7 @@ Module to handle the characters in the game
 """
 
 from Model import Model
-import json
+import item
 
 
 class character:
@@ -101,10 +101,7 @@ class character:
 		@return dict the character's inventory
 		"""
 		if self.inventory is None:
-			try:
-				self.inventory = json.loads(str(self._model['inventory']))
-			except:
-				self.inventory = dict()
+			self.inventory = item.inventory.fromStr(str(self._model['inventory']))
 		return self.inventory
 
 	def addItemsToInventory(self, itemsId):
@@ -115,29 +112,19 @@ class character:
 
 		@param itemsId ids of the items to add
 		"""
-		inventory = self.getInventory()
-		for i in itemsId:
-			i = str(i)
-			if i in inventory.keys():
-				inventory[i]['quantity'] += 1
-			else:
-				inventory[i] = {'quantity': 1}
-
-		self.inventory = inventory
-		model.saveInventory(self._model['id_character'], inventory)
+		self.inventory = item.inventory.addItems(self.getInventory(), itemsId)
+		model.saveInventory(self._model['id_character'], self.inventory)
 
 	def removeItemsFromInventory(self, itemsId):
-		inventory = self.getInventory()
-		for i in itemsId:
-			i = str(i)
-			if i not in inventory.keys():
-				continue
+		"""
+		character.character.removeItemsFromInventory(itemsIds)
 
-			inventory[i]['quantity'] -= 1
+		Remove a list of items from the character's inventory.
 
-		inventory = {i: inventory[i] for i in inventory if inventory[i]['quantity'] > 0}
-		self.inventory = inventory
-		model.saveInventory(self._model['id_character'], inventory)
+		@param itemsId ids of the items to remove
+		"""
+		self.inventory = item.inventory.removeItems(self.getInventory(), itemsId)
+		model.saveInventory(self._model['id_character'], self.inventory)
 
 
 
@@ -174,7 +161,7 @@ class model(Model):
 		@param inventory list items to add.
 		"""
 		model.update(
-			{'inventory': json.dumps(inventory)},
+			{'inventory': item.inventory.toStr(inventory)},
 			('id_character = ?', [idCharacter])
 		)
 
