@@ -14,6 +14,10 @@ def main(argv):
 	parser = ArgumentParser()
 
 	parser.add_argument(
+		"-d", "--debug",
+		dest="debug", help="Enable debug mode", action="store_true"
+	)
+	parser.add_argument(
 		"-l", "--login",
 		dest="login", help="Player login", metavar="LOGIN"
 	)
@@ -29,6 +33,7 @@ def main(argv):
 	args = parser.parse_args()
 
 	rpg = Rpg(args.login, args.password, args.action)
+	rpg.setDebug(args.debug)
 	rpg.run()
 
 if __name__ == "__main__":
