@@ -17,7 +17,6 @@ import random
 import string
 import player
 import item
-import json
 from sentence import sentence
 
 """
@@ -161,7 +160,7 @@ class look(command):
 			', '.join(filter(lambda k: areas[k] == 1, areas)) + '.')
 
 		# Display surrounding objects
-		items = json.loads(
+		items = item.inventory.fromStr(
 			area.model.loadById(self._player._model['id_area'], ['items'])['items']
 		)
 		if len(items) > 0:
