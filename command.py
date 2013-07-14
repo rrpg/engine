@@ -126,6 +126,8 @@ class help(command):
 		print('look: See what is in the current area' +
 			' (characters, items, neighbour areas...)')
 		print('inv|inventory: List the items the player has in his inventory')
+		print('take [<quantity>] <item name>: Take some items on the the ground')
+		print('drop [<quantity>] <item name>: Drop some items from your inventory')
 		print('createPlayer: Not Yet Implemented')
 		print('help: Display this help')
 		print('quit|exit|q: Quit the game')
