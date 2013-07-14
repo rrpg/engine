@@ -28,20 +28,8 @@ def main(argv):
 
 	args = parser.parse_args()
 
-	try:
-		rpg = Rpg(args.login, args.password, args.action)
-		rpg.run()
-	except CommandException as e:
-		print(e)
-		sys.exit()
-	except pException as e:
-		print(e)
-		sys.exit()
-	except KeyboardInterrupt:
-		sys.exit()
-	except BaseException as e:
-		print(e)
-		sys.exit()
+	rpg = Rpg(args.login, args.password, args.action)
+	rpg.run()
 
 if __name__ == "__main__":
 	main(sys.argv[1:])

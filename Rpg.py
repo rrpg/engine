@@ -47,23 +47,26 @@ class Rpg:
 			while 1:
 				c = utils.read("Command: ")
 
-				try:
-					if c != "":
-						self._action = self.parseTypedAction(c)
-						result = self._runAction()
+				if c != "":
+					self._action = self.parseTypedAction(c)
+					result = self._runAction()
 
-					if result == command.quit:
-						break
-				except BaseException as e:
-					print(e)
+				if result == command.quit:
+					break
 
 	def _runAction(self):
-		c = command.factory.create(self._player, self._action)
+		try:
+			c = command.factory.create(self._player, self._action)
 
-		if c != command.quit:
-			return c.run()
+			if c != command.quit:
+				return c.run()
 
-		return c
+			return c
+		except BaseException as e:
+			if not isinstance(e,  KeyboardInterrupt):
+				print(e)
+
+
 
 	def parseTypedAction(self, action):
 		inOption = False
