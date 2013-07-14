@@ -6,6 +6,8 @@ import utils
 
 
 class Rpg:
+	_debug = False
+
 	def __init__(self, login, password, action):
 		#~ if the game is launched with login/password,
 		#~ the player is directly fetched
@@ -19,6 +21,9 @@ class Rpg:
 		self._action = action
 
 		self._player.connect()
+
+	def setDebug(self, debug):
+		self._debug = debug
 
 	#~ This method asks the player to login or to create a new account
 	def _doInteractiveAuth(self):
