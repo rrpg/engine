@@ -6,6 +6,8 @@ import utils
 
 
 class Rpg:
+	_debug = False
+
 	def __init__(self, login, password, action):
 		#~ if the game is launched with login/password,
 		#~ the player is directly fetched
@@ -19,6 +21,9 @@ class Rpg:
 		self._action = action
 
 		self._player.connect()
+
+	def setDebug(self, debug):
+		self._debug = debug
 
 	#~ This method asks the player to login or to create a new account
 	def _doInteractiveAuth(self):
@@ -42,23 +47,29 @@ class Rpg:
 			while 1:
 				c = utils.read("Command: ")
 
-				try:
-					if c != "":
-						self._action = self.parseTypedAction(c)
-						result = self._runAction()
+				if c != "":
+					self._action = self.parseTypedAction(c)
+					result = self._runAction()
 
-					if result == command.quit:
-						break
-				except BaseException as e:
-					print(e)
+				if result == command.quit:
+					break
 
 	def _runAction(self):
-		c = command.factory.create(self._player, self._action)
+		try:
+			c = command.factory.create(self._player, self._action)
 
-		if c != command.quit:
-			return c.run()
+			if c != command.quit:
+				return c.run()
 
-		return c
+			return c
+		except BaseException as e:
+			if self._debug:
+				import traceback
+				print(traceback.format_exc())
+			elif not isinstance(e,  KeyboardInterrupt):
+				print(e)
+
+
 
 	def parseTypedAction(self, action):
 		inOption = False
