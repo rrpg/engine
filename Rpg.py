@@ -63,7 +63,10 @@ class Rpg:
 
 			return c
 		except BaseException as e:
-			if not isinstance(e,  KeyboardInterrupt):
+			if self._debug:
+				import traceback
+				print(traceback.format_exc())
+			elif not isinstance(e,  KeyboardInterrupt):
 				print(e)
 
 
