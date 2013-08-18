@@ -34,6 +34,10 @@ class command():
 	Base class for the commands
 	"""
 
+	"""
+	Available commands stored in a dict with as key, the commands and as value,
+	the command class to execute.
+	"""
 	mapping = {
 		'look': 'look',
 		'talk': 'talk',
