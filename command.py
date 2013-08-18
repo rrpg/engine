@@ -60,6 +60,17 @@ class factory:
 	Class to instanciate a command from a string.
 	"""
 
+	mapping = {
+		'look': 'look',
+		'talk': 'talk',
+		'move': 'move',
+		'take': 'take',
+		'drop': 'drop',
+		'inventory': 'inventory',
+		'inv': 'inventory',
+		'help': 'help'
+	}
+
 	@staticmethod
 	def create(p, commandFull):
 		"""
@@ -83,33 +94,16 @@ class factory:
 				"A player must be connected to launch the command %s" % cmd
 			)
 
-		if cmd == 'look':
-			command = look()
-		elif cmd == 'talk':
-			command = talk()
-		elif cmd == 'move':
-			command = move()
-		elif cmd == 'take':
-			command = take()
-		elif cmd == 'drop':
-			command = drop()
-		elif cmd == 'createPlayer':
-			if p.isConnected():
-				raise player.exception(
-					"You cannot create a new player when you're connected"
-				)
-		elif cmd in ('inventory', 'inv'):
-			command = inventory()
-		elif cmd in ('quit', 'exit', 'q'):
+		if cmd in ('quit', 'exit', 'q'):
 			return quit
-		elif cmd == 'help':
-			command = help()
+		elif cmd in factory.mapping.keys():
+			cmd = getattr(current_module, factory.mapping[cmd])()
 		else:
 			raise exception('Unknown command')
 
-		command.setArgs(commandFull)
-		command.setPlayer(p)
-		return command
+		cmd.setArgs(commandFull)
+		cmd.setPlayer(p)
+		return cmd
 
 
 class help(command):
