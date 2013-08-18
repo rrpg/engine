@@ -34,6 +34,17 @@ class command():
 	Base class for the commands
 	"""
 
+	mapping = {
+		'look': 'look',
+		'talk': 'talk',
+		'move': 'move',
+		'take': 'take',
+		'drop': 'drop',
+		'inventory': 'inventory',
+		'inv': 'inventory',
+		'help': 'help'
+	}
+
 	def setArgs(self, args):
 		"""
 		c.setArgs(args)
@@ -60,17 +71,6 @@ class factory:
 	Class to instanciate a command from a string.
 	"""
 
-	mapping = {
-		'look': 'look',
-		'talk': 'talk',
-		'move': 'move',
-		'take': 'take',
-		'drop': 'drop',
-		'inventory': 'inventory',
-		'inv': 'inventory',
-		'help': 'help'
-	}
-
 	@staticmethod
 	def create(p, commandFull):
 		"""
@@ -96,8 +96,8 @@ class factory:
 
 		if cmd in ('quit', 'exit', 'q'):
 			return quit
-		elif cmd in factory.mapping.keys():
-			cmd = getattr(current_module, factory.mapping[cmd])()
+		elif cmd in command.mapping.keys():
+			cmd = getattr(current_module, command.mapping[cmd])()
 		else:
 			raise exception('Unknown command')
 
