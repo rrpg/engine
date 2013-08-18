@@ -40,7 +40,7 @@ class Model(object):
 		result = []
 		currentRow = {}
 		nbCols = 0
-		c.execute(query, params)
+		c.execute(query, list(params))
 
 		#~ Get the columns names
 		column_names = [d[0] for d in c.description]
@@ -131,7 +131,7 @@ class Model(object):
 
 		query = "UPDATE %(table)s SET %(values)s WHERE %(where)s" %\
 			{'table': cls.__module__, 'values': ','.join(fieldsNames), 'where': where[0]}
-		c.execute(query, fields.values() + where[1])
+		c.execute(query, list(fields.values()) + where[1])
 		Model._db.commit()
 
 	@classmethod
