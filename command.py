@@ -11,6 +11,7 @@ Today, the available commands are:
 - talk
 """
 
+import sys
 import character
 import area
 import random
@@ -23,6 +24,9 @@ from sentence import sentence
 Code corresponding to the quit command
 """
 quit = -1
+
+# Store current module for the factory
+current_module = sys.modules[__name__]
 
 
 class command():
