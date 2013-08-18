@@ -110,6 +110,41 @@ class factory:
 		return cmd
 
 
+class completer:
+	"""
+	Class to autocomplete use choice while typing a command
+	"""
+
+	def __init__(self):
+		"""
+		Construct. Set the available commands in an options var
+		"""
+		self.options = sorted(command.mapping.keys())
+
+	def complete(self, text, state):
+		"""
+		Called method when autocomplete is invoqued
+		"""
+
+		# on first trigger, build possible matches
+		if state == 0:
+			# cache matches (entries that start with entered text)
+			if len(text.split(' ')) > 1:
+				return text
+
+			if text:
+				self.matches = [s for s in self.options if s and s.startswith(text)]
+			# no text entered, all matches possible
+			else:
+				self.matches = self.options[:]
+
+		# return match indexed by state
+		try:
+			return self.matches[state]
+		except IndexError as e:
+			return None
+
+
 class help(command):
 	"""
 	Help command

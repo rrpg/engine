@@ -3,6 +3,7 @@
 from player import player
 import command
 import utils
+import readline
 
 
 class Rpg:
@@ -45,7 +46,13 @@ class Rpg:
 			c = ''
 			result = 0
 			while 1:
-				c = utils.read("Command: ")
+				try:
+					c = self.readCommand()
+				except KeyboardInterrupt:
+					print("")
+					continue
+				except EOFError:
+					break
 
 				if c != "":
 					self._action = self.parseTypedAction(c)
@@ -99,3 +106,10 @@ class Rpg:
 					option = ''
 
 		return commands
+
+	def readCommand(self):
+		completer = command.completer()
+		readline.set_completer(completer.complete)
+		readline.parse_and_bind('tab: complete')
+		readline.set_completer_delims('')
+		return utils.read("Command: ")
