@@ -108,6 +108,10 @@ class Rpg:
 		return commands
 
 	def readCommand(self):
+		"""
+		Method to set the autocompleter and run the prompt, from utils
+		"""
+
 		completer = command.completer()
 		readline.set_completer(completer.complete)
 		readline.parse_and_bind('tab: complete')
