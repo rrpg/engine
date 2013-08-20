@@ -52,7 +52,8 @@ class Rpg:
 					print("")
 					continue
 				except EOFError:
-					break
+					print("")
+					continue
 
 				if c != "":
 					self._action = self.parseTypedAction(c)
