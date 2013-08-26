@@ -126,6 +126,11 @@ class character:
 		self.inventory = item.inventory.removeItems(self.getInventory(), itemsId)
 		model.saveInventory(self._model['id_character'], self.inventory)
 
+	def getAreaId(self):
+		"""
+		Return the id of the area where the character is
+		"""
+		return self._model['id_area']
 
 
 class model(Model):

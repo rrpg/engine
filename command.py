@@ -181,7 +181,7 @@ class look(command):
 		(characters arround, availables directions...).
 		"""
 		# Display surrounding characters
-		characters = character.character.searchByIdArea(self._player._model['id_area'])
+		characters = character.character.searchByIdArea(self._player.getAreaId())
 		# the player is in the result list
 		if len(characters) == 1:
 			print("You're alone here.")
@@ -192,13 +192,13 @@ class look(command):
 					print(c._model['name'])
 
 		# Display accessible areas
-		areas = area.model.getSurroundingAreas(self._player._model['id_area'])
+		areas = area.model.getSurroundingAreas(self._player.getAreaId())
 		print("You can go " +
 			', '.join(filter(lambda k: areas[k] == 1, areas)) + '.')
 
 		# Display surrounding objects
 		items = item.inventory.fromStr(
-			area.model.loadById(self._player._model['id_area'], ['items'])['items']
+			area.model.loadById(self._player.getAreaId(), ['items'])['items']
 		)
 		if len(items) > 0:
 			print("You see the following items:")
@@ -226,7 +226,7 @@ class move(command):
 			raise exception("%s is not a valid direction" % direction)
 
 		a = area.area.getNeighbourgFromDirection(
-			self._player._model['id_area'], direction
+			self._player.getAreaId(), direction
 		)
 
 		if a is None:
@@ -253,7 +253,7 @@ class talk(command):
 		characterName = self._args[0]
 		triggerWord = self._args[1]
 		c = character.character.searchByNameAndIdArea(
-			characterName, self._player._model['id_area']
+			characterName, self._player.getAreaId()
 		)
 
 		if c is None:
@@ -296,7 +296,7 @@ class take(command):
 
 		i = str(i[0]['id_item'])
 		#~ Available items in the area
-		items = area.area.getItems(self._player._model['id_area'])
+		items = area.area.getItems(self._player.getAreaId())
 
 		if i not in items.keys():
 			raise item.exception("I don't see this here.")
@@ -306,7 +306,7 @@ class take(command):
 
 		i = [int(i)] * quantity
 		self._player.addItemsToInventory(i)
-		area.area.removeItems(self._player._model['id_area'], i)
+		area.area.removeItems(self._player.getAreaId(), i)
 
 		print("You took {0} {1}".format(quantity, name))
 
@@ -346,7 +346,7 @@ class drop(command):
 
 		# Drop it
 		self._player.removeItemsFromInventory(i)
-		area.area.addItems(self._player._model['id_area'], i)
+		area.area.addItems(self._player.getAreaId(), i)
 
 		print("You dropped {0} {1}".format(quantity, name))
 
