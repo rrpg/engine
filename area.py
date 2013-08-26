@@ -143,7 +143,7 @@ class model(Model):
 	@staticmethod
 	def getSurroundingAreas(idArea):
 		"""
-		area.getSurroundingAreas(idArea) -> dict()
+		area.model.getSurroundingAreas(idArea) -> dict()
 
 		Return the available neighbourg areas of the area given in argument.
 
