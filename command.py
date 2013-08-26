@@ -11,6 +11,7 @@ Today, the available commands are:
 - talk
 """
 
+import sys
 import character
 import area
 import random
@@ -24,11 +25,29 @@ Code corresponding to the quit command
 """
 quit = -1
 
+# Store current module for the factory
+current_module = sys.modules[__name__]
+
 
 class command():
 	"""
 	Base class for the commands
 	"""
+
+	"""
+	Available commands stored in a dict with as key, the commands and as value,
+	the command class to execute.
+	"""
+	mapping = {
+		'look': 'look',
+		'talk': 'talk',
+		'move': 'move',
+		'take': 'take',
+		'drop': 'drop',
+		'inventory': 'inventory',
+		'inv': 'inventory',
+		'help': 'help'
+	}
 
 	def setArgs(self, args):
 		"""
@@ -79,33 +98,51 @@ class factory:
 				"A player must be connected to launch the command %s" % cmd
 			)
 
-		if cmd == 'look':
-			command = look()
-		elif cmd == 'talk':
-			command = talk()
-		elif cmd == 'move':
-			command = move()
-		elif cmd == 'take':
-			command = take()
-		elif cmd == 'drop':
-			command = drop()
-		elif cmd == 'createPlayer':
-			if p.isConnected():
-				raise player.exception(
-					"You cannot create a new player when you're connected"
-				)
-		elif cmd in ('inventory', 'inv'):
-			command = inventory()
-		elif cmd in ('quit', 'exit', 'q'):
+		if cmd in ('quit', 'exit', 'q'):
 			return quit
-		elif cmd == 'help':
-			command = help()
+		elif cmd in command.mapping.keys():
+			cmd = getattr(current_module, command.mapping[cmd])()
 		else:
 			raise exception('Unknown command')
 
-		command.setArgs(commandFull)
-		command.setPlayer(p)
-		return command
+		cmd.setArgs(commandFull)
+		cmd.setPlayer(p)
+		return cmd
+
+
+class completer:
+	"""
+	Class to autocomplete use choice while typing a command
+	"""
+
+	def __init__(self):
+		"""
+		Construct. Set the available commands in an options var
+		"""
+		self.options = sorted(command.mapping.keys())
+
+	def complete(self, text, state):
+		"""
+		Called method when autocomplete is invoqued
+		"""
+
+		# on first trigger, build possible matches
+		if state == 0:
+			# cache matches (entries that start with entered text)
+			if len(text.split(' ')) > 1:
+				return text
+
+			if text:
+				self.matches = [s for s in self.options if s and s.startswith(text)]
+			# no text entered, all matches possible
+			else:
+				self.matches = self.options[:]
+
+		# return match indexed by state
+		try:
+			return self.matches[state]
+		except IndexError as e:
+			return None
 
 
 class help(command):
