@@ -14,7 +14,7 @@ import json
 """
 Available directions
 """
-directions = ['north', 'south', 'east', 'west']
+directions = {'north': (0, -1), 'south': (0, 1), 'east': (-1, 0), 'west': (1, 0)}
 
 
 class area:
@@ -43,7 +43,10 @@ class area:
 
 		@return area.area if an area is found, None else.
 		"""
-		m = model.getNeighbourgFromDirection(idArea, direction)
+		a = model.loadById(idArea)
+		m = model.getFromDirection(
+			(a['x'] + directions[direction][0], a['y'] + directions[direction][1])
+		)
 
 		if len(m) == 0:
 			return None
@@ -94,6 +97,14 @@ class area:
 		area.items[idArea] = item.inventory.addItems(area.getItems(idArea), items)
 		model.saveAvailableItems(idArea, area.items[idArea])
 
+	@staticmethod
+	def getDirections():
+		"""
+		Return the list of possible directions
+		"""
+
+		return directions.keys()
+
 
 class model(Model):
 	"""
@@ -102,43 +113,36 @@ class model(Model):
 
 	fields = [
 		'id_area', 'id_region',
-		'id_next_area_north', 'id_next_area_east', 'id_next_area_south', 'id_next_area_west',
+		'x', 'y',
 		'items'
 	]
 
 	@staticmethod
-	def getNeighbourgFromDirection(idArea, direction):
+	def getFromDirection(direction):
 		"""
-		area.model.getNeighbourgFromDirection(idArea, direction) -> dict()
+		area.model.getFromDirection(idArea, direction) -> dict()
 
 		Returns the neighbourg of the area given in arguments from a given
 		direction.
 
 		@param idArea integer id of the reference area
-		@direction string direction (from the reference area) of the area to
-		return, must be a value of area.directions.
+		@direction tuple of the area to return, represented by its relative
+			values of x and y from idArea ((-1, 0) for example)
 
 		@return dict informations of the found area, empty dict if not found.
 		"""
-		if direction not in (directions):
-			raise exception('Unknown direction')
 
 		query = "\
 			SELECT\
-				ad.id_area,\
-				ad.id_region,\
-				ad.id_next_area_north,\
-				ad.id_next_area_east,\
-				ad.id_next_area_south,\
-				ad.id_next_area_west\
+				%s\
 			FROM\
-				area AS ad\
-				JOIN area AS ap ON ad.id_area = ap.id_next_area_%s\
+				area\
 			WHERE\
-				ap.id_area = ?\
-		" % direction
+				x = ?\
+				AND y = ?\
+		" % (', '.join(model.fields))
 
-		return Model.fetchOneRow(query, [idArea])
+		return Model.fetchOneRow(query, direction)
 
 	@staticmethod
 	def getSurroundingAreas(idArea):
@@ -154,14 +158,17 @@ class model(Model):
 		"""
 		query = "\
 			SELECT\
-				id_next_area_north IS NOT NULL AS north,\
-				id_next_area_south IS NOT NULL AS south,\
-				id_next_area_east IS NOT NULL AS east,\
-				id_next_area_west IS NOT NULL AS west\
+				CASE WHEN dest.x = orig.x - 1 THEN dest.id_area ELSE NULL END AS west,\
+				CASE WHEN dest.x = orig.x + 1 THEN dest.id_area ELSE NULL END AS east,\
+				CASE WHEN dest.y = orig.y - 1 THEN dest.id_area ELSE NULL END AS north,\
+				CASE WHEN dest.y = orig.y + 1 THEN dest.id_area ELSE NULL END AS south\
 			FROM\
-				area\
+				area AS orig\
+				JOIN area AS dest ON (dest.x = orig.x - 1 OR dest.x = orig.x + 1 OR dest.x = orig.x)\
+					AND (dest.y = orig.y - 1 OR dest.y = orig.y + 1 OR dest.y = orig.y)\
+					AND orig.id_area <> dest.id_area\
 			WHERE\
-				id_area = ?\
+				orig.id_area = ?\
 		"
 
 		return Model.fetchOneRow(query, [idArea])

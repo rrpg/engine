@@ -58,10 +58,8 @@ CREATE TABLE region (
 CREATE TABLE area (
     id_area INTEGER PRIMARY KEY AUTOINCREMENT,
     id_region INTEGER REFERENCES region (id_region),
-    id_next_area_north INTEGER REFERENCES area (id_area),
-    id_next_area_east INTEGER REFERENCES area (id_area),
-    id_next_area_south INTEGER REFERENCES area (id_area),
-    id_next_area_west INTEGER REFERENCES area (id_area),
+    x INTEGER NOT NULL,
+    y INTEGER NOT NULL,
     items TEXT
 );
 

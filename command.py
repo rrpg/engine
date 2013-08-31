@@ -222,7 +222,7 @@ class move(command):
 			raise exception("Where shall I go ?")
 
 		direction = self._args[0]
-		if direction not in area.directions:
+		if direction not in area.area.getDirections():
 			raise exception("%s is not a valid direction" % direction)
 
 		a = area.area.getNeighbourgFromDirection(
