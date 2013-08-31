@@ -62,6 +62,8 @@ CREATE TABLE area (
     y INTEGER NOT NULL,
     items TEXT
 );
+CREATE UNIQUE INDEX unique_area_coordinates ON area (x, y);
+
 
 CREATE TABLE item (
 	id_item INTEGER PRIMARY KEY AUTOINCREMENT,
