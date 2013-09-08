@@ -217,7 +217,7 @@ class Model(object):
 		if not fields:
 			fields = cls.fields
 
-		if isinstance(fields, list):
+		if isinstance(fields, list) or isinstance(fields, tuple):
 			fields = ', '.join(fields)
 		elif isinstance(fields, dict):
 			fields = ', '.join(map(lambda x: fields[x] + ' AS ' + x, fields))

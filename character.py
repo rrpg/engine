@@ -138,7 +138,7 @@ class model(Model):
 	Class to interact with the values in the database.
 	"""
 
-	fields = ['id_character', 'name', 'id_species', 'id_gender', 'id_area', 'inventory']
+	fields = ('id_character', 'name', 'id_species', 'id_gender', 'id_area', 'inventory')
 
 	@staticmethod
 	def savePosition(idCharacter, idArea):

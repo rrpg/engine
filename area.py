@@ -28,6 +28,7 @@ class area:
 	@param dict
 	"""
 	items = dict()
+	types = ('land', 'dungeon')
 
 	@staticmethod
 	def getNeighbourgFromDirection(idArea, direction):
@@ -111,11 +112,11 @@ class model(Model):
 	Class to interact with the values in the database.
 	"""
 
-	fields = [
+	fields = (
 		'id_area', 'id_region',
 		'x', 'y',
 		'items'
-	]
+	)
 
 	@staticmethod
 	def getFromDirection(direction):

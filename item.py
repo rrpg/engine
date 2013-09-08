@@ -83,7 +83,7 @@ class armor():
 
 
 class model(Model):
-	fields = ['id_item', 'name', 'weight', 'flags', 'effects']
+	fields = ('id_item', 'name', 'weight', 'flags', 'effects')
 
 
 class exception(BaseException):
