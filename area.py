@@ -115,6 +115,7 @@ class model(Model):
 	fields = (
 		'id_area', 'id_region',
 		'x', 'y',
+		'container',
 		'items'
 	)
 
