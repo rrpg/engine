@@ -194,7 +194,7 @@ class look(command):
 		# Display accessible areas
 		areas = area.model.getSurroundingAreas(self._player.getAreaId())
 		print("You can go " +
-			', '.join(filter(lambda k: areas[k] == 1, areas)) + '.')
+			', '.join(filter(lambda k: areas[k] is not None, areas)) + '.')
 
 		# Display surrounding objects
 		items = item.inventory.fromStr(
