@@ -18,6 +18,7 @@ import random
 import string
 import player
 import item
+import place
 from sentence import sentence
 
 """
@@ -42,6 +43,8 @@ class command():
 		'look': 'look',
 		'talk': 'talk',
 		'move': 'move',
+		'enter': 'enter',
+		'exit': 'exit',
 		'take': 'take',
 		'drop': 'drop',
 		'inventory': 'inventory',
@@ -98,7 +101,7 @@ class factory:
 				"A player must be connected to launch the command %s" % cmd
 			)
 
-		if cmd in ('quit', 'exit', 'q'):
+		if cmd in ('quit', 'q'):
 			return quit
 		elif cmd in command.mapping.keys():
 			cmd = getattr(current_module, command.mapping[cmd])()
@@ -240,6 +243,54 @@ class move(command):
 		else:
 			self._player.goTo(a._model['id_area'])
 			print('lets go %s' % direction)
+
+
+class enter(command):
+	"""
+	Enter command
+	"""
+
+	def run(self):
+		"""
+		c.run()
+
+		With this command, the player can enter places such as houses, shops,
+		dungeons...
+		"""
+		if len(self._args) == 0:
+			raise exception("I cannot enter into nothing.")
+
+		areaType = self._args[0]
+
+		print('The %s\'s door is opening in front of you...' %(areaType,))
+		ready = False
+		while (ready is False):
+			p = place.factory.create(self._player.getAreaId(), areaType)
+			if p['entrance_id'] is not None:
+				ready = True
+		print('You enter.')
+		self._player.goTo(p['entrance_id'])
+
+
+class exit(command):
+	"""
+	Exit command, to exit a place
+	"""
+
+	def run(self):
+		"""
+		c.run()
+
+		With this command, the player can exit places such as houses, shops,
+		dungeons... to go back in the world
+		"""
+		if len(self._args) == 0:
+			raise exception("I cannot exit out of nothing.")
+
+		areaType = self._args[0]
+
+		p = place.factory.get(self._player.getAreaId(), areaType)
+		self._player.goTo(p['id_area'])
 
 
 class talk(command):
