@@ -189,6 +189,7 @@ class model(Model):
 			('id_area = ?', [idArea])
 		)
 
+
 class exception(BaseException):
 	"""
 	Class for the exceptions concerning areas.

@@ -351,7 +351,6 @@ class drop(command):
 		print("You dropped {0} {1}".format(quantity, name))
 
 
-
 class inventory(command):
 	def run(self):
 		"""
