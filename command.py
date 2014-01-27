@@ -196,6 +196,12 @@ class look(command):
 		print("You can go " +
 			', '.join(filter(lambda k: areas[k] is not None, areas)) + '.')
 
+		# Display accessible places
+		places = place.model.getSurroundingPlaces(self._player.getAreaId())
+		if len(places) > 0:
+			print("You see the following places:")
+			print(', '.join([p['name'] for p in places]))
+
 		# Display surrounding objects
 		items = item.inventory.fromStr(
 			area.model.loadById(self._player.getAreaId(), ['items'])['items']
