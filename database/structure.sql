@@ -71,6 +71,13 @@ CREATE TABLE area (
 );
 CREATE UNIQUE INDEX unique_area_coordinates ON area (container, x, y);
 
+CREATE TABLE place (
+	id_place INTEGER PRIMARY KEY AUTOINCREMENT,
+	id_area_type INTEGER REFERENCES area_type (id_area_type),
+	id_area INTEGER REFERENCES area (id_area),
+	name VARCHAR(127) NOT NULL,
+	entrance_id INTEGER REFERENCES area (id_area)
+);
 
 CREATE TABLE item (
 	id_item INTEGER PRIMARY KEY AUTOINCREMENT,
