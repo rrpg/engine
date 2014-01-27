@@ -55,8 +55,14 @@ CREATE TABLE region (
 	can_sleep_in BOOLEAN DEFAULT TRUE
 );
 
+CREATE TABLE area_type (
+	id_area_type INTEGER PRIMARY KEY AUTOINCREMENT,
+	name VARCHAR(127) UNIQUE NOT NULL
+);
+
 CREATE TABLE area (
 	id_area INTEGER PRIMARY KEY AUTOINCREMENT,
+	id_area_type INTEGER REFERENCES area_type (id_area_type),
 	id_region INTEGER REFERENCES region (id_region),
 	container TEXT NOT NULL, -- arbitrary string used to group the areas. Each container has its own grid.
 	x INTEGER NOT NULL,
