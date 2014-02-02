@@ -234,12 +234,12 @@ class move(command):
 		direction = self._args[0]
 		if direction not in area.area.getDirections():
 			raise exception("%s is not a valid direction" % direction)
+		curAreaId = self._player.getAreaId()
+		curArea = area.model.loadById(curAreaId)
 
-		a = area.area.getNeighbourgFromDirection(
-			self._player.getAreaId(), direction
-		)
+		a = area.area.getNeighbourgFromDirection(curAreaId, direction)
 
-		if a is None:
+		if area.area.canGoTo(curArea['directions'], direction) is False or a is None:
 			raise exception('I cannot go there')
 		else:
 			self._player.goTo(a._model['id_area'])
