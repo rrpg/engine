@@ -67,6 +67,7 @@ CREATE TABLE area (
 	container TEXT NOT NULL, -- arbitrary string used to group the areas. Each container has its own grid.
 	x INTEGER NOT NULL,
 	y INTEGER NOT NULL,
+	directions INTEGER NOT NULL,
 	items TEXT
 );
 CREATE UNIQUE INDEX unique_area_coordinates ON area (container, x, y);

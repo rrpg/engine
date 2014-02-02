@@ -83,6 +83,7 @@ class dungeon():
 				'id_area_type': dungeonPlace['id_area_type'],
 				'x': index % 10,
 				'y': index / 10,
+				'directions': checks.getDirections(room) >> 2,
 				'container': containerName,
 				'id_region': idRegion
 			})
