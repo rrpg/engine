@@ -14,7 +14,12 @@ import json
 """
 Available directions
 """
-directions = {'north': (0, -1), 'south': (0, 1), 'east': (-1, 0), 'west': (1, 0)}
+directions = {
+	'north': (1, (0, -1)),
+	'east': (2, (1, 0)),
+	'south': (4, (0, 1)),
+	'west': (8, (-1, 0))
+}
 
 
 class area:
@@ -46,7 +51,7 @@ class area:
 		"""
 		a = model.loadById(idArea)
 		m = model.getFromDirection(
-			(a['x'] + directions[direction][0], a['y'] + directions[direction][1])
+			(a['x'] + directions[direction][1][0], a['y'] + directions[direction][1][1])
 		)
 
 		if len(m) == 0:
