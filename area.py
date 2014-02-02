@@ -111,6 +111,27 @@ class area:
 
 		return directions.keys()
 
+	@staticmethod
+	def getValidDirections(directionsBits):
+		"""
+		From a integer containing, for each bits, a direction, a list will
+		be returned containing the directions being in the integer.
+		For example, if directionBits == 6 (0b0110), the returned directions
+		will be ("east", "south").
+		Uses the package variable directions.
+		"""
+		return filter(lambda k: area.canGoTo(directionsBits, k), directions)
+
+	@staticmethod
+	def canGoTo(directionsBits, direction):
+		"""
+		Check if a direction match a provided integer.
+		For example, if directionBits == 6 (0b0110), the method will return true
+		if direction == "east" or "south".
+		Uses the package variable directions.
+		"""
+		return (directions[direction][0] & directionsBits) == directions[direction][0]
+
 
 class model(Model):
 	"""
