@@ -76,6 +76,9 @@ class dungeon():
 		idRegion = area.model.loadById(dungeonPlace['id_area'], ('id_region'))['id_region']
 
 		for index, room in enumerate(d):
+			if int(room) == 0:
+				continue
+
 			areaId = area.model.insert({
 				'id_area_type': dungeonPlace['id_area_type'],
 				'x': index % 10,
