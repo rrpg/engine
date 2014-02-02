@@ -14,7 +14,12 @@ import json
 """
 Available directions
 """
-directions = ['north', 'south', 'east', 'west']
+directions = {
+	'north': (1, (0, -1)),
+	'east': (2, (1, 0)),
+	'south': (4, (0, 1)),
+	'west': (8, (-1, 0))
+}
 
 
 class area:
@@ -28,6 +33,7 @@ class area:
 	@param dict
 	"""
 	items = dict()
+	types = ('land', 'dungeon')
 
 	@staticmethod
 	def getNeighbourgFromDirection(idArea, direction):
@@ -43,7 +49,10 @@ class area:
 
 		@return area.area if an area is found, None else.
 		"""
-		m = model.getNeighbourgFromDirection(idArea, direction)
+		a = model.loadById(idArea)
+		m = model.getFromDirection(
+			(a['x'] + directions[direction][1][0], a['y'] + directions[direction][1][1])
+		)
 
 		if len(m) == 0:
 			return None
@@ -94,56 +103,80 @@ class area:
 		area.items[idArea] = item.inventory.addItems(area.getItems(idArea), items)
 		model.saveAvailableItems(idArea, area.items[idArea])
 
+	@staticmethod
+	def getDirections():
+		"""
+		Return the list of possible directions
+		"""
+
+		return directions.keys()
+
+	@staticmethod
+	def getValidDirections(directionsBits):
+		"""
+		From a integer containing, for each bits, a direction, a list will
+		be returned containing the directions being in the integer.
+		For example, if directionBits == 6 (0b0110), the returned directions
+		will be ("east", "south").
+		Uses the package variable directions.
+		"""
+		return filter(lambda k: area.canGoTo(directionsBits, k), directions)
+
+	@staticmethod
+	def canGoTo(directionsBits, direction):
+		"""
+		Check if a direction match a provided integer.
+		For example, if directionBits == 6 (0b0110), the method will return true
+		if direction == "east" or "south".
+		Uses the package variable directions.
+		"""
+		return (directions[direction][0] & directionsBits) == directions[direction][0]
+
 
 class model(Model):
 	"""
 	Class to interact with the values in the database.
 	"""
 
-	fields = [
+	fields = (
 		'id_area', 'id_region',
-		'id_next_area_north', 'id_next_area_east', 'id_next_area_south', 'id_next_area_west',
+		'x', 'y',
+		'directions',
+		'container',
 		'items'
-	]
+	)
 
 	@staticmethod
-	def getNeighbourgFromDirection(idArea, direction):
+	def getFromDirection(direction):
 		"""
-		area.model.getNeighbourgFromDirection(idArea, direction) -> dict()
+		area.model.getFromDirection(idArea, direction) -> dict()
 
 		Returns the neighbourg of the area given in arguments from a given
 		direction.
 
 		@param idArea integer id of the reference area
-		@direction string direction (from the reference area) of the area to
-		return, must be a value of area.directions.
+		@direction tuple of the area to return, represented by its relative
+			values of x and y from idArea ((-1, 0) for example)
 
 		@return dict informations of the found area, empty dict if not found.
 		"""
-		if direction not in (directions):
-			raise exception('Unknown direction')
 
 		query = "\
 			SELECT\
-				ad.id_area,\
-				ad.id_region,\
-				ad.id_next_area_north,\
-				ad.id_next_area_east,\
-				ad.id_next_area_south,\
-				ad.id_next_area_west\
+				%s\
 			FROM\
-				area AS ad\
-				JOIN area AS ap ON ad.id_area = ap.id_next_area_%s\
+				area\
 			WHERE\
-				ap.id_area = ?\
-		" % direction
+				x = ?\
+				AND y = ?\
+		" % (', '.join(model.fields))
 
-		return Model.fetchOneRow(query, [idArea])
+		return Model.fetchOneRow(query, direction)
 
 	@staticmethod
 	def getSurroundingAreas(idArea):
 		"""
-		area.getSurroundingAreas(idArea) -> dict()
+		area.model.getSurroundingAreas(idArea) -> dict()
 
 		Return the available neighbourg areas of the area given in argument.
 
@@ -154,14 +187,14 @@ class model(Model):
 		"""
 		query = "\
 			SELECT\
-				id_next_area_north IS NOT NULL AS north,\
-				id_next_area_south IS NOT NULL AS south,\
-				id_next_area_east IS NOT NULL AS east,\
-				id_next_area_west IS NOT NULL AS west\
+				orig.directions\
 			FROM\
-				area\
+				area AS orig\
+				JOIN area AS dest ON (dest.x = orig.x - 1 OR dest.x = orig.x + 1 OR dest.x = orig.x)\
+					AND (dest.y = orig.y - 1 OR dest.y = orig.y + 1 OR dest.y = orig.y)\
+					AND orig.id_area <> dest.id_area\
 			WHERE\
-				id_area = ?\
+				orig.id_area = ?\
 		"
 
 		return Model.fetchOneRow(query, [idArea])
@@ -180,6 +213,7 @@ class model(Model):
 			{'items': json.dumps(items)},
 			('id_area = ?', [idArea])
 		)
+
 
 class exception(BaseException):
 	"""

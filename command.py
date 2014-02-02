@@ -18,6 +18,7 @@ import random
 import string
 import player
 import item
+import place
 from sentence import sentence
 
 """
@@ -42,6 +43,8 @@ class command():
 		'look': 'look',
 		'talk': 'talk',
 		'move': 'move',
+		'enter': 'enter',
+		'exit': 'exit',
 		'take': 'take',
 		'drop': 'drop',
 		'inventory': 'inventory',
@@ -98,7 +101,7 @@ class factory:
 				"A player must be connected to launch the command %s" % cmd
 			)
 
-		if cmd in ('quit', 'exit', 'q'):
+		if cmd in ('quit', 'q'):
 			return quit
 		elif cmd in command.mapping.keys():
 			cmd = getattr(current_module, command.mapping[cmd])()
@@ -181,7 +184,7 @@ class look(command):
 		(characters arround, availables directions...).
 		"""
 		# Display surrounding characters
-		characters = character.character.searchByIdArea(self._player._model['id_area'])
+		characters = character.character.searchByIdArea(self._player.getAreaId())
 		# the player is in the result list
 		if len(characters) == 1:
 			print("You're alone here.")
@@ -192,13 +195,20 @@ class look(command):
 					print(c._model['name'])
 
 		# Display accessible areas
-		areas = area.model.getSurroundingAreas(self._player._model['id_area'])
+		areas = area.model.getSurroundingAreas(self._player.getAreaId())
+		directions = area.area.getValidDirections(areas['directions'])
 		print("You can go " +
-			', '.join(filter(lambda k: areas[k] == 1, areas)) + '.')
+			', '.join(directions) + '.')
+
+		# Display accessible places
+		places = place.model.getSurroundingPlaces(self._player.getAreaId())
+		if len(places) > 0:
+			print("You see the following places:")
+			print(', '.join([p['name'] for p in places]))
 
 		# Display surrounding objects
 		items = item.inventory.fromStr(
-			area.model.loadById(self._player._model['id_area'], ['items'])['items']
+			area.model.loadById(self._player.getAreaId(), ['items'])['items']
 		)
 		if len(items) > 0:
 			print("You see the following items:")
@@ -222,18 +232,66 @@ class move(command):
 			raise exception("Where shall I go ?")
 
 		direction = self._args[0]
-		if direction not in area.directions:
+		if direction not in area.area.getDirections():
 			raise exception("%s is not a valid direction" % direction)
+		curAreaId = self._player.getAreaId()
+		curArea = area.model.loadById(curAreaId)
 
-		a = area.area.getNeighbourgFromDirection(
-			self._player._model['id_area'], direction
-		)
+		a = area.area.getNeighbourgFromDirection(curAreaId, direction)
 
-		if a is None:
+		if area.area.canGoTo(curArea['directions'], direction) is False or a is None:
 			raise exception('I cannot go there')
 		else:
 			self._player.goTo(a._model['id_area'])
 			print('lets go %s' % direction)
+
+
+class enter(command):
+	"""
+	Enter command
+	"""
+
+	def run(self):
+		"""
+		c.run()
+
+		With this command, the player can enter places such as houses, shops,
+		dungeons...
+		"""
+		if len(self._args) == 0:
+			raise exception("I cannot enter into nothing.")
+
+		areaType = self._args[0]
+
+		print('The %s\'s door is opening in front of you...' %(areaType,))
+		ready = False
+		while (ready is False):
+			p = place.factory.create(self._player.getAreaId(), areaType)
+			if p['entrance_id'] is not None:
+				ready = True
+		print('You enter.')
+		self._player.goTo(p['entrance_id'])
+
+
+class exit(command):
+	"""
+	Exit command, to exit a place
+	"""
+
+	def run(self):
+		"""
+		c.run()
+
+		With this command, the player can exit places such as houses, shops,
+		dungeons... to go back in the world
+		"""
+		if len(self._args) == 0:
+			raise exception("I cannot exit out of nothing.")
+
+		areaType = self._args[0]
+
+		p = place.factory.get(self._player.getAreaId(), areaType)
+		self._player.goTo(p['id_area'])
 
 
 class talk(command):
@@ -253,7 +311,7 @@ class talk(command):
 		characterName = self._args[0]
 		triggerWord = self._args[1]
 		c = character.character.searchByNameAndIdArea(
-			characterName, self._player._model['id_area']
+			characterName, self._player.getAreaId()
 		)
 
 		if c is None:
@@ -296,7 +354,7 @@ class take(command):
 
 		i = str(i[0]['id_item'])
 		#~ Available items in the area
-		items = area.area.getItems(self._player._model['id_area'])
+		items = area.area.getItems(self._player.getAreaId())
 
 		if i not in items.keys():
 			raise item.exception("I don't see this here.")
@@ -306,7 +364,7 @@ class take(command):
 
 		i = [int(i)] * quantity
 		self._player.addItemsToInventory(i)
-		area.area.removeItems(self._player._model['id_area'], i)
+		area.area.removeItems(self._player.getAreaId(), i)
 
 		print("You took {0} {1}".format(quantity, name))
 
@@ -346,10 +404,9 @@ class drop(command):
 
 		# Drop it
 		self._player.removeItemsFromInventory(i)
-		area.area.addItems(self._player._model['id_area'], i)
+		area.area.addItems(self._player.getAreaId(), i)
 
 		print("You dropped {0} {1}".format(quantity, name))
-
 
 
 class inventory(command):

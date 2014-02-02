@@ -126,6 +126,11 @@ class character:
 		self.inventory = item.inventory.removeItems(self.getInventory(), itemsId)
 		model.saveInventory(self._model['id_character'], self.inventory)
 
+	def getAreaId(self):
+		"""
+		Return the id of the area where the character is
+		"""
+		return self._model['id_area']
 
 
 class model(Model):
@@ -133,7 +138,7 @@ class model(Model):
 	Class to interact with the values in the database.
 	"""
 
-	fields = ['id_character', 'name', 'id_species', 'id_gender', 'id_area', 'inventory']
+	fields = ('id_character', 'name', 'id_species', 'id_gender', 'id_area', 'inventory')
 
 	@staticmethod
 	def savePosition(idCharacter, idArea):

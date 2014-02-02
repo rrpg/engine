@@ -49,6 +49,7 @@ class Model(object):
 		for r in result:
 			resultList.append(Model._createRow(r, column_names))
 
+		Model._db.close()
 		return resultList
 
 	@staticmethod
@@ -77,6 +78,7 @@ class Model(object):
 		if r is not None:
 			result = Model._createRow(r, column_names)
 
+		Model._db.close()
 		return result
 
 	@classmethod
@@ -118,6 +120,7 @@ class Model(object):
 
 		c.execute(query, list(fields.values()))
 		Model._db.commit()
+		Model._db.close()
 
 		return c.lastrowid
 
@@ -133,6 +136,7 @@ class Model(object):
 			{'table': cls.__module__, 'values': ','.join(fieldsNames), 'where': where[0]}
 		c.execute(query, list(fields.values()) + where[1])
 		Model._db.commit()
+		Model._db.close()
 
 	@classmethod
 	def delete(cls, where):
@@ -143,15 +147,14 @@ class Model(object):
 			{'table': cls.__module__, 'where': where[0]}
 		r = c.execute(query, where[1])
 		Model._db.commit()
+		Model._db.close()
 		return r
 
 	#protected:
 	@staticmethod
 	def _connect():
-		if Model._db is None:
-			Model._db = sqlite3.connect(config.db)
+		Model._db = sqlite3.connect(config.db)
 
-		return True
 
 	@staticmethod
 	def _createRow(sqliteRow, columns):
@@ -217,7 +220,7 @@ class Model(object):
 		if not fields:
 			fields = cls.fields
 
-		if isinstance(fields, list):
+		if isinstance(fields, list) or isinstance(fields, tuple):
 			fields = ', '.join(fields)
 		elif isinstance(fields, dict):
 			fields = ', '.join(map(lambda x: fields[x] + ' AS ' + x, fields))
