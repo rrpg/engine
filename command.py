@@ -196,8 +196,9 @@ class look(command):
 
 		# Display accessible areas
 		areas = area.model.getSurroundingAreas(self._player.getAreaId())
+		directions = area.area.getValidDirections(areas['directions'])
 		print("You can go " +
-			', '.join(filter(lambda k: areas[k] is not None, areas)) + '.')
+			', '.join(directions) + '.')
 
 		# Display accessible places
 		places = place.model.getSurroundingPlaces(self._player.getAreaId())

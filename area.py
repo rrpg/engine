@@ -187,10 +187,7 @@ class model(Model):
 		"""
 		query = "\
 			SELECT\
-				CASE WHEN dest.x = orig.x - 1 THEN dest.id_area ELSE NULL END AS west,\
-				CASE WHEN dest.x = orig.x + 1 THEN dest.id_area ELSE NULL END AS east,\
-				CASE WHEN dest.y = orig.y - 1 THEN dest.id_area ELSE NULL END AS north,\
-				CASE WHEN dest.y = orig.y + 1 THEN dest.id_area ELSE NULL END AS south\
+				orig.directions\
 			FROM\
 				area AS orig\
 				JOIN area AS dest ON (dest.x = orig.x - 1 OR dest.x = orig.x + 1 OR dest.x = orig.x)\
