@@ -63,7 +63,7 @@ class dungeon():
 		@param dungeonPlace Place entity representing the dungeon
 		"""
 
-		print('Generating dungeon')
+		print('Generating dungeon...')
 		pipe = os.popen(config.generator['dungeon']['generator'])
 		d = pipe.read().strip().split('\n')
 		pipe.close()
