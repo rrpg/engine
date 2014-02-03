@@ -58,6 +58,7 @@ class Rpg:
 				if c != "":
 					self._action = self.parseTypedAction(c)
 					result = self._runAction()
+					print("")
 
 				if result == command.quit:
 					break
@@ -117,4 +118,4 @@ class Rpg:
 		readline.set_completer(completer.complete)
 		readline.parse_and_bind('tab: complete')
 		readline.set_completer_delims('')
-		return utils.read("\nCommand: ")
+		return utils.read("Command: ")
