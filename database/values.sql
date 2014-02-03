@@ -6,7 +6,7 @@ INSERT INTO gender (name) VALUES ('female');
 INSERT INTO item (name, weight, flags, effects) VALUES ('Heavy breastplate', 5, 3, '{"defense": 10, "speed": -5}');
 INSERT INTO item (name, weight, flags, effects) VALUES ('Mist potion', .1, 6, '{"stealth": 7}');
 
-INSERT INTO region (region_name) VALUES ('Balmora');
+INSERT INTO region (region_name) VALUES ('The High lands');
 INSERT INTO area_type (name) VALUES ('land');
 INSERT INTO area_type (name) VALUES ('dungeon');
 INSERT INTO area (id_region, id_area_type, container, x, y, directions, items)

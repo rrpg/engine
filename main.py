@@ -32,9 +32,19 @@ def main(argv):
 
 	args = parser.parse_args()
 
-	rpg = Rpg(args.login, args.password, args.action)
-	rpg.setDebug(args.debug)
+	rpg = Rpg(args.debug)
+
+	try:
+		rpg.init(args.login, args.password, args.action)
+	except KeyboardInterrupt:
+		print("")
+		return
+	except BaseException as e:
+		rpg.renderException(e)
+		return
+
 	rpg.run()
+
 
 if __name__ == "__main__":
 	main(sys.argv[1:])

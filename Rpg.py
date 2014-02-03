@@ -9,7 +9,10 @@ import readline
 class Rpg:
 	_debug = False
 
-	def __init__(self, login, password, action):
+	def __init__(self, debug):
+		self._debug = debug
+
+	def init(self, login, password, action):
 		#~ if the game is launched with login/password,
 		#~ the player is directly fetched
 		if login is not None and password is not None:
@@ -23,14 +26,14 @@ class Rpg:
 
 		self._player.connect()
 
-	def setDebug(self, debug):
-		self._debug = debug
-
 	#~ This method asks the player to login or to create a new account
 	def _doInteractiveAuth(self):
 		choice = 0
+		print("Player selection")
+		print("  1 - Create a new player")
+		print("  2 - Use an existing player")
 		while choice != '1' and choice != '2':
-			choice = utils.read("new account (1) or login (2) ? ")
+			choice = utils.read("Your choice? ")
 
 		if choice == '1':
 			self._player.createNewPlayerFromStdIn()
@@ -53,11 +56,12 @@ class Rpg:
 					continue
 				except EOFError:
 					print("")
-					continue
+					break
 
 				if c != "":
 					self._action = self.parseTypedAction(c)
 					result = self._runAction()
+					print("")
 
 				if result == command.quit:
 					break
@@ -71,11 +75,7 @@ class Rpg:
 
 			return c
 		except BaseException as e:
-			if self._debug:
-				import traceback
-				print(traceback.format_exc())
-			elif not isinstance(e,  KeyboardInterrupt):
-				print(e)
+			self.renderException(e)
 
 
 
@@ -118,3 +118,10 @@ class Rpg:
 		readline.parse_and_bind('tab: complete')
 		readline.set_completer_delims('')
 		return utils.read("Command: ")
+
+	def renderException(self, e):
+		if self._debug:
+			import traceback
+			print(traceback.format_exc())
+		elif not isinstance(e, KeyboardInterrupt):
+			print(e)

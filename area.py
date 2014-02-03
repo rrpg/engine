@@ -132,6 +132,9 @@ class area:
 		"""
 		return (directions[direction][0] & directionsBits) == directions[direction][0]
 
+	@staticmethod
+	def getRegionNameFromAreaId(idArea):
+		return model.getRegionNameFromAreaId(idArea)
 
 class model(Model):
 	"""
@@ -147,14 +150,37 @@ class model(Model):
 	)
 
 	@staticmethod
+	def getRegionNameFromAreaId(idArea):
+		"""
+		area.model.getRegionNameFromAreaId(idArea) -> string
+
+		Returns the name of the current area's region.
+
+		@param idArea integer id of the reference area
+
+		@return string name of the region
+		"""
+
+		query = "\
+			SELECT\
+				r.region_name\
+			FROM\
+				area AS a\
+				JOIN region AS r\
+			WHERE\
+				a.id_area = ?\
+		"
+
+		return Model.fetchOneRow(query, [idArea])['region_name']
+
+	@staticmethod
 	def getFromDirection(direction):
 		"""
-		area.model.getFromDirection(idArea, direction) -> dict()
+		area.model.getFromDirection(direction) -> dict()
 
 		Returns the neighbourg of the area given in arguments from a given
 		direction.
 
-		@param idArea integer id of the reference area
 		@direction tuple of the area to return, represented by its relative
 			values of x and y from idArea ((-1, 0) for example)
 
