@@ -117,4 +117,4 @@ class Rpg:
 		readline.set_completer(completer.complete)
 		readline.parse_and_bind('tab: complete')
 		readline.set_completer_delims('')
-		return utils.read("Command: ")
+		return utils.read("\nCommand: ")
