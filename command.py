@@ -193,7 +193,7 @@ class look(command):
 		characters = character.character.searchByIdArea(areaId)
 		# the player is in the result list
 		if len(characters) == 1:
-			print("You're alone here.")
+			print("You are alone here.")
 		else:
 			print("Characters arround:")
 			for c in characters:

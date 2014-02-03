@@ -176,12 +176,11 @@ class model(Model):
 	@staticmethod
 	def getFromDirection(direction):
 		"""
-		area.model.getFromDirection(idArea, direction) -> dict()
+		area.model.getFromDirection(direction) -> dict()
 
 		Returns the neighbourg of the area given in arguments from a given
 		direction.
 
-		@param idArea integer id of the reference area
 		@direction tuple of the area to return, represented by its relative
 			values of x and y from idArea ((-1, 0) for example)
 
