@@ -72,11 +72,7 @@ class Rpg:
 
 			return c
 		except BaseException as e:
-			if self._debug:
-				import traceback
-				print(traceback.format_exc())
-			elif not isinstance(e, KeyboardInterrupt):
-				print(e)
+			self.renderException(e)
 
 
 
@@ -119,3 +115,10 @@ class Rpg:
 		readline.parse_and_bind('tab: complete')
 		readline.set_completer_delims('')
 		return utils.read("Command: ")
+
+	def renderException(self, e):
+		if self._debug:
+			import traceback
+			print(traceback.format_exc())
+		elif not isinstance(e, KeyboardInterrupt):
+			print(e)
