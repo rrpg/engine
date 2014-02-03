@@ -29,8 +29,11 @@ class Rpg:
 	#~ This method asks the player to login or to create a new account
 	def _doInteractiveAuth(self):
 		choice = 0
+		print("Player selection")
+		print("  1 - Create a new player")
+		print("  2 - Use an existing player")
 		while choice != '1' and choice != '2':
-			choice = utils.read("new account (1) or login (2) ? ")
+			choice = utils.read("Your choice? ")
 
 		if choice == '1':
 			self._player.createNewPlayerFromStdIn()
