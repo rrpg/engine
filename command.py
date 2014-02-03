@@ -183,8 +183,14 @@ class look(command):
 		Display some informations about the player's current position
 		(characters arround, availables directions...).
 		"""
+		areaId = self._player.getAreaId()
+
+		# Display current area description
+		regionName = area.area.getRegionNameFromAreaId(areaId)
+		print("You are in %s." % (regionName))
+
 		# Display surrounding characters
-		characters = character.character.searchByIdArea(self._player.getAreaId())
+		characters = character.character.searchByIdArea(areaId)
 		# the player is in the result list
 		if len(characters) == 1:
 			print("You're alone here.")
@@ -195,20 +201,20 @@ class look(command):
 					print(c._model['name'])
 
 		# Display accessible areas
-		areas = area.model.getSurroundingAreas(self._player.getAreaId())
+		areas = area.model.getSurroundingAreas(areaId)
 		directions = area.area.getValidDirections(areas['directions'])
 		print("You can go " +
 			', '.join(directions) + '.')
 
 		# Display accessible places
-		places = place.model.getSurroundingPlaces(self._player.getAreaId())
+		places = place.model.getSurroundingPlaces(areaId)
 		if len(places) > 0:
 			print("You see the following places:")
 			print(', '.join([p['name'] for p in places]))
 
 		# Display surrounding objects
 		items = item.inventory.fromStr(
-			area.model.loadById(self._player.getAreaId(), ['items'])['items']
+			area.model.loadById(areaId, ['items'])['items']
 		)
 		if len(items) > 0:
 			print("You see the following items:")
