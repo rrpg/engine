@@ -75,7 +75,7 @@ class Rpg:
 			if self._debug:
 				import traceback
 				print(traceback.format_exc())
-			elif not isinstance(e,  KeyboardInterrupt):
+			elif not isinstance(e, KeyboardInterrupt):
 				print(e)
 
 
