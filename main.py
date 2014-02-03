@@ -32,8 +32,8 @@ def main(argv):
 
 	args = parser.parse_args()
 
-	rpg = Rpg(args.login, args.password, args.action)
-	rpg.setDebug(args.debug)
+	rpg = Rpg(args.debug)
+	rpg.init(args.login, args.password, args.action)
 	rpg.run()
 
 if __name__ == "__main__":

@@ -9,7 +9,10 @@ import readline
 class Rpg:
 	_debug = False
 
-	def __init__(self, login, password, action):
+	def __init__(self, debug):
+		self._debug = debug
+
+	def init(self, login, password, action):
 		#~ if the game is launched with login/password,
 		#~ the player is directly fetched
 		if login is not None and password is not None:
@@ -22,9 +25,6 @@ class Rpg:
 		self._action = action
 
 		self._player.connect()
-
-	def setDebug(self, debug):
-		self._debug = debug
 
 	#~ This method asks the player to login or to create a new account
 	def _doInteractiveAuth(self):
