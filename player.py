@@ -64,7 +64,7 @@ class player(character.character):
 		nbGenders = len(genders)
 
 		for k, v in enumerate(genders):
-			print(v['name'] + " (" + str(k) + ")")
+			print(str(k).rjust(3) + ' ' + v['name'])
 
 		g = -1
 		while g < 0 or g >= nbGenders:
@@ -80,7 +80,7 @@ class player(character.character):
 		nbSpecies = len(sps)
 
 		for k, v in enumerate(sps):
-			print(v['name'] + " (" + str(k) + ")")
+			print(str(k).rjust(3) + ' ' + v['name'])
 			print(v['description'])
 
 		sp = -1
