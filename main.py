@@ -26,6 +26,10 @@ def main(argv):
 		dest="password", help="Player password", metavar="PASSWORD"
 	)
 	parser.add_argument(
+		"-w", "--world",
+		dest="world", help="World to load", metavar="WORLD"
+	)
+	parser.add_argument(
 		"action",
 		metavar="A", nargs='*', help="Action to execute"
 	)
@@ -35,7 +39,7 @@ def main(argv):
 	rpg = Rpg(args.debug)
 
 	try:
-		rpg.init(args.login, args.password, args.action)
+		rpg.init(args.world, args.login, args.password, args.action)
 	except KeyboardInterrupt:
 		print("")
 		return

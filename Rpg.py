@@ -4,6 +4,8 @@ from player import player
 import command
 import utils
 import readline
+import config
+import registry
 
 
 class Rpg:
@@ -12,7 +14,12 @@ class Rpg:
 	def __init__(self, debug):
 		self._debug = debug
 
-	def init(self, login, password, action):
+	def init(self, world, login, password, action):
+		if world is None:
+			world = config.db
+
+		registry.set("world", world)
+
 		#~ if the game is launched with login/password,
 		#~ the player is directly fetched
 		if login is not None and password is not None:

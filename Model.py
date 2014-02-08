@@ -8,6 +8,7 @@ elements from a pk, load rows from a given condition...).
 
 import config
 import sqlite3
+import registry
 
 
 class Model(object):
@@ -153,7 +154,7 @@ class Model(object):
 	#protected:
 	@staticmethod
 	def _connect():
-		Model._db = sqlite3.connect(config.db)
+		Model._db = sqlite3.connect(registry.get("world"))
 
 
 	@staticmethod
