@@ -14,6 +14,8 @@ INSERT INTO area (id_region, id_area_type, container, x, y, directions, items)
 INSERT INTO area (id_region, id_area_type, container, x, y, directions)
 	VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'land'), 'world', 0, 1, 1);
 
+INSERT INTO settings (key, value) VALUES ('START_CELL_ID', 1);
+
 INSERT INTO place (id_area, id_area_type, name) VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'dungeon'), 'first dungeon');
 
 INSERT INTO `character` (name, id_species, id_gender, id_area) VALUES ('Tom', 1, 1, 2);
