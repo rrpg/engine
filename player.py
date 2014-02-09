@@ -8,6 +8,7 @@ import species
 import character
 from Model import Model
 import datetime
+from settings import settings
 
 
 class player(character.character):
@@ -99,7 +100,7 @@ class player(character.character):
 			'password': self._password,
 			'id_species': speciesId,
 			'id_gender': genderId,
-			'id_area': 1
+			'id_area': settings.get('START_CELL_ID')
 		}
 
 		self._model['id_character'] = character.model.insert(self._model)
