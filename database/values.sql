@@ -1,4 +1,4 @@
-INSERT INTO species (name_m, name_f, description) VALUES ('humain', 'humaine', 'Les humains viennent de la planete Terre');
+INSERT INTO species (name, description) VALUES ('Human', 'Humans come from planet Earth');
 
 INSERT INTO gender (name) VALUES ('male');
 INSERT INTO gender (name) VALUES ('female');

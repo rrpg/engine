@@ -77,7 +77,7 @@ class player(character.character):
 
 		genderId = genders[g]['id_gender']
 
-		sps = species.model.getSpecies(genders[g]['name'])
+		sps = species.model.getSpecies()
 		nbSpecies = len(sps)
 
 		for k, v in enumerate(sps):

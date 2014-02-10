@@ -1,7 +1,6 @@
 CREATE TABLE species (
 	id_species INTEGER PRIMARY KEY AUTOINCREMENT,
-	name_m VARCHAR(30) NOT NULL,
-	name_f VARCHAR(30) NOT NULL,
+	name VARCHAR(30) NOT NULL,
 	description TEXT
 );
 
