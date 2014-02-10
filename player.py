@@ -80,19 +80,22 @@ class player(character.character):
 		sps = species.model.getSpecies()
 		nbSpecies = len(sps)
 
-		for k, v in enumerate(sps):
-			print(str(k).rjust(3) + ' - ' + v['name'])
-			print(v['description'])
+		if nbSpecies == 1:
+			speciesId = sps[0]['id_species']
+		else:
+			for k, v in enumerate(sps):
+				print(str(k).rjust(3) + ' - ' + v['name'])
+				print(v['description'])
 
-		sp = -1
-		while sp < 0 or sp >= nbSpecies:
-			sp = utils.read("Character species: ")
-			try:
-				sp = int(sp)
-			except:
-				sp = -1
+			sp = -1
+			while sp < 0 or sp >= nbSpecies:
+				sp = utils.read("Character species: ")
+				try:
+					sp = int(sp)
+				except:
+					sp = -1
 
-		speciesId = sps[sp]['id_species']
+			speciesId = sps[sp]['id_species']
 
 		self._model = {
 			'login': self._login,
