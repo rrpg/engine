@@ -76,6 +76,7 @@ CREATE TABLE place (
 	id_area_type INTEGER REFERENCES area_type (id_area_type),
 	id_area INTEGER REFERENCES area (id_area),
 	name VARCHAR(127) NOT NULL,
+	place_size INTEGER NOT NULL DEFAULT 0,
 	entrance_id INTEGER REFERENCES area (id_area)
 );
 
