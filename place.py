@@ -16,7 +16,7 @@ class factory:
 	Class to
 	"""
 
-	types = ('dungeon')
+	types = ('dungeon', 'cave')
 
 	@staticmethod
 	def create(idArea, t):
@@ -33,37 +33,36 @@ class factory:
 
 		if t == 'dungeon':
 			return dungeon.getAvailable(idArea, generate)
+		if t == 'cave':
+			return cave.getAvailable(idArea, generate)
 
 
-
-class dungeon():
-	areaType = 'dungeon'
-
-	@staticmethod
-	def getAvailable(idArea, generate):
+class randomPlace:
+	@classmethod
+	def getAvailable(cls, idArea, generate):
 		"""
 		Method to get the informations of a dungeon being in an area.
 		If the dungeon is not yet generated, it will be done here.
 		"""
-		d = model.getOneFromTypeAndArea('dungeon', idArea)
+		d = model.getOneFromTypeAndArea(cls.areaType, idArea)
 
 		if len(d) == 0:
-			raise exception('There is no dungeon here.')
+			raise exception('There is no such place here.')
 
 		if generate and d['entrance_id'] is None:
-			dungeon.generateDungeon(d)
+			cls.generate(d)
 
 		return d
 
-	@staticmethod
-	def generateDungeon(dungeonPlace):
+	@classmethod
+	def generate(cls, place):
 		"""
-		Generate a dungeon using an external generating tool
+		Generate a place using an external generating tool
 
-		@param dungeonPlace Place entity representing the dungeon
+		@param place Place entity representing the place
 		"""
 
-		print('Generating dungeon...')
+		print('Generating place...')
 		pipe = os.popen(config.generator['dungeon']['generator'])
 		d = pipe.read().strip().split('\n')
 		pipe.close()
@@ -72,15 +71,15 @@ class dungeon():
 		sys.path.insert(0, config.generator['dungeon']['path'])
 		import checks
 
-		containerName = 'dungeon_' + str(dungeonPlace['id_place'])
-		idRegion = area.model.loadById(dungeonPlace['id_area'], ('id_region'))['id_region']
+		containerName = cls.areaType + '_' + str(place['id_place'])
+		idRegion = area.model.loadById(place['id_area'], ('id_region'))['id_region']
 
 		for index, room in enumerate(d):
 			if int(room) == 0:
 				continue
 
 			areaId = area.model.insert({
-				'id_area_type': dungeonPlace['id_area_type'],
+				'id_area_type': place['id_area_type'],
 				'x': index % 10,
 				'y': index / 10,
 				'directions': checks.getDirections(room) >> 2,
@@ -91,8 +90,16 @@ class dungeon():
 			if checks.isEntrance(int(room)):
 				model.update(
 					{'entrance_id': areaId},
-					('id_place = ?', [dungeonPlace['id_place']])
+					('id_place = ?', [place['id_place']])
 				)
+
+
+class dungeon(randomPlace):
+	areaType = 'dungeon'
+
+
+class cave(randomPlace):
+	areaType = 'cave'
 
 
 class model(Model):
