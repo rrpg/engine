@@ -16,7 +16,7 @@ class factory:
 	Class to
 	"""
 
-	types = ('dungeon')
+	types = ('dungeon', 'cave')
 
 	@staticmethod
 	def create(idArea, t):
@@ -33,6 +33,8 @@ class factory:
 
 		if t == 'dungeon':
 			return dungeon.getAvailable(idArea, generate)
+		if t == 'cave':
+			return cave.getAvailable(idArea, generate)
 
 
 class randomPlace:
@@ -94,6 +96,10 @@ class randomPlace:
 
 class dungeon(randomPlace):
 	areaType = 'dungeon'
+
+
+class cave(randomPlace):
+	areaType = 'cave'
 
 
 class model(Model):
