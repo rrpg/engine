@@ -203,8 +203,9 @@ class look(command):
 		# Display accessible areas
 		areas = area.model.getSurroundingAreas(areaId)
 		directions = area.area.getValidDirections(areas['directions'])
-		print("You can go " +
-			', '.join(directions) + '.')
+		if len(directions) is not 0:
+			print("You can go " +
+				', '.join(directions) + '.')
 
 		# Display accessible places
 		places = place.model.getSurroundingPlaces(areaId)
