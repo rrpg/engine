@@ -193,7 +193,7 @@ class look(command):
 		characters = character.character.searchByIdArea(areaId)
 		# the player is in the result list
 		if len(characters) > 1:
-			print("Characters arround:")
+			print("You see these characters arround:")
 			for c in characters:
 				if c._model['id_character'] != self._player._model['id_character']:
 					print(c._model['name'])
