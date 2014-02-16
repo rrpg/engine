@@ -196,20 +196,22 @@ class look(command):
 			print("You see these characters arround:")
 			for c in characters:
 				if c._model['id_character'] != self._player._model['id_character']:
-					print(c._model['name'])
+					print('    ' + c._model['name'])
 
 		# Display accessible areas
 		areas = area.model.getSurroundingAreas(areaId)
 		directions = area.area.getValidDirections(areas['directions'])
 		if len(directions) is not 0:
-			print("You can go " +
-				', '.join(directions) + '.')
+			print("You can go:")
+			for d in directions:
+				print('    ' + d)
 
 		# Display accessible places
 		places = place.model.getSurroundingPlaces(areaId)
 		if len(places) > 0:
 			print("You see the following places:")
-			print(', '.join([p['name'] for p in places]))
+			for p in places:
+				print('    ' + p['name'])
 
 		# Display surrounding objects
 		items = item.inventory.fromStr(
