@@ -187,30 +187,31 @@ class look(command):
 
 		# Display current area description
 		regionName = area.area.getRegionNameFromAreaId(areaId)
-		print("You are in %s." % (regionName))
+		print("You are in %s.\n" % (regionName))
 
 		# Display surrounding characters
 		characters = character.character.searchByIdArea(areaId)
 		# the player is in the result list
-		if len(characters) == 1:
-			print("You are alone here.")
-		else:
-			print("Characters arround:")
+		if len(characters) > 1:
+			print("You see these characters arround:")
 			for c in characters:
 				if c._model['id_character'] != self._player._model['id_character']:
-					print(c._model['name'])
+					print('    ' + c._model['name'])
 
 		# Display accessible areas
 		areas = area.model.getSurroundingAreas(areaId)
 		directions = area.area.getValidDirections(areas['directions'])
-		print("You can go " +
-			', '.join(directions) + '.')
+		if len(directions) is not 0:
+			print("You can go:")
+			for d in directions:
+				print('    ' + d)
 
 		# Display accessible places
 		places = place.model.getSurroundingPlaces(areaId)
 		if len(places) > 0:
 			print("You see the following places:")
-			print(', '.join([p['name'] for p in places]))
+			for p in places:
+				print('    ' + p['name'])
 
 		# Display surrounding objects
 		items = item.inventory.fromStr(
