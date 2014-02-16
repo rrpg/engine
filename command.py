@@ -187,7 +187,7 @@ class look(command):
 
 		# Display current area description
 		regionName = area.area.getRegionNameFromAreaId(areaId)
-		print("You are in %s." % (regionName))
+		print("You are in %s.\n" % (regionName))
 
 		# Display surrounding characters
 		characters = character.character.searchByIdArea(areaId)
