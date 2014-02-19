@@ -36,7 +36,7 @@ cd ..
 ```
 
 Or you can use your own world (created with the game editor,
-https://github.com/rrpg/world-editor):
+https://github.com/rrpg/world-editor ):
 ```bash
 ./main.py -w /path/to/your/world.db
 ```
