@@ -64,6 +64,7 @@ class player(character.character):
 		genders = gender.model.loadAll()
 		nbGenders = len(genders)
 
+		print('Please choose a gender')
 		for k, v in enumerate(genders):
 			print(str(k).rjust(3) + ' - ' + v['name'])
 
@@ -83,6 +84,7 @@ class player(character.character):
 		if nbSpecies == 1:
 			speciesId = sps[0]['id_species']
 		else:
+			print('Please choose a species')
 			for k, v in enumerate(sps):
 				print(str(k).rjust(3) + ' - ' + v['name'])
 				print(v['description'])
