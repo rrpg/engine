@@ -1,3 +1,3 @@
 [submodule "externals/dungeon-generator"]
 	path = externals/dungeon-generator
-	url = git://github.com/rrpg/dungeon-generator
+	url = https://github.com/rrpg/dungeon-generator.git
