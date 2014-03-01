@@ -6,6 +6,7 @@ import utils
 import readline
 import config
 import registry
+import os
 
 
 class Rpg:
@@ -19,6 +20,8 @@ class Rpg:
 			world = config.db
 
 		registry.set("world", world)
+		if os.path.isfile(world) is False:
+			raise BaseException('The selected world does not exit')
 
 		#~ if the game is launched with login/password,
 		#~ the player is directly fetched
