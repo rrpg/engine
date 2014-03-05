@@ -303,6 +303,7 @@ class exit(command):
 
 		p = place.factory.getFromExitArea(self._player.getAreaId(), areaType)
 		self._player.goTo(p['id_area'])
+		print('You are now outside')
 
 
 class talk(command):
