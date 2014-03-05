@@ -162,6 +162,10 @@ class help(command):
 		print('Available commands:')
 		print('talk <Character name> "<Sentence>": Talk to a character')
 		print('move <%s>: Go to the indicated direction' % '|'.join(area.directions))
+		print('enter <%s>: enter the selected place (if the place is' % '|'.join(place.types) +
+			' available in the current cell)')
+		print('exit <%s>: exit the selected place (if the current cell is' % '|'.join(place.types) +
+			' the place exit)')
 		print('look: See what is in the current area' +
 			' (characters, items, neighbour areas...)')
 		print('inv|inventory: List the items the player has in his inventory')
@@ -169,7 +173,7 @@ class help(command):
 		print('drop [<quantity>] <item name>: Drop some items from your inventory')
 		print('createPlayer: Not Yet Implemented')
 		print('help: Display this help')
-		print('quit|exit|q: Quit the game')
+		print('quit|q: Quit the game')
 
 
 class look(command):

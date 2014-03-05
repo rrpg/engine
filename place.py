@@ -10,13 +10,12 @@ import area
 import os
 import sys
 
+types = ('dungeon', 'cave')
 
 class factory:
 	"""
 	Class to
 	"""
-
-	types = ('dungeon', 'cave')
 
 	@staticmethod
 	def create(idArea, t):
@@ -28,7 +27,7 @@ class factory:
 
 	@staticmethod
 	def _get(idArea, t, generate):
-		if t not in factory.types:
+		if t not in types:
 			raise exception('Unknown place type')
 
 		if t == 'dungeon':
