@@ -274,12 +274,15 @@ class enter(command):
 
 		areaType = self._args[0]
 
-		print('The %s\'s door is opening in front of you...' %(areaType,))
-		ready = False
-		while (ready is False):
-			p = place.factory.create(self._player.getAreaId(), areaType)
-			if p['entrance_id'] is not None:
-				ready = True
+		p = place.factory.getFromEntranceArea(self._player.getAreaId(), areaType)
+		if p is None:
+			raise place.exception('There is no such place here.')
+			return
+
+		print('The %s\'s door is opening in front of you...' % (areaType,))
+
+		if p['entrance_id'] is None:
+			p = place.factory.generate(p, areaType)
 		print('You enter.')
 		self._player.goTo(p['entrance_id'])
 
@@ -301,8 +304,9 @@ class exit(command):
 
 		areaType = self._args[0]
 
-		p = place.factory.get(self._player.getAreaId(), areaType)
+		p = place.factory.getFromExitArea(self._player.getAreaId(), areaType)
 		self._player.goTo(p['id_area'])
+		print('You are now outside')
 
 
 class talk(command):

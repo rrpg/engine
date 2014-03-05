@@ -36,7 +36,7 @@ class Model(object):
 			an empty list if there's no result.
 		"""
 
-		Model._connect()
+		Model.connect()
 		c = Model._db.cursor()
 		result = []
 		currentRow = {}
@@ -67,7 +67,7 @@ class Model(object):
 			an empty dict if there's no result.
 		"""
 
-		Model._connect()
+		Model.connect()
 		c = Model._db.cursor()
 		result = dict()
 		nbCols = 0
@@ -108,7 +108,7 @@ class Model(object):
 		"""
 		Insert a new row in the database
 		"""
-		Model._connect()
+		Model.connect()
 		c = Model._db.cursor()
 
 		fields = cls.filterFields(fields)
@@ -120,14 +120,13 @@ class Model(object):
 		)
 
 		c.execute(query, list(fields.values()))
-		Model._db.commit()
-		Model._db.close()
+		Model.disconnect()
 
 		return c.lastrowid
 
 	@classmethod
 	def update(cls, fields, where):
-		Model._connect()
+		Model.connect()
 		c = Model._db.cursor()
 
 		fields = cls.filterFields(fields)
@@ -136,26 +135,27 @@ class Model(object):
 		query = "UPDATE %(table)s SET %(values)s WHERE %(where)s" %\
 			{'table': cls.__module__, 'values': ','.join(fieldsNames), 'where': where[0]}
 		c.execute(query, list(fields.values()) + where[1])
-		Model._db.commit()
-		Model._db.close()
+		Model.disconnect()
 
 	@classmethod
 	def delete(cls, where):
-		Model._connect()
+		Model.connect()
 		c = Model._db.cursor()
 
 		query = "DELETE FROM %(table)s WHERE %(where)s" %\
 			{'table': cls.__module__, 'where': where[0]}
 		r = c.execute(query, where[1])
-		Model._db.commit()
-		Model._db.close()
+		Model.disconnect()
 		return r
 
-	#protected:
 	@staticmethod
-	def _connect():
+	def connect():
 		Model._db = sqlite3.connect(registry.get("world"))
 
+	@classmethod
+	def disconnect(cls):
+		Model._db.commit()
+		Model._db.close()
 
 	@staticmethod
 	def _createRow(sqliteRow, columns):
@@ -233,3 +233,11 @@ class Model(object):
 	@classmethod
 	def filterFields(cls, fields):
 		return dict((k, fields[k]) for k in cls.fields if k in fields)
+
+	@classmethod
+	def executeQuery(cls, cursor, query, params):
+		cursor.execute(query, params)
+
+	@classmethod
+	def getCursor(cls):
+		return Model._db.cursor()
