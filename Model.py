@@ -36,7 +36,7 @@ class Model(object):
 			an empty list if there's no result.
 		"""
 
-		Model._connect()
+		Model.connect()
 		c = Model._db.cursor()
 		result = []
 		currentRow = {}
@@ -67,7 +67,7 @@ class Model(object):
 			an empty dict if there's no result.
 		"""
 
-		Model._connect()
+		Model.connect()
 		c = Model._db.cursor()
 		result = dict()
 		nbCols = 0
@@ -108,7 +108,7 @@ class Model(object):
 		"""
 		Insert a new row in the database
 		"""
-		Model._connect()
+		Model.connect()
 		c = Model._db.cursor()
 
 		fields = cls.filterFields(fields)
@@ -127,7 +127,7 @@ class Model(object):
 
 	@classmethod
 	def update(cls, fields, where):
-		Model._connect()
+		Model.connect()
 		c = Model._db.cursor()
 
 		fields = cls.filterFields(fields)
@@ -141,7 +141,7 @@ class Model(object):
 
 	@classmethod
 	def delete(cls, where):
-		Model._connect()
+		Model.connect()
 		c = Model._db.cursor()
 
 		query = "DELETE FROM %(table)s WHERE %(where)s" %\
@@ -151,9 +151,8 @@ class Model(object):
 		Model._db.close()
 		return r
 
-	#protected:
 	@staticmethod
-	def _connect():
+	def connect():
 		Model._db = sqlite3.connect(registry.get("world"))
 
 
