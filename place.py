@@ -14,7 +14,7 @@ types = ('dungeon', 'cave')
 
 class factory:
 	"""
-	Class to
+	Class to load places from a given type
 	"""
 
 	@staticmethod
