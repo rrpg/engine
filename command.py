@@ -301,7 +301,7 @@ class exit(command):
 
 		areaType = self._args[0]
 
-		p = place.factory.get(self._player.getAreaId(), areaType)
+		p = place.factory.getFromExitArea(self._player.getAreaId(), areaType)
 		self._player.goTo(p['id_area'])
 
 

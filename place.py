@@ -26,6 +26,16 @@ class factory:
 		return factory._get(idArea, t, False)
 
 	@staticmethod
+	def getFromExitArea(idArea, t):
+		if t not in types:
+			raise exception('Unknown place type')
+
+		if t == 'dungeon':
+			return dungeon.getAvailableFromExitArea(idArea)
+		if t == 'cave':
+			return cave.getAvailableFromExitArea(idArea)
+
+	@staticmethod
 	def _get(idArea, t, generate):
 		if t not in types:
 			raise exception('Unknown place type')
@@ -43,7 +53,7 @@ class randomPlace:
 		Method to get the informations of a dungeon being in an area.
 		If the dungeon is not yet generated, it will be done here.
 		"""
-		d = model.getOneFromTypeAndArea(cls.areaType, idArea)
+		d = model.getOneFromTypeAndEntranceId(cls.areaType, idArea)
 
 		if len(d) == 0:
 			raise exception('There is no such place here.')
@@ -54,6 +64,18 @@ class randomPlace:
 		return d
 
 	@classmethod
+	def getAvailableFromExitArea(cls, idArea):
+		"""
+		Method to get the informations of a place from the area if its exit
+		cell.
+		"""
+		d = model.getOneFromTypeAndExitId(cls.areaType, idArea)
+
+		if len(d) == 0:
+			raise exception('There is no such place here.')
+
+		return d
+
 	def generate(cls, place):
 		"""
 		Generate a place using an external generating tool
@@ -130,7 +152,7 @@ class model(Model):
 		return Model.fetchAllRows(query, [idArea, idArea, idArea])
 
 	@staticmethod
-	def getOneFromTypeAndArea(areaType, idArea):
+	def getOneFromTypeAndEntranceId(areaType, idArea):
 		"""
 		Method to get the informations of a place in a given area
 		"""
@@ -142,11 +164,30 @@ class model(Model):
 				place AS p\
 				JOIN area_type AS at ON p.id_area_type = at.id_area_type\
 			WHERE\
-				(id_area = ? OR entrance_id = ?)\
+				id_area = ?\
 				AND at.name = ?\
 		"
 
-		return Model.fetchOneRow(query, [idArea, idArea, areaType])
+		return Model.fetchOneRow(query, [idArea, areaType])
+
+	@staticmethod
+	def getOneFromTypeAndExitId(areaType, idArea):
+		"""
+		Method to get the informations of a place in a given area
+		"""
+
+		query = "\
+			SELECT\
+				*\
+			FROM\
+				place AS p\
+				JOIN area_type AS at ON p.id_area_type = at.id_area_type\
+			WHERE\
+				entrance_id = ?\
+				AND at.name = ?\
+		"
+
+		return Model.fetchOneRow(query, [idArea, areaType])
 
 
 class exception(BaseException):
