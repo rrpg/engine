@@ -120,8 +120,7 @@ class Model(object):
 		)
 
 		c.execute(query, list(fields.values()))
-		Model._db.commit()
-		Model._db.close()
+		Model.disconnect()
 
 		return c.lastrowid
 
@@ -136,8 +135,7 @@ class Model(object):
 		query = "UPDATE %(table)s SET %(values)s WHERE %(where)s" %\
 			{'table': cls.__module__, 'values': ','.join(fieldsNames), 'where': where[0]}
 		c.execute(query, list(fields.values()) + where[1])
-		Model._db.commit()
-		Model._db.close()
+		Model.disconnect()
 
 	@classmethod
 	def delete(cls, where):
@@ -147,14 +145,17 @@ class Model(object):
 		query = "DELETE FROM %(table)s WHERE %(where)s" %\
 			{'table': cls.__module__, 'where': where[0]}
 		r = c.execute(query, where[1])
-		Model._db.commit()
-		Model._db.close()
+		Model.disconnect()
 		return r
 
 	@staticmethod
 	def connect():
 		Model._db = sqlite3.connect(registry.get("world"))
 
+	@classmethod
+	def disconnect(cls):
+		Model._db.commit()
+		Model._db.close()
 
 	@staticmethod
 	def _createRow(sqliteRow, columns):
