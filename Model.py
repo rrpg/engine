@@ -233,3 +233,11 @@ class Model(object):
 	@classmethod
 	def filterFields(cls, fields):
 		return dict((k, fields[k]) for k in cls.fields if k in fields)
+
+	@classmethod
+	def executeQuery(cls, cursor, query, params):
+		cursor.execute(query, params)
+
+	@classmethod
+	def getCursor(cls):
+		return Model._db.cursor()
