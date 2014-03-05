@@ -282,7 +282,7 @@ class enter(command):
 		print('The %s\'s door is opening in front of you...' % (areaType,))
 
 		if p['entrance_id'] is None:
-			place.factory.generate(p, areaType)
+			p = place.factory.generate(p, areaType)
 		print('You enter.')
 		self._player.goTo(p['entrance_id'])
 

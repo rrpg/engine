@@ -120,6 +120,9 @@ class randomPlace:
 					{'entrance_id': areaId},
 					('id_place = ?', [place['id_place']])
 				)
+				place['entrance_id'] = areaId
+
+		return place
 
 
 class dungeon(randomPlace):
