@@ -7,7 +7,7 @@ Module to handle the places types, such as the dungeons.
 from Model import Model
 import config
 import area
-import os
+import subprocess
 import sys
 
 types = ('dungeon', 'cave')
@@ -84,9 +84,18 @@ class randomPlace:
 		"""
 
 		print('Generating place...')
-		pipe = os.popen(config.generator['dungeon']['generator'])
-		d = pipe.read().strip().split('\n')
-		pipe.close()
+		p = subprocess.Popen(
+			config.generator['dungeon']['generator'],
+			shell=True,
+			stdout=subprocess.PIPE,
+			stderr=subprocess.PIPE
+		)
+
+		result = p.communicate()
+
+		if result[1] is not '':
+			raise exception('An error occured during the dungeon generation')
+		d = result[0].strip().split('\n')
 
 		# Import an external check class from the generator
 		sys.path.insert(0, config.generator['dungeon']['path'])
