@@ -18,14 +18,6 @@ class factory:
 	"""
 
 	@staticmethod
-	def create(idArea, t):
-		return factory._get(idArea, t, True)
-
-	@staticmethod
-	def get(idArea, t):
-		return factory._get(idArea, t, False)
-
-	@staticmethod
 	def getFromExitArea(idArea, t):
 		if t not in types:
 			raise exception('Unknown place type')
@@ -36,32 +28,37 @@ class factory:
 			return cave.getAvailableFromExitArea(idArea)
 
 	@staticmethod
-	def _get(idArea, t, generate):
+	def getFromEntranceArea(idArea, t):
 		if t not in types:
 			raise exception('Unknown place type')
 
 		if t == 'dungeon':
-			return dungeon.getAvailable(idArea, generate)
-		if t == 'cave':
-			return cave.getAvailable(idArea, generate)
+			return dungeon.getAvailable(idArea)
+		elif t == 'cave':
+			return cave.getAvailable(idArea)
+
+	@staticmethod
+	def generate(place, t):
+		if t not in types:
+			raise exception('Unknown place type')
+
+		if t == 'dungeon':
+			return dungeon.generate(place)
+		elif t == 'cave':
+			return cave.generate(place)
 
 
 class randomPlace:
 	@classmethod
-	def getAvailable(cls, idArea, generate):
+	def getAvailable(cls, idArea):
 		"""
 		Method to get the informations of a dungeon being in an area.
-		If the dungeon is not yet generated, it will be done here.
 		"""
-		d = model.getOneFromTypeAndEntranceId(cls.areaType, idArea)
+		p = model.getOneFromTypeAndEntranceId(cls.areaType, idArea)
+		if len(p) == 0:
+			return None
 
-		if len(d) == 0:
-			raise exception('There is no such place here.')
-
-		if generate and d['entrance_id'] is None:
-			cls.generate(d)
-
-		return d
+		return p
 
 	@classmethod
 	def getAvailableFromExitArea(cls, idArea):
@@ -76,6 +73,7 @@ class randomPlace:
 
 		return d
 
+	@classmethod
 	def generate(cls, place):
 		"""
 		Generate a place using an external generating tool
