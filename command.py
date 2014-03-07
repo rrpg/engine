@@ -20,6 +20,7 @@ import player
 import item
 import place
 from sentence import sentence
+from localisation import _
 
 """
 Code corresponding to the quit command
@@ -40,16 +41,16 @@ class command():
 	the command class to execute.
 	"""
 	mapping = {
-		'look': 'look',
-		'talk': 'talk',
-		'move': 'move',
-		'enter': 'enter',
-		'exit': 'exit',
-		'take': 'take',
-		'drop': 'drop',
-		'inventory': 'inventory',
-		'inv': 'inventory',
-		'help': 'help'
+		_('LOOK_COMMAND'): 'look',
+		_('TALK_COMMAND'): 'talk',
+		_('MOVE_COMMAND'): 'move',
+		_('ENTER_COMMAND'): 'enter',
+		_('EXIT_COMMAND'): 'exit',
+		_('TAKE_COMMAND'): 'take',
+		_('DROP_COMMAND'): 'drop',
+		_('INVENTORY_COMMAND'): 'inventory',
+		_('INVENTORY_SHORT_COMMAND'): 'inventory',
+		_('HELP_COMMAND'): 'help'
 	}
 
 	def setArgs(self, args):
@@ -101,12 +102,12 @@ class factory:
 				"A player must be connected to launch the command %s" % cmd
 			)
 
-		if cmd in ('quit', 'q'):
+		if cmd in (_('QUIT_COMMAND'), _('QUIT_SHORT_COMMAND')):
 			return quit
 		elif cmd in command.mapping.keys():
 			cmd = getattr(current_module, command.mapping[cmd])()
 		else:
-			raise exception('Unknown command')
+			raise exception(_('ERROR_UNKNOWN_COMMAND'))
 
 		cmd.setArgs(commandFull)
 		cmd.setPlayer(p)
@@ -159,7 +160,7 @@ class help(command):
 
 		Display a help message.
 		"""
-		print('Available commands:')
+		print(_('AVAILABLE_COMMANDS_TITLE'))
 		print('talk <Character name> "<Sentence>": Talk to a character')
 		print('move <%s>: Go to the indicated direction' % '|'.join(area.directions))
 		print('enter <%s>: enter the selected place (if the place is' % '|'.join(place.types) +
