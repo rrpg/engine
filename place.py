@@ -69,7 +69,7 @@ class randomPlace:
 		d = model.getOneFromTypeAndExitId(cls.areaType, idArea)
 
 		if len(d) == 0:
-			raise exception('There is no such place here.')
+			return None
 
 		return d
 

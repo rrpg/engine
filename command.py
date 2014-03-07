@@ -305,6 +305,10 @@ class exit(command):
 		areaType = self._args[0]
 
 		p = place.factory.getFromExitArea(self._player.getAreaId(), areaType)
+		if p is None:
+			raise place.exception('There is no such place here.')
+			return
+
 		self._player.goTo(p['id_area'])
 		print('You are now outside')
 
