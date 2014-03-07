@@ -9,6 +9,7 @@ import character
 from Model import Model
 import datetime
 from settings import settings
+from localisation import _
 
 
 class player(character.character):
@@ -32,30 +33,30 @@ class player(character.character):
 		if len(self._model) == 0:
 			self._login = None
 			self._password = None
-			raise exception("Invalid login or password")
+			raise exception(_('ERROR_CONNECT_INVALID_CREDENTIALS'))
 
 		return True
 
 	#~ Read the login and the password from stdin
 	def _readLoginAndPassword(self, checkLogin, confirmPassword):
 		while self._login is None or self._login == '':
-			self._login = utils.read("Login: ")
+			self._login = utils.read(_('LOGIN_PROMPT'))
 
 			if checkLogin and len(model.loadBy({'login': self._login})):
-				print('This login is already used')
+				print(_('ERROR_SIGNUP_LOGIN_ALREADY_USED'))
 				self._login = None
 
 		confirmPassword = ''
 		while (self._password is None or self._password == ''):
-			self._password = getpass.getpass("Password: ")
+			self._password = getpass.getpass(_('PASSWORD_PROMPT'))
 
 			if confirmPassword:
-				confirmPassword = getpass.getpass("Confirm password: ")
+				confirmPassword = getpass.getpass(_('CONFIRM_PASSWORD_PROMPT'))
 			else:
 				confirmPassword = self._password
 
 			if self._password != confirmPassword:
-				print('The passwords do not match')
+				print(_('ERROR_SIGNUP_PASSWORDS'))
 				self._password = None
 
 	def createNewPlayerFromStdIn(self):
@@ -64,13 +65,13 @@ class player(character.character):
 		genders = gender.model.loadAll()
 		nbGenders = len(genders)
 
-		print('Please choose a gender')
+		print(_('GENDER_SELECTION'))
 		for k, v in enumerate(genders):
 			print(str(k).rjust(3) + ' - ' + v['name'])
 
 		g = -1
 		while g < 0 or g >= nbGenders:
-			g = utils.read("Character gender: ")
+			g = utils.read(_('GENDER_PROMPT'))
 			try:
 				g = int(g)
 			except:
@@ -84,14 +85,14 @@ class player(character.character):
 		if nbSpecies == 1:
 			speciesId = sps[0]['id_species']
 		else:
-			print('Please choose a species')
+			print(_('SPECIES_SELECTION'))
 			for k, v in enumerate(sps):
 				print(str(k).rjust(3) + ' - ' + v['name'])
 				print(v['description'])
 
 			sp = -1
 			while sp < 0 or sp >= nbSpecies:
-				sp = utils.read("Character species: ")
+				sp = utils.read(_('SPECIES_PROMPT'))
 				try:
 					sp = int(sp)
 				except:
