@@ -135,11 +135,11 @@ class randomPlace:
 
 
 class dungeon(randomPlace):
-	areaType = _('PLACE_TYPE_DUNGEON')
+	areaType = "dungeon"
 
 
 class cave(randomPlace):
-	areaType = _('PLACE_TYPE_CAVE')
+	areaType = "cave"
 
 
 class model(Model):
