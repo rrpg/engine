@@ -393,7 +393,7 @@ class take(command):
 		self._player.addItemsToInventory(i)
 		area.area.removeItems(self._player.getAreaId(), i)
 
-		print(_('TAKE_CONFIRMATION_%d_%s') % (quantity, name))
+		print(_('TAKE_CONFIRMATION_%(quantity)_%(name)s') % {'quantity': quantity, 'name': name})
 
 
 class drop(command):
@@ -433,7 +433,7 @@ class drop(command):
 		self._player.removeItemsFromInventory(i)
 		area.area.addItems(self._player.getAreaId(), i)
 
-		print(_('DROP_CONFIRMATION_%d_%s') % (quantity, name))
+		print(_('DROP_CONFIRMATION_%(quantity)_%(name)s') % {'quantity': quantity, 'name': name})
 
 
 class inventory(command):
