@@ -161,20 +161,28 @@ class help(command):
 		Display a help message.
 		"""
 		print(_('AVAILABLE_COMMANDS_TITLE'))
-		print('talk <Character name> "<Sentence>": Talk to a character')
-		print('move <%s>: Go to the indicated direction' % '|'.join(area.directions))
-		print('enter <%s>: enter the selected place (if the place is' % '|'.join(place.types) +
-			' available in the current cell)')
-		print('exit <%s>: exit the selected place (if the current cell is' % '|'.join(place.types) +
-			' the place exit)')
-		print('look: See what is in the current area' +
-			' (characters, items, neighbour areas...)')
-		print('inv|inventory: List the items the player has in his inventory')
-		print('take [<quantity>] <item name>: Take some items on the the ground')
-		print('drop [<quantity>] <item name>: Drop some items from your inventory')
-		print('createPlayer: Not Yet Implemented')
-		print('help: Display this help')
-		print('quit|q: Quit the game')
+		print('talk <Character name> "<Sentence>":')
+		print('\t' + 'Talk to a character')
+		print('move <%s>:' % '|'.join(area.directions))
+		print('\t' + 'Go to the indicated direction')
+		print('enter <%s>:' % '|'.join(place.types))
+		print('\t' + 'enter the selected place (if the place is available in the current cell)')
+		print('exit <%s>:' % '|'.join(place.types))
+		print('\t' + 'exit the selected place (if the current cell is the place exit)')
+		print('look:')
+		print('\t' + 'See what is in the current area (characters, items, neighbour areas...)')
+		print('inv|inventory:')
+		print('\t' + 'List the items the player has in his inventory')
+		print('take [<quantity>] <item name>:')
+		print('\t' + 'Take some items on the the ground')
+		print('drop [<quantity>] <item name>:')
+		print('\t' + 'Drop some items from your inventory')
+		print('createPlayer:')
+		print('\t' + 'Not Yet Implemented')
+		print('help:')
+		print('\t' + 'Display this help')
+		print('quit|q:')
+		print('\t' + 'Quit the game')
 
 
 class look(command):
