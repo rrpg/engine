@@ -32,11 +32,18 @@ cd database
 # Go back in the game folder
 cd ..
 # Then launch the game
-./main.py
+# This will run the editor with the system locale
+./rRpg
+
+# This will run the editor in french
+./rRpg-francais
+
+# This will run the editor in english
+./rRpg-english
 ```
 
 Or you can use your own world (created with the game editor,
 https://github.com/rrpg/world-editor ):
 ```bash
-./main.py -w /path/to/your/world.db
+./rRpg -w /path/to/your/world.db
 ```
