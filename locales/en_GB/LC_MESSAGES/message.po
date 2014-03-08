@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-07 23:05+0000\n"
+"POT-Creation-Date: 2014-03-08 23:02+0000\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -139,7 +139,8 @@ msgstr "Go to the indicated direction"
 
 #: command.py:169
 msgid "ENTER_COMMAND_DESCRIPTION"
-msgstr "Enter in the selected place (if the place is available in the current cell)"
+msgstr ""
+"Enter in the selected place (if the place is available in the current cell)"
 
 #: command.py:171
 msgid "EXIT_COMMAND_DESCRIPTION"
@@ -147,7 +148,9 @@ msgstr "Exit from the selected place (if the current cell is the place exit)"
 
 #: command.py:173
 msgid "LOOK_COMMAND_DESCRIPTION"
-msgstr "List everything which is in the current area (characters, items, neighbour areas...)"
+msgstr ""
+"List everything which is in the current area (characters, items, neighbour "
+"areas...)"
 
 #: command.py:175
 msgid "INVENTORY_COMMAND_DESCRIPTION"
@@ -269,7 +272,8 @@ msgid "ERROR_TAKE_QUANTITY_TOO_HIGH"
 msgstr "There are not enough items of this kind"
 
 #: command.py:396
-msgid "TAKE_CONFIRMATION_%(quantity)_%(name)s"
+#, python-format
+msgid "TAKE_CONFIRMATION_%(quantity)s_%(name)s"
 msgstr "You take %(quantity)s %(name)s"
 
 #: command.py:409
@@ -290,14 +294,15 @@ msgid "ERROR_DROP_QUANTITY_TOO_HIGH_%s"
 msgstr "I don't have enough %s to drop"
 
 #: command.py:436
-msgid "DROP_CONFIRMATION_%(quantity)_%(name)s"
-msgstr "You drop %(quantity) %(name)s"
+#, python-format
+msgid "DROP_CONFIRMATION_%(quantity)s_%(name)s"
+msgstr "You drop %(quantity)s %(name)s"
 
-#: place.py:14 place.py:28 place.py:38 place.py:48 place.py:142
+#: place.py:14 place.py:28 place.py:38 place.py:48
 msgid "PLACE_TYPE_CAVE"
 msgstr "cave"
 
-#: place.py:14 place.py:26 place.py:36 place.py:46 place.py:138
+#: place.py:14 place.py:26 place.py:36 place.py:46
 msgid "PLACE_TYPE_DUNGEON"
 msgstr "dungeon"
 

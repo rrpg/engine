@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-07 23:05+0000\n"
+"POT-Creation-Date: 2014-03-08 23:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -269,7 +269,8 @@ msgid "ERROR_TAKE_QUANTITY_TOO_HIGH"
 msgstr ""
 
 #: command.py:396
-msgid "TAKE_CONFIRMATION_%(quantity)_%(name)s"
+#, python-format
+msgid "TAKE_CONFIRMATION_%(quantity)s_%(name)s"
 msgstr ""
 
 #: command.py:409
@@ -290,14 +291,15 @@ msgid "ERROR_DROP_QUANTITY_TOO_HIGH_%s"
 msgstr ""
 
 #: command.py:436
-msgid "DROP_CONFIRMATION_%(quantity)_%(name)s"
+#, python-format
+msgid "DROP_CONFIRMATION_%(quantity)s_%(name)s"
 msgstr ""
 
-#: place.py:14 place.py:28 place.py:38 place.py:48 place.py:142
+#: place.py:14 place.py:28 place.py:38 place.py:48
 msgid "PLACE_TYPE_CAVE"
 msgstr ""
 
-#: place.py:14 place.py:26 place.py:36 place.py:46 place.py:138
+#: place.py:14 place.py:26 place.py:36 place.py:46
 msgid "PLACE_TYPE_DUNGEON"
 msgstr ""
 
