@@ -25,6 +25,15 @@ FIND_PYTHON_LOCALE_FILES = find $(ROOT) -type f -iname '*.py'
 LOCALE_GETTEXT_DIR 	= LC_MESSAGES
 LOCALE_DOMAINS 		= $(PROJECT_LOCALE_DOMAIN)# time validate
 
+all: locale-deploy
+	git submodule init
+	git submodule update
+
+# Clean the working directory
+clean:
+	find . -name "*.pyc" -delete
+	find . -name __pycache__ -delete
+
 #
 # Locale
 #
