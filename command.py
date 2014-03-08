@@ -1,4 +1,4 @@
-# -*- coding: utf8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Module containing the available commands of the game, the factory class to
@@ -20,6 +20,7 @@ import player
 import item
 import place
 from sentence import sentence
+from localisation import _
 
 """
 Code corresponding to the quit command
@@ -40,16 +41,16 @@ class command():
 	the command class to execute.
 	"""
 	mapping = {
-		'look': 'look',
-		'talk': 'talk',
-		'move': 'move',
-		'enter': 'enter',
-		'exit': 'exit',
-		'take': 'take',
-		'drop': 'drop',
-		'inventory': 'inventory',
-		'inv': 'inventory',
-		'help': 'help'
+		_('LOOK_COMMAND'): 'look',
+		_('TALK_COMMAND'): 'talk',
+		_('MOVE_COMMAND'): 'move',
+		_('ENTER_COMMAND'): 'enter',
+		_('EXIT_COMMAND'): 'exit',
+		_('TAKE_COMMAND'): 'take',
+		_('DROP_COMMAND'): 'drop',
+		_('INVENTORY_COMMAND'): 'inventory',
+		_('INVENTORY_SHORT_COMMAND'): 'inventory',
+		_('HELP_COMMAND'): 'help'
 	}
 
 	def setArgs(self, args):
@@ -101,12 +102,12 @@ class factory:
 				"A player must be connected to launch the command %s" % cmd
 			)
 
-		if cmd in ('quit', 'q'):
+		if cmd in (_('QUIT_COMMAND'), _('QUIT_SHORT_COMMAND')):
 			return quit
 		elif cmd in command.mapping.keys():
 			cmd = getattr(current_module, command.mapping[cmd])()
 		else:
-			raise exception('Unknown command')
+			raise exception(_('ERROR_UNKNOWN_COMMAND'))
 
 		cmd.setArgs(commandFull)
 		cmd.setPlayer(p)
@@ -159,21 +160,29 @@ class help(command):
 
 		Display a help message.
 		"""
-		print('Available commands:')
-		print('talk <Character name> "<Sentence>": Talk to a character')
-		print('move <%s>: Go to the indicated direction' % '|'.join(area.directions))
-		print('enter <%s>: enter the selected place (if the place is' % '|'.join(place.types) +
-			' available in the current cell)')
-		print('exit <%s>: exit the selected place (if the current cell is' % '|'.join(place.types) +
-			' the place exit)')
-		print('look: See what is in the current area' +
-			' (characters, items, neighbour areas...)')
-		print('inv|inventory: List the items the player has in his inventory')
-		print('take [<quantity>] <item name>: Take some items on the the ground')
-		print('drop [<quantity>] <item name>: Drop some items from your inventory')
-		print('createPlayer: Not Yet Implemented')
-		print('help: Display this help')
-		print('quit|q: Quit the game')
+		print(_('AVAILABLE_COMMANDS_TITLE'))
+		print('%s <%s> "<%s>":' % (_('TALK_COMMAND'), _('CHARACTER_TOKEN'), _('SENTENCE_TOKEN')))
+		print('\t' + _('TALK_COMMAND_DESCRIPTION'))
+		print('%s <%s>:' % (_('MOVE_COMMAND'), '|'.join(area.directions)))
+		print('\t' + _('MOVE_COMMAND_DESCRIPTION'))
+		print('%s <%s>:' % (_('ENTER_COMMAND'), '|'.join(place.types)))
+		print('\t' + _('ENTER_COMMAND_DESCRIPTION'))
+		print('%s <%s>:' % (_('EXIT_COMMAND'), '|'.join(place.types)))
+		print('\t' + _('EXIT_COMMAND_DESCRIPTION'))
+		print(_('LOOK_COMMAND') + ':')
+		print('\t' + _('LOOK_COMMAND_DESCRIPTION'))
+		print(_('INVENTORY_SHORT_COMMAND') + '|' + _('INVENTORY_COMMAND') + ':')
+		print('\t' + _('INVENTORY_COMMAND_DESCRIPTION'))
+		print('%s [<%s>] "<%s>":' % (_('TAKE_COMMAND'), _('QUANTITY_TOKEN'), _('ITEM_NAME_TOKEN')))
+		print('\t' + _('TAKE_COMMAND_DESCRIPTION'))
+		print('%s [<%s>] "<%s>":' % (_('DROP_COMMAND'), _('QUANTITY_TOKEN'), _('ITEM_NAME_TOKEN')))
+		print('\t' + _('DROP_COMMAND_DESCRIPTION'))
+		# print('createPlayer:')
+		# print('\t' + 'Not Yet Implemented')
+		print(_('HELP_COMMAND') + ':')
+		print('\t' + _('HELP_COMMAND_DESCRIPTION'))
+		print(_('QUIT_SHORT_COMMAND') + '|' + _('QUIT_COMMAND') + ':')
+		print('\t' + _('QUIT_COMMAND_DESCRIPTION'))
 
 
 class look(command):
@@ -191,13 +200,14 @@ class look(command):
 
 		# Display current area description
 		regionName = area.area.getRegionNameFromAreaId(areaId)
-		print("You are in %s.\n" % (regionName))
+		print(_('CURRENT_REGION_%s') % (regionName))
+		print('\n')
 
 		# Display surrounding characters
 		characters = character.character.searchByIdArea(areaId)
 		# the player is in the result list
 		if len(characters) > 1:
-			print("You see these characters arround:")
+			print(_('PRESENT_CHARACTERS'))
 			for c in characters:
 				if c._model['id_character'] != self._player._model['id_character']:
 					print('    ' + c._model['name'])
@@ -206,14 +216,14 @@ class look(command):
 		areas = area.model.getSurroundingAreas(areaId)
 		directions = area.area.getValidDirections(areas['directions'])
 		if len(directions) is not 0:
-			print("You can go:")
+			print(_('AVAILABLE_DIRECTIONS'))
 			for d in directions:
 				print('    ' + d)
 
 		# Display accessible places
 		places = place.model.getSurroundingPlaces(areaId)
 		if len(places) > 0:
-			print("You see the following places:")
+			print(_('AVAILABLE_PLACES'))
 			for p in places:
 				print('    ' + p['name'])
 
@@ -222,7 +232,7 @@ class look(command):
 			area.model.loadById(areaId, ['items'])['items']
 		)
 		if len(items) > 0:
-			print("You see the following items:")
+			print(_('AVAILABLE_ITEMS'))
 			for i in items:
 				it = item.model.loadById(i)
 				print(str(items[i]['quantity']).rjust(3) + ' ' + it['name'])
@@ -240,21 +250,21 @@ class move(command):
 		Move the player in the desired direction.
 		"""
 		if len(self._args) == 0:
-			raise exception("Where shall I go ?")
+			raise exception(_('ERROR_MOVE_NO_DIRECTION_GIVEN'))
 
 		direction = self._args[0]
 		if direction not in area.area.getDirections():
-			raise exception("%s is not a valid direction" % direction)
+			raise exception(_('ERROR_MOVE_INVALID_DIRECTION_%s') % direction)
 		curAreaId = self._player.getAreaId()
 		curArea = area.model.loadById(curAreaId)
 
 		a = area.area.getNeighbourgFromDirection(curAreaId, direction)
 
 		if area.area.canGoTo(curArea['directions'], direction) is False or a is None:
-			raise exception('I cannot go there')
+			raise exception(_('ERROR_MOVE_DIRECTION_NOT_AVAILABLE'))
 		else:
 			self._player.goTo(a._model['id_area'])
-			print('lets go %s' % direction)
+			print(_('MOVE_CONFIRMATION_%s') % direction)
 
 
 class enter(command):
@@ -270,20 +280,18 @@ class enter(command):
 		dungeons...
 		"""
 		if len(self._args) == 0:
-			raise exception("I cannot enter into nothing.")
+			raise exception(_('ERROR_ENTER_NO_PLACE_GIVEN'))
 
 		areaType = self._args[0]
 
 		p = place.factory.getFromEntranceArea(self._player.getAreaId(), areaType)
 		if p is None:
-			raise place.exception('There is no such place here.')
+			raise place.exception(_('ERROR_ENTER_PLACE_NOT_AVAILABLE'))
 			return
-
-		print('The %s\'s door is opening in front of you...' % (areaType,))
 
 		if p['entrance_id'] is None:
 			p = place.factory.generate(p, areaType)
-		print('You enter.')
+		print(_('ENTER_CONFIRMATION'))
 		self._player.goTo(p['entrance_id'])
 
 
@@ -300,17 +308,17 @@ class exit(command):
 		dungeons... to go back in the world
 		"""
 		if len(self._args) == 0:
-			raise exception("I cannot exit out of nothing.")
+			raise exception(_('ERROR_EXIT_NO_PLACE_GIVEN'))
 
 		areaType = self._args[0]
 
 		p = place.factory.getFromExitArea(self._player.getAreaId(), areaType)
 		if p is None:
-			raise place.exception('There is no such place here.')
+			raise place.exception(_('ERROR_ENTER_PLACE_NOT_AVAILABLE'))
 			return
 
 		self._player.goTo(p['id_area'])
-		print('You are now outside')
+		print(_('EXIT_CONFIRMATION'))
 
 
 class talk(command):
@@ -323,9 +331,9 @@ class talk(command):
 		Say something to a character in the player's area.
 		"""
 		if len(self._args) == 0:
-			raise exception("Who must I talk to ?")
+			raise exception(_('ERROR_TALK_NO_CHARACTER_GIVEN'))
 		elif len(self._args) == 1:
-			raise exception("What must I say ?")
+			raise exception(_('ERROR_TALK_NO_SENTENCE_GIVEN'))
 
 		characterName = self._args[0]
 		triggerWord = self._args[1]
@@ -334,14 +342,14 @@ class talk(command):
 		)
 
 		if c is None:
-			raise character.exception("Unknown Character")
+			raise character.exception(_('ERROR_TALK_UNKNOWN_CHARACTER'))
 
 		s = sentence.loadByCharacterIdAndTriggerWord(
 			c.getId(), triggerWord
 		)
 
 		if len(s) is 0:
-			print("What ?")
+			print(_('ERROR_TALK_UNKNOWN_SENTENCE'))
 			return
 
 		s = s[random.randint(0, len(s) - 1)]
@@ -356,7 +364,7 @@ class talk(command):
 class take(command):
 	def run(self):
 		if len(self._args) == 0:
-			raise exception("What shall I take ?")
+			raise exception(_('ERROR_TAKE_NO_ITEM_GIVEN'))
 
 		if len(self._args) == 1:
 			quantity = 1
@@ -369,23 +377,23 @@ class take(command):
 		i = item.model.loadBy({'name': name}, ['id_item'])
 
 		if len(i) == 0:
-			raise item.exception("I don't see this here.")
+			raise item.exception(_('ERROR_TAKE_UNKNOWN_ITEM'))
 
 		i = str(i[0]['id_item'])
 		#~ Available items in the area
 		items = area.area.getItems(self._player.getAreaId())
 
 		if i not in items.keys():
-			raise item.exception("I don't see this here.")
+			raise item.exception(_('ERROR_TAKE_ITEM_NOT_AVAILABLE'))
 
 		if quantity > items[i]['quantity']:
-			raise item.exception("There is not enough items of this kind.")
+			raise item.exception(_('ERROR_TAKE_QUANTITY_TOO_HIGH'))
 
 		i = [int(i)] * quantity
 		self._player.addItemsToInventory(i)
 		area.area.removeItems(self._player.getAreaId(), i)
 
-		print("You took {0} {1}".format(quantity, name))
+		print(_('TAKE_CONFIRMATION_%(quantity)s_%(name)s') % {'quantity': quantity, 'name': name})
 
 
 class drop(command):
@@ -398,7 +406,7 @@ class drop(command):
 		"""
 		# Check an item to drop is provided
 		if len(self._args) == 0:
-			raise exception("What shall I drop ?")
+			raise exception(_('ERROR_DROP_NO_ITEM_GIVEN'))
 
 		# check if a quantity is provided
 		if len(self._args) == 1:
@@ -412,20 +420,20 @@ class drop(command):
 		i = item.model.loadBy({'name': name}, ['id_item'])
 
 		if len(i) == 0:
-			raise item.exception("You have none of those.")
+			raise item.exception(_('ERROR_DROP_UNKNOWN_ITEM'))
 
 		i = str(i[0]['id_item'])
 		inv = self._player.getInventory()
 		if i not in inv.keys():
-			raise item.exception("You have none of those.")
+			raise item.exception(_('ERROR_DROP_ITEM_NOT_AVAILABLE'))
 		elif quantity > inv[i]['quantity']:
-			raise item.exception("You don't have enough {0} to drop.".format(name))
+			raise item.exception(_('ERROR_DROP_QUANTITY_TOO_HIGH_%s') % name)
 
 		# Drop it
 		self._player.removeItemsFromInventory(i)
 		area.area.addItems(self._player.getAreaId(), i)
 
-		print("You dropped {0} {1}".format(quantity, name))
+		print(_('DROP_CONFIRMATION_%(quantity)s_%(name)s') % {'quantity': quantity, 'name': name})
 
 
 class inventory(command):

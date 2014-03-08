@@ -1,4 +1,4 @@
-# -*- coding: utf8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Module to handle the places types, such as the dungeons.
@@ -9,8 +9,9 @@ import config
 import area
 import subprocess
 import sys
+from localisation import _
 
-types = ('dungeon', 'cave')
+types = (_('PLACE_TYPE_DUNGEON'), _('PLACE_TYPE_CAVE'))
 
 class factory:
 	"""
@@ -20,31 +21,31 @@ class factory:
 	@staticmethod
 	def getFromExitArea(idArea, t):
 		if t not in types:
-			raise exception('Unknown place type')
+			raise exception(_('ERROR_UNKNOWN_PLACE_TYPE'))
 
-		if t == 'dungeon':
+		if t == _('PLACE_TYPE_DUNGEON'):
 			return dungeon.getAvailableFromExitArea(idArea)
-		if t == 'cave':
+		if t == _('PLACE_TYPE_CAVE'):
 			return cave.getAvailableFromExitArea(idArea)
 
 	@staticmethod
 	def getFromEntranceArea(idArea, t):
 		if t not in types:
-			raise exception('Unknown place type')
+			raise exception(_('ERROR_UNKNOWN_PLACE_TYPE'))
 
-		if t == 'dungeon':
+		if t == _('PLACE_TYPE_DUNGEON'):
 			return dungeon.getAvailable(idArea)
-		elif t == 'cave':
+		elif t == _('PLACE_TYPE_CAVE'):
 			return cave.getAvailable(idArea)
 
 	@staticmethod
 	def generate(place, t):
 		if t not in types:
-			raise exception('Unknown place type')
+			raise exception(_('ERROR_UNKNOWN_PLACE_TYPE'))
 
-		if t == 'dungeon':
+		if t == _('PLACE_TYPE_DUNGEON'):
 			return dungeon.generate(place)
-		elif t == 'cave':
+		elif t == _('PLACE_TYPE_CAVE'):
 			return cave.generate(place)
 
 
@@ -81,7 +82,7 @@ class randomPlace:
 		@param place Place entity representing the place
 		"""
 
-		print('Generating place...')
+		print(_('GENERATING_WAITING_TEXT'))
 		p = subprocess.Popen(
 			config.generator['dungeon']['generator'],
 			shell=True,
@@ -92,7 +93,7 @@ class randomPlace:
 		result = p.communicate()
 
 		if result[1] is not '':
-			raise exception('An error occured during the dungeon generation')
+			raise exception(_('ERROR_PLACE_GENERATION'))
 		d = result[0].strip().split('\n')
 
 		# Import an external check class from the generator
@@ -134,11 +135,11 @@ class randomPlace:
 
 
 class dungeon(randomPlace):
-	areaType = 'dungeon'
+	areaType = "dungeon"
 
 
 class cave(randomPlace):
-	areaType = 'cave'
+	areaType = "cave"
 
 
 class model(Model):

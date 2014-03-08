@@ -1,4 +1,4 @@
-# -*- coding: utf8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Module to handle the areas in the game.
@@ -10,15 +10,16 @@ from Model import Model
 import item
 
 import json
+from localisation import _
 
 """
 Available directions
 """
 directions = {
-	'north': (1, (0, -1)),
-	'east': (2, (1, 0)),
-	'south': (4, (0, 1)),
-	'west': (8, (-1, 0))
+	_('DIRECTION_KEY_NORTH'): (1, (0, -1)),
+	_('DIRECTION_KEY_EAST'): (2, (1, 0)),
+	_('DIRECTION_KEY_SOUTH'): (4, (0, 1)),
+	_('DIRECTION_KEY_WEST'): (8, (-1, 0))
 }
 
 
@@ -33,7 +34,7 @@ class area:
 	@param dict
 	"""
 	items = dict()
-	types = ('land', 'dungeon')
+	types = (_('AREA_TYPE_LAND'), _('AREA_TYPE_DUNGEON'))
 
 	@staticmethod
 	def getNeighbourgFromDirection(idArea, direction):

@@ -1,4 +1,4 @@
-# -*- coding: utf8 -*-
+# -*- coding: utf-8 -*-
 import os
 
 server = {}
@@ -10,6 +10,7 @@ server['services']['auth'] = '/auth'
 
 rootPath = os.path.dirname(__file__)
 externalPath = rootPath + '/externals'
+localesDir = rootPath + '/locales'
 
 db = rootPath + '/database/rpg.db'
 

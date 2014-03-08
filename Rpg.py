@@ -1,4 +1,4 @@
-# -*- coding: utf8 -*-
+# -*- coding: utf-8 -*-
 
 from player import player
 import command
@@ -7,6 +7,7 @@ import readline
 import config
 import registry
 import os
+from localisation import _
 
 
 class Rpg:
@@ -21,7 +22,7 @@ class Rpg:
 
 		registry.set("world", world)
 		if os.path.isfile(world) is False:
-			raise BaseException('The selected world does not exit')
+			raise BaseException(_('ERROR_UNKNOWN_SELECTED_WORLD'))
 
 		#~ if the game is launched with login/password,
 		#~ the player is directly fetched
@@ -39,11 +40,11 @@ class Rpg:
 	#~ This method asks the player to login or to create a new account
 	def _doInteractiveAuth(self):
 		choice = 0
-		print("Player selection")
-		print("  1 - Create a new player")
-		print("  2 - Use an existing player")
+		print(_('PLAYER_SELECTION'))
+		print("  1 - " + _('CHOICE_NEW_PLAYER'))
+		print("  2 - " + _('CHOICE_EXISTING_PLAYER'))
 		while choice != '1' and choice != '2':
-			choice = utils.read("Your choice? ")
+			choice = utils.read(_('CHOICE_QUESTION'))
 
 		if choice == '1':
 			self._player.createNewPlayerFromStdIn()
@@ -127,7 +128,7 @@ class Rpg:
 		readline.set_completer(completer.complete)
 		readline.parse_and_bind('tab: complete')
 		readline.set_completer_delims('')
-		return utils.read("Command: ")
+		return utils.read(_('COMMAND_PROMPT'))
 
 	def renderException(self, e):
 		if self._debug:
