@@ -38,7 +38,7 @@ class player(character.character):
 		return True
 
 	#~ Read the login and the password from stdin
-	def _readLoginAndPassword(self, checkLogin, confirmPassword):
+	def _readLoginAndPassword(self, checkLogin, askConfirmPassword):
 		while self._login is None or self._login == '':
 			self._login = utils.read(_('LOGIN_PROMPT'))
 
@@ -50,7 +50,7 @@ class player(character.character):
 		while (self._password is None or self._password == ''):
 			self._password = getpass.getpass(_('PASSWORD_PROMPT'))
 
-			if confirmPassword:
+			if askConfirmPassword is True:
 				confirmPassword = getpass.getpass(_('CONFIRM_PASSWORD_PROMPT'))
 			else:
 				confirmPassword = self._password
