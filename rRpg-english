@@ -1,1 +1,1 @@
-LC_MESSAGES=en_GB ./rRpg
+LC_MESSAGES=en_GB ./rRpg $@
