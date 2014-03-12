@@ -4,10 +4,70 @@
 	</head>
 	<body>
 		<h1><a href="../index.html">rRpg</a> - The engine</h1>
-		<ul>
-			<li><h2><a href="./index.html#presentation">Presentation</a></h2></li>
-			<li><h2><a href="./index.html#download">Download</a></h2></li>
-			<li><h2><a href="./index.html#gameplay">Gameplay</a></h2></li>
-		</ul>
+		<h2><a name="presentation">Presentation</a></h2>
+		<p>
+			rRpg is a text based game where the player will evolve in a
+			huge, randomly generated world.
+		</p>
+		<p>
+			To evolve in the game, the player will have to type commands
+			(such as "move north") to execute actions in the world.
+		</p>
+		<h2><a name="download">Download</a></h2>
+		<p>
+			The source code is available on Github:
+			<a href="https://github.com/rrpg/engine">https://github.com/rrpg/engine</a>.
+		</p>
+		<p>
+			The required instructions are available in the README.md file.
+		</p>
+		<h2><a name="gameplay">Gameplay</a></h2>
+		<p>
+			The game is a text-based game. The player will face text to read,
+			and will have to type commands to execute actions
+		</p>
+		<h3>List of commands</h3>
+		<h4>Look arround</h4>
+		<p>
+			To look arround, the player has to type the command <strong>look</strong>.
+		</p>
+		<p>
+			This command will display the following informations:
+			<ul>
+				<li>The name of the region where the player is,</li>
+				<li>The list of characters (other players and NPCs) being on
+				the same cell as the player,</li>
+				<li>The directions the player can go to,</li>
+				<li>The places the player can enter,</li>
+				<li>The items the player can take.</li>
+			</ul>
+		</p>
+		<h5>Example</h5>
+		<pre class="screenshot">
+Command: look
+You are in The High lands
+You see these characters arround:
+    Tom
+You can go in the following directions:
+	south
+You see the following places:
+	first dungeon
+You see the following items
+  1 Heavy breastplate
+  4 Mist potion
+		</pre>
+		<h4>Move</h4>
+		<p>
+			When the player uses the command <strong>move</strong>, he will move
+			in the desired direction.
+		</p>
+		<h5>Example</h5>
+		<pre class="screenshot">Command: move south
+lets go south
+		</pre>
+		<h4>Talk</h4>
+		<h4>Enter and exit places</h4>
+		<h4>Take and drop objects</h4>
+		<h4>Other</h4>
 	</body>
 </html>
