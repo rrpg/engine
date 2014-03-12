@@ -1,1 +1,2 @@
-LC_MESSAGES=fr_FR ./rRpg
+#!/bin/sh
+LC_MESSAGES=fr_FR ./rRpg $@
