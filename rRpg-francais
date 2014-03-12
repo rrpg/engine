@@ -1,1 +1,2 @@
+#!/bin/sh
 LC_MESSAGES=fr_FR ./rRpg $@
