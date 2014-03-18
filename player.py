@@ -2,14 +2,14 @@
 
 import sys
 import getpass
-import utils
+from core import utils
 import gender
 import species
 import character
 from Model import Model
 import datetime
 from settings import settings
-from localisation import _
+from core.localisation import _
 
 
 class player(character.character):

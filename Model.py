@@ -6,9 +6,8 @@ on a sqlite database (Insert, update, delete, load all elements, load
 elements from a pk, load rows from a given condition...).
 """
 
-import config
+from core import config, registry
 import sqlite3
-import registry
 
 
 class Model(object):

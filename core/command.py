@@ -20,7 +20,7 @@ import player
 import item
 import place
 from sentence import sentence
-from localisation import _
+from core.localisation import _
 
 """
 Code corresponding to the quit command

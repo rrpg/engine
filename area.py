@@ -10,7 +10,7 @@ from Model import Model
 import item
 
 import json
-from localisation import _
+from core.localisation import _
 
 """
 Available directions

@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from player import player
-import command
-import utils
+from core import command, utils, config, registry
 import readline
-import config
-import registry
 import os
-from localisation import _
+from core.localisation import _
 
 
 class Rpg:

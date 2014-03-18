@@ -5,11 +5,11 @@ Module to handle the places types, such as the dungeons.
 """
 
 from Model import Model
-import config
+import core.config
 import area
 import subprocess
 import sys
-from localisation import _
+from core.localisation import _
 
 types = (_('PLACE_TYPE_DUNGEON'), _('PLACE_TYPE_CAVE'))
 
