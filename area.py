@@ -121,7 +121,7 @@ class area:
 		will be ("east", "south").
 		Uses the package variable directions.
 		"""
-		return filter(lambda k: area.canGoTo(directionsBits, k), directions)
+		return list(filter(lambda k: area.canGoTo(directionsBits, k), directions))
 
 	@staticmethod
 	def canGoTo(directionsBits, direction):
