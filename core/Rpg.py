@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from player import player
+from models.player import player
 from core import command, utils, config, registry
 import readline
 import os

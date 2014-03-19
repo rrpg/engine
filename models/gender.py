@@ -5,7 +5,7 @@ Module to handle the characters's genders in the game.
 For the moment, only a dual genders system is done.
 """
 
-from Model import Model
+from models.Model import Model
 
 
 class model(Model):

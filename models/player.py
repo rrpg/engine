@@ -3,12 +3,10 @@
 import sys
 import getpass
 from core import utils
-import gender
-import species
-import character
-from Model import Model
+from models import gender, species, character
+from models.Model import Model
 import datetime
-from settings import settings
+from models.settings import settings
 from core.localisation import _
 
 

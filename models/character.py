@@ -4,8 +4,8 @@
 Module to handle the characters in the game
 """
 
-from Model import Model
-import item
+from models.Model import Model
+from models import item
 
 
 class character:

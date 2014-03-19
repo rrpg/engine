@@ -4,9 +4,9 @@
 Module to handle the places types, such as the dungeons.
 """
 
-from Model import Model
+from models.Model import Model
 import core.config
-import area
+from models import area
 import subprocess
 import sys
 from core.localisation import _

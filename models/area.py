@@ -6,8 +6,8 @@ The world is divided in a grid of areas.
 An area can have up to 4 neighbours (one for each cardinal point).
 """
 
-from Model import Model
-import item
+from models.Model import Model
+from models import item
 
 import json
 from core.localisation import _
@@ -74,7 +74,7 @@ class area:
 		@return list
 		"""
 		if idArea not in area.items.keys():
-			area.items[idArea] = item.inventory.fromStr(model.loadById(idArea, ['items'])['items'])
+			area.items[idArea] = model.item.inventory.fromStr(model.loadById(idArea, ['items'])['items'])
 		return area.items[idArea]
 
 	@staticmethod
@@ -88,7 +88,7 @@ class area:
 		@param idArea id of the area the items must be removed from.
 		@param items list of items to remove
 		"""
-		area.items[idArea] = item.inventory.removeItems(area.getItems(idArea), items)
+		area.items[idArea] = model.item.inventory.removeItems(area.getItems(idArea), items)
 		model.saveAvailableItems(idArea, area.items[idArea])
 
 	@staticmethod
@@ -101,7 +101,7 @@ class area:
 		@param idArea id of the area the items must be added to.
 		@param items list of items to add
 		"""
-		area.items[idArea] = item.inventory.addItems(area.getItems(idArea), items)
+		area.items[idArea] = model.item.inventory.addItems(area.getItems(idArea), items)
 		model.saveAvailableItems(idArea, area.items[idArea])
 
 	@staticmethod

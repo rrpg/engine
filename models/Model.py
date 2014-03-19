@@ -20,6 +20,15 @@ class Model(object):
 
 	_db = None
 
+	_table = None
+
+	@classmethod
+	def getClass(cls):
+		if cls._table is None:
+			cls._table = cls.__module__.split('.').pop()
+
+		return cls._table
+
 	#public:
 	@staticmethod
 	def fetchAllRows(query, params={}):
@@ -115,7 +124,7 @@ class Model(object):
 		values = ['?'] * len(fieldsNames)
 
 		query = "INSERT INTO %s (%s) VALUES (%s)" % (
-			cls.__module__, ','.join(fieldsNames), ','.join(values)
+			cls.getClass(), ','.join(fieldsNames), ','.join(values)
 		)
 
 		c.execute(query, list(fields.values()))
@@ -132,7 +141,7 @@ class Model(object):
 		fieldsNames = map(lambda x: '"' + x + '" = ?', fields.keys())
 
 		query = "UPDATE %(table)s SET %(values)s WHERE %(where)s" %\
-			{'table': cls.__module__, 'values': ','.join(fieldsNames), 'where': where[0]}
+			{'table': cls.getClass(), 'values': ','.join(fieldsNames), 'where': where[0]}
 		c.execute(query, list(fields.values()) + where[1])
 		Model.disconnect()
 
@@ -142,7 +151,7 @@ class Model(object):
 		c = Model._db.cursor()
 
 		query = "DELETE FROM %(table)s WHERE %(where)s" %\
-			{'table': cls.__module__, 'where': where[0]}
+			{'table': cls.getClass(), 'where': where[0]}
 		r = c.execute(query, where[1])
 		Model.disconnect()
 		return r
@@ -173,7 +182,7 @@ class Model(object):
 				%(fields)s\
 			FROM\
 				%(table)s\
-		" % {'fields': fields, 'table': cls.__module__}
+		" % {'fields': fields, 'table': cls.getClass()}
 
 		return Model.fetchAllRows(query, {})
 
@@ -181,7 +190,7 @@ class Model(object):
 	def loadById(cls, id, fields=None):
 		fields = cls.prepareFieldsForSelect(fields)
 
-		table = cls.__module__
+		table = cls.getClass()
 		query = "\
 			SELECT\
 				%(fields)s\
@@ -209,7 +218,7 @@ class Model(object):
 				%(where)s\
 		" % {
 			'fields': fields,
-			'table': cls.__module__,
+			'table': cls.getClass(),
 			'where': ' AND '.join(filtersNames)
 		}
 
