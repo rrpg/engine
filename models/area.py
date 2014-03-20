@@ -74,7 +74,7 @@ class area:
 		@return list
 		"""
 		if idArea not in area.items.keys():
-			area.items[idArea] = model.item.inventory.fromStr(model.loadById(idArea, ['items'])['items'])
+			area.items[idArea] = item.inventory.fromStr(model.loadById(idArea, ['items'])['items'])
 		return area.items[idArea]
 
 	@staticmethod
@@ -88,7 +88,7 @@ class area:
 		@param idArea id of the area the items must be removed from.
 		@param items list of items to remove
 		"""
-		area.items[idArea] = model.item.inventory.removeItems(area.getItems(idArea), items)
+		area.items[idArea] = item.inventory.removeItems(area.getItems(idArea), items)
 		model.saveAvailableItems(idArea, area.items[idArea])
 
 	@staticmethod
@@ -101,7 +101,7 @@ class area:
 		@param idArea id of the area the items must be added to.
 		@param items list of items to add
 		"""
-		area.items[idArea] = model.item.inventory.addItems(area.getItems(idArea), items)
+		area.items[idArea] = item.inventory.addItems(area.getItems(idArea), items)
 		model.saveAvailableItems(idArea, area.items[idArea])
 
 	@staticmethod
