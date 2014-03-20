@@ -21,7 +21,7 @@ An item has one row in the database, but can have multiple instances in the prog
 
 """
 
-from Model import Model
+from models.Model import Model
 import json
 
 equipableFlag = 0b001

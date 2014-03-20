@@ -8,7 +8,7 @@ server['port'] = 4249
 server['services'] = {}
 server['services']['auth'] = '/auth'
 
-rootPath = os.path.dirname(__file__)
+rootPath = os.path.dirname(__file__) + '/..'
 externalPath = rootPath + '/externals'
 localesDir = rootPath + '/locales'
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-08 23:02+0000\n"
+"POT-Creation-Date: 2014-03-18 15:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,30 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: Rpg.py:25
-msgid "ERROR_UNKNOWN_SELECTED_WORLD"
-msgstr ""
-
-#: Rpg.py:43
-msgid "PLAYER_SELECTION"
-msgstr ""
-
-#: Rpg.py:44
-msgid "CHOICE_NEW_PLAYER"
-msgstr ""
-
-#: Rpg.py:45
-msgid "CHOICE_EXISTING_PLAYER"
-msgstr ""
-
-#: Rpg.py:47
-msgid "CHOICE_QUESTION"
-msgstr ""
-
-#: Rpg.py:131
-msgid "COMMAND_PROMPT"
-msgstr ""
 
 #: area.py:19
 msgid "DIRECTION_KEY_NORTH"
@@ -65,232 +41,256 @@ msgstr ""
 msgid "AREA_TYPE_LAND"
 msgstr ""
 
-#: command.py:44 command.py:172
+#: core/Rpg.py:25
+msgid "ERROR_UNKNOWN_SELECTED_WORLD"
+msgstr ""
+
+#: core/Rpg.py:43
+msgid "PLAYER_SELECTION"
+msgstr ""
+
+#: core/Rpg.py:44
+msgid "CHOICE_NEW_PLAYER"
+msgstr ""
+
+#: core/Rpg.py:45
+msgid "CHOICE_EXISTING_PLAYER"
+msgstr ""
+
+#: core/Rpg.py:47
+msgid "CHOICE_QUESTION"
+msgstr ""
+
+#: core/Rpg.py:131
+msgid "COMMAND_PROMPT"
+msgstr ""
+
+#: core/command.py:44 core/command.py:172
 msgid "LOOK_COMMAND"
 msgstr ""
 
-#: command.py:45 command.py:164
+#: core/command.py:45 core/command.py:164
 msgid "TALK_COMMAND"
 msgstr ""
 
-#: command.py:46 command.py:166
+#: core/command.py:46 core/command.py:166
 msgid "MOVE_COMMAND"
 msgstr ""
 
-#: command.py:47 command.py:168
+#: core/command.py:47 core/command.py:168
 msgid "ENTER_COMMAND"
 msgstr ""
 
-#: command.py:48 command.py:170
+#: core/command.py:48 core/command.py:170
 msgid "EXIT_COMMAND"
 msgstr ""
 
-#: command.py:49 command.py:176
+#: core/command.py:49 core/command.py:176
 msgid "TAKE_COMMAND"
 msgstr ""
 
-#: command.py:50 command.py:178
+#: core/command.py:50 core/command.py:178
 msgid "DROP_COMMAND"
 msgstr ""
 
-#: command.py:51 command.py:174
+#: core/command.py:51 core/command.py:174
 msgid "INVENTORY_COMMAND"
 msgstr ""
 
-#: command.py:52 command.py:174
+#: core/command.py:52 core/command.py:174
 msgid "INVENTORY_SHORT_COMMAND"
 msgstr ""
 
-#: command.py:53 command.py:182
+#: core/command.py:53 core/command.py:182
 msgid "HELP_COMMAND"
 msgstr ""
 
-#: command.py:105 command.py:184
+#: core/command.py:105 core/command.py:184
 msgid "QUIT_COMMAND"
 msgstr ""
 
-#: command.py:105 command.py:184
+#: core/command.py:105 core/command.py:184
 msgid "QUIT_SHORT_COMMAND"
 msgstr ""
 
-#: command.py:110
+#: core/command.py:110
 msgid "ERROR_UNKNOWN_COMMAND"
 msgstr ""
 
-#: command.py:163
+#: core/command.py:163
 msgid "AVAILABLE_COMMANDS_TITLE"
 msgstr ""
 
-#: command.py:164
+#: core/command.py:164
 msgid "CHARACTER_TOKEN"
 msgstr ""
 
-#: command.py:164
+#: core/command.py:164
 msgid "SENTENCE_TOKEN"
 msgstr ""
 
-#: command.py:165
+#: core/command.py:165
 msgid "TALK_COMMAND_DESCRIPTION"
 msgstr ""
 
-#: command.py:167
+#: core/command.py:167
 msgid "MOVE_COMMAND_DESCRIPTION"
 msgstr ""
 
-#: command.py:169
+#: core/command.py:169
 msgid "ENTER_COMMAND_DESCRIPTION"
 msgstr ""
 
-#: command.py:171
+#: core/command.py:171
 msgid "EXIT_COMMAND_DESCRIPTION"
 msgstr ""
 
-#: command.py:173
+#: core/command.py:173
 msgid "LOOK_COMMAND_DESCRIPTION"
 msgstr ""
 
-#: command.py:175
+#: core/command.py:175
 msgid "INVENTORY_COMMAND_DESCRIPTION"
 msgstr ""
 
-#: command.py:176 command.py:178
+#: core/command.py:176 core/command.py:178
 msgid "ITEM_NAME_TOKEN"
 msgstr ""
 
-#: command.py:176 command.py:178
+#: core/command.py:176 core/command.py:178
 msgid "QUANTITY_TOKEN"
 msgstr ""
 
-#: command.py:177
+#: core/command.py:177
 msgid "TAKE_COMMAND_DESCRIPTION"
 msgstr ""
 
-#: command.py:179
+#: core/command.py:179
 msgid "DROP_COMMAND_DESCRIPTION"
 msgstr ""
 
-#: command.py:183
+#: core/command.py:183
 msgid "HELP_COMMAND_DESCRIPTION"
 msgstr ""
 
-#: command.py:185
+#: core/command.py:185
 msgid "QUIT_COMMAND_DESCRIPTION"
 msgstr ""
 
-#: command.py:203
+#: core/command.py:203
 #, python-format
 msgid "CURRENT_REGION_%s"
 msgstr ""
 
-#: command.py:210
+#: core/command.py:210
 msgid "PRESENT_CHARACTERS"
 msgstr ""
 
-#: command.py:219
+#: core/command.py:219
 msgid "AVAILABLE_DIRECTIONS"
 msgstr ""
 
-#: command.py:226
+#: core/command.py:226
 msgid "AVAILABLE_PLACES"
 msgstr ""
 
-#: command.py:235
+#: core/command.py:235
 msgid "AVAILABLE_ITEMS"
 msgstr ""
 
-#: command.py:253
+#: core/command.py:253
 msgid "ERROR_MOVE_NO_DIRECTION_GIVEN"
 msgstr ""
 
-#: command.py:257
+#: core/command.py:257
 #, python-format
 msgid "ERROR_MOVE_INVALID_DIRECTION_%s"
 msgstr ""
 
-#: command.py:264
+#: core/command.py:264
 msgid "ERROR_MOVE_DIRECTION_NOT_AVAILABLE"
 msgstr ""
 
-#: command.py:267
+#: core/command.py:267
 #, python-format
 msgid "MOVE_CONFIRMATION_%s"
 msgstr ""
 
-#: command.py:283
+#: core/command.py:283
 msgid "ERROR_ENTER_NO_PLACE_GIVEN"
 msgstr ""
 
-#: command.py:289 command.py:317
+#: core/command.py:289 core/command.py:317
 msgid "ERROR_ENTER_PLACE_NOT_AVAILABLE"
 msgstr ""
 
-#: command.py:294
+#: core/command.py:294
 msgid "ENTER_CONFIRMATION"
 msgstr ""
 
-#: command.py:311
+#: core/command.py:311
 msgid "ERROR_EXIT_NO_PLACE_GIVEN"
 msgstr ""
 
-#: command.py:321
+#: core/command.py:321
 msgid "EXIT_CONFIRMATION"
 msgstr ""
 
-#: command.py:334
+#: core/command.py:334
 msgid "ERROR_TALK_NO_CHARACTER_GIVEN"
 msgstr ""
 
-#: command.py:336
+#: core/command.py:336
 msgid "ERROR_TALK_NO_SENTENCE_GIVEN"
 msgstr ""
 
-#: command.py:345
+#: core/command.py:345
 msgid "ERROR_TALK_UNKNOWN_CHARACTER"
 msgstr ""
 
-#: command.py:352
+#: core/command.py:352
 msgid "ERROR_TALK_UNKNOWN_SENTENCE"
 msgstr ""
 
-#: command.py:367
+#: core/command.py:367
 msgid "ERROR_TAKE_NO_ITEM_GIVEN"
 msgstr ""
 
-#: command.py:380
+#: core/command.py:380
 msgid "ERROR_TAKE_UNKNOWN_ITEM"
 msgstr ""
 
-#: command.py:387
+#: core/command.py:387
 msgid "ERROR_TAKE_ITEM_NOT_AVAILABLE"
 msgstr ""
 
-#: command.py:390
+#: core/command.py:390
 msgid "ERROR_TAKE_QUANTITY_TOO_HIGH"
 msgstr ""
 
-#: command.py:396
+#: core/command.py:396
 #, python-format
 msgid "TAKE_CONFIRMATION_%(quantity)s_%(name)s"
 msgstr ""
 
-#: command.py:409
+#: core/command.py:409
 msgid "ERROR_DROP_NO_ITEM_GIVEN"
 msgstr ""
 
-#: command.py:423
+#: core/command.py:423
 msgid "ERROR_DROP_UNKNOWN_ITEM"
 msgstr ""
 
-#: command.py:428
+#: core/command.py:428
 msgid "ERROR_DROP_ITEM_NOT_AVAILABLE"
 msgstr ""
 
-#: command.py:430
+#: core/command.py:430
 #, python-format
 msgid "ERROR_DROP_QUANTITY_TOO_HIGH_%s"
 msgstr ""
 
-#: command.py:436
+#: core/command.py:436
 #, python-format
 msgid "DROP_CONFIRMATION_%(quantity)s_%(name)s"
 msgstr ""

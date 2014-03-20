@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-08 23:02+0000\n"
+"POT-Creation-Date: 2014-03-18 15:28+0000\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,30 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=ASCII\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: Rpg.py:25
-msgid "ERROR_UNKNOWN_SELECTED_WORLD"
-msgstr "Unknown selected world"
-
-#: Rpg.py:43
-msgid "PLAYER_SELECTION"
-msgstr "Player selection"
-
-#: Rpg.py:44
-msgid "CHOICE_NEW_PLAYER"
-msgstr "Create a new player"
-
-#: Rpg.py:45
-msgid "CHOICE_EXISTING_PLAYER"
-msgstr "Choose an existing player"
-
-#: Rpg.py:47
-msgid "CHOICE_QUESTION"
-msgstr "Your choice? "
-
-#: Rpg.py:131
-msgid "COMMAND_PROMPT"
-msgstr "Command: "
 
 #: area.py:19
 msgid "DIRECTION_KEY_NORTH"
@@ -65,235 +41,259 @@ msgstr "dungeon"
 msgid "AREA_TYPE_LAND"
 msgstr "land"
 
-#: command.py:44 command.py:172
+#: core/Rpg.py:25
+msgid "ERROR_UNKNOWN_SELECTED_WORLD"
+msgstr "Unknown selected world"
+
+#: core/Rpg.py:43
+msgid "PLAYER_SELECTION"
+msgstr "Player selection"
+
+#: core/Rpg.py:44
+msgid "CHOICE_NEW_PLAYER"
+msgstr "Create a new player"
+
+#: core/Rpg.py:45
+msgid "CHOICE_EXISTING_PLAYER"
+msgstr "Choose an existing player"
+
+#: core/Rpg.py:47
+msgid "CHOICE_QUESTION"
+msgstr "Your choice? "
+
+#: core/Rpg.py:131
+msgid "COMMAND_PROMPT"
+msgstr "Command: "
+
+#: core/command.py:44 core/command.py:172
 msgid "LOOK_COMMAND"
 msgstr "look"
 
-#: command.py:45 command.py:164
+#: core/command.py:45 core/command.py:164
 msgid "TALK_COMMAND"
 msgstr "talk"
 
-#: command.py:46 command.py:166
+#: core/command.py:46 core/command.py:166
 msgid "MOVE_COMMAND"
 msgstr "move"
 
-#: command.py:47 command.py:168
+#: core/command.py:47 core/command.py:168
 msgid "ENTER_COMMAND"
 msgstr "enter"
 
-#: command.py:48 command.py:170
+#: core/command.py:48 core/command.py:170
 msgid "EXIT_COMMAND"
 msgstr "exit"
 
-#: command.py:49 command.py:176
+#: core/command.py:49 core/command.py:176
 msgid "TAKE_COMMAND"
 msgstr "take"
 
-#: command.py:50 command.py:178
+#: core/command.py:50 core/command.py:178
 msgid "DROP_COMMAND"
 msgstr "drop"
 
-#: command.py:51 command.py:174
+#: core/command.py:51 core/command.py:174
 msgid "INVENTORY_COMMAND"
 msgstr "inventory"
 
-#: command.py:52 command.py:174
+#: core/command.py:52 core/command.py:174
 msgid "INVENTORY_SHORT_COMMAND"
 msgstr "inv"
 
-#: command.py:53 command.py:182
+#: core/command.py:53 core/command.py:182
 msgid "HELP_COMMAND"
 msgstr "help"
 
-#: command.py:105 command.py:184
+#: core/command.py:105 core/command.py:184
 msgid "QUIT_COMMAND"
 msgstr "quit"
 
-#: command.py:105 command.py:184
+#: core/command.py:105 core/command.py:184
 msgid "QUIT_SHORT_COMMAND"
 msgstr "q"
 
-#: command.py:110
+#: core/command.py:110
 msgid "ERROR_UNKNOWN_COMMAND"
 msgstr "Unknown command"
 
-#: command.py:163
+#: core/command.py:163
 msgid "AVAILABLE_COMMANDS_TITLE"
 msgstr "Available commands"
 
-#: command.py:164
+#: core/command.py:164
 msgid "CHARACTER_TOKEN"
 msgstr "character name"
 
-#: command.py:164
+#: core/command.py:164
 msgid "SENTENCE_TOKEN"
 msgstr "sentence"
 
-#: command.py:165
+#: core/command.py:165
 msgid "TALK_COMMAND_DESCRIPTION"
 msgstr "Talk to a character"
 
-#: command.py:167
+#: core/command.py:167
 msgid "MOVE_COMMAND_DESCRIPTION"
 msgstr "Go to the indicated direction"
 
-#: command.py:169
+#: core/command.py:169
 msgid "ENTER_COMMAND_DESCRIPTION"
 msgstr ""
 "Enter in the selected place (if the place is available in the current cell)"
 
-#: command.py:171
+#: core/command.py:171
 msgid "EXIT_COMMAND_DESCRIPTION"
 msgstr "Exit from the selected place (if the current cell is the place exit)"
 
-#: command.py:173
+#: core/command.py:173
 msgid "LOOK_COMMAND_DESCRIPTION"
 msgstr ""
 "List everything which is in the current area (characters, items, neighbour "
 "areas...)"
 
-#: command.py:175
+#: core/command.py:175
 msgid "INVENTORY_COMMAND_DESCRIPTION"
 msgstr "List the items the player has in his inventory"
 
-#: command.py:176 command.py:178
+#: core/command.py:176 core/command.py:178
 msgid "ITEM_NAME_TOKEN"
 msgstr "item name"
 
-#: command.py:176 command.py:178
+#: core/command.py:176 core/command.py:178
 msgid "QUANTITY_TOKEN"
 msgstr "quantity"
 
-#: command.py:177
+#: core/command.py:177
 msgid "TAKE_COMMAND_DESCRIPTION"
 msgstr "Take some items on the ground"
 
-#: command.py:179
+#: core/command.py:179
 msgid "DROP_COMMAND_DESCRIPTION"
 msgstr "Drop some items from your inventory"
 
-#: command.py:183
+#: core/command.py:183
 msgid "HELP_COMMAND_DESCRIPTION"
 msgstr "Display the help menu"
 
-#: command.py:185
+#: core/command.py:185
 msgid "QUIT_COMMAND_DESCRIPTION"
 msgstr "Quit the game"
 
-#: command.py:203
+#: core/command.py:203
 #, python-format
 msgid "CURRENT_REGION_%s"
 msgstr "You are in %s"
 
-#: command.py:210
+#: core/command.py:210
 msgid "PRESENT_CHARACTERS"
 msgstr "You see these characters arround:"
 
-#: command.py:219
+#: core/command.py:219
 msgid "AVAILABLE_DIRECTIONS"
 msgstr "You can go in the following directions:"
 
-#: command.py:226
+#: core/command.py:226
 msgid "AVAILABLE_PLACES"
 msgstr "You see the following places:"
 
-#: command.py:235
+#: core/command.py:235
 msgid "AVAILABLE_ITEMS"
 msgstr "You see the following items"
 
-#: command.py:253
+#: core/command.py:253
 msgid "ERROR_MOVE_NO_DIRECTION_GIVEN"
 msgstr "Where shall I go?"
 
-#: command.py:257
+#: core/command.py:257
 #, python-format
 msgid "ERROR_MOVE_INVALID_DIRECTION_%s"
 msgstr "%s is not a valid direction"
 
-#: command.py:264
+#: core/command.py:264
 msgid "ERROR_MOVE_DIRECTION_NOT_AVAILABLE"
 msgstr "I can't go there"
 
-#: command.py:267
+#: core/command.py:267
 #, python-format
 msgid "MOVE_CONFIRMATION_%s"
 msgstr "lets go %s"
 
-#: command.py:283
+#: core/command.py:283
 msgid "ERROR_ENTER_NO_PLACE_GIVEN"
 msgstr "I can't enter into nothing"
 
-#: command.py:289 command.py:317
+#: core/command.py:289 core/command.py:317
 msgid "ERROR_ENTER_PLACE_NOT_AVAILABLE"
 msgstr "There is no such place here"
 
-#: command.py:294
+#: core/command.py:294
 msgid "ENTER_CONFIRMATION"
 msgstr "You enter."
 
-#: command.py:311
+#: core/command.py:311
 msgid "ERROR_EXIT_NO_PLACE_GIVEN"
 msgstr "I can't exit out of nothing"
 
-#: command.py:321
+#: core/command.py:321
 msgid "EXIT_CONFIRMATION"
 msgstr "You are now outside"
 
-#: command.py:334
+#: core/command.py:334
 msgid "ERROR_TALK_NO_CHARACTER_GIVEN"
 msgstr "Who must I talk to?"
 
-#: command.py:336
+#: core/command.py:336
 msgid "ERROR_TALK_NO_SENTENCE_GIVEN"
 msgstr "What must I say?"
 
-#: command.py:345
+#: core/command.py:345
 msgid "ERROR_TALK_UNKNOWN_CHARACTER"
 msgstr "Unknow character"
 
-#: command.py:352
+#: core/command.py:352
 msgid "ERROR_TALK_UNKNOWN_SENTENCE"
 msgstr "What?"
 
-#: command.py:367
+#: core/command.py:367
 msgid "ERROR_TAKE_NO_ITEM_GIVEN"
 msgstr "What shall I take?"
 
-#: command.py:380
+#: core/command.py:380
 msgid "ERROR_TAKE_UNKNOWN_ITEM"
 msgstr "I don't see this here."
 
-#: command.py:387
+#: core/command.py:387
 msgid "ERROR_TAKE_ITEM_NOT_AVAILABLE"
 msgstr "I don't see this here."
 
-#: command.py:390
+#: core/command.py:390
 msgid "ERROR_TAKE_QUANTITY_TOO_HIGH"
 msgstr "There are not enough items of this kind"
 
-#: command.py:396
+#: core/command.py:396
 #, python-format
 msgid "TAKE_CONFIRMATION_%(quantity)s_%(name)s"
 msgstr "You take %(quantity)s %(name)s"
 
-#: command.py:409
+#: core/command.py:409
 msgid "ERROR_DROP_NO_ITEM_GIVEN"
 msgstr "What shall I drop?"
 
-#: command.py:423
+#: core/command.py:423
 msgid "ERROR_DROP_UNKNOWN_ITEM"
 msgstr "I have none of those"
 
-#: command.py:428
+#: core/command.py:428
 msgid "ERROR_DROP_ITEM_NOT_AVAILABLE"
 msgstr "I have none of those"
 
-#: command.py:430
+#: core/command.py:430
 #, python-format
 msgid "ERROR_DROP_QUANTITY_TOO_HIGH_%s"
 msgstr "I don't have enough %s to drop"
 
-#: command.py:436
+#: core/command.py:436
 #, python-format
 msgid "DROP_CONFIRMATION_%(quantity)s_%(name)s"
 msgstr "You drop %(quantity)s %(name)s"

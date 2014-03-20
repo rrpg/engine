@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from Model import Model
+from models.Model import Model
 
 class settings(Model):
 	fields = ('id_setting', 'key', 'value')

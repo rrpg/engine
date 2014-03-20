@@ -6,11 +6,11 @@ The world is divided in a grid of areas.
 An area can have up to 4 neighbours (one for each cardinal point).
 """
 
-from Model import Model
-import item
+from models.Model import Model
+from models import item
 
 import json
-from localisation import _
+from core.localisation import _
 
 """
 Available directions

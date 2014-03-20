@@ -4,9 +4,9 @@
 import os
 import sys
 import getopt
-from player import exception as pException
-from command import exception as CommandException
-from Rpg import Rpg
+from models.player import exception as pException
+from core.command import exception as CommandException
+from core.Rpg import Rpg
 from argparse import ArgumentParser
 
 

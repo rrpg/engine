@@ -12,15 +12,11 @@ Today, the available commands are:
 """
 
 import sys
-import character
-import area
+from models import character, area, player, item, place
 import random
 import string
-import player
-import item
-import place
-from sentence import sentence
-from localisation import _
+from models.sentence import sentence
+from core.localisation import _
 
 """
 Code corresponding to the quit command
