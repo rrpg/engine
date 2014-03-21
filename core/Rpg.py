@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from models.player import player
-from core import command, utils, config, registry
+from core import command_factory, utils, config, registry
 import readline
 import os
 from core.localisation import _
@@ -76,16 +76,14 @@ class Rpg:
 
 	def _runAction(self):
 		try:
-			c = command.factory.create(self._player, self._action)
+			c = command_factory.factory.create(self._player, self._action)
 
-			if c != command.quit:
+			if c != command_factory.quit:
 				return c.run()
 
 			return c
 		except BaseException as e:
 			self.renderException(e)
-
-
 
 	def parseTypedAction(self, action):
 		inOption = False
