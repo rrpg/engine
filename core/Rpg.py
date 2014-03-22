@@ -4,6 +4,7 @@ from models.player import player
 from core import command_factory, utils, config, registry
 import readline
 import os
+import json
 from core.localisation import _
 
 RENDER_TEXT = 0
@@ -82,7 +83,12 @@ class Rpg:
 			c = command_factory.factory.create(self._player, self._action)
 
 			if c != command_factory.quit:
-				return c.run()
+				result = c.run()
+				if self._renderMode == RENDER_JSON:
+					print(json.dumps(result))
+				else:
+					c.render(result)
+				return None
 
 			return c
 		except BaseException as e:
