@@ -16,46 +16,70 @@ class look(core.command.command):
 		Display some informations about the player's current position
 		(characters arround, availables directions...).
 		"""
+		result = dict()
+
 		areaId = self._player.getAreaId()
 
 		# Display current area description
 		regionName = area.area.getRegionNameFromAreaId(areaId)
-		print(_('CURRENT_REGION_%s') % (regionName))
-		print('\n')
+		result['region'] = _('CURRENT_REGION_%s') % (regionName)
 
 		# Display surrounding characters
 		characters = character.character.searchByIdArea(areaId)
 		# the player is in the result list
-		if len(characters) > 1:
-			print(_('PRESENT_CHARACTERS'))
-			for c in characters:
-				if c._model['id_character'] != self._player._model['id_character']:
-					print('    ' + c._model['name'])
+		result['characters'] = list()
+		for c in characters:
+			if c._model['id_character'] != self._player._model['id_character']:
+				result['characters'].append(c._model['name'])
 
 		# Display accessible areas
 		areas = area.model.getSurroundingAreas(areaId)
 		directions = area.area.getValidDirections(areas['directions'])
-		if len(directions) is not 0:
-			print(_('AVAILABLE_DIRECTIONS'))
-			for d in directions:
-				print('    ' + d)
+		result['directions'] = list()
+		for d in directions:
+			result['directions'].append(d)
 
 		# Display accessible places
 		places = place.model.getSurroundingPlaces(areaId)
-		if len(places) > 0:
-			print(_('AVAILABLE_PLACES'))
-			for p in places:
-				print('    ' + p['name'])
+		result['places'] = list()
+		for p in places:
+			result['places'].append(p['name'])
 
 		# Display surrounding objects
 		items = item.inventory.fromStr(
 			area.model.loadById(areaId, ['items'])['items']
 		)
-		if len(items) > 0:
-			print(_('AVAILABLE_ITEMS'))
-			for i in items:
-				it = item.model.loadById(i)
-				print(str(items[i]['quantity']).rjust(3) + ' ' + it['name'])
+		result['items'] = list()
+		for i in items:
+			it = item.model.loadById(i)
+			result['items'].append({
+				'name': it['name'],
+				'quantity': items[i]['quantity']
+			})
+
+		return result
 
 	def render(self, data):
-		pass
+		print(data['region'] + '\n')
+
+		if len(data['characters']) > 0:
+			print(_('PRESENT_CHARACTERS'))
+			for c in data['characters']:
+				print('    ' + c)
+
+		if len(data['directions']) > 0:
+			print(_('AVAILABLE_DIRECTIONS'))
+			for d in data['directions']:
+				print('    ' + d)
+			print('')
+
+		if len(data['places']) > 0:
+			print(_('AVAILABLE_PLACES'))
+			for p in data['places']:
+				print('    ' + p)
+			print('')
+
+		if len(data['items']) > 0:
+			print(_('AVAILABLE_ITEMS'))
+			for i in data['items']:
+				print(str(i['quantity']).rjust(3) + ' ' + i['name'])
