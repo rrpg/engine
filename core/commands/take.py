@@ -38,3 +38,6 @@ class take(core.command.command):
 		area.area.removeItems(self._player.getAreaId(), i)
 
 		print(_('TAKE_CONFIRMATION_%(quantity)s_%(name)s') % {'quantity': quantity, 'name': name})
+
+	def render(self, data):
+		pass

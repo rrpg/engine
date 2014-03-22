@@ -44,3 +44,6 @@ class talk(core.command.command):
 
 	def processSentence(self, s, characterName):
 		return s % {'player_name': characterName}
+
+	def render(self, data):
+		pass

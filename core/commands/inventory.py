@@ -17,3 +17,6 @@ class inventory(core.command.command):
 		for itemId in i:
 			it = item.model.loadById(itemId)
 			print(str(i[itemId]['quantity']).rjust(3) + ' ' + it['name'])
+
+	def render(self, data):
+		pass

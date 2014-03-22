@@ -29,3 +29,6 @@ class exit(core.command.command):
 
 		self._player.goTo(p['id_area'])
 		print(_('EXIT_CONFIRMATION'))
+
+	def render(self, data):
+		pass

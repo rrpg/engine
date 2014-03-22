@@ -39,3 +39,6 @@ class help(core.command.command):
 		print('\t' + _('HELP_COMMAND_DESCRIPTION'))
 		print(_('QUIT_SHORT_COMMAND') + '|' + _('QUIT_COMMAND') + ':')
 		print('\t' + _('QUIT_COMMAND_DESCRIPTION'))
+
+	def render(self, data):
+		pass

@@ -31,3 +31,6 @@ class move(core.command.command):
 		else:
 			self._player.goTo(a._model['id_area'])
 			print(_('MOVE_CONFIRMATION_%s') % direction)
+
+	def render(self, data):
+		pass

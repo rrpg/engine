@@ -56,3 +56,6 @@ class look(core.command.command):
 			for i in items:
 				it = item.model.loadById(i)
 				print(str(items[i]['quantity']).rjust(3) + ' ' + it['name'])
+
+	def render(self, data):
+		pass
