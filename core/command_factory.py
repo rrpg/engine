@@ -15,6 +15,7 @@ Today, the available commands are:
 - help,
 - quit
 """
+import core.command
 from core.commands import look, talk, move, enter, exit, take, drop, inventory, help
 from core.localisation import _
 import sys
