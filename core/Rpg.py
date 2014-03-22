@@ -6,12 +6,15 @@ import readline
 import os
 from core.localisation import _
 
+RENDER_TEXT = 0
+RENDER_JSON = 1
 
 class Rpg:
 	_debug = False
 
-	def __init__(self, debug):
+	def __init__(self, debug, renderMode=RENDER_TEXT):
 		self._debug = debug
+		self._renderMode = renderMode
 
 	def init(self, world, login, password, action):
 		if world is None:
