@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from models.player import player
-from core import command_factory, utils, config, registry
+from core import command, command_factory, utils, config, registry
 import readline
 import os
 import json
@@ -75,7 +75,7 @@ class Rpg:
 					result = self._runAction()
 					print("")
 
-				if result == command.quit:
+				if result == command_factory.quit:
 					break
 
 	def _runAction(self):
@@ -128,7 +128,7 @@ class Rpg:
 		Method to set the autocompleter and run the prompt, from utils
 		"""
 
-		completer = command.completer()
+		completer = command.completer(sorted(command_factory.factory.mapping.keys()))
 		readline.set_completer(completer.complete)
 		readline.parse_and_bind('tab: complete')
 		readline.set_completer_delims('')

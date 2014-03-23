@@ -34,11 +34,11 @@ class completer:
 	Class to autocomplete use choice while typing a command
 	"""
 
-	def __init__(self):
+	def __init__(self, commands):
 		"""
 		Construct. Set the available commands in an options var
 		"""
-		self.options = sorted(command.mapping.keys())
+		self.options = commands
 
 	def complete(self, text, state):
 		"""
