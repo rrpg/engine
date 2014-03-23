@@ -41,7 +41,7 @@ class drop(core.command.command):
 		self._player.removeItemsFromInventory(i)
 		area.area.addItems(self._player.getAreaId(), i)
 
-		print(_('DROP_CONFIRMATION_%(quantity)s_%(name)s') % {'quantity': quantity, 'name': name})
+		return {'quantity': quantity, 'name': name}
 
 	def render(self, data):
-		pass
+		print(_('DROP_CONFIRMATION_%(quantity)s_%(name)s') % data)

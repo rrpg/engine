@@ -30,7 +30,8 @@ class move(core.command.command):
 			raise core.command.exception(_('ERROR_MOVE_DIRECTION_NOT_AVAILABLE'))
 		else:
 			self._player.goTo(a._model['id_area'])
-			print(_('MOVE_CONFIRMATION_%s') % direction)
+
+		return {'direction': direction}
 
 	def render(self, data):
-		pass
+		print(_('MOVE_CONFIRMATION_%s') % data['direction'])
