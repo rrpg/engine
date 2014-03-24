@@ -136,8 +136,16 @@ class Rpg:
 		return utils.read(_('COMMAND_PROMPT'))
 
 	def renderException(self, e):
-		if self._debug:
-			import traceback
-			print(traceback.format_exc())
-		elif not isinstance(e, KeyboardInterrupt):
-			print(e)
+		import traceback
+		if not isinstance(e, core.exception.exception):
+			traceback.print_exc()
+		else:
+			if self._renderMode == RENDER_JSON:
+				excep = {'error': {'code': e.code, 'message': e.message}}
+				if self._debug:
+					excep['backtrace'] = traceback.format_exc()
+				print(json.dumps(excep))
+			elif self._debug:
+				traceback.print_exc()
+			else:
+				print(e)
