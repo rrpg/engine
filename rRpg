@@ -46,7 +46,12 @@ def main(argv):
 	rpg = core.Rpg.Rpg(args.debug, render)
 
 	try:
-		rpg.init(args.world, args.login, args.password, args.action)
+		rpg.init(
+			unicode(args.world, "utf-8"),
+			unicode(args.login, "utf-8"),
+			unicode(args.password, "utf-8"),
+			[unicode(s, "utf-8") for s in args.action]
+		)
 	except KeyboardInterrupt:
 		print("")
 		return
