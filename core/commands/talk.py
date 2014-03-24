@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from models import character
-from models.sentence import sentence
+from models import character, sentence
 import random
 import core.command
 from core.localisation import _
@@ -29,13 +28,12 @@ class talk(core.command.command):
 		if c is None:
 			raise character.exception(_('ERROR_TALK_UNKNOWN_CHARACTER'))
 
-		s = sentence.loadByCharacterIdAndTriggerWord(
+		s = sentence.sentence.loadByCharacterIdAndTriggerWord(
 			c.getId(), triggerWord
 		)
 
 		if len(s) is 0:
-			print(_('ERROR_TALK_UNKNOWN_SENTENCE'))
-			return
+			raise sentence.exception(_('ERROR_TALK_UNKNOWN_SENTENCE'))
 
 		s = s[random.randint(0, len(s) - 1)]
 		print(self.processSentence(
