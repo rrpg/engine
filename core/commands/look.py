@@ -22,7 +22,7 @@ class look(core.command.command):
 
 		# Display current area description
 		regionName = area.area.getRegionNameFromAreaId(areaId)
-		result['region'] = _('CURRENT_REGION_%s') % (regionName)
+		result['region'] = regionName
 
 		# Display surrounding characters
 		characters = character.character.searchByIdArea(areaId)
@@ -60,7 +60,7 @@ class look(core.command.command):
 		return result
 
 	def render(self, data):
-		print(data['region'])
+		print(_('CURRENT_REGION_%s') % data['region'])
 
 		if len(data['characters']) > 0:
 			print('')
