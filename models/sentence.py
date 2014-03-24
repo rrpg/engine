@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import core.exception
 from models.Model import Model
 
 
@@ -41,3 +42,6 @@ class model(Model):
 			"
 
 		return Model.fetchAllRows(query, (triggerWord, idCharacter))
+
+class exception(core.exception.exception):
+	pass

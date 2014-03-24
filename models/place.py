@@ -6,6 +6,7 @@ Module to handle the places types, such as the dungeons.
 
 from models.Model import Model
 import core.config
+import core.exception
 from models import area
 import subprocess
 import sys
@@ -84,7 +85,7 @@ class randomPlace:
 
 		print(_('GENERATING_WAITING_TEXT'))
 		p = subprocess.Popen(
-			config.generator['dungeon']['generator'],
+			core.config.generator['dungeon']['generator'],
 			shell=True,
 			stdout=subprocess.PIPE,
 			stderr=subprocess.PIPE
@@ -97,7 +98,7 @@ class randomPlace:
 		d = result[0].strip().split('\n')
 
 		# Import an external check class from the generator
-		sys.path.insert(0, config.generator['dungeon']['path'])
+		sys.path.insert(0, core.config.generator['dungeon']['path'])
 		import checks
 
 		containerName = cls.areaType + '_' + str(place['id_place'])
@@ -209,7 +210,7 @@ class model(Model):
 		return Model.fetchOneRow(query, [idArea, areaType])
 
 
-class exception(BaseException):
+class exception(core.exception.exception):
 	"""
 	Exception class for the places
 	"""

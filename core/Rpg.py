@@ -1,17 +1,22 @@
 # -*- coding: utf-8 -*-
 
 from models.player import player
-from core import command, utils, config, registry
+from core import command, command_factory, utils, config, registry
 import readline
 import os
+import json
 from core.localisation import _
+import core.exception
 
+RENDER_TEXT = 0
+RENDER_JSON = 1
 
 class Rpg:
 	_debug = False
 
-	def __init__(self, debug):
+	def __init__(self, debug, renderMode=RENDER_TEXT):
 		self._debug = debug
+		self._renderMode = renderMode
 
 	def init(self, world, login, password, action):
 		if world is None:
@@ -19,7 +24,7 @@ class Rpg:
 
 		registry.set("world", world)
 		if os.path.isfile(world) is False:
-			raise BaseException(_('ERROR_UNKNOWN_SELECTED_WORLD'))
+			raise core.exception.exception(_('ERROR_UNKNOWN_SELECTED_WORLD'))
 
 		#~ if the game is launched with login/password,
 		#~ the player is directly fetched
@@ -71,21 +76,24 @@ class Rpg:
 					result = self._runAction()
 					print("")
 
-				if result == command.quit:
+				if result == command_factory.quit:
 					break
 
 	def _runAction(self):
 		try:
-			c = command.factory.create(self._player, self._action)
+			c = command_factory.factory.create(self._player, self._action)
 
-			if c != command.quit:
-				return c.run()
+			if c != command_factory.quit:
+				result = c.run()
+				if self._renderMode == RENDER_JSON:
+					print(json.dumps(result))
+				else:
+					c.render(result)
+				return None
 
 			return c
-		except BaseException as e:
+		except core.exception.exception as e:
 			self.renderException(e)
-
-
 
 	def parseTypedAction(self, action):
 		inOption = False
@@ -121,15 +129,23 @@ class Rpg:
 		Method to set the autocompleter and run the prompt, from utils
 		"""
 
-		completer = command.completer()
+		completer = command.completer(sorted(command_factory.factory.mapping.keys()))
 		readline.set_completer(completer.complete)
 		readline.parse_and_bind('tab: complete')
 		readline.set_completer_delims('')
 		return utils.read(_('COMMAND_PROMPT'))
 
 	def renderException(self, e):
-		if self._debug:
-			import traceback
-			print(traceback.format_exc())
-		elif not isinstance(e, KeyboardInterrupt):
-			print(e)
+		import traceback
+		if not isinstance(e, core.exception.exception):
+			traceback.print_exc()
+		else:
+			if self._renderMode == RENDER_JSON:
+				excep = {'error': {'code': e.code, 'message': e.message}}
+				if self._debug:
+					excep['backtrace'] = traceback.format_exc()
+				print(json.dumps(excep))
+			elif self._debug:
+				traceback.print_exc()
+			else:
+				print(e)
