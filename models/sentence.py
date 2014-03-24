@@ -41,3 +41,6 @@ class model(Model):
 			"
 
 		return Model.fetchAllRows(query, (triggerWord, idCharacter))
+
+class exception(BaseException):
+	pass
