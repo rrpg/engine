@@ -24,3 +24,7 @@ INSERT INTO talk_answer (trigger_word, sentence, condition) VALUES ('hi', 'Hi, %
 
 INSERT INTO character_answer (id_character, id_talk_answer) VALUES (1, 1);
 INSERT INTO character_answer (id_character, id_talk_answer) VALUES (1, 2);
+
+-- For UT
+INSERT INTO `character` (name, id_species, id_gender, id_area) VALUES ('TEST_PLAYER', 1, 1, 2);
+INSERT INTO player (id_character, login, password) VALUES (2, 'TEST_PLAYER', 'TEST_PLAYER');
