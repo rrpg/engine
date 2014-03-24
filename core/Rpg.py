@@ -6,6 +6,7 @@ import readline
 import os
 import json
 from core.localisation import _
+import core.exception
 
 RENDER_TEXT = 0
 RENDER_JSON = 1
@@ -23,7 +24,7 @@ class Rpg:
 
 		registry.set("world", world)
 		if os.path.isfile(world) is False:
-			raise BaseException(_('ERROR_UNKNOWN_SELECTED_WORLD'))
+			raise core.exception.exception(_('ERROR_UNKNOWN_SELECTED_WORLD'))
 
 		#~ if the game is launched with login/password,
 		#~ the player is directly fetched
@@ -91,7 +92,7 @@ class Rpg:
 				return None
 
 			return c
-		except BaseException as e:
+		except core.exception.exception as e:
 			self.renderException(e)
 
 	def parseTypedAction(self, action):

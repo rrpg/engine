@@ -6,6 +6,7 @@ Module to handle the characters in the game
 
 from models.Model import Model
 from models import item
+import core.exception
 
 
 class character:
@@ -171,7 +172,7 @@ class model(Model):
 		)
 
 
-class exception(BaseException):
+class exception(core.exception.exception):
 	"""
 	Class for the exceptions concerning characters.
 	"""

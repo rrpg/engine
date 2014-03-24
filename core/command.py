@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from core.localisation import _
+import core.exception
 
 
 class command():
@@ -64,7 +65,7 @@ class completer:
 			return None
 
 
-class exception(BaseException):
+class exception(core.exception.exception):
 	"""
 	Class for the exceptions concerning commands.
 	"""
