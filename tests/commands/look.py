@@ -10,9 +10,6 @@ from core import Rpg
 from core.commands import look
 
 class lookTests(unittest.TestCase):
-	def setUp(self):
-		pass
-
 	def test_normal(self):
 		with capturer() as output:
 			rpg = Rpg.Rpg(False, Rpg.RENDER_TEXT)
