@@ -36,12 +36,16 @@ class talk(core.command.command):
 			raise sentence.exception(_('ERROR_TALK_UNKNOWN_SENTENCE'))
 
 		s = s[random.randint(0, len(s) - 1)]
-		print(self.processSentence(
-			s.getSentence(), self._player._model['name']
-		))
+		return {
+			'question': s.getSentence(),
+			'character': characterName,
+			'answer': self.processSentence(
+				s.getSentence(), self._player._model['name']
+			)
+		}
 
 	def processSentence(self, s, characterName):
 		return s % {'player_name': characterName}
 
 	def render(self, data):
-		pass
+		print(data['answer'])

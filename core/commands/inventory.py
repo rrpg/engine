@@ -13,10 +13,13 @@ class inventory(core.command.command):
 		Display the player's inventory.
 		"""
 
+		items = list()
 		i = self._player.getInventory()
 		for itemId in i:
 			it = item.model.loadById(itemId)
-			print(str(i[itemId]['quantity']).rjust(3) + ' ' + it['name'])
+			items.append({'name': it['name'], 'quantity': i[itemId]['quantity']})
+		return items
 
 	def render(self, data):
-		pass
+		for i in data:
+			print(str(i['quantity']).rjust(3) + ' ' + i['name'])
