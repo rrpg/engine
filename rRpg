@@ -6,7 +6,7 @@ import sys
 import getopt
 from models.player import exception as pException
 from core.command import exception as CommandException
-from core.Rpg import Rpg
+import core.Rpg
 from argparse import ArgumentParser
 
 
@@ -40,7 +40,10 @@ def main(argv):
 
 	args = parser.parse_args()
 
-	rpg = Rpg(args.debug, args.json)
+	render = core.Rpg.RENDER_TEXT
+	if args.json is not False:
+		render = core.Rpg.RENDER_JSON
+	rpg = core.Rpg.Rpg(args.debug, render)
 
 	try:
 		rpg.init(args.world, args.login, args.password, args.action)
