@@ -2,6 +2,7 @@
 
 import sys
 import getpass
+import core.exception
 from core import utils
 from models import gender, species, character
 from models.Model import Model
@@ -128,5 +129,5 @@ class model(character.model):
 		return cm
 
 
-class exception(BaseException):
+class exception(core.exception.exception):
 	pass

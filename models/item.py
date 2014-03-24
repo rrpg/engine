@@ -21,6 +21,7 @@ An item has one row in the database, but can have multiple instances in the prog
 
 """
 
+import core.exception
 from models.Model import Model
 import json
 
@@ -86,7 +87,7 @@ class model(Model):
 	fields = ('id_item', 'name', 'weight', 'flags', 'effects')
 
 
-class exception(BaseException):
+class exception(core.exception.exception):
 	pass
 
 

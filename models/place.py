@@ -6,6 +6,7 @@ Module to handle the places types, such as the dungeons.
 
 from models.Model import Model
 import core.config
+import core.exception
 from models import area
 import subprocess
 import sys
@@ -209,7 +210,7 @@ class model(Model):
 		return Model.fetchOneRow(query, [idArea, areaType])
 
 
-class exception(BaseException):
+class exception(core.exception.exception):
 	"""
 	Exception class for the places
 	"""
