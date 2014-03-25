@@ -1,4 +1,4 @@
 import gettext
 import core.config
 
-_ = gettext.translation('message', core.config.localesDir).gettext
+_ = gettext.translation('message', core.config.localesDir).ugettext

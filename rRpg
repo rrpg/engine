@@ -45,8 +45,21 @@ def main(argv):
 		render = core.Rpg.RENDER_JSON
 	rpg = core.Rpg.Rpg(args.debug, render)
 
+	world = str(args.world)
+	login = None
+	password = None
+	if args.login is not None:
+		login = unicode(str(args.login), "utf-8")
+	if args.password is not None:
+		password = unicode(str(args.password), "utf-8")
+
 	try:
-		rpg.init(args.world, args.login, args.password, args.action)
+		rpg.init(
+			world,
+			login,
+			password,
+			[unicode(s, "utf-8") for s in args.action]
+		)
 	except KeyboardInterrupt:
 		print("")
 		return
