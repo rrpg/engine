@@ -5,9 +5,7 @@ sys.path.append(os.path.realpath(__file__ + "/../../../"))
 
 from tests.output_capturer import capturer
 
-from models import player
 from core import Rpg
-from core.commands import look
 
 class lookTests(unittest.TestCase):
 	def test_text(self):
