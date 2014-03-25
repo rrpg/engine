@@ -12,7 +12,7 @@ INSERT INTO area_type (name) VALUES ('dungeon');
 INSERT INTO area (id_region, id_area_type, container, x, y, directions, items)
 	VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'land'), 'world', 0, 0, 4, '{"1": {"quantity": 1}, "2": {"quantity": 4}}');
 INSERT INTO area (id_region, id_area_type, container, x, y, directions, items)
-	VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'land'), 'world', 0, 1, 1, '{"1": {"quantity": 2}}');
+	VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'land'), 'world', 0, 1, 1, '{"1": {"quantity": 6}}');
 
 INSERT INTO settings (key, value) VALUES ('START_CELL_ID', 1);
 
