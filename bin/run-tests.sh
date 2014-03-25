@@ -4,3 +4,4 @@ cd database
 ./createDb.sh
 cd ..
 python tests/commands/look.py
+python tests/commands/take.py
