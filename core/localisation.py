@@ -1,4 +1,7 @@
 import gettext
 import core.config
 
-_ = gettext.translation('message', core.config.localesDir).ugettext
+try:
+    _ = gettext.translation('message', core.config.localesDir).ugettext
+except IOError:
+    _ = gettext.translation('message', core.config.localesDir, languages=['en_GB']).ugettext
