@@ -54,9 +54,9 @@ class moveTests(tests.common.common):
 	def test_text(self):
 		with capturer() as output:
 			rpg = Rpg.Rpg(False, Rpg.RENDER_TEXT)
-			rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER', ['move', 'south'])
+			rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER', ['move', 'north'])
 			rpg._runAction()
-		self.assertTrue(output == ['lets go south'])
+		self.assertTrue(output == ['lets go north'])
 
 	def test_json(self):
 		with capturer() as output:

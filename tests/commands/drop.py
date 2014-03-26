@@ -52,44 +52,68 @@ class dropTests(tests.common.common):
 		self.assertTrue(output == ['{"error": {"message": "I have none of those", "code": 1}}'])
 
 	def test_quantity_too_high_text(self):
+		rpg = Rpg.Rpg(False, Rpg.RENDER_TEXT)
+		rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER')
+		rpg.setAction(['take', 2, 'Heavy breastplate'])
 		with capturer() as output:
-			rpg = Rpg.Rpg(False, Rpg.RENDER_TEXT)
-			rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER', ['drop', 10, 'Heavy breastplate'])
+			rpg._runAction()
+		with capturer() as output:
+			rpg.setAction(['drop', 10, 'Heavy breastplate'])
 			rpg._runAction()
 		self.assertTrue(output == ['I don\'t have enough Heavy breastplate to drop'])
 
 	def test_quantity_too_high_json(self):
+		rpg = Rpg.Rpg(False, Rpg.RENDER_JSON)
+		rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER')
+		rpg.setAction(['take', 2, 'Heavy breastplate'])
 		with capturer() as output:
-			rpg = Rpg.Rpg(False, Rpg.RENDER_JSON)
-			rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER', ['drop', 10, 'Heavy breastplate'])
+			rpg._runAction()
+		with capturer() as output:
+			rpg.setAction(['drop', 10, 'Heavy breastplate'])
 			rpg._runAction()
 		self.assertTrue(output == ['{"error": {"message": "I don\'t have enough Heavy breastplate to drop", "code": 1}}'])
 
 	def test_with_quantity_text(self):
+		rpg = Rpg.Rpg(False, Rpg.RENDER_TEXT)
+		rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER')
+		rpg.setAction(['take', 2, 'Heavy breastplate'])
 		with capturer() as output:
-			rpg = Rpg.Rpg(False, Rpg.RENDER_TEXT)
-			rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER', ['drop', 2, 'Heavy breastplate'])
+			rpg._runAction()
+		with capturer() as output:
+			rpg.setAction(['drop', 2, 'Heavy breastplate'])
 			rpg._runAction()
 		self.assertTrue(output == ['You drop 2 Heavy breastplate'])
 
 	def test_with_quantity_json(self):
+		rpg = Rpg.Rpg(False, Rpg.RENDER_JSON)
+		rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER')
+		rpg.setAction(['take', 2, 'Heavy breastplate'])
 		with capturer() as output:
-			rpg = Rpg.Rpg(False, Rpg.RENDER_JSON)
-			rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER', ['drop', 2, 'Heavy breastplate'])
+			rpg._runAction()
+		with capturer() as output:
+			rpg.setAction(['drop', 2, 'Heavy breastplate'])
 			rpg._runAction()
 		self.assertTrue(output == ['{"name": "Heavy breastplate", "quantity": 2}'])
 
 	def test_implied_quantity_text(self):
+		rpg = Rpg.Rpg(False, Rpg.RENDER_TEXT)
+		rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER')
+		rpg.setAction(['take', 'Heavy breastplate'])
 		with capturer() as output:
-			rpg = Rpg.Rpg(False, Rpg.RENDER_TEXT)
-			rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER', ['drop', 'Heavy breastplate'])
+			rpg._runAction()
+		with capturer() as output:
+			rpg.setAction(['drop', 'Heavy breastplate'])
 			rpg._runAction()
 		self.assertTrue(output == ['You drop 1 Heavy breastplate'])
 
 	def test_implied_quantity_json(self):
+		rpg = Rpg.Rpg(False, Rpg.RENDER_JSON)
+		rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER')
+		rpg.setAction(['take', 'Heavy breastplate'])
 		with capturer() as output:
-			rpg = Rpg.Rpg(False, Rpg.RENDER_JSON)
-			rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER', ['drop', 'Heavy breastplate'])
+			rpg._runAction()
+		with capturer() as output:
+			rpg.setAction(['drop', 'Heavy breastplate'])
 			rpg._runAction()
 		self.assertTrue(output == ['{"name": "Heavy breastplate", "quantity": 1}'])
 
