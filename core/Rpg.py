@@ -53,6 +53,11 @@ class Rpg:
 		elif choice == '2':
 			self._player.loadPlayerFromStdIn()
 
+	def setAction(self, action):
+		if type(action) != list:
+			raise TypeError("The action must be a list of strings")
+		self._action = action
+
 	#~ Main method of the Rpg Class, will run the action if it is given,
 	#~ else ask the player to enter a command
 	def run(self):
