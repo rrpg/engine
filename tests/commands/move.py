@@ -3,11 +3,12 @@ import sys
 import os
 sys.path.append(os.path.realpath(__file__ + "/../../../"))
 
+import tests.common
 from tests.output_capturer import capturer
 
 from core import Rpg
 
-class lookTests(unittest.TestCase):
+class moveTests(tests.common.common):
 	def test_no_direction_given_text(self):
 		with capturer() as output:
 			rpg = Rpg.Rpg(False, Rpg.RENDER_TEXT)
