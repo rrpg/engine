@@ -14,7 +14,7 @@ RENDER_JSON = 1
 class Rpg:
 	_debug = False
 
-	def __init__(self, debug, renderMode=RENDER_TEXT):
+	def __init__(self, debug=False, renderMode=RENDER_TEXT):
 		self._debug = debug
 		self._renderMode = renderMode
 

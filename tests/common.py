@@ -7,9 +7,10 @@ class common(unittest.TestCase):
 	def __init__(self, methodName='runTest'):
 		unittest.TestCase.__init__(self, methodName)
 		core.config.memoization_enabled = False
+		self.dbFile = "/tmp/rpg.db"
 
 	def setUp(self):
-		db = os.path.realpath("/tmp/rpg.db")
+		db = os.path.realpath(self.dbFile)
 		if os.path.exists(db):
 			os.remove(db)
 		import sqlite3
