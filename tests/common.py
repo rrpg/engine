@@ -9,7 +9,7 @@ class common(unittest.TestCase):
 		core.config.memoization_enabled = False
 
 	def setUp(self):
-		db = os.path.realpath(os.path.dirname(__file__) + "/../database/rpg.db")
+		db = os.path.realpath("/tmp/rpg.db")
 		if os.path.exists(db):
 			os.remove(db)
 		import sqlite3

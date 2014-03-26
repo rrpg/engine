@@ -12,48 +12,48 @@ class dropTests(tests.common.common):
 	def test_no_item_given_text(self):
 		with capturer() as output:
 			rpg = Rpg.Rpg(False, Rpg.RENDER_TEXT)
-			rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER', ['drop'])
+			rpg.init("/tmp/rpg.db", 'TEST_PLAYER', 'TEST_PLAYER', ['drop'])
 			rpg._runAction()
 		self.assertTrue(output == ['What shall I drop?'])
 
 	def test_no_item_given_json(self):
 		with capturer() as output:
 			rpg = Rpg.Rpg(False, Rpg.RENDER_JSON)
-			rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER', ['drop'])
+			rpg.init("/tmp/rpg.db", 'TEST_PLAYER', 'TEST_PLAYER', ['drop'])
 			rpg._runAction()
 		self.assertTrue(output == ['{"error": {"message": "What shall I drop?", "code": 1}}'])
 
 	def test_unknown_item_text(self):
 		with capturer() as output:
 			rpg = Rpg.Rpg(False, Rpg.RENDER_TEXT)
-			rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER', ['drop', 'some dummy item'])
+			rpg.init("/tmp/rpg.db", 'TEST_PLAYER', 'TEST_PLAYER', ['drop', 'some dummy item'])
 			rpg._runAction()
 		self.assertTrue(output == ['I have none of those'])
 
 	def test_unknown_item_json(self):
 		with capturer() as output:
 			rpg = Rpg.Rpg(False, Rpg.RENDER_JSON)
-			rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER', ['drop', 'some dummy item'])
+			rpg.init("/tmp/rpg.db", 'TEST_PLAYER', 'TEST_PLAYER', ['drop', 'some dummy item'])
 			rpg._runAction()
 		self.assertTrue(output == ['{"error": {"message": "I have none of those", "code": 1}}'])
 
 	def test_item_not_here_text(self):
 		with capturer() as output:
 			rpg = Rpg.Rpg(False, Rpg.RENDER_TEXT)
-			rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER', ['drop', 'Mist potion'])
+			rpg.init("/tmp/rpg.db", 'TEST_PLAYER', 'TEST_PLAYER', ['drop', 'Mist potion'])
 			rpg._runAction()
 		self.assertTrue(output == ['I have none of those'])
 
 	def test_item_not_here_json(self):
 		with capturer() as output:
 			rpg = Rpg.Rpg(False, Rpg.RENDER_JSON)
-			rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER', ['drop', 'Mist potion'])
+			rpg.init("/tmp/rpg.db", 'TEST_PLAYER', 'TEST_PLAYER', ['drop', 'Mist potion'])
 			rpg._runAction()
 		self.assertTrue(output == ['{"error": {"message": "I have none of those", "code": 1}}'])
 
 	def test_quantity_too_high_text(self):
 		rpg = Rpg.Rpg(False, Rpg.RENDER_TEXT)
-		rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER')
+		rpg.init("/tmp/rpg.db", 'TEST_PLAYER', 'TEST_PLAYER')
 		rpg.setAction(['take', 2, 'Heavy breastplate'])
 		with capturer() as output:
 			rpg._runAction()
@@ -64,7 +64,7 @@ class dropTests(tests.common.common):
 
 	def test_quantity_too_high_json(self):
 		rpg = Rpg.Rpg(False, Rpg.RENDER_JSON)
-		rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER')
+		rpg.init("/tmp/rpg.db", 'TEST_PLAYER', 'TEST_PLAYER')
 		rpg.setAction(['take', 2, 'Heavy breastplate'])
 		with capturer() as output:
 			rpg._runAction()
@@ -75,7 +75,7 @@ class dropTests(tests.common.common):
 
 	def test_with_quantity_text(self):
 		rpg = Rpg.Rpg(False, Rpg.RENDER_TEXT)
-		rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER')
+		rpg.init("/tmp/rpg.db", 'TEST_PLAYER', 'TEST_PLAYER')
 		rpg.setAction(['take', 2, 'Heavy breastplate'])
 		with capturer() as output:
 			rpg._runAction()
@@ -86,7 +86,7 @@ class dropTests(tests.common.common):
 
 	def test_with_quantity_json(self):
 		rpg = Rpg.Rpg(False, Rpg.RENDER_JSON)
-		rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER')
+		rpg.init("/tmp/rpg.db", 'TEST_PLAYER', 'TEST_PLAYER')
 		rpg.setAction(['take', 2, 'Heavy breastplate'])
 		with capturer() as output:
 			rpg._runAction()
@@ -97,7 +97,7 @@ class dropTests(tests.common.common):
 
 	def test_implied_quantity_text(self):
 		rpg = Rpg.Rpg(False, Rpg.RENDER_TEXT)
-		rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER')
+		rpg.init("/tmp/rpg.db", 'TEST_PLAYER', 'TEST_PLAYER')
 		rpg.setAction(['take', 'Heavy breastplate'])
 		with capturer() as output:
 			rpg._runAction()
@@ -108,7 +108,7 @@ class dropTests(tests.common.common):
 
 	def test_implied_quantity_json(self):
 		rpg = Rpg.Rpg(False, Rpg.RENDER_JSON)
-		rpg.init(os.path.realpath(__file__ + "/../../../database/rpg.db"), 'TEST_PLAYER', 'TEST_PLAYER')
+		rpg.init("/tmp/rpg.db", 'TEST_PLAYER', 'TEST_PLAYER')
 		rpg.setAction(['take', 'Heavy breastplate'])
 		with capturer() as output:
 			rpg._runAction()
