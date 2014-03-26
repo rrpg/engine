@@ -18,7 +18,7 @@ class Rpg:
 		self._debug = debug
 		self._renderMode = renderMode
 
-	def init(self, world, login, password, action):
+	def init(self, world, login, password, action=None):
 		if world is None:
 			world = config.db
 
@@ -30,7 +30,7 @@ class Rpg:
 		#~ the player is directly fetched
 		if login is not None and password is not None:
 			self._player = player(login, password)
-		elif action == []:
+		elif action == [] or action is None:
 			#else an empty player is created
 			self._player = player(None, None)
 			self._doInteractiveAuth()
