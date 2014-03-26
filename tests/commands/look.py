@@ -1,7 +1,8 @@
 import unittest
 import sys
 import os
-sys.path.append(os.path.realpath(__file__ + "/../../../"))
+
+sys.path.append(os.path.realpath(os.path.dirname(__file__) + "/../../"))
 
 import tests.common
 from tests.output_capturer import capturer
