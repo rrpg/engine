@@ -18,7 +18,7 @@ class Rpg:
 		self._debug = debug
 		self._renderMode = renderMode
 
-	def init(self, world, login, password, action):
+	def init(self, world, login, password, action=None):
 		if world is None:
 			world = config.db
 
@@ -30,7 +30,7 @@ class Rpg:
 		#~ the player is directly fetched
 		if login is not None and password is not None:
 			self._player = player(login, password)
-		elif action == []:
+		elif action == [] or action is None:
 			#else an empty player is created
 			self._player = player(None, None)
 			self._doInteractiveAuth()
@@ -52,6 +52,11 @@ class Rpg:
 			self._player.createNewPlayerFromStdIn()
 		elif choice == '2':
 			self._player.loadPlayerFromStdIn()
+
+	def setAction(self, action):
+		if type(action) != list:
+			raise TypeError("The action must be a list of strings")
+		self._action = action
 
 	#~ Main method of the Rpg Class, will run the action if it is given,
 	#~ else ask the player to enter a command
