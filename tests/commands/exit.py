@@ -8,7 +8,7 @@ from tests.output_capturer import capturer
 
 from core import Rpg
 
-class enterTests(tests.common.common):
+class exitTests(tests.common.common):
 	def test_no_place_given_text(self):
 		with capturer() as output:
 			rpg = Rpg.Rpg(renderMode=Rpg.RENDER_TEXT)
