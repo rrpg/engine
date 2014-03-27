@@ -18,7 +18,7 @@ INSERT INTO area (id_region, id_area_type, container, x, y, directions, items)
 
 INSERT INTO settings (key, value) VALUES ('START_CELL_ID', 1);
 
-INSERT INTO place (id_area, id_area_type, name) VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'dungeon'), 'first dungeon');
+INSERT INTO place (id_area, id_area_type, name) VALUES (2, (SELECT id_area_type FROM area_type WHERE name = 'dungeon'), 'first dungeon');
 
 INSERT INTO `character` (name, id_species, id_gender, id_area) VALUES ('Tom', 1, 1, 2);
 INSERT INTO talk_answer (trigger_word, sentence, condition) VALUES ('hi', "Hi, my name is Tom, I'm a butcher", '{"met":0}');

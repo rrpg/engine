@@ -15,13 +15,27 @@ class lookTests(tests.common.common):
 			rpg = Rpg.Rpg(renderMode=Rpg.RENDER_TEXT)
 			rpg.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', ['look'])
 			rpg._runAction()
-		self.assertTrue(output == ['You are in The High lands', '', 'You see these characters arround:', '    Tom', '', 'You can go in the following directions:', '    north', '', 'You see the following items', '  6 Heavy breastplate'])
+		self.assertTrue(output == [
+			'You are in The High lands',
+			'',
+			'You see these characters arround:',
+			'    Tom',
+			'',
+			'You can go in the following directions:',
+			'    north',
+			'',
+			'You see the following places:',
+			'    first dungeon',
+			'',
+			'You see the following items',
+			'  6 Heavy breastplate'
+		])
 
 	def test_json(self):
 		with capturer() as output:
 			rpg = Rpg.Rpg(renderMode=Rpg.RENDER_JSON)
 			rpg.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', ['look'])
 			rpg._runAction()
-		self.assertTrue(output == ['{"directions": ["north"], "items": [{"name": "Heavy breastplate", "quantity": 6}], "region": "The High lands", "places": [], "characters": ["Tom"]}'])
+		self.assertTrue(output == ['{"directions": ["north"], "items": [{"name": "Heavy breastplate", "quantity": 6}], "region": "The High lands", "places": ["first dungeon"], "characters": ["Tom"]}'])
 
 unittest.main()
