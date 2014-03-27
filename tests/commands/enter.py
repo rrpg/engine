@@ -51,6 +51,26 @@ class enterTests(tests.common.common):
 			rpg._runAction()
 		self.assertTrue(output == ['{"error": {"message": "Unknown place type", "code": 1}}'])
 
+	def test_enter_when_already_in_text(self):
+		rpg = Rpg.Rpg(renderMode=Rpg.RENDER_TEXT)
+		rpg.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', ['enter', 'dungeon'])
+		with capturer() as output:
+			rpg._runAction()
+		rpg.setAction(['enter', 'dungeon'])
+		with capturer() as output:
+			rpg._runAction()
+		self.assertTrue(output == ['There is no such place here'])
+
+	def test_when_already_in_json(self):
+		rpg = Rpg.Rpg(renderMode=Rpg.RENDER_JSON)
+		rpg.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', ['enter', 'dungeon'])
+		with capturer() as output:
+			rpg._runAction()
+		rpg.setAction(['enter', 'dungeon'])
+		with capturer() as output:
+			rpg._runAction()
+		self.assertTrue(output == ['{"error": {"message": "There is no such place here", "code": 1}}'])
+
 	def test_text(self):
 		with capturer() as output:
 			rpg = Rpg.Rpg(renderMode=Rpg.RENDER_TEXT)
