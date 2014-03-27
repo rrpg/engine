@@ -51,7 +51,7 @@ class enterTests(tests.common.common):
 			rpg._runAction()
 		self.assertTrue(output == ['{"error": {"message": "Unknown place type", "code": 1}}'])
 
-	def test_enter_when_already_in_text(self):
+	def test_when_already_in_text(self):
 		rpg = Rpg.Rpg(renderMode=Rpg.RENDER_TEXT)
 		rpg.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', ['enter', 'dungeon'])
 		with capturer() as output:
