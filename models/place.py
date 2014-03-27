@@ -83,7 +83,6 @@ class randomPlace:
 		@param place Place entity representing the place
 		"""
 
-		print(_('GENERATING_WAITING_TEXT'))
 		p = subprocess.Popen(
 			core.config.generator['dungeon']['generator'],
 			shell=True,

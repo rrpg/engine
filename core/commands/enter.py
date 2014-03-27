@@ -30,6 +30,7 @@ class enter(core.command.command):
 		if p['entrance_id'] is None:
 			p = place.factory.generate(p, areaType)
 		self._player.goTo(p['entrance_id'])
+		return [_('ENTER_CONFIRMATION')]
 
 	def render(self, data):
-		print(_('ENTER_CONFIRMATION'))
+		print(data[0])
