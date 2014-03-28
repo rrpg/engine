@@ -7,14 +7,12 @@ sys.path.append(os.path.realpath(os.path.dirname(__file__) + "/../../"))
 import tests.common
 from tests.output_capturer import capturer
 
-from core import Rpg
 
 class lookTests(tests.common.common):
 	def test_text(self):
 		with capturer() as output:
-			rpg = Rpg.Rpg(renderMode=Rpg.RENDER_TEXT)
-			rpg.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', ['look'])
-			rpg._runAction()
+			self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', ['look'])
+			self.rpgText._runAction()
 		self.assertTrue(output == [
 			'You are in The High lands',
 			'',
@@ -33,9 +31,8 @@ class lookTests(tests.common.common):
 
 	def test_json(self):
 		with capturer() as output:
-			rpg = Rpg.Rpg(renderMode=Rpg.RENDER_JSON)
-			rpg.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', ['look'])
-			rpg._runAction()
+			self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', ['look'])
+			self.rpgJSON._runAction()
 		self.assertTrue(output == ['{"directions": ["north"], "items": [{"name": "Heavy breastplate", "quantity": 6}], "region": "The High lands", "places": ["first dungeon"], "characters": ["Tom"]}'])
 
 unittest.main()

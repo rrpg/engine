@@ -1,12 +1,15 @@
 import unittest
 import os
 import core.config
+from core import Rpg
 
 
 class common(unittest.TestCase):
 	def __init__(self, methodName='runTest'):
 		unittest.TestCase.__init__(self, methodName)
 		core.config.memoization_enabled = False
+		self.rpgText = Rpg.Rpg(renderMode=Rpg.RENDER_TEXT)
+		self.rpgJSON = Rpg.Rpg(renderMode=Rpg.RENDER_JSON)
 		self.dbFile = "/tmp/rpg.db"
 
 	def setUp(self):
