@@ -7,3 +7,4 @@ python tests/commands/move.py
 python tests/commands/enter.py
 python tests/commands/exit.py
 python tests/commands/help.py
+python tests/commands/inventory.py
