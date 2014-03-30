@@ -6,33 +6,34 @@ sys.path.append(os.path.realpath(os.path.dirname(__file__) + "/../../"))
 
 import tests.common
 from tests.output_capturer import capturer
+from core.localisation import _
 
 
 class lookTests(tests.common.common):
 	def test_text(self):
 		with capturer() as output:
-			self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', ['look'])
+			self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('LOOK_COMMAND')])
 			self.rpgText._runAction()
 		self.assertTrue(output == [
-			'You are in The High lands',
+			_('CURRENT_REGION_%s') % 'The High lands',
 			'',
-			'You see these characters arround:',
+			_('PRESENT_CHARACTERS'),
 			'    Tom',
 			'',
-			'You can go in the following directions:',
-			'    north',
+			_('AVAILABLE_DIRECTIONS'),
+			'    ' + _('DIRECTION_KEY_NORTH'),
 			'',
-			'You see the following places:',
+			_('AVAILABLE_PLACES'),
 			'    first dungeon',
 			'',
-			'You see the following items',
+			_('AVAILABLE_ITEMS'),
 			'  6 Heavy breastplate'
 		])
 
 	def test_json(self):
 		with capturer() as output:
-			self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', ['look'])
+			self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('LOOK_COMMAND')])
 			self.rpgJSON._runAction()
-		self.assertTrue(output == ['{"directions": ["north"], "items": [{"name": "Heavy breastplate", "quantity": 6}], "region": "The High lands", "places": ["first dungeon"], "characters": ["Tom"]}'])
+		self.assertTrue(output == ['{"directions": ["' + _('DIRECTION_KEY_NORTH') + '"], "items": [{"name": "Heavy breastplate", "quantity": 6}], "region": "The High lands", "places": ["first dungeon"], "characters": ["Tom"]}'])
 
 unittest.main()
