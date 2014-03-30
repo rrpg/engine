@@ -153,4 +153,4 @@ class Rpg:
 			elif self._debug:
 				traceback.print_exc()
 			else:
-				print(e)
+				print(e.message)
