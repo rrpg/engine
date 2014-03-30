@@ -290,7 +290,7 @@ msgstr "Vous ne possédez pas cet objet"
 #: core/command.py:430
 #, python-format
 msgid "ERROR_DROP_QUANTITY_TOO_HIGH_%s"
-msgstr "Vous n'en possédez pas autant"
+msgstr "Vous ne possédez pas assez de %s"
 
 #: core/command.py:436
 #, python-format
