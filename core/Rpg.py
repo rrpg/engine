@@ -91,9 +91,9 @@ class Rpg:
 			if c != command_factory.quit:
 				result = c.run()
 				if self._renderMode == RENDER_JSON:
-					print(json.dumps(result))
+					print(json.dumps(result, ensure_ascii=False))
 				else:
-					c.render(result)
+					unicode(c.render(result))
 				return None
 
 			return c
@@ -149,7 +149,7 @@ class Rpg:
 				excep = {'error': {'code': e.code, 'message': e.message}}
 				if self._debug:
 					excep['backtrace'] = traceback.format_exc()
-				print(json.dumps(excep))
+				print(json.dumps(excep, ensure_ascii=False))
 			elif self._debug:
 				traceback.print_exc()
 			else:
