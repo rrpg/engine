@@ -7,4 +7,4 @@ def read(prompt):
 	except NameError:
 		s = input(prompt)
 
-	return unicode(s, "utf-8")
+	return s

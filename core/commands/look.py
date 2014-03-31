@@ -66,7 +66,7 @@ class look(core.command.command):
 			print('')
 			print(_('PRESENT_CHARACTERS'))
 			for c in data['characters']:
-				print('    ' + c)
+				print('    ' + str(c))
 
 		if len(data['directions']) > 0:
 			print('')

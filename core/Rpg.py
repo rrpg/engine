@@ -45,12 +45,13 @@ class Rpg:
 		print(_('PLAYER_SELECTION'))
 		print("  1 - " + _('CHOICE_NEW_PLAYER'))
 		print("  2 - " + _('CHOICE_EXISTING_PLAYER'))
-		while choice != '1' and choice != '2':
-			choice = utils.read(_('CHOICE_QUESTION'))
+		while choice != 1 and choice != 2:
+			choice = int(utils.read(_('CHOICE_QUESTION')))
+			print(choice)
 
-		if choice == '1':
+		if choice == 1:
 			self._player.createNewPlayerFromStdIn()
-		elif choice == '2':
+		elif choice == 2:
 			self._player.loadPlayerFromStdIn()
 
 	def setAction(self, action):
@@ -93,7 +94,7 @@ class Rpg:
 				if self._renderMode == RENDER_JSON:
 					print(json.dumps(result, ensure_ascii=False))
 				else:
-					unicode(c.render(result))
+					c.render(result)
 				return None
 
 			return c
@@ -124,7 +125,7 @@ class Rpg:
 
 				#~ The option is complete, append it in the list
 				if not inOption or k == commandLen - 1:
-					commands.append(option)
+					commands.append(str(option))
 					option = ''
 
 		return commands
@@ -146,11 +147,11 @@ class Rpg:
 			traceback.print_exc()
 		else:
 			if self._renderMode == RENDER_JSON:
-				excep = {'error': {'code': e.code, 'message': e.message}}
+				excep = {'error': {'code': e.code, 'message': str(e)}}
 				if self._debug:
 					excep['backtrace'] = traceback.format_exc()
 				print(json.dumps(excep, ensure_ascii=False))
 			elif self._debug:
 				traceback.print_exc()
 			else:
-				print(e.message)
+				print(e)
