@@ -8,6 +8,7 @@ sys.path.append(os.path.realpath(os.path.dirname(__file__) + "/../../"))
 import tests.common
 from tests.output_capturer import capturer
 from core.localisation import _
+import json
 
 
 class lookTests(tests.common.common):
@@ -35,6 +36,12 @@ class lookTests(tests.common.common):
 		with capturer() as output:
 			self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('LOOK_COMMAND')])
 			self.rpgJSON._runAction()
-		self.assertTrue(output == ['{"directions": ["' + _('DIRECTION_KEY_NORTH') + '"], "items": [{"name": "Heavy breastplate", "quantity": 6}], "region": "The High lands", "places": ["first dungeon"], "characters": ["Tom"]}'])
+		self.assertTrue(json.loads(output[0]) == {
+			"directions": [_('DIRECTION_KEY_NORTH')],
+			"items": [{"name": "Heavy breastplate", "quantity": 6}],
+			"region": "The High lands",
+			"places": ["first dungeon"],
+			"characters": ["Tom"]
+		})
 
 unittest.main()

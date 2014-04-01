@@ -7,6 +7,7 @@ sys.path.append(os.path.realpath(__file__ + "/../../../"))
 import tests.common
 from tests.output_capturer import capturer
 from core.localisation import _
+import json
 
 
 class enterTests(tests.common.common):
@@ -20,7 +21,7 @@ class enterTests(tests.common.common):
 		with capturer() as output:
 			self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('ENTER_COMMAND')])
 			self.rpgJSON._runAction()
-		self.assertTrue(output == ['{"error": {"message": "' + _('ERROR_ENTER_NO_PLACE_GIVEN') + '", "code": 1}}'])
+		self.assertTrue(json.loads(output[0]) == {"error": {"message": _('ERROR_ENTER_NO_PLACE_GIVEN'), "code": 1}})
 
 	def test_place_not_available_text(self):
 		with capturer() as output:
@@ -32,7 +33,7 @@ class enterTests(tests.common.common):
 		with capturer() as output:
 			self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('ENTER_COMMAND'), 'cave'])
 			self.rpgJSON._runAction()
-		self.assertTrue(output == ['{"error": {"message": "' + _('ERROR_ENTER_PLACE_NOT_AVAILABLE') + '", "code": 1}}'])
+		self.assertTrue(json.loads(output[0]) == {"error": {"message": _('ERROR_ENTER_PLACE_NOT_AVAILABLE'), "code": 1}})
 
 	def test_wrong_place_text(self):
 		with capturer() as output:
@@ -44,7 +45,7 @@ class enterTests(tests.common.common):
 		with capturer() as output:
 			self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('ENTER_COMMAND'), 'dummyplace'])
 			self.rpgJSON._runAction()
-		self.assertTrue(output == ['{"error": {"message": "' + _('ERROR_UNKNOWN_PLACE_TYPE') + '", "code": 1}}'])
+		self.assertTrue(json.loads(output[0]) == {"error": {"message": _('ERROR_UNKNOWN_PLACE_TYPE'), "code": 1}})
 
 	def test_when_already_in_text(self):
 		self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('ENTER_COMMAND'), _('PLACE_TYPE_DUNGEON')])
@@ -62,7 +63,7 @@ class enterTests(tests.common.common):
 		self.rpgJSON.setAction([_('ENTER_COMMAND'), _('PLACE_TYPE_DUNGEON')])
 		with capturer() as output:
 			self.rpgJSON._runAction()
-		self.assertTrue(output == ['{"error": {"message": "' + _('ERROR_ENTER_PLACE_NOT_AVAILABLE') + '", "code": 1}}'])
+		self.assertTrue(json.loads(output[0]) == {"error": {"message": _('ERROR_ENTER_PLACE_NOT_AVAILABLE'), "code": 1}})
 
 	def test_text(self):
 		with capturer() as output:
@@ -74,6 +75,6 @@ class enterTests(tests.common.common):
 		with capturer() as output:
 			self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('ENTER_COMMAND'), _('PLACE_TYPE_DUNGEON')])
 			self.rpgJSON._runAction()
-		self.assertTrue(output == ['["' + _('ENTER_CONFIRMATION') + '"]'])
+		self.assertTrue(json.loads(output[0]) == [_('ENTER_CONFIRMATION')])
 
 unittest.main()

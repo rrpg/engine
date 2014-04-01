@@ -6,6 +6,7 @@ sys.path.append(os.path.realpath(__file__ + "/../../../"))
 
 import tests.common
 from tests.output_capturer import capturer
+import json
 
 
 class moveTests(tests.common.common):
@@ -19,7 +20,7 @@ class moveTests(tests.common.common):
 		with capturer() as output:
 			self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', ['move'])
 			self.rpgJSON._runAction()
-		self.assertTrue(output == ['{"error": {"message": "Where shall I go?", "code": 1}}'])
+		self.assertTrue(json.loads(output[0]) == {"error": {"message": "Where shall I go?", "code": 1}})
 
 	def test_invalid_direction_text(self):
 		with capturer() as output:
@@ -31,7 +32,7 @@ class moveTests(tests.common.common):
 		with capturer() as output:
 			self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', ['move', 'bad-direction'])
 			self.rpgJSON._runAction()
-		self.assertTrue(output == ['{"error": {"message": "bad-direction is not a valid direction", "code": 1}}'])
+		self.assertTrue(json.loads(output[0]) == {"error": {"message": "bad-direction is not a valid direction", "code": 1}})
 
 	def test_not_available_direction_text(self):
 		with capturer() as output:
@@ -43,7 +44,7 @@ class moveTests(tests.common.common):
 		with capturer() as output:
 			self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', ['move', 'east'])
 			self.rpgJSON._runAction()
-		self.assertTrue(output == ['{"error": {"message": "I can\'t go there", "code": 1}}'])
+		self.assertTrue(json.loads(output[0]) == {"error": {"message": "I can\'t go there", "code": 1}})
 
 	def test_text(self):
 		with capturer() as output:
@@ -55,6 +56,6 @@ class moveTests(tests.common.common):
 		with capturer() as output:
 			self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', ['move', 'north'])
 			self.rpgJSON._runAction()
-		self.assertTrue(output == ['{"direction": "north"}'])
+		self.assertTrue(json.loads(output[0]) == {"direction": "north"})
 
 unittest.main()
