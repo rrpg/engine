@@ -44,8 +44,16 @@ cd ..
 Or you can use your own world (created with the game editor,
 https://github.com/rrpg/world-editor ):
 ```bash
+# If in the editor you exported your world and set it as default
+./rRpg
+# If you want to use another world than the default world
 ./rRpg -w /path/to/your/world.db
 ```
+
+## Documentation
+
+The documentation is being written and is available
+[here](http://rrpg.github.io/engine).
 
 ## Tests
 
