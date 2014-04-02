@@ -8,7 +8,6 @@ You'll need the following packages to run the game:
 * python (2.7 or above)
 * sqlite3
 
-## Installation
 ## Setup
 
 This program uses submodules. First thing to do is to compile the dungeon
@@ -47,3 +46,12 @@ https://github.com/rrpg/world-editor ):
 ```bash
 ./rRpg -w /path/to/your/world.db
 ```
+
+## Tests
+
+To run the tests, run the file
+```
+bin/run-tests.sh
+```
+All the commands will be tested in french and english in python 2 and/or 3
+(depending on which version is installed on the user's computer).
