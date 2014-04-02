@@ -11,69 +11,57 @@ import json
 
 class exitTests(tests.common.common):
 	def test_no_place_given_text(self):
-		with capturer() as output:
-			self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('EXIT_COMMAND')])
-			self.rpgText._runAction()
-		self.assertTrue(output == [_('ERROR_EXIT_NO_PLACE_GIVEN')])
+		self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('EXIT_COMMAND')])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_EXIT_NO_PLACE_GIVEN'))
 
 	def test_no_place_given_json(self):
-		with capturer() as output:
-			self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('EXIT_COMMAND')])
-			self.rpgJSON._runAction()
-		self.assertTrue(json.loads(output[0]) == {"error": {"message": _('ERROR_EXIT_NO_PLACE_GIVEN'), "code": 1}})
+		self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('EXIT_COMMAND')])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_EXIT_NO_PLACE_GIVEN'), "code": 1}})
 
 	def test_place_not_available_text(self):
-		with capturer() as output:
-			self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('EXIT_COMMAND'), _('PLACE_TYPE_CAVE')])
-			self.rpgText._runAction()
-		self.assertTrue(output == [_('ERROR_ENTER_PLACE_NOT_AVAILABLE')])
+		self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('EXIT_COMMAND'), _('PLACE_TYPE_CAVE')])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_ENTER_PLACE_NOT_AVAILABLE'))
 
 	def test_no_place_given_json(self):
-		with capturer() as output:
-			self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('EXIT_COMMAND'), _('PLACE_TYPE_CAVE')])
-			self.rpgJSON._runAction()
-		self.assertTrue(json.loads(output[0]) == {"error": {"message": _('ERROR_ENTER_PLACE_NOT_AVAILABLE'), "code": 1}})
+		self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('EXIT_COMMAND'), _('PLACE_TYPE_CAVE')])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_ENTER_PLACE_NOT_AVAILABLE'), "code": 1}})
 
 	def test_wrong_place_text(self):
-		with capturer() as output:
-			self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('EXIT_COMMAND'), 'dummyplace'])
-			self.rpgText._runAction()
-		self.assertTrue(output == [_('ERROR_UNKNOWN_PLACE_TYPE')])
+		self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('EXIT_COMMAND'), 'dummyplace'])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_UNKNOWN_PLACE_TYPE'))
 
 	def test_wrong_place_given_json(self):
-		with capturer() as output:
-			self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('EXIT_COMMAND'), 'dummyplace'])
-			self.rpgJSON._runAction()
-		self.assertTrue(json.loads(output[0]) == {"error": {"message": _('ERROR_UNKNOWN_PLACE_TYPE'), "code": 1}})
+		self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('EXIT_COMMAND'), 'dummyplace'])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_UNKNOWN_PLACE_TYPE'), "code": 1}})
 
 	def test_when_still_out_text(self):
 		self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('EXIT_COMMAND'), _('PLACE_TYPE_DUNGEON')])
-		with capturer() as output:
-			self.rpgText._runAction()
-		self.assertTrue(output == [_('ERROR_ENTER_PLACE_NOT_AVAILABLE')])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_ENTER_PLACE_NOT_AVAILABLE'))
 
 	def test_when_still_out_json(self):
 		self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('EXIT_COMMAND'), _('PLACE_TYPE_DUNGEON')])
-		with capturer() as output:
-			self.rpgJSON._runAction()
-		self.assertTrue(json.loads(output[0]) == {"error": {"message": _('ERROR_ENTER_PLACE_NOT_AVAILABLE'), "code": 1}})
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_ENTER_PLACE_NOT_AVAILABLE'), "code": 1}})
 
 	def test_text(self):
 		self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('ENTER_COMMAND'), _('PLACE_TYPE_DUNGEON')])
-		with capturer() as output:
-			self.rpgText._runAction()
+		self.rpgText._runAction()
 		self.rpgText.setAction([_('EXIT_COMMAND'), _('PLACE_TYPE_DUNGEON')])
-		with capturer() as output:
-			self.rpgText._runAction()
-		self.assertTrue(output == [_('EXIT_CONFIRMATION')])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('EXIT_CONFIRMATION'))
 
 	def test_json(self):
 		self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('ENTER_COMMAND'), _('PLACE_TYPE_DUNGEON')])
-		with capturer() as output:
-			self.rpgJSON._runAction()
+		self.rpgJSON._runAction()
 		self.rpgJSON.setAction([_('EXIT_COMMAND'), _('PLACE_TYPE_DUNGEON')])
-		with capturer() as output:
-			self.rpgJSON._runAction()
-		self.assertTrue(json.loads(output[0]) == [_('EXIT_CONFIRMATION')])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == [_('EXIT_CONFIRMATION')])
 
 unittest.main()
