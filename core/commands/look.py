@@ -60,28 +60,30 @@ class look(core.command.command):
 		return result
 
 	def render(self, data):
-		print(_('CURRENT_REGION_%s') % data['region'])
+		output = [_('CURRENT_REGION_%s') % data['region']]
 
 		if len(data['characters']) > 0:
-			print('')
-			print(_('PRESENT_CHARACTERS'))
+			output.append('')
+			output.append(_('PRESENT_CHARACTERS'))
 			for c in data['characters']:
-				print('    ' + str(c))
+				output.append('    ' + str(c))
 
 		if len(data['directions']) > 0:
-			print('')
-			print(_('AVAILABLE_DIRECTIONS'))
+			output.append('')
+			output.append(_('AVAILABLE_DIRECTIONS'))
 			for d in data['directions']:
-				print('    ' + d)
+				output.append('    ' + d)
 
 		if len(data['places']) > 0:
-			print('')
-			print(_('AVAILABLE_PLACES'))
+			output.append('')
+			output.append(_('AVAILABLE_PLACES'))
 			for p in data['places']:
-				print('    ' + p)
+				output.append('    ' + p)
 
 		if len(data['items']) > 0:
-			print('')
-			print(_('AVAILABLE_ITEMS'))
+			output.append('')
+			output.append(_('AVAILABLE_ITEMS'))
 			for i in data['items']:
-				print(str(i['quantity']).rjust(3) + ' ' + i['name'])
+				output.append(str(i['quantity']).rjust(3) + ' ' + i['name'])
+
+		return '\n'.join(output)

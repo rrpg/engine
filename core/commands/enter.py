@@ -33,4 +33,4 @@ class enter(core.command.command):
 		return [_('ENTER_CONFIRMATION')]
 
 	def render(self, data):
-		print(data[0])
+		return data[0]

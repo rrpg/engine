@@ -61,7 +61,9 @@ class help(core.command.command):
 		]
 
 	def render(self, data):
-		print(_('AVAILABLE_COMMANDS_TITLE'))
+		output = list([_('AVAILABLE_COMMANDS_TITLE')])
 		for c in data:
-			print(c['command'] + ':')
-			print('\t' + c['description'])
+			output.append(c['command'] + ':')
+			output.append('\t' + c['description'])
+
+		return '\n'.join(output)

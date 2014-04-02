@@ -80,26 +80,28 @@ class Rpg:
 				if c != "":
 					self._action = self.parseTypedAction(c)
 					result = self._runAction()
-					print("")
 
 				if result == command_factory.quit:
 					break
+				else:
+					if self._renderMode == RENDER_JSON:
+						result = json.dumps(result, ensure_ascii=False)
+					print(result)
+					print("")
 
 	def _runAction(self):
 		try:
 			c = command_factory.factory.create(self._player, self._action)
 
-			if c != command_factory.quit:
-				result = c.run()
-				if self._renderMode == RENDER_JSON:
-					print(json.dumps(result, ensure_ascii=False))
-				else:
-					c.render(result)
-				return None
+			if c == command_factory.quit:
+				return c
 
-			return c
+			result = c.run()
+			if self._renderMode != RENDER_JSON:
+				result = c.render(result)
+			return result
 		except core.exception.exception as e:
-			self.renderException(e)
+			return self.renderException(e)
 
 	def parseTypedAction(self, action):
 		inOption = False
@@ -150,8 +152,8 @@ class Rpg:
 				excep = {'error': {'code': e.code, 'message': str(e)}}
 				if self._debug:
 					excep['backtrace'] = traceback.format_exc()
-				print(json.dumps(excep, ensure_ascii=False))
+				return excep
 			elif self._debug:
-				traceback.print_exc()
+				return traceback.format_exc()
 			else:
-				print(e)
+				return str(e)

@@ -44,4 +44,4 @@ class drop(core.command.command):
 		return {'quantity': quantity, 'name': name}
 
 	def render(self, data):
-		print(_('DROP_CONFIRMATION_%(quantity)s_%(name)s') % data)
+		return _('DROP_CONFIRMATION_%(quantity)s_%(name)s') % data

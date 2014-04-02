@@ -31,4 +31,4 @@ class exit(core.command.command):
 		return [_('EXIT_CONFIRMATION')]
 
 	def render(self, data):
-		print(data[0])
+		return data[0]
