@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-18 15:28+0000\n"
+"POT-Creation-Date: 2014-04-02 22:38+0100\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,341 +18,445 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: area.py:19
-msgid "DIRECTION_KEY_NORTH"
-msgstr "nord"
-
-#: area.py:20
-msgid "DIRECTION_KEY_EAST"
-msgstr "est"
-
-#: area.py:21
-msgid "DIRECTION_KEY_SOUTH"
-msgstr "sud"
-
-#: area.py:22
-msgid "DIRECTION_KEY_WEST"
-msgstr "ouest"
-
-#: area.py:37
-msgid "AREA_TYPE_DUNGEON"
-msgstr "donjon"
-
-#: area.py:37
-msgid "AREA_TYPE_LAND"
-msgstr "terres"
-
-#: core/Rpg.py:25
+#: core/Rpg.py:27
 msgid "ERROR_UNKNOWN_SELECTED_WORLD"
 msgstr "Le monde choisi n'existe pas"
 
-#: core/Rpg.py:43
+#: core/Rpg.py:45
 msgid "PLAYER_SELECTION"
 msgstr "Choix du personnage"
 
-#: core/Rpg.py:44
+#: core/Rpg.py:46
 msgid "CHOICE_NEW_PLAYER"
 msgstr "Nouveau personnage"
 
-#: core/Rpg.py:45
+#: core/Rpg.py:47
 msgid "CHOICE_EXISTING_PLAYER"
 msgstr "Personnage existant"
 
-#: core/Rpg.py:47
+#: core/Rpg.py:49
 msgid "CHOICE_QUESTION"
 msgstr "Votre choix : "
 
-#: core/Rpg.py:131
+#: core/Rpg.py:144
 msgid "COMMAND_PROMPT"
 msgstr "Commande : "
 
-#: core/command.py:44 core/command.py:172
+#: core/command_factory.py:38 core/commands/help.py:38
+#: tests/commands/help.py:26 tests/commands/help.py:61
+#: tests/commands/look.py:15 tests/commands/look.py:34
 msgid "LOOK_COMMAND"
 msgstr "regarder"
 
-#: core/command.py:45 core/command.py:164
+#: core/command_factory.py:39 core/commands/help.py:22
+#: tests/commands/help.py:18 tests/commands/help.py:45
+#: tests/commands/talk.py:14 tests/commands/talk.py:19
+#: tests/commands/talk.py:24 tests/commands/talk.py:29
+#: tests/commands/talk.py:34 tests/commands/talk.py:39
+#: tests/commands/talk.py:44 tests/commands/talk.py:49
+#: tests/commands/talk.py:54
 msgid "TALK_COMMAND"
 msgstr "demander"
 
-#: core/command.py:46 core/command.py:166
+#: core/command_factory.py:40 core/commands/help.py:26
+#: tests/commands/help.py:20 tests/commands/help.py:49
+#: tests/commands/move.py:14 tests/commands/move.py:19
+#: tests/commands/move.py:24 tests/commands/move.py:29
+#: tests/commands/move.py:34 tests/commands/move.py:39
+#: tests/commands/move.py:44 tests/commands/move.py:49
 msgid "MOVE_COMMAND"
 msgstr "marcher"
 
-#: core/command.py:47 core/command.py:168
+#: core/command_factory.py:41 core/commands/help.py:30
+#: tests/commands/enter.py:14 tests/commands/enter.py:19
+#: tests/commands/enter.py:24 tests/commands/enter.py:29
+#: tests/commands/enter.py:34 tests/commands/enter.py:39
+#: tests/commands/enter.py:44 tests/commands/enter.py:46
+#: tests/commands/enter.py:51 tests/commands/enter.py:53
+#: tests/commands/enter.py:58 tests/commands/enter.py:63
+#: tests/commands/exit.py:53 tests/commands/exit.py:60
+#: tests/commands/help.py:22 tests/commands/help.py:53
 msgid "ENTER_COMMAND"
 msgstr "entrer"
 
-#: core/command.py:48 core/command.py:170
+#: core/command_factory.py:42 core/commands/help.py:34
+#: tests/commands/exit.py:13 tests/commands/exit.py:18
+#: tests/commands/exit.py:23 tests/commands/exit.py:28
+#: tests/commands/exit.py:33 tests/commands/exit.py:38
+#: tests/commands/exit.py:43 tests/commands/exit.py:48
+#: tests/commands/exit.py:55 tests/commands/exit.py:62
+#: tests/commands/help.py:24 tests/commands/help.py:57
 msgid "EXIT_COMMAND"
 msgstr "sortir"
 
-#: core/command.py:49 core/command.py:176
+#: core/command_factory.py:43 core/commands/help.py:46
+#: tests/commands/drop.py:45 tests/commands/drop.py:53
+#: tests/commands/drop.py:61 tests/commands/drop.py:69
+#: tests/commands/drop.py:77 tests/commands/drop.py:85
+#: tests/commands/help.py:30 tests/commands/help.py:69
+#: tests/commands/inventory.py:25 tests/commands/inventory.py:33
+#: tests/commands/take.py:14 tests/commands/take.py:19
+#: tests/commands/take.py:24 tests/commands/take.py:29
+#: tests/commands/take.py:34 tests/commands/take.py:39
+#: tests/commands/take.py:44 tests/commands/take.py:49
+#: tests/commands/take.py:54 tests/commands/take.py:59
+#: tests/commands/take.py:64 tests/commands/take.py:69
 msgid "TAKE_COMMAND"
 msgstr "prendre"
 
-#: core/command.py:50 core/command.py:178
+#: core/command_factory.py:44 core/commands/help.py:50
+#: tests/commands/drop.py:14 tests/commands/drop.py:19
+#: tests/commands/drop.py:24 tests/commands/drop.py:29
+#: tests/commands/drop.py:34 tests/commands/drop.py:39
+#: tests/commands/drop.py:47 tests/commands/drop.py:55
+#: tests/commands/drop.py:63 tests/commands/drop.py:71
+#: tests/commands/drop.py:79 tests/commands/drop.py:87
+#: tests/commands/help.py:32 tests/commands/help.py:73
 msgid "DROP_COMMAND"
 msgstr "déposer"
 
-#: core/command.py:51 core/command.py:174
+#: core/command_factory.py:45 core/commands/help.py:42
+#: tests/commands/help.py:28 tests/commands/help.py:65
+#: tests/commands/inventory.py:14 tests/commands/inventory.py:19
+#: tests/commands/inventory.py:27 tests/commands/inventory.py:35
 msgid "INVENTORY_COMMAND"
 msgstr "inventaire"
 
-#: core/command.py:52 core/command.py:174
+#: core/command_factory.py:46 core/commands/help.py:42
+#: tests/commands/help.py:28 tests/commands/help.py:65
 msgid "INVENTORY_SHORT_COMMAND"
 msgstr "inv"
 
-#: core/command.py:53 core/command.py:182
+#: core/command_factory.py:47 core/commands/help.py:54
+#: tests/commands/help.py:15 tests/commands/help.py:34
+#: tests/commands/help.py:41 tests/commands/help.py:77
 msgid "HELP_COMMAND"
 msgstr "aide"
 
-#: core/command.py:105 core/command.py:184
+#: core/command_factory.py:73 core/commands/help.py:58
+#: tests/commands/help.py:36 tests/commands/help.py:81
 msgid "QUIT_COMMAND"
 msgstr "quitter"
 
-#: core/command.py:105 core/command.py:184
+#: core/command_factory.py:73 core/commands/help.py:58
+#: tests/commands/help.py:36 tests/commands/help.py:81
 msgid "QUIT_SHORT_COMMAND"
 msgstr "q"
 
-#: core/command.py:110
+#: core/command_factory.py:79
 msgid "ERROR_UNKNOWN_COMMAND"
 msgstr "Commande inconnue"
 
-#: core/command.py:163
-msgid "AVAILABLE_COMMANDS_TITLE"
-msgstr "Commandes disponibles :"
-
-#: core/command.py:164
-msgid "CHARACTER_TOKEN"
-msgstr "nom du personnage"
-
-#: core/command.py:164
-msgid "SENTENCE_TOKEN"
-msgstr "phrase"
-
-#: core/command.py:165
-msgid "TALK_COMMAND_DESCRIPTION"
-msgstr "Parler à un personnage"
-
-#: core/command.py:167
-msgid "MOVE_COMMAND_DESCRIPTION"
-msgstr "Se déplacer dans une des directions disponibles"
-
-#: core/command.py:169
-msgid "ENTER_COMMAND_DESCRIPTION"
-msgstr "Entrer dans un lieu"
-
-#: core/command.py:171
-msgid "EXIT_COMMAND_DESCRIPTION"
-msgstr ""
-"Sortir d'un lieu (la sortie doit se trouver sur la même case que le joueur)"
-
-#: core/command.py:173
-msgid "LOOK_COMMAND_DESCRIPTION"
-msgstr "Regarder autour de soi"
-
-#: core/command.py:175
-msgid "INVENTORY_COMMAND_DESCRIPTION"
-msgstr "Lister le contenu de l'inventaire du joueur"
-
-#: core/command.py:176 core/command.py:178
-msgid "ITEM_NAME_TOKEN"
-msgstr "objet"
-
-#: core/command.py:176 core/command.py:178
-msgid "QUANTITY_TOKEN"
-msgstr "quantité"
-
-#: core/command.py:177
-msgid "TAKE_COMMAND_DESCRIPTION"
-msgstr "Ramasser un objet au sol"
-
-#: core/command.py:179
-msgid "DROP_COMMAND_DESCRIPTION"
-msgstr "Déposer un objet par terre"
-
-#: core/command.py:183
-msgid "HELP_COMMAND_DESCRIPTION"
-msgstr "Afficher le menu d'aide"
-
-#: core/command.py:185
-msgid "QUIT_COMMAND_DESCRIPTION"
-msgstr "Quitter le jeu"
-
-#: core/command.py:203
-#, python-format
-msgid "CURRENT_REGION_%s"
-msgstr "Vous vous trouver dans %s"
-
-#: core/command.py:210
-msgid "PRESENT_CHARACTERS"
-msgstr "Vous voyez les personnages suivants :"
-
-#: core/command.py:219
-msgid "AVAILABLE_DIRECTIONS"
-msgstr "Vous pouvez aller dans les directions suivantes :"
-
-#: core/command.py:226
-msgid "AVAILABLE_PLACES"
-msgstr "Vous pouvez entrer dans les lieux suivants :"
-
-#: core/command.py:235
-msgid "AVAILABLE_ITEMS"
-msgstr "Vous pouvez ramasser les objets suivants :"
-
-#: core/command.py:253
-msgid "ERROR_MOVE_NO_DIRECTION_GIVEN"
-msgstr "Où voulez-vous aller ?"
-
-#: core/command.py:257
-#, python-format
-msgid "ERROR_MOVE_INVALID_DIRECTION_%s"
-msgstr "La direction %s n'est pas valide"
-
-#: core/command.py:264
-msgid "ERROR_MOVE_DIRECTION_NOT_AVAILABLE"
-msgstr "Vous ne pouvez pas vous déplacer dans la direction demandée"
-
-#: core/command.py:267
-#, python-format
-msgid "MOVE_CONFIRMATION_%s"
-msgstr "Vous vous déplacez dans la direction %s"
-
-#: core/command.py:283
-msgid "ERROR_ENTER_NO_PLACE_GIVEN"
-msgstr "Où voulez-vous entrer ?"
-
-#: core/command.py:289 core/command.py:317
-msgid "ERROR_ENTER_PLACE_NOT_AVAILABLE"
-msgstr "Le lieu demandé n'est pas où vous vous trouvez"
-
-#: core/command.py:294
-msgid "ENTER_CONFIRMATION"
-msgstr "Vous entrez..."
-
-#: core/command.py:311
-msgid "ERROR_EXIT_NO_PLACE_GIVEN"
-msgstr "D'où voulez-vous sortir ?"
-
-#: core/command.py:321
-msgid "EXIT_CONFIRMATION"
-msgstr "Vous sortez..."
-
-#: core/command.py:334
-msgid "ERROR_TALK_NO_CHARACTER_GIVEN"
-msgstr "À qui voulez-vous parler ?"
-
-#: core/command.py:336
-msgid "ERROR_TALK_NO_SENTENCE_GIVEN"
-msgstr "Que voulez-vous demander ?"
-
-#: core/command.py:345
-msgid "ERROR_TALK_UNKNOWN_CHARACTER"
-msgstr "À qui voulez-vous parler ?"
-
-#: core/command.py:352
-msgid "ERROR_TALK_UNKNOWN_SENTENCE"
-msgstr "Pardon ?"
-
-#: core/command.py:367
-msgid "ERROR_TAKE_NO_ITEM_GIVEN"
-msgstr "Que voulez-vous ramasser ?"
-
-#: core/command.py:380
-msgid "ERROR_TAKE_UNKNOWN_ITEM"
-msgstr "Objet inconnu"
-
-#: core/command.py:387
-msgid "ERROR_TAKE_ITEM_NOT_AVAILABLE"
-msgstr "Vous ne voyez pas cet objet ici"
-
-#: core/command.py:390
-msgid "ERROR_TAKE_QUANTITY_TOO_HIGH"
-msgstr "Vous ne pouvez pas en prendre autant"
-
-#: core/command.py:396
-#, python-format
-msgid "TAKE_CONFIRMATION_%(quantity)s_%(name)s"
-msgstr "Vous ramassez %(quantity)s %(name)s"
-
-#: core/command.py:409
+#: core/commands/drop.py:17 tests/commands/drop.py:16
+#: tests/commands/drop.py:21
 msgid "ERROR_DROP_NO_ITEM_GIVEN"
 msgstr "Que voulez-vous déposer ?"
 
-#: core/command.py:423
+#: core/commands/drop.py:31 tests/commands/drop.py:26
+#: tests/commands/drop.py:31
 msgid "ERROR_DROP_UNKNOWN_ITEM"
 msgstr "Objet inconnu"
 
-#: core/command.py:428
+#: core/commands/drop.py:36 tests/commands/drop.py:36
+#: tests/commands/drop.py:41
 msgid "ERROR_DROP_ITEM_NOT_AVAILABLE"
 msgstr "Vous ne possédez pas cet objet"
 
-#: core/command.py:430
+#: core/commands/drop.py:38 tests/commands/drop.py:49
+#: tests/commands/drop.py:57
 #, python-format
 msgid "ERROR_DROP_QUANTITY_TOO_HIGH_%s"
 msgstr "Vous ne possédez pas assez de %s"
 
-#: core/command.py:436
+#: core/commands/drop.py:47 tests/commands/drop.py:65
+#: tests/commands/drop.py:81
 #, python-format
 msgid "DROP_CONFIRMATION_%(quantity)s_%(name)s"
 msgstr "Vous déposez %(quantity)s %(name)s"
 
-#: place.py:14 place.py:28 place.py:38 place.py:48
+#: core/commands/enter.py:21 tests/commands/enter.py:16
+#: tests/commands/enter.py:21
+msgid "ERROR_ENTER_NO_PLACE_GIVEN"
+msgstr "Où voulez-vous entrer ?"
+
+#: core/commands/enter.py:27 core/commands/exit.py:27
+#: tests/commands/enter.py:26 tests/commands/enter.py:31
+#: tests/commands/enter.py:48 tests/commands/enter.py:55
+#: tests/commands/exit.py:25 tests/commands/exit.py:30
+#: tests/commands/exit.py:45 tests/commands/exit.py:50
+msgid "ERROR_ENTER_PLACE_NOT_AVAILABLE"
+msgstr "Le lieu demandé n'est pas où vous vous trouvez"
+
+#: core/commands/enter.py:33 tests/commands/enter.py:60
+#: tests/commands/enter.py:65
+msgid "ENTER_CONFIRMATION"
+msgstr "Vous entrez..."
+
+#: core/commands/exit.py:21 tests/commands/exit.py:15
+#: tests/commands/exit.py:20
+msgid "ERROR_EXIT_NO_PLACE_GIVEN"
+msgstr "D'où voulez-vous sortir ?"
+
+#: core/commands/exit.py:31 tests/commands/exit.py:57
+#: tests/commands/exit.py:64
+msgid "EXIT_CONFIRMATION"
+msgstr "Vous sortez..."
+
+#: core/commands/help.py:22 tests/commands/help.py:18
+#: tests/commands/help.py:45
+msgid "CHARACTER_TOKEN"
+msgstr "nom du personnage"
+
+#: core/commands/help.py:22 tests/commands/help.py:18
+#: tests/commands/help.py:45
+msgid "SENTENCE_TOKEN"
+msgstr "phrase"
+
+#: core/commands/help.py:23 tests/commands/help.py:19
+#: tests/commands/help.py:46
+msgid "TALK_COMMAND_DESCRIPTION"
+msgstr "Parler à un personnage"
+
+#: core/commands/help.py:27 tests/commands/help.py:21
+#: tests/commands/help.py:50
+msgid "MOVE_COMMAND_DESCRIPTION"
+msgstr "Se déplacer dans une des directions disponibles"
+
+#: core/commands/help.py:31 tests/commands/help.py:23
+#: tests/commands/help.py:54
+msgid "ENTER_COMMAND_DESCRIPTION"
+msgstr "Entrer dans un lieu"
+
+#: core/commands/help.py:35 tests/commands/help.py:25
+#: tests/commands/help.py:58
+msgid "EXIT_COMMAND_DESCRIPTION"
+msgstr ""
+"Sortir d'un lieu (la sortie doit se trouver sur la même case que le joueur)"
+
+#: core/commands/help.py:39 tests/commands/help.py:27
+#: tests/commands/help.py:62
+msgid "LOOK_COMMAND_DESCRIPTION"
+msgstr "Regarder autour de soi"
+
+#: core/commands/help.py:43 tests/commands/help.py:29
+#: tests/commands/help.py:66
+msgid "INVENTORY_COMMAND_DESCRIPTION"
+msgstr "Lister le contenu de l'inventaire du joueur"
+
+#: core/commands/help.py:46 core/commands/help.py:50 tests/commands/help.py:30
+#: tests/commands/help.py:32 tests/commands/help.py:69
+#: tests/commands/help.py:73
+msgid "ITEM_NAME_TOKEN"
+msgstr "objet"
+
+#: core/commands/help.py:46 core/commands/help.py:50 tests/commands/help.py:30
+#: tests/commands/help.py:32 tests/commands/help.py:69
+#: tests/commands/help.py:73
+msgid "QUANTITY_TOKEN"
+msgstr "quantité"
+
+#: core/commands/help.py:47 tests/commands/help.py:31
+#: tests/commands/help.py:70
+msgid "TAKE_COMMAND_DESCRIPTION"
+msgstr "Ramasser un objet au sol"
+
+#: core/commands/help.py:51 tests/commands/help.py:33
+#: tests/commands/help.py:74
+msgid "DROP_COMMAND_DESCRIPTION"
+msgstr "Déposer un objet par terre"
+
+#: core/commands/help.py:55 tests/commands/help.py:35
+#: tests/commands/help.py:78
+msgid "HELP_COMMAND_DESCRIPTION"
+msgstr "Afficher le menu d'aide"
+
+#: core/commands/help.py:59 tests/commands/help.py:37
+#: tests/commands/help.py:82
+msgid "QUIT_COMMAND_DESCRIPTION"
+msgstr "Quitter le jeu"
+
+#: core/commands/help.py:64 tests/commands/help.py:17
+msgid "AVAILABLE_COMMANDS_TITLE"
+msgstr "Commandes disponibles :"
+
+#: core/commands/look.py:63 tests/commands/look.py:18
+#, python-format
+msgid "CURRENT_REGION_%s"
+msgstr "Vous vous trouver dans %s"
+
+#: core/commands/look.py:67 tests/commands/look.py:20
+msgid "PRESENT_CHARACTERS"
+msgstr "Vous voyez les personnages suivants :"
+
+#: core/commands/look.py:73 tests/commands/look.py:23
+msgid "AVAILABLE_DIRECTIONS"
+msgstr "Vous pouvez aller dans les directions suivantes :"
+
+#: core/commands/look.py:79 tests/commands/look.py:26
+msgid "AVAILABLE_PLACES"
+msgstr "Vous pouvez entrer dans les lieux suivants :"
+
+#: core/commands/look.py:85 tests/commands/look.py:29
+msgid "AVAILABLE_ITEMS"
+msgstr "Vous pouvez ramasser les objets suivants :"
+
+#: core/commands/move.py:19 tests/commands/move.py:16
+#: tests/commands/move.py:21
+msgid "ERROR_MOVE_NO_DIRECTION_GIVEN"
+msgstr "Où voulez-vous aller ?"
+
+#: core/commands/move.py:23 tests/commands/move.py:26
+#: tests/commands/move.py:31
+#, python-format
+msgid "ERROR_MOVE_INVALID_DIRECTION_%s"
+msgstr "La direction %s n'est pas valide"
+
+#: core/commands/move.py:30 tests/commands/move.py:36
+#: tests/commands/move.py:41
+msgid "ERROR_MOVE_DIRECTION_NOT_AVAILABLE"
+msgstr "Vous ne pouvez pas vous déplacer dans la direction demandée"
+
+#: core/commands/move.py:37 tests/commands/move.py:46
+#, python-format
+msgid "MOVE_CONFIRMATION_%s"
+msgstr "Vous vous déplacez dans la direction %s"
+
+#: core/commands/take.py:11 tests/commands/take.py:16
+#: tests/commands/take.py:21
+msgid "ERROR_TAKE_NO_ITEM_GIVEN"
+msgstr "Que voulez-vous ramasser ?"
+
+#: core/commands/take.py:24 tests/commands/take.py:26
+#: tests/commands/take.py:31
+msgid "ERROR_TAKE_UNKNOWN_ITEM"
+msgstr "Objet inconnu"
+
+#: core/commands/take.py:31 tests/commands/take.py:36
+#: tests/commands/take.py:41
+msgid "ERROR_TAKE_ITEM_NOT_AVAILABLE"
+msgstr "Vous ne voyez pas cet objet ici"
+
+#: core/commands/take.py:34 tests/commands/take.py:46
+#: tests/commands/take.py:51
+msgid "ERROR_TAKE_QUANTITY_TOO_HIGH"
+msgstr "Vous ne pouvez pas en prendre autant"
+
+#: core/commands/take.py:43 tests/commands/take.py:56
+#: tests/commands/take.py:66
+#, python-format
+msgid "TAKE_CONFIRMATION_%(quantity)s_%(name)s"
+msgstr "Vous ramassez %(quantity)s %(name)s"
+
+#: core/commands/talk.py:18 tests/commands/talk.py:16
+#: tests/commands/talk.py:21
+msgid "ERROR_TALK_NO_CHARACTER_GIVEN"
+msgstr "À qui voulez-vous parler ?"
+
+#: core/commands/talk.py:20 tests/commands/talk.py:26
+#: tests/commands/talk.py:31
+msgid "ERROR_TALK_NO_SENTENCE_GIVEN"
+msgstr "Que voulez-vous demander ?"
+
+#: core/commands/talk.py:29 tests/commands/talk.py:36
+#: tests/commands/talk.py:41
+msgid "ERROR_TALK_UNKNOWN_CHARACTER"
+msgstr "À qui voulez-vous parler ?"
+
+#: core/commands/talk.py:36 tests/commands/talk.py:46
+msgid "ERROR_TALK_UNKNOWN_SENTENCE"
+msgstr "Pardon ?"
+
+#: models/area.py:20 tests/commands/look.py:24 tests/commands/look.py:37
+#: tests/commands/move.py:44 tests/commands/move.py:46
+#: tests/commands/move.py:49 tests/commands/move.py:51
+msgid "DIRECTION_KEY_NORTH"
+msgstr "nord"
+
+#: models/area.py:21 tests/commands/move.py:34 tests/commands/move.py:39
+msgid "DIRECTION_KEY_EAST"
+msgstr "est"
+
+#: models/area.py:22
+msgid "DIRECTION_KEY_SOUTH"
+msgstr "sud"
+
+#: models/area.py:23
+msgid "DIRECTION_KEY_WEST"
+msgstr "ouest"
+
+#: models/area.py:38
+msgid "AREA_TYPE_DUNGEON"
+msgstr "donjon"
+
+#: models/area.py:38
+msgid "AREA_TYPE_LAND"
+msgstr "terres"
+
+#: models/place.py:15 models/place.py:29 models/place.py:39 models/place.py:49
+#: tests/commands/enter.py:24 tests/commands/exit.py:23
+#: tests/commands/exit.py:28
 msgid "PLACE_TYPE_CAVE"
 msgstr "cave"
 
-#: place.py:14 place.py:26 place.py:36 place.py:46
+#: models/place.py:15 models/place.py:27 models/place.py:37 models/place.py:47
+#: tests/commands/enter.py:44 tests/commands/enter.py:46
+#: tests/commands/enter.py:51 tests/commands/enter.py:53
+#: tests/commands/enter.py:58 tests/commands/enter.py:63
+#: tests/commands/exit.py:43 tests/commands/exit.py:48
+#: tests/commands/exit.py:53 tests/commands/exit.py:55
+#: tests/commands/exit.py:60 tests/commands/exit.py:62
 msgid "PLACE_TYPE_DUNGEON"
 msgstr "donjon"
 
-#: place.py:24 place.py:34 place.py:44
+#: models/place.py:25 models/place.py:35 models/place.py:45
+#: tests/commands/enter.py:36 tests/commands/enter.py:41
+#: tests/commands/exit.py:35 tests/commands/exit.py:40
 msgid "ERROR_UNKNOWN_PLACE_TYPE"
 msgstr "Type de lieu inconnu"
 
-#: place.py:85
-msgid "GENERATING_WAITING_TEXT"
-msgstr "Chargement du lieu..."
-
-#: place.py:96
+#: models/place.py:96
 msgid "ERROR_PLACE_GENERATION"
 msgstr "Une erreur est survenue lors du chargement du lieu..."
 
-#: player.py:36
+#: models/player.py:35
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
 msgstr "Identifiant ou mot de passe incorrect"
 
-#: player.py:43
+#: models/player.py:42
 msgid "LOGIN_PROMPT"
 msgstr "Identifiant : "
 
-#: player.py:46
+#: models/player.py:45
 msgid "ERROR_SIGNUP_LOGIN_ALREADY_USED"
 msgstr "Identifiant déjà utilisé"
 
-#: player.py:51
+#: models/player.py:50
 msgid "PASSWORD_PROMPT"
 msgstr "Mot de passe : "
 
-#: player.py:54
+#: models/player.py:53
 msgid "CONFIRM_PASSWORD_PROMPT"
 msgstr "Confirmation du mot de passe : "
 
-#: player.py:59
+#: models/player.py:58
 msgid "ERROR_SIGNUP_PASSWORDS"
 msgstr "Les mots de passe saisis ne sont pas identiques"
 
-#: player.py:68
+#: models/player.py:67
 msgid "GENDER_SELECTION"
 msgstr "Choix du sexe"
 
-#: player.py:74
+#: models/player.py:73
 msgid "GENDER_PROMPT"
 msgstr "Sexe : "
 
-#: player.py:88
+#: models/player.py:87
 msgid "SPECIES_SELECTION"
 msgstr "Choix de l'espèce"
 
-#: player.py:95
+#: models/player.py:94
 msgid "SPECIES_PROMPT"
 msgstr "Espèce : "
+
+#~ msgid "GENERATING_WAITING_TEXT"
+#~ msgstr "Chargement du lieu..."
