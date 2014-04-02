@@ -6,7 +6,6 @@ import os
 sys.path.append(os.path.realpath(os.path.dirname(__file__) + "/../../"))
 
 import tests.common
-from tests.output_capturer import capturer
 from core.localisation import _
 import json
 
