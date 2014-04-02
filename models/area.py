@@ -11,6 +11,7 @@ from models import item
 
 import json
 from core.localisation import _
+from core import config
 
 """
 Available directions
@@ -73,7 +74,7 @@ class area:
 
 		@return list
 		"""
-		if idArea not in area.items.keys():
+		if config.memoization_enabled is False or idArea not in area.items.keys():
 			area.items[idArea] = item.inventory.fromStr(model.loadById(idArea, ['items'])['items'])
 		return area.items[idArea]
 

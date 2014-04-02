@@ -83,7 +83,6 @@ class randomPlace:
 		@param place Place entity representing the place
 		"""
 
-		print(_('GENERATING_WAITING_TEXT'))
 		p = subprocess.Popen(
 			core.config.generator['dungeon']['generator'],
 			shell=True,
@@ -93,9 +92,9 @@ class randomPlace:
 
 		result = p.communicate()
 
-		if result[1] is not '':
+		if len(result[1]) is not 0:
 			raise exception(_('ERROR_PLACE_GENERATION'))
-		d = result[0].strip().split('\n')
+		d = result[0].decode('utf-8').strip().split('\n')
 
 		# Import an external check class from the generator
 		sys.path.insert(0, core.config.generator['dungeon']['path'])

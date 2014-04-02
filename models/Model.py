@@ -159,6 +159,7 @@ class Model(object):
 	@staticmethod
 	def connect():
 		Model._db = sqlite3.connect(registry.get("world"))
+		Model._db.text_factory = str
 
 	@classmethod
 	def disconnect(cls):
@@ -233,7 +234,7 @@ class Model(object):
 			fields = ', '.join(fields)
 		elif isinstance(fields, dict):
 			fields = ', '.join(map(lambda x: fields[x] + ' AS ' + x, fields))
-		elif not isinstance(fields, basestring):
+		elif not isinstance(fields, str):
 			raise TypeError('Unexpected type of fields (%s)' % type(fields))
 
 		return fields

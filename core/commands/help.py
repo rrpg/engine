@@ -23,15 +23,15 @@ class help(core.command.command):
 				'description': _('TALK_COMMAND_DESCRIPTION')
 			},
 			{
-				'command': '%s <%s>' % (_('MOVE_COMMAND'), '|'.join(area.directions)),
+				'command': '%s <%s>' % (_('MOVE_COMMAND'), '|'.join([str(s) for s in area.directions])),
 				'description': _('MOVE_COMMAND_DESCRIPTION')
 			},
 			{
-				'command': '%s <%s>' % (_('ENTER_COMMAND'), '|'.join(place.types)),
+				'command': '%s <%s>' % (_('ENTER_COMMAND'), '|'.join([str(s) for s in place.types])),
 				'description': _('ENTER_COMMAND_DESCRIPTION')
 			},
 			{
-				'command': '%s <%s>' % (_('EXIT_COMMAND'), '|'.join(place.types)),
+				'command': '%s <%s>' % (_('EXIT_COMMAND'), '|'.join([str(s) for s in place.types])),
 				'description': _('EXIT_COMMAND_DESCRIPTION')
 			},
 			{
@@ -61,7 +61,9 @@ class help(core.command.command):
 		]
 
 	def render(self, data):
-		print(_('AVAILABLE_COMMANDS_TITLE'))
+		output = list([_('AVAILABLE_COMMANDS_TITLE')])
 		for c in data:
-			print(c['command'] + ':')
-			print('\t' + c['description'])
+			output.append(c['command'] + ':')
+			output.append('\t' + c['description'])
+
+		return '\n'.join(output)

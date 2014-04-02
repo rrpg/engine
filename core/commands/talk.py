@@ -37,7 +37,7 @@ class talk(core.command.command):
 
 		s = s[random.randint(0, len(s) - 1)]
 		return {
-			'question': s.getSentence(),
+			'question': triggerWord,
 			'character': characterName,
 			'answer': self.processSentence(
 				s.getSentence(), self._player._model['name']
@@ -48,4 +48,4 @@ class talk(core.command.command):
 		return s % {'player_name': characterName}
 
 	def render(self, data):
-		print(data['answer'])
+		return data['answer']

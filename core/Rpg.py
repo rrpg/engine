@@ -14,11 +14,11 @@ RENDER_JSON = 1
 class Rpg:
 	_debug = False
 
-	def __init__(self, debug, renderMode=RENDER_TEXT):
+	def __init__(self, debug=False, renderMode=RENDER_TEXT):
 		self._debug = debug
 		self._renderMode = renderMode
 
-	def init(self, world, login, password, action):
+	def init(self, world, login, password, action=None):
 		if world is None:
 			world = config.db
 
@@ -30,7 +30,7 @@ class Rpg:
 		#~ the player is directly fetched
 		if login is not None and password is not None:
 			self._player = player(login, password)
-		elif action == []:
+		elif action == [] or action is None:
 			#else an empty player is created
 			self._player = player(None, None)
 			self._doInteractiveAuth()
@@ -45,13 +45,19 @@ class Rpg:
 		print(_('PLAYER_SELECTION'))
 		print("  1 - " + _('CHOICE_NEW_PLAYER'))
 		print("  2 - " + _('CHOICE_EXISTING_PLAYER'))
-		while choice != '1' and choice != '2':
-			choice = utils.read(_('CHOICE_QUESTION'))
+		while choice != 1 and choice != 2:
+			choice = int(utils.read(_('CHOICE_QUESTION')))
+			print(choice)
 
-		if choice == '1':
+		if choice == 1:
 			self._player.createNewPlayerFromStdIn()
-		elif choice == '2':
+		elif choice == 2:
 			self._player.loadPlayerFromStdIn()
+
+	def setAction(self, action):
+		if type(action) != list:
+			raise TypeError("The action must be a list of strings")
+		self._action = action
 
 	#~ Main method of the Rpg Class, will run the action if it is given,
 	#~ else ask the player to enter a command
@@ -74,26 +80,28 @@ class Rpg:
 				if c != "":
 					self._action = self.parseTypedAction(c)
 					result = self._runAction()
-					print("")
 
 				if result == command_factory.quit:
 					break
+				else:
+					if self._renderMode == RENDER_JSON:
+						result = json.dumps(result, ensure_ascii=False)
+					print(result)
+					print("")
 
 	def _runAction(self):
 		try:
 			c = command_factory.factory.create(self._player, self._action)
 
-			if c != command_factory.quit:
-				result = c.run()
-				if self._renderMode == RENDER_JSON:
-					print(json.dumps(result))
-				else:
-					c.render(result)
-				return None
+			if c == command_factory.quit:
+				return c
 
-			return c
+			result = c.run()
+			if self._renderMode != RENDER_JSON:
+				result = c.render(result)
+			return result
 		except core.exception.exception as e:
-			self.renderException(e)
+			return self.renderException(e)
 
 	def parseTypedAction(self, action):
 		inOption = False
@@ -119,7 +127,7 @@ class Rpg:
 
 				#~ The option is complete, append it in the list
 				if not inOption or k == commandLen - 1:
-					commands.append(option)
+					commands.append(str(option))
 					option = ''
 
 		return commands
@@ -141,11 +149,11 @@ class Rpg:
 			traceback.print_exc()
 		else:
 			if self._renderMode == RENDER_JSON:
-				excep = {'error': {'code': e.code, 'message': e.message}}
+				excep = {'error': {'code': e.code, 'message': str(e)}}
 				if self._debug:
 					excep['backtrace'] = traceback.format_exc()
-				print(json.dumps(excep))
+				return excep
 			elif self._debug:
-				traceback.print_exc()
+				return traceback.format_exc()
 			else:
-				print(e)
+				return str(e)

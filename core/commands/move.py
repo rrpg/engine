@@ -34,4 +34,4 @@ class move(core.command.command):
 		return {'direction': direction}
 
 	def render(self, data):
-		print(_('MOVE_CONFIRMATION_%s') % data['direction'])
+		return _('MOVE_CONFIRMATION_%s') % data['direction']

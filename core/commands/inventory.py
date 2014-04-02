@@ -21,5 +21,8 @@ class inventory(core.command.command):
 		return items
 
 	def render(self, data):
+		output = list()
 		for i in data:
-			print(str(i['quantity']).rjust(3) + ' ' + i['name'])
+			output.append(str(i['quantity']).rjust(3) + ' ' + i['name'])
+
+		return '\n'.join(output)

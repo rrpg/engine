@@ -94,3 +94,6 @@ locale-clean:
 		rm -f $$i; \
 	done
 	@echo "done"
+
+test:
+	@./bin/run-tests.sh

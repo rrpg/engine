@@ -40,4 +40,4 @@ class take(core.command.command):
 		return {'quantity': quantity, 'name': name}
 
 	def render(self, data):
-		print(_('TAKE_CONFIRMATION_%(quantity)s_%(name)s') % data)
+		return _('TAKE_CONFIRMATION_%(quantity)s_%(name)s') % data
