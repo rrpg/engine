@@ -1,21 +1,26 @@
-#!/bin/sh
+#!/bin/bash
 
-python tests/commands/look.py
-python tests/commands/take.py
-python tests/commands/drop.py
-python tests/commands/move.py
-python tests/commands/enter.py
-python tests/commands/exit.py
-python tests/commands/help.py
-python tests/commands/inventory.py
-python tests/commands/talk.py
+commands='look take drop move enter exit help inventory talk'
+python_versions='python2 python3'
 
-python3 tests/commands/look.py
-python3 tests/commands/take.py
-python3 tests/commands/drop.py
-python3 tests/commands/move.py
-python3 tests/commands/enter.py
-python3 tests/commands/exit.py
-python3 tests/commands/help.py
-python3 tests/commands/inventory.py
-python3 tests/commands/talk.py
+for l in 'fr_FR' 'en_GB'
+do
+	echo "Locale $l"
+
+	for p in $python_versions
+	do
+		if [ ! -z "$(which $p)" ]
+		then
+			echo "$p"
+			for c in $commands
+			do
+				echo "Processing $c"
+				LC_MESSAGES=$l $p tests/commands/$c.py
+				if [ $? == 1 ]
+				then
+					exit
+				fi
+			done
+		fi
+	done
+done
