@@ -1,6 +1,11 @@
 #!/bin/bash
 
-commands='look take drop move enter exit help inventory talk'
+if [ -z "$1" ] || [ ! -f tests/commands/$1.py ]
+then
+	commands='look take drop move enter exit help inventory talk'
+else
+	commands=$1
+fi
 python_versions='python2 python3'
 
 for l in 'fr_FR' 'en_GB'
