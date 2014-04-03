@@ -14,7 +14,10 @@ class take(core.command.command):
 			quantity = 1
 			name = self._args[0]
 		else:
-			quantity = int(self._args[0])
+			try:
+				quantity = int(self._args[0])
+			except ValueError:
+				raise core.command.exception(_('ERROR_TAKE_INVALID_QUANTITY'))
 			name = self._args[1]
 
 		#~ Item the player want to take
