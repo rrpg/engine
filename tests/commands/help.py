@@ -12,7 +12,7 @@ import json
 
 class helpTests(tests.common.common):
 	def test_text(self):
-		self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('HELP_COMMAND')])
+		self.rpgText.setAction([_('HELP_COMMAND')])
 		output = self.rpgText._runAction()
 		expected = _('AVAILABLE_COMMANDS_TITLE') +'\n'+\
 			'%s <%s> "<%s>"' % (_('TALK_COMMAND'), _('CHARACTER_TOKEN'), _('SENTENCE_TOKEN')) + ':' +'\n'+\
@@ -38,7 +38,7 @@ class helpTests(tests.common.common):
 		self.assertTrue(output == expected)
 
 	def test_json(self):
-		self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('HELP_COMMAND')])
+		self.rpgJSON.setAction([_('HELP_COMMAND')])
 		output = self.rpgJSON._runAction()
 		expected = [
 			{

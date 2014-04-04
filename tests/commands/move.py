@@ -11,42 +11,42 @@ import json
 
 class moveTests(tests.common.common):
 	def test_no_direction_given_text(self):
-		self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('MOVE_COMMAND')])
+		self.rpgText.setAction([_('MOVE_COMMAND')])
 		output = self.rpgText._runAction()
 		self.assertTrue(output == _('ERROR_MOVE_NO_DIRECTION_GIVEN'))
 
 	def test_no_direction_given_json(self):
-		self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('MOVE_COMMAND')])
+		self.rpgJSON.setAction([_('MOVE_COMMAND')])
 		output = self.rpgJSON._runAction()
 		self.assertTrue(output == {"error": {"message": _('ERROR_MOVE_NO_DIRECTION_GIVEN'), "code": 1}})
 
 	def test_invalid_direction_text(self):
-		self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('MOVE_COMMAND'), 'bad-direction'])
+		self.rpgText.setAction([_('MOVE_COMMAND'), 'bad-direction'])
 		output = self.rpgText._runAction()
 		self.assertTrue(output == _('ERROR_MOVE_INVALID_DIRECTION_%s') % 'bad-direction')
 
 	def test_invalid_direction_json(self):
-		self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('MOVE_COMMAND'), 'bad-direction'])
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), 'bad-direction'])
 		output = self.rpgJSON._runAction()
 		self.assertTrue(output == {"error": {"message": _('ERROR_MOVE_INVALID_DIRECTION_%s') % 'bad-direction', "code": 1}})
 
 	def test_not_available_direction_text(self):
-		self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('MOVE_COMMAND'), _('DIRECTION_KEY_EAST')])
+		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_EAST')])
 		output = self.rpgText._runAction()
 		self.assertTrue(output == _('ERROR_MOVE_DIRECTION_NOT_AVAILABLE'))
 
 	def test_not_available_direction_json(self):
-		self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('MOVE_COMMAND'), _('DIRECTION_KEY_EAST')])
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_EAST')])
 		output = self.rpgJSON._runAction()
 		self.assertTrue(output == {"error": {"message": _('ERROR_MOVE_DIRECTION_NOT_AVAILABLE'), "code": 1}})
 
 	def test_text(self):
-		self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('MOVE_COMMAND'), _('DIRECTION_KEY_NORTH')])
+		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_NORTH')])
 		output = self.rpgText._runAction()
 		self.assertTrue(output == _('MOVE_CONFIRMATION_%s') % _('DIRECTION_KEY_NORTH'))
 
 	def test_json(self):
-		self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('MOVE_COMMAND'), _('DIRECTION_KEY_NORTH')])
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_NORTH')])
 		output = self.rpgJSON._runAction()
 		self.assertTrue(output == {"direction": _('DIRECTION_KEY_NORTH')})
 

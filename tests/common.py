@@ -9,9 +9,11 @@ class common(unittest.TestCase):
 	def __init__(self, methodName='runTest'):
 		unittest.TestCase.__init__(self, methodName)
 		core.config.memoization_enabled = False
-		self.rpgText = Rpg.Rpg(renderMode=Rpg.RENDER_TEXT)
-		self.rpgJSON = Rpg.Rpg(renderMode=Rpg.RENDER_JSON)
 		self.dbFile = "/tmp/rpg.db"
+		self.rpgText = Rpg.Rpg(renderMode=Rpg.RENDER_TEXT)
+		self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER')
+		self.rpgJSON = Rpg.Rpg(renderMode=Rpg.RENDER_JSON)
+		self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER')
 
 	def setUp(self):
 		db = os.path.realpath(self.dbFile)

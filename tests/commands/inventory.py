@@ -11,17 +11,16 @@ import json
 
 class enterTests(tests.common.common):
 	def test_empty_text(self):
-		self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('INVENTORY_COMMAND')])
+		self.rpgText.setAction([_('INVENTORY_COMMAND')])
 		output = self.rpgText._runAction()
 		self.assertTrue(output == '')
 
 	def test_empty_json(self):
-		self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('INVENTORY_COMMAND')])
+		self.rpgJSON.setAction([_('INVENTORY_COMMAND')])
 		output = self.rpgJSON._runAction()
 		self.assertTrue(output == [])
 
 	def test_not_empty_text(self):
-		self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER')
 		self.rpgText.setAction([_('TAKE_COMMAND'), 2, 'Heavy breastplate'])
 		output = self.rpgText._runAction()
 		self.rpgText.setAction([_('INVENTORY_COMMAND')])

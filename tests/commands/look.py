@@ -12,7 +12,7 @@ import json
 
 class lookTests(tests.common.common):
 	def test_text(self):
-		self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('LOOK_COMMAND')])
+		self.rpgText.setAction([_('LOOK_COMMAND')])
 		output = self.rpgText._runAction()
 		self.assertTrue(output ==
 			_('CURRENT_REGION_%s') % 'The High lands\n' +\
@@ -31,7 +31,7 @@ class lookTests(tests.common.common):
 		)
 
 	def test_json(self):
-		self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('LOOK_COMMAND')])
+		self.rpgJSON.setAction([_('LOOK_COMMAND')])
 		output = self.rpgJSON._runAction()
 		self.assertTrue(output == {
 			"directions": [_('DIRECTION_KEY_NORTH')],
