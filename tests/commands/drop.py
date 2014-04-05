@@ -40,6 +40,16 @@ class dropTests(tests.common.common):
 		output = self.rpgJSON._runAction()
 		self.assertTrue(output == {"error": {"message": _('ERROR_DROP_ITEM_NOT_AVAILABLE'), "code": 1}})
 
+	def test_invalid_quantity_text(self):
+		self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('DROP_COMMAND'), 'ten', 'Heavy breastplate'])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_DROP_INVALID_QUANTITY'))
+
+	def test_invalid_quantity_json(self):
+		self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER', [_('DROP_COMMAND'), 'ten', 'Heavy breastplate'])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_DROP_INVALID_QUANTITY'), "code": 1}})
+
 	def test_quantity_too_high_text(self):
 		self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER')
 		self.rpgText.setAction([_('TAKE_COMMAND'), 2, 'Heavy breastplate'])

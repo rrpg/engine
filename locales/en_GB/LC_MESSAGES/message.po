@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-02 22:38+0100\n"
+"POT-Creation-Date: 2014-04-03 17:22+0100\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -89,9 +89,9 @@ msgid "EXIT_COMMAND"
 msgstr "exit"
 
 #: core/command_factory.py:43 core/commands/help.py:46
-#: tests/commands/drop.py:45 tests/commands/drop.py:53
-#: tests/commands/drop.py:61 tests/commands/drop.py:69
-#: tests/commands/drop.py:77 tests/commands/drop.py:85
+#: tests/commands/drop.py:55 tests/commands/drop.py:63
+#: tests/commands/drop.py:71 tests/commands/drop.py:79
+#: tests/commands/drop.py:87 tests/commands/drop.py:95
 #: tests/commands/help.py:30 tests/commands/help.py:69
 #: tests/commands/inventory.py:25 tests/commands/inventory.py:33
 #: tests/commands/take.py:14 tests/commands/take.py:19
@@ -100,6 +100,7 @@ msgstr "exit"
 #: tests/commands/take.py:44 tests/commands/take.py:49
 #: tests/commands/take.py:54 tests/commands/take.py:59
 #: tests/commands/take.py:64 tests/commands/take.py:69
+#: tests/commands/take.py:74 tests/commands/take.py:79
 msgid "TAKE_COMMAND"
 msgstr "take"
 
@@ -107,9 +108,10 @@ msgstr "take"
 #: tests/commands/drop.py:14 tests/commands/drop.py:19
 #: tests/commands/drop.py:24 tests/commands/drop.py:29
 #: tests/commands/drop.py:34 tests/commands/drop.py:39
-#: tests/commands/drop.py:47 tests/commands/drop.py:55
-#: tests/commands/drop.py:63 tests/commands/drop.py:71
-#: tests/commands/drop.py:79 tests/commands/drop.py:87
+#: tests/commands/drop.py:44 tests/commands/drop.py:49
+#: tests/commands/drop.py:57 tests/commands/drop.py:65
+#: tests/commands/drop.py:73 tests/commands/drop.py:81
+#: tests/commands/drop.py:89 tests/commands/drop.py:97
 #: tests/commands/help.py:32 tests/commands/help.py:73
 msgid "DROP_COMMAND"
 msgstr "drop"
@@ -151,24 +153,29 @@ msgstr "Unknown command"
 msgid "ERROR_DROP_NO_ITEM_GIVEN"
 msgstr "What shall I drop?"
 
-#: core/commands/drop.py:31 tests/commands/drop.py:26
+#: core/commands/drop.py:27 tests/commands/drop.py:46
+#: tests/commands/drop.py:51
+msgid "ERROR_DROP_INVALID_QUANTITY"
+msgstr "Invalid quantity"
+
+#: core/commands/drop.py:34 tests/commands/drop.py:26
 #: tests/commands/drop.py:31
 msgid "ERROR_DROP_UNKNOWN_ITEM"
 msgstr "I have none of those"
 
-#: core/commands/drop.py:36 tests/commands/drop.py:36
+#: core/commands/drop.py:39 tests/commands/drop.py:36
 #: tests/commands/drop.py:41
 msgid "ERROR_DROP_ITEM_NOT_AVAILABLE"
 msgstr "I have none of those"
 
-#: core/commands/drop.py:38 tests/commands/drop.py:49
-#: tests/commands/drop.py:57
+#: core/commands/drop.py:41 tests/commands/drop.py:59
+#: tests/commands/drop.py:67
 #, python-format
 msgid "ERROR_DROP_QUANTITY_TOO_HIGH_%s"
 msgstr "I don't have enough %s to drop"
 
-#: core/commands/drop.py:47 tests/commands/drop.py:65
-#: tests/commands/drop.py:81
+#: core/commands/drop.py:50 tests/commands/drop.py:75
+#: tests/commands/drop.py:91
 #, python-format
 msgid "DROP_CONFIRMATION_%(quantity)s_%(name)s"
 msgstr "You drop %(quantity)s %(name)s"
@@ -327,23 +334,28 @@ msgstr "lets go %s"
 msgid "ERROR_TAKE_NO_ITEM_GIVEN"
 msgstr "What shall I take?"
 
-#: core/commands/take.py:24 tests/commands/take.py:26
+#: core/commands/take.py:20 tests/commands/take.py:46
+#: tests/commands/take.py:51
+msgid "ERROR_TAKE_INVALID_QUANTITY"
+msgstr "Invalid quantity"
+
+#: core/commands/take.py:27 tests/commands/take.py:26
 #: tests/commands/take.py:31
 msgid "ERROR_TAKE_UNKNOWN_ITEM"
 msgstr "I don't see this here."
 
-#: core/commands/take.py:31 tests/commands/take.py:36
+#: core/commands/take.py:34 tests/commands/take.py:36
 #: tests/commands/take.py:41
 msgid "ERROR_TAKE_ITEM_NOT_AVAILABLE"
 msgstr "I don't see this here."
 
-#: core/commands/take.py:34 tests/commands/take.py:46
-#: tests/commands/take.py:51
+#: core/commands/take.py:37 tests/commands/take.py:56
+#: tests/commands/take.py:61
 msgid "ERROR_TAKE_QUANTITY_TOO_HIGH"
 msgstr "There are not enough items of this kind"
 
-#: core/commands/take.py:43 tests/commands/take.py:56
-#: tests/commands/take.py:66
+#: core/commands/take.py:46 tests/commands/take.py:66
+#: tests/commands/take.py:76
 #, python-format
 msgid "TAKE_CONFIRMATION_%(quantity)s_%(name)s"
 msgstr "You take %(quantity)s %(name)s"
