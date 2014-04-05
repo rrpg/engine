@@ -54,12 +54,7 @@ def main(argv):
 		password = args.password
 
 	try:
-		rpg.init(
-			world,
-			login,
-			password,
-			[s for s in args.action]
-		)
+		rpg.init(world, login, password, args.action)
 	except KeyboardInterrupt:
 		print("")
 		return
