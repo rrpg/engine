@@ -63,7 +63,7 @@ class Rpg:
 	#~ else ask the player to enter a command
 	def run(self):
 		if len(self._action) > 0:
-			self._runAction()
+			print(self._runAction())
 		else:
 			c = ''
 			result = 0
