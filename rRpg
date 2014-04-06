@@ -59,7 +59,7 @@ def main(argv):
 		print("")
 		return
 	except BaseException as e:
-		rpg.renderException(e)
+		print(rpg.renderException(e))
 		return
 
 	rpg.run()
