@@ -41,8 +41,10 @@ class Rpg:
 
 		self._player.connect()
 
-	#~ This method asks the player to login or to create a new account
 	def _doInteractiveAuth(self):
+		'''
+		This method asks the player to login or to create a new account
+		'''
 		choice = 0
 		print(_('PLAYER_SELECTION'))
 		print("  1 - " + _('CHOICE_NEW_PLAYER'))
@@ -64,9 +66,11 @@ class Rpg:
 			raise TypeError("The action must be a list of strings")
 		self._action = action
 
-	#~ Main method of the Rpg Class, will run the action if it is given,
-	#~ else ask the player to enter a command
 	def run(self):
+		'''
+		Main method of the Rpg Class, will run the action if it is given,
+		else ask the player to enter a command
+		'''
 		if len(self._action) > 0:
 			print(self._runAction())
 		else:
