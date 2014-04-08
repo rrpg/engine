@@ -75,7 +75,7 @@ class Rpg:
 		else ask the player to enter a command
 		'''
 		if len(self._action) > 0:
-			print(self._runAction())
+			print(self._runAction(isInteractive=False))
 		else:
 			c = ''
 			result = 0
@@ -91,7 +91,7 @@ class Rpg:
 
 				if c != "":
 					self._action = self.parseTypedAction(c)
-					result = self._runAction()
+					result = self._runAction(isInteractive=True)
 
 				if result == command_factory.quit:
 					break
@@ -101,9 +101,9 @@ class Rpg:
 					print(result)
 					print("")
 
-	def _runAction(self):
+	def _runAction(self, isInteractive):
 		try:
-			c = command_factory.factory.create(self._player, self._action)
+			c = command_factory.factory.create(self._player, self._action, isInteractive)
 
 			if c == command_factory.quit:
 				return c

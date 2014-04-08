@@ -48,7 +48,7 @@ class factory:
 	}
 
 	@staticmethod
-	def create(p, commandFull):
+	def create(p, commandFull, isInteractive):
 		"""
 		command.factory.create(p, commandFull) -> command.command
 
@@ -68,7 +68,7 @@ class factory:
 			return quit
 		elif cmd in factory.mapping.keys():
 			module = sys.modules['core.commands.' + factory.mapping[cmd]]
-			cmd = getattr(module, factory.mapping[cmd])()
+			cmd = getattr(module, factory.mapping[cmd])(isInteractive)
 		else:
 			raise core.command.exception(_('ERROR_UNKNOWN_COMMAND'))
 
