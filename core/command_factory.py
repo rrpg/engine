@@ -16,7 +16,8 @@ Today, the available commands are:
 - quit
 """
 import core.command
-from core.commands import look, talk, move, enter, exit, take, drop, inventory, help
+from core.commands import look, talk, move, enter, exit, take, drop, inventory,\
+	help, createPlayer
 from core.localisation import _
 import sys
 
@@ -47,6 +48,10 @@ class factory:
 		_('HELP_COMMAND'): 'help'
 	}
 
+	mapping_anonymous = {
+		_('CREATE_PLAYER_COMMAND'): 'createPlayer'
+	}
+
 	@staticmethod
 	def create(p, commandFull, isInteractive):
 		"""
@@ -69,10 +74,22 @@ class factory:
 		elif cmd in factory.mapping.keys():
 			module = sys.modules['core.commands.' + factory.mapping[cmd]]
 			cmd = getattr(module, factory.mapping[cmd])(isInteractive)
+		elif not p.isConnected() and cmd in factory.mapping_anonymous.keys():
+			module = sys.modules['core.commands.' + factory.mapping_anonymous[cmd]]
+			cmd = getattr(module, factory.mapping_anonymous[cmd])(isInteractive)
 		else:
 			raise core.command.exception(_('ERROR_UNKNOWN_COMMAND'))
 
 		cmd.setArgs(commandFull)
 		cmd.setPlayer(p)
 		return cmd
+
+	@staticmethod
+	def commandNeedPlayer(cmd):
+		if cmd in factory.mapping.keys():
+			return True
+		elif cmd in factory.mapping_anonymous.keys():
+			return False
+		else:
+			raise core.command.exception(_('ERROR_UNKNOWN_COMMAND'))
 
