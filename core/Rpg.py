@@ -62,6 +62,9 @@ class Rpg:
 			self._player.loadPlayerFromStdIn()
 
 	def setAction(self, action):
+		'''
+		Set the action to run
+		'''
 		if type(action) != list:
 			raise TypeError("The action must be a list of strings")
 		self._action = action

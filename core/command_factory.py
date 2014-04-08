@@ -64,12 +64,6 @@ class factory:
 		cmd = commandFull[0]
 		del commandFull[0]
 
-		if cmd not in ("createPlayer", "help")\
-			and (not p.isConnected() or not p.connect()):
-			raise player.exception(
-				"A player must be connected to launch the command %s" % cmd
-			)
-
 		if cmd in (_('QUIT_COMMAND'), _('QUIT_SHORT_COMMAND')):
 			return quit
 		elif cmd in factory.mapping.keys():
