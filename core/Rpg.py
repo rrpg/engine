@@ -48,7 +48,6 @@ class Rpg:
 		while choice != 1 and choice != 2:
 			try:
 				choice = int(utils.read(_('CHOICE_QUESTION')))
-				print(choice)
 			except ValueError:
 				# If the typed value is not a valid integer
 				pass
