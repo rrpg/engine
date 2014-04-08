@@ -15,8 +15,10 @@ class Rpg:
 	_debug = False
 
 	def __init__(self, debug=False, renderMode=RENDER_TEXT):
+		self._player = None
 		self._debug = debug
 		self._renderMode = renderMode
+		self._action = []
 
 	def init(self, world, login, password, action=None):
 		if world is None:
