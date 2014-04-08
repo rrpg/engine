@@ -31,15 +31,15 @@ class Rpg:
 		#~ if the game is launched with login/password,
 		#~ the player is directly fetched
 		if login is not None and password is not None:
-			self._player = player(login, password)
+			self._player = player()
 		elif action == [] or action is None:
 			#else an empty player is created
-			self._player = player(None, None)
+			self._player = player()
 			self._doInteractiveAuth()
 
 		self._action = action
 
-		self._player.connect()
+		self._player.connect(login, password)
 
 	def _doInteractiveAuth(self):
 		'''

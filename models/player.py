@@ -12,9 +12,7 @@ from core.localisation import _
 
 
 class player(character.character):
-	def __init__(self, login, password):
-		self._login = login
-		self._password = password
+	def __init__(self):
 		self._model = None
 
 	def isConnected(self):
@@ -26,7 +24,9 @@ class player(character.character):
 			self._readLoginAndPassword(False, False)
 
 	#~ Method to connect the player
-	def connect(self):
+	def connect(self, login, password):
+		self._login = login
+		self._password = password
 		self._model = model.loadByLoginAndPassword(self._login, self._password)
 
 		if len(self._model) == 0:
