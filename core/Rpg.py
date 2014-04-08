@@ -46,8 +46,11 @@ class Rpg:
 		print("  1 - " + _('CHOICE_NEW_PLAYER'))
 		print("  2 - " + _('CHOICE_EXISTING_PLAYER'))
 		while choice != 1 and choice != 2:
-			choice = int(utils.read(_('CHOICE_QUESTION')))
-			print(choice)
+			try:
+				choice = int(utils.read(_('CHOICE_QUESTION')))
+			except ValueError:
+				# If the typed value is not a valid integer
+				pass
 
 		if choice == 1:
 			self._player.createNewPlayerFromStdIn()
