@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import getpass
 import core.exception
-from core import utils
-from models import gender, species, character
+from models import character
 from models.Model import Model
 import datetime
 from models.settings import settings
@@ -36,73 +34,11 @@ class player(character.character):
 
 		return True
 
-	#~ Read the login and the password from stdin
-	def _readLoginAndPassword(self, checkLogin, askConfirmPassword):
-		while self._login is None or self._login == '':
-			self._login = utils.read(_('LOGIN_PROMPT'))
-
-			if checkLogin and len(model.loadBy({'login': self._login})):
-				print(_('ERROR_SIGNUP_LOGIN_ALREADY_USED'))
-				self._login = None
-
-		confirmPassword = ''
-		while (self._password is None or self._password == ''):
-			self._password = getpass.getpass(_('PASSWORD_PROMPT'))
-
-			if askConfirmPassword is True:
-				confirmPassword = getpass.getpass(_('CONFIRM_PASSWORD_PROMPT'))
-			else:
-				confirmPassword = self._password
-
-			if self._password != confirmPassword:
-				print(_('ERROR_SIGNUP_PASSWORDS'))
-				self._password = None
-
-	def createNewPlayerFromStdIn(self):
-		self._readLoginAndPassword(True, True)
-
-		genders = gender.model.loadAll()
-		nbGenders = len(genders)
-
-		print(_('GENDER_SELECTION'))
-		for k, v in enumerate(genders):
-			print(str(k).rjust(3) + ' - ' + v['name'])
-
-		g = -1
-		while g < 0 or g >= nbGenders:
-			g = utils.read(_('GENDER_PROMPT'))
-			try:
-				g = int(g)
-			except:
-				g = -1
-
-		genderId = genders[g]['id_gender']
-
-		sps = species.model.getSpecies()
-		nbSpecies = len(sps)
-
-		if nbSpecies == 1:
-			speciesId = sps[0]['id_species']
-		else:
-			print(_('SPECIES_SELECTION'))
-			for k, v in enumerate(sps):
-				print(str(k).rjust(3) + ' - ' + v['name'])
-				print(v['description'])
-
-			sp = -1
-			while sp < 0 or sp >= nbSpecies:
-				sp = utils.read(_('SPECIES_PROMPT'))
-				try:
-					sp = int(sp)
-				except:
-					sp = -1
-
-			speciesId = sps[sp]['id_species']
-
+	def createNewPlayer(self, login, password, speciesId, genderId):
 		self._model = {
-			'login': self._login,
-			'name': self._login,
-			'password': self._password,
+			'login': login,
+			'name': login,
+			'password': password,
 			'id_species': speciesId,
 			'id_gender': genderId,
 			'id_area': settings.get('START_CELL_ID')

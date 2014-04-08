@@ -3,6 +3,7 @@
 from models.player import player
 from core import command, command_factory, utils, config, registry
 import readline
+import getpass
 import os
 import json
 from core.localisation import _
@@ -56,9 +57,24 @@ class Rpg:
 				pass
 
 		if choice == 1:
-			self._player.createNewPlayerFromStdIn()
+			cmd = command_factory.factory.create(self._player, [_('CREATE_PLAYER_COMMAND')], isInteractive=True)
+			return cmd.run()
 		elif choice == 2:
-			self._player.loadPlayerFromStdIn()
+			return self._promptLoginFromStdin()
+
+	def _promptLoginFromStdin(self):
+		'''
+		Ask the player to type his login and password
+		'''
+		login = ''
+		password = ''
+		while login == '':
+			login = utils.read(_('LOGIN_PROMPT'))
+
+		while password == '':
+			password = getpass.getpass(_('PASSWORD_PROMPT'))
+
+		return (login, password)
 
 	def setAction(self, action):
 		'''
