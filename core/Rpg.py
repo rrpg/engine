@@ -15,11 +15,12 @@ RENDER_JSON = 1
 class Rpg:
 	_debug = False
 
-	def __init__(self, debug=False, renderMode=RENDER_TEXT):
+	def __init__(self, debug=False, renderMode=RENDER_TEXT, isInteractive=True):
 		self._player = None
 		self._debug = debug
 		self._renderMode = renderMode
 		self._action = []
+		self._isInteractive = isInteractive
 
 	def init(self, world, login, password, action=None):
 		if world is None:
@@ -90,7 +91,7 @@ class Rpg:
 		else ask the player to enter a command
 		'''
 		if len(self._action) > 0:
-			print(self._runAction(isInteractive=False))
+			print(self._runAction())
 		else:
 			c = ''
 			result = 0
@@ -106,7 +107,7 @@ class Rpg:
 
 				if c != "":
 					self._action = self.parseTypedAction(c)
-					result = self._runAction(isInteractive=True)
+					result = self._runAction()
 
 				if result == command_factory.quit:
 					break
@@ -116,9 +117,9 @@ class Rpg:
 					print(result)
 					print("")
 
-	def _runAction(self, isInteractive):
+	def _runAction(self):
 		try:
-			c = command_factory.factory.create(self._player, self._action, isInteractive)
+			c = command_factory.factory.create(self._player, self._action, self._isInteractive)
 
 			if c == command_factory.quit:
 				return c
