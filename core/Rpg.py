@@ -30,17 +30,24 @@ class Rpg:
 		if os.path.isfile(world) is False:
 			raise core.exception.exception(_('ERROR_UNKNOWN_SELECTED_WORLD'))
 
-		self._player = player()
+		isConnected = self._initPlayer(login, password)
+
 		if type(action) == list and len(action) > 0:
-			if login is not None and password is not None:
-				self._player.connect(login, password)
-			elif command_factory.factory.commandNeedPlayer(action[0]):
+			if not isConnected \
+				and command_factory.factory.commandNeedPlayer(action[0]):
 				raise core.exception.exception(_('ERROR_NO_SELECTED_PLAYER'))
 			self._action = action
-		else:
-			if login is None or password is None:
-				(login, password) = self._doInteractiveAuth()
+
+	def _initPlayer(self, login, password):
+		self._player = player()
+		if self._isInteractive and (login is None or password is None):
+			(login, password) = self._doInteractiveAuth()
+
+		if login is not None and password is not None:
 			self._player.connect(login, password)
+			return True
+
+		return False
 
 	def _doInteractiveAuth(self):
 		'''
