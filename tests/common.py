@@ -6,6 +6,9 @@ from core import Rpg
 
 
 class common(unittest.TestCase):
+	login = 'TEST_PLAYER'
+	password = 'TEST_PLAYER'
+
 	def setUp(self):
 		self.dbFile = "/tmp/rpg.db"
 		db = os.path.realpath(self.dbFile)
@@ -28,6 +31,6 @@ class common(unittest.TestCase):
 
 		core.config.memoization_enabled = False
 		self.rpgText = Rpg.Rpg(renderMode=Rpg.RENDER_TEXT, isInteractive=False)
-		self.rpgText.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER')
+		self.rpgText.init(self.dbFile, self.login, self.password)
 		self.rpgJSON = Rpg.Rpg(renderMode=Rpg.RENDER_JSON, isInteractive=False)
-		self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER')
+		self.rpgJSON.init(self.dbFile, self.login, self.password)
