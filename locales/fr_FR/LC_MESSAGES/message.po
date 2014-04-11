@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-03 17:22+0100\n"
+"POT-Creation-Date: 2014-04-11 22:18+0100\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,37 +18,58 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: core/Rpg.py:27
+#: core/Rpg.py:53
 msgid "ERROR_UNKNOWN_SELECTED_WORLD"
 msgstr "Le monde choisi n'existe pas"
 
-#: core/Rpg.py:45
+#: core/Rpg.py:60
+msgid "ERROR_NO_SELECTED_PLAYER"
+msgstr "Un joueur est requis pour exécuter cette action"
+
+#: core/Rpg.py:84
 msgid "PLAYER_SELECTION"
 msgstr "Choix du personnage"
 
-#: core/Rpg.py:46
+#: core/Rpg.py:85
 msgid "CHOICE_NEW_PLAYER"
 msgstr "Nouveau personnage"
 
-#: core/Rpg.py:47
+#: core/Rpg.py:86
 msgid "CHOICE_EXISTING_PLAYER"
 msgstr "Personnage existant"
 
-#: core/Rpg.py:49
+#: core/Rpg.py:89
 msgid "CHOICE_QUESTION"
 msgstr "Votre choix : "
 
-#: core/Rpg.py:144
+#: core/Rpg.py:96 core/command_factory.py:52 tests/commands/createPlayer.py:17
+#: tests/commands/createPlayer.py:22 tests/commands/createPlayer.py:27
+#: tests/commands/createPlayer.py:32 tests/commands/createPlayer.py:37
+#: tests/commands/createPlayer.py:42 tests/commands/createPlayer.py:47
+#: tests/commands/createPlayer.py:52 tests/commands/createPlayer.py:57
+#: tests/commands/createPlayer.py:62
+msgid "CREATE_PLAYER_COMMAND"
+msgstr "créer-joueur"
+
+#: core/Rpg.py:110 core/commands/createPlayer.py:46
+msgid "LOGIN_PROMPT"
+msgstr "Identifiant : "
+
+#: core/Rpg.py:113 core/commands/createPlayer.py:54
+msgid "PASSWORD_PROMPT"
+msgstr "Mot de passe : "
+
+#: core/Rpg.py:222
 msgid "COMMAND_PROMPT"
 msgstr "Commande : "
 
-#: core/command_factory.py:38 core/commands/help.py:38
+#: core/command_factory.py:39 core/commands/help.py:38
 #: tests/commands/help.py:26 tests/commands/help.py:61
 #: tests/commands/look.py:15 tests/commands/look.py:34
 msgid "LOOK_COMMAND"
 msgstr "regarder"
 
-#: core/command_factory.py:39 core/commands/help.py:22
+#: core/command_factory.py:40 core/commands/help.py:22
 #: tests/commands/help.py:18 tests/commands/help.py:45
 #: tests/commands/talk.py:14 tests/commands/talk.py:19
 #: tests/commands/talk.py:24 tests/commands/talk.py:29
@@ -58,7 +79,7 @@ msgstr "regarder"
 msgid "TALK_COMMAND"
 msgstr "demander"
 
-#: core/command_factory.py:40 core/commands/help.py:26
+#: core/command_factory.py:41 core/commands/help.py:26
 #: tests/commands/help.py:20 tests/commands/help.py:49
 #: tests/commands/move.py:14 tests/commands/move.py:19
 #: tests/commands/move.py:24 tests/commands/move.py:29
@@ -67,7 +88,7 @@ msgstr "demander"
 msgid "MOVE_COMMAND"
 msgstr "marcher"
 
-#: core/command_factory.py:41 core/commands/help.py:30
+#: core/command_factory.py:42 core/commands/help.py:30
 #: tests/commands/enter.py:14 tests/commands/enter.py:19
 #: tests/commands/enter.py:24 tests/commands/enter.py:29
 #: tests/commands/enter.py:34 tests/commands/enter.py:39
@@ -79,7 +100,7 @@ msgstr "marcher"
 msgid "ENTER_COMMAND"
 msgstr "entrer"
 
-#: core/command_factory.py:42 core/commands/help.py:34
+#: core/command_factory.py:43 core/commands/help.py:34
 #: tests/commands/exit.py:13 tests/commands/exit.py:18
 #: tests/commands/exit.py:23 tests/commands/exit.py:28
 #: tests/commands/exit.py:33 tests/commands/exit.py:38
@@ -89,12 +110,12 @@ msgstr "entrer"
 msgid "EXIT_COMMAND"
 msgstr "sortir"
 
-#: core/command_factory.py:43 core/commands/help.py:46
-#: tests/commands/drop.py:55 tests/commands/drop.py:63
-#: tests/commands/drop.py:71 tests/commands/drop.py:79
-#: tests/commands/drop.py:87 tests/commands/drop.py:95
+#: core/command_factory.py:44 core/commands/help.py:46
+#: tests/commands/drop.py:54 tests/commands/drop.py:62
+#: tests/commands/drop.py:69 tests/commands/drop.py:77
+#: tests/commands/drop.py:84 tests/commands/drop.py:92
 #: tests/commands/help.py:30 tests/commands/help.py:69
-#: tests/commands/inventory.py:25 tests/commands/inventory.py:33
+#: tests/commands/inventory.py:24 tests/commands/inventory.py:32
 #: tests/commands/take.py:14 tests/commands/take.py:19
 #: tests/commands/take.py:24 tests/commands/take.py:29
 #: tests/commands/take.py:34 tests/commands/take.py:39
@@ -105,49 +126,97 @@ msgstr "sortir"
 msgid "TAKE_COMMAND"
 msgstr "prendre"
 
-#: core/command_factory.py:44 core/commands/help.py:50
+#: core/command_factory.py:45 core/commands/help.py:50
 #: tests/commands/drop.py:14 tests/commands/drop.py:19
 #: tests/commands/drop.py:24 tests/commands/drop.py:29
 #: tests/commands/drop.py:34 tests/commands/drop.py:39
 #: tests/commands/drop.py:44 tests/commands/drop.py:49
-#: tests/commands/drop.py:57 tests/commands/drop.py:65
-#: tests/commands/drop.py:73 tests/commands/drop.py:81
-#: tests/commands/drop.py:89 tests/commands/drop.py:97
+#: tests/commands/drop.py:56 tests/commands/drop.py:64
+#: tests/commands/drop.py:71 tests/commands/drop.py:79
+#: tests/commands/drop.py:86 tests/commands/drop.py:94
 #: tests/commands/help.py:32 tests/commands/help.py:73
 msgid "DROP_COMMAND"
 msgstr "déposer"
 
-#: core/command_factory.py:45 core/commands/help.py:42
+#: core/command_factory.py:46 core/commands/help.py:42
 #: tests/commands/help.py:28 tests/commands/help.py:65
 #: tests/commands/inventory.py:14 tests/commands/inventory.py:19
-#: tests/commands/inventory.py:27 tests/commands/inventory.py:35
+#: tests/commands/inventory.py:26 tests/commands/inventory.py:34
 msgid "INVENTORY_COMMAND"
 msgstr "inventaire"
 
-#: core/command_factory.py:46 core/commands/help.py:42
+#: core/command_factory.py:47 core/commands/help.py:42
 #: tests/commands/help.py:28 tests/commands/help.py:65
 msgid "INVENTORY_SHORT_COMMAND"
 msgstr "inv"
 
-#: core/command_factory.py:47 core/commands/help.py:54
+#: core/command_factory.py:48 core/commands/help.py:54
 #: tests/commands/help.py:15 tests/commands/help.py:34
 #: tests/commands/help.py:41 tests/commands/help.py:77
 msgid "HELP_COMMAND"
 msgstr "aide"
 
-#: core/command_factory.py:73 core/commands/help.py:58
+#: core/command_factory.py:72 core/commands/help.py:58
 #: tests/commands/help.py:36 tests/commands/help.py:81
 msgid "QUIT_COMMAND"
 msgstr "quitter"
 
-#: core/command_factory.py:73 core/commands/help.py:58
+#: core/command_factory.py:72 core/commands/help.py:58
 #: tests/commands/help.py:36 tests/commands/help.py:81
 msgid "QUIT_SHORT_COMMAND"
 msgstr "q"
 
-#: core/command_factory.py:79
+#: core/command_factory.py:81 core/command_factory.py:94
 msgid "ERROR_UNKNOWN_COMMAND"
 msgstr "Commande inconnue"
+
+#: core/commands/createPlayer.py:23 tests/commands/createPlayer.py:19
+#: tests/commands/createPlayer.py:24
+msgid "ERROR_SIGNUP_NOT_ENOUGH_ARGUMENTS"
+msgstr "Des arguments supplémentaires sont requis pour créer un joueur"
+
+#: core/commands/createPlayer.py:28 core/commands/createPlayer.py:49
+#: tests/commands/createPlayer.py:29 tests/commands/createPlayer.py:34
+msgid "ERROR_SIGNUP_LOGIN_ALREADY_USED"
+msgstr "Identifiant déjà utilisé"
+
+#: core/commands/createPlayer.py:32 tests/commands/createPlayer.py:39
+#: tests/commands/createPlayer.py:44
+msgid "ERROR_SIGNUP_INVALID_GENDER"
+msgstr "Le genre choisi est invalide"
+
+#: core/commands/createPlayer.py:36 tests/commands/createPlayer.py:49
+#: tests/commands/createPlayer.py:54
+msgid "ERROR_SIGNUP_INVALID_SPECIES"
+msgstr "L'espèce choisie est invalide"
+
+#: core/commands/createPlayer.py:55
+msgid "CONFIRM_PASSWORD_PROMPT"
+msgstr "Confirmation du mot de passe : "
+
+#: core/commands/createPlayer.py:58
+msgid "ERROR_SIGNUP_PASSWORDS"
+msgstr "Les mots de passe saisis ne sont pas identiques"
+
+#: core/commands/createPlayer.py:64
+msgid "GENDER_SELECTION"
+msgstr "Choix du sexe"
+
+#: core/commands/createPlayer.py:70
+msgid "GENDER_PROMPT"
+msgstr "Sexe : "
+
+#: core/commands/createPlayer.py:84
+msgid "SPECIES_SELECTION"
+msgstr "Choix de l'espèce"
+
+#: core/commands/createPlayer.py:91
+msgid "SPECIES_PROMPT"
+msgstr "Espèce : "
+
+#: core/commands/createPlayer.py:104 tests/commands/createPlayer.py:59
+msgid "PLAYER_CREATION_CONFIRMATION"
+msgstr "Le joueur a été créé avec succès"
 
 #: core/commands/drop.py:17 tests/commands/drop.py:16
 #: tests/commands/drop.py:21
@@ -169,14 +238,14 @@ msgstr "Objet inconnu"
 msgid "ERROR_DROP_ITEM_NOT_AVAILABLE"
 msgstr "Vous ne possédez pas cet objet"
 
-#: core/commands/drop.py:41 tests/commands/drop.py:59
-#: tests/commands/drop.py:67
+#: core/commands/drop.py:41 tests/commands/drop.py:58
+#: tests/commands/drop.py:66
 #, python-format
 msgid "ERROR_DROP_QUANTITY_TOO_HIGH_%s"
 msgstr "Vous ne possédez pas assez de %s"
 
-#: core/commands/drop.py:50 tests/commands/drop.py:75
-#: tests/commands/drop.py:91
+#: core/commands/drop.py:50 tests/commands/drop.py:73
+#: tests/commands/drop.py:88
 #, python-format
 msgid "DROP_CONFIRMATION_%(quantity)s_%(name)s"
 msgstr "Vous déposez %(quantity)s %(name)s"
@@ -430,45 +499,9 @@ msgstr "Type de lieu inconnu"
 msgid "ERROR_PLACE_GENERATION"
 msgstr "Une erreur est survenue lors du chargement du lieu..."
 
-#: models/player.py:35
+#: models/player.py:33
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
 msgstr "Identifiant ou mot de passe incorrect"
-
-#: models/player.py:42
-msgid "LOGIN_PROMPT"
-msgstr "Identifiant : "
-
-#: models/player.py:45
-msgid "ERROR_SIGNUP_LOGIN_ALREADY_USED"
-msgstr "Identifiant déjà utilisé"
-
-#: models/player.py:50
-msgid "PASSWORD_PROMPT"
-msgstr "Mot de passe : "
-
-#: models/player.py:53
-msgid "CONFIRM_PASSWORD_PROMPT"
-msgstr "Confirmation du mot de passe : "
-
-#: models/player.py:58
-msgid "ERROR_SIGNUP_PASSWORDS"
-msgstr "Les mots de passe saisis ne sont pas identiques"
-
-#: models/player.py:67
-msgid "GENDER_SELECTION"
-msgstr "Choix du sexe"
-
-#: models/player.py:73
-msgid "GENDER_PROMPT"
-msgstr "Sexe : "
-
-#: models/player.py:87
-msgid "SPECIES_SELECTION"
-msgstr "Choix de l'espèce"
-
-#: models/player.py:94
-msgid "SPECIES_PROMPT"
-msgstr "Espèce : "
 
 #~ msgid "GENERATING_WAITING_TEXT"
 #~ msgstr "Chargement du lieu..."
