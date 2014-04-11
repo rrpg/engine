@@ -16,6 +16,20 @@ class Rpg:
 	_debug = False
 
 	def __init__(self, debug=False, renderMode=RENDER_TEXT, isInteractive=True):
+		"""
+		Rpg's construct. Init the following attributes:
+		- self._player
+		- self._debug
+		- self._renderMode
+		- self._action
+		- self._isInteractive
+
+		The render mode can be or RENDER_TEXT or RENDER_JSON.
+		If the flag isInteractive is set to False, the game will just execute
+		the next action without entering the game loop, no command will be
+		prompted to the user. This can be used for the tests or when the game is
+		used as a service.
+		"""
 		self._player = None
 		self._debug = debug
 		self._renderMode = renderMode
@@ -23,6 +37,14 @@ class Rpg:
 		self._isInteractive = isInteractive
 
 	def init(self, world, login, password, action=None):
+		"""
+		Method to init the Rpg with a world, a player's login and password and
+		and action. The action is optional, but the login and passwords can be
+		None (for unauthentified actions such as createPlayer for example).
+
+		Will raise an core.exception.exception if no login/password are provided
+		and the provided action needs player.
+		"""
 		if world is None:
 			world = config.db
 
@@ -39,6 +61,11 @@ class Rpg:
 			self._action = action
 
 	def _initPlayer(self, login, password):
+		"""
+		Method to init the player with a login and a password.
+		If the interactive mode is active and no login/password are provided,
+		the player will be prompted to login or create a new player
+		"""
 		self._player = player()
 		if self._isInteractive and (login is None or password is None):
 			(login, password) = self._doInteractiveAuth()
@@ -128,6 +155,9 @@ class Rpg:
 					print("")
 
 	def _runAction(self):
+		"""
+		Method to execute when an action is set and ready to be executed.
+		"""
 		try:
 			c = command_factory.factory.create(
 				self._player,
@@ -146,6 +176,10 @@ class Rpg:
 			return self.renderException(e)
 
 	def parseTypedAction(self, action):
+		"""
+		Method to parse the action typed by the player to detect the action
+		and the action's arguments
+		"""
 		inOption = False
 
 		commands, sep, option, optionStart = list(), ' ', '', 0
@@ -153,21 +187,21 @@ class Rpg:
 		for k,i in enumerate(action):
 			# first letter of the option
 			if i != ' ' and not inOption:
-				#~ Set the start index of the option
+				# Set the start index of the option
 				optionStart = k
 				inOption = True
-				#~ Set the option delimiter
+				# Set the option delimiter
 				sep = i if i in ("'", '"') else ' '
 			if inOption:
-				#~ If the current char is the option delimiter, but not the
-				#~ stat one
+				# If the current char is the option delimiter, but not the
+				# stat one
 				if i == sep and k > optionStart:
-					#~ The option is ended
+					# The option is ended
 					inOption = False
 				elif i != sep:
 					option += i
 
-				#~ The option is complete, append it in the list
+				# The option is complete, append it in the list
 				if not inOption or k == commandLen - 1:
 					commands.append(str(option))
 					option = ''
@@ -188,6 +222,10 @@ class Rpg:
 		return utils.read(_('COMMAND_PROMPT'))
 
 	def renderException(self, e):
+		"""
+		Method to call when an exception occurs to render it according to the
+		defined render mode.
+		"""
 		import traceback
 		if not isinstance(e, core.exception.exception):
 			traceback.print_exc()
