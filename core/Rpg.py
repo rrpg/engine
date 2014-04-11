@@ -65,7 +65,10 @@ class Rpg:
 				pass
 
 		if choice == 1:
-			cmd = command_factory.factory.create(self._player, [_('CREATE_PLAYER_COMMAND')], isInteractive=True)
+			cmd = command_factory.factory.create(
+				self._player, [_('CREATE_PLAYER_COMMAND')],
+				isInteractive=True
+			)
 			return cmd.run()
 		elif choice == 2:
 			return self._promptLoginFromStdin()
@@ -126,7 +129,11 @@ class Rpg:
 
 	def _runAction(self):
 		try:
-			c = command_factory.factory.create(self._player, self._action, self._isInteractive)
+			c = command_factory.factory.create(
+				self._player,
+				self._action,
+				self._isInteractive
+			)
 
 			if c == command_factory.quit:
 				return c
@@ -172,7 +179,9 @@ class Rpg:
 		Method to set the autocompleter and run the prompt, from utils
 		"""
 
-		completer = command.completer(sorted(command_factory.factory.mapping.keys()))
+		completer = command.completer(
+			sorted(command_factory.factory.mapping.keys())
+		)
 		readline.set_completer(completer.complete)
 		readline.parse_and_bind('tab: complete')
 		readline.set_completer_delims('')
