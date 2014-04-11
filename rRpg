@@ -43,7 +43,9 @@ def main(argv):
 	render = core.Rpg.RENDER_TEXT
 	if args.json is not False:
 		render = core.Rpg.RENDER_JSON
-	rpg = core.Rpg.Rpg(args.debug, render)
+
+	isInteractive = args.action == []
+	rpg = core.Rpg.Rpg(args.debug, render, isInteractive)
 
 	world = str(args.world)
 	login = None
