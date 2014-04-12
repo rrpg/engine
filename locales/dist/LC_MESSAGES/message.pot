@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-11 22:18+0100\n"
+"POT-Creation-Date: 2014-04-12 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,15 +39,6 @@ msgstr ""
 
 #: core/Rpg.py:89
 msgid "CHOICE_QUESTION"
-msgstr ""
-
-#: core/Rpg.py:96 core/command_factory.py:52 tests/commands/createPlayer.py:17
-#: tests/commands/createPlayer.py:22 tests/commands/createPlayer.py:27
-#: tests/commands/createPlayer.py:32 tests/commands/createPlayer.py:37
-#: tests/commands/createPlayer.py:42 tests/commands/createPlayer.py:47
-#: tests/commands/createPlayer.py:52 tests/commands/createPlayer.py:57
-#: tests/commands/createPlayer.py:62
-msgid "CREATE_PLAYER_COMMAND"
 msgstr ""
 
 #: core/Rpg.py:110 core/commands/createPlayer.py:46
@@ -155,17 +146,17 @@ msgstr ""
 msgid "HELP_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:72 core/commands/help.py:58
+#: core/command_factory.py:74 core/commands/help.py:58
 #: tests/commands/help.py:36 tests/commands/help.py:81
 msgid "QUIT_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:72 core/commands/help.py:58
+#: core/command_factory.py:74 core/commands/help.py:58
 #: tests/commands/help.py:36 tests/commands/help.py:81
 msgid "QUIT_SHORT_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:81 core/command_factory.py:94
+#: core/command_factory.py:83 core/command_factory.py:96
 msgid "ERROR_UNKNOWN_COMMAND"
 msgstr ""
 
