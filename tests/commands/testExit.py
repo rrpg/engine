@@ -62,5 +62,3 @@ class exitTests(tests.common.common):
 		self.rpgJSON.setAction([_('EXIT_COMMAND'), _('PLACE_TYPE_DUNGEON')])
 		output = self.rpgJSON._runAction()
 		self.assertTrue(output == [_('EXIT_CONFIRMATION')])
-
-unittest.main()

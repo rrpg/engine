@@ -50,4 +50,3 @@ class moveTests(tests.common.common):
 		output = self.rpgJSON._runAction()
 		self.assertTrue(output == {"direction": _('DIRECTION_KEY_NORTH')})
 
-unittest.main()
