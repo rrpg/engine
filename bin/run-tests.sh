@@ -2,7 +2,7 @@
 
 if [ -z "$1" ] || [ ! -f tests/commands/$1.py ]
 then
-	commands='look take drop move enter exit help inventory talk createPlayer'
+	commands='testLook testTake testDrop testMove testEnter testExit testHelp testInventory testTalk testCreatePlayer'
 else
 	commands=$1
 fi

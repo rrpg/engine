@@ -58,5 +58,4 @@ class talkTests(tests.common.common):
 			or output == {"question": "hi", "character": "Tom", "answer": "Hi, TEST_PLAYER"}
 		)
 
-
 unittest.main()
