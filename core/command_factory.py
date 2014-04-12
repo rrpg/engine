@@ -17,7 +17,7 @@ Today, the available commands are:
 """
 import core.command
 from core.commands import look, talk, move, enter, exit, take, drop, inventory,\
-	help, createPlayer, listSpecies
+	help, createPlayer, listSpecies, listGenders
 from core.localisation import _
 import sys
 
@@ -50,7 +50,8 @@ class factory:
 
 	mapping_anonymous = {
 		'create-player': 'createPlayer',
-		'list-species': 'listSpecies'
+		'list-species': 'listSpecies',
+		'list-genders': 'listGenders'
 	}
 
 	@staticmethod
