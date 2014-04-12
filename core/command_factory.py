@@ -49,8 +49,8 @@ class factory:
 	}
 
 	mapping_anonymous = {
-		_('CREATE_PLAYER_COMMAND'): 'createPlayer',
-		_('LIST_SPECIES_COMMAND'): 'listSpecies'
+		'create-player': 'createPlayer',
+		'list-species': 'listSpecies'
 	}
 
 	@staticmethod

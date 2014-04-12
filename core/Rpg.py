@@ -93,7 +93,7 @@ class Rpg:
 
 		if choice == 1:
 			cmd = command_factory.factory.create(
-				self._player, [_('CREATE_PLAYER_COMMAND')],
+				self._player, ['create-player'],
 				isInteractive=True
 			)
 			return cmd.run()
