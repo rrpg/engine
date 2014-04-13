@@ -25,7 +25,6 @@ class exit(core.command.command):
 		p = place.factory.getFromExitArea(self._player.getAreaId(), areaType)
 		if p is None:
 			raise place.exception(_('ERROR_ENTER_PLACE_NOT_AVAILABLE'))
-			return
 
 		self._player.goTo(p['id_area'])
 		return [_('EXIT_CONFIRMATION')]

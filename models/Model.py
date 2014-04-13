@@ -91,27 +91,6 @@ class Model(object):
 		return result
 
 	@classmethod
-	def save(cls, fields, where=list()):
-		"""
-		c.save(fields, where)
-
-		Save a row in the database.
-		If the where parameter is not null, an update will be executed, else
-		the row will be inserted.
-
-		@param fields dict of fields with as keys the table's fields and as
-			values, the row's values.
-		@param where tuple with as first element the SQL where and as second
-			element the where's params
-		"""
-
-		#~ insert
-		if len(where) == 0:
-			cls.insert(fields)
-		else:  # update
-			cls.update(fields, where)
-
-	@classmethod
 	def insert(cls, fields):
 		"""
 		Insert a new row in the database
@@ -144,17 +123,6 @@ class Model(object):
 			{'table': cls.getClass(), 'values': ','.join(fieldsNames), 'where': where[0]}
 		c.execute(query, list(fields.values()) + where[1])
 		Model.disconnect()
-
-	@classmethod
-	def delete(cls, where):
-		Model.connect()
-		c = Model._db.cursor()
-
-		query = "DELETE FROM %(table)s WHERE %(where)s" %\
-			{'table': cls.getClass(), 'where': where[0]}
-		r = c.execute(query, where[1])
-		Model.disconnect()
-		return r
 
 	@staticmethod
 	def connect():

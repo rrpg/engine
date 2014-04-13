@@ -84,4 +84,4 @@ class helpTests(tests.common.common):
 		]
 
 		self.assertTrue(output == expected)
-unittest.main()
+

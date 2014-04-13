@@ -35,4 +35,3 @@ class enterTests(tests.common.common):
 		output = self.rpgJSON._runAction()
 		self.assertTrue(output == [{"name": "Heavy breastplate", "quantity": 2}])
 
-unittest.main()

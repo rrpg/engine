@@ -62,5 +62,3 @@ class createPlayerTests(tests.common.common):
 		self.rpgJSON.setAction(['create-player', 'TEST_PLAYER_SOME', 'TEST_PLAYER', '1', '1'])
 		output = self.rpgJSON._runAction()
 		self.assertTrue(output == ('TEST_PLAYER_SOME', 'TEST_PLAYER'))
-
-unittest.main()

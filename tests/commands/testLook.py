@@ -41,4 +41,3 @@ class lookTests(tests.common.common):
 			"characters": ["Tom"]
 		})
 
-unittest.main()

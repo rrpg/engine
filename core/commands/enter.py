@@ -25,7 +25,6 @@ class enter(core.command.command):
 		p = place.factory.getFromEntranceArea(self._player.getAreaId(), areaType)
 		if p is None:
 			raise place.exception(_('ERROR_ENTER_PLACE_NOT_AVAILABLE'))
-			return
 
 		if p['entrance_id'] is None:
 			p = place.factory.generate(p, areaType)
