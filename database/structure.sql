@@ -93,9 +93,8 @@ CREATE INDEX idx_item_container_id_item_container_type ON item_container (id_ite
 
 CREATE TABLE item_container_type (
 	id_item_container_type INTEGER PRIMARY KEY AUTOINCREMENT,
-	label VARCHAR(30) NOT NULL
+	label VARCHAR(30) UNIQUE NOT NULL
 );
-CREATE INDEX idx_item_container_type_label ON item_container_type (label);
 
 CREATE TABLE item (
 	id_item INTEGER PRIMARY KEY AUTOINCREMENT,
