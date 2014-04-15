@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-from models import area, character, place, item
+from models import area, character, place, item, item_container
 import core.command
 from core.localisation import _
 
@@ -57,6 +57,12 @@ class look(core.command.command):
 				'quantity': items[i]['quantity']
 			})
 
+		result['item_containers'] = [
+			[k, c['type_label']]
+			for k, c in
+				enumerate(item_container.item_container.getAllFromIdArea(areaId))
+		]
+
 		return result
 
 	def render(self, data):
@@ -85,5 +91,11 @@ class look(core.command.command):
 			output.append(_('AVAILABLE_ITEMS'))
 			for i in data['items']:
 				output.append(str(i['quantity']).rjust(3) + ' ' + i['name'])
+
+		if len(data['item_containers']) > 0:
+			output.append('')
+			output.append(_('AVAILABLE_ITEMS_CONTAINERS'))
+			for c in data['item_containers']:
+				output.append('    ' + c[1] + ' #' + str(c[0]))
 
 		return '\n'.join(output)
