@@ -45,7 +45,8 @@ class factory:
 		_('DROP_COMMAND'): 'drop',
 		_('INVENTORY_COMMAND'): 'inventory',
 		_('INVENTORY_SHORT_COMMAND'): 'inventory',
-		_('HELP_COMMAND'): 'help'
+		_('HELP_COMMAND'): 'help',
+		_('OPEN_COMMAND'): 'open'
 	}
 
 	mapping_anonymous = {
