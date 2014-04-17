@@ -11,10 +11,14 @@ import json
 
 class openTests(tests.common.common):
 	def test_no_container_given_text(self):
-		pass
+		self.rpgText.setAction([_('OPEN_COMMAND')])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_OPEN_NO_CONTAINER_PROVIDED'))
 
 	def test_no_container_given_json(self):
-		pass
+		self.rpgJSON.setAction([_('OPEN_COMMAND')])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_OPEN_NO_CONTAINER_PROVIDED'), "code": 1}})
 
 	def test_container_not_found_here_text(self):
 		pass
