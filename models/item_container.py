@@ -2,8 +2,7 @@
 
 from models.Model import Model
 
-
-class item_container:
+class factory:
 	"""
 	Class to interact with the item containers, such as chests.
 	"""

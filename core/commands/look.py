@@ -60,7 +60,7 @@ class look(core.command.command):
 		result['item_containers'] = [
 			[k, c['type_label']]
 			for k, c in
-				enumerate(item_container.item_container.getAllFromIdArea(areaId))
+				enumerate(item_container.factory.getAllFromIdArea(areaId))
 		]
 
 		return result
