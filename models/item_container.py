@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from models.Model import Model
+import core.exception
 
 class factory:
 	"""
@@ -49,7 +50,7 @@ class model(Model):
 
 
 
-class exception(BaseException):
+class exception(core.exception.exception):
 	"""
 	Class for the exceptions concerning item containers.
 	"""
