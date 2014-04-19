@@ -27,10 +27,14 @@ class openTests(tests.common.common):
 		pass
 
 	def test_unknown_container_type_text(self):
-		pass
+		self.rpgText.setAction([_('OPEN_COMMAND'), 'some-container'])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_UNKNOWN_ITEM_CONTAINER_TYPE_LABEL'))
 
 	def test_unknown_container_type_json(self):
-		pass
+		self.rpgJSON.setAction([_('OPEN_COMMAND'), 'some-container'])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_UNKNOWN_ITEM_CONTAINER_TYPE_LABEL'), "code": 1}})
 
 	def test_multiple_container_of_given_type_text(self):
 		pass
@@ -38,8 +42,22 @@ class openTests(tests.common.common):
 	def test_multiple_container_of_given_type_json(self):
 		pass
 
-	def test_text(self):
+	def test_single_container_of_given_type_text(self):
+		self.rpgText.setAction([_('OPEN_COMMAND'), 'chest'])
+		output = self.rpgText._runAction()
+		expected = [
+			_('ITEMS_IN_CONTAINER_%s') % 'chest',
+			'  4 Heavy breastplate'
+		]
+		self.assertTrue(output == '\n'.join(expected))
+
+	def test_single_container_of_given_type_json(self):
+		self.rpgJSON.setAction([_('OPEN_COMMAND'), 'chest'])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {'items': [{'name': 'Heavy breastplate', 'quantity': 4}], 'container_type': 'chest'})
+
+	def test_container_number_provided_text(self):
 		pass
 
-	def test_json(self):
+	def test_container_number_provided_json(self):
 		pass
