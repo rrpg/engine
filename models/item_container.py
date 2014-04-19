@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from models.Model import Model
+from core.localisation import _
 import core.exception
 
 class factory:
@@ -14,6 +15,25 @@ class factory:
 		containers = model.loadBy({'id_area': idArea})
 		for k, c in enumerate(containers):
 			containers[k]['type_label'] = itemContainerTypes[containers[k]['id_item_container_type']]
+		return containers
+
+	@staticmethod
+	def getAllFromIdAreaAndType(idArea, containerType):
+		itemContainerTypes = model.getTypes()
+		containerTypeId = None
+		for k in itemContainerTypes:
+			if itemContainerTypes[k] == containerType:
+				containerTypeId = k
+				break
+
+		if containerTypeId is None:
+			raise exception(_('ERROR_UNKNOWN_ITEM_CONTAINER_TYPE_LABEL'))
+
+		containers = model.loadBy({
+			'id_area': idArea,
+			'id_item_container_type': containerTypeId
+		})
+
 		return containers
 
 
