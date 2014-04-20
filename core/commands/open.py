@@ -22,10 +22,11 @@ class open(core.command.command):
 			self._player.getAreaId(),
 			self._args[0]
 		)
+		nbContainers = len(containers)
 
-		if len(containers) == 0:
+		if nbContainers == 0:
 			raise core.command.exception(_('ERROR_OPEN_CONTAINER_NOT_AVAILABLE'))
-		elif len(containers) > 1 and index is None:
+		elif nbContainers > 1 and index is None:
 			raise core.command.exception(_('ERROR_OPEN_MULTIPLE_CONTAINERS_AVAILABLE'))
 
 		items = item.inventory.fromStr(containers[int(index or 0)]['items'])
