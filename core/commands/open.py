@@ -12,8 +12,11 @@ class open(core.command.command):
 		Open an item container in the area where the player is.
 		The result of the command is a list of the items of the container
 		"""
+		index = None
 		if len(self._args) == 0:
 			raise core.command.exception(_('ERROR_OPEN_NO_CONTAINER_PROVIDED'))
+		elif len(self._args) == 2:
+			index = self._args[1]
 
 		containers = item_container.factory.getAllFromIdAreaAndType(
 			self._player.getAreaId(),
@@ -22,10 +25,10 @@ class open(core.command.command):
 
 		if len(containers) == 0:
 			raise core.command.exception(_('ERROR_OPEN_CONTAINER_NOT_AVAILABLE'))
-		elif len(containers) > 1:
+		elif len(containers) > 1 and index is None:
 			raise core.command.exception(_('ERROR_OPEN_MULTIPLE_CONTAINERS_AVAILABLE'))
 
-		items = item.inventory.fromStr(containers[0]['items'])
+		items = item.inventory.fromStr(containers[int(index or 0)]['items'])
 
 		result = {'container_type': self._args[0], 'items': list()}
 		for i in items:
