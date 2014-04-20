@@ -15,14 +15,18 @@ class open(core.command.command):
 		index = None
 		if len(self._args) == 0:
 			raise core.command.exception(_('ERROR_OPEN_NO_CONTAINER_PROVIDED'))
-		elif len(self._args) == 2:
-			index = self._args[1]
 
 		containers = item_container.factory.getAllFromIdAreaAndType(
 			self._player.getAreaId(),
 			self._args[0]
 		)
 		nbContainers = len(containers)
+
+		if len(self._args) == 2:
+			index = int(self._args[1]) -  1
+
+			if index < 0 or index >= nbContainers:
+				raise core.command.exception(_('ERROR_OPEN_INVALID_INDEX'))
 
 		if nbContainers == 0:
 			raise core.command.exception(_('ERROR_OPEN_CONTAINER_NOT_AVAILABLE'))
