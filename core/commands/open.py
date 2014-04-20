@@ -20,7 +20,9 @@ class open(core.command.command):
 			self._args[0]
 		)
 
-		if len(containers) > 1:
+		if len(containers) == 0:
+			raise core.command.exception(_('ERROR_OPEN_CONTAINER_NOT_AVAILABLE'))
+		elif len(containers) > 1:
 			raise core.command.exception(_('ERROR_OPEN_MULTIPLE_CONTAINERS_AVAILABLE'))
 
 		items = item.inventory.fromStr(containers[0]['items'])
