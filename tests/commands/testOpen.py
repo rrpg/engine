@@ -77,6 +77,10 @@ class openTests(tests.common.common):
 		]
 		self.assertTrue(output == '\n'.join(expected))
 
+		self.rpgText.setAction([_('OPEN_COMMAND'), 'chest', 2])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_OPEN_INVALID_INDEX'))
+
 		self.rpgText.setAction([_('OPEN_COMMAND'), 'wardrobe', 1])
 		output = self.rpgText._runAction()
 		expected = [
@@ -101,6 +105,10 @@ class openTests(tests.common.common):
 		self.rpgJSON.setAction([_('OPEN_COMMAND'), 'chest', 1])
 		output = self.rpgJSON._runAction()
 		self.assertTrue(output == {'items': [{'name': 'Heavy breastplate', 'quantity': 4}], 'container_type': 'chest'})
+
+		self.rpgJSON.setAction([_('OPEN_COMMAND'), 'chest', 2])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_OPEN_INVALID_INDEX'), "code": 1}})
 
 		self.rpgJSON.setAction([_('OPEN_COMMAND'), 'wardrobe', 1])
 		output = self.rpgJSON._runAction()
