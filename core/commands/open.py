@@ -33,7 +33,7 @@ class open(core.command.command):
 		elif nbContainers > 1 and index is None:
 			raise core.command.exception(_('ERROR_OPEN_MULTIPLE_CONTAINERS_AVAILABLE'))
 
-		items = item.inventory.fromStr(containers[int(index or 0)]['items'])
+		items = item.inventory.fromStr(containers[index or 0]['items'])
 
 		result = {'container_type': self._args[0], 'items': list()}
 		for i in items:
