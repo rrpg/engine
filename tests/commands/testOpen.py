@@ -65,7 +65,47 @@ class openTests(tests.common.common):
 		self.assertTrue(output == {'items': [{'name': 'Heavy breastplate', 'quantity': 4}], 'container_type': 'chest'})
 
 	def test_container_number_provided_text(self):
-		pass
+		self.rpgText.setAction([_('OPEN_COMMAND'), 'wardrobe', 0])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_OPEN_INVALID_INDEX'))
+
+		self.rpgText.setAction([_('OPEN_COMMAND'), 'chest'])
+		output = self.rpgText._runAction()
+		expected = [
+			_('ITEMS_IN_CONTAINER_%s') % 'chest',
+			'  4 Heavy breastplate'
+		]
+		self.assertTrue(output == '\n'.join(expected))
+
+		self.rpgText.setAction([_('OPEN_COMMAND'), 'wardrobe', 1])
+		output = self.rpgText._runAction()
+		expected = [
+			_('ITEMS_IN_CONTAINER_%s') % 'wardrobe',
+			'  4 Heavy breastplate'
+		]
+		self.assertTrue(output == '\n'.join(expected))
+
+		self.rpgText.setAction([_('OPEN_COMMAND'), 'wardrobe', 2])
+		output = self.rpgText._runAction()
+		expected = [
+			_('ITEMS_IN_CONTAINER_%s') % 'wardrobe',
+			'  4 Mist potion'
+		]
+		self.assertTrue(output == '\n'.join(expected))
 
 	def test_container_number_provided_json(self):
-		pass
+		self.rpgJSON.setAction([_('OPEN_COMMAND'), 'wardrobe', 0])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_OPEN_INVALID_INDEX'), "code": 1}})
+
+		self.rpgJSON.setAction([_('OPEN_COMMAND'), 'chest'])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {'items': [{'name': 'Heavy breastplate', 'quantity': 4}], 'container_type': 'chest'})
+
+		self.rpgJSON.setAction([_('OPEN_COMMAND'), 'wardrobe', 1])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {'items': [{'name': 'Heavy breastplate', 'quantity': 4}], 'container_type': 'wardrobe'})
+
+		self.rpgJSON.setAction([_('OPEN_COMMAND'), 'wardrobe', 2])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {'items': [{'name': 'Mist potion', 'quantity': 4}], 'container_type': 'wardrobe'})
