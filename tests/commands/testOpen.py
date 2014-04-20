@@ -41,10 +41,14 @@ class openTests(tests.common.common):
 		self.assertTrue(output == {"error": {"message": _('ERROR_UNKNOWN_ITEM_CONTAINER_TYPE_LABEL'), "code": 1}})
 
 	def test_multiple_container_of_given_type_text(self):
-		pass
+		self.rpgText.setAction([_('OPEN_COMMAND'), 'wardrobe'])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_OPEN_MULTIPLE_CONTAINERS_AVAILABLE'))
 
 	def test_multiple_container_of_given_type_json(self):
-		pass
+		self.rpgJSON.setAction([_('OPEN_COMMAND'), 'wardrobe'])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_OPEN_MULTIPLE_CONTAINERS_AVAILABLE'), "code": 1}})
 
 	def test_single_container_of_given_type_text(self):
 		self.rpgText.setAction([_('OPEN_COMMAND'), 'chest'])
