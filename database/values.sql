@@ -17,6 +17,7 @@ INSERT INTO area (id_region, id_area_type, container, x, y, directions, items)
 	VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'land'), 'world', 0, 1, 1, '{"1": {"quantity": 6}}');
 
 INSERT INTO item_container_type (label) VALUES ('chest');
+INSERT INTO item_container_type (label) VALUES ('box');
 INSERT INTO item_container (id_item_container_type, id_area, items) VALUES (1, 2, '{"1": {"quantity": 4}}');
 
 INSERT INTO settings (key, value) VALUES ('START_CELL_ID', 1);
