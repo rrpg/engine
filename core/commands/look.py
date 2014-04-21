@@ -57,11 +57,12 @@ class look(core.command.command):
 				'quantity': items[i]['quantity']
 			})
 
-		result['item_containers'] = [
-			[k, c['type_label']]
-			for k, c in
-				enumerate(item_container.factory.getAllFromIdArea(areaId))
-		]
+		result['item_containers'] = dict()
+		for c in item_container.factory.getAllFromIdArea(areaId):
+			try:
+				result['item_containers'][c['type_label']] = result['item_containers'][c['type_label']] + 1
+			except KeyError:
+				result['item_containers'][c['type_label']] = 1
 
 		return result
 
@@ -96,6 +97,7 @@ class look(core.command.command):
 			output.append('')
 			output.append(_('AVAILABLE_ITEMS_CONTAINERS'))
 			for c in data['item_containers']:
-				output.append('    ' + c[1] + ' #' + str(c[0]))
+				for nb in range(data['item_containers'][c]):
+					output.append('    ' + c + ' #' + str(nb))
 
 		return '\n'.join(output)
