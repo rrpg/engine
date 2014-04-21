@@ -98,6 +98,6 @@ class look(core.command.command):
 			output.append(_('AVAILABLE_ITEMS_CONTAINERS'))
 			for c in data['item_containers']:
 				for nb in range(data['item_containers'][c]):
-					output.append('    ' + c + ' #' + str(nb))
+					output.append('    ' + c + ' #' + str(nb + 1))
 
 		return '\n'.join(output)
