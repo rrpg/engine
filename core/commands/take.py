@@ -7,18 +7,46 @@ from core.localisation import _
 
 class take(core.command.command):
 	def run(self):
-		if len(self._args) == 0:
-			raise core.command.exception(_('ERROR_TAKE_NO_ITEM_GIVEN'))
+		nbArgs = len(self._args)
 
-		if len(self._args) == 1:
-			quantity = 1
+		quantity = 1
+		container = None
+		containerIndex = 1
+		#@TODO To refactor
+		if nbArgs == 0:
+			raise core.command.exception(_('ERROR_TAKE_NO_ITEM_GIVEN'))
+		elif nbArgs == 1:
 			name = self._args[0]
-		else:
+		elif nbArgs == 2:
+			try:
+				quantity = int(self._args[0])
+				name = self._args[1]
+			except ValueError:
+				name = self._args[0]
+				container = self._args[1]
+		elif nbArgs == 3:
+			try:
+				quantity = int(self._args[0])
+				name = self._args[1]
+				container = self._args[2]
+			except ValueError:
+				name = self._args[0]
+				container = self._args[1]
+				try:
+					containerIndex = int(self._args[2])
+				except ValueError:
+					raise core.command.exception(_('ERROR_TAKE_INVALID_CONTAINER_INDEX'))
+		elif nbArgs == 4:
 			try:
 				quantity = int(self._args[0])
 			except ValueError:
 				raise core.command.exception(_('ERROR_TAKE_INVALID_QUANTITY'))
 			name = self._args[1]
+			container = self._args[2]
+			try:
+				containerIndex = int(self._args[3])
+			except ValueError:
+				raise core.command.exception(_('ERROR_TAKE_INVALID_CONTAINER_INDEX'))
 
 		#~ Item the player want to take
 		i = item.model.loadBy({'name': name}, ['id_item'])
