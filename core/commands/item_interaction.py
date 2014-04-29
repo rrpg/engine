@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-
-from models import item, area
 import core.command
-from core.localisation import _
 
 
 class item_interaction(core.command.command):
