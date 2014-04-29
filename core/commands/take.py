@@ -16,12 +16,11 @@ class take(item_interaction.item_interaction):
 			elif e.code is item_interaction.exception.CODE_INVALID_QUANTITY:
 				raise core.command.exception(_('ERROR_TAKE_INVALID_QUANTITY'))
 
-		#~ Item the player want to take
+		# Item the player want to take
 		i = item.model.loadBy({'name': name}, ['id_item'])
 
 		if len(i) == 0:
 			raise item.exception(_('ERROR_TAKE_UNKNOWN_ITEM'))
-
 		i = str(i[0]['id_item'])
 
 		if containerType is None:
