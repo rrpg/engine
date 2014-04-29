@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from models import item, area
+from core.commands import item_interaction
 import core.command
 from core.localisation import _
 
-class drop(core.command.command):
+class drop(item_interaction.item_interaction):
 	def run(self):
 		"""
 		c.run()
@@ -12,20 +13,13 @@ class drop(core.command.command):
 		Drop an item being in the inventory. The item will be let on the floor
 		of the player's current area.
 		"""
-		# Check an item to drop is provided
-		if len(self._args) == 0:
-			raise core.command.exception(_('ERROR_DROP_NO_ITEM_GIVEN'))
-
-		# check if a quantity is provided
-		if len(self._args) == 1:
-			quantity = 1
-			name = self._args[0]
-		else:
-			try:
-				quantity = int(self._args[0])
-			except ValueError:
+		try:
+			(quantity, name, container, containerIndex) = self._getArgs()
+		except item_interaction.exception as e:
+			if e.code is item_interaction.exception.CODE_NO_ITEM_GIVEN:
+				raise core.command.exception(_('ERROR_DROP_NO_ITEM_GIVEN'))
+			elif e.code is item_interaction.exception.CODE_INVALID_QUANTITY:
 				raise core.command.exception(_('ERROR_DROP_INVALID_QUANTITY'))
-			name = self._args[1]
 
 		# Item the player want to drop
 		i = item.model.loadBy({'name': name}, ['id_item'])
