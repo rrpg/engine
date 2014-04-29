@@ -30,12 +30,19 @@ class item_interaction(core.command.command):
 		while len(self._args) > 0:
 			args[argsNames.pop()] = self._args.pop()
 
+		try:
+			if args['containerId'] is not None:
+				args['containerId'] = int(args['containerId'])
+		except ValueError:
+			raise exception(code=exception.CODE_INVALID_CONTAINER_INDEX)
+
 		return (quantity, args['name'], args['container'], args['containerId'])
 
 
 class exception(core.exception.exception):
 	CODE_NO_ITEM_GIVEN = 1
 	CODE_INVALID_QUANTITY = 2
+	CODE_INVALID_CONTAINER_INDEX = 3
 
 	def getCodes(self):
 		return (self.CODE_NO_ITEM_GIVEN, self.CODE_INVALID_QUANTITY)
