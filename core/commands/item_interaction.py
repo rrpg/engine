@@ -13,7 +13,7 @@ class item_interaction(core.command.command):
 		container = None
 		containerIndex = 1
 		argsNames = ['containerId', 'container', 'name']
-		args = {'name': '', 'container': None, 'containerId': 1}
+		args = {'name': '', 'container': None, 'containerId': None}
 
 		if nbArgs == 0:
 			raise exception(code=exception.CODE_NO_ITEM_GIVEN)
