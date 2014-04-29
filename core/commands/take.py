@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from models import item, area
+from models import item_container, item, area
 from core.commands import item_interaction
 import core.command
 from core.localisation import _
@@ -9,7 +9,7 @@ from core.localisation import _
 class take(item_interaction.item_interaction):
 	def run(self):
 		try:
-			(quantity, name, container, containerIndex) = self._getArgs()
+			(quantity, name, containerType, containerIndex) = self._getArgs()
 		except item_interaction.exception as e:
 			if e.code is item_interaction.exception.CODE_NO_ITEM_GIVEN:
 				raise core.command.exception(_('ERROR_TAKE_NO_ITEM_GIVEN'))
@@ -23,8 +23,18 @@ class take(item_interaction.item_interaction):
 			raise item.exception(_('ERROR_TAKE_UNKNOWN_ITEM'))
 
 		i = str(i[0]['id_item'])
-		#~ Available items in the area
-		items = area.area.getItems(self._player.getAreaId())
+
+		if containerType is None:
+			# Available items in the area
+			items = area.area.getItems(self._player.getAreaId())
+		else:
+			# Item to be taken in a container
+			container = item_container.factory.getFromIdAreaTypeAndIndex(
+				self._player.getAreaId(),
+				containerType,
+				containerIndex
+			)
+			items = item.inventory.fromStr(container['items'])
 
 		if i not in items.keys():
 			raise item.exception(_('ERROR_TAKE_ITEM_NOT_AVAILABLE'))
