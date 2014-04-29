@@ -16,24 +16,16 @@ class open(core.command.command):
 		if len(self._args) == 0:
 			raise core.command.exception(_('ERROR_OPEN_NO_CONTAINER_PROVIDED'))
 
-		containers = item_container.factory.getAllFromIdAreaAndType(
-			self._player.getAreaId(),
-			self._args[0]
-		)
-		nbContainers = len(containers)
-
+		index = None
 		if len(self._args) == 2:
-			index = int(self._args[1]) -  1
+			index = self._args[1]
+		container = item_container.factory.getFromIdAreaTypeAndIndex(
+			self._player.getAreaId(),
+			self._args[0],
+			index
+		)
 
-			if index < 0 or index >= nbContainers:
-				raise core.command.exception(_('ERROR_OPEN_INVALID_INDEX'))
-
-		if nbContainers == 0:
-			raise core.command.exception(_('ERROR_OPEN_CONTAINER_NOT_AVAILABLE'))
-		elif nbContainers > 1 and index is None:
-			raise core.command.exception(_('ERROR_OPEN_MULTIPLE_CONTAINERS_AVAILABLE'))
-
-		items = item.inventory.fromStr(containers[index or 0]['items'])
+		items = item.inventory.fromStr(container['items'])
 
 		result = {'container_type': self._args[0], 'items': list()}
 		for i in items:
