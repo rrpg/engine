@@ -43,7 +43,11 @@ class take(item_interaction.item_interaction):
 
 		i = [int(i)] * quantity
 		self._player.addItemsToInventory(i)
-		area.area.removeItems(self._player.getAreaId(), i)
+
+		if containerType is None:
+			area.area.removeItems(self._player.getAreaId(), i)
+		else:
+			item_container.container.removeItems(container, i)
 
 		return {'quantity': quantity, 'name': name}
 

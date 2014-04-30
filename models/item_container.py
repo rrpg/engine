@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from models.Model import Model
+from models import item
 from core.localisation import _
 import core.exception
+import json
 
 class container:
 	"""
@@ -54,6 +56,24 @@ class container:
 
 		return containers[index or 0]
 
+	@staticmethod
+	def removeItems(container, items):
+		"""
+		item_container.container.removeItems(container, items)
+
+		Method to remove some items from a container.
+		Items not in the container will be ignored.
+
+		@param container container the items must be removed from.
+		@param items list of items to remove
+		"""
+		container['items'] = item.inventory.removeItems(
+			item.inventory.fromStr(container['items']),
+			items
+		)
+		model.saveAvailableItems(container)
+
+
 class model(Model):
 	"""
 	Class to interact with the values in the database.
@@ -85,6 +105,12 @@ class model(Model):
 
 		return {t['id_item_container_type']: t['label'] for t in Model.fetchAllRows(query)}
 
+	@staticmethod
+	def saveAvailableItems(container):
+		model.update(
+			{'items': json.dumps(container['items'])},
+			('id_item_container = ?', [container['id_item_container']])
+		)
 
 
 class exception(core.exception.exception):
