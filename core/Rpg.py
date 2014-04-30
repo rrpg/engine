@@ -148,7 +148,7 @@ class Rpg:
 
 				if result == command_factory.quit:
 					break
-				else:
+				elif c != "":
 					if self._renderMode == RENDER_JSON:
 						result = json.dumps(result, ensure_ascii=False)
 					print(result)
