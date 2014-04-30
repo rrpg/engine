@@ -58,7 +58,7 @@ class look(core.command.command):
 			})
 
 		result['item_containers'] = dict()
-		for c in item_container.factory.getAllFromIdArea(areaId):
+		for c in item_container.container.getAllFromIdArea(areaId):
 			try:
 				result['item_containers'][c['type_label']] = result['item_containers'][c['type_label']] + 1
 			except KeyError:

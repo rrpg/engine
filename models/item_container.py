@@ -4,7 +4,7 @@ from models.Model import Model
 from core.localisation import _
 import core.exception
 
-class factory:
+class container:
 	"""
 	Class to interact with the item containers, such as chests.
 	"""
@@ -38,7 +38,7 @@ class factory:
 
 	@staticmethod
 	def getFromIdAreaTypeAndIndex(idArea, containerType, index):
-		containers = factory.getAllFromIdAreaAndType(idArea, containerType)
+		containers = container.getAllFromIdAreaAndType(idArea, containerType)
 		nbContainers = len(containers)
 
 		if index is not None:

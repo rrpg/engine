@@ -28,7 +28,7 @@ class take(item_interaction.item_interaction):
 			items = area.area.getItems(self._player.getAreaId())
 		else:
 			# Item to be taken in a container
-			container = item_container.factory.getFromIdAreaTypeAndIndex(
+			container = item_container.container.getFromIdAreaTypeAndIndex(
 				self._player.getAreaId(),
 				containerType,
 				containerIndex

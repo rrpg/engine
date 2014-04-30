@@ -19,7 +19,7 @@ class open(core.command.command):
 		index = None
 		if len(self._args) == 2:
 			index = self._args[1]
-		container = item_container.factory.getFromIdAreaTypeAndIndex(
+		container = item_container.container.getFromIdAreaTypeAndIndex(
 			self._player.getAreaId(),
 			self._args[0],
 			index
