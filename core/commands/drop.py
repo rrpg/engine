@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from models import item, area
+from models import item_container, item, area
 from core.commands import item_interaction
 import core.command
 from core.localisation import _
@@ -14,12 +14,20 @@ class drop(item_interaction.item_interaction):
 		of the player's current area.
 		"""
 		try:
-			(quantity, name, container, containerIndex) = self._getArgs()
+			(quantity, name, containerType, containerIndex) = self._getArgs()
 		except item_interaction.exception as e:
 			if e.code is item_interaction.exception.CODE_NO_ITEM_GIVEN:
 				raise core.command.exception(_('ERROR_DROP_NO_ITEM_GIVEN'))
 			elif e.code is item_interaction.exception.CODE_INVALID_QUANTITY:
 				raise core.command.exception(_('ERROR_DROP_INVALID_QUANTITY'))
+
+		if containerType is not None:
+			# Item to be taken in a container
+			container = item_container.container.getFromIdAreaTypeAndIndex(
+				self._player.getAreaId(),
+				containerType,
+				containerIndex
+			)
 
 		# Item the player want to drop
 		i = item.model.loadBy({'name': name}, ['id_item'])
@@ -36,7 +44,12 @@ class drop(item_interaction.item_interaction):
 
 		# Drop it
 		self._player.removeItemsFromInventory(i)
-		area.area.addItems(self._player.getAreaId(), i)
+
+		if containerType is None:
+			area.area.addItems(self._player.getAreaId(), i)
+		else:
+			item_container.container.addItems(container, i)
+
 
 		return {'quantity': quantity, 'name': name}
 

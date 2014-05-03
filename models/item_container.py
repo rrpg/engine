@@ -57,6 +57,22 @@ class container:
 		return containers[index or 0]
 
 	@staticmethod
+	def addItems(container, items):
+		"""
+		item_container.container.addItems(container, items)
+
+		Method to add some items in a container.
+
+		@param container container where the items must be added.
+		@param items list of items to add
+		"""
+		container['items'] = item.inventory.addItems(
+			item.inventory.fromStr(container['items']),
+			items
+		)
+		model.saveAvailableItems(container)
+
+	@staticmethod
 	def removeItems(container, items):
 		"""
 		item_container.container.removeItems(container, items)
