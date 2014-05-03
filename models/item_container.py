@@ -47,12 +47,12 @@ class container:
 			index = int(index) - 1
 
 			if index < 0 or index >= nbContainers:
-				raise core.command.exception(_('ERROR_OPEN_INVALID_INDEX'))
+				raise core.command.exception(_('ERROR_INVALID_ITEM_CONTAINER_INDEX'))
 
 		if nbContainers == 0:
-			raise core.command.exception(_('ERROR_OPEN_CONTAINER_NOT_AVAILABLE'))
+			raise core.command.exception(_('ERROR_CONTAINER_NOT_AVAILABLE'))
 		elif nbContainers > 1 and index is None:
-			raise core.command.exception(_('ERROR_OPEN_MULTIPLE_CONTAINERS_AVAILABLE'))
+			raise core.command.exception(_('ERROR_MULTIPLE_CONTAINERS_AVAILABLE'))
 
 		return containers[index or 0]
 

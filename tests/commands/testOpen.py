@@ -23,12 +23,12 @@ class openTests(tests.common.common):
 	def test_container_not_found_here_text(self):
 		self.rpgText.setAction([_('OPEN_COMMAND'), 'box'])
 		output = self.rpgText._runAction()
-		self.assertTrue(output == _('ERROR_OPEN_CONTAINER_NOT_AVAILABLE'))
+		self.assertTrue(output == _('ERROR_CONTAINER_NOT_AVAILABLE'))
 
 	def test_container_not_found_here_json(self):
 		self.rpgJSON.setAction([_('OPEN_COMMAND'), 'box'])
 		output = self.rpgJSON._runAction()
-		self.assertTrue(output == {"error": {"message": _('ERROR_OPEN_CONTAINER_NOT_AVAILABLE'), "code": 1}})
+		self.assertTrue(output == {"error": {"message": _('ERROR_CONTAINER_NOT_AVAILABLE'), "code": 1}})
 
 	def test_unknown_container_type_text(self):
 		self.rpgText.setAction([_('OPEN_COMMAND'), 'some-container'])
@@ -43,12 +43,12 @@ class openTests(tests.common.common):
 	def test_multiple_container_of_given_type_text(self):
 		self.rpgText.setAction([_('OPEN_COMMAND'), 'wardrobe'])
 		output = self.rpgText._runAction()
-		self.assertTrue(output == _('ERROR_OPEN_MULTIPLE_CONTAINERS_AVAILABLE'))
+		self.assertTrue(output == _('ERROR_MULTIPLE_CONTAINERS_AVAILABLE'))
 
 	def test_multiple_container_of_given_type_json(self):
 		self.rpgJSON.setAction([_('OPEN_COMMAND'), 'wardrobe'])
 		output = self.rpgJSON._runAction()
-		self.assertTrue(output == {"error": {"message": _('ERROR_OPEN_MULTIPLE_CONTAINERS_AVAILABLE'), "code": 1}})
+		self.assertTrue(output == {"error": {"message": _('ERROR_MULTIPLE_CONTAINERS_AVAILABLE'), "code": 1}})
 
 	def test_single_container_of_given_type_text(self):
 		self.rpgText.setAction([_('OPEN_COMMAND'), 'chest'])
