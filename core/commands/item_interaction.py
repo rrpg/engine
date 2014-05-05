@@ -33,6 +33,9 @@ class item_interaction(core.command.command):
 		except ValueError:
 			raise exception(code=exception.CODE_INVALID_CONTAINER_INDEX)
 
+		if args['name'] == '':
+			raise exception(code=exception.CODE_NO_ITEM_GIVEN)
+
 		return (quantity, args['name'], args['container'], args['containerId'])
 
 
