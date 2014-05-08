@@ -21,7 +21,7 @@ class item_interaction(core.command.command):
 		except ValueError:
 			# 4 arguments have been provided, but the quantity is invalid
 			if nbArgs == 4:
-				raise exception(code=exception.CODE_INVALID_QUANTITY)
+				raise exception(code=exception.CODE_INVALID_FORMAT_QUANTITY)
 			quantity = 1
 
 		while len(self._args) > 0:
@@ -35,6 +35,8 @@ class item_interaction(core.command.command):
 
 		if args['name'] == '':
 			raise exception(code=exception.CODE_NO_ITEM_GIVEN)
+		if quantity < 0:
+			raise exception(code=exception.CODE_INVALID_QUANTITY)
 
 		return (quantity, args['name'], args['container'], args['containerId'])
 
@@ -42,7 +44,13 @@ class item_interaction(core.command.command):
 class exception(core.exception.exception):
 	CODE_NO_ITEM_GIVEN = 1
 	CODE_INVALID_QUANTITY = 2
-	CODE_INVALID_CONTAINER_INDEX = 3
+	CODE_INVALID_FORMAT_QUANTITY = 3
+	CODE_INVALID_CONTAINER_INDEX = 4
 
 	def getCodes(self):
-		return (self.CODE_NO_ITEM_GIVEN, self.CODE_INVALID_QUANTITY)
+		return (
+			self.CODE_NO_ITEM_GIVEN,
+			self.CODE_INVALID_QUANTITY,
+			self.CODE_INVALID_FORMAT_QUANTITY,
+			self.CODE_INVALID_CONTAINER_INDEX
+		)

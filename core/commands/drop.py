@@ -20,6 +20,10 @@ class drop(item_interaction.item_interaction):
 				raise core.command.exception(_('ERROR_DROP_NO_ITEM_GIVEN'))
 			elif e.code is item_interaction.exception.CODE_INVALID_QUANTITY:
 				raise core.command.exception(_('ERROR_DROP_INVALID_QUANTITY'))
+			elif e.code is item_interaction.exception.CODE_INVALID_FORMAT_QUANTITY:
+				raise core.command.exception(_('ERROR_DROP_INVALID_FORMAT_QUANTITY'))
+			elif e.code is item_interaction.exception.CODE_INVALID_CONTAINER_INDEX:
+				raise core.command.exception(_('ERROR_DROP_INVALID_CONTAINER_INDEX'))
 
 		if containerType is not None:
 			# Item to be taken in a container

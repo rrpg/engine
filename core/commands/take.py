@@ -15,6 +15,10 @@ class take(item_interaction.item_interaction):
 				raise core.command.exception(_('ERROR_TAKE_NO_ITEM_GIVEN'))
 			elif e.code is item_interaction.exception.CODE_INVALID_QUANTITY:
 				raise core.command.exception(_('ERROR_TAKE_INVALID_QUANTITY'))
+			elif e.code is item_interaction.exception.CODE_INVALID_FORMAT_QUANTITY:
+				raise core.command.exception(_('ERROR_TAKE_INVALID_FORMAT_QUANTITY'))
+			elif e.code is item_interaction.exception.CODE_INVALID_CONTAINER_INDEX:
+				raise core.command.exception(_('ERROR_TAKE_INVALID_CONTAINER_INDEX'))
 
 		# Item the player want to take
 		i = item.model.loadBy({'name': name}, ['id_item'])
