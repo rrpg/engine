@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-03 08:17+0100\n"
+"POT-Creation-Date: 2014-05-08 16:06+0100\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -54,13 +54,13 @@ msgid "COMMAND_PROMPT"
 msgstr "Command: "
 
 #: core/command_factory.py:39 core/commands/help.py:38
-#: tests/commands/testHelp.py:26 tests/commands/testHelp.py:61
+#: tests/commands/testHelp.py:26 tests/commands/testHelp.py:75
 #: tests/commands/testLook.py:15 tests/commands/testLook.py:39
 msgid "LOOK_COMMAND"
 msgstr "look"
 
 #: core/command_factory.py:40 core/commands/help.py:22
-#: tests/commands/testHelp.py:18 tests/commands/testHelp.py:45
+#: tests/commands/testHelp.py:18 tests/commands/testHelp.py:59
 #: tests/commands/testTalk.py:14 tests/commands/testTalk.py:19
 #: tests/commands/testTalk.py:24 tests/commands/testTalk.py:29
 #: tests/commands/testTalk.py:34 tests/commands/testTalk.py:39
@@ -70,7 +70,7 @@ msgid "TALK_COMMAND"
 msgstr "talk"
 
 #: core/command_factory.py:41 core/commands/help.py:26
-#: tests/commands/testHelp.py:20 tests/commands/testHelp.py:49
+#: tests/commands/testHelp.py:20 tests/commands/testHelp.py:63
 #: tests/commands/testMove.py:14 tests/commands/testMove.py:19
 #: tests/commands/testMove.py:24 tests/commands/testMove.py:29
 #: tests/commands/testMove.py:34 tests/commands/testMove.py:39
@@ -86,7 +86,7 @@ msgstr "move"
 #: tests/commands/testEnter.py:51 tests/commands/testEnter.py:53
 #: tests/commands/testEnter.py:58 tests/commands/testEnter.py:63
 #: tests/commands/testExit.py:53 tests/commands/testExit.py:60
-#: tests/commands/testHelp.py:22 tests/commands/testHelp.py:53
+#: tests/commands/testHelp.py:22 tests/commands/testHelp.py:67
 msgid "ENTER_COMMAND"
 msgstr "enter"
 
@@ -96,77 +96,112 @@ msgstr "enter"
 #: tests/commands/testExit.py:33 tests/commands/testExit.py:38
 #: tests/commands/testExit.py:43 tests/commands/testExit.py:48
 #: tests/commands/testExit.py:55 tests/commands/testExit.py:62
-#: tests/commands/testHelp.py:24 tests/commands/testHelp.py:57
+#: tests/commands/testHelp.py:24 tests/commands/testHelp.py:71
 msgid "EXIT_COMMAND"
 msgstr "exit"
 
-#: core/command_factory.py:44 core/commands/help.py:46
-#: tests/commands/testDrop.py:54 tests/commands/testDrop.py:62
-#: tests/commands/testDrop.py:69 tests/commands/testDrop.py:77
-#: tests/commands/testDrop.py:84 tests/commands/testDrop.py:92
-#: tests/commands/testHelp.py:30 tests/commands/testHelp.py:69
+#: core/command_factory.py:44 core/commands/help.py:51
+#: tests/commands/testDrop.py:35 tests/commands/testDrop.py:42
+#: tests/commands/testDrop.py:91 tests/commands/testDrop.py:98
+#: tests/commands/testDrop.py:105 tests/commands/testDrop.py:112
+#: tests/commands/testDrop.py:120 tests/commands/testDrop.py:127
+#: tests/commands/testDrop.py:134 tests/commands/testDrop.py:141
+#: tests/commands/testDrop.py:148 tests/commands/testDrop.py:158
+#: tests/commands/testDrop.py:169 tests/commands/testDrop.py:176
+#: tests/commands/testDrop.py:183 tests/commands/testDrop.py:190
+#: tests/commands/testDrop.py:197 tests/commands/testDrop.py:204
+#: tests/commands/testDrop.py:211 tests/commands/testDrop.py:218
+#: tests/commands/testDrop.py:225 tests/commands/testDrop.py:232
+#: tests/commands/testDrop.py:239 tests/commands/testDrop.py:246
+#: tests/commands/testHelp.py:33 tests/commands/testHelp.py:87
 #: tests/commands/testInventory.py:24 tests/commands/testInventory.py:32
-#: tests/commands/testTake.py:14 tests/commands/testTake.py:19
-#: tests/commands/testTake.py:24 tests/commands/testTake.py:29
-#: tests/commands/testTake.py:34 tests/commands/testTake.py:39
-#: tests/commands/testTake.py:44 tests/commands/testTake.py:49
-#: tests/commands/testTake.py:54 tests/commands/testTake.py:59
-#: tests/commands/testTake.py:64 tests/commands/testTake.py:69
-#: tests/commands/testTake.py:74 tests/commands/testTake.py:79
+#: tests/commands/testTake.py:15 tests/commands/testTake.py:20
+#: tests/commands/testTake.py:25 tests/commands/testTake.py:30
+#: tests/commands/testTake.py:35 tests/commands/testTake.py:40
+#: tests/commands/testTake.py:46 tests/commands/testTake.py:51
+#: tests/commands/testTake.py:56 tests/commands/testTake.py:61
+#: tests/commands/testTake.py:66 tests/commands/testTake.py:71
+#: tests/commands/testTake.py:76 tests/commands/testTake.py:81
+#: tests/commands/testTake.py:87 tests/commands/testTake.py:92
+#: tests/commands/testTake.py:97 tests/commands/testTake.py:102
+#: tests/commands/testTake.py:108 tests/commands/testTake.py:113
+#: tests/commands/testTake.py:118 tests/commands/testTake.py:123
+#: tests/commands/testTake.py:128 tests/commands/testTake.py:131
+#: tests/commands/testTake.py:136 tests/commands/testTake.py:138
+#: tests/commands/testTake.py:141 tests/commands/testTake.py:147
+#: tests/commands/testTake.py:152 tests/commands/testTake.py:157
+#: tests/commands/testTake.py:162 tests/commands/testTake.py:167
+#: tests/commands/testTake.py:172 tests/commands/testTake.py:177
+#: tests/commands/testTake.py:182 tests/commands/testTake.py:187
+#: tests/commands/testTake.py:192 tests/commands/testTake.py:197
+#: tests/commands/testTake.py:202
 msgid "TAKE_COMMAND"
 msgstr "take"
 
-#: core/command_factory.py:45 core/commands/help.py:50
-#: tests/commands/testDrop.py:14 tests/commands/testDrop.py:19
-#: tests/commands/testDrop.py:24 tests/commands/testDrop.py:29
-#: tests/commands/testDrop.py:34 tests/commands/testDrop.py:39
-#: tests/commands/testDrop.py:44 tests/commands/testDrop.py:49
-#: tests/commands/testDrop.py:56 tests/commands/testDrop.py:64
-#: tests/commands/testDrop.py:71 tests/commands/testDrop.py:79
-#: tests/commands/testDrop.py:86 tests/commands/testDrop.py:94
-#: tests/commands/testHelp.py:32 tests/commands/testHelp.py:73
+#: core/command_factory.py:45 core/commands/help.py:61
+#: tests/commands/testDrop.py:15 tests/commands/testDrop.py:20
+#: tests/commands/testDrop.py:25 tests/commands/testDrop.py:30
+#: tests/commands/testDrop.py:37 tests/commands/testDrop.py:44
+#: tests/commands/testDrop.py:50 tests/commands/testDrop.py:55
+#: tests/commands/testDrop.py:60 tests/commands/testDrop.py:65
+#: tests/commands/testDrop.py:70 tests/commands/testDrop.py:75
+#: tests/commands/testDrop.py:80 tests/commands/testDrop.py:85
+#: tests/commands/testDrop.py:93 tests/commands/testDrop.py:100
+#: tests/commands/testDrop.py:107 tests/commands/testDrop.py:114
+#: tests/commands/testDrop.py:122 tests/commands/testDrop.py:129
+#: tests/commands/testDrop.py:136 tests/commands/testDrop.py:143
+#: tests/commands/testDrop.py:150 tests/commands/testDrop.py:153
+#: tests/commands/testDrop.py:160 tests/commands/testDrop.py:163
+#: tests/commands/testDrop.py:171 tests/commands/testDrop.py:178
+#: tests/commands/testDrop.py:185 tests/commands/testDrop.py:192
+#: tests/commands/testDrop.py:199 tests/commands/testDrop.py:206
+#: tests/commands/testDrop.py:213 tests/commands/testDrop.py:220
+#: tests/commands/testDrop.py:227 tests/commands/testDrop.py:234
+#: tests/commands/testDrop.py:241 tests/commands/testDrop.py:248
+#: tests/commands/testHelp.py:41 tests/commands/testHelp.py:91
 msgid "DROP_COMMAND"
 msgstr "drop"
 
 #: core/command_factory.py:46 core/commands/help.py:42
-#: tests/commands/testHelp.py:28 tests/commands/testHelp.py:65
+#: tests/commands/testHelp.py:28 tests/commands/testHelp.py:79
 #: tests/commands/testInventory.py:14 tests/commands/testInventory.py:19
 #: tests/commands/testInventory.py:26 tests/commands/testInventory.py:34
 msgid "INVENTORY_COMMAND"
 msgstr "inventory"
 
 #: core/command_factory.py:47 core/commands/help.py:42
-#: tests/commands/testHelp.py:28 tests/commands/testHelp.py:65
+#: tests/commands/testHelp.py:28 tests/commands/testHelp.py:79
 msgid "INVENTORY_SHORT_COMMAND"
 msgstr "inv"
 
-#: core/command_factory.py:48 core/commands/help.py:54
-#: tests/commands/testHelp.py:15 tests/commands/testHelp.py:34
-#: tests/commands/testHelp.py:41 tests/commands/testHelp.py:77
+#: core/command_factory.py:48 core/commands/help.py:70
+#: tests/commands/testHelp.py:15 tests/commands/testHelp.py:48
+#: tests/commands/testHelp.py:55 tests/commands/testHelp.py:95
 msgid "HELP_COMMAND"
 msgstr "help"
 
-#: core/command_factory.py:49 tests/commands/testOpen.py:14
-#: tests/commands/testOpen.py:19 tests/commands/testOpen.py:24
-#: tests/commands/testOpen.py:29 tests/commands/testOpen.py:34
-#: tests/commands/testOpen.py:39 tests/commands/testOpen.py:44
-#: tests/commands/testOpen.py:49 tests/commands/testOpen.py:54
-#: tests/commands/testOpen.py:63 tests/commands/testOpen.py:68
-#: tests/commands/testOpen.py:72 tests/commands/testOpen.py:80
-#: tests/commands/testOpen.py:84 tests/commands/testOpen.py:92
-#: tests/commands/testOpen.py:101 tests/commands/testOpen.py:105
-#: tests/commands/testOpen.py:109 tests/commands/testOpen.py:113
-#: tests/commands/testOpen.py:117
+#: core/command_factory.py:49 core/commands/help.py:46
+#: tests/commands/testHelp.py:30 tests/commands/testHelp.py:83
+#: tests/commands/testOpen.py:14 tests/commands/testOpen.py:19
+#: tests/commands/testOpen.py:24 tests/commands/testOpen.py:29
+#: tests/commands/testOpen.py:34 tests/commands/testOpen.py:39
+#: tests/commands/testOpen.py:44 tests/commands/testOpen.py:49
+#: tests/commands/testOpen.py:54 tests/commands/testOpen.py:63
+#: tests/commands/testOpen.py:68 tests/commands/testOpen.py:72
+#: tests/commands/testOpen.py:80 tests/commands/testOpen.py:84
+#: tests/commands/testOpen.py:92 tests/commands/testOpen.py:101
+#: tests/commands/testOpen.py:105 tests/commands/testOpen.py:109
+#: tests/commands/testOpen.py:113 tests/commands/testOpen.py:117
 msgid "OPEN_COMMAND"
 msgstr "open"
 
-#: core/command_factory.py:75 core/commands/help.py:58
-#: tests/commands/testHelp.py:36 tests/commands/testHelp.py:81
+#: core/command_factory.py:75 core/commands/help.py:74
+#: tests/commands/testHelp.py:50 tests/commands/testHelp.py:99
 msgid "QUIT_COMMAND"
 msgstr "quit"
 
-#: core/command_factory.py:75 core/commands/help.py:58
-#: tests/commands/testHelp.py:36 tests/commands/testHelp.py:81
+#: core/command_factory.py:75 core/commands/help.py:74
+#: tests/commands/testHelp.py:50 tests/commands/testHelp.py:99
 msgid "QUIT_SHORT_COMMAND"
 msgstr "q"
 
@@ -222,34 +257,47 @@ msgstr "Species: "
 msgid "PLAYER_CREATION_CONFIRMATION"
 msgstr "Player created"
 
-#: core/commands/drop.py:20 tests/commands/testDrop.py:16
-#: tests/commands/testDrop.py:21
+#: core/commands/drop.py:20 tests/commands/testDrop.py:52
+#: tests/commands/testDrop.py:57 tests/commands/testDrop.py:62
+#: tests/commands/testDrop.py:67
 msgid "ERROR_DROP_NO_ITEM_GIVEN"
 msgstr "What shall I drop?"
 
-#: core/commands/drop.py:22 tests/commands/testDrop.py:46
-#: tests/commands/testDrop.py:51
-msgid "ERROR_DROP_INVALID_QUANTITY"
-msgstr "Invalid quantity"
+#: core/commands/drop.py:22 tests/commands/testDrop.py:27
+#: tests/commands/testDrop.py:32
+msgid "ERROR_DROP_TOO_LOW_QUANTITY"
+msgstr "You must drop at least one item."
 
-#: core/commands/drop.py:36 tests/commands/testDrop.py:26
-#: tests/commands/testDrop.py:31
+#: core/commands/drop.py:24 tests/commands/testDrop.py:17
+#: tests/commands/testDrop.py:22
+msgid "ERROR_DROP_INVALID_FORMAT_QUANTITY"
+msgstr "The quantity of items to drop must be a natural number."
+
+#: core/commands/drop.py:26 tests/commands/testDrop.py:138
+#: tests/commands/testDrop.py:145
+msgid "ERROR_DROP_INVALID_CONTAINER_INDEX"
+msgstr "The provided container index is not valid. Natural number expected."
+
+#: core/commands/drop.py:40 tests/commands/testDrop.py:72
+#: tests/commands/testDrop.py:77
 msgid "ERROR_DROP_UNKNOWN_ITEM"
 msgstr "I have none of those"
 
-#: core/commands/drop.py:41 tests/commands/testDrop.py:36
-#: tests/commands/testDrop.py:41
+#: core/commands/drop.py:45 tests/commands/testDrop.py:82
+#: tests/commands/testDrop.py:87
 msgid "ERROR_DROP_ITEM_NOT_AVAILABLE"
 msgstr "I have none of those"
 
-#: core/commands/drop.py:43 tests/commands/testDrop.py:58
-#: tests/commands/testDrop.py:66
+#: core/commands/drop.py:47 tests/commands/testDrop.py:39
+#: tests/commands/testDrop.py:46
 #, python-format
 msgid "ERROR_DROP_QUANTITY_TOO_HIGH_%s"
 msgstr "I don't have enough %s to drop"
 
-#: core/commands/drop.py:57 tests/commands/testDrop.py:73
-#: tests/commands/testDrop.py:88
+#: core/commands/drop.py:61 tests/commands/testDrop.py:173
+#: tests/commands/testDrop.py:187 tests/commands/testDrop.py:201
+#: tests/commands/testDrop.py:215 tests/commands/testDrop.py:229
+#: tests/commands/testDrop.py:243
 #, python-format
 msgid "DROP_CONFIRMATION_%(quantity)s_%(name)s"
 msgstr "You drop %(quantity)s %(name)s"
@@ -283,83 +331,131 @@ msgid "EXIT_CONFIRMATION"
 msgstr "You are now outside"
 
 #: core/commands/help.py:22 tests/commands/testHelp.py:18
-#: tests/commands/testHelp.py:45
+#: tests/commands/testHelp.py:59
 msgid "CHARACTER_TOKEN"
 msgstr "character name"
 
 #: core/commands/help.py:22 tests/commands/testHelp.py:18
-#: tests/commands/testHelp.py:45
+#: tests/commands/testHelp.py:59
 msgid "SENTENCE_TOKEN"
 msgstr "sentence"
 
 #: core/commands/help.py:23 tests/commands/testHelp.py:19
-#: tests/commands/testHelp.py:46
+#: tests/commands/testHelp.py:60
 msgid "TALK_COMMAND_DESCRIPTION"
 msgstr "Talk to a character"
 
 #: core/commands/help.py:27 tests/commands/testHelp.py:21
-#: tests/commands/testHelp.py:50
+#: tests/commands/testHelp.py:64
 msgid "MOVE_COMMAND_DESCRIPTION"
 msgstr "Go to the indicated direction"
 
 #: core/commands/help.py:31 tests/commands/testHelp.py:23
-#: tests/commands/testHelp.py:54
+#: tests/commands/testHelp.py:68
 msgid "ENTER_COMMAND_DESCRIPTION"
 msgstr ""
 "Enter in the selected place (if the place is available in the current cell)"
 
 #: core/commands/help.py:35 tests/commands/testHelp.py:25
-#: tests/commands/testHelp.py:58
+#: tests/commands/testHelp.py:72
 msgid "EXIT_COMMAND_DESCRIPTION"
 msgstr "Exit from the selected place (if the current cell is the place exit)"
 
 #: core/commands/help.py:39 tests/commands/testHelp.py:27
-#: tests/commands/testHelp.py:62
+#: tests/commands/testHelp.py:76
 msgid "LOOK_COMMAND_DESCRIPTION"
 msgstr ""
 "List everything which is in the current area (characters, items, neighbour "
 "areas...)"
 
 #: core/commands/help.py:43 tests/commands/testHelp.py:29
-#: tests/commands/testHelp.py:66
+#: tests/commands/testHelp.py:80
 msgid "INVENTORY_COMMAND_DESCRIPTION"
 msgstr "List the items the player has in his inventory"
 
-#: core/commands/help.py:46 core/commands/help.py:50
-#: tests/commands/testHelp.py:30 tests/commands/testHelp.py:32
-#: tests/commands/testHelp.py:69 tests/commands/testHelp.py:73
-msgid "ITEM_NAME_TOKEN"
-msgstr "item name"
+#: core/commands/help.py:46 core/commands/help.py:55 core/commands/help.py:65
+#: tests/commands/testHelp.py:30 tests/commands/testHelp.py:37
+#: tests/commands/testHelp.py:45 tests/commands/testHelp.py:83
+#: tests/commands/testHelp.py:87 tests/commands/testHelp.py:91
+msgid "CONTAINER_INDEX_TOKEN"
+msgstr "container index"
 
-#: core/commands/help.py:46 core/commands/help.py:50
-#: tests/commands/testHelp.py:30 tests/commands/testHelp.py:32
-#: tests/commands/testHelp.py:69 tests/commands/testHelp.py:73
+#: core/commands/help.py:46 core/commands/help.py:54 core/commands/help.py:64
+#: tests/commands/testHelp.py:30 tests/commands/testHelp.py:36
+#: tests/commands/testHelp.py:44 tests/commands/testHelp.py:83
+#: tests/commands/testHelp.py:87 tests/commands/testHelp.py:91
+msgid "CONTAINER_TOKEN"
+msgstr "container"
+
+#: core/commands/help.py:47 tests/commands/testHelp.py:31
+#: tests/commands/testHelp.py:84
+msgid "OPEN_COMMAND_DESCRIPTION"
+msgstr "List the items available in a given container"
+
+#: core/commands/help.py:52 core/commands/help.py:62
+#: tests/commands/testHelp.py:34 tests/commands/testHelp.py:42
+#: tests/commands/testHelp.py:87 tests/commands/testHelp.py:91
 msgid "QUANTITY_TOKEN"
 msgstr "quantity"
 
-#: core/commands/help.py:47 tests/commands/testHelp.py:31
-#: tests/commands/testHelp.py:70
+#: core/commands/help.py:53 core/commands/help.py:63
+#: tests/commands/testHelp.py:35 tests/commands/testHelp.py:43
+#: tests/commands/testHelp.py:87 tests/commands/testHelp.py:91
+msgid "ITEM_NAME_TOKEN"
+msgstr "item name"
+
+#: core/commands/help.py:57 tests/commands/testHelp.py:39
+#: tests/commands/testHelp.py:88
 msgid "TAKE_COMMAND_DESCRIPTION"
 msgstr "Take some items on the ground"
 
-#: core/commands/help.py:51 tests/commands/testHelp.py:33
-#: tests/commands/testHelp.py:74
+#: core/commands/help.py:67 tests/commands/testHelp.py:47
+#: tests/commands/testHelp.py:92
 msgid "DROP_COMMAND_DESCRIPTION"
 msgstr "Drop some items from your inventory"
 
-#: core/commands/help.py:55 tests/commands/testHelp.py:35
-#: tests/commands/testHelp.py:78
+#: core/commands/help.py:71 tests/commands/testHelp.py:49
+#: tests/commands/testHelp.py:96
 msgid "HELP_COMMAND_DESCRIPTION"
 msgstr "Display the help menu"
 
-#: core/commands/help.py:59 tests/commands/testHelp.py:37
-#: tests/commands/testHelp.py:82
+#: core/commands/help.py:75 tests/commands/testHelp.py:51
+#: tests/commands/testHelp.py:100
 msgid "QUIT_COMMAND_DESCRIPTION"
 msgstr "Quit the game"
 
-#: core/commands/help.py:64 tests/commands/testHelp.py:17
+#: core/commands/help.py:80 tests/commands/testHelp.py:17
 msgid "AVAILABLE_COMMANDS_TITLE"
 msgstr "Available commands"
+
+#: core/commands/item_interaction.py:50 tests/commands/testDrop.py:109
+#: tests/commands/testDrop.py:116 tests/commands/testOpen.py:26
+#: tests/commands/testOpen.py:31 tests/commands/testTake.py:99
+#: tests/commands/testTake.py:104
+msgid "ERROR_CONTAINER_NOT_AVAILABLE"
+msgstr "There is no container with this type here"
+
+#: core/commands/item_interaction.py:56 tests/commands/testDrop.py:152
+#: tests/commands/testDrop.py:155 tests/commands/testDrop.py:162
+#: tests/commands/testDrop.py:165 tests/commands/testOpen.py:70
+#: tests/commands/testOpen.py:82 tests/commands/testOpen.py:103
+#: tests/commands/testOpen.py:111 tests/commands/testTake.py:130
+#: tests/commands/testTake.py:133 tests/commands/testTake.py:140
+#: tests/commands/testTake.py:143
+#, python-format
+msgid "ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX_%d"
+msgstr ""
+"The provided container index is not valid. A natural number between 1 and %d "
+"is expected."
+
+#: core/commands/item_interaction.py:59 tests/commands/testDrop.py:124
+#: tests/commands/testDrop.py:131 tests/commands/testOpen.py:46
+#: tests/commands/testOpen.py:51 tests/commands/testTake.py:110
+#: tests/commands/testTake.py:115
+msgid "ERROR_MULTIPLE_CONTAINERS_AVAILABLE"
+msgstr ""
+"There are more than one container with this type here, an explicit index is "
+"required"
 
 #: core/commands/look.py:70 tests/commands/testLook.py:18
 #, python-format
@@ -407,45 +503,59 @@ msgstr "I can't go there"
 msgid "MOVE_CONFIRMATION_%s"
 msgstr "lets go %s"
 
-#: core/commands/open.py:17 tests/commands/testOpen.py:16
+#: core/commands/open.py:18 tests/commands/testOpen.py:16
 #: tests/commands/testOpen.py:21
 msgid "ERROR_OPEN_NO_CONTAINER_PROVIDED"
 msgstr "A container type must be provided"
 
-#: core/commands/open.py:42 tests/commands/testOpen.py:57
+#: core/commands/open.py:44 tests/commands/testOpen.py:57
 #: tests/commands/testOpen.py:75 tests/commands/testOpen.py:87
 #: tests/commands/testOpen.py:95
 #, python-format
 msgid "ITEMS_IN_CONTAINER_%s"
 msgstr "Items in container %s"
 
-#: core/commands/take.py:15 tests/commands/testTake.py:16
-#: tests/commands/testTake.py:21
+#: core/commands/take.py:15 tests/commands/testTake.py:48
+#: tests/commands/testTake.py:53 tests/commands/testTake.py:58
+#: tests/commands/testTake.py:63
 msgid "ERROR_TAKE_NO_ITEM_GIVEN"
 msgstr "What shall I take?"
 
-#: core/commands/take.py:17 tests/commands/testTake.py:46
-#: tests/commands/testTake.py:51
-msgid "ERROR_TAKE_INVALID_QUANTITY"
-msgstr "Invalid quantity"
+#: core/commands/take.py:17 tests/commands/testTake.py:27
+#: tests/commands/testTake.py:32
+msgid "ERROR_TAKE_TOO_LOW_QUANTITY"
+msgstr "You must take at least one item."
 
-#: core/commands/take.py:23 tests/commands/testTake.py:26
-#: tests/commands/testTake.py:31
+#: core/commands/take.py:19 tests/commands/testTake.py:17
+#: tests/commands/testTake.py:22
+msgid "ERROR_TAKE_INVALID_FORMAT_QUANTITY"
+msgstr "The quantity of items to take must be a natural number."
+
+#: core/commands/take.py:21 tests/commands/testTake.py:120
+#: tests/commands/testTake.py:125
+msgid "ERROR_TAKE_INVALID_CONTAINER_INDEX"
+msgstr "The provided container index is not valid. Natural number expected."
+
+#: core/commands/take.py:27 tests/commands/testTake.py:68
+#: tests/commands/testTake.py:73
 msgid "ERROR_TAKE_UNKNOWN_ITEM"
 msgstr "I don't see this here."
 
-#: core/commands/take.py:39 tests/commands/testTake.py:36
-#: tests/commands/testTake.py:41
+#: core/commands/take.py:43 tests/commands/testTake.py:78
+#: tests/commands/testTake.py:83
 msgid "ERROR_TAKE_ITEM_NOT_AVAILABLE"
 msgstr "I don't see this here."
 
-#: core/commands/take.py:42 tests/commands/testTake.py:56
-#: tests/commands/testTake.py:61
-msgid "ERROR_TAKE_QUANTITY_TOO_HIGH"
-msgstr "There are not enough items of this kind"
+#: core/commands/take.py:46 tests/commands/testTake.py:37
+#: tests/commands/testTake.py:42
+#, python-format
+msgid "ERROR_TAKE_QUANTITY_TOO_HIGH_%s"
+msgstr "You can't take that many %s"
 
-#: core/commands/take.py:55 tests/commands/testTake.py:66
-#: tests/commands/testTake.py:76
+#: core/commands/take.py:59 tests/commands/testTake.py:149
+#: tests/commands/testTake.py:159 tests/commands/testTake.py:169
+#: tests/commands/testTake.py:179 tests/commands/testTake.py:189
+#: tests/commands/testTake.py:199
 #, python-format
 msgid "TAKE_CONFIRMATION_%(quantity)s_%(name)s"
 msgstr "You take %(quantity)s %(name)s"
@@ -497,26 +607,12 @@ msgstr "dungeon"
 msgid "AREA_TYPE_LAND"
 msgstr "land"
 
-#: models/item_container.py:32 tests/commands/testOpen.py:36
-#: tests/commands/testOpen.py:41
+#: models/item_container.py:32 tests/commands/testDrop.py:95
+#: tests/commands/testDrop.py:102 tests/commands/testOpen.py:36
+#: tests/commands/testOpen.py:41 tests/commands/testTake.py:89
+#: tests/commands/testTake.py:94
 msgid "ERROR_UNKNOWN_ITEM_CONTAINER_TYPE_LABEL"
 msgstr "This container type does not exist"
-
-#: models/item_container.py:50
-msgid "ERROR_INVALID_ITEM_CONTAINER_INDEX"
-msgstr "There is no container with this index here."
-
-#: models/item_container.py:53 tests/commands/testOpen.py:26
-#: tests/commands/testOpen.py:31
-msgid "ERROR_CONTAINER_NOT_AVAILABLE"
-msgstr "There is no container with this type here"
-
-#: models/item_container.py:55 tests/commands/testOpen.py:46
-#: tests/commands/testOpen.py:51
-msgid "ERROR_MULTIPLE_CONTAINERS_AVAILABLE"
-msgstr ""
-"There are more than one container with this type here, an explicit index is "
-"required"
 
 #: models/place.py:15 models/place.py:29 models/place.py:39 models/place.py:49
 #: tests/commands/testEnter.py:24 tests/commands/testExit.py:23
@@ -548,10 +644,20 @@ msgstr "An error occured during the place loading"
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
 msgstr "Invalid login or password"
 
-#: tests/commands/testOpen.py:70 tests/commands/testOpen.py:82
-#: tests/commands/testOpen.py:103 tests/commands/testOpen.py:111
-msgid "ERROR_OPEN_INVALID_INDEX"
-msgstr "Invalid container index provided"
+#~ msgid "ERROR_DROP_INVALID_QUANTITY"
+#~ msgstr "Invalid quantity"
+
+#~ msgid "ERROR_TAKE_INVALID_QUANTITY"
+#~ msgstr "Invalid quantity"
+
+#~ msgid "ERROR_TAKE_QUANTITY_TOO_HIGH"
+#~ msgstr "There are not enough items of this kind"
+
+#~ msgid "ERROR_INVALID_ITEM_CONTAINER_INDEX"
+#~ msgstr "There is no container with this index here."
+
+#~ msgid "ERROR_OPEN_INVALID_INDEX"
+#~ msgstr "Invalid container index provided"
 
 #~ msgid "GENERATING_WAITING_TEXT"
 #~ msgstr "Loading place..."
