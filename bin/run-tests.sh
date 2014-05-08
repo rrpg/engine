@@ -12,6 +12,11 @@ do
 		then
 			echo "$p"
 			LC_MESSAGES=$l $p run-tests.py
+			if [ $? == 1 ]
+			then
+				exit
+			fi
+
 		fi
 	done
 done
