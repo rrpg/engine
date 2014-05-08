@@ -43,12 +43,12 @@ class takeTests(tests.common.common):
 	def test_invalid_quantity_text(self):
 		self.rpgText.setAction([_('TAKE_COMMAND'), 'ten', 'Heavy breastplate', 'chest', 1])
 		output = self.rpgText._runAction()
-		self.assertTrue(output == _('ERROR_TAKE_INVALID_QUANTITY'))
+		self.assertTrue(output == _('ERROR_TAKE_INVALID_FORMAT_QUANTITY'))
 
 	def test_invalid_quantity_json(self):
 		self.rpgJSON.setAction([_('TAKE_COMMAND'), 'ten', 'Heavy breastplate', 'chest', 1])
 		output = self.rpgJSON._runAction()
-		self.assertTrue(output == {"error": {"message": _('ERROR_TAKE_INVALID_QUANTITY'), "code": 1}})
+		self.assertTrue(output == {"error": {"message": _('ERROR_TAKE_INVALID_FORMAT_QUANTITY'), "code": 1}})
 
 	def test_quantity_too_high_text(self):
 		self.rpgText.setAction([_('TAKE_COMMAND'), 10, 'Heavy breastplate'])

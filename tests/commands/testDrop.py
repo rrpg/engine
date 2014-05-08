@@ -160,19 +160,114 @@ class dropTests(tests.common.common):
 		self.assertTrue(output == {"name": "Heavy breastplate", "quantity": 1})
 
 	def test_item_container_index_text(self):
-		pass
+		self.rpgText.setAction([_('DROP_COMMAND'), 'some dummy item', 'chest', 1])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_DROP_UNKNOWN_ITEM'))
+
+		self.rpgText.setAction([_('DROP_COMMAND'), 'Mist potion', 'chest', 1])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_DROP_ITEM_NOT_AVAILABLE'))
+
+		self.rpgText.setAction([_('TAKE_COMMAND'), 'Heavy breastplate'])
+		self.rpgText._runAction()
+
+		self.rpgText.setAction([_('DROP_COMMAND'), 'Heavy breastplate', 'some container', 1])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_UNKNOWN_ITEM_CONTAINER_TYPE_LABEL'))
+
+		self.rpgText.setAction([_('DROP_COMMAND'), 'Heavy breastplate', 'box', 1])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_CONTAINER_NOT_AVAILABLE'))
+
+		self.rpgText.setAction([_('DROP_COMMAND'), 'Heavy breastplate', 'chest', 0])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX'))
+
+		self.rpgText.setAction([_('DROP_COMMAND'), 'Heavy breastplate', 'chest', -1])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX'))
+
+		self.rpgText.setAction([_('DROP_COMMAND'), 'Heavy breastplate', 'chest', 2])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX'))
+
+		self.rpgText.setAction([_('DROP_COMMAND'), 'Heavy breastplate', 'chest', 'string index'])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_DROP_INVALID_CONTAINER_INDEX'))
+
+		self.rpgText.setAction([_('DROP_COMMAND'), 'Heavy breastplate', 'chest', 1])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('DROP_CONFIRMATION_%(quantity)s_%(name)s') % {'quantity': 1, 'name': 'Heavy breastplate'})
 
 	def test_item_container_index_json(self):
-		pass
+		self.rpgJSON.setAction([_('DROP_COMMAND'), 'some dummy item', 'chest', 1])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_DROP_UNKNOWN_ITEM'), "code": 1}})
+
+		self.rpgJSON.setAction([_('DROP_COMMAND'), 'Mist potion', 'chest', 1])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_DROP_ITEM_NOT_AVAILABLE'), "code": 1}})
+
+		self.rpgJSON.setAction([_('TAKE_COMMAND'), 'Heavy breastplate'])
+		self.rpgJSON._runAction()
+
+		self.rpgJSON.setAction([_('DROP_COMMAND'), 'Heavy breastplate', 'some container', 1])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_UNKNOWN_ITEM_CONTAINER_TYPE_LABEL'), "code": 1}})
+
+		self.rpgJSON.setAction([_('DROP_COMMAND'), 'Heavy breastplate', 'box', 1])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_CONTAINER_NOT_AVAILABLE'), "code": 1}})
+
+		self.rpgJSON.setAction([_('DROP_COMMAND'), 'Heavy breastplate', 'chest', 0])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX'), "code": 1}})
+
+		self.rpgJSON.setAction([_('DROP_COMMAND'), 'Heavy breastplate', 'chest', -1])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX'), "code": 1}})
+
+		self.rpgJSON.setAction([_('DROP_COMMAND'), 'Heavy breastplate', 'chest', 2])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX'), "code": 1}})
+
+		self.rpgJSON.setAction([_('DROP_COMMAND'), 'Heavy breastplate', 'chest', 'string index'])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_DROP_INVALID_CONTAINER_INDEX'), "code": 1}})
+
+		self.rpgJSON.setAction([_('DROP_COMMAND'), 'Heavy breastplate', 'chest', 1])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {'name': 'Heavy breastplate', 'quantity': 1})
 
 	def test_quantity_text(self):
-		pass
+		self.rpgText.setAction([_('DROP_COMMAND'), 1])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_DROP_NO_ITEM_GIVEN'))
 
 	def test_quantity_json(self):
-		pass
+		self.rpgJSON.setAction([_('DROP_COMMAND'), 1])
+		output = self.rpgJSON._runAction()
+		self.assertTrue(output == {"error": {"message": _('ERROR_DROP_NO_ITEM_GIVEN'), "code": 1}})
 
 	def test_quantity_item_text(self):
-		pass
+		self.rpgText.setAction([_('DROP_COMMAND'), 1, 'some dummy item'])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_DROP_UNKNOWN_ITEM'))
+
+		self.rpgText.setAction([_('DROP_COMMAND'), 1, 'Mist potion'])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_DROP_ITEM_NOT_AVAILABLE'))
+
+		self.rpgText.setAction([_('TAKE_COMMAND'), 'Heavy breastplate'])
+		self.rpgText._runAction()
+
+		self.rpgText.setAction([_('DROP_COMMAND'), -1, 'Heavy breastplate'])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('ERROR_DROP_INVALID_QUANTITY'))
+
+		self.rpgText.setAction([_('DROP_COMMAND'), 1, 'Heavy breastplate'])
+		output = self.rpgText._runAction()
+		self.assertTrue(output == _('DROP_CONFIRMATION_%(quantity)s_%(name)s') % {'quantity': 1, 'name': 'Heavy breastplate'})
 
 	def test_quantity_item_json(self):
 		pass
@@ -203,12 +298,12 @@ class dropTests(tests.common.common):
 	def test_invalid_quantity_text(self):
 		self.rpgText.setAction([_('DROP_COMMAND'), 'ten', 'Heavy breastplate', 'chest', 1])
 		output = self.rpgText._runAction()
-		self.assertTrue(output == _('ERROR_DROP_INVALID_QUANTITY'))
+		self.assertTrue(output == _('ERROR_DROP_INVALID_FORMAT_QUANTITY'))
 
 	def test_invalid_quantity_json(self):
 		self.rpgJSON.setAction([_('DROP_COMMAND'), 'ten', 'Heavy breastplate', 'chest', 1])
 		output = self.rpgJSON._runAction()
-		self.assertTrue(output == {"error": {"message": _('ERROR_DROP_INVALID_QUANTITY'), "code": 1}})
+		self.assertTrue(output == {"error": {"message": _('ERROR_DROP_INVALID_FORMAT_QUANTITY'), "code": 1}})
 
 	def test_quantity_too_high_text(self):
 		self.rpgText.setAction([_('TAKE_COMMAND'), 2, 'Heavy breastplate'])

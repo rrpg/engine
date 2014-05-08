@@ -67,7 +67,7 @@ class openTests(tests.common.common):
 	def test_container_number_provided_text(self):
 		self.rpgText.setAction([_('OPEN_COMMAND'), 'wardrobe', 0])
 		output = self.rpgText._runAction()
-		self.assertTrue(output == _('ERROR_INVALID_ITEM_CONTAINER_INDEX'))
+		self.assertTrue(output == _('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX'))
 
 		self.rpgText.setAction([_('OPEN_COMMAND'), 'chest', 1])
 		output = self.rpgText._runAction()
@@ -79,7 +79,7 @@ class openTests(tests.common.common):
 
 		self.rpgText.setAction([_('OPEN_COMMAND'), 'chest', 2])
 		output = self.rpgText._runAction()
-		self.assertTrue(output == _('ERROR_INVALID_ITEM_CONTAINER_INDEX'))
+		self.assertTrue(output == _('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX'))
 
 		self.rpgText.setAction([_('OPEN_COMMAND'), 'wardrobe', 1])
 		output = self.rpgText._runAction()
@@ -100,7 +100,7 @@ class openTests(tests.common.common):
 	def test_container_number_provided_json(self):
 		self.rpgJSON.setAction([_('OPEN_COMMAND'), 'wardrobe', 0])
 		output = self.rpgJSON._runAction()
-		self.assertTrue(output == {"error": {"message": _('ERROR_INVALID_ITEM_CONTAINER_INDEX'), "code": 1}})
+		self.assertTrue(output == {"error": {"message": _('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX'), "code": 1}})
 
 		self.rpgJSON.setAction([_('OPEN_COMMAND'), 'chest', 1])
 		output = self.rpgJSON._runAction()
@@ -108,7 +108,7 @@ class openTests(tests.common.common):
 
 		self.rpgJSON.setAction([_('OPEN_COMMAND'), 'chest', 2])
 		output = self.rpgJSON._runAction()
-		self.assertTrue(output == {"error": {"message": _('ERROR_INVALID_ITEM_CONTAINER_INDEX'), "code": 1}})
+		self.assertTrue(output == {"error": {"message": _('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX'), "code": 1}})
 
 		self.rpgJSON.setAction([_('OPEN_COMMAND'), 'wardrobe', 1])
 		output = self.rpgJSON._runAction()
