@@ -127,20 +127,20 @@ class takeTests(tests.common.common):
 	def test_out_of_range_container_index_text(self):
 		self.rpgText.setAction([_('TAKE_COMMAND'), 'Heavy breastplate', 'wardrobe', 0])
 		output = self.rpgText._runAction()
-		self.assertTrue(output == _('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX'))
+		self.assertTrue(output == _('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX_%d') % (2,))
 		self.rpgText.setAction([_('TAKE_COMMAND'), 'Heavy breastplate', 'wardrobe', 3])
 		output = self.rpgText._runAction()
-		self.assertTrue(output == _('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX'))
+		self.assertTrue(output == _('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX_%d') % (2,))
 
 	def test_out_of_range_container_index_json(self):
 		self.rpgJSON.setAction([_('TAKE_COMMAND'), 'Heavy breastplate'])
 		self.rpgJSON._runAction()
 		self.rpgJSON.setAction([_('TAKE_COMMAND'), 'Heavy breastplate', 'wardrobe', 0])
 		output = self.rpgJSON._runAction()
-		self.assertTrue(output == {"error": {"message": _('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX'), "code": 1}})
+		self.assertTrue(output == {"error": {"message": _('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX_%d') % (2,), "code": 1}})
 		self.rpgJSON.setAction([_('TAKE_COMMAND'), 'Heavy breastplate', 'wardrobe', 3])
 		output = self.rpgJSON._runAction()
-		self.assertTrue(output == {"error": {"message": _('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX'), "code": 1}})
+		self.assertTrue(output == {"error": {"message": _('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX_%d') % (2,), "code": 1}})
 
 	# Tests OK
 	def test_item_text(self):

@@ -53,7 +53,7 @@ class item_interaction(core.command.command):
 			index = int(index) - 1
 
 			if index < 0 or index >= nbContainers:
-				raise core.command.exception(_('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX'))
+				raise core.command.exception(_('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX_%d') % (nbContainers,))
 
 		if nbContainers > 1 and index is None:
 			raise core.command.exception(_('ERROR_MULTIPLE_CONTAINERS_AVAILABLE'))
