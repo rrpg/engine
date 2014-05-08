@@ -2,10 +2,6 @@
 
 Text-based role playing game engine written in python.
 
-## Build
-
-[![Build Status](https://travis-ci.org/rrpg/engine.png?branch=master)](https://travis-ci.org/rrpg/engine.png)
-
 ## Requirements
 
 You'll need the following packages to run the game:
