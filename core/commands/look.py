@@ -96,7 +96,7 @@ class look(core.command.command):
 		if len(data['item_containers']) > 0:
 			output.append('')
 			output.append(_('AVAILABLE_ITEMS_CONTAINERS'))
-			for c in data['item_containers']:
+			for c in sorted(data['item_containers'].keys()):
 				for nb in range(data['item_containers'][c]):
 					output.append('    ' + c + ' #' + str(nb + 1))
 
