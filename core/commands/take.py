@@ -43,7 +43,7 @@ class take(item_interaction.item_interaction):
 			raise item.exception(_('ERROR_TAKE_ITEM_NOT_AVAILABLE'))
 
 		if quantity > items[i]['quantity']:
-			raise item.exception(_('ERROR_TAKE_QUANTITY_TOO_HIGH'))
+			raise item.exception(_('ERROR_TAKE_QUANTITY_TOO_HIGH_%s') % name)
 
 		i = [int(i)] * quantity
 		self._player.addItemsToInventory(i)
