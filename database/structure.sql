@@ -82,6 +82,20 @@ CREATE TABLE place (
 	entrance_id INTEGER REFERENCES area (id_area)
 );
 
+CREATE TABLE item_container (
+	id_item_container INTEGER PRIMARY KEY AUTOINCREMENT,
+	id_item_container_type INTEGER REFERENCES item_container_type (id_item_container_type),
+	id_area INTEGER REFERENCES area (id_area),
+	items TEXT
+);
+CREATE INDEX idx_item_container_id_area ON item_container (id_area);
+CREATE INDEX idx_item_container_id_item_container_type ON item_container (id_item_container_type);
+
+CREATE TABLE item_container_type (
+	id_item_container_type INTEGER PRIMARY KEY AUTOINCREMENT,
+	label VARCHAR(30) UNIQUE NOT NULL
+);
+
 CREATE TABLE item (
 	id_item INTEGER PRIMARY KEY AUTOINCREMENT,
 	name VARCHAR(50) NOT NULL,

@@ -27,7 +27,12 @@ class lookTests(tests.common.common):
 			'    first dungeon\n' +\
 			'\n' +\
 			_('AVAILABLE_ITEMS') +'\n'+\
-			'  6 Heavy breastplate'
+			'  6 Heavy breastplate\n' +\
+			'\n' +\
+			_('AVAILABLE_ITEMS_CONTAINERS') +'\n'+\
+			'    wardrobe #1\n' +\
+			'    wardrobe #2\n' +\
+			'    chest #1'
 		)
 
 	def test_json(self):
@@ -38,6 +43,7 @@ class lookTests(tests.common.common):
 			"items": [{"name": "Heavy breastplate", "quantity": 6}],
 			"region": "The High lands",
 			"places": ["first dungeon"],
-			"characters": ["Tom"]
+			"characters": ["Tom"],
+			"item_containers": {'chest': 1, 'wardrobe': 2}
 		})
 

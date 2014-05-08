@@ -17,7 +17,7 @@ Today, the available commands are:
 """
 import core.command
 from core.commands import look, talk, move, enter, exit, take, drop, inventory,\
-	help, createPlayer, listSpecies, listGenders
+	help, createPlayer, listSpecies, listGenders, open
 from core.localisation import _
 import sys
 
@@ -45,7 +45,8 @@ class factory:
 		_('DROP_COMMAND'): 'drop',
 		_('INVENTORY_COMMAND'): 'inventory',
 		_('INVENTORY_SHORT_COMMAND'): 'inventory',
-		_('HELP_COMMAND'): 'help'
+		_('HELP_COMMAND'): 'help',
+		_('OPEN_COMMAND'): 'open'
 	}
 
 	mapping_anonymous = {

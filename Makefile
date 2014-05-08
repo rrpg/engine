@@ -97,3 +97,7 @@ locale-clean:
 
 test:
 	@./bin/run-tests.sh
+
+coverage:
+	@coverage run run-tests.py
+	@coverage html

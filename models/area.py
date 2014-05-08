@@ -12,6 +12,7 @@ from models import item
 import json
 from core.localisation import _
 from core import config
+import core.exception
 
 """
 Available directions
@@ -243,7 +244,7 @@ class model(Model):
 		)
 
 
-class exception(BaseException):
+class exception(core.exception.exception):
 	"""
 	Class for the exceptions concerning areas.
 	"""

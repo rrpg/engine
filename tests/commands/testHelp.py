@@ -27,9 +27,23 @@ class helpTests(tests.common.common):
 			'\t' + _('LOOK_COMMAND_DESCRIPTION') +'\n'+\
 			_('INVENTORY_SHORT_COMMAND') + '|' + _('INVENTORY_COMMAND') + ':' +'\n'+\
 			'\t' + _('INVENTORY_COMMAND_DESCRIPTION') +'\n'+\
-			'%s [<%s>] "<%s>"' % (_('TAKE_COMMAND'), _('QUANTITY_TOKEN'), _('ITEM_NAME_TOKEN')) + ':' +'\n'+\
+			'%s "<%s>" [<%s>]' % (_('OPEN_COMMAND'), _('CONTAINER_TOKEN'), _('CONTAINER_INDEX_TOKEN')) + ':' +'\n'+\
+			'\t' + _('OPEN_COMMAND_DESCRIPTION') +'\n'+\
+			'%s [<%s>] "<%s>" ["<%s>" [<%s>]]' % (
+				_('TAKE_COMMAND'),
+				_('QUANTITY_TOKEN'),
+				_('ITEM_NAME_TOKEN'),
+				_('CONTAINER_TOKEN'),
+				_('CONTAINER_INDEX_TOKEN')
+			) + ':' +'\n'+\
 			'\t' + _('TAKE_COMMAND_DESCRIPTION') +'\n'+\
-			'%s [<%s>] "<%s>"' % (_('DROP_COMMAND'), _('QUANTITY_TOKEN'), _('ITEM_NAME_TOKEN')) + ':' +'\n'+\
+			'%s [<%s>] "<%s>" ["<%s>" [<%s>]]' % (
+				_('DROP_COMMAND'),
+				_('QUANTITY_TOKEN'),
+				_('ITEM_NAME_TOKEN'),
+				_('CONTAINER_TOKEN'),
+				_('CONTAINER_INDEX_TOKEN')
+			) + ':' +'\n'+\
 			'\t' + _('DROP_COMMAND_DESCRIPTION') +'\n'+\
 			_('HELP_COMMAND') + ':' +'\n'+\
 			'\t' + _('HELP_COMMAND_DESCRIPTION') +'\n'+\
@@ -66,11 +80,15 @@ class helpTests(tests.common.common):
 				"description": _('INVENTORY_COMMAND_DESCRIPTION')
 			},
 			{
-				"command": '%s [<%s>] "<%s>"' % (_('TAKE_COMMAND'), _('QUANTITY_TOKEN'), _('ITEM_NAME_TOKEN')),
+				"command": '%s "<%s>" [<%s>]' % (_('OPEN_COMMAND'), _('CONTAINER_TOKEN'), _('CONTAINER_INDEX_TOKEN')),
+				"description": _('OPEN_COMMAND_DESCRIPTION')
+			},
+			{
+				"command": '%s [<%s>] "<%s>" ["<%s>" [<%s>]]' % (_('TAKE_COMMAND'), _('QUANTITY_TOKEN'), _('ITEM_NAME_TOKEN'), _('CONTAINER_TOKEN'), _('CONTAINER_INDEX_TOKEN')),
 				"description": _('TAKE_COMMAND_DESCRIPTION')
 			},
 			{
-				"command": '%s [<%s>] "<%s>"' % (_('DROP_COMMAND'), _('QUANTITY_TOKEN'), _('ITEM_NAME_TOKEN')),
+				"command": '%s [<%s>] "<%s>" ["<%s>" [<%s>]]' % (_('DROP_COMMAND'), _('QUANTITY_TOKEN'), _('ITEM_NAME_TOKEN'), _('CONTAINER_TOKEN'), _('CONTAINER_INDEX_TOKEN')),
 				"description": _('DROP_COMMAND_DESCRIPTION')
 			},
 			{
