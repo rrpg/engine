@@ -43,11 +43,27 @@ class help(core.command.command):
 				'description': _('INVENTORY_COMMAND_DESCRIPTION')
 			},
 			{
-				'command': '%s [<%s>] "<%s>"' % (_('TAKE_COMMAND'), _('QUANTITY_TOKEN'), _('ITEM_NAME_TOKEN')),
+				'command': '%s "<%s>" [<%s>]' % (_('OPEN_COMMAND'), _('CONTAINER_TOKEN'), _('CONTAINER_INDEX_TOKEN')),
+				'description': _('OPEN_COMMAND_DESCRIPTION')
+			},
+			{
+				'command': '%s [<%s>] "<%s>" ["<%s>" [<%s>]]' % (
+					_('TAKE_COMMAND'),
+					_('QUANTITY_TOKEN'),
+					_('ITEM_NAME_TOKEN'),
+					_('CONTAINER_TOKEN'),
+					_('CONTAINER_INDEX_TOKEN')
+				),
 				'description': _('TAKE_COMMAND_DESCRIPTION')
 			},
 			{
-				'command': '%s [<%s>] "<%s>"' % (_('DROP_COMMAND'), _('QUANTITY_TOKEN'), _('ITEM_NAME_TOKEN')),
+				'command': '%s [<%s>] "<%s>" ["<%s>" [<%s>]]' % (
+					_('DROP_COMMAND'),
+					_('QUANTITY_TOKEN'),
+					_('ITEM_NAME_TOKEN'),
+					_('CONTAINER_TOKEN'),
+					_('CONTAINER_INDEX_TOKEN')
+				),
 				'description': _('DROP_COMMAND_DESCRIPTION')
 			},
 			{
