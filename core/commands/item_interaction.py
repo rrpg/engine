@@ -37,8 +37,8 @@ class item_interaction(core.command.command):
 
 		if args['name'] == '':
 			raise exception(code=exception.CODE_NO_ITEM_GIVEN)
-		if quantity < 0:
-			raise exception(code=exception.CODE_INVALID_QUANTITY)
+		if quantity <= 0:
+			raise exception(code=exception.CODE_TOO_LOW_QUANTITY)
 
 		return (quantity, args['name'], args['container'], args['containerId'])
 
@@ -62,14 +62,14 @@ class item_interaction(core.command.command):
 
 class exception(core.exception.exception):
 	CODE_NO_ITEM_GIVEN = 1
-	CODE_INVALID_QUANTITY = 2
+	CODE_TOO_LOW_QUANTITY = 2
 	CODE_INVALID_FORMAT_QUANTITY = 3
 	CODE_INVALID_CONTAINER_INDEX = 4
 
 	def getCodes(self):
 		return (
 			self.CODE_NO_ITEM_GIVEN,
-			self.CODE_INVALID_QUANTITY,
+			self.CODE_TOO_LOW_QUANTITY,
 			self.CODE_INVALID_FORMAT_QUANTITY,
 			self.CODE_INVALID_CONTAINER_INDEX
 		)

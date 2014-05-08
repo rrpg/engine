@@ -13,8 +13,8 @@ class take(item_interaction.item_interaction):
 		except item_interaction.exception as e:
 			if e.code is item_interaction.exception.CODE_NO_ITEM_GIVEN:
 				raise core.command.exception(_('ERROR_TAKE_NO_ITEM_GIVEN'))
-			elif e.code is item_interaction.exception.CODE_INVALID_QUANTITY:
-				raise core.command.exception(_('ERROR_TAKE_INVALID_QUANTITY'))
+			elif e.code is item_interaction.exception.CODE_TOO_LOW_QUANTITY:
+				raise core.command.exception(_('ERROR_TAKE_TOO_LOW_QUANTITY'))
 			elif e.code is item_interaction.exception.CODE_INVALID_FORMAT_QUANTITY:
 				raise core.command.exception(_('ERROR_TAKE_INVALID_FORMAT_QUANTITY'))
 			elif e.code is item_interaction.exception.CODE_INVALID_CONTAINER_INDEX:
