@@ -30,9 +30,9 @@ class lookTests(tests.common.common):
 			'  6 Heavy breastplate\n' +\
 			'\n' +\
 			_('AVAILABLE_ITEMS_CONTAINERS') +'\n'+\
+			'    chest #1\n' +\
 			'    wardrobe #1\n' +\
-			'    wardrobe #2\n' +\
-			'    chest #1'
+			'    wardrobe #2'
 		)
 
 	def test_json(self):
