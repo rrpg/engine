@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import core.command
+from models.item_container import container
+from core.localisation import _
 
 
 class item_interaction(core.command.command):
@@ -40,6 +42,23 @@ class item_interaction(core.command.command):
 
 		return (quantity, args['name'], args['container'], args['containerId'])
 
+	def _getContainerFromIdAreaTypeAndIndex(self, idArea, containerType, index):
+		containers = container.getAllFromIdAreaAndType(idArea, containerType)
+		nbContainers = len(containers)
+
+		if nbContainers == 0:
+			raise core.command.exception(_('ERROR_CONTAINER_NOT_AVAILABLE'))
+
+		if index is not None:
+			index = int(index) - 1
+
+			if index < 0 or index >= nbContainers:
+				raise core.command.exception(_('ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX'))
+
+		if nbContainers > 1 and index is None:
+			raise core.command.exception(_('ERROR_MULTIPLE_CONTAINERS_AVAILABLE'))
+
+		return containers[index or 0]
 
 class exception(core.exception.exception):
 	CODE_NO_ITEM_GIVEN = 1

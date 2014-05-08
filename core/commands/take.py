@@ -32,7 +32,7 @@ class take(item_interaction.item_interaction):
 			items = area.area.getItems(self._player.getAreaId())
 		else:
 			# Item to be taken in a container
-			container = item_container.container.getFromIdAreaTypeAndIndex(
+			container = self._getContainerFromIdAreaTypeAndIndex(
 				self._player.getAreaId(),
 				containerType,
 				containerIndex

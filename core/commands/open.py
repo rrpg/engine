@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from models import item_container, item
+from core.commands import item_interaction
 import core.command
 from core.localisation import _
 
-class open(core.command.command):
+class open(item_interaction.item_interaction):
 	def run(self):
 		"""
 		c.run()
@@ -19,7 +20,8 @@ class open(core.command.command):
 		index = None
 		if len(self._args) == 2:
 			index = self._args[1]
-		container = item_container.container.getFromIdAreaTypeAndIndex(
+
+		container = self._getContainerFromIdAreaTypeAndIndex(
 			self._player.getAreaId(),
 			self._args[0],
 			index

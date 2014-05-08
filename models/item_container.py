@@ -39,24 +39,6 @@ class container:
 		return containers
 
 	@staticmethod
-	def getFromIdAreaTypeAndIndex(idArea, containerType, index):
-		containers = container.getAllFromIdAreaAndType(idArea, containerType)
-		nbContainers = len(containers)
-
-		if index is not None:
-			index = int(index) - 1
-
-			if index < 0 or index >= nbContainers:
-				raise core.command.exception(_('ERROR_INVALID_ITEM_CONTAINER_INDEX'))
-
-		if nbContainers == 0:
-			raise core.command.exception(_('ERROR_CONTAINER_NOT_AVAILABLE'))
-		elif nbContainers > 1 and index is None:
-			raise core.command.exception(_('ERROR_MULTIPLE_CONTAINERS_AVAILABLE'))
-
-		return containers[index or 0]
-
-	@staticmethod
 	def addItems(container, items):
 		"""
 		item_container.container.addItems(container, items)

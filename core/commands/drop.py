@@ -27,7 +27,7 @@ class drop(item_interaction.item_interaction):
 
 		if containerType is not None:
 			# Item to be taken in a container
-			container = item_container.container.getFromIdAreaTypeAndIndex(
+			container = self._getContainerFromIdAreaTypeAndIndex(
 				self._player.getAreaId(),
 				containerType,
 				containerIndex
