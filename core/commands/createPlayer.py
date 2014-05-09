@@ -16,7 +16,7 @@ class createPlayer(core.command.command):
 		informations will be read from stdin
 		"""
 
-		if self._isInteractive:
+		if self._isInteractive: # pragma: no cover
 			return self.interactiveSignUp()
 
 		if len(self._args) < 4:
@@ -39,7 +39,7 @@ class createPlayer(core.command.command):
 		return (login, password)
 
 
-	def interactiveSignUp(self):
+	def interactiveSignUp(self): # pragma: no cover
 		login = None
 		password = None
 		while login is None or login == '':
