@@ -7,6 +7,7 @@ Text-based role playing game engine written in python.
 You'll need the following packages to run the game:
 * python (2.7 or above)
 * sqlite3
+* coverage.py (for the code coverage only)
 
 ## Setup
 
