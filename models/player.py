@@ -17,7 +17,7 @@ class player(character.character):
 		return self._model is not None
 
 	#~ Connect the player by asking him to enter his login and his password
-	def loadPlayerFromStdIn(self):
+	def loadPlayerFromStdIn(self): # pragma: no cover
 		if self._login is None or self._password is None:
 			self._readLoginAndPassword(False, False)
 

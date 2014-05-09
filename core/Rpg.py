@@ -67,7 +67,7 @@ class Rpg:
 		the player will be prompted to login or create a new player
 		"""
 		self._player = player()
-		if self._isInteractive and (login is None or password is None):
+		if self._isInteractive and (login is None or password is None): # pragma: no cover
 			(login, password) = self._doInteractiveAuth()
 
 		if login is not None and password is not None:
@@ -76,7 +76,7 @@ class Rpg:
 
 		return False
 
-	def _doInteractiveAuth(self):
+	def _doInteractiveAuth(self): # pragma: no cover
 		'''
 		This method asks the player to login or to create a new account
 		'''
@@ -100,7 +100,7 @@ class Rpg:
 		elif choice == 2:
 			return self._promptLoginFromStdin()
 
-	def _promptLoginFromStdin(self):
+	def _promptLoginFromStdin(self): # pragma: no cover
 		'''
 		Ask the player to type his login and password
 		'''
@@ -122,7 +122,7 @@ class Rpg:
 			raise TypeError("The action must be a list of strings")
 		self._action = action
 
-	def run(self):
+	def run(self): # pragma: no cover
 		'''
 		Main method of the Rpg Class, will run the action if it is given,
 		else ask the player to enter a command
@@ -175,7 +175,7 @@ class Rpg:
 		except core.exception.exception as e:
 			return self.renderException(e)
 
-	def parseTypedAction(self, action):
+	def parseTypedAction(self, action): # pragma: no cover
 		"""
 		Method to parse the action typed by the player to detect the action
 		and the action's arguments
@@ -208,7 +208,7 @@ class Rpg:
 
 		return commands
 
-	def readCommand(self):
+	def readCommand(self): # pragma: no cover
 		"""
 		Method to set the autocompleter and run the prompt, from utils
 		"""

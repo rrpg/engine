@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-def read(prompt):
+def read(prompt): # pragma: no cover
 	try:
 		s = raw_input(prompt)
 	except NameError:
