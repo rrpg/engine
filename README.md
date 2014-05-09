@@ -7,6 +7,7 @@ Text-based role playing game engine written in python.
 You'll need the following packages to run the game:
 * python (2.7 or above)
 * sqlite3
+* coverage.py (for the code coverage only)
 
 ## Setup
 
@@ -63,3 +64,17 @@ bin/run-tests.sh
 ```
 All the commands will be tested in french and english in python 2 and/or 3
 (depending on which version is installed on the user's computer).
+
+## Code coverage
+
+To run the code coverage, you will need coverage.py
+((http://nedbatchelder.com/code/coverage/)).
+
+Once coverage.py is installed, just run:
+
+```
+make coverage
+```
+
+An HTML output of the coverage will be generated in the folder htmlcov at the
+root of the project's folder
