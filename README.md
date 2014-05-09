@@ -68,7 +68,7 @@ All the commands will be tested in french and english in python 2 and/or 3
 ## Code coverage
 
 To run the code coverage, you will need coverage.py
-((http://nedbatchelder.com/code/coverage/)).
+(http://nedbatchelder.com/code/coverage/).
 
 Once coverage.py is installed, just run:
 
