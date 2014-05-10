@@ -47,6 +47,7 @@ class drop(item_interaction.item_interaction):
 			raise item.exception(_('ERROR_DROP_QUANTITY_TOO_HIGH_%s') % name)
 
 		# Drop it
+		i = [int(i)] * quantity
 		self._player.removeItemsFromInventory(i)
 
 		if containerType is None:
