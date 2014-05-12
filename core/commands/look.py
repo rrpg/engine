@@ -16,7 +16,13 @@ class look(core.command.command):
 		Display some informations about the player's current position
 		(characters arround, availables directions...).
 		"""
-		result = dict()
+		result = {
+			'characters': [],
+			'directions': [],
+			'places': [],
+			'items': [],
+			'item_containers': {}
+		}
 
 		areaId = self._player.getAreaId()
 
@@ -27,7 +33,6 @@ class look(core.command.command):
 		# Display surrounding characters
 		characters = character.character.searchByIdArea(areaId)
 		# the player is in the result list
-		result['characters'] = list()
 		for c in characters:
 			if c._model['id_character'] != self._player._model['id_character']:
 				result['characters'].append(c._model['name'])
@@ -35,13 +40,11 @@ class look(core.command.command):
 		# Display accessible areas
 		areas = area.model.getSurroundingAreas(areaId)
 		directions = area.area.getValidDirections(areas['directions'])
-		result['directions'] = list()
 		for d in directions:
 			result['directions'].append(d)
 
 		# Display accessible places
 		places = place.model.getSurroundingPlaces(areaId)
-		result['places'] = list()
 		for p in places:
 			result['places'].append(p['name'])
 
@@ -49,7 +52,6 @@ class look(core.command.command):
 		items = item.inventory.fromStr(
 			area.model.loadById(areaId, ['items'])['items']
 		)
-		result['items'] = list()
 		for i in items:
 			it = item.model.loadById(i)
 			result['items'].append({
@@ -57,7 +59,6 @@ class look(core.command.command):
 				'quantity': items[i]['quantity']
 			})
 
-		result['item_containers'] = dict()
 		for c in item_container.container.getAllFromIdArea(areaId):
 			try:
 				result['item_containers'][c['type_label']] = result['item_containers'][c['type_label']] + 1
