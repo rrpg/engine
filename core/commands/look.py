@@ -26,17 +26,28 @@ class look(core.command.command):
 
 		areaId = self._player.getAreaId()
 
-		# Display current area description
-		regionName = area.area.getRegionNameFromAreaId(areaId)
-		result['region'] = regionName
+		what = None
+		if len(self._args) > 0:
+			what = self._args[0]
 
-		# Display current area description
-		result['region'] = area.area.getRegionNameFromAreaId(areaId)
-		result['characters'] = self._getCharacters(areaId)
-		result['directions'] = self._getDirections(areaId)
-		result['places'] = self._getPlaces(areaId)
-		result['items'] = self._getObjects(areaId)
-		result['item_containers'] = self._getContainers(areaId)
+		if what in (_('LOOK_REGION_PARAM'), None):
+			# Display current area description
+			result['region'] = area.area.getRegionNameFromAreaId(areaId)
+
+		if what in (_('LOOK_CHARACTERS_PARAM'), None):
+			result['characters'] = self._getCharacters(areaId)
+
+		if what in (_('LOOK_DIRECTIONS_PARAM'), None):
+			result['directions'] = self._getDirections(areaId)
+
+		if what in (_('LOOK_PLACES_PARAM'), None):
+			result['places'] = self._getPlaces(areaId)
+
+		if what in (_('LOOK_OBJECTS_PARAM'), None):
+			result['items'] = self._getObjects(areaId)
+
+		if what in (_('LOOK_CONTAINERS_PARAM'), None):
+			result['item_containers'] = self._getContainers(areaId)
 
 		return result
 
