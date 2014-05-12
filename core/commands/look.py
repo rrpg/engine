@@ -30,42 +30,61 @@ class look(core.command.command):
 		regionName = area.area.getRegionNameFromAreaId(areaId)
 		result['region'] = regionName
 
-		# Display surrounding characters
-		characters = character.character.searchByIdArea(areaId)
-		# the player is in the result list
-		for c in characters:
-			if c._model['id_character'] != self._player._model['id_character']:
-				result['characters'].append(c._model['name'])
+		# Display current area description
+		result['region'] = area.area.getRegionNameFromAreaId(areaId)
+		result['characters'] = self._getCharacters(areaId)
+		result['directions'] = self._getDirections(areaId)
+		result['places'] = self._getPlaces(areaId)
+		result['items'] = self._getObjects(areaId)
+		result['item_containers'] = self._getContainers(areaId)
 
+		return result
+
+	def _getCharacters(self, areaId):
+		characters = list()
+		# Display surrounding characters
+		for c in character.character.searchByIdArea(areaId):
+			if c._model['id_character'] != self._player._model['id_character']:
+				characters.append(c._model['name'])
+		return characters
+
+	def _getDirections(self, areaId):
+		directions = list()
 		# Display accessible areas
 		areas = area.model.getSurroundingAreas(areaId)
-		directions = area.area.getValidDirections(areas['directions'])
-		for d in directions:
-			result['directions'].append(d)
+		for d in area.area.getValidDirections(areas['directions']):
+			directions.append(d)
+		return directions
 
+	def _getPlaces(self, areaId):
+		places = list()
 		# Display accessible places
-		places = place.model.getSurroundingPlaces(areaId)
-		for p in places:
-			result['places'].append(p['name'])
+		for p in place.model.getSurroundingPlaces(areaId):
+			places.append(p['name'])
+		return places
 
+	def _getObjects(self, areaId):
+		objects = list()
 		# Display surrounding objects
 		items = item.inventory.fromStr(
 			area.model.loadById(areaId, ['items'])['items']
 		)
 		for i in items:
 			it = item.model.loadById(i)
-			result['items'].append({
+			objects.append({
 				'name': it['name'],
 				'quantity': items[i]['quantity']
 			})
+		return objects
 
+	def _getContainers(self, areaId):
+		containers = dict()
 		for c in item_container.container.getAllFromIdArea(areaId):
 			try:
-				result['item_containers'][c['type_label']] = result['item_containers'][c['type_label']] + 1
+				containers[c['type_label']] = containers[c['type_label']] + 1
 			except KeyError:
-				result['item_containers'][c['type_label']] = 1
-
-		return result
+				containers[c['type_label']] = 1
+		return containers
 
 	def render(self, data):
 		output = [_('CURRENT_REGION_%s') % data['region']]
