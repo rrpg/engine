@@ -16,38 +16,29 @@ class look(core.command.command):
 		Display some informations about the player's current position
 		(characters arround, availables directions...).
 		"""
-		result = {
-			'characters': [],
-			'directions': [],
-			'places': [],
-			'items': [],
-			'item_containers': {}
+		sections = {
+			_('LOOK_REGION_PARAM'): ['region', area.area.getRegionNameFromAreaId],
+			_('LOOK_CHARACTERS_PARAM'): ['characters', self._getCharacters],
+			_('LOOK_DIRECTIONS_PARAM'): ['directions', self._getDirections],
+			_('LOOK_PLACES_PARAM'): ['places', self._getPlaces],
+			_('LOOK_OBJECTS_PARAM'): ['items', self._getObjects],
+			_('LOOK_CONTAINERS_PARAM'): ['item_containers', self._getContainers]
 		}
 
+		result = dict()
 		areaId = self._player.getAreaId()
 
 		what = None
 		if len(self._args) > 0:
 			what = self._args[0]
 
-		if what in (_('LOOK_REGION_PARAM'), None):
-			# Display current area description
-			result['region'] = area.area.getRegionNameFromAreaId(areaId)
-
-		if what in (_('LOOK_CHARACTERS_PARAM'), None):
-			result['characters'] = self._getCharacters(areaId)
-
-		if what in (_('LOOK_DIRECTIONS_PARAM'), None):
-			result['directions'] = self._getDirections(areaId)
-
-		if what in (_('LOOK_PLACES_PARAM'), None):
-			result['places'] = self._getPlaces(areaId)
-
-		if what in (_('LOOK_OBJECTS_PARAM'), None):
-			result['items'] = self._getObjects(areaId)
-
-		if what in (_('LOOK_CONTAINERS_PARAM'), None):
-			result['item_containers'] = self._getContainers(areaId)
+		if what is not None:
+			if what not in sections.keys():
+				raise core.command.exception('Unknown section')
+			result[sections[what][0]] = sections[what][1](areaId)
+		else:
+			for s in sections:
+				result[sections[s][0]] = sections[s][1](areaId)
 
 		return result
 
