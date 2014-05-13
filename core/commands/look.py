@@ -98,33 +98,37 @@ class look(core.command.command):
 		return containers
 
 	def render(self, data):
-		output = [_('CURRENT_REGION_%s') % data['region']]
+		sections = data.keys()
+		output = list()
 
-		if len(data['characters']) > 0:
+		if 'region' in sections:
+			output.append(_('CURRENT_REGION_%s') % data['region'])
+
+		if 'characters' in sections:
 			output.append('')
 			output.append(_('PRESENT_CHARACTERS'))
 			for c in data['characters']:
 				output.append('    ' + str(c))
 
-		if len(data['directions']) > 0:
+		if 'directions' in sections:
 			output.append('')
 			output.append(_('AVAILABLE_DIRECTIONS'))
 			for d in data['directions']:
 				output.append('    ' + d)
 
-		if len(data['places']) > 0:
+		if 'places' in sections:
 			output.append('')
 			output.append(_('AVAILABLE_PLACES'))
 			for p in data['places']:
 				output.append('    ' + p)
 
-		if len(data['items']) > 0:
+		if 'items' in sections:
 			output.append('')
 			output.append(_('AVAILABLE_ITEMS'))
 			for i in data['items']:
 				output.append(str(i['quantity']).rjust(3) + ' ' + i['name'])
 
-		if len(data['item_containers']) > 0:
+		if 'item_containers' in sections:
 			output.append('')
 			output.append(_('AVAILABLE_ITEMS_CONTAINERS'))
 			for c in sorted(data['item_containers'].keys()):
