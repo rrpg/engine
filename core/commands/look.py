@@ -96,34 +96,39 @@ class look(core.command.command):
 			output.append(_('CURRENT_REGION_%s') % data['region'])
 
 		if 'characters' in sections:
-			output.append('')
-			output.append(_('PRESENT_CHARACTERS'))
+			o = list()
+			o.append(_('PRESENT_CHARACTERS'))
 			for c in data['characters']:
-				output.append('    ' + str(c))
+				o.append('    ' + str(c))
+			output.append('\n'.join(o))
 
 		if 'directions' in sections:
-			output.append('')
-			output.append(_('AVAILABLE_DIRECTIONS'))
+			o = list()
+			o.append(_('AVAILABLE_DIRECTIONS'))
 			for d in data['directions']:
-				output.append('    ' + d)
+				o.append('    ' + d)
+			output.append('\n'.join(o))
 
 		if 'places' in sections:
-			output.append('')
-			output.append(_('AVAILABLE_PLACES'))
+			o = list()
+			o.append(_('AVAILABLE_PLACES'))
 			for p in data['places']:
-				output.append('    ' + p)
+				o.append('    ' + p)
+			output.append('\n'.join(o))
 
 		if 'items' in sections:
-			output.append('')
-			output.append(_('AVAILABLE_ITEMS'))
+			o = list()
+			o.append(_('AVAILABLE_ITEMS'))
 			for i in data['items']:
-				output.append(str(i['quantity']).rjust(3) + ' ' + i['name'])
+				o.append(str(i['quantity']).rjust(3) + ' ' + i['name'])
+			output.append('\n'.join(o))
 
 		if 'item_containers' in sections:
-			output.append('')
-			output.append(_('AVAILABLE_ITEMS_CONTAINERS'))
+			o = list()
+			o.append(_('AVAILABLE_ITEMS_CONTAINERS'))
 			for c in sorted(data['item_containers'].keys()):
 				for nb in range(data['item_containers'][c]):
-					output.append('    ' + c + ' #' + str(nb + 1))
+					o.append('    ' + c + ' #' + str(nb + 1))
+			output.append('\n'.join(o))
 
-		return '\n'.join(output)
+		return '\n\n'.join(output)
