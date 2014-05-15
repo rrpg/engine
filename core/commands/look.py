@@ -34,7 +34,7 @@ class look(core.command.command):
 
 		if what is not None:
 			if what not in sections.keys():
-				raise core.command.exception('Unknown section')
+				raise core.command.exception(_('ERROR_LOOK_UNKNOWN_SECTION'))
 			result[sections[what][0]] = sections[what][1](areaId)
 		else:
 			for s in sections:
