@@ -12,38 +12,64 @@ import json
 class dropTests(tests.common.common):
 	# Quantity tests
 	def test_invalid_quantity_text(self):
+		inv = self.getInventory()
+
 		self.rpgText.setAction([_('DROP_COMMAND'), 'ten', 'Heavy breastplate', 'chest', 1])
 		output = self.rpgText._runAction()
 		self.assertTrue(output == _('ERROR_DROP_INVALID_FORMAT_QUANTITY'))
 
+		self.compareInventory(inv)
+
 	def test_invalid_quantity_json(self):
+		inv = self.getInventory()
+
 		self.rpgJSON.setAction([_('DROP_COMMAND'), 'ten', 'Heavy breastplate', 'chest', 1])
 		output = self.rpgJSON._runAction()
 		self.assertTrue(output == {"error": {"message": _('ERROR_DROP_INVALID_FORMAT_QUANTITY'), "code": 1}})
 
+		self.compareInventory(inv)
+
 	def test_quantity_too_low_text(self):
+		inv = self.getInventory()
+
 		self.rpgText.setAction([_('DROP_COMMAND'), 0, 'Heavy breastplate'])
 		output = self.rpgText._runAction()
 		self.assertTrue(output == _('ERROR_DROP_TOO_LOW_QUANTITY'))
 
+		self.compareInventory(inv)
+
 	def test_quantity_too_low_json(self):
+		inv = self.getInventory()
+
 		self.rpgJSON.setAction([_('DROP_COMMAND'), 0, 'Heavy breastplate'])
 		output = self.rpgJSON._runAction()
 		self.assertTrue(output == {"error": {"message": _('ERROR_DROP_TOO_LOW_QUANTITY'), "code": 1}})
 
+		self.compareInventory(inv)
+
 	def test_quantity_too_high_text(self):
 		self.rpgText.setAction([_('TAKE_COMMAND'), 2, 'Heavy breastplate'])
 		self.rpgText._runAction()
+
+		inv = self.getInventory()
+
 		self.rpgText.setAction([_('DROP_COMMAND'), 10, 'Heavy breastplate'])
 		output = self.rpgText._runAction()
 		self.assertTrue(output == _('ERROR_DROP_QUANTITY_TOO_HIGH_%s') % 'Heavy breastplate')
 
+		self.compareInventory(inv)
+
 	def test_quantity_too_high_json(self):
 		self.rpgJSON.setAction([_('TAKE_COMMAND'), 2, 'Heavy breastplate'])
 		self.rpgJSON._runAction()
+
+		inv = self.getInventory()
+
 		self.rpgJSON.setAction([_('DROP_COMMAND'), 10, 'Heavy breastplate'])
 		output = self.rpgJSON._runAction()
 		self.assertTrue(output == {"error": {"message": _('ERROR_DROP_QUANTITY_TOO_HIGH_%s') % 'Heavy breastplate', "code": 1}})
+
+		self.compareInventory(inv)
 
 	# Items tests
 	def test_item_missing_text(self):
