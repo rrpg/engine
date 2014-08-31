@@ -16,88 +16,119 @@ class look(core.command.command):
 		Display some informations about the player's current position
 		(characters arround, availables directions...).
 		"""
-		result = dict()
+		sections = {
+			_('LOOK_REGION_PARAM'): ['region', area.area.getRegionNameFromAreaId],
+			_('LOOK_CHARACTERS_PARAM'): ['characters', self._getCharacters],
+			_('LOOK_DIRECTIONS_PARAM'): ['directions', self._getDirections],
+			_('LOOK_PLACES_PARAM'): ['places', self._getPlaces],
+			_('LOOK_OBJECTS_PARAM'): ['items', self._getObjects],
+			_('LOOK_CONTAINERS_PARAM'): ['item_containers', self._getContainers]
+		}
 
+		result = dict()
 		areaId = self._player.getAreaId()
 
-		# Display current area description
-		regionName = area.area.getRegionNameFromAreaId(areaId)
-		result['region'] = regionName
+		what = None
+		if len(self._args) > 0:
+			what = self._args[0]
 
+		if what is not None:
+			if what not in sections.keys():
+				raise core.command.exception(_('ERROR_LOOK_UNKNOWN_SECTION'))
+			result[sections[what][0]] = sections[what][1](areaId)
+		else:
+			for s in sections:
+				result[sections[s][0]] = sections[s][1](areaId)
+
+		return result
+
+	def _getCharacters(self, areaId):
+		characters = list()
 		# Display surrounding characters
-		characters = character.character.searchByIdArea(areaId)
-		# the player is in the result list
-		result['characters'] = list()
-		for c in characters:
+		for c in character.character.searchByIdArea(areaId):
 			if c._model['id_character'] != self._player._model['id_character']:
-				result['characters'].append(c._model['name'])
+				characters.append(c._model['name'])
+		return characters
 
+	def _getDirections(self, areaId):
+		directions = list()
 		# Display accessible areas
 		areas = area.model.getSurroundingAreas(areaId)
-		directions = area.area.getValidDirections(areas['directions'])
-		result['directions'] = list()
-		for d in directions:
-			result['directions'].append(d)
+		for d in area.area.getValidDirections(areas['directions']):
+			directions.append(d)
+		return directions
 
+	def _getPlaces(self, areaId):
+		places = list()
 		# Display accessible places
-		places = place.model.getSurroundingPlaces(areaId)
-		result['places'] = list()
-		for p in places:
-			result['places'].append(p['name'])
+		for p in place.model.getSurroundingPlaces(areaId):
+			places.append(p['name'])
+		return places
 
+	def _getObjects(self, areaId):
+		objects = list()
 		# Display surrounding objects
 		items = item.inventory.fromStr(
 			area.model.loadById(areaId, ['items'])['items']
 		)
-		result['items'] = list()
 		for i in items:
 			it = item.model.loadById(i)
-			result['items'].append({
+			objects.append({
 				'name': it['name'],
 				'quantity': items[i]['quantity']
 			})
+		return objects
 
-		result['item_containers'] = dict()
+	def _getContainers(self, areaId):
+		containers = dict()
 		for c in item_container.container.getAllFromIdArea(areaId):
 			try:
-				result['item_containers'][c['type_label']] = result['item_containers'][c['type_label']] + 1
+				containers[c['type_label']] = containers[c['type_label']] + 1
 			except KeyError:
-				result['item_containers'][c['type_label']] = 1
-
-		return result
+				containers[c['type_label']] = 1
+		return containers
 
 	def render(self, data):
-		output = [_('CURRENT_REGION_%s') % data['region']]
+		sections = data.keys()
+		output = list()
 
-		if len(data['characters']) > 0:
-			output.append('')
-			output.append(_('PRESENT_CHARACTERS'))
+		if 'region' in sections:
+			output.append(_('CURRENT_REGION_%s') % data['region'])
+
+		if 'characters' in sections:
+			o = list()
+			o.append(_('PRESENT_CHARACTERS'))
 			for c in data['characters']:
-				output.append('    ' + str(c))
+				o.append('    ' + str(c))
+			output.append('\n'.join(o))
 
-		if len(data['directions']) > 0:
-			output.append('')
-			output.append(_('AVAILABLE_DIRECTIONS'))
+		if 'directions' in sections:
+			o = list()
+			o.append(_('AVAILABLE_DIRECTIONS'))
 			for d in data['directions']:
-				output.append('    ' + d)
+				o.append('    ' + d)
+			output.append('\n'.join(o))
 
-		if len(data['places']) > 0:
-			output.append('')
-			output.append(_('AVAILABLE_PLACES'))
+		if 'places' in sections:
+			o = list()
+			o.append(_('AVAILABLE_PLACES'))
 			for p in data['places']:
-				output.append('    ' + p)
+				o.append('    ' + p)
+			output.append('\n'.join(o))
 
-		if len(data['items']) > 0:
-			output.append('')
-			output.append(_('AVAILABLE_ITEMS'))
+		if 'items' in sections:
+			o = list()
+			o.append(_('AVAILABLE_ITEMS'))
 			for i in data['items']:
-				output.append(str(i['quantity']).rjust(3) + ' ' + i['name'])
+				o.append(str(i['quantity']).rjust(3) + ' ' + i['name'])
+			output.append('\n'.join(o))
 
-		if len(data['item_containers']) > 0:
-			output.append('')
-			output.append(_('AVAILABLE_ITEMS_CONTAINERS'))
+		if 'item_containers' in sections:
+			o = list()
+			o.append(_('AVAILABLE_ITEMS_CONTAINERS'))
 			for c in sorted(data['item_containers'].keys()):
 				for nb in range(data['item_containers'][c]):
-					output.append('    ' + c + ' #' + str(nb + 1))
+					o.append('    ' + c + ' #' + str(nb + 1))
+			output.append('\n'.join(o))
 
-		return '\n'.join(output)
+		return '\n\n'.join(output)

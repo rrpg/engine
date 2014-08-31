@@ -34,3 +34,10 @@ class common(unittest.TestCase):
 		self.rpgText.init(self.dbFile, self.login, self.password)
 		self.rpgJSON = Rpg.Rpg(renderMode=Rpg.RENDER_JSON, isInteractive=False)
 		self.rpgJSON.init(self.dbFile, self.login, self.password)
+
+	def getInventory(self):
+		return self.rpgJSON._player.getInventory()
+
+	def compareInventory(self, inv):
+		new = self.getInventory()
+		self.assertTrue(inv == new)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-08 16:06+0100\n"
+"POT-Creation-Date: 2014-05-15 09:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,6 +56,13 @@ msgstr ""
 #: core/command_factory.py:39 core/commands/help.py:38
 #: tests/commands/testHelp.py:26 tests/commands/testHelp.py:75
 #: tests/commands/testLook.py:15 tests/commands/testLook.py:39
+#: tests/commands/testLook.py:51 tests/commands/testLook.py:56
+#: tests/commands/testLook.py:62 tests/commands/testLook.py:67
+#: tests/commands/testLook.py:72 tests/commands/testLook.py:77
+#: tests/commands/testLook.py:82 tests/commands/testLook.py:90
+#: tests/commands/testLook.py:95 tests/commands/testLook.py:100
+#: tests/commands/testLook.py:105 tests/commands/testLook.py:111
+#: tests/commands/testLook.py:116 tests/commands/testLook.py:124
 msgid "LOOK_COMMAND"
 msgstr ""
 
@@ -294,7 +301,7 @@ msgstr ""
 msgid "ERROR_DROP_QUANTITY_TOO_HIGH_%s"
 msgstr ""
 
-#: core/commands/drop.py:61 tests/commands/testDrop.py:173
+#: core/commands/drop.py:62 tests/commands/testDrop.py:173
 #: tests/commands/testDrop.py:187 tests/commands/testDrop.py:201
 #: tests/commands/testDrop.py:215 tests/commands/testDrop.py:229
 #: tests/commands/testDrop.py:243
@@ -450,28 +457,69 @@ msgstr ""
 msgid "ERROR_MULTIPLE_CONTAINERS_AVAILABLE"
 msgstr ""
 
-#: core/commands/look.py:70 tests/commands/testLook.py:18
+#: core/commands/look.py:20 tests/commands/testLook.py:62
+#: tests/commands/testLook.py:67
+msgid "LOOK_REGION_PARAM"
+msgstr ""
+
+#: core/commands/look.py:21 tests/commands/testLook.py:72
+#: tests/commands/testLook.py:77
+msgid "LOOK_CHARACTERS_PARAM"
+msgstr ""
+
+#: core/commands/look.py:22 tests/commands/testLook.py:82
+#: tests/commands/testLook.py:90
+msgid "LOOK_DIRECTIONS_PARAM"
+msgstr ""
+
+#: core/commands/look.py:23 tests/commands/testLook.py:95
+#: tests/commands/testLook.py:100
+msgid "LOOK_PLACES_PARAM"
+msgstr ""
+
+#: core/commands/look.py:24 tests/commands/testLook.py:105
+#: tests/commands/testLook.py:111
+msgid "LOOK_OBJECTS_PARAM"
+msgstr ""
+
+#: core/commands/look.py:25 tests/commands/testLook.py:116
+#: tests/commands/testLook.py:124
+msgid "LOOK_CONTAINERS_PARAM"
+msgstr ""
+
+#: core/commands/look.py:37 tests/commands/testLook.py:53
+#: tests/commands/testLook.py:58
+msgid "ERROR_LOOK_UNKNOWN_SECTION"
+msgstr ""
+
+#: core/commands/look.py:96 tests/commands/testLook.py:18
+#: tests/commands/testLook.py:64
 #, python-format
 msgid "CURRENT_REGION_%s"
 msgstr ""
 
-#: core/commands/look.py:74 tests/commands/testLook.py:20
+#: core/commands/look.py:100 tests/commands/testLook.py:20
+#: tests/commands/testLook.py:74
 msgid "PRESENT_CHARACTERS"
 msgstr ""
 
-#: core/commands/look.py:80 tests/commands/testLook.py:23
+#: core/commands/look.py:107 tests/commands/testLook.py:23
+#: tests/commands/testLook.py:85
 msgid "AVAILABLE_DIRECTIONS"
 msgstr ""
 
-#: core/commands/look.py:86 tests/commands/testLook.py:26
+#: core/commands/look.py:114 tests/commands/testLook.py:26
+#: tests/commands/testLook.py:97
 msgid "AVAILABLE_PLACES"
 msgstr ""
 
-#: core/commands/look.py:92 tests/commands/testLook.py:29
+#: core/commands/look.py:121 tests/commands/testLook.py:29
+#: tests/commands/testLook.py:107
 msgid "AVAILABLE_ITEMS"
 msgstr ""
 
-#: core/commands/look.py:98 tests/commands/testLook.py:32
+#: core/commands/look.py:128 tests/commands/testLook.py:32
+#: tests/commands/testLook.py:118
 msgid "AVAILABLE_ITEMS_CONTAINERS"
 msgstr ""
 
@@ -573,7 +621,8 @@ msgid "ERROR_TALK_UNKNOWN_SENTENCE"
 msgstr ""
 
 #: models/area.py:21 tests/commands/testLook.py:24
-#: tests/commands/testLook.py:42 tests/commands/testMove.py:44
+#: tests/commands/testLook.py:42 tests/commands/testLook.py:86
+#: tests/commands/testLook.py:92 tests/commands/testMove.py:44
 #: tests/commands/testMove.py:46 tests/commands/testMove.py:49
 #: tests/commands/testMove.py:51
 msgid "DIRECTION_KEY_NORTH"
