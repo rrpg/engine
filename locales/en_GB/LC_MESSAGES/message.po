@@ -492,7 +492,7 @@ msgstr "objects"
 #: core/commands/look.py:25 tests/commands/testLook.py:116
 #: tests/commands/testLook.py:124
 msgid "LOOK_CONTAINERS_PARAM"
-msgstr containers"
+msgstr "containers"
 
 #: core/commands/look.py:37 tests/commands/testLook.py:53
 #: tests/commands/testLook.py:58
