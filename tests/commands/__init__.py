@@ -11,5 +11,6 @@ __all__ = [
 	'testMove',
 	'testTake',
 	'testTalk',
-	'testOpen'
+	'testOpen',
+	'testAuthenticate'
 ]
