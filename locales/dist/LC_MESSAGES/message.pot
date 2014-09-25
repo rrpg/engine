@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-15 09:08+0100\n"
+"POT-Creation-Date: 2014-09-25 20:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,7 +53,7 @@ msgstr ""
 msgid "COMMAND_PROMPT"
 msgstr ""
 
-#: core/command_factory.py:39 core/commands/help.py:38
+#: core/command_factory.py:40 core/commands/help.py:38
 #: tests/commands/testHelp.py:26 tests/commands/testHelp.py:75
 #: tests/commands/testLook.py:15 tests/commands/testLook.py:39
 #: tests/commands/testLook.py:51 tests/commands/testLook.py:56
@@ -66,7 +66,7 @@ msgstr ""
 msgid "LOOK_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:40 core/commands/help.py:22
+#: core/command_factory.py:41 core/commands/help.py:22
 #: tests/commands/testHelp.py:18 tests/commands/testHelp.py:59
 #: tests/commands/testTalk.py:14 tests/commands/testTalk.py:19
 #: tests/commands/testTalk.py:24 tests/commands/testTalk.py:29
@@ -76,7 +76,7 @@ msgstr ""
 msgid "TALK_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:41 core/commands/help.py:26
+#: core/command_factory.py:42 core/commands/help.py:26
 #: tests/commands/testHelp.py:20 tests/commands/testHelp.py:63
 #: tests/commands/testMove.py:14 tests/commands/testMove.py:19
 #: tests/commands/testMove.py:24 tests/commands/testMove.py:29
@@ -85,7 +85,7 @@ msgstr ""
 msgid "MOVE_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:42 core/commands/help.py:30
+#: core/command_factory.py:43 core/commands/help.py:30
 #: tests/commands/testEnter.py:14 tests/commands/testEnter.py:19
 #: tests/commands/testEnter.py:24 tests/commands/testEnter.py:29
 #: tests/commands/testEnter.py:34 tests/commands/testEnter.py:39
@@ -97,7 +97,7 @@ msgstr ""
 msgid "ENTER_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:43 core/commands/help.py:34
+#: core/command_factory.py:44 core/commands/help.py:34
 #: tests/commands/testExit.py:13 tests/commands/testExit.py:18
 #: tests/commands/testExit.py:23 tests/commands/testExit.py:28
 #: tests/commands/testExit.py:33 tests/commands/testExit.py:38
@@ -107,19 +107,19 @@ msgstr ""
 msgid "EXIT_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:44 core/commands/help.py:51
-#: tests/commands/testDrop.py:35 tests/commands/testDrop.py:42
-#: tests/commands/testDrop.py:91 tests/commands/testDrop.py:98
-#: tests/commands/testDrop.py:105 tests/commands/testDrop.py:112
-#: tests/commands/testDrop.py:120 tests/commands/testDrop.py:127
-#: tests/commands/testDrop.py:134 tests/commands/testDrop.py:141
-#: tests/commands/testDrop.py:148 tests/commands/testDrop.py:158
-#: tests/commands/testDrop.py:169 tests/commands/testDrop.py:176
-#: tests/commands/testDrop.py:183 tests/commands/testDrop.py:190
-#: tests/commands/testDrop.py:197 tests/commands/testDrop.py:204
-#: tests/commands/testDrop.py:211 tests/commands/testDrop.py:218
-#: tests/commands/testDrop.py:225 tests/commands/testDrop.py:232
-#: tests/commands/testDrop.py:239 tests/commands/testDrop.py:246
+#: core/command_factory.py:45 core/commands/help.py:51
+#: tests/commands/testDrop.py:51 tests/commands/testDrop.py:63
+#: tests/commands/testDrop.py:117 tests/commands/testDrop.py:124
+#: tests/commands/testDrop.py:131 tests/commands/testDrop.py:138
+#: tests/commands/testDrop.py:146 tests/commands/testDrop.py:153
+#: tests/commands/testDrop.py:160 tests/commands/testDrop.py:167
+#: tests/commands/testDrop.py:174 tests/commands/testDrop.py:184
+#: tests/commands/testDrop.py:195 tests/commands/testDrop.py:202
+#: tests/commands/testDrop.py:209 tests/commands/testDrop.py:216
+#: tests/commands/testDrop.py:223 tests/commands/testDrop.py:230
+#: tests/commands/testDrop.py:237 tests/commands/testDrop.py:244
+#: tests/commands/testDrop.py:251 tests/commands/testDrop.py:258
+#: tests/commands/testDrop.py:265 tests/commands/testDrop.py:272
 #: tests/commands/testHelp.py:33 tests/commands/testHelp.py:87
 #: tests/commands/testInventory.py:24 tests/commands/testInventory.py:32
 #: tests/commands/testTake.py:15 tests/commands/testTake.py:20
@@ -145,49 +145,49 @@ msgstr ""
 msgid "TAKE_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:45 core/commands/help.py:61
-#: tests/commands/testDrop.py:15 tests/commands/testDrop.py:20
-#: tests/commands/testDrop.py:25 tests/commands/testDrop.py:30
-#: tests/commands/testDrop.py:37 tests/commands/testDrop.py:44
-#: tests/commands/testDrop.py:50 tests/commands/testDrop.py:55
-#: tests/commands/testDrop.py:60 tests/commands/testDrop.py:65
-#: tests/commands/testDrop.py:70 tests/commands/testDrop.py:75
-#: tests/commands/testDrop.py:80 tests/commands/testDrop.py:85
-#: tests/commands/testDrop.py:93 tests/commands/testDrop.py:100
-#: tests/commands/testDrop.py:107 tests/commands/testDrop.py:114
-#: tests/commands/testDrop.py:122 tests/commands/testDrop.py:129
-#: tests/commands/testDrop.py:136 tests/commands/testDrop.py:143
-#: tests/commands/testDrop.py:150 tests/commands/testDrop.py:153
-#: tests/commands/testDrop.py:160 tests/commands/testDrop.py:163
-#: tests/commands/testDrop.py:171 tests/commands/testDrop.py:178
-#: tests/commands/testDrop.py:185 tests/commands/testDrop.py:192
-#: tests/commands/testDrop.py:199 tests/commands/testDrop.py:206
-#: tests/commands/testDrop.py:213 tests/commands/testDrop.py:220
-#: tests/commands/testDrop.py:227 tests/commands/testDrop.py:234
-#: tests/commands/testDrop.py:241 tests/commands/testDrop.py:248
+#: core/command_factory.py:46 core/commands/help.py:61
+#: tests/commands/testDrop.py:17 tests/commands/testDrop.py:26
+#: tests/commands/testDrop.py:35 tests/commands/testDrop.py:44
+#: tests/commands/testDrop.py:56 tests/commands/testDrop.py:68
+#: tests/commands/testDrop.py:76 tests/commands/testDrop.py:81
+#: tests/commands/testDrop.py:86 tests/commands/testDrop.py:91
+#: tests/commands/testDrop.py:96 tests/commands/testDrop.py:101
+#: tests/commands/testDrop.py:106 tests/commands/testDrop.py:111
+#: tests/commands/testDrop.py:119 tests/commands/testDrop.py:126
+#: tests/commands/testDrop.py:133 tests/commands/testDrop.py:140
+#: tests/commands/testDrop.py:148 tests/commands/testDrop.py:155
+#: tests/commands/testDrop.py:162 tests/commands/testDrop.py:169
+#: tests/commands/testDrop.py:176 tests/commands/testDrop.py:179
+#: tests/commands/testDrop.py:186 tests/commands/testDrop.py:189
+#: tests/commands/testDrop.py:197 tests/commands/testDrop.py:204
+#: tests/commands/testDrop.py:211 tests/commands/testDrop.py:218
+#: tests/commands/testDrop.py:225 tests/commands/testDrop.py:232
+#: tests/commands/testDrop.py:239 tests/commands/testDrop.py:246
+#: tests/commands/testDrop.py:253 tests/commands/testDrop.py:260
+#: tests/commands/testDrop.py:267 tests/commands/testDrop.py:274
 #: tests/commands/testHelp.py:41 tests/commands/testHelp.py:91
 msgid "DROP_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:46 core/commands/help.py:42
+#: core/command_factory.py:47 core/commands/help.py:42
 #: tests/commands/testHelp.py:28 tests/commands/testHelp.py:79
 #: tests/commands/testInventory.py:14 tests/commands/testInventory.py:19
 #: tests/commands/testInventory.py:26 tests/commands/testInventory.py:34
 msgid "INVENTORY_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:47 core/commands/help.py:42
+#: core/command_factory.py:48 core/commands/help.py:42
 #: tests/commands/testHelp.py:28 tests/commands/testHelp.py:79
 msgid "INVENTORY_SHORT_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:48 core/commands/help.py:70
+#: core/command_factory.py:49 core/commands/help.py:70
 #: tests/commands/testHelp.py:15 tests/commands/testHelp.py:48
 #: tests/commands/testHelp.py:55 tests/commands/testHelp.py:95
 msgid "HELP_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:49 core/commands/help.py:46
+#: core/command_factory.py:50 core/commands/help.py:46
 #: tests/commands/testHelp.py:30 tests/commands/testHelp.py:83
 #: tests/commands/testOpen.py:14 tests/commands/testOpen.py:19
 #: tests/commands/testOpen.py:24 tests/commands/testOpen.py:29
@@ -202,18 +202,27 @@ msgstr ""
 msgid "OPEN_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:75 core/commands/help.py:74
+#: core/command_factory.py:77 core/commands/help.py:74
 #: tests/commands/testHelp.py:50 tests/commands/testHelp.py:99
 msgid "QUIT_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:75 core/commands/help.py:74
+#: core/command_factory.py:77 core/commands/help.py:74
 #: tests/commands/testHelp.py:50 tests/commands/testHelp.py:99
 msgid "QUIT_SHORT_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:84 core/command_factory.py:97
+#: core/command_factory.py:86 core/command_factory.py:99
 msgid "ERROR_UNKNOWN_COMMAND"
+msgstr ""
+
+#: core/commands/authenticate.py:17 tests/commands/testAuthenticate.py:19
+#: tests/commands/testAuthenticate.py:24
+msgid "ERROR_AUTHENTICATE_ARGUMENTS_NUMBER"
+msgstr ""
+
+#: core/commands/authenticate.py:26 tests/commands/testAuthenticate.py:39
+msgid "PLAYER_AUTHENTICATION_CONFIRMATION"
 msgstr ""
 
 #: core/commands/createPlayer.py:23 tests/commands/testCreatePlayer.py:19
@@ -264,47 +273,47 @@ msgstr ""
 msgid "PLAYER_CREATION_CONFIRMATION"
 msgstr ""
 
-#: core/commands/drop.py:20 tests/commands/testDrop.py:52
-#: tests/commands/testDrop.py:57 tests/commands/testDrop.py:62
-#: tests/commands/testDrop.py:67
+#: core/commands/drop.py:20 tests/commands/testDrop.py:78
+#: tests/commands/testDrop.py:83 tests/commands/testDrop.py:88
+#: tests/commands/testDrop.py:93
 msgid "ERROR_DROP_NO_ITEM_GIVEN"
 msgstr ""
 
-#: core/commands/drop.py:22 tests/commands/testDrop.py:27
-#: tests/commands/testDrop.py:32
+#: core/commands/drop.py:22 tests/commands/testDrop.py:37
+#: tests/commands/testDrop.py:46
 msgid "ERROR_DROP_TOO_LOW_QUANTITY"
 msgstr ""
 
-#: core/commands/drop.py:24 tests/commands/testDrop.py:17
-#: tests/commands/testDrop.py:22
+#: core/commands/drop.py:24 tests/commands/testDrop.py:19
+#: tests/commands/testDrop.py:28
 msgid "ERROR_DROP_INVALID_FORMAT_QUANTITY"
 msgstr ""
 
-#: core/commands/drop.py:26 tests/commands/testDrop.py:138
-#: tests/commands/testDrop.py:145
+#: core/commands/drop.py:26 tests/commands/testDrop.py:164
+#: tests/commands/testDrop.py:171
 msgid "ERROR_DROP_INVALID_CONTAINER_INDEX"
 msgstr ""
 
-#: core/commands/drop.py:40 tests/commands/testDrop.py:72
-#: tests/commands/testDrop.py:77
+#: core/commands/drop.py:40 tests/commands/testDrop.py:98
+#: tests/commands/testDrop.py:103
 msgid "ERROR_DROP_UNKNOWN_ITEM"
 msgstr ""
 
-#: core/commands/drop.py:45 tests/commands/testDrop.py:82
-#: tests/commands/testDrop.py:87
+#: core/commands/drop.py:45 tests/commands/testDrop.py:108
+#: tests/commands/testDrop.py:113
 msgid "ERROR_DROP_ITEM_NOT_AVAILABLE"
 msgstr ""
 
-#: core/commands/drop.py:47 tests/commands/testDrop.py:39
-#: tests/commands/testDrop.py:46
+#: core/commands/drop.py:47 tests/commands/testDrop.py:58
+#: tests/commands/testDrop.py:70
 #, python-format
 msgid "ERROR_DROP_QUANTITY_TOO_HIGH_%s"
 msgstr ""
 
-#: core/commands/drop.py:62 tests/commands/testDrop.py:173
-#: tests/commands/testDrop.py:187 tests/commands/testDrop.py:201
-#: tests/commands/testDrop.py:215 tests/commands/testDrop.py:229
-#: tests/commands/testDrop.py:243
+#: core/commands/drop.py:62 tests/commands/testDrop.py:199
+#: tests/commands/testDrop.py:213 tests/commands/testDrop.py:227
+#: tests/commands/testDrop.py:241 tests/commands/testDrop.py:255
+#: tests/commands/testDrop.py:269
 #, python-format
 msgid "DROP_CONFIRMATION_%(quantity)s_%(name)s"
 msgstr ""
@@ -432,16 +441,16 @@ msgstr ""
 msgid "AVAILABLE_COMMANDS_TITLE"
 msgstr ""
 
-#: core/commands/item_interaction.py:50 tests/commands/testDrop.py:109
-#: tests/commands/testDrop.py:116 tests/commands/testOpen.py:26
+#: core/commands/item_interaction.py:50 tests/commands/testDrop.py:135
+#: tests/commands/testDrop.py:142 tests/commands/testOpen.py:26
 #: tests/commands/testOpen.py:31 tests/commands/testTake.py:99
 #: tests/commands/testTake.py:104
 msgid "ERROR_CONTAINER_NOT_AVAILABLE"
 msgstr ""
 
-#: core/commands/item_interaction.py:56 tests/commands/testDrop.py:152
-#: tests/commands/testDrop.py:155 tests/commands/testDrop.py:162
-#: tests/commands/testDrop.py:165 tests/commands/testOpen.py:70
+#: core/commands/item_interaction.py:56 tests/commands/testDrop.py:178
+#: tests/commands/testDrop.py:181 tests/commands/testDrop.py:188
+#: tests/commands/testDrop.py:191 tests/commands/testOpen.py:70
 #: tests/commands/testOpen.py:82 tests/commands/testOpen.py:103
 #: tests/commands/testOpen.py:111 tests/commands/testTake.py:130
 #: tests/commands/testTake.py:133 tests/commands/testTake.py:140
@@ -450,8 +459,8 @@ msgstr ""
 msgid "ERROR_OUT_OF_RANGE_ITEM_CONTAINER_INDEX_%d"
 msgstr ""
 
-#: core/commands/item_interaction.py:59 tests/commands/testDrop.py:124
-#: tests/commands/testDrop.py:131 tests/commands/testOpen.py:46
+#: core/commands/item_interaction.py:59 tests/commands/testDrop.py:150
+#: tests/commands/testDrop.py:157 tests/commands/testOpen.py:46
 #: tests/commands/testOpen.py:51 tests/commands/testTake.py:110
 #: tests/commands/testTake.py:115
 msgid "ERROR_MULTIPLE_CONTAINERS_AVAILABLE"
@@ -649,8 +658,8 @@ msgstr ""
 msgid "AREA_TYPE_LAND"
 msgstr ""
 
-#: models/item_container.py:32 tests/commands/testDrop.py:95
-#: tests/commands/testDrop.py:102 tests/commands/testOpen.py:36
+#: models/item_container.py:32 tests/commands/testDrop.py:121
+#: tests/commands/testDrop.py:128 tests/commands/testOpen.py:36
 #: tests/commands/testOpen.py:41 tests/commands/testTake.py:89
 #: tests/commands/testTake.py:94
 msgid "ERROR_UNKNOWN_ITEM_CONTAINER_TYPE_LABEL"
@@ -682,6 +691,7 @@ msgstr ""
 msgid "ERROR_PLACE_GENERATION"
 msgstr ""
 
-#: models/player.py:33
+#: models/player.py:33 tests/commands/testAuthenticate.py:29
+#: tests/commands/testAuthenticate.py:34
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
 msgstr ""
