@@ -128,7 +128,10 @@ class Rpg:
 		else ask the player to enter a command
 		'''
 		if len(self._action) > 0:
-			print(self._runAction())
+			result = self._runAction()
+			if self._renderMode == RENDER_JSON:
+				result = json.dumps(result, ensure_ascii=False)
+			print(result)
 		else:
 			c = ''
 			result = 0
@@ -234,7 +237,7 @@ class Rpg:
 				excep = {'error': {'code': e.code, 'message': str(e)}}
 				if self._debug:
 					excep['backtrace'] = traceback.format_exc()
-				return excep
+				return json.dumps(excep, ensure_ascii=False)
 			elif self._debug:
 				return traceback.format_exc()
 			else:
