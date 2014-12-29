@@ -38,7 +38,9 @@ class look(core.command.command):
 			result[sections[what][0]] = sections[what][1](areaId)
 		else:
 			for s in sections:
-				result[sections[s][0]] = sections[s][1](areaId)
+				values = sections[s][1](areaId)
+				if values:
+					result[sections[s][0]] = values
 
 		return result
 
