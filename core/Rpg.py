@@ -45,7 +45,7 @@ class Rpg:
 		Will raise an core.exception.exception if no login/password are provided
 		and the provided action needs player.
 		"""
-		if world is None:
+		if world is '':
 			world = config.db
 
 		registry.set("world", world)

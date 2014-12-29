@@ -47,7 +47,7 @@ def main(argv):
 	isInteractive = args.action == []
 	rpg = core.Rpg.Rpg(args.debug, render, isInteractive)
 
-	world = str(args.world)
+	world = '' if args.world is None else str(args.world)
 	login = None
 	password = None
 	if args.login is not None:
