@@ -237,7 +237,7 @@ class Rpg:
 				excep = {'error': {'code': e.code, 'message': str(e)}}
 				if self._debug:
 					excep['backtrace'] = traceback.format_exc()
-				return json.dumps(excep, ensure_ascii=False)
+				return excep
 			elif self._debug:
 				return traceback.format_exc()
 			else:
