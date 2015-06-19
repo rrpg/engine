@@ -15,11 +15,13 @@ Today, the available commands are:
 - stats,
 - help,
 - quit,
-- authenticate
+- authenticate,
+- attack
 """
 import core.command
 from core.commands import look, talk, move, enter, exit, take, drop, inventory,\
-	help, createPlayer, listSpecies, listGenders, open, authenticate, stats
+	help, createPlayer, listSpecies, listGenders, open, authenticate,\
+	stats, attack
 from core.localisation import _
 import sys
 
@@ -49,7 +51,8 @@ class factory:
 		_('INVENTORY_SHORT_COMMAND'): {'allowed_while_fighting': True, 'command': 'inventory'},
 		_('STATS_COMMAND'): {'allowed_while_fighting': True, 'command': 'stats'},
 		_('HELP_COMMAND'): {'allowed_while_fighting': True, 'command': 'help'},
-		_('OPEN_COMMAND'): {'allowed_while_fighting': False, 'command': 'open'}
+		_('OPEN_COMMAND'): {'allowed_while_fighting': False, 'command': 'open'},
+		_('ATTACK_COMMAND'): {'allowed_while_fighting': True, 'command': 'attack'}
 	}
 
 	mapping_anonymous = {
@@ -104,4 +107,3 @@ class factory:
 			return False
 		else:
 			raise core.command.exception(_('ERROR_UNKNOWN_COMMAND'))
-
