@@ -101,6 +101,17 @@ class character:
 	def fight(self):
 		model.setIsFighting(self._model['id_character'], True)
 
+	def getStats(self):
+		"""
+		c.getStats() -> dict
+
+		Return a dict with the characters stats. the keys are the stats names,
+		taken from the model's field names, minus the stats_prefix
+
+		@return dict
+		"""
+		return {name[5:]: self._model[name] for name in self._model.keys() if name[:5] == 'stat_'}
+
 	def goTo(self, idArea):
 		"""
 		character.character.goTo(idArea)
@@ -162,7 +173,13 @@ class model(Model):
 	Class to interact with the values in the database.
 	"""
 
-	fields = ('id_character', 'name', 'can_fight', 'is_fighting', 'id_species', 'id_gender', 'id_area', 'inventory')
+	fields = ('id_character',
+		'name', 'can_fight', 'is_fighting',
+		'stat_strength',
+		'stat_defence',
+		'stat_speed',
+		'stat_accuracy',
+		'id_species', 'id_gender', 'id_area', 'inventory')
 
 	@staticmethod
 	def savePosition(idCharacter, idArea):

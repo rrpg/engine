@@ -17,6 +17,10 @@ CREATE TABLE `character` (
 	inventory TEXT,
 	can_fight BIT NOT NULL DEFAULT 1,
 	is_fighting BIT NOT NULL DEFAULT 0,
+	stat_strength TINYINT NOT NULL DEFAULT 1,
+	stat_defence TINYINT NOT NULL DEFAULT 1,
+	stat_speed TINYINT NOT NULL DEFAULT 1,
+	stat_accuracy TINYINT NOT NULL DEFAULT 1,
 	id_species INT REFERENCES species (id_species),
 	id_gender INT REFERENCES gender (id_gender),
 	id_area INT REFERENCES area (id_area)
