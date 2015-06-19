@@ -78,6 +78,29 @@ class character:
 		"""
 		return self._model['id_character']
 
+	def canFight(self):
+		"""
+		c.canFight() -> boolean
+
+		Returns true if the character can fight
+
+		@return boolean
+		"""
+		return self._model['can_fight']
+
+	def isFighting(self):
+		"""
+		c.isFighting() -> boolean
+
+		Returns true if the character is fighting
+
+		@return boolean
+		"""
+		return self._model['is_fighting']
+
+	def fight(self):
+		model.setIsFighting(self._model['id_character'], True)
+
 	def goTo(self, idArea):
 		"""
 		character.character.goTo(idArea)
@@ -139,7 +162,7 @@ class model(Model):
 	Class to interact with the values in the database.
 	"""
 
-	fields = ('id_character', 'name', 'id_species', 'id_gender', 'id_area', 'inventory')
+	fields = ('id_character', 'name', 'can_fight', 'is_fighting', 'id_species', 'id_gender', 'id_area', 'inventory')
 
 	@staticmethod
 	def savePosition(idCharacter, idArea):
@@ -153,6 +176,21 @@ class model(Model):
 		"""
 		model.update(
 			{'id_area': idArea},
+			('id_character = ?', [idCharacter])
+		)
+
+	@staticmethod
+	def setIsFighting(idCharacter, isFighting):
+		"""
+		character.model.savePosition(idCharacter, idArea)
+
+		Change a character's position
+
+		@param idCharacter integer id of the character to move
+		@param idArea id of the area where the character must go.
+		"""
+		model.update(
+			{'is_fighting': isFighting},
 			('id_character = ?', [idCharacter])
 		)
 
