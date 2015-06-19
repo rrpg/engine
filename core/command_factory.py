@@ -37,17 +37,17 @@ class factory:
 	the command class to execute.
 	"""
 	mapping = {
-		_('LOOK_COMMAND'): 'look',
-		_('TALK_COMMAND'): 'talk',
-		_('MOVE_COMMAND'): 'move',
-		_('ENTER_COMMAND'): 'enter',
-		_('EXIT_COMMAND'): 'exit',
-		_('TAKE_COMMAND'): 'take',
-		_('DROP_COMMAND'): 'drop',
-		_('INVENTORY_COMMAND'): 'inventory',
-		_('INVENTORY_SHORT_COMMAND'): 'inventory',
-		_('HELP_COMMAND'): 'help',
-		_('OPEN_COMMAND'): 'open'
+		_('LOOK_COMMAND'): {'allowed_while_fighting': True, 'command': 'look'},
+		_('TALK_COMMAND'): {'allowed_while_fighting': False, 'command': 'talk'},
+		_('MOVE_COMMAND'): {'allowed_while_fighting': True, 'command': 'move'},
+		_('ENTER_COMMAND'): {'allowed_while_fighting': True, 'command': 'enter'},
+		_('EXIT_COMMAND'): {'allowed_while_fighting': True, 'command': 'exit'},
+		_('TAKE_COMMAND'): {'allowed_while_fighting': False, 'command': 'take'},
+		_('DROP_COMMAND'): {'allowed_while_fighting': False, 'command': 'drop'},
+		_('INVENTORY_COMMAND'): {'allowed_while_fighting': True, 'command': 'inventory'},
+		_('INVENTORY_SHORT_COMMAND'): {'allowed_while_fighting': True, 'command': 'inventory'},
+		_('HELP_COMMAND'): {'allowed_while_fighting': True, 'command': 'help'},
+		_('OPEN_COMMAND'): {'allowed_while_fighting': False, 'command': 'open'}
 	}
 
 	mapping_anonymous = {
@@ -77,8 +77,13 @@ class factory:
 		if cmd in (_('QUIT_COMMAND'), _('QUIT_SHORT_COMMAND')):
 			return quit
 		elif cmd in factory.mapping.keys():
-			module = sys.modules['core.commands.' + factory.mapping[cmd]]
-			cmd = getattr(module, factory.mapping[cmd])(isInteractive)
+			cmd = factory.mapping[cmd]
+			module = sys.modules['core.commands.' + cmd['command']]
+
+			if p.isFighting() and not cmd['allowed_while_fighting']:
+				raise core.command.exception(_('ERROR_DENIED_COMMAND_WHILE_FIGHTING'))
+
+			cmd = getattr(module, cmd['command'])(isInteractive)
 		elif not p.isConnected() and cmd in factory.mapping_anonymous.keys():
 			module = sys.modules['core.commands.' + factory.mapping_anonymous[cmd]]
 			cmd = getattr(module, factory.mapping_anonymous[cmd])(isInteractive)
