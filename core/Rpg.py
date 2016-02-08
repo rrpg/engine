@@ -48,10 +48,10 @@ class Rpg:
 		if world is '':
 			world = config.db
 
-		registry.set("world", world)
 		if os.path.isfile(world) is False:
 			raise core.exception.exception(_('ERROR_UNKNOWN_SELECTED_WORLD'))
 
+		registry.set("world", world)
 		isConnected = self._initPlayer(login, password)
 
 		if type(action) == list and len(action) > 0:
