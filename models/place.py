@@ -103,8 +103,8 @@ class randomPlace:
 		containerName = cls.areaType + '_' + str(place['id_place'])
 		idRegion = area.model.loadById(place['id_area'], ('id_region'))['id_region']
 
-		Model.connect()
-		c = Model.getCursor()
+		db = Model.connect()
+		c = db.cursor()
 		query = "INSERT INTO area\
 			(id_area_type, x, y, directions, container, id_region)\
 			VALUES (:id_area_type, :x, :y, :directions, :container, :id_region)"
@@ -124,7 +124,7 @@ class randomPlace:
 
 			if checks.isEntrance(int(room)):
 				entrance = c.lastrowid
-		Model.disconnect()
+		Model.disconnect(db)
 
 		model.update(
 			{'entrance_id': entrance},

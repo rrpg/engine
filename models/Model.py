@@ -18,8 +18,6 @@ class Model(object):
 	the table's primary key will be id_<module-name>
 	"""
 
-	_db = None
-
 	_table = None
 
 	@classmethod
@@ -44,8 +42,8 @@ class Model(object):
 			an empty list if there's no result.
 		"""
 
-		Model.connect()
-		c = Model._db.cursor()
+		db = Model.connect()
+		c = db.cursor()
 		result = []
 		currentRow = {}
 		nbCols = 0
@@ -58,7 +56,7 @@ class Model(object):
 		for r in result:
 			resultList.append(Model._createRow(r, column_names))
 
-		Model._db.close()
+		db.close()
 		return resultList
 
 	@staticmethod
@@ -75,8 +73,8 @@ class Model(object):
 			an empty dict if there's no result.
 		"""
 
-		Model.connect()
-		c = Model._db.cursor()
+		db = Model.connect()
+		c = db.cursor()
 		result = dict()
 		nbCols = 0
 		c.execute(query, params)
@@ -87,7 +85,7 @@ class Model(object):
 		if r is not None:
 			result = Model._createRow(r, column_names)
 
-		Model._db.close()
+		db.close()
 		return result
 
 	@classmethod
@@ -95,8 +93,8 @@ class Model(object):
 		"""
 		Insert a new row in the database
 		"""
-		Model.connect()
-		c = Model._db.cursor()
+		db = Model.connect()
+		c = db.cursor()
 
 		fields = cls.filterFields(fields)
 		fieldsNames = list(map(lambda x: '"' + x + '"', fields.keys()))
@@ -107,14 +105,14 @@ class Model(object):
 		)
 
 		c.execute(query, list(fields.values()))
-		Model.disconnect()
+		Model.disconnect(db)
 
 		return c.lastrowid
 
 	@classmethod
 	def update(cls, fields, where):
-		Model.connect()
-		c = Model._db.cursor()
+		db = Model.connect()
+		c = db.cursor()
 
 		fields = cls.filterFields(fields)
 		fieldsNames = map(lambda x: '"' + x + '" = ?', fields.keys())
@@ -122,17 +120,20 @@ class Model(object):
 		query = "UPDATE %(table)s SET %(values)s WHERE %(where)s" %\
 			{'table': cls.getClass(), 'values': ','.join(fieldsNames), 'where': where[0]}
 		c.execute(query, list(fields.values()) + where[1])
-		Model.disconnect()
+		Model.disconnect(db)
 
 	@staticmethod
-	def connect():
-		Model._db = sqlite3.connect(registry.get("world"))
-		Model._db.text_factory = str
+	def connect(db=None):
+		if db is None:
+			db = registry.get("world")
+		db = sqlite3.connect(db)
+		db.text_factory = str
+		return db
 
 	@classmethod
-	def disconnect(cls):
-		Model._db.commit()
-		Model._db.close()
+	def disconnect(cls, db):
+		db.commit()
+		db.close()
 
 	@staticmethod
 	def _createRow(sqliteRow, columns):
@@ -214,7 +215,3 @@ class Model(object):
 	@classmethod
 	def executeQuery(cls, cursor, query, params):
 		cursor.execute(query, params)
-
-	@classmethod
-	def getCursor(cls):
-		return Model._db.cursor()
