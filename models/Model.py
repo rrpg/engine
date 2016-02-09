@@ -18,8 +18,6 @@ class Model(object):
 	the table's primary key will be id_<module-name>
 	"""
 
-	_db = None
-
 	_table = None
 
 	@classmethod
@@ -31,7 +29,7 @@ class Model(object):
 
 	#public:
 	@staticmethod
-	def fetchAllRows(query, params={}):
+	def fetchAllRows(query, params={}, db=None):
 		"""
 		c.fetchAllRows(query, params) -> list()
 
@@ -39,13 +37,14 @@ class Model(object):
 
 		@param query string Sql query to execute
 		@param params dict the query's parameters
+		@param db string path to the sqlite db to use
 
 		@return list the result of the query, will be a list of dict, and
 			an empty list if there's no result.
 		"""
 
-		Model.connect()
-		c = Model._db.cursor()
+		db = Model.connect(db)
+		c = db.cursor()
 		result = []
 		currentRow = {}
 		nbCols = 0
@@ -58,11 +57,11 @@ class Model(object):
 		for r in result:
 			resultList.append(Model._createRow(r, column_names))
 
-		Model._db.close()
+		db.close()
 		return resultList
 
 	@staticmethod
-	def fetchOneRow(query, params={}):
+	def fetchOneRow(query, params={},db=None):
 		"""
 		c.fetchOneRow(query, params) -> dict()
 
@@ -70,13 +69,14 @@ class Model(object):
 
 		@param query string Sql query to execute
 		@param params dict the query's parameters
+		@param db string path to the sqlite db to use
 
 		@return dict the result of the query, will be a dict, and
 			an empty dict if there's no result.
 		"""
 
-		Model.connect()
-		c = Model._db.cursor()
+		db = Model.connect(db)
+		c = db.cursor()
 		result = dict()
 		nbCols = 0
 		c.execute(query, params)
@@ -87,16 +87,16 @@ class Model(object):
 		if r is not None:
 			result = Model._createRow(r, column_names)
 
-		Model._db.close()
+		db.close()
 		return result
 
 	@classmethod
-	def insert(cls, fields):
+	def insert(cls, fields, db=None):
 		"""
 		Insert a new row in the database
 		"""
-		Model.connect()
-		c = Model._db.cursor()
+		db = Model.connect(db)
+		c = db.cursor()
 
 		fields = cls.filterFields(fields)
 		fieldsNames = list(map(lambda x: '"' + x + '"', fields.keys()))
@@ -107,14 +107,14 @@ class Model(object):
 		)
 
 		c.execute(query, list(fields.values()))
-		Model.disconnect()
+		Model.disconnect(db)
 
 		return c.lastrowid
 
 	@classmethod
-	def update(cls, fields, where):
-		Model.connect()
-		c = Model._db.cursor()
+	def update(cls, fields, where, db=None):
+		db = Model.connect(db)
+		c = db.cursor()
 
 		fields = cls.filterFields(fields)
 		fieldsNames = map(lambda x: '"' + x + '" = ?', fields.keys())
@@ -122,17 +122,20 @@ class Model(object):
 		query = "UPDATE %(table)s SET %(values)s WHERE %(where)s" %\
 			{'table': cls.getClass(), 'values': ','.join(fieldsNames), 'where': where[0]}
 		c.execute(query, list(fields.values()) + where[1])
-		Model.disconnect()
+		Model.disconnect(db)
 
 	@staticmethod
-	def connect():
-		Model._db = sqlite3.connect(registry.get("world"))
-		Model._db.text_factory = str
+	def connect(db=None):
+		if db is None:
+			db = registry.get("world")
+		db = sqlite3.connect(db)
+		db.text_factory = str
+		return db
 
 	@classmethod
-	def disconnect(cls):
-		Model._db.commit()
-		Model._db.close()
+	def disconnect(cls, db):
+		db.commit()
+		db.close()
 
 	@staticmethod
 	def _createRow(sqliteRow, columns):
@@ -143,7 +146,7 @@ class Model(object):
 		return row
 
 	@classmethod
-	def loadAll(cls, fields=None):
+	def loadAll(cls, fields=None, db=None):
 		fields = cls.prepareFieldsForSelect(fields)
 
 		query = "\
@@ -153,10 +156,10 @@ class Model(object):
 				%(table)s\
 		" % {'fields': fields, 'table': cls.getClass()}
 
-		return Model.fetchAllRows(query, {})
+		return Model.fetchAllRows(query, db=db)
 
 	@classmethod
-	def loadById(cls, id, fields=None):
+	def loadById(cls, id, fields=None, db=None):
 		fields = cls.prepareFieldsForSelect(fields)
 
 		table = cls.getClass()
@@ -169,10 +172,10 @@ class Model(object):
 				%(where)s\
 		" % {'fields': fields, 'table': table, 'where': 'id_' + table + ' = ?'}
 
-		return Model.fetchOneRow(query, [id])
+		return Model.fetchOneRow(query, [id], db)
 
 	@classmethod
-	def loadBy(cls, filters, fields=None):
+	def loadBy(cls, filters, fields=None, db=None):
 		fields = cls.prepareFieldsForSelect(fields)
 
 		filters = cls.filterFields(filters)
@@ -191,7 +194,7 @@ class Model(object):
 			'where': ' AND '.join(filtersNames)
 		}
 
-		return Model.fetchAllRows(query, filters.values())
+		return Model.fetchAllRows(query, filters.values(), db=db)
 
 	@classmethod
 	def prepareFieldsForSelect(cls, fields=None):
@@ -214,7 +217,3 @@ class Model(object):
 	@classmethod
 	def executeQuery(cls, cursor, query, params):
 		cursor.execute(query, params)
-
-	@classmethod
-	def getCursor(cls):
-		return Model._db.cursor()
