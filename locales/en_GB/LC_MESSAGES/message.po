@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-25 20:34+0100\n"
+"POT-Creation-Date: 2016-02-10 11:33+0000\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: core/Rpg.py:53
+#: core/Rpg.py:52
 msgid "ERROR_UNKNOWN_SELECTED_WORLD"
 msgstr "Unknown selected world"
 
@@ -41,15 +41,11 @@ msgstr "Choose an existing player"
 msgid "CHOICE_QUESTION"
 msgstr "Your choice? "
 
-#: core/Rpg.py:110 core/commands/createPlayer.py:46
+#: core/Rpg.py:109 core/commands/createPlayer.py:45
 msgid "LOGIN_PROMPT"
 msgstr "Login: "
 
-#: core/Rpg.py:113 core/commands/createPlayer.py:54
-msgid "PASSWORD_PROMPT"
-msgstr "Password: "
-
-#: core/Rpg.py:222
+#: core/Rpg.py:221
 msgid "COMMAND_PROMPT"
 msgstr "Command: "
 
@@ -216,60 +212,52 @@ msgstr "q"
 msgid "ERROR_UNKNOWN_COMMAND"
 msgstr "Unknown command"
 
-#: core/commands/authenticate.py:17 tests/commands/testAuthenticate.py:19
-#: tests/commands/testAuthenticate.py:24
+#: core/commands/authenticate.py:17 tests/commands/testAuthenticate.py:18
+#: tests/commands/testAuthenticate.py:23
 msgid "ERROR_AUTHENTICATE_ARGUMENTS_NUMBER"
-msgstr "Two arguments are required (Login and password)"
+msgstr "One argument is required (Login)"
 
-#: core/commands/authenticate.py:26 tests/commands/testAuthenticate.py:39
+#: core/commands/authenticate.py:26 tests/commands/testAuthenticate.py:38
 msgid "PLAYER_AUTHENTICATION_CONFIRMATION"
 msgstr "Player connected"
 
-#: core/commands/createPlayer.py:23 tests/commands/testCreatePlayer.py:19
-#: tests/commands/testCreatePlayer.py:24
+#: core/commands/createPlayer.py:23 tests/commands/testCreatePlayer.py:18
+#: tests/commands/testCreatePlayer.py:23
 msgid "ERROR_SIGNUP_NOT_ENOUGH_ARGUMENTS"
 msgstr "More arguments are required to create a player"
 
-#: core/commands/createPlayer.py:28 core/commands/createPlayer.py:49
-#: tests/commands/testCreatePlayer.py:29 tests/commands/testCreatePlayer.py:34
+#: core/commands/createPlayer.py:28 core/commands/createPlayer.py:48
+#: tests/commands/testCreatePlayer.py:28 tests/commands/testCreatePlayer.py:33
 msgid "ERROR_SIGNUP_LOGIN_ALREADY_USED"
 msgstr "This login is already used"
 
-#: core/commands/createPlayer.py:32 tests/commands/testCreatePlayer.py:39
-#: tests/commands/testCreatePlayer.py:44
+#: core/commands/createPlayer.py:32 tests/commands/testCreatePlayer.py:38
+#: tests/commands/testCreatePlayer.py:43
 msgid "ERROR_SIGNUP_INVALID_GENDER"
 msgstr "Invalid gender"
 
-#: core/commands/createPlayer.py:36 tests/commands/testCreatePlayer.py:49
-#: tests/commands/testCreatePlayer.py:54
+#: core/commands/createPlayer.py:36 tests/commands/testCreatePlayer.py:48
+#: tests/commands/testCreatePlayer.py:53
 msgid "ERROR_SIGNUP_INVALID_SPECIES"
 msgstr "Invalid species"
 
-#: core/commands/createPlayer.py:55
-msgid "CONFIRM_PASSWORD_PROMPT"
-msgstr "Password confirmation: "
-
-#: core/commands/createPlayer.py:58
-msgid "ERROR_SIGNUP_PASSWORDS"
-msgstr "The password do not match"
-
-#: core/commands/createPlayer.py:64
+#: core/commands/createPlayer.py:54
 msgid "GENDER_SELECTION"
 msgstr "Gender selection"
 
-#: core/commands/createPlayer.py:70
+#: core/commands/createPlayer.py:60
 msgid "GENDER_PROMPT"
 msgstr "Gender: "
 
-#: core/commands/createPlayer.py:84
+#: core/commands/createPlayer.py:74
 msgid "SPECIES_SELECTION"
 msgstr "Species selection"
 
-#: core/commands/createPlayer.py:91
+#: core/commands/createPlayer.py:81
 msgid "SPECIES_PROMPT"
 msgstr "Species: "
 
-#: core/commands/createPlayer.py:104 tests/commands/testCreatePlayer.py:59
+#: core/commands/createPlayer.py:94 tests/commands/testCreatePlayer.py:58
 msgid "PLAYER_CREATION_CONFIRMATION"
 msgstr "Player created"
 
@@ -508,33 +496,33 @@ msgstr "containers"
 msgid "ERROR_LOOK_UNKNOWN_SECTION"
 msgstr "Unknown option for the look command"
 
-#: core/commands/look.py:96 tests/commands/testLook.py:18
+#: core/commands/look.py:98 tests/commands/testLook.py:18
 #: tests/commands/testLook.py:64
 #, python-format
 msgid "CURRENT_REGION_%s"
 msgstr "You are in %s"
 
-#: core/commands/look.py:100 tests/commands/testLook.py:20
+#: core/commands/look.py:102 tests/commands/testLook.py:20
 #: tests/commands/testLook.py:74
 msgid "PRESENT_CHARACTERS"
 msgstr "You see these characters arround:"
 
-#: core/commands/look.py:107 tests/commands/testLook.py:23
+#: core/commands/look.py:109 tests/commands/testLook.py:23
 #: tests/commands/testLook.py:85
 msgid "AVAILABLE_DIRECTIONS"
 msgstr "You can go in the following directions:"
 
-#: core/commands/look.py:114 tests/commands/testLook.py:26
+#: core/commands/look.py:116 tests/commands/testLook.py:26
 #: tests/commands/testLook.py:97
 msgid "AVAILABLE_PLACES"
 msgstr "You see the following places:"
 
-#: core/commands/look.py:121 tests/commands/testLook.py:29
+#: core/commands/look.py:123 tests/commands/testLook.py:29
 #: tests/commands/testLook.py:107
 msgid "AVAILABLE_ITEMS"
 msgstr "You see the following items"
 
-#: core/commands/look.py:128 tests/commands/testLook.py:32
+#: core/commands/look.py:130 tests/commands/testLook.py:32
 #: tests/commands/testLook.py:118
 msgid "AVAILABLE_ITEMS_CONTAINERS"
 msgstr "Available containers"
@@ -698,10 +686,19 @@ msgstr "Unknown place type"
 msgid "ERROR_PLACE_GENERATION"
 msgstr "An error occured during the place loading"
 
-#: models/player.py:33 tests/commands/testAuthenticate.py:29
-#: tests/commands/testAuthenticate.py:34
+#: models/player.py:26 tests/commands/testAuthenticate.py:28
+#: tests/commands/testAuthenticate.py:33
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
-msgstr "Invalid login or password"
+msgstr "Invalid login"
+
+#~ msgid "PASSWORD_PROMPT"
+#~ msgstr "Password: "
+
+#~ msgid "CONFIRM_PASSWORD_PROMPT"
+#~ msgstr "Password confirmation: "
+
+#~ msgid "ERROR_SIGNUP_PASSWORDS"
+#~ msgstr "The password do not match"
 
 #~ msgid "ERROR_DROP_INVALID_QUANTITY"
 #~ msgstr "Invalid quantity"

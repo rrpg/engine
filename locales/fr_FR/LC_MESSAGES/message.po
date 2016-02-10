@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-25 20:34+0100\n"
+"POT-Creation-Date: 2016-02-10 11:33+0000\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: core/Rpg.py:53
+#: core/Rpg.py:52
 msgid "ERROR_UNKNOWN_SELECTED_WORLD"
 msgstr "Le monde choisi n'existe pas"
 
@@ -42,15 +42,11 @@ msgstr "Personnage existant"
 msgid "CHOICE_QUESTION"
 msgstr "Votre choix : "
 
-#: core/Rpg.py:110 core/commands/createPlayer.py:46
+#: core/Rpg.py:109 core/commands/createPlayer.py:45
 msgid "LOGIN_PROMPT"
 msgstr "Identifiant : "
 
-#: core/Rpg.py:113 core/commands/createPlayer.py:54
-msgid "PASSWORD_PROMPT"
-msgstr "Mot de passe : "
-
-#: core/Rpg.py:222
+#: core/Rpg.py:221
 msgid "COMMAND_PROMPT"
 msgstr "Commande : "
 
@@ -217,60 +213,52 @@ msgstr "q"
 msgid "ERROR_UNKNOWN_COMMAND"
 msgstr "Commande inconnue"
 
-#: core/commands/authenticate.py:17 tests/commands/testAuthenticate.py:19
-#: tests/commands/testAuthenticate.py:24
+#: core/commands/authenticate.py:17 tests/commands/testAuthenticate.py:18
+#: tests/commands/testAuthenticate.py:23
 msgid "ERROR_AUTHENTICATE_ARGUMENTS_NUMBER"
-msgstr "Deux arguments sont requis (identifiant et mot de passe)"
+msgstr "Un argument est requis (identifiant)"
 
-#: core/commands/authenticate.py:26 tests/commands/testAuthenticate.py:39
+#: core/commands/authenticate.py:26 tests/commands/testAuthenticate.py:38
 msgid "PLAYER_AUTHENTICATION_CONFIRMATION"
-msgstr "Identifiant et mot de passe corrects"
+msgstr "Identifiant correct"
 
-#: core/commands/createPlayer.py:23 tests/commands/testCreatePlayer.py:19
-#: tests/commands/testCreatePlayer.py:24
+#: core/commands/createPlayer.py:23 tests/commands/testCreatePlayer.py:18
+#: tests/commands/testCreatePlayer.py:23
 msgid "ERROR_SIGNUP_NOT_ENOUGH_ARGUMENTS"
 msgstr "Des arguments supplémentaires sont requis pour créer un joueur"
 
-#: core/commands/createPlayer.py:28 core/commands/createPlayer.py:49
-#: tests/commands/testCreatePlayer.py:29 tests/commands/testCreatePlayer.py:34
+#: core/commands/createPlayer.py:28 core/commands/createPlayer.py:48
+#: tests/commands/testCreatePlayer.py:28 tests/commands/testCreatePlayer.py:33
 msgid "ERROR_SIGNUP_LOGIN_ALREADY_USED"
 msgstr "Identifiant déjà utilisé"
 
-#: core/commands/createPlayer.py:32 tests/commands/testCreatePlayer.py:39
-#: tests/commands/testCreatePlayer.py:44
+#: core/commands/createPlayer.py:32 tests/commands/testCreatePlayer.py:38
+#: tests/commands/testCreatePlayer.py:43
 msgid "ERROR_SIGNUP_INVALID_GENDER"
 msgstr "Le genre choisi est invalide"
 
-#: core/commands/createPlayer.py:36 tests/commands/testCreatePlayer.py:49
-#: tests/commands/testCreatePlayer.py:54
+#: core/commands/createPlayer.py:36 tests/commands/testCreatePlayer.py:48
+#: tests/commands/testCreatePlayer.py:53
 msgid "ERROR_SIGNUP_INVALID_SPECIES"
 msgstr "L'espèce choisie est invalide"
 
-#: core/commands/createPlayer.py:55
-msgid "CONFIRM_PASSWORD_PROMPT"
-msgstr "Confirmation du mot de passe : "
-
-#: core/commands/createPlayer.py:58
-msgid "ERROR_SIGNUP_PASSWORDS"
-msgstr "Les mots de passe saisis ne sont pas identiques"
-
-#: core/commands/createPlayer.py:64
+#: core/commands/createPlayer.py:54
 msgid "GENDER_SELECTION"
 msgstr "Choix du sexe"
 
-#: core/commands/createPlayer.py:70
+#: core/commands/createPlayer.py:60
 msgid "GENDER_PROMPT"
 msgstr "Sexe : "
 
-#: core/commands/createPlayer.py:84
+#: core/commands/createPlayer.py:74
 msgid "SPECIES_SELECTION"
 msgstr "Choix de l'espèce"
 
-#: core/commands/createPlayer.py:91
+#: core/commands/createPlayer.py:81
 msgid "SPECIES_PROMPT"
 msgstr "Espèce : "
 
-#: core/commands/createPlayer.py:104 tests/commands/testCreatePlayer.py:59
+#: core/commands/createPlayer.py:94 tests/commands/testCreatePlayer.py:58
 msgid "PLAYER_CREATION_CONFIRMATION"
 msgstr "Le joueur a été créé avec succès"
 
@@ -503,33 +491,33 @@ msgstr "conteneurs"
 msgid "ERROR_LOOK_UNKNOWN_SECTION"
 msgstr "Cette option est invalide pour la commande \"regarder\""
 
-#: core/commands/look.py:96 tests/commands/testLook.py:18
+#: core/commands/look.py:98 tests/commands/testLook.py:18
 #: tests/commands/testLook.py:64
 #, python-format
 msgid "CURRENT_REGION_%s"
 msgstr "Vous vous trouver dans %s"
 
-#: core/commands/look.py:100 tests/commands/testLook.py:20
+#: core/commands/look.py:102 tests/commands/testLook.py:20
 #: tests/commands/testLook.py:74
 msgid "PRESENT_CHARACTERS"
 msgstr "Vous voyez les personnages suivants :"
 
-#: core/commands/look.py:107 tests/commands/testLook.py:23
+#: core/commands/look.py:109 tests/commands/testLook.py:23
 #: tests/commands/testLook.py:85
 msgid "AVAILABLE_DIRECTIONS"
 msgstr "Vous pouvez aller dans les directions suivantes :"
 
-#: core/commands/look.py:114 tests/commands/testLook.py:26
+#: core/commands/look.py:116 tests/commands/testLook.py:26
 #: tests/commands/testLook.py:97
 msgid "AVAILABLE_PLACES"
 msgstr "Vous pouvez entrer dans les lieux suivants :"
 
-#: core/commands/look.py:121 tests/commands/testLook.py:29
+#: core/commands/look.py:123 tests/commands/testLook.py:29
 #: tests/commands/testLook.py:107
 msgid "AVAILABLE_ITEMS"
 msgstr "Vous pouvez ramasser les objets suivants :"
 
-#: core/commands/look.py:128 tests/commands/testLook.py:32
+#: core/commands/look.py:130 tests/commands/testLook.py:32
 #: tests/commands/testLook.py:118
 msgid "AVAILABLE_ITEMS_CONTAINERS"
 msgstr "Conteneurs d'objets"
@@ -693,10 +681,19 @@ msgstr "Type de lieu inconnu"
 msgid "ERROR_PLACE_GENERATION"
 msgstr "Une erreur est survenue lors du chargement du lieu..."
 
-#: models/player.py:33 tests/commands/testAuthenticate.py:29
-#: tests/commands/testAuthenticate.py:34
+#: models/player.py:26 tests/commands/testAuthenticate.py:28
+#: tests/commands/testAuthenticate.py:33
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
-msgstr "Identifiant ou mot de passe incorrect"
+msgstr "Identifiant incorrect"
+
+#~ msgid "PASSWORD_PROMPT"
+#~ msgstr "Mot de passe : "
+
+#~ msgid "CONFIRM_PASSWORD_PROMPT"
+#~ msgstr "Confirmation du mot de passe : "
+
+#~ msgid "ERROR_SIGNUP_PASSWORDS"
+#~ msgstr "Les mots de passe saisis ne sont pas identiques"
 
 #~ msgid "ERROR_DROP_INVALID_QUANTITY"
 #~ msgstr "Quantité invalide"

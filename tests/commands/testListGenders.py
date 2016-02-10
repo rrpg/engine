@@ -11,7 +11,6 @@ import json
 
 class listGendersTests(tests.common.common):
 	login = None
-	password = None
 
 	def test_text(self):
 		self.rpgText.setAction(['list-genders'])

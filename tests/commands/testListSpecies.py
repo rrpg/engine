@@ -11,7 +11,6 @@ import json
 
 class listSpeciesTests(tests.common.common):
 	login = None
-	password = None
 
 	def test_text(self):
 		self.rpgText.setAction(['list-species'])

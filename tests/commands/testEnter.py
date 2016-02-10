@@ -62,4 +62,4 @@ class enterTests(tests.common.common):
 	def test_json(self):
 		self.rpgJSON.setAction([_('ENTER_COMMAND'), _('PLACE_TYPE_DUNGEON')])
 		output = self.rpgJSON._runAction()
-		self.assertTrue(output == [_('ENTER_CONFIRMATION')])
+		self.assertEquals(output, [_('ENTER_CONFIRMATION')])

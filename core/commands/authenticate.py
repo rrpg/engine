@@ -13,11 +13,11 @@ class authenticate(core.command.command):
 		informations will be read from stdin
 		"""
 
-		if len(self._args) != 2:
+		if len(self._args) != 1:
 			raise core.command.exception(_('ERROR_AUTHENTICATE_ARGUMENTS_NUMBER'))
 
-		(login, password) = self._args
-		self._player.connect(login, password)
+		login = self._args[0]
+		self._player.connect(login)
 
 		return [True]
 
