@@ -49,7 +49,7 @@ class helpTests(tests.common.common):
 			'\t' + _('HELP_COMMAND_DESCRIPTION') +'\n'+\
 			_('QUIT_SHORT_COMMAND') + '|' + _('QUIT_COMMAND') + ':' +'\n'+\
 			'\t' + _('QUIT_COMMAND_DESCRIPTION')
-		self.assertTrue(output == expected)
+		self.assertEquals(output, expected)
 
 	def test_json(self):
 		self.rpgJSON.setAction([_('HELP_COMMAND')])
@@ -101,5 +101,4 @@ class helpTests(tests.common.common):
 			}
 		]
 
-		self.assertTrue(output == expected)
-
+		self.assertEquals(output, expected)

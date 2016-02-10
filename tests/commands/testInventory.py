@@ -13,19 +13,19 @@ class enterTests(tests.common.common):
 	def test_empty_text(self):
 		self.rpgText.setAction([_('INVENTORY_COMMAND')])
 		output = self.rpgText._runAction()
-		self.assertTrue(output == '')
+		self.assertEquals(output, '')
 
 	def test_empty_json(self):
 		self.rpgJSON.setAction([_('INVENTORY_COMMAND')])
 		output = self.rpgJSON._runAction()
-		self.assertTrue(output == [])
+		self.assertEquals(output, [])
 
 	def test_not_empty_text(self):
 		self.rpgText.setAction([_('TAKE_COMMAND'), 2, 'Heavy breastplate'])
 		output = self.rpgText._runAction()
 		self.rpgText.setAction([_('INVENTORY_COMMAND')])
 		output = self.rpgText._runAction()
-		self.assertTrue(output == '  2 Heavy breastplate')
+		self.assertEquals(output, '  2 Heavy breastplate')
 
 	def test_not_empty_json(self):
 		self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER')
@@ -33,5 +33,4 @@ class enterTests(tests.common.common):
 		output = self.rpgJSON._runAction()
 		self.rpgJSON.setAction([_('INVENTORY_COMMAND')])
 		output = self.rpgJSON._runAction()
-		self.assertTrue(output == [{"name": "Heavy breastplate", "quantity": 2}])
-
+		self.assertEquals(output, [{"name": "Heavy breastplate", "quantity": 2}])
