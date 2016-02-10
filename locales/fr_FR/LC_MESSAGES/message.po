@@ -685,27 +685,3 @@ msgstr "Une erreur est survenue lors du chargement du lieu..."
 #: tests/commands/testAuthenticate.py:33
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
 msgstr "Identifiant incorrect"
-
-#~ msgid "PASSWORD_PROMPT"
-#~ msgstr "Mot de passe : "
-
-#~ msgid "CONFIRM_PASSWORD_PROMPT"
-#~ msgstr "Confirmation du mot de passe : "
-
-#~ msgid "ERROR_SIGNUP_PASSWORDS"
-#~ msgstr "Les mots de passe saisis ne sont pas identiques"
-
-#~ msgid "ERROR_DROP_INVALID_QUANTITY"
-#~ msgstr "Quantité invalide"
-
-#~ msgid "ERROR_TAKE_INVALID_QUANTITY"
-#~ msgstr "Quantité invalide"
-
-#~ msgid "ERROR_TAKE_QUANTITY_TOO_HIGH"
-#~ msgstr "Vous ne pouvez pas en prendre autant"
-
-#~ msgid "ERROR_INVALID_ITEM_CONTAINER_INDEX"
-#~ msgstr "Cet index de conteneur n'est pas valide"
-
-#~ msgid "GENERATING_WAITING_TEXT"
-#~ msgstr "Chargement du lieu..."

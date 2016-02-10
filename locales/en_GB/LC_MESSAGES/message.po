@@ -690,30 +690,3 @@ msgstr "An error occured during the place loading"
 #: tests/commands/testAuthenticate.py:33
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
 msgstr "Invalid login"
-
-#~ msgid "PASSWORD_PROMPT"
-#~ msgstr "Password: "
-
-#~ msgid "CONFIRM_PASSWORD_PROMPT"
-#~ msgstr "Password confirmation: "
-
-#~ msgid "ERROR_SIGNUP_PASSWORDS"
-#~ msgstr "The password do not match"
-
-#~ msgid "ERROR_DROP_INVALID_QUANTITY"
-#~ msgstr "Invalid quantity"
-
-#~ msgid "ERROR_TAKE_INVALID_QUANTITY"
-#~ msgstr "Invalid quantity"
-
-#~ msgid "ERROR_TAKE_QUANTITY_TOO_HIGH"
-#~ msgstr "There are not enough items of this kind"
-
-#~ msgid "ERROR_INVALID_ITEM_CONTAINER_INDEX"
-#~ msgstr "There is no container with this index here."
-
-#~ msgid "ERROR_OPEN_INVALID_INDEX"
-#~ msgstr "Invalid container index provided"
-
-#~ msgid "GENERATING_WAITING_TEXT"
-#~ msgstr "Loading place..."
