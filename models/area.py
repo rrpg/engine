@@ -39,11 +39,11 @@ class area:
 	types = (_('AREA_TYPE_LAND'), _('AREA_TYPE_DUNGEON'))
 
 	@staticmethod
-	def getNeighbourgFromDirection(idArea, direction):
+	def getNeighbourFromDirection(idArea, direction):
 		"""
-		area.area.getNeighbourgFromDirection(idArea, direction) -> area.area
+		area.area.getNeighbourFromDirection(idArea, direction) -> area.area
 
-		Return the neighbourg area of the given area according to the given
+		Return the neighbour area of the given area according to the given
 		direction.
 
 		@param idArea integer id of the reference area
@@ -181,7 +181,7 @@ class model(Model):
 		"""
 		area.model.getFromDirection(direction) -> dict()
 
-		Returns the neighbourg of the area given in arguments from a given
+		Returns the neighbour of the area given in arguments from a given
 		direction.
 
 		@direction tuple of the area to return, represented by its relative
@@ -207,7 +207,7 @@ class model(Model):
 		"""
 		area.model.getSurroundingAreas(idArea) -> dict()
 
-		Return the available neighbourg areas of the area given in argument.
+		Return the available neighbour areas of the area given in argument.
 
 		@param idArea integer id of the reference area
 
