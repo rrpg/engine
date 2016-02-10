@@ -25,7 +25,6 @@ CREATE INDEX character_id_area ON character (id_area);
 CREATE TABLE player (
 	id_player INTEGER PRIMARY KEY AUTOINCREMENT,
 	login VARCHAR(30) NOT NULL,
-	password VARCHAR(40) NOT NULL,
 	id_character INT REFERENCES `character` (id_character)
 );
 

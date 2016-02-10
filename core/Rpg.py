@@ -36,13 +36,13 @@ class Rpg:
 		self._action = []
 		self._isInteractive = isInteractive
 
-	def init(self, world, login, password, action=None):
+	def init(self, world, login, action=None):
 		"""
-		Method to init the Rpg with a world, a player's login and password and
-		and action. The action is optional, but the login and passwords can be
-		None (for unauthentified actions such as createPlayer for example).
+		Method to init the Rpg with a world, a player's login and action. The
+		action is optional, but the login can be None (for
+		unauthentified actions such as createPlayer for example).
 
-		Will raise an core.exception.exception if no login/password are provided
+		Will raise an core.exception.exception if no login is provided
 		and the provided action needs player.
 		"""
 		if world is '':
@@ -52,7 +52,7 @@ class Rpg:
 			raise core.exception.exception(_('ERROR_UNKNOWN_SELECTED_WORLD'))
 
 		registry.set("world", world)
-		isConnected = self._initPlayer(login, password)
+		isConnected = self._initPlayer(login)
 
 		if type(action) == list and len(action) > 0:
 			if not isConnected \
@@ -60,18 +60,18 @@ class Rpg:
 				raise core.exception.exception(_('ERROR_NO_SELECTED_PLAYER'))
 			self._action = action
 
-	def _initPlayer(self, login, password):
+	def _initPlayer(self, login):
 		"""
-		Method to init the player with a login and a password.
-		If the interactive mode is active and no login/password are provided,
+		Method to init the player with a login.
+		If the interactive mode is active and no login is provided,
 		the player will be prompted to login or create a new player
 		"""
 		self._player = player()
-		if self._isInteractive and (login is None or password is None): # pragma: no cover
-			(login, password) = self._doInteractiveAuth()
+		if self._isInteractive and (login is None): # pragma: no cover
+			login = self._doInteractiveAuth()
 
-		if login is not None and password is not None:
-			self._player.connect(login, password)
+		if login is not None:
+			self._player.connect(login)
 			return True
 
 		return False
@@ -102,17 +102,13 @@ class Rpg:
 
 	def _promptLoginFromStdin(self): # pragma: no cover
 		'''
-		Ask the player to type his login and password
+		Ask the player to type his login
 		'''
 		login = ''
-		password = ''
 		while login == '':
 			login = utils.read(_('LOGIN_PROMPT'))
 
-		while password == '':
-			password = getpass.getpass(_('PASSWORD_PROMPT'))
-
-		return (login, password)
+		return login
 
 	def setAction(self, action):
 		'''

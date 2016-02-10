@@ -17,23 +17,20 @@ class player(character.character):
 		return self._model is not None
 
 	#~ Method to connect the player
-	def connect(self, login, password):
+	def connect(self, login):
 		self._login = login
-		self._password = password
-		self._model = model.loadByLoginAndPassword(self._login, self._password)
+		self._model = model.loadByLogin(self._login)
 
 		if len(self._model) == 0:
 			self._login = None
-			self._password = None
 			raise exception(_('ERROR_CONNECT_INVALID_CREDENTIALS'))
 
 		return True
 
-	def createNewPlayer(self, login, password, speciesId, genderId):
+	def createNewPlayer(self, login, speciesId, genderId):
 		self._model = {
 			'login': login,
 			'name': login,
-			'password': password,
 			'id_species': speciesId,
 			'id_gender': genderId,
 			'id_area': settings.get('START_CELL_ID')
@@ -44,11 +41,11 @@ class player(character.character):
 
 
 class model(character.model):
-	fields = ['id_player', 'login', 'password', 'id_character']
+	fields = ['id_player', 'login', 'id_character']
 
 	@staticmethod
-	def loadByLoginAndPassword(login, password):
-		pm = model.loadBy({'login': login, 'password': password})
+	def loadByLogin(login):
+		pm = model.loadBy({'login': login})
 
 		if len(pm) == 0:
 			return dict()

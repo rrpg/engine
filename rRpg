@@ -26,10 +26,6 @@ def main(argv):
 		dest="login", help="Player login", metavar="LOGIN"
 	)
 	parser.add_argument(
-		"-p", "--password",
-		dest="password", help="Player password", metavar="PASSWORD"
-	)
-	parser.add_argument(
 		"-w", "--world",
 		dest="world", help="World to load", metavar="WORLD"
 	)
@@ -49,14 +45,11 @@ def main(argv):
 
 	world = '' if args.world is None else str(args.world)
 	login = None
-	password = None
 	if args.login is not None:
 		login = args.login
-	if args.password is not None:
-		password = args.password
 
 	try:
-		rpg.init(world, login, password, args.action)
+		rpg.init(world, login, args.action)
 	except KeyboardInterrupt:
 		print("")
 		return
