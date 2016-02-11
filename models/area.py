@@ -145,7 +145,7 @@ class model(Model):
 	"""
 
 	fields = (
-		'id_area', 'id_region',
+		'id_area', 'id_area_type', 'id_region',
 		'x', 'y',
 		'directions',
 		'container',
