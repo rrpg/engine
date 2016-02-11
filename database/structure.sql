@@ -17,6 +17,8 @@ CREATE TABLE `character` (
 	inventory TEXT,
 	can_fight BIT NOT NULL DEFAULT 1,
 	is_fighting BIT NOT NULL DEFAULT 0,
+	stats_current_hp TINYINT NOT NULL DEFAULT 10,
+	stats_max_hp TINYINT NOT NULL DEFAULT 10,
 	stat_strength TINYINT NOT NULL DEFAULT 1,
 	stat_defence TINYINT NOT NULL DEFAULT 1,
 	stat_speed TINYINT NOT NULL DEFAULT 1,
