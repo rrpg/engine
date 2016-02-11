@@ -34,6 +34,19 @@ INSERT INTO talk_answer (trigger_word, sentence, condition) VALUES ('hi', 'Hi, %
 INSERT INTO character_answer (id_character, id_talk_answer) VALUES (1, 1);
 INSERT INTO character_answer (id_character, id_talk_answer) VALUES (1, 2);
 
+INSERT INTO creature (name, stat_hp, stat_strength, stat_defence, stat_speed, stat_accuracy)
+	VALUES ("rat", 15, 2, 2, 2, 75),
+		("gobelin", 25, 5, 5, 4, 75),
+		("giant spider", 10, 3, 3, 3, 50),
+		("C'thulhu", 1000, 100, 100, 100, 100);
+
+INSERT INTO creature_area_type (id_creature, id_area_type, probability)
+	VALUES (1, 2, 0.5), -- rat dungeon
+		(1, 1, 0.2), -- rat land, less chances to meet rats outside
+		(2, 2, 0.5), -- gobelin land
+		(3, 1, 0.5), -- spider
+		(4, 1, 0.01); -- c'thulhu
+
 -- For UT
 INSERT INTO `character` (name, id_species, id_gender, id_area) VALUES ('TEST_PLAYER', 1, 1, 2);
 INSERT INTO player (id_character, login) VALUES (2, 'TEST_PLAYER');
