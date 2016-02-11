@@ -50,7 +50,7 @@ class model(Model):
 		query = "\
 			SELECT\
 				name,\
-				stats_hp,\
+				stat_hp,\
 				stat_strength,\
 				stat_defence,\
 				stat_speed,\
