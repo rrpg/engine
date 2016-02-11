@@ -13,8 +13,11 @@ class creature:
 	"""
 
 	@staticmethod
-	def getFromAreaType(idAreaType):
-		c = model.getFromAreaType(idAreaType)
+	def getFromAreaType(idAreaType, probability):
+		if probability == 0.000:
+			return None
+
+		c = model.getFromAreaType(idAreaType, probability)
 		if c == {}:
 			return None
 
@@ -31,14 +34,15 @@ class model(Model):
 	)
 
 	@staticmethod
-	def getFromAreaType(idAreaType):
+	def getFromAreaType(idAreaType, probability):
 		"""
 		emeny.model.getFromArea(area) -> dict()
 
 		Return a random enemy that the player can encounter in a given
 		area type
 
-		@param area dict area where the enemy can be found
+		@param idAreaType dict area where the enemy can be found
+		@param probability float the probability of finding an enemy
 
 		@return dict an enemy or None if no enemy can be found in the
 		given area type
@@ -56,7 +60,8 @@ class model(Model):
 				JOIN creature_area_type ON creature.id_creature = creature_area_type.id_creature\
 			WHERE\
 				creature_area_type.id_area_type = ?\
+				AND creature_area_type.probability >= ?\
 			ORDER BY RANDOM() LIMIT 1\
 		"
 
-		return Model.fetchOneRow(query, [idAreaType])
+		return Model.fetchOneRow(query, [idAreaType, probability])

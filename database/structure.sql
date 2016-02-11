@@ -76,7 +76,6 @@ CREATE TABLE area (
 	x INTEGER NOT NULL,
 	y INTEGER NOT NULL,
 	directions INTEGER NOT NULL,
-	probability_fight FLOAT NOT NULL DEFAULT 0,
 	items TEXT
 );
 CREATE UNIQUE INDEX unique_area_coordinates ON area (container, x, y);
@@ -131,6 +130,7 @@ CREATE TABLE creature (
 CREATE TABLE creature_area_type (
 	id_creature INTEGER REFERENCES creature (id_creature),
 	id_area_type INTEGER REFERENCES area_type (id_area_type),
+	probability FLOAT NOT NULL DEFAULT 1.0,
 	PRIMARY KEY (id_creature, id_area_type)
 );
 

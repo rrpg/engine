@@ -118,7 +118,6 @@ class randomPlace:
 				'y': index / 10,
 				'directions': checks.getDirections(room) >> 2,
 				'container': containerName,
-				'probability_fight': 0.4,
 				'id_region': idRegion
 			}
 			Model.executeQuery(c, query, params)
