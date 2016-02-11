@@ -26,6 +26,8 @@ class move(core.command.command):
 		curAreaId = self._player.getAreaId()
 		curArea = area.model.loadById(curAreaId)
 
+		ret = {'direction': direction}
+
 		a = area.area.getNeighbourFromDirection(curAreaId, direction)
 
 		if area.area.canGoTo(curArea['directions'], direction) is False or a is None:
@@ -39,9 +41,15 @@ class move(core.command.command):
 			)
 
 			if enemy is not None:
+				ret['enemy'] = enemy['name']
 				core.fight.startFight(self._player, enemy)
 
-		return {'direction': direction}
+		return ret
 
 	def render(self, data):
-		return _('MOVE_CONFIRMATION_%s') % data['direction']
+		if 'enemy' in data.keys():
+			return _('MOVE_CONFIRMATION_%(direction)s_FIGHT_%(enemy)s') % {
+				'direction': data['direction'], 'enemy': data['enemy']
+			}
+		else:
+			return _('MOVE_CONFIRMATION_%s') % data['direction']
