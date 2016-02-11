@@ -15,6 +15,7 @@ class character:
 	"""
 
 	inventory = None
+	_isFighting = False
 
 	@staticmethod
 	def searchByNameAndIdArea(name, idArea):
@@ -96,10 +97,15 @@ class character:
 
 		@return boolean
 		"""
-		return self._model['is_fighting']
+		return self._isFighting
 
-	def fight(self):
-		model.setIsFighting(self._model['id_character'], True)
+	def fight(self, value):
+		"""
+		c.fight(Bool)
+
+		Set the attribute isFighting to true or false
+		"""
+		self._isFighting = value
 
 	def getStats(self):
 		"""
@@ -167,14 +173,17 @@ class character:
 		"""
 		return self._model['id_area']
 
+class stats:
+	MAX_VALUE = 255
 
 class model(Model):
 	"""
 	Class to interact with the values in the database.
 	"""
 
-	fields = ('id_character',
-		'name', 'can_fight', 'is_fighting',
+	fields = (
+		'id_character',
+		'name', 'can_fight',
 		'stat_strength',
 		'stat_defence',
 		'stat_speed',
@@ -193,21 +202,6 @@ class model(Model):
 		"""
 		model.update(
 			{'id_area': idArea},
-			('id_character = ?', [idCharacter])
-		)
-
-	@staticmethod
-	def setIsFighting(idCharacter, isFighting):
-		"""
-		character.model.savePosition(idCharacter, idArea)
-
-		Change a character's position
-
-		@param idCharacter integer id of the character to move
-		@param idArea id of the area where the character must go.
-		"""
-		model.update(
-			{'is_fighting': isFighting},
 			('id_character = ?', [idCharacter])
 		)
 

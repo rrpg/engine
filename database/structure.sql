@@ -16,7 +16,6 @@ CREATE TABLE `character` (
 	name VARCHAR(30) NOT NULL,
 	inventory TEXT,
 	can_fight BIT NOT NULL DEFAULT 1,
-	is_fighting BIT NOT NULL DEFAULT 0,
 	stat_current_hp TINYINT NOT NULL DEFAULT 10,
 	stat_max_hp TINYINT NOT NULL DEFAULT 10,
 	stat_strength TINYINT NOT NULL DEFAULT 1,
