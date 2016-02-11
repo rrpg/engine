@@ -2,6 +2,7 @@
 
 from models import area, creature
 import core.command
+import core.fight
 from core.localisation import _
 from random import randint
 
@@ -36,6 +37,9 @@ class move(core.command.command):
 				a._model['id_area_type'],
 				probability
 			)
+
+			if enemy is not None:
+				core.fight.startFight(self._player, enemy)
 
 		return {'direction': direction}
 
