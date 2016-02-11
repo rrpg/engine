@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from models import area
+from models import area, creature
 import core.command
 from core.localisation import _
 
@@ -30,6 +30,11 @@ class move(core.command.command):
 			raise core.command.exception(_('ERROR_MOVE_DIRECTION_NOT_AVAILABLE'))
 		else:
 			self._player.goTo(a._model['id_area'])
+			hasCreature = area.area.hasCreature(a)
+			if hasCreature:
+				enemy = creature.creature.getFromAreaType(
+					a._model['id_area_type']
+				)
 
 		return {'direction': direction}
 
