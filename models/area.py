@@ -149,6 +149,7 @@ class model(Model):
 		'x', 'y',
 		'directions',
 		'container',
+		'probability_fight',
 		'items'
 	)
 
