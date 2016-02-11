@@ -33,6 +33,12 @@ class move(core.command.command):
 		if area.area.canGoTo(curArea['directions'], direction) is False or a is None:
 			raise core.command.exception(_('ERROR_MOVE_DIRECTION_NOT_AVAILABLE'))
 		else:
+			if self._player.isFighting():
+				enemy = core.fight.getEnemy()
+				if self._player._model['stat_speed'] < enemy['stat_speed']:
+					raise core.fight.exception(_('ERROR_FLEE_FIGHT_FAILS'))
+				else:
+					core.fight.stopFight(self._player)
 			self._player.goTo(a._model['id_area'])
 			probability = randint(0, 1000) / 1000.0
 			enemy = creature.creature.getFromAreaType(
