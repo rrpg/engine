@@ -9,6 +9,7 @@ An area can have up to 4 neighbours (one for each cardinal point).
 from models.Model import Model
 from models import item
 
+from random import randint
 import json
 from core.localisation import _
 from core import config
@@ -138,6 +139,11 @@ class area:
 	@staticmethod
 	def getRegionNameFromAreaId(idArea):
 		return model.getRegionNameFromAreaId(idArea)
+
+	@staticmethod
+	def hasCreature(area):
+		return randint(0, 1000) / 1000 < area._model['probability_fight']
+
 
 class model(Model):
 	"""
