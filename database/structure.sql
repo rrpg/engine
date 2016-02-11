@@ -116,4 +116,26 @@ CREATE TABLE settings (
 	value VARCHAR(50) NOT NULL
 );
 
+CREATE TABLE creature (
+	id_creature INTEGER PRIMARY KEY AUTOINCREMENT,
+	name VARCHAR(50),
+	stats_hp TINYINT NOT NULL DEFAULT 10,
+	stat_strength TINYINT NOT NULL DEFAULT 1,
+	stat_defence TINYINT NOT NULL DEFAULT 1,
+	stat_speed TINYINT NOT NULL DEFAULT 1,
+	stat_accuracy TINYINT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE creature_area_type (
+	id_creature INTEGER REFERENCES creature (id_creature),
+	id_area_type INTEGER REFERENCES area_type (id_area_type),
+	PRIMARY KEY (id_creature, id_area_type)
+);
+
+CREATE TABLE creature_can_drop (
+	id_creature INTEGER REFERENCES creature (id_creature),
+	id_item INTEGER REFERENCES item (id_item),
+	PRIMARY KEY (id_creature, id_item)
+);
+
 COMMIT;
