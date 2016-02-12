@@ -49,7 +49,7 @@ msgstr "Login: "
 msgid "COMMAND_PROMPT"
 msgstr "Command: "
 
-#: core/command_factory.py:40 core/commands/help.py:38
+#: core/command_factory.py:42 core/commands/help.py:38
 #: tests/commands/testHelp.py:26 tests/commands/testHelp.py:75
 #: tests/commands/testLook.py:15 tests/commands/testLook.py:39
 #: tests/commands/testLook.py:51 tests/commands/testLook.py:56
@@ -62,7 +62,7 @@ msgstr "Command: "
 msgid "LOOK_COMMAND"
 msgstr "look"
 
-#: core/command_factory.py:41 core/commands/help.py:22
+#: core/command_factory.py:43 core/commands/help.py:22
 #: tests/commands/testHelp.py:18 tests/commands/testHelp.py:59
 #: tests/commands/testTalk.py:14 tests/commands/testTalk.py:19
 #: tests/commands/testTalk.py:24 tests/commands/testTalk.py:29
@@ -72,7 +72,7 @@ msgstr "look"
 msgid "TALK_COMMAND"
 msgstr "talk"
 
-#: core/command_factory.py:42 core/commands/help.py:26
+#: core/command_factory.py:44 core/commands/help.py:26
 #: tests/commands/testHelp.py:20 tests/commands/testHelp.py:63
 #: tests/commands/testMove.py:14 tests/commands/testMove.py:19
 #: tests/commands/testMove.py:24 tests/commands/testMove.py:29
@@ -81,7 +81,7 @@ msgstr "talk"
 msgid "MOVE_COMMAND"
 msgstr "move"
 
-#: core/command_factory.py:43 core/commands/help.py:30
+#: core/command_factory.py:45 core/commands/help.py:30
 #: tests/commands/testEnter.py:14 tests/commands/testEnter.py:19
 #: tests/commands/testEnter.py:24 tests/commands/testEnter.py:29
 #: tests/commands/testEnter.py:34 tests/commands/testEnter.py:39
@@ -93,7 +93,7 @@ msgstr "move"
 msgid "ENTER_COMMAND"
 msgstr "enter"
 
-#: core/command_factory.py:44 core/commands/help.py:34
+#: core/command_factory.py:46 core/commands/help.py:34
 #: tests/commands/testExit.py:13 tests/commands/testExit.py:18
 #: tests/commands/testExit.py:23 tests/commands/testExit.py:28
 #: tests/commands/testExit.py:33 tests/commands/testExit.py:38
@@ -103,7 +103,7 @@ msgstr "enter"
 msgid "EXIT_COMMAND"
 msgstr "exit"
 
-#: core/command_factory.py:45 core/commands/help.py:51
+#: core/command_factory.py:47 core/commands/help.py:51
 #: tests/commands/testDrop.py:51 tests/commands/testDrop.py:63
 #: tests/commands/testDrop.py:117 tests/commands/testDrop.py:124
 #: tests/commands/testDrop.py:131 tests/commands/testDrop.py:138
@@ -141,7 +141,7 @@ msgstr "exit"
 msgid "TAKE_COMMAND"
 msgstr "take"
 
-#: core/command_factory.py:46 core/commands/help.py:61
+#: core/command_factory.py:48 core/commands/help.py:61
 #: tests/commands/testDrop.py:17 tests/commands/testDrop.py:26
 #: tests/commands/testDrop.py:35 tests/commands/testDrop.py:44
 #: tests/commands/testDrop.py:56 tests/commands/testDrop.py:68
@@ -165,25 +165,25 @@ msgstr "take"
 msgid "DROP_COMMAND"
 msgstr "drop"
 
-#: core/command_factory.py:47 core/commands/help.py:42
+#: core/command_factory.py:49 core/commands/help.py:42
 #: tests/commands/testHelp.py:28 tests/commands/testHelp.py:79
 #: tests/commands/testInventory.py:14 tests/commands/testInventory.py:19
 #: tests/commands/testInventory.py:26 tests/commands/testInventory.py:34
 msgid "INVENTORY_COMMAND"
 msgstr "inventory"
 
-#: core/command_factory.py:48 core/commands/help.py:42
+#: core/command_factory.py:50 core/commands/help.py:42
 #: tests/commands/testHelp.py:28 tests/commands/testHelp.py:79
 msgid "INVENTORY_SHORT_COMMAND"
 msgstr "inv"
 
-#: core/command_factory.py:49 core/commands/help.py:70
+#: core/command_factory.py:51 core/commands/help.py:70
 #: tests/commands/testHelp.py:15 tests/commands/testHelp.py:48
 #: tests/commands/testHelp.py:55 tests/commands/testHelp.py:95
 msgid "HELP_COMMAND"
 msgstr "help"
 
-#: core/command_factory.py:50 core/commands/help.py:46
+#: core/command_factory.py:52 core/commands/help.py:46
 #: tests/commands/testHelp.py:30 tests/commands/testHelp.py:83
 #: tests/commands/testOpen.py:14 tests/commands/testOpen.py:19
 #: tests/commands/testOpen.py:24 tests/commands/testOpen.py:29
@@ -202,12 +202,12 @@ msgstr "open"
 msgid "ATTACK_COMMAND"
 msgstr "attack"
 
-#: core/command_factory.py:77 core/commands/help.py:74
+#: core/command_factory.py:80 core/commands/help.py:74
 #: tests/commands/testHelp.py:50 tests/commands/testHelp.py:99
 msgid "QUIT_COMMAND"
 msgstr "quit"
 
-#: core/command_factory.py:77 core/commands/help.py:74
+#: core/command_factory.py:80 core/commands/help.py:74
 #: tests/commands/testHelp.py:50 tests/commands/testHelp.py:99
 msgid "QUIT_SHORT_COMMAND"
 msgstr "q"
@@ -216,7 +216,7 @@ msgstr "q"
 msgid "ERROR_DENIED_COMMAND_WHILE_FIGHTING"
 msgstr "You can't use this command while fighting"
 
-#: core/command_factory.py:86 core/command_factory.py:99
+#: core/command_factory.py:94 core/command_factory.py:107
 msgid "ERROR_UNKNOWN_COMMAND"
 msgstr "Unknown command"
 
@@ -482,37 +482,37 @@ msgstr "region"
 msgid "LOOK_FIGHT_PARAM"
 msgstr "enemies"
 
-#: core/commands/look.py:21 tests/commands/testLook.py:72
+#: core/commands/look.py:22 tests/commands/testLook.py:72
 #: tests/commands/testLook.py:77
 msgid "LOOK_CHARACTERS_PARAM"
 msgstr "characters"
 
-#: core/commands/look.py:22 tests/commands/testLook.py:82
+#: core/commands/look.py:23 tests/commands/testLook.py:82
 #: tests/commands/testLook.py:90
 msgid "LOOK_DIRECTIONS_PARAM"
 msgstr "diections"
 
-#: core/commands/look.py:23 tests/commands/testLook.py:95
+#: core/commands/look.py:24 tests/commands/testLook.py:95
 #: tests/commands/testLook.py:100
 msgid "LOOK_PLACES_PARAM"
 msgstr "places"
 
-#: core/commands/look.py:24 tests/commands/testLook.py:105
+#: core/commands/look.py:25 tests/commands/testLook.py:105
 #: tests/commands/testLook.py:111
 msgid "LOOK_OBJECTS_PARAM"
 msgstr "objects"
 
-#: core/commands/look.py:25 tests/commands/testLook.py:116
+#: core/commands/look.py:26 tests/commands/testLook.py:116
 #: tests/commands/testLook.py:124
 msgid "LOOK_CONTAINERS_PARAM"
 msgstr "containers"
 
-#: core/commands/look.py:37 tests/commands/testLook.py:53
+#: core/commands/look.py:38 tests/commands/testLook.py:53
 #: tests/commands/testLook.py:58
 msgid "ERROR_LOOK_UNKNOWN_SECTION"
 msgstr "Unknown option for the look command"
 
-#: core/commands/look.py:98 tests/commands/testLook.py:18
+#: core/commands/look.py:102 tests/commands/testLook.py:18
 #: tests/commands/testLook.py:64
 #, python-format
 msgid "CURRENT_REGION_%s"
@@ -523,43 +523,43 @@ msgstr "You are in %s"
 msgid "CURRENTLY_FIGHTING_%s"
 msgstr "You are currently fighting: %s"
 
-#: core/commands/look.py:102 tests/commands/testLook.py:20
+#: core/commands/look.py:109 tests/commands/testLook.py:20
 #: tests/commands/testLook.py:74
 msgid "PRESENT_CHARACTERS"
 msgstr "You see these characters arround:"
 
-#: core/commands/look.py:109 tests/commands/testLook.py:23
+#: core/commands/look.py:116 tests/commands/testLook.py:23
 #: tests/commands/testLook.py:85
 msgid "AVAILABLE_DIRECTIONS"
 msgstr "You can go in the following directions:"
 
-#: core/commands/look.py:116 tests/commands/testLook.py:26
+#: core/commands/look.py:123 tests/commands/testLook.py:26
 #: tests/commands/testLook.py:97
 msgid "AVAILABLE_PLACES"
 msgstr "You see the following places:"
 
-#: core/commands/look.py:123 tests/commands/testLook.py:29
+#: core/commands/look.py:130 tests/commands/testLook.py:29
 #: tests/commands/testLook.py:107
 msgid "AVAILABLE_ITEMS"
 msgstr "You see the following items"
 
-#: core/commands/look.py:130 tests/commands/testLook.py:32
+#: core/commands/look.py:137 tests/commands/testLook.py:32
 #: tests/commands/testLook.py:118
 msgid "AVAILABLE_ITEMS_CONTAINERS"
 msgstr "Available containers"
 
-#: core/commands/move.py:19 tests/commands/testMove.py:16
+#: core/commands/move.py:21 tests/commands/testMove.py:16
 #: tests/commands/testMove.py:21
 msgid "ERROR_MOVE_NO_DIRECTION_GIVEN"
 msgstr "Where shall I go?"
 
-#: core/commands/move.py:23 tests/commands/testMove.py:26
+#: core/commands/move.py:25 tests/commands/testMove.py:26
 #: tests/commands/testMove.py:31
 #, python-format
 msgid "ERROR_MOVE_INVALID_DIRECTION_%s"
 msgstr "%s is not a valid direction"
 
-#: core/commands/move.py:30 tests/commands/testMove.py:36
+#: core/commands/move.py:34 tests/commands/testMove.py:36
 #: tests/commands/testMove.py:41
 msgid "ERROR_MOVE_DIRECTION_NOT_AVAILABLE"
 msgstr "I can't go there"
@@ -582,7 +582,7 @@ msgstr ""
 "lets go %(direction)s\n"
 "You are attacked by a %(enemy)s"
 
-#: core/commands/move.py:37 tests/commands/testMove.py:46
+#: core/commands/move.py:76 tests/commands/testMove.py:46
 #, python-format
 msgid "MOVE_CONFIRMATION_%s"
 msgstr "lets go %s"
