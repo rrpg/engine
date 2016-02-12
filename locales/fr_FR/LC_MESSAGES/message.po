@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-10 11:33+0000\n"
+"POT-Creation-Date: 2016-02-12 18:00+0000\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -199,6 +199,10 @@ msgstr "aide"
 msgid "OPEN_COMMAND"
 msgstr "ouvrir"
 
+#: core/command_factory.py:53
+msgid "ATTACK_COMMAND"
+msgstr "attaquer"
+
 #: core/command_factory.py:77 core/commands/help.py:74
 #: tests/commands/testHelp.py:50 tests/commands/testHelp.py:99
 msgid "QUIT_COMMAND"
@@ -209,9 +213,17 @@ msgstr "quitter"
 msgid "QUIT_SHORT_COMMAND"
 msgstr "q"
 
+#: core/command_factory.py:87
+msgid "ERROR_DENIED_COMMAND_WHILE_FIGHTING"
+msgstr "Vous ne pouvez pas utiliser cette commande durant un combat"
+
 #: core/command_factory.py:86 core/command_factory.py:99
 msgid "ERROR_UNKNOWN_COMMAND"
 msgstr "Commande inconnue"
+
+#: core/commands/attack.py:18
+msgid "ERROR_FIGHT_NO_TARGET_GIVEN"
+msgstr "Qui voulez-vous attaquer?"
 
 #: core/commands/authenticate.py:17 tests/commands/testAuthenticate.py:18
 #: tests/commands/testAuthenticate.py:23
@@ -461,6 +473,10 @@ msgstr "Il y a plusieurs conteneurs de ce type ici, un index est necessaire."
 msgid "LOOK_REGION_PARAM"
 msgstr "region"
 
+#: core/commands/look.py:21
+msgid "LOOK_FIGHT_PARAM"
+msgstr "énemis"
+
 #: core/commands/look.py:21 tests/commands/testLook.py:72
 #: tests/commands/testLook.py:77
 msgid "LOOK_CHARACTERS_PARAM"
@@ -496,6 +512,11 @@ msgstr "Cette option est invalide pour la commande \"regarder\""
 #, python-format
 msgid "CURRENT_REGION_%s"
 msgstr "Vous vous trouver dans %s"
+
+#: core/commands/look.py:105
+#, python-format
+msgid "CURRENTLY_FIGHTING_%s"
+msgstr "Vous vous battez contre: %s"
 
 #: core/commands/look.py:102 tests/commands/testLook.py:20
 #: tests/commands/testLook.py:74
@@ -537,6 +558,24 @@ msgstr "La direction %s n'est pas valide"
 #: tests/commands/testMove.py:41
 msgid "ERROR_MOVE_DIRECTION_NOT_AVAILABLE"
 msgstr "Vous ne pouvez pas vous déplacer dans la direction demandée"
+
+#: core/commands/move.py:40
+msgid "ERROR_FLEE_FIGHT_FAILS"
+msgstr "Impossible de fuir"
+
+#: core/commands/move.py:68
+#, python-format
+msgid "MOVE_CONFIRMATION_%(direction)s_FIGHT_FLEE_%(enemy)s"
+msgstr ""
+"Vous arrivez à vous enfuir du combat contre %(enemy)s et vous vous dirigez "
+"maintenant dans la direction %(direction)s"
+
+#: core/commands/move.py:70
+#, python-format
+msgid "MOVE_CONFIRMATION_%(direction)s_FIGHT_%(enemy)s"
+msgstr ""
+"Vous vous déplacez dans la direction %(direction)s mais vous vous retrouvez "
+"face à face à la créature suivante: %(enemy)s"
 
 #: core/commands/move.py:37 tests/commands/testMove.py:46
 #, python-format
@@ -685,3 +724,6 @@ msgstr "Une erreur est survenue lors du chargement du lieu..."
 #: tests/commands/testAuthenticate.py:33
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
 msgstr "Identifiant incorrect"
+
+#~ msgid "ERROR_FIGHT_UNKNOWN_CHARACTER"
+#~ msgstr "Personnage inconnu"

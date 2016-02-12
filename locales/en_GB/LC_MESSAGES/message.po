@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-10 11:33+0000\n"
+"POT-Creation-Date: 2016-02-12 18:00+0000\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -198,6 +198,10 @@ msgstr "help"
 msgid "OPEN_COMMAND"
 msgstr "open"
 
+#: core/command_factory.py:53
+msgid "ATTACK_COMMAND"
+msgstr "attack"
+
 #: core/command_factory.py:77 core/commands/help.py:74
 #: tests/commands/testHelp.py:50 tests/commands/testHelp.py:99
 msgid "QUIT_COMMAND"
@@ -208,9 +212,17 @@ msgstr "quit"
 msgid "QUIT_SHORT_COMMAND"
 msgstr "q"
 
+#: core/command_factory.py:87
+msgid "ERROR_DENIED_COMMAND_WHILE_FIGHTING"
+msgstr "You can't use this command while fighting"
+
 #: core/command_factory.py:86 core/command_factory.py:99
 msgid "ERROR_UNKNOWN_COMMAND"
 msgstr "Unknown command"
+
+#: core/commands/attack.py:18
+msgid "ERROR_FIGHT_NO_TARGET_GIVEN"
+msgstr "Who do you want to attack?"
 
 #: core/commands/authenticate.py:17 tests/commands/testAuthenticate.py:18
 #: tests/commands/testAuthenticate.py:23
@@ -466,6 +478,10 @@ msgstr ""
 msgid "LOOK_REGION_PARAM"
 msgstr "region"
 
+#: core/commands/look.py:21
+msgid "LOOK_FIGHT_PARAM"
+msgstr "enemies"
+
 #: core/commands/look.py:21 tests/commands/testLook.py:72
 #: tests/commands/testLook.py:77
 msgid "LOOK_CHARACTERS_PARAM"
@@ -501,6 +517,11 @@ msgstr "Unknown option for the look command"
 #, python-format
 msgid "CURRENT_REGION_%s"
 msgstr "You are in %s"
+
+#: core/commands/look.py:105
+#, python-format
+msgid "CURRENTLY_FIGHTING_%s"
+msgstr "You are currently fighting: %s"
 
 #: core/commands/look.py:102 tests/commands/testLook.py:20
 #: tests/commands/testLook.py:74
@@ -542,6 +563,24 @@ msgstr "%s is not a valid direction"
 #: tests/commands/testMove.py:41
 msgid "ERROR_MOVE_DIRECTION_NOT_AVAILABLE"
 msgstr "I can't go there"
+
+#: core/commands/move.py:40
+msgid "ERROR_FLEE_FIGHT_FAILS"
+msgstr "You can't run away from this fight"
+
+#: core/commands/move.py:68
+#, python-format
+msgid "MOVE_CONFIRMATION_%(direction)s_FIGHT_FLEE_%(enemy)s"
+msgstr ""
+"You managed to run away from the fight against the %(enemy)s and you went "
+"%(direction)s"
+
+#: core/commands/move.py:70
+#, python-format
+msgid "MOVE_CONFIRMATION_%(direction)s_FIGHT_%(enemy)s"
+msgstr ""
+"lets go %(direction)s\n"
+"You are attacked by a %(enemy)s"
 
 #: core/commands/move.py:37 tests/commands/testMove.py:46
 #, python-format
@@ -690,3 +729,6 @@ msgstr "An error occured during the place loading"
 #: tests/commands/testAuthenticate.py:33
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
 msgstr "Invalid login"
+
+#~ msgid "ERROR_FIGHT_UNKNOWN_CHARACTER"
+#~ msgstr "Unknow character"

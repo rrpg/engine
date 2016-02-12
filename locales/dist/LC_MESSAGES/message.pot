@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-10 11:33+0000\n"
+"POT-Creation-Date: 2016-02-12 18:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -198,6 +198,10 @@ msgstr ""
 msgid "OPEN_COMMAND"
 msgstr ""
 
+#: core/command_factory.py:53
+msgid "ATTACK_COMMAND"
+msgstr ""
+
 #: core/command_factory.py:77 core/commands/help.py:74
 #: tests/commands/testHelp.py:50 tests/commands/testHelp.py:99
 msgid "QUIT_COMMAND"
@@ -208,8 +212,16 @@ msgstr ""
 msgid "QUIT_SHORT_COMMAND"
 msgstr ""
 
+#: core/command_factory.py:87
+msgid "ERROR_DENIED_COMMAND_WHILE_FIGHTING"
+msgstr ""
+
 #: core/command_factory.py:86 core/command_factory.py:99
 msgid "ERROR_UNKNOWN_COMMAND"
+msgstr ""
+
+#: core/commands/attack.py:18
+msgid "ERROR_FIGHT_NO_TARGET_GIVEN"
 msgstr ""
 
 #: core/commands/authenticate.py:17 tests/commands/testAuthenticate.py:18
@@ -459,6 +471,10 @@ msgstr ""
 msgid "LOOK_REGION_PARAM"
 msgstr ""
 
+#: core/commands/look.py:21
+msgid "LOOK_FIGHT_PARAM"
+msgstr ""
+
 #: core/commands/look.py:21 tests/commands/testLook.py:72
 #: tests/commands/testLook.py:77
 msgid "LOOK_CHARACTERS_PARAM"
@@ -493,6 +509,11 @@ msgstr ""
 #: tests/commands/testLook.py:64
 #, python-format
 msgid "CURRENT_REGION_%s"
+msgstr ""
+
+#: core/commands/look.py:105
+#, python-format
+msgid "CURRENTLY_FIGHTING_%s"
 msgstr ""
 
 #: core/commands/look.py:102 tests/commands/testLook.py:20
@@ -534,6 +555,20 @@ msgstr ""
 #: core/commands/move.py:30 tests/commands/testMove.py:36
 #: tests/commands/testMove.py:41
 msgid "ERROR_MOVE_DIRECTION_NOT_AVAILABLE"
+msgstr ""
+
+#: core/commands/move.py:40
+msgid "ERROR_FLEE_FIGHT_FAILS"
+msgstr ""
+
+#: core/commands/move.py:68
+#, python-format
+msgid "MOVE_CONFIRMATION_%(direction)s_FIGHT_FLEE_%(enemy)s"
+msgstr ""
+
+#: core/commands/move.py:70
+#, python-format
+msgid "MOVE_CONFIRMATION_%(direction)s_FIGHT_%(enemy)s"
 msgstr ""
 
 #: core/commands/move.py:37 tests/commands/testMove.py:46
