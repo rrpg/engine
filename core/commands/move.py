@@ -41,6 +41,8 @@ class move(core.command.command):
 				else:
 					core.fight.stopFight(self._player)
 					wasFighting = True
+					ret['flee'] = True
+					ret['enemy'] = enemy['name']
 			self._player.goTo(a._model['id_area'])
 
 			# let's be fair, if the player succesfully ran away from a
@@ -62,7 +64,12 @@ class move(core.command.command):
 
 	def render(self, data):
 		if 'enemy' in data.keys():
-			return _('MOVE_CONFIRMATION_%(direction)s_FIGHT_%(enemy)s') % {
+			if 'flee' in data.keys():
+				key = _('MOVE_CONFIRMATION_%(direction)s_FIGHT_FLEE_%(enemy)s')
+			else:
+				key = _('MOVE_CONFIRMATION_%(direction)s_FIGHT_%(enemy)s')
+
+			return key % {
 				'direction': data['direction'], 'enemy': data['enemy']
 			}
 		else:
