@@ -18,6 +18,7 @@ class look(core.command.command):
 		"""
 		sections = {
 			_('LOOK_REGION_PARAM'): ['region', area.area.getRegionNameFromAreaId],
+			_('LOOK_FIGHT_PARAM'): ['fight', self._getFightInfo],
 			_('LOOK_CHARACTERS_PARAM'): ['characters', self._getCharacters],
 			_('LOOK_DIRECTIONS_PARAM'): ['directions', self._getDirections],
 			_('LOOK_PLACES_PARAM'): ['places', self._getPlaces],
@@ -43,6 +44,9 @@ class look(core.command.command):
 					result[sections[s][0]] = values
 
 		return result
+
+	def _getFightInfo(self, areaId):
+		return core.fight.getEnemy()
 
 	def _getCharacters(self, areaId):
 		characters = list()
@@ -96,6 +100,9 @@ class look(core.command.command):
 
 		if 'region' in sections:
 			output.append(_('CURRENT_REGION_%s') % data['region'])
+
+		if 'fight' in sections:
+			output.append(_('CURRENTLY_FIGHTING_%s' % data['fight']['name']))
 
 		if 'characters' in sections:
 			o = list()
