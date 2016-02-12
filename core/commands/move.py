@@ -59,18 +59,26 @@ class move(core.command.command):
 			if enemy is not None:
 				ret['enemy'] = enemy['name']
 				core.fight.startFight(self._player, enemy)
+				# Deal with enemy attacking first
+				damages = core.fight.enemyTriesToAttackFirst(self._player)
+				if damages is not None:
+					ret['damages'] = damages
 
 		return ret
 
 	def render(self, data):
+		ret = ''
 		if 'enemy' in data.keys():
 			if 'flee' in data.keys():
-				key = _('MOVE_CONFIRMATION_%(direction)s_FIGHT_FLEE_%(enemy)s')
+				ret = _('MOVE_CONFIRMATION_%(direction)s_FIGHT_FLEE_%(enemy)s')
+			# arrived face to face with an enemy
+			# The enemy has been faster than the player and attacked first
+			elif 'damages' in data.keys():
+				ret = _('MOVE_CONFIRMATION_%(direction)s_AMBUSH_%(enemy)s')
+				ret += _('FIGHT_ENEMY_DAMAGES_%(enemy)s_%(damages)s')
 			else:
-				key = _('MOVE_CONFIRMATION_%(direction)s_FIGHT_%(enemy)s')
+				ret = _('MOVE_CONFIRMATION_%(direction)s_FIGHT_%(enemy)s')
 
-			return key % {
-				'direction': data['direction'], 'enemy': data['enemy']
-			}
+			return ret % data
 		else:
 			return _('MOVE_CONFIRMATION_%s') % data['direction']

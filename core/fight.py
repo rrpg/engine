@@ -17,6 +17,12 @@ def stopFight(player):
 	player.fight(False)
 	core.registry.set('fight_enemy', None)
 
+def enemyTriesToAttackFirst(player):
+	# The enemy tries to ambush the player. If he succeeds, he deals the
+	# first damages
+	# NOT IMPLEMENTED YET
+	return None
+
 
 class exception(core.exception.exception):
 	pass
