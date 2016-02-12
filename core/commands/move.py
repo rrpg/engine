@@ -69,6 +69,7 @@ class move(core.command.command):
 	def render(self, data):
 		ret = ''
 		if 'enemy' in data.keys():
+			# Ran away from an enemy
 			if 'flee' in data.keys():
 				ret = _('MOVE_CONFIRMATION_%(direction)s_FIGHT_FLEE_%(enemy)s')
 			# arrived face to face with an enemy
