@@ -18,9 +18,9 @@ import core.exception
 Available directions
 """
 directions = {
-	_('DIRECTION_KEY_NORTH'): (1, (0, -1)),
+	_('DIRECTION_KEY_NORTH'): (1, (0, 1)),
 	_('DIRECTION_KEY_EAST'): (2, (1, 0)),
-	_('DIRECTION_KEY_SOUTH'): (4, (0, 1)),
+	_('DIRECTION_KEY_SOUTH'): (4, (0, -1)),
 	_('DIRECTION_KEY_WEST'): (8, (-1, 0))
 }
 

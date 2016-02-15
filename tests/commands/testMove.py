@@ -41,11 +41,11 @@ class moveTests(tests.common.common):
 		self.assertEquals(output, {"error": {"message": _('ERROR_MOVE_DIRECTION_NOT_AVAILABLE'), "code": 1}})
 
 	def test_text(self):
-		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_NORTH')])
+		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
 		output = self.rpgText._runAction()
-		self.assertEquals(output, _('MOVE_CONFIRMATION_%s') % _('DIRECTION_KEY_NORTH'))
+		self.assertEquals(output, _('MOVE_CONFIRMATION_%s') % _('DIRECTION_KEY_SOUTH'))
 
 	def test_json(self):
-		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_NORTH')])
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
 		output = self.rpgJSON._runAction()
-		self.assertEquals(output, {"direction": _('DIRECTION_KEY_NORTH')})
+		self.assertEquals(output, {"direction": _('DIRECTION_KEY_SOUTH')})
