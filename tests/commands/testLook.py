@@ -21,7 +21,7 @@ class lookTests(tests.common.common):
 			'    Tom\n' +\
 			'\n' +\
 			_('AVAILABLE_DIRECTIONS') +'\n'+\
-			'    ' + _('DIRECTION_KEY_NORTH') +'\n'+\
+			'    ' + _('DIRECTION_KEY_SOUTH') +'\n'+\
 			'\n' +\
 			_('AVAILABLE_PLACES') +'\n'+\
 			'    first dungeon\n' +\
@@ -39,7 +39,7 @@ class lookTests(tests.common.common):
 		self.rpgJSON.setAction([_('LOOK_COMMAND')])
 		output = self.rpgJSON._runAction()
 		self.assertEquals(output, {
-			"directions": [_('DIRECTION_KEY_NORTH')],
+			"directions": [_('DIRECTION_KEY_SOUTH')],
 			"items": [{"name": "Heavy breastplate", "quantity": 6}],
 			"region": "The High lands",
 			"places": ["first dungeon"],
@@ -83,13 +83,13 @@ class lookTests(tests.common.common):
 		output = self.rpgText._runAction()
 		self.assertEquals(
 			output, _('AVAILABLE_DIRECTIONS') + '\n    ' +\
-				_('DIRECTION_KEY_NORTH')
+				_('DIRECTION_KEY_SOUTH')
 		)
 
 	def test_directions_json(self):
 		self.rpgJSON.setAction([_('LOOK_COMMAND'), _('LOOK_DIRECTIONS_PARAM')])
 		output = self.rpgJSON._runAction()
-		self.assertEquals(output, {"directions": [_('DIRECTION_KEY_NORTH')]})
+		self.assertEquals(output, {"directions": [_('DIRECTION_KEY_SOUTH')]})
 
 	def test_places_text(self):
 		self.rpgText.setAction([_('LOOK_COMMAND'), _('LOOK_PLACES_PARAM')])
