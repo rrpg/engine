@@ -14,7 +14,7 @@ class lookTests(tests.common.common):
 	def test_text(self):
 		self.rpgText.setAction([_('LOOK_COMMAND')])
 		output = self.rpgText._runAction()
-		self.assertTrue(output ==
+		self.assertEquals(output,
 			_('CURRENT_REGION_%s') % 'The High lands\n' +\
 			'\n' +\
 			_('PRESENT_CHARACTERS') +'\n'+\
