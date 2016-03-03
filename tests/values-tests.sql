@@ -11,6 +11,34 @@ INSERT INTO region (region_name) VALUES ('The High lands');
 INSERT INTO area_type (name) VALUES ('hostile');
 INSERT INTO area_type (name) VALUES ('peaceful');
 INSERT INTO area_type (name) VALUES ('dungeon');
+
+-- Map of the test world
+--	+-+
+--	| |
+--	+-+
+--	+---------+
+--	|         |
+--	|         |
+--	|2, (0, 1)|
+--	|         |
+--	|         |
+--	+---| |---+
+--	+---| |---++---------+
+--	|         ||         |
+--	|         ||         |
+--	|1, (0, 0)==3, (1, 0)|
+--	|         ||         |
+--	|         ||         |
+--	+---------++---------+
+--
+--
+--
+--
+--
+--
+--
+--
+--
 INSERT INTO area (id_region, id_area_type, container, x, y, directions, items)
 	VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'peaceful'), 'world', 0, 0, 3, '{"1": {"quantity": 1}, "2": {"quantity": 4}}');
 INSERT INTO area (id_region, id_area_type, container, x, y, directions, items)
