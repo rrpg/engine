@@ -2,6 +2,7 @@
 
 from models import item
 import core.command
+from core.localisation import _
 
 
 class stats(core.command.command):
@@ -26,8 +27,21 @@ class stats(core.command.command):
 
 	def render(self, data):
 		output = list()
-		longestStat = max({len(stat): stat for stat in data.keys()})
+		statsLabels = {
+			'stat_current_hp': _('STAT_CURRENT_HP'),
+			'stat_max_hp': _('STAT_MAX_HP'),
+			'stat_strength': _('STAT_STRENGTH'),
+			'stat_defence': _('STAT_DEFENCE'),
+			'stat_speed': _('STAT_SPEED'),
+			'stat_accuracy': _('STAT_ACCURACY')
+		}
+		longestStat = max({len(stat): stat for stat in statsLabels.values()})
+
 		for i in data:
-			output.append('{0}{1}'.format(i.upper().ljust(longestStat + 3), str(data[i]).rjust(4)))
+			output.append(stats.formatStat(
+				statsLabels[i],
+				longestStat,
+				stats.padStat(data[i], 4)
+			))
 
 		return '\n'.join(output)
