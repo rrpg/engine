@@ -13,6 +13,17 @@ class stats(core.command.command):
 		"""
 		return self._player.getStats()
 
+	@staticmethod
+	def formatStat(statLabel, labelLength, stat):
+		return '{0}{1}'.format(
+			statLabel.ljust(labelLength), stat
+		)
+
+	@staticmethod
+	def padStat(stat, padding):
+		return str(stat).rjust(padding)
+
+
 	def render(self, data):
 		output = list()
 		longestStat = max({len(stat): stat for stat in data.keys()})
