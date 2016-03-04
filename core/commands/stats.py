@@ -17,6 +17,6 @@ class stats(core.command.command):
 		output = list()
 		longestStat = max({len(stat): stat for stat in data.keys()})
 		for i in data:
-			output.append('{0}{1}'.format(i.ljust(longestStat + 3), str(data[i]).rjust(4)))
+			output.append('{0}{1}'.format(i.upper().ljust(longestStat + 3), str(data[i]).rjust(4)))
 
 		return '\n'.join(output)
