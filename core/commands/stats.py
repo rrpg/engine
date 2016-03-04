@@ -28,8 +28,7 @@ class stats(core.command.command):
 	def render(self, data):
 		output = list()
 		statsLabels = {
-			'stat_current_hp': _('STAT_CURRENT_HP'),
-			'stat_max_hp': _('STAT_MAX_HP'),
+			'stat_hp': _('STAT_CURRENT_HP'),
 			'stat_strength': _('STAT_STRENGTH'),
 			'stat_defence': _('STAT_DEFENCE'),
 			'stat_speed': _('STAT_SPEED'),
@@ -37,11 +36,26 @@ class stats(core.command.command):
 		}
 		longestStat = max({len(stat): stat for stat in statsLabels.values()})
 
+		# Display the health
+		healthStat = '{0} / {1}'.format(
+			stats.padStat(data['stat_current_hp'], 4),
+			data['stat_max_hp']
+		)
+		lenHealthStat = len(healthStat)
+
+		output.append(stats.formatStat(
+			statsLabels['stat_hp'],
+			longestStat,
+			healthStat
+		))
+
+		# The remaining stats
 		for i in data:
-			output.append(stats.formatStat(
-				statsLabels[i],
-				longestStat,
-				stats.padStat(data[i], 4)
-			))
+			if i != 'stat_current_hp' and i != 'stat_max_hp':
+				output.append(stats.formatStat(
+					statsLabels[i],
+					longestStat,
+					stats.padStat(data[i], lenHealthStat)
+				))
 
 		return '\n'.join(output)
