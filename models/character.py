@@ -184,6 +184,7 @@ class model(Model):
 	fields = (
 		'id_character',
 		'name', 'can_fight',
+		'stat_current_hp', 'stat_max_hp',
 		'stat_strength',
 		'stat_defence',
 		'stat_speed',
