@@ -13,7 +13,7 @@ class enterTests(tests.common.common):
 	def test_empty_text(self):
 		self.rpgText.setAction([_('INVENTORY_COMMAND')])
 		output = self.rpgText._runAction()
-		self.assertEquals(output, '')
+		self.assertEquals(output, _('INVENTORY_EMPTY'))
 
 	def test_empty_json(self):
 		self.rpgJSON.setAction([_('INVENTORY_COMMAND')])
