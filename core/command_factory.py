@@ -12,13 +12,14 @@ Today, the available commands are:
 - take,
 - drop,
 - inventory,
+- stats,
 - help,
 - quit,
 - authenticate
 """
 import core.command
 from core.commands import look, talk, move, enter, exit, take, drop, inventory,\
-	help, createPlayer, listSpecies, listGenders, open, authenticate
+	help, createPlayer, listSpecies, listGenders, open, authenticate, stats
 from core.localisation import _
 import sys
 
@@ -46,6 +47,7 @@ class factory:
 		_('DROP_COMMAND'): {'allowed_while_fighting': False, 'command': 'drop'},
 		_('INVENTORY_COMMAND'): {'allowed_while_fighting': True, 'command': 'inventory'},
 		_('INVENTORY_SHORT_COMMAND'): {'allowed_while_fighting': True, 'command': 'inventory'},
+		_('STATS_COMMAND'): {'allowed_while_fighting': True, 'command': 'stats'},
 		_('HELP_COMMAND'): {'allowed_while_fighting': True, 'command': 'help'},
 		_('OPEN_COMMAND'): {'allowed_while_fighting': False, 'command': 'open'}
 	}

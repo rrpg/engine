@@ -116,7 +116,7 @@ class character:
 
 		@return dict
 		"""
-		return {name[5:]: self._model[name] for name in self._model.keys() if name[:5] == 'stat_'}
+		return {name: self._model[name] for name in self._model.keys() if name[:5] == 'stat_'}
 
 	def goTo(self, idArea):
 		"""
@@ -184,6 +184,7 @@ class model(Model):
 	fields = (
 		'id_character',
 		'name', 'can_fight',
+		'stat_current_hp', 'stat_max_hp',
 		'stat_strength',
 		'stat_defence',
 		'stat_speed',

@@ -22,6 +22,10 @@ class inventory(core.command.command):
 
 	def render(self, data):
 		output = list()
+
+		if len(data) == 0:
+			return _('INVENTORY_EMPTY')
+
 		for i in data:
 			output.append(str(i['quantity']).rjust(3) + ' ' + i['name'])
 
