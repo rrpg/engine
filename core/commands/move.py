@@ -33,17 +33,17 @@ class move(core.command.command):
 		if area.area.canGoTo(curArea['directions'], direction) is False or a is None:
 			raise core.command.exception(_('ERROR_MOVE_DIRECTION_NOT_AVAILABLE'))
 		else:
-			wasFighting = False
-			if self._player.isFighting():
+			wasFighting = self._player.isFighting()
+			if wasFighting:
 				enemy = core.fight.getEnemy()
 
 				if not core.fight.canFlee(self._player._model, enemy):
 					raise core.fight.exception(_('ERROR_FLEE_FIGHT_FAILS'))
 				else:
 					core.fight.stopFight(self._player)
-					wasFighting = True
 					ret['flee'] = True
 					ret['enemy'] = enemy['name']
+
 			self._player.goTo(a._model['id_area'])
 
 			# let's be fair, if the player succesfully ran away from a
