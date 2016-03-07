@@ -23,6 +23,9 @@ def enemyTriesToAttackFirst(player):
 	# NOT IMPLEMENTED YET
 	return None
 
+def canFlee(fighter1, fighter2):
+	return fighter1['stat_speed'] < fighter2['stat_speed']
+
 
 class exception(core.exception.exception):
 	pass

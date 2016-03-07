@@ -36,7 +36,8 @@ class move(core.command.command):
 			wasFighting = False
 			if self._player.isFighting():
 				enemy = core.fight.getEnemy()
-				if self._player._model['stat_speed'] < enemy['stat_speed']:
+
+				if not core.fight.canFlee(self._player._model, enemy):
 					raise core.fight.exception(_('ERROR_FLEE_FIGHT_FAILS'))
 				else:
 					core.fight.stopFight(self._player)
