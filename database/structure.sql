@@ -22,6 +22,7 @@ CREATE TABLE `character` (
 	stat_defence TINYINT NOT NULL DEFAULT 1,
 	stat_speed TINYINT NOT NULL DEFAULT 1,
 	stat_accuracy TINYINT NOT NULL DEFAULT 1,
+	stat_luck TINYINT NOT NULL DEFAULT 1,
 	id_species INT REFERENCES species (id_species),
 	id_gender INT REFERENCES gender (id_gender),
 	id_area INT REFERENCES area (id_area)
@@ -123,7 +124,8 @@ CREATE TABLE creature (
 	stat_strength TINYINT NOT NULL DEFAULT 1,
 	stat_defence TINYINT NOT NULL DEFAULT 1,
 	stat_speed TINYINT NOT NULL DEFAULT 1,
-	stat_accuracy TINYINT NOT NULL DEFAULT 1
+	stat_accuracy TINYINT NOT NULL DEFAULT 1,
+	stat_luck TINYINT NOT NULL DEFAULT 1
 );
 
 CREATE TABLE creature_area_type (

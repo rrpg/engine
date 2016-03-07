@@ -32,7 +32,8 @@ class stats(core.command.command):
 			'stat_strength': _('STAT_STRENGTH'),
 			'stat_defence': _('STAT_DEFENCE'),
 			'stat_speed': _('STAT_SPEED'),
-			'stat_accuracy': _('STAT_ACCURACY')
+			'stat_accuracy': _('STAT_ACCURACY'),
+			'stat_luck': _('STAT_LUCK')
 		}
 		longestStat = max({len(stat): stat for stat in statsLabels.values()})
 

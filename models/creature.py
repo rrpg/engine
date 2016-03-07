@@ -54,7 +54,8 @@ class model(Model):
 				stat_strength,\
 				stat_defence,\
 				stat_speed,\
-				stat_accuracy\
+				stat_accuracy,\
+				stat_luck\
 			FROM\
 				creature\
 				JOIN creature_area_type ON creature.id_creature = creature_area_type.id_creature\
