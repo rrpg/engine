@@ -13,10 +13,6 @@ class attack(core.command.command):
 		"""
 		Attack someone in the same area
 		"""
-		if len(self._args) == 0:
-			raise core.command.exception(_('ERROR_FIGHT_NO_TARGET_GIVEN'))
-
-		targetName = self._args[0]
 		enemy = core.fight.getEnemy()
 		attackResult = core.fight.attack(
 			self._player, enemy
