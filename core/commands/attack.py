@@ -14,6 +14,10 @@ class attack(core.command.command):
 		Attack someone in the same area
 		"""
 		enemy = core.fight.getEnemy()
+
+		if enemy is None:
+			raise core.command.exception(_('ERROR_FIGHT_NOT_FIGHTING'))
+
 		attackResult = core.fight.attack(
 			self._player, enemy
 		)
