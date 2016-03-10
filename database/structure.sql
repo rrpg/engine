@@ -18,10 +18,9 @@ CREATE TABLE `character` (
 	can_fight BIT NOT NULL DEFAULT 1,
 	stat_current_hp TINYINT NOT NULL DEFAULT 10,
 	stat_max_hp TINYINT NOT NULL DEFAULT 10,
-	stat_strength TINYINT NOT NULL DEFAULT 1,
+	stat_attack TINYINT NOT NULL DEFAULT 1,
 	stat_defence TINYINT NOT NULL DEFAULT 1,
 	stat_speed TINYINT NOT NULL DEFAULT 1,
-	stat_accuracy TINYINT NOT NULL DEFAULT 1,
 	stat_luck TINYINT NOT NULL DEFAULT 1,
 	id_species INT REFERENCES species (id_species),
 	id_gender INT REFERENCES gender (id_gender),
@@ -121,10 +120,9 @@ CREATE TABLE creature (
 	id_creature INTEGER PRIMARY KEY AUTOINCREMENT,
 	name VARCHAR(50),
 	stat_hp TINYINT NOT NULL DEFAULT 10,
-	stat_strength TINYINT NOT NULL DEFAULT 1,
+	stat_attack TINYINT NOT NULL DEFAULT 1,
 	stat_defence TINYINT NOT NULL DEFAULT 1,
 	stat_speed TINYINT NOT NULL DEFAULT 1,
-	stat_accuracy TINYINT NOT NULL DEFAULT 1,
 	stat_luck TINYINT NOT NULL DEFAULT 1
 );
 

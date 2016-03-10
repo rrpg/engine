@@ -34,10 +34,10 @@ INSERT INTO talk_answer (trigger_word, sentence, condition) VALUES ('hi', 'Hi, %
 INSERT INTO character_answer (id_character, id_talk_answer) VALUES (1, 1);
 INSERT INTO character_answer (id_character, id_talk_answer) VALUES (1, 2);
 
-INSERT INTO creature (name, stat_hp, stat_strength, stat_defence, stat_speed, stat_accuracy)
-	VALUES ("rat", 15, 2, 2, 2, 75),
-		("gobelin", 25, 5, 5, 4, 75),
-		("giant spider", 10, 3, 3, 3, 50),
+INSERT INTO creature (name, stat_hp, stat_attack, stat_defence, stat_speed, stat_luck)
+	VALUES ("rat", 15, 2, 2, 2, 25),
+		("gobelin", 25, 5, 5, 4, 30),
+		("giant spider", 10, 3, 3, 3, 20),
 		("C'thulhu", 1000, 100, 100, 100, 100);
 
 INSERT INTO creature_area_type (id_creature, id_area_type, probability)

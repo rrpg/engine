@@ -64,8 +64,8 @@ INSERT INTO talk_answer (trigger_word, sentence, condition) VALUES ('hi', 'Hi, %
 INSERT INTO character_answer (id_character, id_talk_answer) VALUES (1, 1);
 INSERT INTO character_answer (id_character, id_talk_answer) VALUES (1, 2);
 
-INSERT INTO creature (name, stat_hp, stat_strength, stat_defence, stat_speed, stat_accuracy)
-	VALUES ("rat", 15, 2, 2, 2, 75);
+INSERT INTO creature (name, stat_hp, stat_attack, stat_defence, stat_speed, stat_luck)
+	VALUES ("rat", 15, 2, 2, 2, 25);
 
 INSERT INTO creature_area_type (id_creature, id_area_type, probability)
 	VALUES (1, 1, 1.0); -- rat in hostile area

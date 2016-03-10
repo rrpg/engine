@@ -51,10 +51,9 @@ class model(Model):
 			SELECT\
 				name,\
 				stat_hp,\
-				stat_strength,\
+				stat_attack,\
 				stat_defence,\
 				stat_speed,\
-				stat_accuracy,\
 				stat_luck\
 			FROM\
 				creature\
