@@ -11,6 +11,34 @@ INSERT INTO region (region_name) VALUES ('The High lands');
 INSERT INTO area_type (name) VALUES ('hostile');
 INSERT INTO area_type (name) VALUES ('peaceful');
 INSERT INTO area_type (name) VALUES ('dungeon');
+
+-- Map of the test world
+--	+-+
+--	| |
+--	+-+
+--	+---------+
+--	|         |
+--	|         |
+--	|2, (0, 1)|
+--	|         |
+--	|         |
+--	+---| |---+
+--	+---| |---++---------+
+--	|         ||         |
+--	|         ||         |
+--	|1, (0, 0)==3, (1, 0)|
+--	|         ||         |
+--	|         ||         |
+--	+---------++---------+
+--
+--
+--
+--
+--
+--
+--
+--
+--
 INSERT INTO area (id_region, id_area_type, container, x, y, directions, items)
 	VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'peaceful'), 'world', 0, 0, 3, '{"1": {"quantity": 1}, "2": {"quantity": 4}}');
 INSERT INTO area (id_region, id_area_type, container, x, y, directions, items)
@@ -36,8 +64,8 @@ INSERT INTO talk_answer (trigger_word, sentence, condition) VALUES ('hi', 'Hi, %
 INSERT INTO character_answer (id_character, id_talk_answer) VALUES (1, 1);
 INSERT INTO character_answer (id_character, id_talk_answer) VALUES (1, 2);
 
-INSERT INTO creature (name, stat_hp, stat_strength, stat_defence, stat_speed, stat_accuracy)
-	VALUES ("rat", 15, 2, 2, 2, 75);
+INSERT INTO creature (name, stat_current_hp, stat_max_hp, stat_attack, stat_defence, stat_speed, stat_luck)
+	VALUES ("rat", 15, 15, 2, 2, 2, 25);
 
 INSERT INTO creature_area_type (id_creature, id_area_type, probability)
 	VALUES (1, 1, 1.0); -- rat in hostile area

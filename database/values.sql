@@ -12,7 +12,7 @@ INSERT INTO region (region_name) VALUES ('The High lands');
 INSERT INTO area_type (name) VALUES ('land');
 INSERT INTO area_type (name) VALUES ('dungeon');
 INSERT INTO area (id_region, id_area_type, container, x, y, directions, items)
-	VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'land'), 'world', 0, 0, 3, '{"1": {"quantity": 1}, "2": {"quantity": 4}}');
+	VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'land'), 'world', 0, 0, 1, '{"1": {"quantity": 1}, "2": {"quantity": 4}}');
 INSERT INTO area (id_region, id_area_type, container, x, y, directions, items)
 	VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'land'), 'world', 0, 1, 4, '{"1": {"quantity": 6}}');
 
@@ -34,11 +34,11 @@ INSERT INTO talk_answer (trigger_word, sentence, condition) VALUES ('hi', 'Hi, %
 INSERT INTO character_answer (id_character, id_talk_answer) VALUES (1, 1);
 INSERT INTO character_answer (id_character, id_talk_answer) VALUES (1, 2);
 
-INSERT INTO creature (name, stat_hp, stat_strength, stat_defence, stat_speed, stat_accuracy)
-	VALUES ("rat", 15, 2, 2, 2, 75),
-		("gobelin", 25, 5, 5, 4, 75),
-		("giant spider", 10, 3, 3, 3, 50),
-		("C'thulhu", 1000, 100, 100, 100, 100);
+INSERT INTO creature (name, stat_current_hp, stat_max_hp, stat_attack, stat_defence, stat_speed, stat_luck)
+	VALUES ("rat", 15, 15, 2, 2, 2, 25),
+		("gobelin", 25, 25, 5, 5, 4, 30),
+		("giant spider", 10, 10, 3, 3, 3, 20),
+		("C'thulhu", 1000, 1000, 100, 100, 100, 100);
 
 INSERT INTO creature_area_type (id_creature, id_area_type, probability)
 	VALUES (1, 2, 0.5), -- rat dungeon

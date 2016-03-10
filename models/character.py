@@ -185,10 +185,10 @@ class model(Model):
 		'id_character',
 		'name', 'can_fight',
 		'stat_current_hp', 'stat_max_hp',
-		'stat_strength',
+		'stat_attack',
 		'stat_defence',
 		'stat_speed',
-		'stat_accuracy',
+		'stat_luck',
 		'id_species', 'id_gender', 'id_area', 'inventory')
 
 	@staticmethod
