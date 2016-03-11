@@ -61,7 +61,7 @@ def getDamages(attack, defence):
 	return max(0, damagesAgainstDefence)
 
 def canFlee(fighter1, fighter2):
-	return fighter1['stat_speed'] < fighter2['stat_speed']
+	return fighter1['stat_speed'] > fighter2['stat_speed']
 
 
 class exception(core.exception.exception):
