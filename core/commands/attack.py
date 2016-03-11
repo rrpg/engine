@@ -18,9 +18,7 @@ class attack(core.command.command):
 		if enemy is None:
 			raise core.command.exception(_('ERROR_FIGHT_NOT_FIGHTING'))
 
-		attackResult = core.fight.attack(
-			self._player, enemy
-		)
+		attackResult = core.fight.attack(self._player, enemy)
 
 		return {
 			'enemy': enemy,
