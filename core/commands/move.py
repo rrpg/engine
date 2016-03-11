@@ -72,19 +72,19 @@ class move(core.command.command):
 		moveConfirmFightMsg = _('MOVE_CONFIRMATION_{direction}_FIGHT_{enemy}')
 		moveConfirmAmbush = _('MOVE_CONFIRMATION_{direction}_AMBUSH_{enemy}')
 		attackConfirmEnemy = _('ATTACK_CONFIRM_ENEMY_TO_PLAYER_{enemy}_{damages}')
-		ret = ''
+		ret = []
 		if 'enemy' in data.keys():
 			# Ran away from an enemy
 			if 'flee' in data.keys():
-				ret = fleeConfirmMsg
+				ret.append(fleeConfirmMsg)
 			# arrived face to face with an enemy
 			# The enemy has been faster than the player and attacked first
 			elif 'damages' in data.keys():
-				ret = moveConfirmAmbush
-				ret += attackConfirmEnemy
+				ret.append(moveConfirmAmbush)
+				ret.append(attackConfirmEnemy)
 			else:
-				ret = moveConfirmFightMsg
+				ret.append(moveConfirmFightMsg)
 
-			return ret.format(**data)
+			return '\n'.join(ret).format(**data)
 		else:
 			return _('MOVE_CONFIRMATION_%s') % data['direction']
