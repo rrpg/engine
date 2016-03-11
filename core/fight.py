@@ -27,8 +27,8 @@ def enemyTriesToAttackFirst(player):
 def attack(player, enemy, playerFirst=True):
 	damagesToEnemy = None
 	if playerFirst:
-		damagesToEnemy = max(
-			0, random.randint(0, player._model['stat_attack']) - enemy['stat_defence']
+		damagesToEnemy = getDamages(
+			player._model['stat_attack'], enemy['stat_defence']
 		)
 		enemy['stat_current_hp'] -= damagesToEnemy
 
@@ -40,8 +40,8 @@ def attack(player, enemy, playerFirst=True):
 		fightFinished = True
 		winner = player
 	else:
-		damagesToPlayer = max(
-			0, random.randint(0, enemy['stat_attack']) - player._model['stat_defence']
+		damagesToPlayer = getDamages(
+			enemy['stat_attack'], player._model['stat_defence']
 		)
 		player._model['stat_current_hp'] -= damagesToPlayer
 		if player._model['stat_current_hp'] <= 0:
@@ -55,6 +55,10 @@ def attack(player, enemy, playerFirst=True):
 		'fightFinished': fightFinished,
 		'winner': winner
 	}
+
+def getDamages(attack, defence):
+	damagesAgainstDefence = random.randint(0, attack) - defence
+	return max(0, damagesAgainstDefence)
 
 def canFlee(fighter1, fighter2):
 	return fighter1['stat_speed'] < fighter2['stat_speed']
