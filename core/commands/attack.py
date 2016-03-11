@@ -26,9 +26,31 @@ class attack(core.command.command):
 		}
 
 	def render(self, data):
-		output = ['You attack ' + data['enemy']['name'] + ' and deal ' + str(data['attackResult']['damagesToEnemy']) + ' points of damage']
+		attackConfirm = _('ATTACK_CONFIRM_PLAYER_TO_ENEMY_{enemy}_{damages}')
+		attackConfirmEnemy = _('ATTACK_CONFIRM_ENEMY_TO_PLAYER_{enemy}_{damages}')
+		attackVictory = _('ATTACK_VICTORY_{enemy}')
+		attackLost = _('ATTACK_LOST_{enemy}')
+		dataFormat = {
+			'enemy': data['enemy']['name'],
+			'damages': data['attackResult']['damagesToEnemy']
+		}
+		output = [attackConfirm.format(**dataFormat)]
+
+		if data['attackResult']['damagesToPlayer'] is not None:
+			dataFormat = {
+				'enemy': data['enemy']['name'],
+				'damages': data['attackResult']['damagesToPlayer']
+			}
+			output.append(attackConfirmEnemy.format(**dataFormat))
+
 
 		if data['attackResult']['fightFinished']:
-			output.append('The fight is over')
+			dataFormat = {
+				'enemy': data['enemy']['name']
+			}
+			if data['attackResult']['winner'] == self._player:
+				output.append(attackVictory.format(**dataFormat))
+			else:
+				output.append(attackLost.format(**dataFormat))
 
 		return '\n'.join(output)
