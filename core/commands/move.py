@@ -68,19 +68,23 @@ class move(core.command.command):
 		return ret
 
 	def render(self, data):
+		fleeConfirmMsg = _('MOVE_CONFIRMATION_{direction}_FIGHT_FLEE_{enemy}')
+		moveConfirmFightMsg = _('MOVE_CONFIRMATION_{direction}_FIGHT_{enemy}')
+		moveConfirmAmbush = _('MOVE_CONFIRMATION_{direction}_AMBUSH_{enemy}')
+		attackConfirmEnemy = _('ATTACK_CONFIRM_ENEMY_TO_PLAYER_{enemy}_{damages}')
 		ret = ''
 		if 'enemy' in data.keys():
 			# Ran away from an enemy
 			if 'flee' in data.keys():
-				ret = _('MOVE_CONFIRMATION_%(direction)s_FIGHT_FLEE_%(enemy)s')
+				ret = fleeConfirmMsg
 			# arrived face to face with an enemy
 			# The enemy has been faster than the player and attacked first
 			elif 'damages' in data.keys():
-				ret = _('MOVE_CONFIRMATION_%(direction)s_AMBUSH_%(enemy)s')
-				ret += _('FIGHT_ENEMY_DAMAGES_%(enemy)s_%(damages)s')
+				ret = moveConfirmAmbush
+				ret += attackConfirmEnemy
 			else:
-				ret = _('MOVE_CONFIRMATION_%(direction)s_FIGHT_%(enemy)s')
+				ret = moveConfirmFightMsg
 
-			return ret % data
+			return ret.format(**data)
 		else:
 			return _('MOVE_CONFIRMATION_%s') % data['direction']
