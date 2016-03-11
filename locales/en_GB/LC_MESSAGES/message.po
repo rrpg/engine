@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-04 18:48+0000\n"
+"POT-Creation-Date: 2016-03-11 18:17+0000\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -49,7 +49,7 @@ msgstr "Login: "
 msgid "COMMAND_PROMPT"
 msgstr "Command: "
 
-#: core/command_factory.py:41 core/commands/help.py:38
+#: core/command_factory.py:43 core/commands/help.py:38
 #: tests/commands/testHelp.py:26 tests/commands/testHelp.py:75
 #: tests/commands/testLook.py:15 tests/commands/testLook.py:39
 #: tests/commands/testLook.py:51 tests/commands/testLook.py:56
@@ -62,7 +62,7 @@ msgstr "Command: "
 msgid "LOOK_COMMAND"
 msgstr "look"
 
-#: core/command_factory.py:42 core/commands/help.py:22
+#: core/command_factory.py:44 core/commands/help.py:22
 #: tests/commands/testHelp.py:18 tests/commands/testHelp.py:59
 #: tests/commands/testTalk.py:14 tests/commands/testTalk.py:19
 #: tests/commands/testTalk.py:24 tests/commands/testTalk.py:29
@@ -72,16 +72,18 @@ msgstr "look"
 msgid "TALK_COMMAND"
 msgstr "talk"
 
-#: core/command_factory.py:43 core/commands/help.py:26
+#: core/command_factory.py:45 core/commands/help.py:26
 #: tests/commands/testHelp.py:20 tests/commands/testHelp.py:63
 #: tests/commands/testMove.py:14 tests/commands/testMove.py:19
 #: tests/commands/testMove.py:24 tests/commands/testMove.py:29
 #: tests/commands/testMove.py:34 tests/commands/testMove.py:39
-#: tests/commands/testMove.py:44 tests/commands/testMove.py:49
+#: tests/commands/testMove.py:44 tests/commands/testMove.py:46
+#: tests/commands/testMove.py:51 tests/commands/testMove.py:53
+#: tests/commands/testMove.py:58 tests/commands/testMove.py:63
 msgid "MOVE_COMMAND"
 msgstr "move"
 
-#: core/command_factory.py:44 core/commands/help.py:30
+#: core/command_factory.py:46 core/commands/help.py:30
 #: tests/commands/testEnter.py:14 tests/commands/testEnter.py:19
 #: tests/commands/testEnter.py:24 tests/commands/testEnter.py:29
 #: tests/commands/testEnter.py:34 tests/commands/testEnter.py:39
@@ -93,7 +95,7 @@ msgstr "move"
 msgid "ENTER_COMMAND"
 msgstr "enter"
 
-#: core/command_factory.py:45 core/commands/help.py:34
+#: core/command_factory.py:47 core/commands/help.py:34
 #: tests/commands/testExit.py:13 tests/commands/testExit.py:18
 #: tests/commands/testExit.py:23 tests/commands/testExit.py:28
 #: tests/commands/testExit.py:33 tests/commands/testExit.py:38
@@ -103,7 +105,7 @@ msgstr "enter"
 msgid "EXIT_COMMAND"
 msgstr "exit"
 
-#: core/command_factory.py:46 core/commands/help.py:51
+#: core/command_factory.py:48 core/commands/help.py:51
 #: tests/commands/testDrop.py:51 tests/commands/testDrop.py:63
 #: tests/commands/testDrop.py:117 tests/commands/testDrop.py:124
 #: tests/commands/testDrop.py:131 tests/commands/testDrop.py:138
@@ -141,7 +143,7 @@ msgstr "exit"
 msgid "TAKE_COMMAND"
 msgstr "take"
 
-#: core/command_factory.py:47 core/commands/help.py:61
+#: core/command_factory.py:49 core/commands/help.py:61
 #: tests/commands/testDrop.py:17 tests/commands/testDrop.py:26
 #: tests/commands/testDrop.py:35 tests/commands/testDrop.py:44
 #: tests/commands/testDrop.py:56 tests/commands/testDrop.py:68
@@ -165,29 +167,29 @@ msgstr "take"
 msgid "DROP_COMMAND"
 msgstr "drop"
 
-#: core/command_factory.py:48 core/commands/help.py:42
+#: core/command_factory.py:50 core/commands/help.py:42
 #: tests/commands/testHelp.py:28 tests/commands/testHelp.py:79
 #: tests/commands/testInventory.py:14 tests/commands/testInventory.py:19
 #: tests/commands/testInventory.py:26 tests/commands/testInventory.py:34
 msgid "INVENTORY_COMMAND"
 msgstr "inventory"
 
-#: core/command_factory.py:49 core/commands/help.py:42
+#: core/command_factory.py:51 core/commands/help.py:42
 #: tests/commands/testHelp.py:28 tests/commands/testHelp.py:79
 msgid "INVENTORY_SHORT_COMMAND"
 msgstr "inv"
 
-#: core/command_factory.py:50
+#: core/command_factory.py:52
 msgid "STATS_COMMAND"
 msgstr "stats"
 
-#: core/command_factory.py:51 core/commands/help.py:70
+#: core/command_factory.py:53 core/commands/help.py:70
 #: tests/commands/testHelp.py:15 tests/commands/testHelp.py:48
 #: tests/commands/testHelp.py:55 tests/commands/testHelp.py:95
 msgid "HELP_COMMAND"
 msgstr "help"
 
-#: core/command_factory.py:52 core/commands/help.py:46
+#: core/command_factory.py:54 core/commands/help.py:46
 #: tests/commands/testHelp.py:30 tests/commands/testHelp.py:83
 #: tests/commands/testOpen.py:14 tests/commands/testOpen.py:19
 #: tests/commands/testOpen.py:24 tests/commands/testOpen.py:29
@@ -202,23 +204,51 @@ msgstr "help"
 msgid "OPEN_COMMAND"
 msgstr "open"
 
-#: core/command_factory.py:79 core/commands/help.py:74
+#: core/command_factory.py:55
+msgid "ATTACK_COMMAND"
+msgstr "attack"
+
+#: core/command_factory.py:82 core/commands/help.py:74
 #: tests/commands/testHelp.py:50 tests/commands/testHelp.py:99
 msgid "QUIT_COMMAND"
 msgstr "quit"
 
-#: core/command_factory.py:79 core/commands/help.py:74
+#: core/command_factory.py:82 core/commands/help.py:74
 #: tests/commands/testHelp.py:50 tests/commands/testHelp.py:99
 msgid "QUIT_SHORT_COMMAND"
 msgstr "q"
 
-#: core/command_factory.py:86
+#: core/command_factory.py:89
 msgid "ERROR_DENIED_COMMAND_WHILE_FIGHTING"
 msgstr "You can't use this command while fighting"
 
-#: core/command_factory.py:93 core/command_factory.py:106
+#: core/command_factory.py:96 core/command_factory.py:109
 msgid "ERROR_UNKNOWN_COMMAND"
 msgstr "Unknown command"
+
+#: core/commands/attack.py:19
+msgid "ERROR_FIGHT_NOT_FIGHTING"
+msgstr "You are not fighting"
+
+#: core/commands/attack.py:29
+#, python-brace-format
+msgid "ATTACK_CONFIRM_PLAYER_TO_ENEMY_{enemy}_{damages}"
+msgstr "You attack the {enemy} and deal {damages} damage points"
+
+#: core/commands/attack.py:30 core/commands/move.py:74
+#, python-brace-format
+msgid "ATTACK_CONFIRM_ENEMY_TO_PLAYER_{enemy}_{damages}"
+msgstr "The {enemy} attacks you reducing your health of {damages} points"
+
+#: core/commands/attack.py:31
+#, python-brace-format
+msgid "ATTACK_VICTORY_{enemy}"
+msgstr "You slay the {enemy}"
+
+#: core/commands/attack.py:32
+#, python-brace-format
+msgid "ATTACK_LOST_{enemy}"
+msgstr "The {enemy} achieves you"
 
 #: core/commands/authenticate.py:17 tests/commands/testAuthenticate.py:18
 #: tests/commands/testAuthenticate.py:23
@@ -440,7 +470,7 @@ msgstr "Quit the game"
 msgid "AVAILABLE_COMMANDS_TITLE"
 msgstr "Available commands"
 
-#: core/commands/inventory.py:27
+#: core/commands/inventory.py:27 tests/commands/testInventory.py:16
 msgid "INVENTORY_EMPTY"
 msgstr "Your inventory is empty"
 
@@ -564,28 +594,29 @@ msgstr "%s is not a valid direction"
 msgid "ERROR_MOVE_DIRECTION_NOT_AVAILABLE"
 msgstr "I can't go there"
 
-#: core/commands/move.py:40
+#: core/commands/move.py:41
 msgid "ERROR_FLEE_FIGHT_FAILS"
 msgstr "You can't run away from this fight"
 
-#: core/commands/move.py:68
-#, python-format
-msgid "MOVE_CONFIRMATION_%(direction)s_FIGHT_FLEE_%(enemy)s"
-msgstr ""
-"You managed to run away from the fight against the %(enemy)s and you went "
-"%(direction)s"
+#: core/commands/move.py:71
+#, python-brace-format
+msgid "MOVE_CONFIRMATION_{direction}_FIGHT_FLEE_{enemy}"
+msgstr "You manage to escape the {enemy} and head towards {direction}"
 
-#: core/commands/move.py:70
-#, python-format
-msgid "MOVE_CONFIRMATION_%(direction)s_FIGHT_%(enemy)s"
-msgstr ""
-"lets go %(direction)s\n"
-"You are attacked by a %(enemy)s"
+#: core/commands/move.py:72
+#, python-brace-format
+msgid "MOVE_CONFIRMATION_{direction}_FIGHT_{enemy}"
+msgstr "let's go {direction}. A {enemy} attacks you"
 
-#: core/commands/move.py:76 tests/commands/testMove.py:46
+#: core/commands/move.py:73
+#, python-brace-format
+msgid "MOVE_CONFIRMATION_{direction}_AMBUSH_{enemy}"
+msgstr "let's go {direction}. You are ambushed by a {enemy}"
+
+#: core/commands/move.py:90 tests/commands/testMove.py:60
 #, python-format
 msgid "MOVE_CONFIRMATION_%s"
-msgstr "lets go %s"
+msgstr "let's go %s"
 
 #: core/commands/open.py:18 tests/commands/testOpen.py:16
 #: tests/commands/testOpen.py:21
@@ -604,8 +635,8 @@ msgid "STAT_CURRENT_HP"
 msgstr "Health"
 
 #: core/commands/stats.py:32
-msgid "STAT_STRENGTH"
-msgstr "Strength"
+msgid "STAT_ATTACK"
+msgstr "Attack"
 
 #: core/commands/stats.py:33
 msgid "STAT_DEFENCE"
@@ -616,8 +647,8 @@ msgid "STAT_SPEED"
 msgstr "Speed"
 
 #: core/commands/stats.py:35
-msgid "STAT_ACCURACY"
-msgstr "Accuracy"
+msgid "STAT_LUCK"
+msgstr "Luck"
 
 #: core/commands/take.py:15 tests/commands/testTake.py:48
 #: tests/commands/testTake.py:53 tests/commands/testTake.py:58
@@ -688,15 +719,18 @@ msgid "DIRECTION_KEY_NORTH"
 msgstr "north"
 
 #: models/area.py:22 tests/commands/testMove.py:34
-#: tests/commands/testMove.py:39
+#: tests/commands/testMove.py:39 tests/commands/testMove.py:46
+#: tests/commands/testMove.py:48 tests/commands/testMove.py:53
+#: tests/commands/testMove.py:55
 msgid "DIRECTION_KEY_EAST"
 msgstr "east"
 
 #: models/area.py:23 tests/commands/testLook.py:24
 #: tests/commands/testLook.py:42 tests/commands/testLook.py:86
 #: tests/commands/testLook.py:92 tests/commands/testMove.py:44
-#: tests/commands/testMove.py:46 tests/commands/testMove.py:49
-#: tests/commands/testMove.py:51
+#: tests/commands/testMove.py:51 tests/commands/testMove.py:58
+#: tests/commands/testMove.py:60 tests/commands/testMove.py:63
+#: tests/commands/testMove.py:65
 msgid "DIRECTION_KEY_SOUTH"
 msgstr "south"
 
@@ -750,11 +784,12 @@ msgstr "An error occured during the place loading"
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
 msgstr "Invalid login"
 
-#~ msgid "ATTACK_COMMAND"
-#~ msgstr "attack"
+#: tests/commands/testMove.py:48
+#, python-format
+msgid "MOVE_CONFIRMATION_%(direction)s_FIGHT_%(enemy)s"
+msgstr ""
+"let's go %(direction)s\n"
+"You are attacked by a %(enemy)s"
 
-#~ msgid "ERROR_FIGHT_NO_TARGET_GIVEN"
-#~ msgstr "Who do you want to attack?"
-
-#~ msgid "ERROR_FIGHT_UNKNOWN_CHARACTER"
-#~ msgstr "Unknow character"
+#~ msgid "MOVE_CONFIRMATION_%(direction)s_AMBUSH_%(enemy)s"
+#~ msgstr "let's go %(direction)s. You are ambushed by a %(enemy)s"
