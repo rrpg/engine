@@ -57,8 +57,9 @@ def attack(player, enemy, playerFirst=True):
 	}
 
 def getDamages(attack, defence):
-	damagesAgainstDefence = random.randint(0, attack) - defence
-	return max(0, damagesAgainstDefence)
+	attack = random.randint(0, attack)
+	defence = random.randint(0, defence)
+	return max(0, attack - defence)
 
 def canFlee(fighter1, fighter2):
 	return fighter1['stat_speed'] > fighter2['stat_speed']
