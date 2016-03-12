@@ -102,7 +102,7 @@ class look(core.command.command):
 			output.append(_('CURRENT_REGION_%s') % data['region'])
 
 		if 'fight' in sections:
-			output.append(_('CURRENTLY_FIGHTING_%s' % data['fight']['name']))
+			output.append(_('CURRENTLY_FIGHTING_%s') % data['fight']['name'])
 
 		if 'characters' in sections:
 			o = list()
