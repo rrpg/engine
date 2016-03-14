@@ -15,7 +15,6 @@ CREATE TABLE `character` (
 	id_character INTEGER PRIMARY KEY AUTOINCREMENT,
 	name VARCHAR(30) NOT NULL,
 	inventory TEXT,
-	can_fight BIT NOT NULL DEFAULT 1,
 	stat_current_hp TINYINT NOT NULL DEFAULT 20,
 	stat_max_hp TINYINT NOT NULL DEFAULT 20,
 	stat_attack TINYINT NOT NULL DEFAULT 4,

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-11 18:17+0000\n"
+"POT-Creation-Date: 2016-03-14 08:08+0000\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -52,14 +52,14 @@ msgstr "Commande : "
 
 #: core/command_factory.py:43 core/commands/help.py:38
 #: tests/commands/testHelp.py:26 tests/commands/testHelp.py:75
-#: tests/commands/testLook.py:15 tests/commands/testLook.py:39
-#: tests/commands/testLook.py:51 tests/commands/testLook.py:56
-#: tests/commands/testLook.py:62 tests/commands/testLook.py:67
-#: tests/commands/testLook.py:72 tests/commands/testLook.py:77
-#: tests/commands/testLook.py:82 tests/commands/testLook.py:90
-#: tests/commands/testLook.py:95 tests/commands/testLook.py:100
-#: tests/commands/testLook.py:105 tests/commands/testLook.py:111
-#: tests/commands/testLook.py:116 tests/commands/testLook.py:124
+#: tests/commands/testLook.py:15 tests/commands/testLook.py:40
+#: tests/commands/testLook.py:52 tests/commands/testLook.py:57
+#: tests/commands/testLook.py:63 tests/commands/testLook.py:68
+#: tests/commands/testLook.py:73 tests/commands/testLook.py:78
+#: tests/commands/testLook.py:83 tests/commands/testLook.py:91
+#: tests/commands/testLook.py:96 tests/commands/testLook.py:101
+#: tests/commands/testLook.py:106 tests/commands/testLook.py:112
+#: tests/commands/testLook.py:117 tests/commands/testLook.py:125
 msgid "LOOK_COMMAND"
 msgstr "regarder"
 
@@ -74,23 +74,25 @@ msgid "TALK_COMMAND"
 msgstr "demander"
 
 #: core/command_factory.py:45 core/commands/help.py:26
+#: tests/commands/testEnter.py:24 tests/commands/testEnter.py:31
 #: tests/commands/testHelp.py:20 tests/commands/testHelp.py:63
 #: tests/commands/testMove.py:14 tests/commands/testMove.py:19
 #: tests/commands/testMove.py:24 tests/commands/testMove.py:29
 #: tests/commands/testMove.py:34 tests/commands/testMove.py:39
 #: tests/commands/testMove.py:44 tests/commands/testMove.py:46
-#: tests/commands/testMove.py:51 tests/commands/testMove.py:53
-#: tests/commands/testMove.py:58 tests/commands/testMove.py:63
+#: tests/commands/testMove.py:52 tests/commands/testMove.py:54
+#: tests/commands/testMove.py:59 tests/commands/testMove.py:64
 msgid "MOVE_COMMAND"
 msgstr "marcher"
 
 #: core/command_factory.py:46 core/commands/help.py:30
 #: tests/commands/testEnter.py:14 tests/commands/testEnter.py:19
-#: tests/commands/testEnter.py:24 tests/commands/testEnter.py:29
-#: tests/commands/testEnter.py:34 tests/commands/testEnter.py:39
-#: tests/commands/testEnter.py:44 tests/commands/testEnter.py:46
-#: tests/commands/testEnter.py:51 tests/commands/testEnter.py:53
-#: tests/commands/testEnter.py:58 tests/commands/testEnter.py:63
+#: tests/commands/testEnter.py:26 tests/commands/testEnter.py:33
+#: tests/commands/testEnter.py:38 tests/commands/testEnter.py:43
+#: tests/commands/testEnter.py:48 tests/commands/testEnter.py:50
+#: tests/commands/testEnter.py:55 tests/commands/testEnter.py:57
+#: tests/commands/testEnter.py:62 tests/commands/testEnter.py:67
+#: tests/commands/testEnter.py:72 tests/commands/testEnter.py:77
 #: tests/commands/testExit.py:53 tests/commands/testExit.py:60
 #: tests/commands/testHelp.py:22 tests/commands/testHelp.py:67
 msgid "ENTER_COMMAND"
@@ -180,7 +182,8 @@ msgstr "inventaire"
 msgid "INVENTORY_SHORT_COMMAND"
 msgstr "inv"
 
-#: core/command_factory.py:52
+#: core/command_factory.py:52 tests/commands/testStats.py:15
+#: tests/commands/testStats.py:38
 msgid "STATS_COMMAND"
 msgstr "stats"
 
@@ -351,15 +354,16 @@ msgid "ERROR_ENTER_NO_PLACE_GIVEN"
 msgstr "Où voulez-vous entrer ?"
 
 #: core/commands/enter.py:27 core/commands/exit.py:27
-#: tests/commands/testEnter.py:26 tests/commands/testEnter.py:31
-#: tests/commands/testEnter.py:48 tests/commands/testEnter.py:55
+#: tests/commands/testEnter.py:28 tests/commands/testEnter.py:35
+#: tests/commands/testEnter.py:52 tests/commands/testEnter.py:59
 #: tests/commands/testExit.py:25 tests/commands/testExit.py:30
 #: tests/commands/testExit.py:45 tests/commands/testExit.py:50
 msgid "ERROR_ENTER_PLACE_NOT_AVAILABLE"
 msgstr "Le lieu demandé n'est pas où vous vous trouvez"
 
-#: core/commands/enter.py:32 tests/commands/testEnter.py:60
-#: tests/commands/testEnter.py:65
+#: core/commands/enter.py:32 tests/commands/testEnter.py:64
+#: tests/commands/testEnter.py:69 tests/commands/testEnter.py:74
+#: tests/commands/testEnter.py:79
 msgid "ENTER_CONFIRMATION"
 msgstr "Vous entrez..."
 
@@ -498,8 +502,8 @@ msgstr "L'index du conteneur doit être compris entre 1 et %d"
 msgid "ERROR_MULTIPLE_CONTAINERS_AVAILABLE"
 msgstr "Il y a plusieurs conteneurs de ce type ici, un index est necessaire."
 
-#: core/commands/look.py:20 tests/commands/testLook.py:62
-#: tests/commands/testLook.py:67
+#: core/commands/look.py:20 tests/commands/testLook.py:63
+#: tests/commands/testLook.py:68
 msgid "LOOK_REGION_PARAM"
 msgstr "region"
 
@@ -507,38 +511,38 @@ msgstr "region"
 msgid "LOOK_FIGHT_PARAM"
 msgstr "énemis"
 
-#: core/commands/look.py:22 tests/commands/testLook.py:72
-#: tests/commands/testLook.py:77
+#: core/commands/look.py:22 tests/commands/testLook.py:73
+#: tests/commands/testLook.py:78
 msgid "LOOK_CHARACTERS_PARAM"
 msgstr "personnages"
 
-#: core/commands/look.py:23 tests/commands/testLook.py:82
-#: tests/commands/testLook.py:90
+#: core/commands/look.py:23 tests/commands/testLook.py:83
+#: tests/commands/testLook.py:91
 msgid "LOOK_DIRECTIONS_PARAM"
 msgstr "directions"
 
-#: core/commands/look.py:24 tests/commands/testLook.py:95
-#: tests/commands/testLook.py:100
+#: core/commands/look.py:24 tests/commands/testLook.py:96
+#: tests/commands/testLook.py:101
 msgid "LOOK_PLACES_PARAM"
 msgstr "lieux"
 
-#: core/commands/look.py:25 tests/commands/testLook.py:105
-#: tests/commands/testLook.py:111
+#: core/commands/look.py:25 tests/commands/testLook.py:106
+#: tests/commands/testLook.py:112
 msgid "LOOK_OBJECTS_PARAM"
 msgstr "objets"
 
-#: core/commands/look.py:26 tests/commands/testLook.py:116
-#: tests/commands/testLook.py:124
+#: core/commands/look.py:26 tests/commands/testLook.py:117
+#: tests/commands/testLook.py:125
 msgid "LOOK_CONTAINERS_PARAM"
 msgstr "conteneurs"
 
-#: core/commands/look.py:38 tests/commands/testLook.py:53
-#: tests/commands/testLook.py:58
+#: core/commands/look.py:38 tests/commands/testLook.py:54
+#: tests/commands/testLook.py:59
 msgid "ERROR_LOOK_UNKNOWN_SECTION"
 msgstr "Cette option est invalide pour la commande \"regarder\""
 
 #: core/commands/look.py:102 tests/commands/testLook.py:18
-#: tests/commands/testLook.py:64
+#: tests/commands/testLook.py:65
 #, python-format
 msgid "CURRENT_REGION_%s"
 msgstr "Vous vous trouver dans %s"
@@ -549,27 +553,27 @@ msgid "CURRENTLY_FIGHTING_%s"
 msgstr "Vous vous battez contre: %s"
 
 #: core/commands/look.py:109 tests/commands/testLook.py:20
-#: tests/commands/testLook.py:74
+#: tests/commands/testLook.py:75
 msgid "PRESENT_CHARACTERS"
 msgstr "Vous voyez les personnages suivants :"
 
 #: core/commands/look.py:116 tests/commands/testLook.py:23
-#: tests/commands/testLook.py:85
+#: tests/commands/testLook.py:86
 msgid "AVAILABLE_DIRECTIONS"
 msgstr "Vous pouvez aller dans les directions suivantes :"
 
 #: core/commands/look.py:123 tests/commands/testLook.py:26
-#: tests/commands/testLook.py:97
+#: tests/commands/testLook.py:98
 msgid "AVAILABLE_PLACES"
 msgstr "Vous pouvez entrer dans les lieux suivants :"
 
-#: core/commands/look.py:130 tests/commands/testLook.py:29
-#: tests/commands/testLook.py:107
+#: core/commands/look.py:130 tests/commands/testLook.py:30
+#: tests/commands/testLook.py:108
 msgid "AVAILABLE_ITEMS"
 msgstr "Vous pouvez ramasser les objets suivants :"
 
-#: core/commands/look.py:137 tests/commands/testLook.py:32
-#: tests/commands/testLook.py:118
+#: core/commands/look.py:137 tests/commands/testLook.py:33
+#: tests/commands/testLook.py:119
 msgid "AVAILABLE_ITEMS_CONTAINERS"
 msgstr "Conteneurs d'objets"
 
@@ -597,10 +601,10 @@ msgstr "Impossible de fuir"
 #, python-brace-format
 msgid "MOVE_CONFIRMATION_{direction}_FIGHT_FLEE_{enemy}"
 msgstr ""
-"Vous arrivez à vous enfuir du combat contre {enemy} et vous vous "
-"dirigez maintenant dans la direction {direction}"
+"Vous arrivez à vous enfuir du combat contre {enemy} et vous vous dirigez "
+"maintenant dans la direction {direction}"
 
-#: core/commands/move.py:72
+#: core/commands/move.py:72 tests/commands/testMove.py:49
 #, python-brace-format
 msgid "MOVE_CONFIRMATION_{direction}_FIGHT_{enemy}"
 msgstr "Vous vous déplacez dans la direction {direction}. {enemy} vous attaque"
@@ -608,9 +612,11 @@ msgstr "Vous vous déplacez dans la direction {direction}. {enemy} vous attaque"
 #: core/commands/move.py:73
 #, python-brace-format
 msgid "MOVE_CONFIRMATION_{direction}_AMBUSH_{enemy}"
-msgstr "Vous vous déplacez dans la direction {direction}. {enemy} vous surprend et vous prend en ambuscade"
+msgstr ""
+"Vous vous déplacez dans la direction {direction}. {enemy} vous surprend et "
+"vous prend en ambuscade"
 
-#: core/commands/move.py:90 tests/commands/testMove.py:60
+#: core/commands/move.py:90 tests/commands/testMove.py:61
 #, python-format
 msgid "MOVE_CONFIRMATION_%s"
 msgstr "Vous vous déplacez dans la direction %s"
@@ -627,23 +633,23 @@ msgstr "Un type de conteneur doit être spécifié"
 msgid "ITEMS_IN_CONTAINER_%s"
 msgstr "%s:"
 
-#: core/commands/stats.py:31
+#: core/commands/stats.py:31 tests/commands/testStats.py:18
 msgid "STAT_CURRENT_HP"
 msgstr "Points de vie"
 
-#: core/commands/stats.py:32
+#: core/commands/stats.py:32 tests/commands/testStats.py:20
 msgid "STAT_ATTACK"
 msgstr "Attaque"
 
-#: core/commands/stats.py:33
+#: core/commands/stats.py:33 tests/commands/testStats.py:19
 msgid "STAT_DEFENCE"
 msgstr "Defense"
 
-#: core/commands/stats.py:34
+#: core/commands/stats.py:34 tests/commands/testStats.py:21
 msgid "STAT_SPEED"
 msgstr "Vitesse"
 
-#: core/commands/stats.py:35
+#: core/commands/stats.py:35 tests/commands/testStats.py:22
 msgid "STAT_LUCK"
 msgstr "Chance"
 
@@ -717,17 +723,18 @@ msgstr "nord"
 
 #: models/area.py:22 tests/commands/testMove.py:34
 #: tests/commands/testMove.py:39 tests/commands/testMove.py:46
-#: tests/commands/testMove.py:48 tests/commands/testMove.py:53
-#: tests/commands/testMove.py:55
+#: tests/commands/testMove.py:48 tests/commands/testMove.py:54
+#: tests/commands/testMove.py:56
 msgid "DIRECTION_KEY_EAST"
 msgstr "est"
 
-#: models/area.py:23 tests/commands/testLook.py:24
-#: tests/commands/testLook.py:42 tests/commands/testLook.py:86
-#: tests/commands/testLook.py:92 tests/commands/testMove.py:44
-#: tests/commands/testMove.py:51 tests/commands/testMove.py:58
-#: tests/commands/testMove.py:60 tests/commands/testMove.py:63
-#: tests/commands/testMove.py:65
+#: models/area.py:23 tests/commands/testEnter.py:24
+#: tests/commands/testEnter.py:31 tests/commands/testLook.py:24
+#: tests/commands/testLook.py:43 tests/commands/testLook.py:87
+#: tests/commands/testLook.py:93 tests/commands/testMove.py:44
+#: tests/commands/testMove.py:52 tests/commands/testMove.py:59
+#: tests/commands/testMove.py:61 tests/commands/testMove.py:64
+#: tests/commands/testMove.py:66
 msgid "DIRECTION_KEY_SOUTH"
 msgstr "sud"
 
@@ -750,29 +757,30 @@ msgstr "terres"
 msgid "ERROR_UNKNOWN_ITEM_CONTAINER_TYPE_LABEL"
 msgstr "Type de conteneur inconnu"
 
-#: models/place.py:15 models/place.py:29 models/place.py:39 models/place.py:49
-#: tests/commands/testEnter.py:24 tests/commands/testExit.py:23
+#: models/place.py:15 models/place.py:29 models/place.py:39 models/place.py:46
+#: tests/commands/testEnter.py:26 tests/commands/testEnter.py:72
+#: tests/commands/testEnter.py:77 tests/commands/testExit.py:23
 #: tests/commands/testExit.py:28
 msgid "PLACE_TYPE_CAVE"
 msgstr "cave"
 
-#: models/place.py:15 models/place.py:27 models/place.py:37 models/place.py:47
-#: tests/commands/testEnter.py:44 tests/commands/testEnter.py:46
-#: tests/commands/testEnter.py:51 tests/commands/testEnter.py:53
-#: tests/commands/testEnter.py:58 tests/commands/testEnter.py:63
+#: models/place.py:15 models/place.py:27 models/place.py:37 models/place.py:44
+#: tests/commands/testEnter.py:48 tests/commands/testEnter.py:50
+#: tests/commands/testEnter.py:55 tests/commands/testEnter.py:57
+#: tests/commands/testEnter.py:62 tests/commands/testEnter.py:67
 #: tests/commands/testExit.py:43 tests/commands/testExit.py:48
 #: tests/commands/testExit.py:53 tests/commands/testExit.py:55
 #: tests/commands/testExit.py:60 tests/commands/testExit.py:62
 msgid "PLACE_TYPE_DUNGEON"
 msgstr "donjon"
 
-#: models/place.py:25 models/place.py:35 models/place.py:45
-#: tests/commands/testEnter.py:36 tests/commands/testEnter.py:41
-#: tests/commands/testExit.py:35 tests/commands/testExit.py:40
+#: models/place.py:25 models/place.py:35 tests/commands/testEnter.py:40
+#: tests/commands/testEnter.py:45 tests/commands/testExit.py:35
+#: tests/commands/testExit.py:40
 msgid "ERROR_UNKNOWN_PLACE_TYPE"
 msgstr "Type de lieu inconnu"
 
-#: models/place.py:96
+#: models/place.py:93
 msgid "ERROR_PLACE_GENERATION"
 msgstr "Une erreur est survenue lors du chargement du lieu..."
 
@@ -781,9 +789,7 @@ msgstr "Une erreur est survenue lors du chargement du lieu..."
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
 msgstr "Identifiant incorrect"
 
-#: tests/commands/testMove.py:48
-#, python-format
-msgid "MOVE_CONFIRMATION_%(direction)s_FIGHT_%(enemy)s"
-msgstr ""
-"Vous vous déplacez dans la direction %(direction)s mais vous vous retrouvez "
-"face à face à la créature suivante: %(enemy)s"
+#~ msgid "MOVE_CONFIRMATION_%(direction)s_FIGHT_%(enemy)s"
+#~ msgstr ""
+#~ "Vous vous déplacez dans la direction %(direction)s mais vous vous "
+#~ "retrouvez face à face à la créature suivante: %(enemy)s"

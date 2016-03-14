@@ -79,16 +79,6 @@ class character:
 		"""
 		return self._model['id_character']
 
-	def canFight(self):
-		"""
-		c.canFight() -> boolean
-
-		Returns true if the character can fight
-
-		@return boolean
-		"""
-		return self._model['can_fight']
-
 	def isFighting(self):
 		"""
 		c.isFighting() -> boolean
@@ -183,7 +173,7 @@ class model(Model):
 
 	fields = (
 		'id_character',
-		'name', 'can_fight',
+		'name',
 		'stat_current_hp', 'stat_max_hp',
 		'stat_attack',
 		'stat_defence',

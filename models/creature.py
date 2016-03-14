@@ -14,9 +14,6 @@ class creature:
 
 	@staticmethod
 	def getFromAreaType(idAreaType, probability):
-		if probability == 0.000:
-			return None
-
 		c = model.getFromAreaType(idAreaType, probability)
 		if c == {}:
 			return None
