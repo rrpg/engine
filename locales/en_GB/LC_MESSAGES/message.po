@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-14 08:08+0000\n"
+"POT-Creation-Date: 2016-03-14 08:26+0000\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -50,7 +50,7 @@ msgid "COMMAND_PROMPT"
 msgstr "Command: "
 
 #: core/command_factory.py:43 core/commands/help.py:38
-#: tests/commands/testHelp.py:26 tests/commands/testHelp.py:75
+#: tests/commands/testHelp.py:27 tests/commands/testHelp.py:80
 #: tests/commands/testLook.py:15 tests/commands/testLook.py:40
 #: tests/commands/testLook.py:52 tests/commands/testLook.py:57
 #: tests/commands/testLook.py:63 tests/commands/testLook.py:68
@@ -63,7 +63,7 @@ msgid "LOOK_COMMAND"
 msgstr "look"
 
 #: core/command_factory.py:44 core/commands/help.py:22
-#: tests/commands/testHelp.py:18 tests/commands/testHelp.py:59
+#: tests/commands/testHelp.py:19 tests/commands/testHelp.py:64
 #: tests/commands/testTalk.py:14 tests/commands/testTalk.py:19
 #: tests/commands/testTalk.py:24 tests/commands/testTalk.py:29
 #: tests/commands/testTalk.py:34 tests/commands/testTalk.py:39
@@ -74,7 +74,7 @@ msgstr "talk"
 
 #: core/command_factory.py:45 core/commands/help.py:26
 #: tests/commands/testEnter.py:24 tests/commands/testEnter.py:31
-#: tests/commands/testHelp.py:20 tests/commands/testHelp.py:63
+#: tests/commands/testHelp.py:21 tests/commands/testHelp.py:68
 #: tests/commands/testMove.py:14 tests/commands/testMove.py:19
 #: tests/commands/testMove.py:24 tests/commands/testMove.py:29
 #: tests/commands/testMove.py:34 tests/commands/testMove.py:39
@@ -93,7 +93,7 @@ msgstr "move"
 #: tests/commands/testEnter.py:62 tests/commands/testEnter.py:67
 #: tests/commands/testEnter.py:72 tests/commands/testEnter.py:77
 #: tests/commands/testExit.py:53 tests/commands/testExit.py:60
-#: tests/commands/testHelp.py:22 tests/commands/testHelp.py:67
+#: tests/commands/testHelp.py:23 tests/commands/testHelp.py:72
 msgid "ENTER_COMMAND"
 msgstr "enter"
 
@@ -103,7 +103,7 @@ msgstr "enter"
 #: tests/commands/testExit.py:33 tests/commands/testExit.py:38
 #: tests/commands/testExit.py:43 tests/commands/testExit.py:48
 #: tests/commands/testExit.py:55 tests/commands/testExit.py:62
-#: tests/commands/testHelp.py:24 tests/commands/testHelp.py:71
+#: tests/commands/testHelp.py:25 tests/commands/testHelp.py:76
 msgid "EXIT_COMMAND"
 msgstr "exit"
 
@@ -120,7 +120,7 @@ msgstr "exit"
 #: tests/commands/testDrop.py:237 tests/commands/testDrop.py:244
 #: tests/commands/testDrop.py:251 tests/commands/testDrop.py:258
 #: tests/commands/testDrop.py:265 tests/commands/testDrop.py:272
-#: tests/commands/testHelp.py:33 tests/commands/testHelp.py:87
+#: tests/commands/testHelp.py:34 tests/commands/testHelp.py:92
 #: tests/commands/testInventory.py:24 tests/commands/testInventory.py:32
 #: tests/commands/testTake.py:15 tests/commands/testTake.py:20
 #: tests/commands/testTake.py:25 tests/commands/testTake.py:30
@@ -165,35 +165,36 @@ msgstr "take"
 #: tests/commands/testDrop.py:239 tests/commands/testDrop.py:246
 #: tests/commands/testDrop.py:253 tests/commands/testDrop.py:260
 #: tests/commands/testDrop.py:267 tests/commands/testDrop.py:274
-#: tests/commands/testHelp.py:41 tests/commands/testHelp.py:91
+#: tests/commands/testHelp.py:42 tests/commands/testHelp.py:96
 msgid "DROP_COMMAND"
 msgstr "drop"
 
 #: core/command_factory.py:50 core/commands/help.py:42
-#: tests/commands/testHelp.py:28 tests/commands/testHelp.py:79
+#: tests/commands/testHelp.py:29 tests/commands/testHelp.py:84
 #: tests/commands/testInventory.py:14 tests/commands/testInventory.py:19
 #: tests/commands/testInventory.py:26 tests/commands/testInventory.py:34
 msgid "INVENTORY_COMMAND"
 msgstr "inventory"
 
 #: core/command_factory.py:51 core/commands/help.py:42
-#: tests/commands/testHelp.py:28 tests/commands/testHelp.py:79
+#: tests/commands/testHelp.py:29 tests/commands/testHelp.py:84
 msgid "INVENTORY_SHORT_COMMAND"
 msgstr "inv"
 
-#: core/command_factory.py:52 tests/commands/testStats.py:15
-#: tests/commands/testStats.py:38
+#: core/command_factory.py:52 core/commands/help.py:70
+#: tests/commands/testHelp.py:49 tests/commands/testHelp.py:100
+#: tests/commands/testStats.py:15 tests/commands/testStats.py:38
 msgid "STATS_COMMAND"
 msgstr "stats"
 
-#: core/command_factory.py:53 core/commands/help.py:70
-#: tests/commands/testHelp.py:15 tests/commands/testHelp.py:48
-#: tests/commands/testHelp.py:55 tests/commands/testHelp.py:95
+#: core/command_factory.py:53 core/commands/help.py:78
+#: tests/commands/testHelp.py:16 tests/commands/testHelp.py:53
+#: tests/commands/testHelp.py:60 tests/commands/testHelp.py:108
 msgid "HELP_COMMAND"
 msgstr "help"
 
 #: core/command_factory.py:54 core/commands/help.py:46
-#: tests/commands/testHelp.py:30 tests/commands/testHelp.py:83
+#: tests/commands/testHelp.py:31 tests/commands/testHelp.py:88
 #: tests/commands/testOpen.py:14 tests/commands/testOpen.py:19
 #: tests/commands/testOpen.py:24 tests/commands/testOpen.py:29
 #: tests/commands/testOpen.py:34 tests/commands/testOpen.py:39
@@ -207,17 +208,18 @@ msgstr "help"
 msgid "OPEN_COMMAND"
 msgstr "open"
 
-#: core/command_factory.py:55
+#: core/command_factory.py:55 core/commands/help.py:74
+#: tests/commands/testHelp.py:51 tests/commands/testHelp.py:104
 msgid "ATTACK_COMMAND"
 msgstr "attack"
 
-#: core/command_factory.py:82 core/commands/help.py:74
-#: tests/commands/testHelp.py:50 tests/commands/testHelp.py:99
+#: core/command_factory.py:82 core/commands/help.py:82
+#: tests/commands/testHelp.py:55 tests/commands/testHelp.py:112
 msgid "QUIT_COMMAND"
 msgstr "quit"
 
-#: core/command_factory.py:82 core/commands/help.py:74
-#: tests/commands/testHelp.py:50 tests/commands/testHelp.py:99
+#: core/command_factory.py:82 core/commands/help.py:82
+#: tests/commands/testHelp.py:55 tests/commands/testHelp.py:112
 msgid "QUIT_SHORT_COMMAND"
 msgstr "q"
 
@@ -376,101 +378,112 @@ msgstr "I can't exit out of nothing"
 msgid "EXIT_CONFIRMATION"
 msgstr "You are now outside"
 
-#: core/commands/help.py:22 tests/commands/testHelp.py:18
-#: tests/commands/testHelp.py:59
+#: core/commands/help.py:22 tests/commands/testHelp.py:19
+#: tests/commands/testHelp.py:64
 msgid "CHARACTER_TOKEN"
 msgstr "character name"
 
-#: core/commands/help.py:22 tests/commands/testHelp.py:18
-#: tests/commands/testHelp.py:59
+#: core/commands/help.py:22 tests/commands/testHelp.py:19
+#: tests/commands/testHelp.py:64
 msgid "SENTENCE_TOKEN"
 msgstr "sentence"
 
-#: core/commands/help.py:23 tests/commands/testHelp.py:19
-#: tests/commands/testHelp.py:60
+#: core/commands/help.py:23 tests/commands/testHelp.py:20
+#: tests/commands/testHelp.py:65
 msgid "TALK_COMMAND_DESCRIPTION"
 msgstr "Talk to a character"
 
-#: core/commands/help.py:27 tests/commands/testHelp.py:21
-#: tests/commands/testHelp.py:64
+#: core/commands/help.py:27 tests/commands/testHelp.py:22
+#: tests/commands/testHelp.py:69
 msgid "MOVE_COMMAND_DESCRIPTION"
 msgstr "Go to the indicated direction"
 
-#: core/commands/help.py:31 tests/commands/testHelp.py:23
-#: tests/commands/testHelp.py:68
+#: core/commands/help.py:31 tests/commands/testHelp.py:24
+#: tests/commands/testHelp.py:73
 msgid "ENTER_COMMAND_DESCRIPTION"
 msgstr ""
 "Enter in the selected place (if the place is available in the current cell)"
 
-#: core/commands/help.py:35 tests/commands/testHelp.py:25
-#: tests/commands/testHelp.py:72
+#: core/commands/help.py:35 tests/commands/testHelp.py:26
+#: tests/commands/testHelp.py:77
 msgid "EXIT_COMMAND_DESCRIPTION"
 msgstr "Exit from the selected place (if the current cell is the place exit)"
 
-#: core/commands/help.py:39 tests/commands/testHelp.py:27
-#: tests/commands/testHelp.py:76
+#: core/commands/help.py:39 tests/commands/testHelp.py:28
+#: tests/commands/testHelp.py:81
 msgid "LOOK_COMMAND_DESCRIPTION"
 msgstr ""
 "List everything which is in the current area (characters, items, neighbour "
 "areas...)"
 
-#: core/commands/help.py:43 tests/commands/testHelp.py:29
-#: tests/commands/testHelp.py:80
+#: core/commands/help.py:43 tests/commands/testHelp.py:30
+#: tests/commands/testHelp.py:85
 msgid "INVENTORY_COMMAND_DESCRIPTION"
 msgstr "List the items the player has in his inventory"
 
 #: core/commands/help.py:46 core/commands/help.py:55 core/commands/help.py:65
-#: tests/commands/testHelp.py:30 tests/commands/testHelp.py:37
-#: tests/commands/testHelp.py:45 tests/commands/testHelp.py:83
-#: tests/commands/testHelp.py:87 tests/commands/testHelp.py:91
+#: tests/commands/testHelp.py:31 tests/commands/testHelp.py:38
+#: tests/commands/testHelp.py:46 tests/commands/testHelp.py:88
+#: tests/commands/testHelp.py:92 tests/commands/testHelp.py:96
 msgid "CONTAINER_INDEX_TOKEN"
 msgstr "container index"
 
 #: core/commands/help.py:46 core/commands/help.py:54 core/commands/help.py:64
-#: tests/commands/testHelp.py:30 tests/commands/testHelp.py:36
-#: tests/commands/testHelp.py:44 tests/commands/testHelp.py:83
-#: tests/commands/testHelp.py:87 tests/commands/testHelp.py:91
+#: tests/commands/testHelp.py:31 tests/commands/testHelp.py:37
+#: tests/commands/testHelp.py:45 tests/commands/testHelp.py:88
+#: tests/commands/testHelp.py:92 tests/commands/testHelp.py:96
 msgid "CONTAINER_TOKEN"
 msgstr "container"
 
-#: core/commands/help.py:47 tests/commands/testHelp.py:31
-#: tests/commands/testHelp.py:84
+#: core/commands/help.py:47 tests/commands/testHelp.py:32
+#: tests/commands/testHelp.py:89
 msgid "OPEN_COMMAND_DESCRIPTION"
 msgstr "List the items available in a given container"
 
 #: core/commands/help.py:52 core/commands/help.py:62
-#: tests/commands/testHelp.py:34 tests/commands/testHelp.py:42
-#: tests/commands/testHelp.py:87 tests/commands/testHelp.py:91
+#: tests/commands/testHelp.py:35 tests/commands/testHelp.py:43
+#: tests/commands/testHelp.py:92 tests/commands/testHelp.py:96
 msgid "QUANTITY_TOKEN"
 msgstr "quantity"
 
 #: core/commands/help.py:53 core/commands/help.py:63
-#: tests/commands/testHelp.py:35 tests/commands/testHelp.py:43
-#: tests/commands/testHelp.py:87 tests/commands/testHelp.py:91
+#: tests/commands/testHelp.py:36 tests/commands/testHelp.py:44
+#: tests/commands/testHelp.py:92 tests/commands/testHelp.py:96
 msgid "ITEM_NAME_TOKEN"
 msgstr "item name"
 
-#: core/commands/help.py:57 tests/commands/testHelp.py:39
-#: tests/commands/testHelp.py:88
+#: core/commands/help.py:57 tests/commands/testHelp.py:40
+#: tests/commands/testHelp.py:93
 msgid "TAKE_COMMAND_DESCRIPTION"
 msgstr "Take some items on the ground"
 
-#: core/commands/help.py:67 tests/commands/testHelp.py:47
-#: tests/commands/testHelp.py:92
+#: core/commands/help.py:67 tests/commands/testHelp.py:48
+#: tests/commands/testHelp.py:97
 msgid "DROP_COMMAND_DESCRIPTION"
 msgstr "Drop some items from your inventory"
 
-#: core/commands/help.py:71 tests/commands/testHelp.py:49
-#: tests/commands/testHelp.py:96
+#: core/commands/help.py:71 tests/commands/testHelp.py:50
+#: tests/commands/testHelp.py:101
+msgid "STATS_COMMAND_DESCRIPTION"
+msgstr "Shows your character's stats"
+
+#: core/commands/help.py:75 tests/commands/testHelp.py:52
+#: tests/commands/testHelp.py:105
+msgid "ATTACK_COMMAND_DESCRIPTION"
+msgstr "If the character is fighting, this command make the character attack\n"
+"If the character is not fighting, the command will fail and return an error"
+
+#: core/commands/help.py:79 tests/commands/testHelp.py:54
+#: tests/commands/testHelp.py:109
 msgid "HELP_COMMAND_DESCRIPTION"
 msgstr "Display the help menu"
 
-#: core/commands/help.py:75 tests/commands/testHelp.py:51
-#: tests/commands/testHelp.py:100
+#: core/commands/help.py:83 tests/commands/testHelp.py:56
+#: tests/commands/testHelp.py:113
 msgid "QUIT_COMMAND_DESCRIPTION"
 msgstr "Quit the game"
 
-#: core/commands/help.py:80 tests/commands/testHelp.py:17
+#: core/commands/help.py:88 tests/commands/testHelp.py:18
 msgid "AVAILABLE_COMMANDS_TITLE"
 msgstr "Available commands"
 
