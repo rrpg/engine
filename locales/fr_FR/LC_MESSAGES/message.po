@@ -229,17 +229,17 @@ msgstr "Commande inconnue"
 
 #: core/commands/attack.py:19
 msgid "ERROR_FIGHT_NOT_FIGHTING"
-msgstr "You are not currently fighting"
+msgstr "Vous vous battez contre rien ni person"
 
 #: core/commands/attack.py:29
 #, python-brace-format
 msgid "ATTACK_CONFIRM_PLAYER_TO_ENEMY_{enemy}_{damages}"
-msgstr "You attack the {enemy} and deal {damage} damage points"
+msgstr "Vous attaquez {enemy} et lui retirez {damage} points de vie"
 
 #: core/commands/attack.py:30 core/commands/move.py:74
 #, python-brace-format
 msgid "ATTACK_CONFIRM_ENEMY_TO_PLAYER_{enemy}_{damages}"
-msgstr "The {enemy} attacks you and deals {damage} damage points on you"
+msgstr "{enemy} vous attaque et vous retire {damage} points de vie"
 
 #: core/commands/attack.py:31
 #, python-brace-format
