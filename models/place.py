@@ -41,9 +41,6 @@ class factory:
 
 	@staticmethod
 	def generate(place, t):
-		if t not in types:
-			raise exception(_('ERROR_UNKNOWN_PLACE_TYPE'))
-
 		if t == _('PLACE_TYPE_DUNGEON'):
 			return dungeon.generate(place)
 		elif t == _('PLACE_TYPE_CAVE'):
