@@ -11,6 +11,7 @@ INSERT INTO region (region_name) VALUES ('The High lands');
 INSERT INTO area_type (name) VALUES ('hostile');
 INSERT INTO area_type (name) VALUES ('peaceful');
 INSERT INTO area_type (name) VALUES ('dungeon');
+INSERT INTO area_type (name) VALUES ('cave');
 
 -- Map of the test world
 --	+-+
@@ -55,6 +56,7 @@ INSERT INTO item_container (id_item_container_type, id_area, items) VALUES (3, 2
 
 INSERT INTO settings (key, value) VALUES ('START_CELL_ID', 1);
 
+INSERT INTO place (id_area, id_area_type, name) VALUES (2, (SELECT id_area_type FROM area_type WHERE name = 'cave'), 'first cave');
 INSERT INTO place (id_area, id_area_type, name) VALUES (2, (SELECT id_area_type FROM area_type WHERE name = 'dungeon'), 'first dungeon');
 
 INSERT INTO `character` (name, id_species, id_gender, id_area) VALUES ('Tom', 1, 1, 2);
