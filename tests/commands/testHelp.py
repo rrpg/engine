@@ -6,6 +6,7 @@ sys.path.append(os.path.realpath(__file__ + "/../../../"))
 
 import tests.common
 from core.localisation import _
+import core.command_factory
 from models import area, place
 import json
 
@@ -114,3 +115,4 @@ class helpTests(tests.common.common):
 		]
 
 		self.assertEquals(output, expected)
+		self.assertEquals(len(output), len(core.command_factory.factory.mapping))
