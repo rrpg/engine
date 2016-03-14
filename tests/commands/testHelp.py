@@ -45,6 +45,10 @@ class helpTests(tests.common.common):
 				_('CONTAINER_INDEX_TOKEN')
 			) + ':' +'\n'+\
 			'\t' + _('DROP_COMMAND_DESCRIPTION') +'\n'+\
+			_('STATS_COMMAND') + ':' +'\n'+\
+			'\t' + _('STATS_COMMAND_DESCRIPTION') +'\n'+\
+			_('ATTACK_COMMAND') + ':' +'\n'+\
+			'\t' + _('ATTACK_COMMAND_DESCRIPTION') +'\n'+\
 			_('HELP_COMMAND') + ':' +'\n'+\
 			'\t' + _('HELP_COMMAND_DESCRIPTION') +'\n'+\
 			_('QUIT_SHORT_COMMAND') + '|' + _('QUIT_COMMAND') + ':' +'\n'+\
@@ -90,6 +94,14 @@ class helpTests(tests.common.common):
 			{
 				"command": '%s [<%s>] "<%s>" ["<%s>" [<%s>]]' % (_('DROP_COMMAND'), _('QUANTITY_TOKEN'), _('ITEM_NAME_TOKEN'), _('CONTAINER_TOKEN'), _('CONTAINER_INDEX_TOKEN')),
 				"description": _('DROP_COMMAND_DESCRIPTION')
+			},
+			{
+				"command": _('STATS_COMMAND'),
+				"description": _('STATS_COMMAND_DESCRIPTION')
+			},
+			{
+				"command": _('ATTACK_COMMAND'),
+				"description": _('ATTACK_COMMAND_DESCRIPTION')
 			},
 			{
 				"command": _('HELP_COMMAND'),
