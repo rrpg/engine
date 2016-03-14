@@ -45,7 +45,8 @@ class moveTests(tests.common.common):
 		self.rpgText._runAction()
 		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_EAST')])
 		output = self.rpgText._runAction()
-		self.assertEquals(output, _('MOVE_CONFIRMATION_%(direction)s_FIGHT_%(enemy)s') % {'direction': _('DIRECTION_KEY_EAST'), 'enemy': 'rat'})
+		formatData = {'direction': _('DIRECTION_KEY_EAST'), 'enemy': 'rat'}
+		self.assertEquals(output, _('MOVE_CONFIRMATION_{direction}_FIGHT_{enemy}').format(**formatData))
 
 	def test_move_with_fight_start_json(self):
 		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
