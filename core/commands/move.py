@@ -2,7 +2,7 @@
 
 from models import area, creature
 import core.command
-import core.fight
+from core.fight import fight
 from core.localisation import _
 from random import randint
 
@@ -34,13 +34,14 @@ class move(core.command.command):
 			raise core.command.exception(_('ERROR_MOVE_DIRECTION_NOT_AVAILABLE'))
 		else:
 			wasFighting = self._player.isFighting()
+			f = fight.getFight()
 			if wasFighting:
-				enemy = core.fight.getEnemy()
+				enemy = f.enemy
 
-				if not core.fight.canFlee(self._player._model, enemy):
+				if not fight.canFlee(self._player._model, enemy):
 					raise core.fight.exception(_('ERROR_FLEE_FIGHT_FAILS'))
 				else:
-					core.fight.stopFight(self._player)
+					fight.stopFight()
 					ret['flee'] = True
 					ret['enemy'] = enemy['name']
 
@@ -59,9 +60,9 @@ class move(core.command.command):
 
 			if enemy is not None:
 				ret['enemy'] = enemy['name']
-				core.fight.startFight(self._player, enemy)
+				f = fight.startFight(self._player, enemy)
 				# Deal with enemy attacking first
-				damages = core.fight.enemyTriesToAttackFirst(self._player)
+				damages = f.enemyTriesToAttackFirst(self._player)
 				if damages is not None:
 					ret['damages'] = damages
 
