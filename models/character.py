@@ -6,6 +6,7 @@ Module to handle the characters in the game
 
 from models.Model import Model
 from models import item
+from collections import OrderedDict
 import core.exception
 
 
@@ -106,7 +107,8 @@ class character:
 
 		@return dict
 		"""
-		return {name: self._model[name] for name in self._model.keys() if name[:5] == 'stat_'}
+		stats = {name: self._model[name] for name in self._model.keys() if name[:5] == 'stat_'}
+		return OrderedDict(sorted(stats.items(), key=lambda t: t[0]))
 
 	def goTo(self, idArea):
 		"""

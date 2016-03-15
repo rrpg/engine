@@ -16,12 +16,12 @@ class enterTests(tests.common.common):
 		output = self.rpgText._runAction()
 		stats = [
 			_('STAT_CURRENT_HP'),
-			_('STAT_DEFENCE'),
 			_('STAT_ATTACK'),
-			_('STAT_SPEED'),
-			_('STAT_LUCK')
+			_('STAT_DEFENCE'),
+			_('STAT_LUCK'),
+			_('STAT_SPEED')
 		]
-		statsValues = ['20 / 20', '2', '4', '2', '10']
+		statsValues = ['20 / 20', '4', '2', '10', '2']
 		output = output.split('\n')
 		lineLength = None
 		lineLengths = []
