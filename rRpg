@@ -29,10 +29,6 @@ def main(argv):
 		"-w", "--world",
 		dest="world", help="World to load", metavar="WORLD"
 	)
-	parser.add_argument(
-		"action",
-		metavar="A", nargs='*', help="Action to execute"
-	)
 
 	args = parser.parse_args()
 
@@ -40,8 +36,7 @@ def main(argv):
 	if args.json is not False:
 		render = core.Rpg.RENDER_JSON
 
-	isInteractive = args.action == []
-	rpg = core.Rpg.Rpg(args.debug, render, isInteractive)
+	rpg = core.Rpg.Rpg(args.debug, render)
 
 	world = '' if args.world is None else str(args.world)
 	login = None
@@ -49,7 +44,7 @@ def main(argv):
 		login = args.login
 
 	try:
-		rpg.init(world, login, args.action)
+		rpg.init(world, login)
 	except KeyboardInterrupt:
 		print("")
 		return

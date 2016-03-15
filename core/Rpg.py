@@ -36,7 +36,7 @@ class Rpg:
 		self._action = []
 		self._isInteractive = isInteractive
 
-	def init(self, world, login, action=None):
+	def init(self, world, login):
 		"""
 		Method to init the Rpg with a world, a player's login and action. The
 		action is optional, but the login can be None (for
@@ -53,12 +53,6 @@ class Rpg:
 
 		registry.set("world", world)
 		isConnected = self._initPlayer(login)
-
-		if type(action) == list and len(action) > 0:
-			if not isConnected \
-				and command_factory.factory.commandNeedPlayer(action[0]):
-				raise core.exception.exception(_('ERROR_NO_SELECTED_PLAYER'))
-			self._action = action
 
 	def _initPlayer(self, login=None):
 		"""
