@@ -2,7 +2,6 @@
 
 # module to handle fights
 
-import core.registry
 import core.exception
 import random
 
