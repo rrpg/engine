@@ -60,7 +60,7 @@ class Rpg:
 				raise core.exception.exception(_('ERROR_NO_SELECTED_PLAYER'))
 			self._action = action
 
-	def _initPlayer(self, login):
+	def _initPlayer(self, login=None):
 		"""
 		Method to init the player with a login.
 		If the interactive mode is active and no login is provided,
