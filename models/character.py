@@ -119,7 +119,6 @@ class character:
 		@param idArea id of the area where the character must go.
 		"""
 		self._model['id_area'] = idArea
-		model.savePosition(self._model['id_character'], self._model['id_area'])
 
 	def getInventory(self):
 		"""
@@ -146,7 +145,6 @@ class character:
 		@param itemsId ids of the items to add
 		"""
 		self.inventory = item.inventory.addItems(self.getInventory(), itemsId)
-		model.saveInventory(self._model['id_character'], self.inventory)
 
 	def removeItemsFromInventory(self, itemsId):
 		"""
@@ -157,7 +155,6 @@ class character:
 		@param itemsId ids of the items to remove
 		"""
 		self.inventory = item.inventory.removeItems(self.getInventory(), itemsId)
-		model.saveInventory(self._model['id_character'], self.inventory)
 
 	def getAreaId(self):
 		"""
