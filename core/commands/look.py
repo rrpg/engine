@@ -46,7 +46,11 @@ class look(core.command.command):
 		return result
 
 	def _getFightInfo(self, areaId):
-		return core.fight.getEnemy()
+		f = core.fight.fight.getFight()
+		if f is None:
+			return None
+		else:
+			return f.enemy
 
 	def _getCharacters(self, areaId):
 		characters = list()
@@ -101,7 +105,7 @@ class look(core.command.command):
 		if 'region' in sections:
 			output.append(_('CURRENT_REGION_%s') % data['region'])
 
-		if 'fight' in sections:
+		if 'fight' in sections and data['fight'] is not None:
 			output.append(_('CURRENTLY_FIGHTING_%s') % data['fight']['name'])
 
 		if 'characters' in sections:
