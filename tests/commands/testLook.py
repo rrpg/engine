@@ -58,7 +58,6 @@ class lookTests(tests.common.common):
 		output = self.rpgJSON._runAction()
 		self.assertEquals(output, {"error": {"message": _('ERROR_LOOK_UNKNOWN_SECTION'), "code": 1}})
 
-
 	def test_region_text(self):
 		self.rpgText.setAction([_('LOOK_COMMAND'), _('LOOK_REGION_PARAM')])
 		output = self.rpgText._runAction()
