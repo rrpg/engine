@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-14 08:26+0000\n"
+"POT-Creation-Date: 2016-03-15 14:08+0000\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -46,7 +46,11 @@ msgstr "Votre choix : "
 msgid "LOGIN_PROMPT"
 msgstr "Identifiant : "
 
-#: core/Rpg.py:221
+#: core/Rpg.py:122
+msgid "GAME_OVER_TEXT"
+msgstr "Vous avez été vaincu. Peut être que quelqu'un se souviendra de votre nom..."
+
+#: core/Rpg.py:228
 msgid "COMMAND_PROMPT"
 msgstr "Commande : "
 
@@ -81,7 +85,13 @@ msgstr "demander"
 #: tests/commands/testMove.py:34 tests/commands/testMove.py:39
 #: tests/commands/testMove.py:44 tests/commands/testMove.py:46
 #: tests/commands/testMove.py:52 tests/commands/testMove.py:54
-#: tests/commands/testMove.py:59 tests/commands/testMove.py:64
+#: tests/commands/testMove.py:59 tests/commands/testMove.py:61
+#: tests/commands/testMove.py:63 tests/commands/testMove.py:69
+#: tests/commands/testMove.py:71 tests/commands/testMove.py:73
+#: tests/commands/testMove.py:78 tests/commands/testMove.py:80
+#: tests/commands/testMove.py:82 tests/commands/testMove.py:88
+#: tests/commands/testMove.py:90 tests/commands/testMove.py:92
+#: tests/commands/testMove.py:97 tests/commands/testMove.py:102
 msgid "MOVE_COMMAND"
 msgstr "marcher"
 
@@ -469,8 +479,9 @@ msgstr "Affiche les stats du joueur"
 #: core/commands/help.py:75 tests/commands/testHelp.py:52
 #: tests/commands/testHelp.py:105
 msgid "ATTACK_COMMAND_DESCRIPTION"
-msgstr "Attaque votre adversaire. Si le joueur n'est pas en train de se "
-"battre, la commande affiche un message d'erreur"
+msgstr ""
+"Attaque votre adversaire. Si le joueur n'est pas en train de se battre, la "
+"commande affiche un message d'erreur"
 
 #: core/commands/help.py:79 tests/commands/testHelp.py:54
 #: tests/commands/testHelp.py:109
@@ -606,11 +617,12 @@ msgstr "La direction %s n'est pas valide"
 msgid "ERROR_MOVE_DIRECTION_NOT_AVAILABLE"
 msgstr "Vous ne pouvez pas vous déplacer dans la direction demandée"
 
-#: core/commands/move.py:41
+#: core/commands/move.py:41 tests/commands/testMove.py:85
+#: tests/commands/testMove.py:94
 msgid "ERROR_FLEE_FIGHT_FAILS"
 msgstr "Impossible de fuir"
 
-#: core/commands/move.py:71
+#: core/commands/move.py:71 tests/commands/testMove.py:66
 #, python-brace-format
 msgid "MOVE_CONFIRMATION_{direction}_FIGHT_FLEE_{enemy}"
 msgstr ""
@@ -629,7 +641,7 @@ msgstr ""
 "Vous vous déplacez dans la direction {direction}. {enemy} vous surprend et "
 "vous prend en ambuscade"
 
-#: core/commands/move.py:90 tests/commands/testMove.py:61
+#: core/commands/move.py:90 tests/commands/testMove.py:99
 #, python-format
 msgid "MOVE_CONFIRMATION_%s"
 msgstr "Vous vous déplacez dans la direction %s"
@@ -737,7 +749,9 @@ msgstr "nord"
 #: models/area.py:22 tests/commands/testMove.py:34
 #: tests/commands/testMove.py:39 tests/commands/testMove.py:46
 #: tests/commands/testMove.py:48 tests/commands/testMove.py:54
-#: tests/commands/testMove.py:56
+#: tests/commands/testMove.py:56 tests/commands/testMove.py:61
+#: tests/commands/testMove.py:71 tests/commands/testMove.py:82
+#: tests/commands/testMove.py:92
 msgid "DIRECTION_KEY_EAST"
 msgstr "est"
 
@@ -746,12 +760,17 @@ msgstr "est"
 #: tests/commands/testLook.py:43 tests/commands/testLook.py:87
 #: tests/commands/testLook.py:93 tests/commands/testMove.py:44
 #: tests/commands/testMove.py:52 tests/commands/testMove.py:59
-#: tests/commands/testMove.py:61 tests/commands/testMove.py:64
-#: tests/commands/testMove.py:66
+#: tests/commands/testMove.py:69 tests/commands/testMove.py:78
+#: tests/commands/testMove.py:88 tests/commands/testMove.py:97
+#: tests/commands/testMove.py:99 tests/commands/testMove.py:102
+#: tests/commands/testMove.py:104
 msgid "DIRECTION_KEY_SOUTH"
 msgstr "sud"
 
-#: models/area.py:24
+#: models/area.py:24 tests/commands/testMove.py:63
+#: tests/commands/testMove.py:65 tests/commands/testMove.py:73
+#: tests/commands/testMove.py:75 tests/commands/testMove.py:80
+#: tests/commands/testMove.py:84 tests/commands/testMove.py:90
 msgid "DIRECTION_KEY_WEST"
 msgstr "ouest"
 
