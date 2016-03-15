@@ -28,7 +28,6 @@ class enterTests(tests.common.common):
 		self.assertEquals(output, '  2 Heavy breastplate')
 
 	def test_not_empty_json(self):
-		self.rpgJSON.init(self.dbFile, 'TEST_PLAYER', 'TEST_PLAYER')
 		self.rpgJSON.setAction([_('TAKE_COMMAND'), 2, 'Heavy breastplate'])
 		output = self.rpgJSON._runAction()
 		self.rpgJSON.setAction([_('INVENTORY_COMMAND')])
