@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from models.player import player
-from core import command, command_factory, utils, config, registry, fight
+from core import command, command_factory, utils, config, fight
+from models.Model import Model
 import readline
 import getpass
 import os
@@ -52,7 +53,7 @@ class Rpg:
 		if os.path.isfile(world) is False:
 			raise core.exception.exception(_('ERROR_UNKNOWN_SELECTED_WORLD'))
 
-		registry.set("world", world)
+		Model.setDB(world)
 		isConnected = self._initPlayer(login)
 
 	def _initPlayer(self, login=None):

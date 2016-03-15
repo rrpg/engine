@@ -6,7 +6,7 @@ on a sqlite database (Insert, update, delete, load all elements, load
 elements from a pk, load rows from a given condition...).
 """
 
-from core import config, registry
+from core import config
 import sqlite3
 
 
@@ -19,6 +19,8 @@ class Model(object):
 	"""
 
 	_table = None
+
+	_defaultDB = None
 
 	@classmethod
 	def getClass(cls):
@@ -124,13 +126,17 @@ class Model(object):
 		c.execute(query, list(fields.values()) + where[1])
 		Model.disconnect(db)
 
-	@staticmethod
-	def connect(db=None):
+	@classmethod
+	def connect(cls, db=None):
 		if db is None:
-			db = registry.get("world")
+			db = cls._defaultDB
 		db = sqlite3.connect(db)
 		db.text_factory = str
 		return db
+
+	@classmethod
+	def setDB(cls, db):
+		cls._defaultDB = db
 
 	@classmethod
 	def disconnect(cls, db):
