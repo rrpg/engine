@@ -89,7 +89,7 @@ class randomPlace:
 
 		result = p.communicate()
 
-		if len(result[1]) is not 0:
+		if len(result[1]) is not 0: # pragma: no cover
 			raise exception(_('ERROR_PLACE_GENERATION'))
 		d = result[0].decode('utf-8').strip().split('\n')
 

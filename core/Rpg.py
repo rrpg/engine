@@ -118,7 +118,7 @@ class Rpg:
 		print(_('GAME_OVER_TEXT'))
 		self._initPlayer()
 
-	def run(self): # pragma: no cover
+	def run(self):
 		'''
 		Main method of the Rpg Class, will run the action if it is given,
 		else ask the player to enter a command
@@ -128,7 +128,7 @@ class Rpg:
 			if self._renderMode == RENDER_JSON:
 				result = json.dumps(result, ensure_ascii=False)
 			print(result)
-		else:
+		else: # pragma: no cover
 			c = ''
 			result = 0
 			while 1:
@@ -177,7 +177,7 @@ class Rpg:
 		except core.exception.exception as e:
 			return self.renderException(e)
 
-	def parseTypedAction(self, action): # pragma: no cover
+	def parseTypedAction(self, action):
 		"""
 		Method to parse the action typed by the player to detect the action
 		and the action's arguments
