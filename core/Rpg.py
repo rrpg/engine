@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from models.player import player
-from core import command, command_factory, utils, config, registry
+from core import command, command_factory, utils, config, registry, fight
 import readline
 import getpass
 import os
@@ -35,6 +35,7 @@ class Rpg:
 		self._renderMode = renderMode
 		self._action = []
 		self._isInteractive = isInteractive
+		fight.fight.stopFight()
 
 	def init(self, world, login):
 		"""

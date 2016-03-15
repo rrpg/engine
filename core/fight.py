@@ -6,63 +6,82 @@ import core.registry
 import core.exception
 import random
 
+class fight:
+	fight = None
 
-def startFight(player, enemy):
-	player.fight(True)
-	core.registry.set('fight_enemy', enemy)
+	def __init__(self, player, enemy):
+		self.player = player
+		self.enemy = enemy
 
-def getEnemy():
-	return core.registry.get('fight_enemy')
+	@classmethod
+	def startFight(cls, player, enemy):
+		player.fight(True)
+		cls.fight = fight(player, enemy)
+		return cls.fight
 
-def stopFight(player):
-	player.fight(False)
-	core.registry.set('fight_enemy', None)
+	@classmethod
+	def getFight(cls):
+		return cls.fight
 
-def enemyTriesToAttackFirst(player):
-	# The enemy tries to ambush the player. If he succeeds, he deals the
-	# first damages
-	# NOT IMPLEMENTED YET
-	return None
+	def getEnemy(self):
+		return self.enemy
 
-def attack(player, enemy, playerFirst=True):
-	damagesToEnemy = None
-	if playerFirst:
-		damagesToEnemy = getDamages(
-			player._model['stat_attack'], enemy['stat_defence']
-		)
-		enemy['stat_current_hp'] -= damagesToEnemy
+	@classmethod
+	def stopFight(cls):
+		if cls.fight is None:
+			return
 
-	damagesToPlayer = None
-	fightFinished = False
-	winner = None
-	if enemy['stat_current_hp'] <= 0:
-		stopFight(player)
-		fightFinished = True
-		winner = player
-	else:
-		damagesToPlayer = getDamages(
-			enemy['stat_attack'], player._model['stat_defence']
-		)
-		player._model['stat_current_hp'] -= damagesToPlayer
-		if not player.isAlive():
-			stopFight(player)
+		cls.fight.player.fight(False)
+		cls.fight.enemy = None
+		cls.fight = None
+
+	def enemyTriesToAttackFirst(self, player):
+		# The enemy tries to ambush the player. If he succeeds, he deals the
+		# first damages
+		# NOT IMPLEMENTED YET
+		return None
+
+	def attack(self, playerFirst=True):
+		damagesToEnemy = None
+		if playerFirst:
+			damagesToEnemy = fight.getDamages(
+				self.player._model['stat_attack'], self.enemy['stat_defence']
+			)
+			self.enemy['stat_current_hp'] -= damagesToEnemy
+
+		damagesToPlayer = None
+		fightFinished = False
+		winner = None
+		if self.enemy['stat_current_hp'] <= 0:
+			stopFight(self.player)
 			fightFinished = True
-			winner = enemy
+			winner = self.player
+		else:
+			damagesToPlayer = fight.getDamages(
+				self.enemy['stat_attack'], self.player._model['stat_defence']
+			)
+			self.player._model['stat_current_hp'] -= damagesToPlayer
+			if not self.player.isAlive():
+				stopFight(self.player)
+				fightFinished = True
+				winner = self.enemy
 
-	return {
-		'damagesToEnemy': damagesToEnemy,
-		'damagesToPlayer': damagesToPlayer,
-		'fightFinished': fightFinished,
-		'winner': winner
-	}
+		return {
+			'damagesToEnemy': damagesToEnemy,
+			'damagesToPlayer': damagesToPlayer,
+			'fightFinished': fightFinished,
+			'winner': winner
+		}
 
-def getDamages(attack, defence):
-	attack = random.randint(0, attack)
-	defence = random.randint(0, defence)
-	return max(0, attack - defence)
+	@staticmethod
+	def getDamages(attack, defence):
+		attack = random.randint(0, attack)
+		defence = random.randint(0, defence)
+		return max(0, attack - defence)
 
-def canFlee(fighter1, fighter2):
-	return fighter1['stat_speed'] > fighter2['stat_speed']
+	@staticmethod
+	def canFlee(fighter1, fighter2):
+		return fighter1['stat_speed'] > fighter2['stat_speed']
 
 
 class exception(core.exception.exception):
