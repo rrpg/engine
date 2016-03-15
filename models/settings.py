@@ -7,11 +7,8 @@ class settings(Model):
 
 	@staticmethod
 	def get(key):
-		try:
-			val = settings.loadBy({'key': key}, ['value'])
-			if val is None:
-				val = []
-			return val[0]['value']
-		except IndexError as e:
+		val = settings.loadBy({'key': key}, ['value'])
+		if val is None or len(val) == 0:
 			raise IndexError("Unknown key " + key + " in the settings")
+		return val[0]['value']
 
