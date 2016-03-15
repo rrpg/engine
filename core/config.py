@@ -12,8 +12,6 @@ rootPath = os.path.dirname(__file__) + '/..'
 externalPath = rootPath + '/externals'
 localesDir = rootPath + '/locales'
 
-db = os.path.expanduser('~') + '/.rrpg/maps/default.db'
-
 generator = {}
 generator['dungeon'] = {
 	'path': externalPath + '/dungeon-generator',

@@ -47,9 +47,6 @@ class Rpg:
 		Will raise an core.exception.exception if no login is provided
 		and the provided action needs player.
 		"""
-		if world is '':
-			world = config.db
-
 		if os.path.isfile(world) is False:
 			raise core.exception.exception(_('ERROR_UNKNOWN_SELECTED_WORLD'))
 
