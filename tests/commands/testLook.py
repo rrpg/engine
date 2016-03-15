@@ -58,7 +58,6 @@ class lookTests(tests.common.common):
 		output = self.rpgJSON._runAction()
 		self.assertEquals(output, {"error": {"message": _('ERROR_LOOK_UNKNOWN_SECTION'), "code": 1}})
 
-
 	def test_region_text(self):
 		self.rpgText.setAction([_('LOOK_COMMAND'), _('LOOK_REGION_PARAM')])
 		output = self.rpgText._runAction()
@@ -125,3 +124,31 @@ class lookTests(tests.common.common):
 		self.rpgJSON.setAction([_('LOOK_COMMAND'), _('LOOK_CONTAINERS_PARAM')])
 		output = self.rpgJSON._runAction()
 		self.assertEquals(output, {"item_containers": {'chest': 1, 'wardrobe': 2}})
+
+	def test_no_enemy_text(self):
+		self.rpgText.setAction([_('LOOK_COMMAND'), _('LOOK_FIGHT_PARAM')])
+		output = self.rpgText._runAction()
+		self.assertEquals(output, '')
+
+	def test_no_enemy_json(self):
+		self.rpgJSON.setAction([_('LOOK_COMMAND'), _('LOOK_FIGHT_PARAM')])
+		output = self.rpgJSON._runAction()
+		self.assertEquals(output, {'fight': None})
+
+	def test_enemies_text(self):
+		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
+		self.rpgText._runAction()
+		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_EAST')])
+		self.rpgText._runAction()
+		self.rpgText.setAction([_('LOOK_COMMAND'), _('LOOK_FIGHT_PARAM')])
+		output = self.rpgText._runAction()
+		self.assertEquals(output, _('CURRENTLY_FIGHTING_%s') % 'rat')
+
+	def test_enemies_json(self):
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
+		self.rpgJSON._runAction()
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_EAST')])
+		self.rpgJSON._runAction()
+		self.rpgJSON.setAction([_('LOOK_COMMAND'), _('LOOK_FIGHT_PARAM')])
+		output = self.rpgJSON._runAction()
+		self.assertEquals(output, {'fight': {'name': 'rat', 'stat_defence': 2, 'stat_attack': 2, 'stat_max_hp': 15, 'stat_current_hp': 15, 'stat_speed': 1, 'stat_luck': 25}})
