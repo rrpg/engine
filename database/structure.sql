@@ -15,6 +15,12 @@ CREATE TABLE `character` (
 	id_character INTEGER PRIMARY KEY AUTOINCREMENT,
 	name VARCHAR(30) NOT NULL,
 	inventory TEXT,
+	stat_current_hp TINYINT NOT NULL DEFAULT 20,
+	stat_max_hp TINYINT NOT NULL DEFAULT 20,
+	stat_attack TINYINT NOT NULL DEFAULT 4,
+	stat_defence TINYINT NOT NULL DEFAULT 2,
+	stat_speed TINYINT NOT NULL DEFAULT 2,
+	stat_luck TINYINT NOT NULL DEFAULT 10,
 	id_species INT REFERENCES species (id_species),
 	id_gender INT REFERENCES gender (id_gender),
 	id_area INT REFERENCES area (id_area)
@@ -107,6 +113,30 @@ CREATE TABLE settings (
 	id_setting INTEGER PRIMARY KEY AUTOINCREMENT,
 	key VARCHAR(50) NOT NULL,
 	value VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE creature (
+	id_creature INTEGER PRIMARY KEY AUTOINCREMENT,
+	name VARCHAR(50),
+	stat_current_hp TINYINT NOT NULL DEFAULT 10,
+	stat_max_hp TINYINT NOT NULL DEFAULT 10,
+	stat_attack TINYINT NOT NULL DEFAULT 1,
+	stat_defence TINYINT NOT NULL DEFAULT 1,
+	stat_speed TINYINT NOT NULL DEFAULT 1,
+	stat_luck TINYINT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE creature_area_type (
+	id_creature INTEGER REFERENCES creature (id_creature),
+	id_area_type INTEGER REFERENCES area_type (id_area_type),
+	probability FLOAT NOT NULL DEFAULT 1.0,
+	PRIMARY KEY (id_creature, id_area_type)
+);
+
+CREATE TABLE creature_can_drop (
+	id_creature INTEGER REFERENCES creature (id_creature),
+	id_item INTEGER REFERENCES item (id_item),
+	PRIMARY KEY (id_creature, id_item)
 );
 
 COMMIT;

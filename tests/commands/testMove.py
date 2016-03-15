@@ -40,12 +40,65 @@ class moveTests(tests.common.common):
 		output = self.rpgJSON._runAction()
 		self.assertEquals(output, {"error": {"message": _('ERROR_MOVE_DIRECTION_NOT_AVAILABLE'), "code": 1}})
 
-	def test_text(self):
-		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_NORTH')])
+	def test_move_with_fight_start_text(self):
+		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
+		self.rpgText._runAction()
+		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_EAST')])
 		output = self.rpgText._runAction()
-		self.assertEquals(output, _('MOVE_CONFIRMATION_%s') % _('DIRECTION_KEY_NORTH'))
+		formatData = {'direction': _('DIRECTION_KEY_EAST'), 'enemy': 'rat'}
+		self.assertEquals(output, _('MOVE_CONFIRMATION_{direction}_FIGHT_{enemy}').format(**formatData))
+
+	def test_move_with_fight_start_json(self):
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
+		self.rpgJSON._runAction()
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_EAST')])
+		output = self.rpgJSON._runAction()
+		self.assertEquals(output, {'direction': _('DIRECTION_KEY_EAST'), 'enemy': 'rat'})
+
+	def test_move_flee_fight_text(self):
+		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
+		self.rpgText._runAction()
+		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_EAST')])
+		self.rpgText._runAction()
+		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_WEST')])
+		output = self.rpgText._runAction()
+		formatData = {'direction': _('DIRECTION_KEY_WEST'), 'enemy': 'rat'}
+		self.assertEquals(output, _('MOVE_CONFIRMATION_{direction}_FIGHT_FLEE_{enemy}').format(**formatData))
+
+	def test_move_flee_fight_json(self):
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
+		self.rpgJSON._runAction()
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_EAST')])
+		self.rpgJSON._runAction()
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_WEST')])
+		output = self.rpgJSON._runAction()
+		self.assertEquals(output, {'direction': _('DIRECTION_KEY_WEST'), 'enemy': 'rat', 'flee': True})
+
+	def test_move_noflee_fight_text(self):
+		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
+		self.rpgText._runAction()
+		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_WEST')])
+		self.rpgText._runAction()
+		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_EAST')])
+		output = self.rpgText._runAction()
+		formatData = {'direction': _('DIRECTION_KEY_WEST'), 'enemy': 'rat'}
+		self.assertEquals(output, _('ERROR_FLEE_FIGHT_FAILS'))
+
+	def test_move_noflee_fight_json(self):
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
+		self.rpgJSON._runAction()
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_WEST')])
+		self.rpgJSON._runAction()
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_EAST')])
+		output = self.rpgJSON._runAction()
+		self.assertEquals(output, {"error": {"message": _('ERROR_FLEE_FIGHT_FAILS'), "code": 1}})
+
+	def test_text(self):
+		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
+		output = self.rpgText._runAction()
+		self.assertEquals(output, _('MOVE_CONFIRMATION_%s') % _('DIRECTION_KEY_SOUTH'))
 
 	def test_json(self):
-		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_NORTH')])
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
 		output = self.rpgJSON._runAction()
-		self.assertEquals(output, {"direction": _('DIRECTION_KEY_NORTH')})
+		self.assertEquals(output, {"direction": _('DIRECTION_KEY_SOUTH')})

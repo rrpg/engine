@@ -21,11 +21,15 @@ class enterTests(tests.common.common):
 		self.assertEquals(output, {"error": {"message": _('ERROR_ENTER_NO_PLACE_GIVEN'), "code": 1}})
 
 	def test_place_not_available_text(self):
+		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
+		self.rpgText._runAction()
 		self.rpgText.setAction([_('ENTER_COMMAND'), _('PLACE_TYPE_CAVE')])
 		output = self.rpgText._runAction()
 		self.assertEquals(output, _('ERROR_ENTER_PLACE_NOT_AVAILABLE'))
 
 	def test_place_not_available_json(self):
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
+		self.rpgJSON._runAction()
 		self.rpgJSON.setAction([_('ENTER_COMMAND'), 'cave'])
 		output = self.rpgJSON._runAction()
 		self.assertEquals(output, {"error": {"message": _('ERROR_ENTER_PLACE_NOT_AVAILABLE'), "code": 1}})
@@ -54,12 +58,22 @@ class enterTests(tests.common.common):
 		output = self.rpgJSON._runAction()
 		self.assertEquals(output, {"error": {"message": _('ERROR_ENTER_PLACE_NOT_AVAILABLE'), "code": 1}})
 
-	def test_text(self):
+	def test_dungeon_text(self):
 		self.rpgText.setAction([_('ENTER_COMMAND'), _('PLACE_TYPE_DUNGEON')])
 		output = self.rpgText._runAction()
 		self.assertEquals(output, _('ENTER_CONFIRMATION'))
 
-	def test_json(self):
+	def test_dungeon_json(self):
 		self.rpgJSON.setAction([_('ENTER_COMMAND'), _('PLACE_TYPE_DUNGEON')])
+		output = self.rpgJSON._runAction()
+		self.assertEquals(output, [_('ENTER_CONFIRMATION')])
+
+	def test_cave_text(self):
+		self.rpgText.setAction([_('ENTER_COMMAND'), _('PLACE_TYPE_CAVE')])
+		output = self.rpgText._runAction()
+		self.assertEquals(output, _('ENTER_CONFIRMATION'))
+
+	def test_cave_json(self):
+		self.rpgJSON.setAction([_('ENTER_COMMAND'), _('PLACE_TYPE_CAVE')])
 		output = self.rpgJSON._runAction()
 		self.assertEquals(output, [_('ENTER_CONFIRMATION')])

@@ -6,6 +6,7 @@ Module to handle the characters in the game
 
 from models.Model import Model
 from models import item
+from collections import OrderedDict
 import core.exception
 
 
@@ -15,6 +16,7 @@ class character:
 	"""
 
 	inventory = None
+	_isFighting = False
 
 	@staticmethod
 	def searchByNameAndIdArea(name, idArea):
@@ -78,6 +80,36 @@ class character:
 		"""
 		return self._model['id_character']
 
+	def isFighting(self):
+		"""
+		c.isFighting() -> boolean
+
+		Returns true if the character is fighting
+
+		@return boolean
+		"""
+		return self._isFighting
+
+	def fight(self, value):
+		"""
+		c.fight(Bool)
+
+		Set the attribute isFighting to true or false
+		"""
+		self._isFighting = value
+
+	def getStats(self):
+		"""
+		c.getStats() -> dict
+
+		Return a dict with the characters stats. the keys are the stats names,
+		taken from the model's field names, minus the stats_prefix
+
+		@return dict
+		"""
+		stats = {name: self._model[name] for name in self._model.keys() if name[:5] == 'stat_'}
+		return OrderedDict(sorted(stats.items(), key=lambda t: t[0]))
+
 	def goTo(self, idArea):
 		"""
 		character.character.goTo(idArea)
@@ -133,13 +165,23 @@ class character:
 		"""
 		return self._model['id_area']
 
+class stats:
+	MAX_VALUE = 255
 
 class model(Model):
 	"""
 	Class to interact with the values in the database.
 	"""
 
-	fields = ('id_character', 'name', 'id_species', 'id_gender', 'id_area', 'inventory')
+	fields = (
+		'id_character',
+		'name',
+		'stat_current_hp', 'stat_max_hp',
+		'stat_attack',
+		'stat_defence',
+		'stat_speed',
+		'stat_luck',
+		'id_species', 'id_gender', 'id_area', 'inventory')
 
 	@staticmethod
 	def savePosition(idCharacter, idArea):

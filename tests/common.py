@@ -20,7 +20,7 @@ class common(unittest.TestCase):
 		con.executescript(s)
 		f.close()
 
-		f = open(os.path.realpath(os.path.dirname(__file__) + "/../database/values.sql"),'r')
+		f = open(os.path.realpath(os.path.dirname(__file__) + "/values-tests.sql"),'r')
 		s = f.read()
 		con.executescript(s)
 		f.close()

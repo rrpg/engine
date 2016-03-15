@@ -67,6 +67,14 @@ class help(core.command.command):
 				'description': _('DROP_COMMAND_DESCRIPTION')
 			},
 			{
+				'command': _('STATS_COMMAND'),
+				'description': _('STATS_COMMAND_DESCRIPTION')
+			},
+			{
+				'command': _('ATTACK_COMMAND'),
+				'description': _('ATTACK_COMMAND_DESCRIPTION')
+			},
+			{
 				'command': _('HELP_COMMAND'),
 				'description': _('HELP_COMMAND_DESCRIPTION')
 			},

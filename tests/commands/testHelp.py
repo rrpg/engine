@@ -6,6 +6,7 @@ sys.path.append(os.path.realpath(__file__ + "/../../../"))
 
 import tests.common
 from core.localisation import _
+import core.command_factory
 from models import area, place
 import json
 
@@ -45,6 +46,10 @@ class helpTests(tests.common.common):
 				_('CONTAINER_INDEX_TOKEN')
 			) + ':' +'\n'+\
 			'\t' + _('DROP_COMMAND_DESCRIPTION') +'\n'+\
+			_('STATS_COMMAND') + ':' +'\n'+\
+			'\t' + _('STATS_COMMAND_DESCRIPTION') +'\n'+\
+			_('ATTACK_COMMAND') + ':' +'\n'+\
+			'\t' + _('ATTACK_COMMAND_DESCRIPTION') +'\n'+\
 			_('HELP_COMMAND') + ':' +'\n'+\
 			'\t' + _('HELP_COMMAND_DESCRIPTION') +'\n'+\
 			_('QUIT_SHORT_COMMAND') + '|' + _('QUIT_COMMAND') + ':' +'\n'+\
@@ -92,6 +97,14 @@ class helpTests(tests.common.common):
 				"description": _('DROP_COMMAND_DESCRIPTION')
 			},
 			{
+				"command": _('STATS_COMMAND'),
+				"description": _('STATS_COMMAND_DESCRIPTION')
+			},
+			{
+				"command": _('ATTACK_COMMAND'),
+				"description": _('ATTACK_COMMAND_DESCRIPTION')
+			},
+			{
 				"command": _('HELP_COMMAND'),
 				"description": _('HELP_COMMAND_DESCRIPTION')
 			},
@@ -102,3 +115,4 @@ class helpTests(tests.common.common):
 		]
 
 		self.assertEquals(output, expected)
+		self.assertEquals(len(output), len(core.command_factory.factory.mapping))
