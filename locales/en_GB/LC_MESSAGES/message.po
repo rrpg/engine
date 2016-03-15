@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-14 08:26+0000\n"
+"POT-Creation-Date: 2016-03-15 14:08+0000\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -45,7 +45,11 @@ msgstr "Your choice? "
 msgid "LOGIN_PROMPT"
 msgstr "Login: "
 
-#: core/Rpg.py:221
+#: core/Rpg.py:122
+msgid "GAME_OVER_TEXT"
+msgstr "You have been defeated. Your name shall be remembered for ever.... Or not"
+
+#: core/Rpg.py:228
 msgid "COMMAND_PROMPT"
 msgstr "Command: "
 
@@ -80,7 +84,13 @@ msgstr "talk"
 #: tests/commands/testMove.py:34 tests/commands/testMove.py:39
 #: tests/commands/testMove.py:44 tests/commands/testMove.py:46
 #: tests/commands/testMove.py:52 tests/commands/testMove.py:54
-#: tests/commands/testMove.py:59 tests/commands/testMove.py:64
+#: tests/commands/testMove.py:59 tests/commands/testMove.py:61
+#: tests/commands/testMove.py:63 tests/commands/testMove.py:69
+#: tests/commands/testMove.py:71 tests/commands/testMove.py:73
+#: tests/commands/testMove.py:78 tests/commands/testMove.py:80
+#: tests/commands/testMove.py:82 tests/commands/testMove.py:88
+#: tests/commands/testMove.py:90 tests/commands/testMove.py:92
+#: tests/commands/testMove.py:97 tests/commands/testMove.py:102
 msgid "MOVE_COMMAND"
 msgstr "move"
 
@@ -253,7 +263,7 @@ msgstr "You slay the {enemy}"
 #: core/commands/attack.py:32
 #, python-brace-format
 msgid "ATTACK_LOST_{enemy}"
-msgstr "The {enemy} achieves you"
+msgstr "The {enemy} kills you"
 
 #: core/commands/authenticate.py:17 tests/commands/testAuthenticate.py:18
 #: tests/commands/testAuthenticate.py:23
@@ -470,7 +480,8 @@ msgstr "Shows your character's stats"
 #: core/commands/help.py:75 tests/commands/testHelp.py:52
 #: tests/commands/testHelp.py:105
 msgid "ATTACK_COMMAND_DESCRIPTION"
-msgstr "If the character is fighting, this command make the character attack\n"
+msgstr ""
+"If the character is fighting, this command make the character attack\n"
 "If the character is not fighting, the command will fail and return an error"
 
 #: core/commands/help.py:79 tests/commands/testHelp.py:54
@@ -611,11 +622,12 @@ msgstr "%s is not a valid direction"
 msgid "ERROR_MOVE_DIRECTION_NOT_AVAILABLE"
 msgstr "I can't go there"
 
-#: core/commands/move.py:41
+#: core/commands/move.py:41 tests/commands/testMove.py:85
+#: tests/commands/testMove.py:94
 msgid "ERROR_FLEE_FIGHT_FAILS"
 msgstr "You can't run away from this fight"
 
-#: core/commands/move.py:71
+#: core/commands/move.py:71 tests/commands/testMove.py:66
 #, python-brace-format
 msgid "MOVE_CONFIRMATION_{direction}_FIGHT_FLEE_{enemy}"
 msgstr "You manage to escape the {enemy} and head towards {direction}"
@@ -630,7 +642,7 @@ msgstr "let's go {direction}. A {enemy} attacks you"
 msgid "MOVE_CONFIRMATION_{direction}_AMBUSH_{enemy}"
 msgstr "let's go {direction}. You are ambushed by a {enemy}"
 
-#: core/commands/move.py:90 tests/commands/testMove.py:61
+#: core/commands/move.py:90 tests/commands/testMove.py:99
 #, python-format
 msgid "MOVE_CONFIRMATION_%s"
 msgstr "let's go %s"
@@ -738,7 +750,9 @@ msgstr "north"
 #: models/area.py:22 tests/commands/testMove.py:34
 #: tests/commands/testMove.py:39 tests/commands/testMove.py:46
 #: tests/commands/testMove.py:48 tests/commands/testMove.py:54
-#: tests/commands/testMove.py:56
+#: tests/commands/testMove.py:56 tests/commands/testMove.py:61
+#: tests/commands/testMove.py:71 tests/commands/testMove.py:82
+#: tests/commands/testMove.py:92
 msgid "DIRECTION_KEY_EAST"
 msgstr "east"
 
@@ -747,12 +761,17 @@ msgstr "east"
 #: tests/commands/testLook.py:43 tests/commands/testLook.py:87
 #: tests/commands/testLook.py:93 tests/commands/testMove.py:44
 #: tests/commands/testMove.py:52 tests/commands/testMove.py:59
-#: tests/commands/testMove.py:61 tests/commands/testMove.py:64
-#: tests/commands/testMove.py:66
+#: tests/commands/testMove.py:69 tests/commands/testMove.py:78
+#: tests/commands/testMove.py:88 tests/commands/testMove.py:97
+#: tests/commands/testMove.py:99 tests/commands/testMove.py:102
+#: tests/commands/testMove.py:104
 msgid "DIRECTION_KEY_SOUTH"
 msgstr "south"
 
-#: models/area.py:24
+#: models/area.py:24 tests/commands/testMove.py:63
+#: tests/commands/testMove.py:65 tests/commands/testMove.py:73
+#: tests/commands/testMove.py:75 tests/commands/testMove.py:80
+#: tests/commands/testMove.py:84 tests/commands/testMove.py:90
 msgid "DIRECTION_KEY_WEST"
 msgstr "west"
 

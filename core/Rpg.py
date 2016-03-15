@@ -60,7 +60,7 @@ class Rpg:
 				raise core.exception.exception(_('ERROR_NO_SELECTED_PLAYER'))
 			self._action = action
 
-	def _initPlayer(self, login):
+	def _initPlayer(self, login=None):
 		"""
 		Method to init the player with a login.
 		If the interactive mode is active and no login is provided,
@@ -118,6 +118,10 @@ class Rpg:
 			raise TypeError("The action must be a list of strings")
 		self._action = action
 
+	def _gameOver(self):
+		print(_('GAME_OVER_TEXT'))
+		self._initPlayer()
+
 	def run(self): # pragma: no cover
 		'''
 		Main method of the Rpg Class, will run the action if it is given,
@@ -152,6 +156,9 @@ class Rpg:
 						result = json.dumps(result, ensure_ascii=False)
 					print(result)
 					print("")
+
+				if not self._player.isAlive():
+					self._gameOver()
 
 	def _runAction(self):
 		"""
