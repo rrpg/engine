@@ -253,7 +253,7 @@ msgstr "You slay the {enemy}"
 #: core/commands/attack.py:32
 #, python-brace-format
 msgid "ATTACK_LOST_{enemy}"
-msgstr "The {enemy} achieves you"
+msgstr "The {enemy} kills you"
 
 #: core/commands/authenticate.py:17 tests/commands/testAuthenticate.py:18
 #: tests/commands/testAuthenticate.py:23
