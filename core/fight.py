@@ -44,7 +44,7 @@ def attack(player, enemy, playerFirst=True):
 			enemy['stat_attack'], player._model['stat_defence']
 		)
 		player._model['stat_current_hp'] -= damagesToPlayer
-		if player._model['stat_current_hp'] <= 0:
+		if not player.isAlive():
 			stopFight(player)
 			fightFinished = True
 			winner = enemy
