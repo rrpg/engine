@@ -12,12 +12,6 @@ class command():
 	def __init__(self, isInteractive):
 		self._isInteractive = isInteractive
 
-	def isInteractive(self):
-		"""
-		Returns True if the game is used in interactive mode
-		"""
-		return self._isInteractive
-
 	def setArgs(self, args):
 		"""
 		c.setArgs(args)
