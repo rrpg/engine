@@ -162,6 +162,11 @@ class character:
 		"""
 		return self._model['id_area']
 
+	def saveProgress(self):
+		self._model['inventory'] = item.inventory.toStr(self.inventory)
+		model.saveData(self._model['id_character'], self._model)
+
+
 class stats:
 	MAX_VALUE = 255
 
@@ -181,34 +186,16 @@ class model(Model):
 		'id_species', 'id_gender', 'id_area', 'inventory')
 
 	@staticmethod
-	def savePosition(idCharacter, idArea):
+	def saveData(idCharacter, data):
 		"""
-		character.model.savePosition(idCharacter, idArea)
+		character.model.saveData(idCharacter, daa)
 
-		Change a character's position
+		Save a character's model in DB
 
 		@param idCharacter integer id of the character to move
-		@param idArea id of the area where the character must go.
+		@param data dict containing the character's data
 		"""
-		model.update(
-			{'id_area': idArea},
-			('id_character = ?', [idCharacter])
-		)
-
-	@staticmethod
-	def saveInventory(idCharacter, inventory):
-		"""
-		character.model.saveInventory(idCharacter, inventory)
-
-		Save the character's inventory in the database.
-
-		@param idCharacter character's id.
-		@param inventory list items to add.
-		"""
-		model.update(
-			{'inventory': item.inventory.toStr(inventory)},
-			('id_character = ?', [idCharacter])
-		)
+		model.update(data, ('id_character = ?', [idCharacter]))
 
 
 class exception(core.exception.exception):
