@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import core.command
-import core.fight
+from core.fight import fight
 from core.localisation import _
 
 class attack(core.command.command):
@@ -13,12 +13,13 @@ class attack(core.command.command):
 		"""
 		Attack someone in the same area
 		"""
-		enemy = core.fight.getEnemy()
+		f = fight.getFight()
 
-		if enemy is None:
+		if f is None:
 			raise core.command.exception(_('ERROR_FIGHT_NOT_FIGHTING'))
 
-		attackResult = core.fight.attack(self._player, enemy)
+		enemy = f.getEnemy()
+		attackResult = f.attack()
 
 		return {
 			'enemy': enemy,
