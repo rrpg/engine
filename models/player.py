@@ -55,7 +55,6 @@ class model(character.model):
 
 		pm = pm[0]
 		cm = character.model.loadById(pm['id_character'])
-		cm.update(pm)
 
 		return cm
 
