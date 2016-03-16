@@ -163,7 +163,11 @@ class character:
 		return self._model['id_area']
 
 	def saveProgress(self):
+		if self.inventory is None:
+			# Initialise the inventory
+			self.getInventory()
 		self._model['inventory'] = item.inventory.toStr(self.inventory)
+
 		model.saveData(self._model['id_character'], self._model)
 
 
