@@ -10,7 +10,7 @@ from collections import OrderedDict
 import core.exception
 
 
-class character:
+class character(object):
 	"""
 	Class to interact with the characters in the game.
 	"""
