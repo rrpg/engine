@@ -92,6 +92,11 @@ class container:
 
 		cls.containersToSave = dict()
 
+	@classmethod
+	def resetChangedContainers(cls):
+		cls.containersToSave = dict()
+
+
 class model(Model):
 	"""
 	Class to interact with the values in the database.

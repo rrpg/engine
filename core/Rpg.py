@@ -3,6 +3,8 @@
 from models.player import player
 from core import command, command_factory, utils, config, fight
 from models.Model import Model
+from models.area import area
+from models.item_container import container
 import readline
 import getpass
 import os
@@ -37,6 +39,8 @@ class Rpg:
 		self._action = []
 		self._isInteractive = isInteractive
 		fight.fight.stopFight()
+		area.resetChangedAreas()
+		container.resetChangedContainers()
 
 	def init(self, world, login):
 		"""

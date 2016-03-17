@@ -144,6 +144,10 @@ class area:
 
 		cls.items = dict()
 
+	@classmethod
+	def resetChangedAreas(cls):
+		cls.items = dict()
+
 
 class model(Model):
 	"""
