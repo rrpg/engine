@@ -90,6 +90,7 @@ class container:
 				idContainers, cls.containersToSave[idContainers]
 			)
 
+		cls.containersToSave = dict()
 
 class model(Model):
 	"""
