@@ -78,9 +78,7 @@ class look(core.command.command):
 	def _getObjects(self, areaId):
 		objects = list()
 		# Display surrounding objects
-		items = item.inventory.fromStr(
-			area.model.loadById(areaId, ['items'])['items']
-		)
+		items = area.area.getItems(areaId)
 		for i in items:
 			it = item.model.loadById(i)
 			objects.append({
