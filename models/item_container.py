@@ -4,6 +4,7 @@ from models.Model import Model
 from models import item
 from core.localisation import _
 import core.exception
+from core import config
 import json
 
 class container:
@@ -11,12 +12,22 @@ class container:
 	Class to interact with the item containers, such as chests.
 	"""
 
+	containersToSave = dict()
+
+	@staticmethod
+	def getMemoizedItems(c):
+		idContainer = c['id_item_container']
+		if config.memoization_enabled is True and idContainer in container.containersToSave.keys:
+			c['items'] = container.containersToSave[idContainer]
+		return c
+
 	@staticmethod
 	def getAllFromIdArea(idArea):
 		itemContainerTypes = model.getTypes()
 		containers = model.loadBy({'id_area': idArea})
 		for k, c in enumerate(containers):
 			containers[k]['type_label'] = itemContainerTypes[containers[k]['id_item_container_type']]
+			containers[k] = container.getMemoizedItems(containers[k])
 		return containers
 
 	@staticmethod
@@ -36,6 +47,9 @@ class container:
 			'id_item_container_type': containerTypeId
 		})
 
+		for k, c in enumerate(containers):
+			containers[k] = container.getMemoizedItems(containers[k])
+
 		return containers
 
 	@staticmethod
@@ -48,11 +62,10 @@ class container:
 		@param container container where the items must be added.
 		@param items list of items to add
 		"""
-		c['items'] = item.inventory.addItems(
+		container.containersToSave[c['id_item_container']] = item.inventory.addItems(
 			item.inventory.fromStr(c['items']),
 			items
 		)
-		model.saveAvailableItems(container['id_item_container'], c['items'])
 
 	@staticmethod
 	def removeItems(c, items):
@@ -65,11 +78,10 @@ class container:
 		@param container container the items must be removed from.
 		@param items list of items to remove
 		"""
-		c['items'] = item.inventory.removeItems(
+		container.containersToSave[c['id_item_container']] = item.inventory.removeItems(
 			item.inventory.fromStr(c['items']),
 			items
 		)
-		model.saveAvailableItems(container['id_item_container'], c['items'])
 
 
 class model(Model):
