@@ -15,8 +15,9 @@ class character(object):
 	Class to interact with the characters in the game.
 	"""
 
-	inventory = None
-	_isFighting = False
+	def __init__(self):
+		self.inventory = None
+		self._isFighting = False
 
 	@staticmethod
 	def searchByNameAndIdArea(name, idArea):
