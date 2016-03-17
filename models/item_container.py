@@ -52,7 +52,7 @@ class container:
 			item.inventory.fromStr(container['items']),
 			items
 		)
-		model.saveAvailableItems(container)
+		model.saveAvailableItems(container['id_item_container'], container['items'])
 
 	@staticmethod
 	def removeItems(container, items):
@@ -69,7 +69,7 @@ class container:
 			item.inventory.fromStr(container['items']),
 			items
 		)
-		model.saveAvailableItems(container)
+		model.saveAvailableItems(container['id_item_container'], container['items'])
 
 
 class model(Model):
@@ -104,10 +104,10 @@ class model(Model):
 		return {t['id_item_container_type']: t['label'] for t in Model.fetchAllRows(query)}
 
 	@staticmethod
-	def saveAvailableItems(container):
+	def saveAvailableItems(idContainer, items):
 		model.update(
-			{'items': json.dumps(container['items'])},
-			('id_item_container = ?', [container['id_item_container']])
+			{'items': json.dumps(items)},
+			('id_item_container = ?', [idContainer])
 		)
 
 
