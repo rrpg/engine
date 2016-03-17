@@ -142,6 +142,8 @@ class area:
 		for idArea in cls.items:
 			model.saveAvailableItems(idArea, cls.items[idArea])
 
+		cls.items = dict()
+
 
 class model(Model):
 	"""
