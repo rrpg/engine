@@ -83,6 +83,13 @@ class container:
 			items
 		)
 
+	@classmethod
+	def saveChangedContainers(cls):
+		for idContainers in cls.containersToSave:
+			model.saveAvailableItems(
+				idContainers, cls.containersToSave[idContainers]
+			)
+
 
 class model(Model):
 	"""

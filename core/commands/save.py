@@ -3,6 +3,7 @@
 import core.command
 from core.localisation import _
 from models.area import area
+from models.item_container import container
 
 
 class save(core.command.command):
@@ -20,6 +21,7 @@ class save(core.command.command):
 		"""
 		self._player.saveProgress()
 		area.saveChangedAreas()
+		container.saveChangedContainers()
 		return {'saved': True}
 
 	def render(self, data):
