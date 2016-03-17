@@ -39,25 +39,25 @@ class container:
 		return containers
 
 	@staticmethod
-	def addItems(container, items):
+	def addItems(c, items):
 		"""
-		item_container.container.addItems(container, items)
+		item_container.container.addItems(c, items)
 
 		Method to add some items in a container.
 
 		@param container container where the items must be added.
 		@param items list of items to add
 		"""
-		container['items'] = item.inventory.addItems(
-			item.inventory.fromStr(container['items']),
+		c['items'] = item.inventory.addItems(
+			item.inventory.fromStr(c['items']),
 			items
 		)
-		model.saveAvailableItems(container['id_item_container'], container['items'])
+		model.saveAvailableItems(container['id_item_container'], c['items'])
 
 	@staticmethod
-	def removeItems(container, items):
+	def removeItems(c, items):
 		"""
-		item_container.container.removeItems(container, items)
+		item_container.container.removeItems(c, items)
 
 		Method to remove some items from a container.
 		Items not in the container will be ignored.
@@ -65,11 +65,11 @@ class container:
 		@param container container the items must be removed from.
 		@param items list of items to remove
 		"""
-		container['items'] = item.inventory.removeItems(
-			item.inventory.fromStr(container['items']),
+		c['items'] = item.inventory.removeItems(
+			item.inventory.fromStr(c['items']),
 			items
 		)
-		model.saveAvailableItems(container['id_item_container'], container['items'])
+		model.saveAvailableItems(container['id_item_container'], c['items'])
 
 
 class model(Model):
