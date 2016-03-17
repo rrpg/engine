@@ -11,6 +11,7 @@ from core.localisation import _
 
 class player(character.character):
 	def __init__(self):
+		super(player, self).__init__()
 		self._model = None
 
 	def isConnected(self):
