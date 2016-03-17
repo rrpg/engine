@@ -91,7 +91,6 @@ class area:
 		@param items list of items to remove
 		"""
 		area.items[idArea] = item.inventory.removeItems(area.getItems(idArea), items)
-		model.saveAvailableItems(idArea, area.items[idArea])
 
 	@staticmethod
 	def addItems(idArea, items):
@@ -104,7 +103,6 @@ class area:
 		@param items list of items to add
 		"""
 		area.items[idArea] = item.inventory.addItems(area.getItems(idArea), items)
-		model.saveAvailableItems(idArea, area.items[idArea])
 
 	@staticmethod
 	def getDirections():
@@ -138,6 +136,11 @@ class area:
 	@staticmethod
 	def getRegionNameFromAreaId(idArea):
 		return model.getRegionNameFromAreaId(idArea)
+
+	@classmethod
+	def saveChangedAreas(cls):
+		for idArea in cls.items:
+			model.saveAvailableItems(idArea, cls.items[idArea])
 
 
 class model(Model):

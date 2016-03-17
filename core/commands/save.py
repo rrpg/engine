@@ -2,6 +2,8 @@
 
 import core.command
 from core.localisation import _
+from models.area import area
+
 
 class save(core.command.command):
 	"""
@@ -17,6 +19,7 @@ class save(core.command.command):
 		Saves the game's progress
 		"""
 		self._player.saveProgress()
+		area.saveChangedAreas()
 		return {'saved': True}
 
 	def render(self, data):
