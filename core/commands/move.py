@@ -26,13 +26,12 @@ class move(core.command.command):
 		curAreaId = self._player.getAreaId()
 		curArea = area.model.loadById(curAreaId)
 
-		ret = {'direction': direction}
-
 		a = area.area.getNeighbourFromDirection(curAreaId, direction)
 
 		if area.area.canGoTo(curArea['directions'], direction) is False or a is None:
 			raise core.command.exception(_('ERROR_MOVE_DIRECTION_NOT_AVAILABLE'))
 
+		ret = {'direction': direction}
 		wasFighting = self._player.isFighting()
 		f = fight.getFight()
 		if wasFighting:
