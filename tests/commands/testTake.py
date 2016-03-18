@@ -147,6 +147,10 @@ class takeTests(tests.common.common):
 		self.rpgText.setAction([_('TAKE_COMMAND'), 'Heavy breastplate'])
 		output = self.rpgText._runAction()
 		self.assertEquals(output, _('TAKE_CONFIRMATION_%(quantity)s_%(name)s') % {'quantity': 1, 'name': 'Heavy breastplate'})
+		self.rpgText.setAction([_('LOOK_COMMAND'), _('LOOK_OBJECTS_PARAM')])
+		output = self.rpgText._runAction()
+		self.assertEquals(output, _('AVAILABLE_ITEMS') +'\n'+\
+			'  5 Heavy breastplate')
 
 	def test_item_json(self):
 		self.rpgJSON.setAction([_('TAKE_COMMAND'), 'Heavy breastplate'])
