@@ -60,9 +60,9 @@ The documentation is being written and is available
 
 ## Tests
 
-To run the tests, run the file
+To run the tests, run
 ```
-bin/run-tests.sh
+make test
 ```
 All the commands will be tested in french and english in python 2 and/or 3
 (depending on which version is installed on the user's computer).
@@ -70,7 +70,11 @@ All the commands will be tested in french and english in python 2 and/or 3
 ## Code coverage
 
 To run the code coverage, you will need coverage.py
-(http://nedbatchelder.com/code/coverage/).
+(http://nedbatchelder.com/code/coverage/):
+
+```
+pip install coverage
+```
 
 Once coverage.py is installed, just run:
 
