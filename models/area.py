@@ -75,7 +75,7 @@ class area:
 
 		@return list
 		"""
-		if config.memoization_enabled is False or idArea not in area.items.keys():
+		if idArea not in area.items.keys():
 			area.items[idArea] = item.inventory.fromStr(model.loadById(idArea, ['items'])['items'])
 		return area.items[idArea]
 
@@ -142,6 +142,10 @@ class area:
 		for idArea in cls.items:
 			model.saveAvailableItems(idArea, cls.items[idArea])
 
+		cls.items = dict()
+
+	@classmethod
+	def resetChangedAreas(cls):
 		cls.items = dict()
 
 

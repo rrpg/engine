@@ -17,7 +17,7 @@ class container:
 	@staticmethod
 	def getMemoizedItems(c):
 		idContainer = c['id_item_container']
-		if config.memoization_enabled is True and idContainer in container.containersToSave.keys:
+		if idContainer in container.containersToSave.keys():
 			c['items'] = container.containersToSave[idContainer]
 		return c
 
@@ -89,6 +89,12 @@ class container:
 			model.saveAvailableItems(
 				idContainers, cls.containersToSave[idContainers]
 			)
+
+		cls.containersToSave = dict()
+
+	@classmethod
+	def resetChangedContainers(cls):
+		cls.containersToSave = dict()
 
 
 class model(Model):

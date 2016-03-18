@@ -50,6 +50,8 @@ class helpTests(tests.common.common):
 			'\t' + _('STATS_COMMAND_DESCRIPTION') +'\n'+\
 			_('ATTACK_COMMAND') + ':' +'\n'+\
 			'\t' + _('ATTACK_COMMAND_DESCRIPTION') +'\n'+\
+			_('SAVE_COMMAND') + ':' +'\n'+\
+			'\t' + _('SAVE_COMMAND_DESCRIPTION') +'\n'+\
 			_('HELP_COMMAND') + ':' +'\n'+\
 			'\t' + _('HELP_COMMAND_DESCRIPTION') +'\n'+\
 			_('QUIT_SHORT_COMMAND') + '|' + _('QUIT_COMMAND') + ':' +'\n'+\
@@ -103,6 +105,10 @@ class helpTests(tests.common.common):
 			{
 				"command": _('ATTACK_COMMAND'),
 				"description": _('ATTACK_COMMAND_DESCRIPTION')
+			},
+			{
+				"command": _('SAVE_COMMAND'),
+				"description": _('SAVE_COMMAND_DESCRIPTION')
 			},
 			{
 				"command": _('HELP_COMMAND'),
