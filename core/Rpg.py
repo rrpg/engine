@@ -115,43 +115,36 @@ class Rpg:
 		print(_('GAME_OVER_TEXT'))
 		self._initPlayer()
 
-	def run(self):
+	def run(self): # pragma: no cover
 		'''
-		Main method of the Rpg Class, will run the action if it is given,
-		else ask the player to enter a command
+		Main method of the Rpg Class, will ask the player to enter a command
 		'''
-		if len(self._action) > 0:
-			result = self._runAction()
-			if self._renderMode == RENDER_JSON:
-				result = json.dumps(result, ensure_ascii=False)
-			print(result)
-		else: # pragma: no cover
-			c = ''
-			result = 0
-			while 1:
-				try:
-					c = self.readCommand()
-				except KeyboardInterrupt:
-					print("")
-					continue
-				except EOFError:
-					print("")
-					break
+		c = ''
+		result = 0
+		while 1:
+			try:
+				c = self.readCommand()
+			except KeyboardInterrupt:
+				print("")
+				continue
+			except EOFError:
+				print("")
+				break
 
-				if c != "":
-					self._action = self.parseTypedAction(c)
-					result = self._runAction()
+			if c != "":
+				self._action = self.parseTypedAction(c)
+				result = self._runAction()
 
-				if result == command_factory.quit:
-					break
-				elif c != "":
-					if self._renderMode == RENDER_JSON:
-						result = json.dumps(result, ensure_ascii=False)
-					print(result)
-					print("")
+			if result == command_factory.quit:
+				break
+			elif c != "":
+				if self._renderMode == RENDER_JSON:
+					result = json.dumps(result, ensure_ascii=False)
+				print(result)
+				print("")
 
-				if not self._player.isAlive():
-					self._gameOver()
+			if not self._player.isAlive():
+				self._gameOver()
 
 	def _runAction(self):
 		"""
