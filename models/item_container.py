@@ -17,7 +17,7 @@ class container:
 	@staticmethod
 	def getMemoizedItems(c):
 		idContainer = c['id_item_container']
-		if config.memoization_enabled is True and idContainer in container.containersToSave.keys:
+		if idContainer in container.containersToSave.keys():
 			c['items'] = container.containersToSave[idContainer]
 		return c
 

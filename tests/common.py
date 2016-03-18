@@ -28,7 +28,6 @@ class common(unittest.TestCase):
 		con.commit()
 		con.close()
 
-		core.config.memoization_enabled = False
 		self.initialiseTextClient()
 		self.initialiseJSONClient()
 
