@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-
-import sys
 import core.exception
 from models import character
 from models.Model import Model
