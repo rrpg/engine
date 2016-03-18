@@ -159,6 +159,7 @@ class model(Model):
 		'x', 'y',
 		'directions',
 		'container',
+		'has_save_point',
 		'items'
 	)
 
