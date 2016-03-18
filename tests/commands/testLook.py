@@ -42,7 +42,11 @@ class lookTests(tests.common.common):
 		self.assertEquals(output, {
 			"directions": [_('DIRECTION_KEY_SOUTH')],
 			"items": [{"name": "Heavy breastplate", "quantity": 6}],
-			"region": "The High lands",
+			"region": {
+				"name": "The High lands",
+				"x": 0,
+				"y": 1
+			},
 			"places": ["first cave", "first dungeon"],
 			"characters": ["Tom"],
 			"item_containers": {'chest': 1, 'wardrobe': 2}
@@ -66,7 +70,7 @@ class lookTests(tests.common.common):
 	def test_region_json(self):
 		self.rpgJSON.setAction([_('LOOK_COMMAND'), _('LOOK_REGION_PARAM')])
 		output = self.rpgJSON._runAction()
-		self.assertEquals(output, {"region": "The High lands"})
+		self.assertEquals(output, {"region": {"name": "The High lands", "x": 0, "y": 1}})
 
 	def test_characters_text(self):
 		self.rpgText.setAction([_('LOOK_COMMAND'), _('LOOK_CHARACTERS_PARAM')])
