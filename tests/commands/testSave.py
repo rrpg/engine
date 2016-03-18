@@ -16,6 +16,27 @@ class moveTests(tests.common.common):
 	# test player position
 	# test player inventory
 	# test player stats
+
+	def test_save_no_change_text(self):
+		self.rpgText.setAction([_('SAVE_COMMAND')])
+		self.rpgText._runAction()
+
+		self.initialiseTextClient()
+
+		self.rpgText.setAction([_('INVENTORY_COMMAND')])
+		output = self.rpgText._runAction()
+		self.assertEquals(output, _('INVENTORY_EMPTY'))
+
+	def test_save_no_change_json(self):
+		self.rpgJSON.setAction([_('SAVE_COMMAND')])
+		self.rpgJSON._runAction()
+
+		self.initialiseJSONClient()
+
+		self.rpgJSON.setAction([_('INVENTORY_COMMAND')])
+		output = self.rpgJSON._runAction()
+		self.assertEquals(output, [])
+
 	def test_no_save_take_text(self):
 		# do a change
 		# restart engine
