@@ -148,6 +148,11 @@ class area:
 	def resetChangedAreas(cls):
 		cls.items = dict()
 
+	@staticmethod
+	def hasSavePoint(idArea):
+		a = model.loadById(idArea)
+		return a['has_save_point'] == 'TRUE'
+
 
 class model(Model):
 	"""
