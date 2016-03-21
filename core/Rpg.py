@@ -112,7 +112,7 @@ class Rpg:
 		Set the action to run
 		'''
 		if type(action) != list:
-			raise TypeError("The action must be a list of strings")
+			raise TypeError(_('ERROR_INVALID_FORMAT_ACTION'))
 		self._action = action
 
 	def _gameOver(self):
