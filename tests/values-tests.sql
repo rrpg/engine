@@ -31,8 +31,14 @@ INSERT INTO area_type (name) VALUES ('cave');
 --	|4,       ==1, (0, 0)==3, (1, 0)|
 --	| (-1, 0) ||         ||         |
 --	|         ||         ||         |
---	+---------++---------++---------+
---
+--	+---------++---| |---++---------+
+--	           +---| |---+
+--	           |         |
+--	           |         |
+--	           |5,       |
+--	           | (0, -1) |
+--	           |         |
+--	           +---------+
 --
 --
 --
@@ -44,6 +50,8 @@ INSERT INTO area (id_region, id_area_type, container, x, y, directions)
 	VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'hostile-flee'), 'world', 1, 0, 8);
 INSERT INTO area (id_region, id_area_type, container, x, y, directions)
 	VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'hostile-noflee'), 'world', -1, 0, 2);
+INSERT INTO area (id_region, id_area_type, container, x, y, directions, items)
+	VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'peaceful'), 'world', 0, -1, 1, '{"1": {"quantity": 6}}');
 
 INSERT INTO item_container_type (label) VALUES ('chest');
 INSERT INTO item_container_type (label) VALUES ('box');
