@@ -53,7 +53,7 @@ class moveTests(tests.common.common):
 		self.rpgJSON._runAction()
 		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_EAST')])
 		output = self.rpgJSON._runAction()
-		self.assertEquals(output, {'direction': _('DIRECTION_KEY_EAST'), 'enemy': 'rat'})
+		self.assertEquals(output, {'direction': _('DIRECTION_KEY_EAST'), 'enemy': 'rat', 'x': 1, 'y': 0})
 
 	def test_move_flee_fight_text(self):
 		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
@@ -72,7 +72,7 @@ class moveTests(tests.common.common):
 		self.rpgJSON._runAction()
 		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_WEST')])
 		output = self.rpgJSON._runAction()
-		self.assertEquals(output, {'direction': _('DIRECTION_KEY_WEST'), 'enemy': 'rat', 'flee': True})
+		self.assertEquals(output, {'direction': _('DIRECTION_KEY_WEST'), 'enemy': 'rat', 'flee': True, 'x': 0, 'y': 0})
 
 	def test_move_noflee_fight_text(self):
 		self.rpgText.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
@@ -101,4 +101,4 @@ class moveTests(tests.common.common):
 	def test_json(self):
 		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
 		output = self.rpgJSON._runAction()
-		self.assertEquals(output, {"direction": _('DIRECTION_KEY_SOUTH')})
+		self.assertEquals(output, {"direction": _('DIRECTION_KEY_SOUTH'), 'x': 0, 'y': 0})

@@ -10,13 +10,14 @@ from collections import OrderedDict
 import core.exception
 
 
-class character:
+class character(object):
 	"""
 	Class to interact with the characters in the game.
 	"""
 
-	inventory = None
-	_isFighting = False
+	def __init__(self):
+		self.inventory = None
+		self._isFighting = False
 
 	@staticmethod
 	def searchByNameAndIdArea(name, idArea):
@@ -119,7 +120,6 @@ class character:
 		@param idArea id of the area where the character must go.
 		"""
 		self._model['id_area'] = idArea
-		model.savePosition(self._model['id_character'], self._model['id_area'])
 
 	def getInventory(self):
 		"""
@@ -146,7 +146,6 @@ class character:
 		@param itemsId ids of the items to add
 		"""
 		self.inventory = item.inventory.addItems(self.getInventory(), itemsId)
-		model.saveInventory(self._model['id_character'], self.inventory)
 
 	def removeItemsFromInventory(self, itemsId):
 		"""
@@ -157,13 +156,21 @@ class character:
 		@param itemsId ids of the items to remove
 		"""
 		self.inventory = item.inventory.removeItems(self.getInventory(), itemsId)
-		model.saveInventory(self._model['id_character'], self.inventory)
 
 	def getAreaId(self):
 		"""
 		Return the id of the area where the character is
 		"""
 		return self._model['id_area']
+
+	def saveProgress(self):
+		if self.inventory is None:
+			# Initialise the inventory
+			self.getInventory()
+		self._model['inventory'] = item.inventory.toStr(self.inventory)
+
+		model.saveData(self._model['id_character'], self._model)
+
 
 class stats:
 	MAX_VALUE = 255
@@ -184,34 +191,16 @@ class model(Model):
 		'id_species', 'id_gender', 'id_area', 'inventory')
 
 	@staticmethod
-	def savePosition(idCharacter, idArea):
+	def saveData(idCharacter, data):
 		"""
-		character.model.savePosition(idCharacter, idArea)
+		character.model.saveData(idCharacter, daa)
 
-		Change a character's position
+		Save a character's model in DB
 
 		@param idCharacter integer id of the character to move
-		@param idArea id of the area where the character must go.
+		@param data dict containing the character's data
 		"""
-		model.update(
-			{'id_area': idArea},
-			('id_character = ?', [idCharacter])
-		)
-
-	@staticmethod
-	def saveInventory(idCharacter, inventory):
-		"""
-		character.model.saveInventory(idCharacter, inventory)
-
-		Save the character's inventory in the database.
-
-		@param idCharacter character's id.
-		@param inventory list items to add.
-		"""
-		model.update(
-			{'inventory': item.inventory.toStr(inventory)},
-			('id_character = ?', [idCharacter])
-		)
+		model.update(data, ('id_character = ?', [idCharacter]))
 
 
 class exception(core.exception.exception):

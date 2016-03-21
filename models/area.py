@@ -75,7 +75,7 @@ class area:
 
 		@return list
 		"""
-		if config.memoization_enabled is False or idArea not in area.items.keys():
+		if idArea not in area.items.keys():
 			area.items[idArea] = item.inventory.fromStr(model.loadById(idArea, ['items'])['items'])
 		return area.items[idArea]
 
@@ -91,7 +91,6 @@ class area:
 		@param items list of items to remove
 		"""
 		area.items[idArea] = item.inventory.removeItems(area.getItems(idArea), items)
-		model.saveAvailableItems(idArea, area.items[idArea])
 
 	@staticmethod
 	def addItems(idArea, items):
@@ -104,7 +103,6 @@ class area:
 		@param items list of items to add
 		"""
 		area.items[idArea] = item.inventory.addItems(area.getItems(idArea), items)
-		model.saveAvailableItems(idArea, area.items[idArea])
 
 	@staticmethod
 	def getDirections():
@@ -139,6 +137,22 @@ class area:
 	def getRegionNameFromAreaId(idArea):
 		return model.getRegionNameFromAreaId(idArea)
 
+	@classmethod
+	def saveChangedAreas(cls):
+		for idArea in cls.items:
+			model.saveAvailableItems(idArea, cls.items[idArea])
+
+		cls.items = dict()
+
+	@classmethod
+	def resetChangedAreas(cls):
+		cls.items = dict()
+
+	@staticmethod
+	def hasSavePoint(idArea):
+		a = model.loadById(idArea)
+		return a['has_save_point'] == 'TRUE'
+
 
 class model(Model):
 	"""
@@ -150,6 +164,7 @@ class model(Model):
 		'x', 'y',
 		'directions',
 		'container',
+		'has_save_point',
 		'items'
 	)
 

@@ -4,6 +4,7 @@ from models.Model import Model
 from models import item
 from core.localisation import _
 import core.exception
+from core import config
 import json
 
 class container:
@@ -11,12 +12,22 @@ class container:
 	Class to interact with the item containers, such as chests.
 	"""
 
+	containersToSave = dict()
+
+	@staticmethod
+	def getMemoizedItems(c):
+		idContainer = c['id_item_container']
+		if idContainer in container.containersToSave.keys():
+			c['items'] = container.containersToSave[idContainer]
+		return c
+
 	@staticmethod
 	def getAllFromIdArea(idArea):
 		itemContainerTypes = model.getTypes()
 		containers = model.loadBy({'id_area': idArea})
 		for k, c in enumerate(containers):
 			containers[k]['type_label'] = itemContainerTypes[containers[k]['id_item_container_type']]
+			containers[k] = container.getMemoizedItems(containers[k])
 		return containers
 
 	@staticmethod
@@ -36,28 +47,30 @@ class container:
 			'id_item_container_type': containerTypeId
 		})
 
+		for k, c in enumerate(containers):
+			containers[k] = container.getMemoizedItems(containers[k])
+
 		return containers
 
 	@staticmethod
-	def addItems(container, items):
+	def addItems(c, items):
 		"""
-		item_container.container.addItems(container, items)
+		item_container.container.addItems(c, items)
 
 		Method to add some items in a container.
 
 		@param container container where the items must be added.
 		@param items list of items to add
 		"""
-		container['items'] = item.inventory.addItems(
-			item.inventory.fromStr(container['items']),
+		container.containersToSave[c['id_item_container']] = item.inventory.addItems(
+			item.inventory.fromStr(c['items']),
 			items
 		)
-		model.saveAvailableItems(container)
 
 	@staticmethod
-	def removeItems(container, items):
+	def removeItems(c, items):
 		"""
-		item_container.container.removeItems(container, items)
+		item_container.container.removeItems(c, items)
 
 		Method to remove some items from a container.
 		Items not in the container will be ignored.
@@ -65,11 +78,23 @@ class container:
 		@param container container the items must be removed from.
 		@param items list of items to remove
 		"""
-		container['items'] = item.inventory.removeItems(
-			item.inventory.fromStr(container['items']),
+		container.containersToSave[c['id_item_container']] = item.inventory.removeItems(
+			item.inventory.fromStr(c['items']),
 			items
 		)
-		model.saveAvailableItems(container)
+
+	@classmethod
+	def saveChangedContainers(cls):
+		for idContainers in cls.containersToSave:
+			model.saveAvailableItems(
+				idContainers, cls.containersToSave[idContainers]
+			)
+
+		cls.containersToSave = dict()
+
+	@classmethod
+	def resetChangedContainers(cls):
+		cls.containersToSave = dict()
 
 
 class model(Model):
@@ -104,10 +129,10 @@ class model(Model):
 		return {t['id_item_container_type']: t['label'] for t in Model.fetchAllRows(query)}
 
 	@staticmethod
-	def saveAvailableItems(container):
+	def saveAvailableItems(idContainer, items):
 		model.update(
-			{'items': json.dumps(container['items'])},
-			('id_item_container = ?', [container['id_item_container']])
+			{'items': json.dumps(items)},
+			('id_item_container = ?', [idContainer])
 		)
 
 

@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-
-import sys
 import core.exception
 from models import character
 from models.Model import Model
@@ -11,6 +9,7 @@ from core.localisation import _
 
 class player(character.character):
 	def __init__(self):
+		super(player, self).__init__()
 		self._model = None
 
 	def isConnected(self):
@@ -55,7 +54,6 @@ class model(character.model):
 
 		pm = pm[0]
 		cm = character.model.loadById(pm['id_character'])
-		cm.update(pm)
 
 		return cm
 

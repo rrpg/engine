@@ -17,11 +17,12 @@ Today, the available commands are:
 - quit,
 - authenticate,
 - attack
+- save
 """
 import core.command
 from core.commands import look, talk, move, enter, exit, take, drop, inventory,\
 	help, createPlayer, listSpecies, listGenders, open, authenticate,\
-	stats, attack
+	stats, attack, save
 from core.localisation import _
 import sys
 
@@ -52,6 +53,7 @@ class factory:
 		_('STATS_COMMAND'): {'allowed_while_fighting': True, 'command': 'stats'},
 		_('HELP_COMMAND'): {'allowed_while_fighting': True, 'command': 'help'},
 		_('OPEN_COMMAND'): {'allowed_while_fighting': False, 'command': 'open'},
+		_('SAVE_COMMAND'): {'allowed_while_fighting': False, 'command': 'save'},
 		_('ATTACK_COMMAND'): {'allowed_while_fighting': True, 'command': 'attack'}
 	}
 

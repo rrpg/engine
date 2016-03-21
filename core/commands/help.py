@@ -75,6 +75,10 @@ class help(core.command.command):
 				'description': _('ATTACK_COMMAND_DESCRIPTION')
 			},
 			{
+				'command': _('SAVE_COMMAND'),
+				'description': _('SAVE_COMMAND_DESCRIPTION')
+			},
+			{
 				'command': _('HELP_COMMAND'),
 				'description': _('HELP_COMMAND_DESCRIPTION')
 			},

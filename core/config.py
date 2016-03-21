@@ -17,9 +17,3 @@ generator['dungeon'] = {
 	'path': externalPath + '/dungeon-generator',
 	'generator': externalPath + '/dungeon-generator/generator'
 }
-
-# Must always be true. It is set to false during the unit tests because
-# the db is reseted between tests in the same program instance.
-# With memoization, some data collections (area.items for instance) are
-# conflicting between tests
-memoization_enabled = True

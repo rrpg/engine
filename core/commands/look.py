@@ -17,7 +17,7 @@ class look(core.command.command):
 		(characters arround, availables directions...).
 		"""
 		sections = {
-			_('LOOK_REGION_PARAM'): ['region', area.area.getRegionNameFromAreaId],
+			_('LOOK_REGION_PARAM'): ['region', self._getRegionInfo],
 			_('LOOK_FIGHT_PARAM'): ['fight', self._getFightInfo],
 			_('LOOK_CHARACTERS_PARAM'): ['characters', self._getCharacters],
 			_('LOOK_DIRECTIONS_PARAM'): ['directions', self._getDirections],
@@ -44,6 +44,15 @@ class look(core.command.command):
 					result[sections[s][0]] = values
 
 		return result
+
+	def _getRegionInfo(self, areaId):
+		curArea = area.model.loadById(areaId)
+		return {
+			'name': area.area.getRegionNameFromAreaId(areaId),
+			'x': curArea['x'],
+			'y': curArea['y'],
+			'has_save_point': area.area.hasSavePoint(areaId)
+		}
 
 	def _getFightInfo(self, areaId):
 		f = core.fight.fight.getFight()
@@ -78,9 +87,7 @@ class look(core.command.command):
 	def _getObjects(self, areaId):
 		objects = list()
 		# Display surrounding objects
-		items = item.inventory.fromStr(
-			area.model.loadById(areaId, ['items'])['items']
-		)
+		items = area.area.getItems(areaId)
 		for i in items:
 			it = item.model.loadById(i)
 			objects.append({
@@ -103,7 +110,12 @@ class look(core.command.command):
 		output = list()
 
 		if 'region' in sections:
-			output.append(_('CURRENT_REGION_%s') % data['region'])
+			o = list()
+			o.append(_('CURRENT_REGION_%s') % data['region']['name'])
+
+			if data['region']['has_save_point']:
+				o.append(_('AREA_HAS_SAVE_POINT'))
+			output.append('\n'.join(o))
 
 		if 'fight' in sections and data['fight'] is not None:
 			output.append(_('CURRENTLY_FIGHTING_%s') % data['fight']['name'])
