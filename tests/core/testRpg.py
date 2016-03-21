@@ -10,4 +10,9 @@ import json
 
 
 class rpgTests(tests.common.common):
-	pass
+		def test_unknown_world(self):
+			rpgEngine = Rpg.Rpg()
+			try:
+				rpgEngine.init("some/unexisting/world", "uselessLogin")
+			except core.exception.exception as e:
+				self.assertEquals(e.message, _('ERROR_UNKNOWN_SELECTED_WORLD'))
