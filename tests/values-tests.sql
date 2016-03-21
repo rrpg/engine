@@ -36,10 +36,10 @@ INSERT INTO area_type (name) VALUES ('cave');
 --
 --
 --
-INSERT INTO area (id_region, id_area_type, container, x, y, directions, items)
-	VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'peaceful'), 'world', 0, 0, 11, '{"1": {"quantity": 1}, "2": {"quantity": 4}}');
-INSERT INTO area (id_region, id_area_type, container, x, y, directions, items)
-	VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'peaceful'), 'world', 0, 1, 4, '{"1": {"quantity": 6}}');
+INSERT INTO area (id_region, id_area_type, container, x, y, directions, items, has_save_point)
+	VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'peaceful'), 'world', 0, 0, 15, '{"1": {"quantity": 1}, "2": {"quantity": 4}}', 'TRUE');
+INSERT INTO area (id_region, id_area_type, container, x, y, directions, items, has_save_point)
+	VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'peaceful'), 'world', 0, 1, 4, '{"1": {"quantity": 6}}', 'TRUE');
 INSERT INTO area (id_region, id_area_type, container, x, y, directions)
 	VALUES (1, (SELECT id_area_type FROM area_type WHERE name = 'hostile-flee'), 'world', 1, 0, 8);
 INSERT INTO area (id_region, id_area_type, container, x, y, directions)
