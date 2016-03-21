@@ -16,7 +16,8 @@ class lookTests(tests.common.common):
 		output = self.rpgText._runAction()
 		self.assertEquals(output,
 			_('CURRENT_REGION_%s') % 'The High lands\n' +\
-			'\n' +\
+			_('AREA_HAS_SAVE_POINT') +\
+			'\n\n' +\
 			_('PRESENT_CHARACTERS') +'\n'+\
 			'    Tom\n' +\
 			'\n' +\
@@ -43,6 +44,7 @@ class lookTests(tests.common.common):
 			"directions": [_('DIRECTION_KEY_SOUTH')],
 			"items": [{"name": "Heavy breastplate", "quantity": 6}],
 			"region": {
+				"has_save_point": True,
 				"name": "The High lands",
 				"x": 0,
 				"y": 1
@@ -65,12 +67,16 @@ class lookTests(tests.common.common):
 	def test_region_text(self):
 		self.rpgText.setAction([_('LOOK_COMMAND'), _('LOOK_REGION_PARAM')])
 		output = self.rpgText._runAction()
-		self.assertEquals(output, _('CURRENT_REGION_%s') % 'The High lands')
+		expected = [
+			_('CURRENT_REGION_%s') % 'The High lands',
+			_('AREA_HAS_SAVE_POINT')
+		]
+		self.assertEquals(output, '\n'.join(expected))
 
 	def test_region_json(self):
 		self.rpgJSON.setAction([_('LOOK_COMMAND'), _('LOOK_REGION_PARAM')])
 		output = self.rpgJSON._runAction()
-		self.assertEquals(output, {"region": {"name": "The High lands", "x": 0, "y": 1}})
+		self.assertEquals(output, {"region": {"has_save_point": True, "name": "The High lands", "x": 0, "y": 1}})
 
 	def test_characters_text(self):
 		self.rpgText.setAction([_('LOOK_COMMAND'), _('LOOK_CHARACTERS_PARAM')])
@@ -156,3 +162,12 @@ class lookTests(tests.common.common):
 		self.rpgJSON.setAction([_('LOOK_COMMAND'), _('LOOK_FIGHT_PARAM')])
 		output = self.rpgJSON._runAction()
 		self.assertEquals(output, {'fight': {'name': 'rat', 'stat_defence': 2, 'stat_attack': 2, 'stat_max_hp': 15, 'stat_current_hp': 15, 'stat_speed': 1, 'stat_luck': 25}})
+
+	def test_no_save_point_json(self):
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
+		self.rpgJSON._runAction()
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
+		self.rpgJSON._runAction()
+		self.rpgJSON.setAction([_('LOOK_COMMAND'), _('LOOK_REGION_PARAM')])
+		output = self.rpgJSON._runAction()
+		self.assertEquals(output['region']['has_save_point'], False)
