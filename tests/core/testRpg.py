@@ -32,3 +32,13 @@ class rpgTests(tests.common.common):
 				rpgEngine.setAction("not list action")
 			except TypeError as e:
 				self.assertEquals(e.message, _('ERROR_INVALID_FORMAT_ACTION'))
+
+		def test_invalid_action_text(self):
+			self.rpgText.setAction(["Unknown action"])
+			output = self.rpgText._runAction()
+			self.assertEquals(output, _('ERROR_UNKNOWN_COMMAND'))
+
+		def test_invalid_action_json(self):
+			self.rpgJSON.setAction(["Unknown action"])
+			output = self.rpgJSON._runAction()
+			self.assertEquals(output,  {'error': {'message': _('ERROR_UNKNOWN_COMMAND'), 'code': 1}})
