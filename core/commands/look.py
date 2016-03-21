@@ -50,7 +50,8 @@ class look(core.command.command):
 		return {
 			'name': area.area.getRegionNameFromAreaId(areaId),
 			'x': curArea['x'],
-			'y': curArea['y']
+			'y': curArea['y'],
+			'has_save_point': area.area.hasSavePoint(areaId)
 		}
 
 	def _getFightInfo(self, areaId):
@@ -109,7 +110,12 @@ class look(core.command.command):
 		output = list()
 
 		if 'region' in sections:
-			output.append(_('CURRENT_REGION_%s') % data['region']['name'])
+			o = list()
+			o.append(_('CURRENT_REGION_%s') % data['region']['name'])
+
+			if data['region']['has_save_point']:
+				o.append(_('AREA_HAS_SAVE_POINT'))
+			output.append('\n'.join(o))
 
 		if 'fight' in sections and data['fight'] is not None:
 			output.append(_('CURRENTLY_FIGHTING_%s') % data['fight']['name'])

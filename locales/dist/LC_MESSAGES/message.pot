@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-17 13:30+0000\n"
+"POT-Creation-Date: 2016-03-21 13:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,55 +17,60 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: core/Rpg.py:51
+#: core/Rpg.py:55
 msgid "ERROR_UNKNOWN_SELECTED_WORLD"
 msgstr ""
 
-#: core/Rpg.py:77
+#: core/Rpg.py:81
 msgid "PLAYER_SELECTION"
 msgstr ""
 
-#: core/Rpg.py:78
+#: core/Rpg.py:82
 msgid "CHOICE_NEW_PLAYER"
 msgstr ""
 
-#: core/Rpg.py:79
+#: core/Rpg.py:83
 msgid "CHOICE_EXISTING_PLAYER"
 msgstr ""
 
-#: core/Rpg.py:82
+#: core/Rpg.py:86
 msgid "CHOICE_QUESTION"
 msgstr ""
 
-#: core/Rpg.py:102 core/commands/createPlayer.py:45
+#: core/Rpg.py:106 core/commands/createPlayer.py:45
 msgid "LOGIN_PROMPT"
 msgstr ""
 
-#: core/Rpg.py:115
+#: core/Rpg.py:119
 msgid "GAME_OVER_TEXT"
 msgstr ""
 
-#: core/Rpg.py:221
+#: core/Rpg.py:218
 msgid "COMMAND_PROMPT"
 msgstr ""
 
 #: core/command_factory.py:44 core/commands/help.py:38
-#: tests/commands/testHelp.py:27 tests/commands/testHelp.py:80
-#: tests/commands/testLook.py:15 tests/commands/testLook.py:40
-#: tests/commands/testLook.py:52 tests/commands/testLook.py:57
-#: tests/commands/testLook.py:62 tests/commands/testLook.py:67
-#: tests/commands/testLook.py:72 tests/commands/testLook.py:77
-#: tests/commands/testLook.py:82 tests/commands/testLook.py:90
-#: tests/commands/testLook.py:95 tests/commands/testLook.py:100
-#: tests/commands/testLook.py:105 tests/commands/testLook.py:111
-#: tests/commands/testLook.py:116 tests/commands/testLook.py:124
-#: tests/commands/testLook.py:129 tests/commands/testLook.py:134
-#: tests/commands/testLook.py:143 tests/commands/testLook.py:152
+#: tests/commands/testHelp.py:27 tests/commands/testHelp.py:82
+#: tests/commands/testLook.py:15 tests/commands/testLook.py:41
+#: tests/commands/testLook.py:58 tests/commands/testLook.py:63
+#: tests/commands/testLook.py:68 tests/commands/testLook.py:77
+#: tests/commands/testLook.py:82 tests/commands/testLook.py:87
+#: tests/commands/testLook.py:92 tests/commands/testLook.py:100
+#: tests/commands/testLook.py:105 tests/commands/testLook.py:110
+#: tests/commands/testLook.py:115 tests/commands/testLook.py:121
+#: tests/commands/testLook.py:126 tests/commands/testLook.py:134
+#: tests/commands/testLook.py:139 tests/commands/testLook.py:144
+#: tests/commands/testLook.py:153 tests/commands/testLook.py:162
+#: tests/commands/testLook.py:171 tests/commands/testSave.py:52
+#: tests/commands/testSave.py:69 tests/commands/testSave.py:88
+#: tests/commands/testSave.py:107 tests/commands/testSave.py:194
+#: tests/commands/testSave.py:206 tests/commands/testSave.py:226
+#: tests/commands/testSave.py:229 tests/commands/testTake.py:150
 msgid "LOOK_COMMAND"
 msgstr ""
 
 #: core/command_factory.py:45 core/commands/help.py:22
-#: tests/commands/testHelp.py:19 tests/commands/testHelp.py:64
+#: tests/commands/testHelp.py:19 tests/commands/testHelp.py:66
 #: tests/commands/testTalk.py:14 tests/commands/testTalk.py:19
 #: tests/commands/testTalk.py:24 tests/commands/testTalk.py:29
 #: tests/commands/testTalk.py:34 tests/commands/testTalk.py:39
@@ -76,9 +81,10 @@ msgstr ""
 
 #: core/command_factory.py:46 core/commands/help.py:26
 #: tests/commands/testEnter.py:24 tests/commands/testEnter.py:31
-#: tests/commands/testHelp.py:21 tests/commands/testHelp.py:68
-#: tests/commands/testLook.py:139 tests/commands/testLook.py:141
-#: tests/commands/testLook.py:148 tests/commands/testLook.py:150
+#: tests/commands/testHelp.py:21 tests/commands/testHelp.py:70
+#: tests/commands/testLook.py:149 tests/commands/testLook.py:151
+#: tests/commands/testLook.py:158 tests/commands/testLook.py:160
+#: tests/commands/testLook.py:167 tests/commands/testLook.py:169
 #: tests/commands/testMove.py:14 tests/commands/testMove.py:19
 #: tests/commands/testMove.py:24 tests/commands/testMove.py:29
 #: tests/commands/testMove.py:34 tests/commands/testMove.py:39
@@ -91,6 +97,8 @@ msgstr ""
 #: tests/commands/testMove.py:82 tests/commands/testMove.py:88
 #: tests/commands/testMove.py:90 tests/commands/testMove.py:92
 #: tests/commands/testMove.py:97 tests/commands/testMove.py:102
+#: tests/commands/testSave.py:189 tests/commands/testSave.py:199
+#: tests/commands/testSave.py:211 tests/commands/testSave.py:213
 msgid "MOVE_COMMAND"
 msgstr ""
 
@@ -103,7 +111,7 @@ msgstr ""
 #: tests/commands/testEnter.py:62 tests/commands/testEnter.py:67
 #: tests/commands/testEnter.py:72 tests/commands/testEnter.py:77
 #: tests/commands/testExit.py:53 tests/commands/testExit.py:60
-#: tests/commands/testHelp.py:23 tests/commands/testHelp.py:72
+#: tests/commands/testHelp.py:23 tests/commands/testHelp.py:74
 msgid "ENTER_COMMAND"
 msgstr ""
 
@@ -113,7 +121,7 @@ msgstr ""
 #: tests/commands/testExit.py:33 tests/commands/testExit.py:38
 #: tests/commands/testExit.py:43 tests/commands/testExit.py:48
 #: tests/commands/testExit.py:55 tests/commands/testExit.py:62
-#: tests/commands/testHelp.py:25 tests/commands/testHelp.py:76
+#: tests/commands/testHelp.py:25 tests/commands/testHelp.py:78
 msgid "EXIT_COMMAND"
 msgstr ""
 
@@ -130,28 +138,32 @@ msgstr ""
 #: tests/commands/testDrop.py:237 tests/commands/testDrop.py:244
 #: tests/commands/testDrop.py:251 tests/commands/testDrop.py:258
 #: tests/commands/testDrop.py:265 tests/commands/testDrop.py:272
-#: tests/commands/testHelp.py:34 tests/commands/testHelp.py:92
+#: tests/commands/testHelp.py:34 tests/commands/testHelp.py:94
 #: tests/commands/testInventory.py:24 tests/commands/testInventory.py:31
-#: tests/commands/testTake.py:15 tests/commands/testTake.py:20
-#: tests/commands/testTake.py:25 tests/commands/testTake.py:30
-#: tests/commands/testTake.py:35 tests/commands/testTake.py:40
-#: tests/commands/testTake.py:46 tests/commands/testTake.py:51
-#: tests/commands/testTake.py:56 tests/commands/testTake.py:61
-#: tests/commands/testTake.py:66 tests/commands/testTake.py:71
-#: tests/commands/testTake.py:76 tests/commands/testTake.py:81
-#: tests/commands/testTake.py:87 tests/commands/testTake.py:92
-#: tests/commands/testTake.py:97 tests/commands/testTake.py:102
-#: tests/commands/testTake.py:108 tests/commands/testTake.py:113
-#: tests/commands/testTake.py:118 tests/commands/testTake.py:123
-#: tests/commands/testTake.py:128 tests/commands/testTake.py:131
-#: tests/commands/testTake.py:136 tests/commands/testTake.py:138
-#: tests/commands/testTake.py:141 tests/commands/testTake.py:147
-#: tests/commands/testTake.py:152 tests/commands/testTake.py:157
-#: tests/commands/testTake.py:162 tests/commands/testTake.py:167
-#: tests/commands/testTake.py:172 tests/commands/testTake.py:177
-#: tests/commands/testTake.py:182 tests/commands/testTake.py:187
-#: tests/commands/testTake.py:192 tests/commands/testTake.py:197
-#: tests/commands/testTake.py:202
+#: tests/commands/testSave.py:44 tests/commands/testSave.py:61
+#: tests/commands/testSave.py:78 tests/commands/testSave.py:97
+#: tests/commands/testSave.py:115 tests/commands/testSave.py:135
+#: tests/commands/testSave.py:152 tests/commands/testSave.py:174
+#: tests/commands/testSave.py:215 tests/commands/testTake.py:15
+#: tests/commands/testTake.py:20 tests/commands/testTake.py:25
+#: tests/commands/testTake.py:30 tests/commands/testTake.py:35
+#: tests/commands/testTake.py:40 tests/commands/testTake.py:46
+#: tests/commands/testTake.py:51 tests/commands/testTake.py:56
+#: tests/commands/testTake.py:61 tests/commands/testTake.py:66
+#: tests/commands/testTake.py:71 tests/commands/testTake.py:76
+#: tests/commands/testTake.py:81 tests/commands/testTake.py:87
+#: tests/commands/testTake.py:92 tests/commands/testTake.py:97
+#: tests/commands/testTake.py:102 tests/commands/testTake.py:108
+#: tests/commands/testTake.py:113 tests/commands/testTake.py:118
+#: tests/commands/testTake.py:123 tests/commands/testTake.py:128
+#: tests/commands/testTake.py:131 tests/commands/testTake.py:136
+#: tests/commands/testTake.py:138 tests/commands/testTake.py:141
+#: tests/commands/testTake.py:147 tests/commands/testTake.py:156
+#: tests/commands/testTake.py:161 tests/commands/testTake.py:166
+#: tests/commands/testTake.py:171 tests/commands/testTake.py:176
+#: tests/commands/testTake.py:181 tests/commands/testTake.py:186
+#: tests/commands/testTake.py:191 tests/commands/testTake.py:196
+#: tests/commands/testTake.py:201 tests/commands/testTake.py:206
 msgid "TAKE_COMMAND"
 msgstr ""
 
@@ -175,36 +187,42 @@ msgstr ""
 #: tests/commands/testDrop.py:239 tests/commands/testDrop.py:246
 #: tests/commands/testDrop.py:253 tests/commands/testDrop.py:260
 #: tests/commands/testDrop.py:267 tests/commands/testDrop.py:274
-#: tests/commands/testHelp.py:42 tests/commands/testHelp.py:96
+#: tests/commands/testHelp.py:42 tests/commands/testHelp.py:98
 msgid "DROP_COMMAND"
 msgstr ""
 
 #: core/command_factory.py:51 core/commands/help.py:42
-#: tests/commands/testHelp.py:29 tests/commands/testHelp.py:84
+#: tests/commands/testHelp.py:29 tests/commands/testHelp.py:86
 #: tests/commands/testInventory.py:14 tests/commands/testInventory.py:19
 #: tests/commands/testInventory.py:26 tests/commands/testInventory.py:33
+#: tests/commands/testSave.py:26 tests/commands/testSave.py:36
+#: tests/commands/testSave.py:49 tests/commands/testSave.py:66
+#: tests/commands/testSave.py:85 tests/commands/testSave.py:104
+#: tests/commands/testSave.py:120 tests/commands/testSave.py:140
+#: tests/commands/testSave.py:159 tests/commands/testSave.py:181
+#: tests/commands/testSave.py:223
 msgid "INVENTORY_COMMAND"
 msgstr ""
 
 #: core/command_factory.py:52 core/commands/help.py:42
-#: tests/commands/testHelp.py:29 tests/commands/testHelp.py:84
+#: tests/commands/testHelp.py:29 tests/commands/testHelp.py:86
 msgid "INVENTORY_SHORT_COMMAND"
 msgstr ""
 
 #: core/command_factory.py:53 core/commands/help.py:70
-#: tests/commands/testHelp.py:49 tests/commands/testHelp.py:100
+#: tests/commands/testHelp.py:49 tests/commands/testHelp.py:102
 #: tests/commands/testStats.py:15 tests/commands/testStats.py:38
 msgid "STATS_COMMAND"
 msgstr ""
 
 #: core/command_factory.py:54 core/commands/help.py:82
-#: tests/commands/testHelp.py:16 tests/commands/testHelp.py:53
-#: tests/commands/testHelp.py:60 tests/commands/testHelp.py:108
+#: tests/commands/testHelp.py:16 tests/commands/testHelp.py:55
+#: tests/commands/testHelp.py:62 tests/commands/testHelp.py:114
 msgid "HELP_COMMAND"
 msgstr ""
 
 #: core/command_factory.py:55 core/commands/help.py:46
-#: tests/commands/testHelp.py:31 tests/commands/testHelp.py:88
+#: tests/commands/testHelp.py:31 tests/commands/testHelp.py:90
 #: tests/commands/testOpen.py:14 tests/commands/testOpen.py:19
 #: tests/commands/testOpen.py:24 tests/commands/testOpen.py:29
 #: tests/commands/testOpen.py:34 tests/commands/testOpen.py:39
@@ -215,25 +233,32 @@ msgstr ""
 #: tests/commands/testOpen.py:92 tests/commands/testOpen.py:101
 #: tests/commands/testOpen.py:105 tests/commands/testOpen.py:109
 #: tests/commands/testOpen.py:113 tests/commands/testOpen.py:117
+#: tests/commands/testSave.py:123 tests/commands/testSave.py:143
+#: tests/commands/testSave.py:162 tests/commands/testSave.py:184
 msgid "OPEN_COMMAND"
 msgstr ""
 
 #: core/command_factory.py:56 core/commands/help.py:78
+#: tests/commands/testHelp.py:53 tests/commands/testHelp.py:110
+#: tests/commands/testSave.py:21 tests/commands/testSave.py:31
+#: tests/commands/testSave.py:80 tests/commands/testSave.py:99
+#: tests/commands/testSave.py:154 tests/commands/testSave.py:176
+#: tests/commands/testSave.py:201 tests/commands/testSave.py:217
 msgid "SAVE_COMMAND"
 msgstr ""
 
 #: core/command_factory.py:57 core/commands/help.py:74
-#: tests/commands/testHelp.py:51 tests/commands/testHelp.py:104
+#: tests/commands/testHelp.py:51 tests/commands/testHelp.py:106
 msgid "ATTACK_COMMAND"
 msgstr ""
 
 #: core/command_factory.py:84 core/commands/help.py:86
-#: tests/commands/testHelp.py:55 tests/commands/testHelp.py:112
+#: tests/commands/testHelp.py:57 tests/commands/testHelp.py:118
 msgid "QUIT_COMMAND"
 msgstr ""
 
 #: core/command_factory.py:84 core/commands/help.py:86
-#: tests/commands/testHelp.py:55 tests/commands/testHelp.py:112
+#: tests/commands/testHelp.py:57 tests/commands/testHelp.py:118
 msgid "QUIT_SHORT_COMMAND"
 msgstr ""
 
@@ -254,7 +279,7 @@ msgstr ""
 msgid "ATTACK_CONFIRM_PLAYER_TO_ENEMY_{enemy}_{damages}"
 msgstr ""
 
-#: core/commands/attack.py:31 core/commands/move.py:75
+#: core/commands/attack.py:31 core/commands/move.py:74
 #, python-brace-format
 msgid "ATTACK_CONFIRM_ENEMY_TO_PLAYER_{enemy}_{damages}"
 msgstr ""
@@ -393,107 +418,108 @@ msgid "EXIT_CONFIRMATION"
 msgstr ""
 
 #: core/commands/help.py:22 tests/commands/testHelp.py:19
-#: tests/commands/testHelp.py:64
+#: tests/commands/testHelp.py:66
 msgid "CHARACTER_TOKEN"
 msgstr ""
 
 #: core/commands/help.py:22 tests/commands/testHelp.py:19
-#: tests/commands/testHelp.py:64
+#: tests/commands/testHelp.py:66
 msgid "SENTENCE_TOKEN"
 msgstr ""
 
 #: core/commands/help.py:23 tests/commands/testHelp.py:20
-#: tests/commands/testHelp.py:65
+#: tests/commands/testHelp.py:67
 msgid "TALK_COMMAND_DESCRIPTION"
 msgstr ""
 
 #: core/commands/help.py:27 tests/commands/testHelp.py:22
-#: tests/commands/testHelp.py:69
+#: tests/commands/testHelp.py:71
 msgid "MOVE_COMMAND_DESCRIPTION"
 msgstr ""
 
 #: core/commands/help.py:31 tests/commands/testHelp.py:24
-#: tests/commands/testHelp.py:73
+#: tests/commands/testHelp.py:75
 msgid "ENTER_COMMAND_DESCRIPTION"
 msgstr ""
 
 #: core/commands/help.py:35 tests/commands/testHelp.py:26
-#: tests/commands/testHelp.py:77
+#: tests/commands/testHelp.py:79
 msgid "EXIT_COMMAND_DESCRIPTION"
 msgstr ""
 
 #: core/commands/help.py:39 tests/commands/testHelp.py:28
-#: tests/commands/testHelp.py:81
+#: tests/commands/testHelp.py:83
 msgid "LOOK_COMMAND_DESCRIPTION"
 msgstr ""
 
 #: core/commands/help.py:43 tests/commands/testHelp.py:30
-#: tests/commands/testHelp.py:85
+#: tests/commands/testHelp.py:87
 msgid "INVENTORY_COMMAND_DESCRIPTION"
 msgstr ""
 
 #: core/commands/help.py:46 core/commands/help.py:55 core/commands/help.py:65
 #: tests/commands/testHelp.py:31 tests/commands/testHelp.py:38
-#: tests/commands/testHelp.py:46 tests/commands/testHelp.py:88
-#: tests/commands/testHelp.py:92 tests/commands/testHelp.py:96
+#: tests/commands/testHelp.py:46 tests/commands/testHelp.py:90
+#: tests/commands/testHelp.py:94 tests/commands/testHelp.py:98
 msgid "CONTAINER_INDEX_TOKEN"
 msgstr ""
 
 #: core/commands/help.py:46 core/commands/help.py:54 core/commands/help.py:64
 #: tests/commands/testHelp.py:31 tests/commands/testHelp.py:37
-#: tests/commands/testHelp.py:45 tests/commands/testHelp.py:88
-#: tests/commands/testHelp.py:92 tests/commands/testHelp.py:96
+#: tests/commands/testHelp.py:45 tests/commands/testHelp.py:90
+#: tests/commands/testHelp.py:94 tests/commands/testHelp.py:98
 msgid "CONTAINER_TOKEN"
 msgstr ""
 
 #: core/commands/help.py:47 tests/commands/testHelp.py:32
-#: tests/commands/testHelp.py:89
+#: tests/commands/testHelp.py:91
 msgid "OPEN_COMMAND_DESCRIPTION"
 msgstr ""
 
 #: core/commands/help.py:52 core/commands/help.py:62
 #: tests/commands/testHelp.py:35 tests/commands/testHelp.py:43
-#: tests/commands/testHelp.py:92 tests/commands/testHelp.py:96
+#: tests/commands/testHelp.py:94 tests/commands/testHelp.py:98
 msgid "QUANTITY_TOKEN"
 msgstr ""
 
 #: core/commands/help.py:53 core/commands/help.py:63
 #: tests/commands/testHelp.py:36 tests/commands/testHelp.py:44
-#: tests/commands/testHelp.py:92 tests/commands/testHelp.py:96
+#: tests/commands/testHelp.py:94 tests/commands/testHelp.py:98
 msgid "ITEM_NAME_TOKEN"
 msgstr ""
 
 #: core/commands/help.py:57 tests/commands/testHelp.py:40
-#: tests/commands/testHelp.py:93
+#: tests/commands/testHelp.py:95
 msgid "TAKE_COMMAND_DESCRIPTION"
 msgstr ""
 
 #: core/commands/help.py:67 tests/commands/testHelp.py:48
-#: tests/commands/testHelp.py:97
+#: tests/commands/testHelp.py:99
 msgid "DROP_COMMAND_DESCRIPTION"
 msgstr ""
 
 #: core/commands/help.py:71 tests/commands/testHelp.py:50
-#: tests/commands/testHelp.py:101
+#: tests/commands/testHelp.py:103
 msgid "STATS_COMMAND_DESCRIPTION"
 msgstr ""
 
 #: core/commands/help.py:75 tests/commands/testHelp.py:52
-#: tests/commands/testHelp.py:105
+#: tests/commands/testHelp.py:107
 msgid "ATTACK_COMMAND_DESCRIPTION"
 msgstr ""
 
-#: core/commands/help.py:79
+#: core/commands/help.py:79 tests/commands/testHelp.py:54
+#: tests/commands/testHelp.py:111
 msgid "SAVE_COMMAND_DESCRIPTION"
 msgstr ""
 
-#: core/commands/help.py:83 tests/commands/testHelp.py:54
-#: tests/commands/testHelp.py:109
+#: core/commands/help.py:83 tests/commands/testHelp.py:56
+#: tests/commands/testHelp.py:115
 msgid "HELP_COMMAND_DESCRIPTION"
 msgstr ""
 
-#: core/commands/help.py:87 tests/commands/testHelp.py:56
-#: tests/commands/testHelp.py:113
+#: core/commands/help.py:87 tests/commands/testHelp.py:58
+#: tests/commands/testHelp.py:119
 msgid "QUIT_COMMAND_DESCRIPTION"
 msgstr ""
 
@@ -502,6 +528,8 @@ msgid "AVAILABLE_COMMANDS_TITLE"
 msgstr ""
 
 #: core/commands/inventory.py:27 tests/commands/testInventory.py:16
+#: tests/commands/testSave.py:28 tests/commands/testSave.py:51
+#: tests/commands/testSave.py:122
 msgid "INVENTORY_EMPTY"
 msgstr ""
 
@@ -530,80 +558,91 @@ msgstr ""
 msgid "ERROR_MULTIPLE_CONTAINERS_AVAILABLE"
 msgstr ""
 
-#: core/commands/look.py:20 tests/commands/testLook.py:62
-#: tests/commands/testLook.py:67
+#: core/commands/look.py:20 tests/commands/testLook.py:68
+#: tests/commands/testLook.py:77 tests/commands/testLook.py:171
+#: tests/commands/testSave.py:194 tests/commands/testSave.py:206
+#: tests/commands/testSave.py:229
 msgid "LOOK_REGION_PARAM"
 msgstr ""
 
-#: core/commands/look.py:21 tests/commands/testLook.py:129
-#: tests/commands/testLook.py:134 tests/commands/testLook.py:143
-#: tests/commands/testLook.py:152
+#: core/commands/look.py:21 tests/commands/testLook.py:139
+#: tests/commands/testLook.py:144 tests/commands/testLook.py:153
+#: tests/commands/testLook.py:162
 msgid "LOOK_FIGHT_PARAM"
 msgstr ""
 
-#: core/commands/look.py:22 tests/commands/testLook.py:72
-#: tests/commands/testLook.py:77
+#: core/commands/look.py:22 tests/commands/testLook.py:82
+#: tests/commands/testLook.py:87
 msgid "LOOK_CHARACTERS_PARAM"
 msgstr ""
 
-#: core/commands/look.py:23 tests/commands/testLook.py:82
-#: tests/commands/testLook.py:90
+#: core/commands/look.py:23 tests/commands/testLook.py:92
+#: tests/commands/testLook.py:100
 msgid "LOOK_DIRECTIONS_PARAM"
 msgstr ""
 
-#: core/commands/look.py:24 tests/commands/testLook.py:95
-#: tests/commands/testLook.py:100
+#: core/commands/look.py:24 tests/commands/testLook.py:105
+#: tests/commands/testLook.py:110
 msgid "LOOK_PLACES_PARAM"
 msgstr ""
 
-#: core/commands/look.py:25 tests/commands/testLook.py:105
-#: tests/commands/testLook.py:111
+#: core/commands/look.py:25 tests/commands/testLook.py:115
+#: tests/commands/testLook.py:121 tests/commands/testSave.py:52
+#: tests/commands/testSave.py:69 tests/commands/testSave.py:88
+#: tests/commands/testSave.py:107 tests/commands/testSave.py:226
+#: tests/commands/testTake.py:150
 msgid "LOOK_OBJECTS_PARAM"
 msgstr ""
 
-#: core/commands/look.py:26 tests/commands/testLook.py:116
-#: tests/commands/testLook.py:124
+#: core/commands/look.py:26 tests/commands/testLook.py:126
+#: tests/commands/testLook.py:134
 msgid "LOOK_CONTAINERS_PARAM"
 msgstr ""
 
-#: core/commands/look.py:38 tests/commands/testLook.py:54
-#: tests/commands/testLook.py:59
+#: core/commands/look.py:38 tests/commands/testLook.py:60
+#: tests/commands/testLook.py:65
 msgid "ERROR_LOOK_UNKNOWN_SECTION"
 msgstr ""
 
-#: core/commands/look.py:104 tests/commands/testLook.py:18
-#: tests/commands/testLook.py:64
+#: core/commands/look.py:114 tests/commands/testLook.py:18
+#: tests/commands/testLook.py:71
 #, python-format
 msgid "CURRENT_REGION_%s"
 msgstr ""
 
-#: core/commands/look.py:107 tests/commands/testLook.py:145
+#: core/commands/look.py:117 tests/commands/testLook.py:19
+#: tests/commands/testLook.py:72
+msgid "AREA_HAS_SAVE_POINT"
+msgstr ""
+
+#: core/commands/look.py:121 tests/commands/testLook.py:155
 #, python-format
 msgid "CURRENTLY_FIGHTING_%s"
 msgstr ""
 
-#: core/commands/look.py:111 tests/commands/testLook.py:20
-#: tests/commands/testLook.py:74
+#: core/commands/look.py:125 tests/commands/testLook.py:21
+#: tests/commands/testLook.py:84
 msgid "PRESENT_CHARACTERS"
 msgstr ""
 
-#: core/commands/look.py:118 tests/commands/testLook.py:23
-#: tests/commands/testLook.py:85
+#: core/commands/look.py:132 tests/commands/testLook.py:24
+#: tests/commands/testLook.py:95
 msgid "AVAILABLE_DIRECTIONS"
 msgstr ""
 
-#: core/commands/look.py:125 tests/commands/testLook.py:26
-#: tests/commands/testLook.py:97
+#: core/commands/look.py:139 tests/commands/testLook.py:27
+#: tests/commands/testLook.py:107
 msgid "AVAILABLE_PLACES"
 msgstr ""
 
-#: core/commands/look.py:132 tests/commands/testLook.py:30
-#: tests/commands/testLook.py:107
+#: core/commands/look.py:146 tests/commands/testLook.py:31
+#: tests/commands/testLook.py:117 tests/commands/testSave.py:54
+#: tests/commands/testSave.py:90 tests/commands/testTake.py:152
 msgid "AVAILABLE_ITEMS"
 msgstr ""
 
-#: core/commands/look.py:139 tests/commands/testLook.py:33
-#: tests/commands/testLook.py:118
+#: core/commands/look.py:153 tests/commands/testLook.py:34
+#: tests/commands/testLook.py:128
 msgid "AVAILABLE_ITEMS_CONTAINERS"
 msgstr ""
 
@@ -618,32 +657,32 @@ msgstr ""
 msgid "ERROR_MOVE_INVALID_DIRECTION_%s"
 msgstr ""
 
-#: core/commands/move.py:34 tests/commands/testMove.py:36
+#: core/commands/move.py:32 tests/commands/testMove.py:36
 #: tests/commands/testMove.py:41
 msgid "ERROR_MOVE_DIRECTION_NOT_AVAILABLE"
 msgstr ""
 
-#: core/commands/move.py:42 tests/commands/testMove.py:85
+#: core/commands/move.py:41 tests/commands/testMove.py:85
 #: tests/commands/testMove.py:94
 msgid "ERROR_FLEE_FIGHT_FAILS"
 msgstr ""
 
-#: core/commands/move.py:72 tests/commands/testMove.py:66
+#: core/commands/move.py:71 tests/commands/testMove.py:66
 #, python-brace-format
 msgid "MOVE_CONFIRMATION_{direction}_FIGHT_FLEE_{enemy}"
 msgstr ""
 
-#: core/commands/move.py:73 tests/commands/testMove.py:49
+#: core/commands/move.py:72 tests/commands/testMove.py:49
 #, python-brace-format
 msgid "MOVE_CONFIRMATION_{direction}_FIGHT_{enemy}"
 msgstr ""
 
-#: core/commands/move.py:74
+#: core/commands/move.py:73
 #, python-brace-format
 msgid "MOVE_CONFIRMATION_{direction}_AMBUSH_{enemy}"
 msgstr ""
 
-#: core/commands/move.py:91 tests/commands/testMove.py:99
+#: core/commands/move.py:90 tests/commands/testMove.py:99
 #, python-format
 msgid "MOVE_CONFIRMATION_%s"
 msgstr ""
@@ -655,17 +694,18 @@ msgstr ""
 
 #: core/commands/open.py:44 tests/commands/testOpen.py:57
 #: tests/commands/testOpen.py:75 tests/commands/testOpen.py:87
-#: tests/commands/testOpen.py:95
+#: tests/commands/testOpen.py:95 tests/commands/testSave.py:126
+#: tests/commands/testSave.py:165
 #, python-format
 msgid "ITEMS_IN_CONTAINER_%s"
 msgstr ""
 
-#: core/commands/save.py:29
-msgid "SAVE_CONFIRMATION_OK"
+#: core/commands/save.py:24 tests/commands/testSave.py:219
+msgid "ERROR_SAVE_NO_SAVE_POINT"
 msgstr ""
 
 #: core/commands/save.py:31
-msgid "SAVE_CONFIRMATION_KO"
+msgid "SAVE_CONFIRMATION_OK"
 msgstr ""
 
 #: core/commands/stats.py:31 tests/commands/testStats.py:18
@@ -726,9 +766,9 @@ msgid "ERROR_TAKE_QUANTITY_TOO_HIGH_%s"
 msgstr ""
 
 #: core/commands/take.py:59 tests/commands/testTake.py:149
-#: tests/commands/testTake.py:159 tests/commands/testTake.py:169
-#: tests/commands/testTake.py:179 tests/commands/testTake.py:189
-#: tests/commands/testTake.py:199
+#: tests/commands/testTake.py:163 tests/commands/testTake.py:173
+#: tests/commands/testTake.py:183 tests/commands/testTake.py:193
+#: tests/commands/testTake.py:203
 #, python-format
 msgid "TAKE_CONFIRMATION_%(quantity)s_%(name)s"
 msgstr ""
@@ -756,8 +796,8 @@ msgstr ""
 msgid "DIRECTION_KEY_NORTH"
 msgstr ""
 
-#: models/area.py:22 tests/commands/testLook.py:141
-#: tests/commands/testLook.py:150 tests/commands/testMove.py:34
+#: models/area.py:22 tests/commands/testLook.py:151
+#: tests/commands/testLook.py:160 tests/commands/testMove.py:34
 #: tests/commands/testMove.py:39 tests/commands/testMove.py:46
 #: tests/commands/testMove.py:48 tests/commands/testMove.py:54
 #: tests/commands/testMove.py:56 tests/commands/testMove.py:61
@@ -767,15 +807,18 @@ msgid "DIRECTION_KEY_EAST"
 msgstr ""
 
 #: models/area.py:23 tests/commands/testEnter.py:24
-#: tests/commands/testEnter.py:31 tests/commands/testLook.py:24
-#: tests/commands/testLook.py:43 tests/commands/testLook.py:86
-#: tests/commands/testLook.py:92 tests/commands/testLook.py:139
-#: tests/commands/testLook.py:148 tests/commands/testMove.py:44
+#: tests/commands/testEnter.py:31 tests/commands/testLook.py:25
+#: tests/commands/testLook.py:44 tests/commands/testLook.py:96
+#: tests/commands/testLook.py:102 tests/commands/testLook.py:149
+#: tests/commands/testLook.py:158 tests/commands/testLook.py:167
+#: tests/commands/testLook.py:169 tests/commands/testMove.py:44
 #: tests/commands/testMove.py:52 tests/commands/testMove.py:59
 #: tests/commands/testMove.py:69 tests/commands/testMove.py:78
 #: tests/commands/testMove.py:88 tests/commands/testMove.py:97
 #: tests/commands/testMove.py:99 tests/commands/testMove.py:102
-#: tests/commands/testMove.py:104
+#: tests/commands/testMove.py:104 tests/commands/testSave.py:189
+#: tests/commands/testSave.py:199 tests/commands/testSave.py:211
+#: tests/commands/testSave.py:213
 msgid "DIRECTION_KEY_SOUTH"
 msgstr ""
 
@@ -828,7 +871,7 @@ msgstr ""
 msgid "ERROR_PLACE_GENERATION"
 msgstr ""
 
-#: models/player.py:27 tests/commands/testAuthenticate.py:28
+#: models/player.py:25 tests/commands/testAuthenticate.py:28
 #: tests/commands/testAuthenticate.py:33
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
 msgstr ""

@@ -206,3 +206,26 @@ class moveTests(tests.common.common):
 		self.rpgJSON.setAction([_('LOOK_COMMAND'), _('LOOK_REGION_PARAM')])
 		outputLook = self.rpgJSON._runAction()
 		self.assertEquals((outputMove['x'], outputMove['y']), (outputLook['region']['x'], outputLook['region']['y']))
+
+	def test_no_save_point_json(self):
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
+		outputMove = self.rpgJSON._runAction()
+		self.rpgJSON.setAction([_('MOVE_COMMAND'), _('DIRECTION_KEY_SOUTH')])
+		outputMove = self.rpgJSON._runAction()
+		self.rpgJSON.setAction([_('TAKE_COMMAND'), 'Heavy breastplate'])
+		self.rpgJSON._runAction()
+		self.rpgJSON.setAction([_('SAVE_COMMAND')])
+		outputSave = self.rpgJSON._runAction()
+		self.assertEquals(outputSave, {'error': {'message': _('ERROR_SAVE_NO_SAVE_POINT'), 'code': 1}})
+
+		self.initialiseJSONClient()
+
+		self.rpgJSON.setAction([_('INVENTORY_COMMAND')])
+		output = self.rpgJSON._runAction()
+		self.assertEquals(output, [])
+		self.rpgJSON.setAction([_('LOOK_COMMAND'), _('LOOK_OBJECTS_PARAM')])
+		output = self.rpgJSON._runAction()
+		self.assertEquals(output, {"items": [{"name": "Heavy breastplate", "quantity": 6}]})
+		self.rpgJSON.setAction([_('LOOK_COMMAND'), _('LOOK_REGION_PARAM')])
+		outputLook = self.rpgJSON._runAction()
+		self.assertNotEquals((outputMove['x'], outputMove['y']), (outputLook['region']['x'], outputLook['region']['y']))

@@ -19,13 +19,13 @@ class save(core.command.command):
 
 		Saves the game's progress
 		"""
+		canSave = area.hasSavePoint(self._player.getAreaId())
+		if not canSave:
+			raise core.command.exception(_('ERROR_SAVE_NO_SAVE_POINT'))
+
 		self._player.saveProgress()
 		area.saveChangedAreas()
 		container.saveChangedContainers()
-		return {'saved': True}
 
 	def render(self, data):
-		if data['saved']:
-			return _('SAVE_CONFIRMATION_OK')
-		else:
-			return _('SAVE_CONFIRMATION_KO')
+		return _('SAVE_CONFIRMATION_OK')
