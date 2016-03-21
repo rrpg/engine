@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import
 import unittest
 import os
+
 import core.config
 from core import Rpg
 

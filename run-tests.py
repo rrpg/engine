@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from tests.commands import *
+import tests
 import unittest
 
 if __name__ == "__main__":
