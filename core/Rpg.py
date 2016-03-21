@@ -217,7 +217,7 @@ class Rpg:
 		readline.set_completer_delims('')
 		return utils.read(_('COMMAND_PROMPT'))
 
-	def renderException(self, e):
+	def renderException(self, e): # pragma: no cover
 		"""
 		Method to call when an exception occurs to render it according to the
 		defined render mode.
