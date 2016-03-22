@@ -171,7 +171,8 @@ class Rpg:
 		except core.exception.exception as e:
 			return self.renderException(e)
 
-	def parseTypedAction(self, action):
+	@staticmethod
+	def parseTypedAction(action):
 		"""
 		Method to parse the action typed by the player to detect the action
 		and the action's arguments
