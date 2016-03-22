@@ -63,9 +63,9 @@ class fight:
 			self.player._model['stat_current_hp'] -= damagesToPlayer
 			if not self.player.isAlive():
 				self.player._model['stat_current_hp'] = 0
+				winner = self.enemy
 				fight.stopFight()
 				fightFinished = True
-				winner = self.enemy
 
 		return {
 			'damagesToEnemy': damagesToEnemy,
