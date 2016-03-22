@@ -16,7 +16,7 @@ class rpgTests(tests.common.common):
 			try:
 				rpgEngine.init("some/unexisting/world", "uselessLogin")
 			except core.exception.exception as e:
-				self.assertEquals(e.message, _('ERROR_UNKNOWN_SELECTED_WORLD'))
+				self.assertEquals(str(e), _('ERROR_UNKNOWN_SELECTED_WORLD'))
 
 		def test_invalid_world(self):
 			rpgEngine = Rpg.Rpg()
@@ -28,10 +28,9 @@ class rpgTests(tests.common.common):
 		def test_invalid_action_format(self):
 			rpgEngine = Rpg.Rpg()
 			rpgEngine.init(self.dbFile, self.login)
-			try:
+			with self.assertRaises(TypeError) as raised:
 				rpgEngine.setAction("not list action")
-			except TypeError as e:
-				self.assertEquals(e.message, _('ERROR_INVALID_FORMAT_ACTION'))
+			self.assertEquals(str(raised.exception), _('ERROR_INVALID_FORMAT_ACTION'))
 
 		def test_invalid_action_text(self):
 			self.rpgText.setAction(["Unknown action"])
