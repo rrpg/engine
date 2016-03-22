@@ -59,7 +59,7 @@ class look(core.command.command):
 		if f is None:
 			return None
 		else:
-			return f.enemy
+			return f.getEnemy()
 
 	def _getCharacters(self, areaId):
 		characters = list()

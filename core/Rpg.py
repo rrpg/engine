@@ -115,7 +115,7 @@ class Rpg:
 			raise TypeError(_('ERROR_INVALID_FORMAT_ACTION'))
 		self._action = action
 
-	def _gameOver(self):
+	def _gameOver(self): # pragma: no cover
 		print(_('GAME_OVER_TEXT'))
 		self._initPlayer()
 
