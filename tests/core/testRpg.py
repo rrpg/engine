@@ -20,10 +20,7 @@ class rpgTests(tests.common.common):
 
 		def test_invalid_world(self):
 			rpgEngine = Rpg.Rpg()
-			try:
-				rpgEngine.init("tests/invalidDB", "uselessLogin")
-			except sqlite3.OperationalError as e:
-				self.assertTrue(True)
+			self.assertRaises(sqlite3.OperationalError, rpgEngine.init, "tests/invalidDB", "uselessLogin")
 
 		def test_invalid_action_format(self):
 			rpgEngine = Rpg.Rpg()
