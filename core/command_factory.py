@@ -65,7 +65,7 @@ class factory:
 	}
 
 	@staticmethod
-	def create(p, commandFull, isInteractive):
+	def create(p, commandFull):
 		"""
 		command.factory.create(p, commandFull) -> command.command
 
@@ -90,10 +90,10 @@ class factory:
 			if p.isFighting() and not cmd['allowed_while_fighting']:
 				raise core.command.exception(_('ERROR_DENIED_COMMAND_WHILE_FIGHTING'))
 
-			cmd = getattr(module, cmd['command'])(isInteractive)
+			cmd = getattr(module, cmd['command'])()
 		elif not p.isConnected() and cmd in factory.mapping_anonymous.keys():
 			module = sys.modules['core.commands.' + factory.mapping_anonymous[cmd]]
-			cmd = getattr(module, factory.mapping_anonymous[cmd])(isInteractive)
+			cmd = getattr(module, factory.mapping_anonymous[cmd])()
 		else:
 			raise core.command.exception(_('ERROR_UNKNOWN_COMMAND'))
 

@@ -9,8 +9,8 @@ class command():
 	Base class for the commands
 	"""
 
-	def __init__(self, isInteractive):
-		self._isInteractive = isInteractive
+	def __init__(self):
+		pass
 
 	def setArgs(self, args):
 		"""

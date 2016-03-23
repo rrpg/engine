@@ -34,11 +34,11 @@ class common(unittest.TestCase):
 		self.initialiseJSONClient()
 
 	def initialiseTextClient(self):
-		self.rpgText = Rpg.Rpg(renderMode=Rpg.RENDER_TEXT, isInteractive=False)
+		self.rpgText = Rpg.Rpg(renderMode=Rpg.RENDER_TEXT)
 		self.rpgText.init(self.dbFile, self.login)
 
 	def initialiseJSONClient(self):
-		self.rpgJSON = Rpg.Rpg(renderMode=Rpg.RENDER_JSON, isInteractive=False)
+		self.rpgJSON = Rpg.Rpg(renderMode=Rpg.RENDER_JSON)
 		self.rpgJSON.init(self.dbFile, self.login)
 
 	def getInventory(self):

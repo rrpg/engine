@@ -18,26 +18,20 @@ RENDER_JSON = 1
 class Rpg:
 	_debug = False
 
-	def __init__(self, debug=False, renderMode=RENDER_TEXT, isInteractive=True):
+	def __init__(self, debug=False, renderMode=RENDER_TEXT):
 		"""
 		Rpg's construct. Init the following attributes:
 		- self._player
 		- self._debug
 		- self._renderMode
 		- self._action
-		- self._isInteractive
 
 		The render mode can be or RENDER_TEXT or RENDER_JSON.
-		If the flag isInteractive is set to False, the game will just execute
-		the next action without entering the game loop, no command will be
-		prompted to the user. This can be used for the tests or when the game is
-		used as a service.
 		"""
 		self._player = None
 		self._debug = debug
 		self._renderMode = renderMode
 		self._action = []
-		self._isInteractive = isInteractive
 		fight.fight.stopFight()
 		area.resetChangedAreas()
 		container.resetChangedContainers()
@@ -84,8 +78,7 @@ class Rpg:
 		try:
 			c = command_factory.factory.create(
 				self._player,
-				self._action,
-				self._isInteractive
+				self._action
 			)
 
 			if c == command_factory.quit:

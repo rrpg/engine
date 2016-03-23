@@ -10,7 +10,7 @@ class save(core.command.command):
 	"""
 	Save command
 
-	To save the game's progress, usable only in interactive mode
+	To save the game's progress
 	"""
 
 	def run(self):
