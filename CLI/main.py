@@ -23,7 +23,9 @@ class main:
 			print("")
 			return
 		except BaseException as e:
-			print(self._engine.renderException(e))
+			e = self._engine.renderException(e)
+			if e is not None:
+				print(e)
 			return
 
 		self.run()
