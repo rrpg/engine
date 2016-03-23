@@ -28,63 +28,12 @@ class createPlayer(core.command.command):
 			raise player.exception(_('ERROR_SIGNUP_LOGIN_ALREADY_USED'))
 
 		genders = [str(g['id_gender']) for g in gender.model.loadAll()]
-		if genderId not in genders:
+		if str(genderId) not in genders:
 			raise player.exception(_('ERROR_SIGNUP_INVALID_GENDER'))
 
 		sps = [str(s['id_species']) for s in species.model.getSpecies()]
-		if speciesId not in sps:
+		if str(speciesId) not in sps:
 			raise player.exception(_('ERROR_SIGNUP_INVALID_SPECIES'))
-
-		self._player.createNewPlayer(login, speciesId, genderId)
-		return login
-
-
-	def interactiveSignUp(self): # pragma: no cover
-		login = None
-		while login is None or login == '':
-			login = utils.read(_('LOGIN_PROMPT'))
-
-			if len(player.model.loadBy({'login': login})):
-				print(_('ERROR_SIGNUP_LOGIN_ALREADY_USED'))
-				login = None
-
-		genders = gender.model.loadAll()
-		nbGenders = len(genders)
-
-		print(_('GENDER_SELECTION'))
-		for k, v in enumerate(genders):
-			print(str(k).rjust(3) + ' - ' + v['name'])
-
-		g = -1
-		while g < 0 or g >= nbGenders:
-			g = utils.read(_('GENDER_PROMPT'))
-			try:
-				g = int(g)
-			except:
-				g = -1
-
-		genderId = genders[g]['id_gender']
-
-		sps = species.model.getSpecies()
-		nbSpecies = len(sps)
-
-		if nbSpecies == 1:
-			speciesId = sps[0]['id_species']
-		else:
-			print(_('SPECIES_SELECTION'))
-			for k, v in enumerate(sps):
-				print(str(k).rjust(3) + ' - ' + v['name'])
-				print(v['description'])
-
-			sp = -1
-			while sp < 0 or sp >= nbSpecies:
-				sp = utils.read(_('SPECIES_PROMPT'))
-				try:
-					sp = int(sp)
-				except:
-					sp = -1
-
-			speciesId = sps[sp]['id_species']
 
 		self._player.createNewPlayer(login, speciesId, genderId)
 		return login

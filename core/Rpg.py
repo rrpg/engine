@@ -42,7 +42,7 @@ class Rpg:
 		area.resetChangedAreas()
 		container.resetChangedContainers()
 
-	def init(self, world, login):
+	def init(self, world, login=None):
 		"""
 		Method to init the Rpg with a world, a player's login and action. The
 		action is optional, but the login can be None (for
@@ -57,55 +57,14 @@ class Rpg:
 		Model.setDB(world)
 		self._initPlayer(login)
 
-	def _initPlayer(self, login=None):
+	def _initPlayer(self, login):
 		"""
 		Method to init the player with a login.
-		If the interactive mode is active and no login is provided,
-		the player will be prompted to login or create a new player
 		"""
 		self._player = player()
-		if self._isInteractive and (login is None): # pragma: no cover
-			login = self._doInteractiveAuth()
 
 		if login is not None:
 			self._player.connect(login)
-			return True
-
-		return False
-
-	def _doInteractiveAuth(self): # pragma: no cover
-		'''
-		This method asks the player to login or to create a new account
-		'''
-		choice = 0
-		print(_('PLAYER_SELECTION'))
-		print("  1 - " + _('CHOICE_NEW_PLAYER'))
-		print("  2 - " + _('CHOICE_EXISTING_PLAYER'))
-		while choice != 1 and choice != 2:
-			try:
-				choice = int(utils.read(_('CHOICE_QUESTION')))
-			except ValueError:
-				# If the typed value is not a valid integer
-				pass
-
-		if choice == 1:
-			cmd = command_factory.factory.create(
-				self._player, ['create-player'],
-				isInteractive=True
-			)
-			return cmd.run()
-		elif choice == 2:
-			return self._promptLoginFromStdin()
-
-	def _promptLoginFromStdin(self): # pragma: no cover
-		'''
-		Ask the player to type his login
-		'''
-		login = ''
-		while login == '':
-			login = utils.read(_('LOGIN_PROMPT'))
-
-		return login
 
 	def setAction(self, action):
 		'''
@@ -115,40 +74,6 @@ class Rpg:
 			raise TypeError(_('ERROR_INVALID_FORMAT_ACTION'))
 		self._action = action
 
-	def _gameOver(self): # pragma: no cover
-		print(_('GAME_OVER_TEXT'))
-		self._initPlayer()
-
-	def run(self): # pragma: no cover
-		'''
-		Main method of the Rpg Class, will ask the player to enter a command
-		'''
-		c = ''
-		result = 0
-		while 1:
-			try:
-				c = self.readCommand()
-			except KeyboardInterrupt:
-				print("")
-				continue
-			except EOFError:
-				print("")
-				break
-
-			if c != "":
-				self._action = self.parseTypedAction(c)
-				result = self._runAction()
-
-			if result == command_factory.quit:
-				break
-			elif c != "":
-				if self._renderMode == RENDER_JSON:
-					result = json.dumps(result, ensure_ascii=False)
-				print(result)
-				print("")
-
-			if not self._player.isAlive():
-				self._gameOver()
 
 	def _runAction(self):
 		"""
@@ -170,53 +95,6 @@ class Rpg:
 			return result
 		except core.exception.exception as e:
 			return self.renderException(e)
-
-	@staticmethod
-	def parseTypedAction(action):
-		"""
-		Method to parse the action typed by the player to detect the action
-		and the action's arguments
-		"""
-		inOption = False
-
-		commands, sep, option, optionStart = list(), ' ', '', 0
-		commandLen = len(action)
-		for k,i in enumerate(action):
-			# first letter of the option
-			if i != ' ' and not inOption:
-				# Set the start index of the option
-				optionStart = k
-				inOption = True
-				# Set the option delimiter
-				sep = i if i in ("'", '"') else ' '
-			if inOption:
-				# If the current char is the option delimiter, but not the
-				# stat one
-				if i == sep and k > optionStart:
-					# The option is ended
-					inOption = False
-				elif i != sep:
-					option += i
-
-				# The option is complete, append it in the list
-				if not inOption or k == commandLen - 1:
-					commands.append(str(option))
-					option = ''
-
-		return commands
-
-	def readCommand(self): # pragma: no cover
-		"""
-		Method to set the autocompleter and run the prompt, from utils
-		"""
-
-		completer = command.completer(
-			sorted(command_factory.factory.mapping.keys())
-		)
-		readline.set_completer(completer.complete)
-		readline.parse_and_bind('tab: complete')
-		readline.set_completer_delims('')
-		return utils.read(_('COMMAND_PROMPT'))
 
 	def renderException(self, e): # pragma: no cover
 		"""
