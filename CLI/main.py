@@ -134,7 +134,7 @@ class main:
 				break
 
 			if c != "":
-				self._engine.setAction(self.parseTypedAction(c))
+				self._engine.setAction(main.parseTypedAction(c))
 				result = self._engine._runAction()
 
 			if result == command_factory.quit:
@@ -145,7 +145,8 @@ class main:
 
 		self._gameOver()
 
-	def parseTypedAction(self, action):
+	@staticmethod
+	def parseTypedAction(action):
 		"""
 		Method to parse the action typed by the player to detect the action
 		and the action's arguments
