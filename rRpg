@@ -6,7 +6,8 @@ import sys
 import getopt
 from models.player import exception as pException
 from core.command import exception as CommandException
-import core.Rpg
+import CLI.main
+import core
 from argparse import ArgumentParser
 
 
@@ -16,10 +17,6 @@ def main(argv):
 	parser.add_argument(
 		"-d", "--debug",
 		dest="debug", help="Enable debug mode", action="store_true"
-	)
-	parser.add_argument(
-		"-j", "--json",
-		dest="json", help="Output data in JSON", action="store_true"
 	)
 	parser.add_argument(
 		"-l", "--login",
@@ -32,28 +29,13 @@ def main(argv):
 
 	args = parser.parse_args()
 
-	render = core.Rpg.RENDER_TEXT
-	if args.json is not False:
-		render = core.Rpg.RENDER_JSON
-
-	rpg = core.Rpg.Rpg(args.debug, render)
-
 	world = '' if args.world is None else str(args.world)
+
 	login = None
 	if args.login is not None:
 		login = args.login
 
-	try:
-		rpg.init(world, login)
-	except KeyboardInterrupt:
-		print("")
-		return
-	except BaseException as e:
-		print(rpg.renderException(e))
-		return
-
-	rpg.run()
-
+	CLI.main.main(args.debug, world, login)
 
 if __name__ == "__main__":
 	main(sys.argv[1:])

@@ -1,2 +1,2 @@
 [run]
-source = core, models, tests
+source = core, models, tests, CLI

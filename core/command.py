@@ -9,8 +9,8 @@ class command():
 	Base class for the commands
 	"""
 
-	def __init__(self, isInteractive):
-		self._isInteractive = isInteractive
+	def __init__(self):
+		pass
 
 	def setArgs(self, args):
 		"""
@@ -33,7 +33,7 @@ class command():
 		self._player = p
 
 
-class completer: # pragma: no cover
+class completer:
 	"""
 	Class to autocomplete use choice while typing a command
 	"""

@@ -10,8 +10,8 @@ import json
 
 class helpTests(tests.common.common):
 	def test_text(self):
-		self.rpgText.setAction([_('HELP_COMMAND')])
-		output = self.rpgText._runAction()
+		self.rpg.setAction([_('HELP_COMMAND')])
+		output = self.rpg._runAction()
 		expected = _('AVAILABLE_COMMANDS_TITLE') +'\n'+\
 			'%s <%s> "<%s>"' % (_('TALK_COMMAND'), _('CHARACTER_TOKEN'), _('SENTENCE_TOKEN')) + ':' +'\n'+\
 			'\t' + _('TALK_COMMAND_DESCRIPTION') +'\n'+\
@@ -56,8 +56,8 @@ class helpTests(tests.common.common):
 		self.assertEquals(output, expected)
 
 	def test_json(self):
-		self.rpgJSON.setAction([_('HELP_COMMAND')])
-		output = self.rpgJSON._runAction()
+		self.rpg.setAction([_('HELP_COMMAND')])
+		output = self.rpg._runAction(True)
 		expected = [
 			{
 				"command": '%s <%s> "<%s>"' % (_('TALK_COMMAND'), _('CHARACTER_TOKEN'), _('SENTENCE_TOKEN')),

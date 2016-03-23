@@ -10,13 +10,13 @@ class listSpeciesTests(tests.common.common):
 	login = None
 
 	def test_text(self):
-		self.rpgText.setAction(['list-species'])
-		output = self.rpgText._runAction()
+		self.rpg.setAction(['list-species'])
+		output = self.rpg._runAction()
 		self.assertEquals(
 			output, '\n'.join(['  0 - Human', 'Humans come from planet Earth'])
 		)
 
 	def test_json(self):
-		self.rpgJSON.setAction(['list-species'])
-		output = self.rpgJSON._runAction()
+		self.rpg.setAction(['list-species'])
+		output = self.rpg._runAction(True)
 		self.assertEquals(output, [{'description': 'Humans come from planet Earth', 'id': 1, 'name': 'Human'}])

@@ -30,19 +30,14 @@ class common(unittest.TestCase):
 		con.commit()
 		con.close()
 
-		self.initialiseTextClient()
-		self.initialiseJSONClient()
+		self.initialiseClient()
 
-	def initialiseTextClient(self):
-		self.rpgText = Rpg.Rpg(renderMode=Rpg.RENDER_TEXT, isInteractive=False)
-		self.rpgText.init(self.dbFile, self.login)
-
-	def initialiseJSONClient(self):
-		self.rpgJSON = Rpg.Rpg(renderMode=Rpg.RENDER_JSON, isInteractive=False)
-		self.rpgJSON.init(self.dbFile, self.login)
+	def initialiseClient(self):
+		self.rpg = Rpg.Rpg()
+		self.rpg.init(self.dbFile, self.login)
 
 	def getInventory(self):
-		return self.rpgJSON._player.getInventory()
+		return self.rpg._player.getInventory()
 
 	def compareInventory(self, inv):
 		new = self.getInventory()
