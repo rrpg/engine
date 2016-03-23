@@ -124,8 +124,10 @@ class attackTests(tests.common.common):
 	@mock.patch('random.randint', side_effect=randintMock_Big)
 	def test_attack_kill_player_text(self, randintMockFun):
 		self.move_to_big_rat_attack(self.rpg)
+		self.assertFalse(self.rpg.isGameOver())
 		self.rpg.setAction([_('ATTACK_COMMAND')])
 		output = self.rpg._runAction()
+		self.assertTrue(self.rpg.isGameOver())
 		# The player deals 30 damage points because of (4 attack - 2 defence) * 15 from mock
 		# The rat deals 30 damage points because of (4 attack - 2 defence) * 15 from mock
 		# The giant rat kills the player
