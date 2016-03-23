@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import unittest
-try:
+try: # pragma: no cover
 	import mock
-except ImportError:
+except ImportError: # pragma: no cover
 	import unittest.mock as mock
 
 import tests.common

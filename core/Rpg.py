@@ -82,21 +82,21 @@ class Rpg:
 		except core.exception.exception as e:
 			return self.renderException(e, renderJson)
 
-	def renderException(self, e, renderJson=False): # pragma: no cover
+	def renderException(self, e, renderJson=False):
 		"""
 		Method to call when an exception occurs to render it according to the
 		defined render mode.
 		"""
 		import traceback
-		if not isinstance(e, core.exception.exception):
+		if not isinstance(e, core.exception.exception): # pragma: no cover
 			traceback.print_exc()
 		else:
 			if renderJson:
 				excep = {'error': {'code': e.code, 'message': str(e)}}
-				if self._debug:
+				if self._debug: # pragma: no cover
 					excep['backtrace'] = traceback.format_exc()
 				return excep
-			elif self._debug:
+			elif self._debug: # pragma: no cover
 				return traceback.format_exc()
 			else:
 				return str(e)

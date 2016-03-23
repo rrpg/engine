@@ -33,7 +33,7 @@ class command():
 		self._player = p
 
 
-class completer: # pragma: no cover
+class completer:
 	"""
 	Class to autocomplete use choice while typing a command
 	"""
