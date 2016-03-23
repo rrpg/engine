@@ -74,6 +74,8 @@ class Rpg:
 			raise TypeError(_('ERROR_INVALID_FORMAT_ACTION'))
 		self._action = action
 
+	def isGameOver(self):
+		return not self._player.isAlive()
 
 	def _runAction(self):
 		"""
