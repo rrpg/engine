@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 import unittest
-import mock
+try:
+	import mock
+except ImportError:
+	import unittest.mock as mock
 
 import tests.common
 import core
