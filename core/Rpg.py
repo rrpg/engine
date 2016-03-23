@@ -12,25 +12,19 @@ import json
 from core.localisation import _
 import core.exception
 
-RENDER_TEXT = 0
-RENDER_JSON = 1
 
 class Rpg:
 	_debug = False
 
-	def __init__(self, debug=False, renderMode=RENDER_TEXT):
+	def __init__(self, debug=False):
 		"""
 		Rpg's construct. Init the following attributes:
 		- self._player
 		- self._debug
-		- self._renderMode
 		- self._action
-
-		The render mode can be or RENDER_TEXT or RENDER_JSON.
 		"""
 		self._player = None
 		self._debug = debug
-		self._renderMode = renderMode
 		self._action = []
 		fight.fight.stopFight()
 		area.resetChangedAreas()
@@ -71,7 +65,7 @@ class Rpg:
 	def isGameOver(self):
 		return not self._player.isAlive()
 
-	def _runAction(self):
+	def _runAction(self, renderJson=False):
 		"""
 		Method to execute when an action is set and ready to be executed.
 		"""
@@ -85,13 +79,13 @@ class Rpg:
 				return c
 
 			result = c.run()
-			if self._renderMode != RENDER_JSON:
+			if not renderJson:
 				result = c.render(result)
 			return result
 		except core.exception.exception as e:
-			return self.renderException(e)
+			return self.renderException(e, renderJson)
 
-	def renderException(self, e): # pragma: no cover
+	def renderException(self, e, renderJson=False): # pragma: no cover
 		"""
 		Method to call when an exception occurs to render it according to the
 		defined render mode.
@@ -100,7 +94,7 @@ class Rpg:
 		if not isinstance(e, core.exception.exception):
 			traceback.print_exc()
 		else:
-			if self._renderMode == RENDER_JSON:
+			if renderJson:
 				excep = {'error': {'code': e.code, 'message': str(e)}}
 				if self._debug:
 					excep['backtrace'] = traceback.format_exc()

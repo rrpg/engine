@@ -30,11 +30,11 @@ class rpgTests(tests.common.common):
 		self.assertEquals(str(raised.exception), _('ERROR_INVALID_FORMAT_ACTION'))
 
 	def test_invalid_action_text(self):
-		self.rpgText.setAction(["Unknown action"])
-		output = self.rpgText._runAction()
+		self.rpg.setAction(["Unknown action"])
+		output = self.rpg._runAction()
 		self.assertEquals(output, _('ERROR_UNKNOWN_COMMAND'))
 
 	def test_invalid_action_json(self):
-		self.rpgJSON.setAction(["Unknown action"])
-		output = self.rpgJSON._runAction()
+		self.rpg.setAction(["Unknown action"])
+		output = self.rpg._runAction(True)
 		self.assertEquals(output,  {'error': {'message': _('ERROR_UNKNOWN_COMMAND'), 'code': 1}})

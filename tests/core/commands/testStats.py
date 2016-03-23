@@ -9,8 +9,8 @@ import re
 
 class enterTests(tests.common.common):
 	def test_empty_text(self):
-		self.rpgText.setAction([_('STATS_COMMAND')])
-		output = self.rpgText._runAction()
+		self.rpg.setAction([_('STATS_COMMAND')])
+		output = self.rpg._runAction()
 		stats = [
 			_('STAT_CURRENT_HP'),
 			_('STAT_ATTACK'),
@@ -32,8 +32,8 @@ class enterTests(tests.common.common):
 		self.assertEquals(lineLengths, [lineLength] * len(output))
 
 	def test_empty_json(self):
-		self.rpgJSON.setAction([_('STATS_COMMAND')])
-		output = self.rpgJSON._runAction()
+		self.rpg.setAction([_('STATS_COMMAND')])
+		output = self.rpg._runAction(True)
 		expected = {
 			'stat_current_hp': 20,
 			'stat_max_hp': 20,

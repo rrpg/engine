@@ -34,20 +34,20 @@ class attackTests(tests.common.common):
 		engine._runAction()
 
 	def test_not_fighting_text(self):
-		self.rpgText.setAction([_('ATTACK_COMMAND')])
-		output = self.rpgText._runAction()
+		self.rpg.setAction([_('ATTACK_COMMAND')])
+		output = self.rpg._runAction()
 		self.assertEquals(output, _('ERROR_FIGHT_NOT_FIGHTING'))
 
 	def test_not_fighting_json(self):
-		self.rpgJSON.setAction([_('ATTACK_COMMAND')])
-		output = self.rpgJSON._runAction()
+		self.rpg.setAction([_('ATTACK_COMMAND')])
+		output = self.rpg._runAction(True)
 		self.assertEquals(output,  {'error': {'message': _('ERROR_FIGHT_NOT_FIGHTING'), 'code': 1}})
 
 	@mock.patch('random.randint', side_effect=randintMock)
 	def test_attack_text(self, randintMockFun):
-		self.move_to_attack(self.rpgText)
-		self.rpgText.setAction([_('ATTACK_COMMAND')])
-		output = self.rpgText._runAction()
+		self.move_to_attack(self.rpg)
+		self.rpg.setAction([_('ATTACK_COMMAND')])
+		output = self.rpg._runAction()
 		# The player deals 2 damage points because of 4 attack - 2 defence
 		# The rat deals 0 damage points because of 2 attack - 2 defence
 		expected = '\n'.join([
@@ -58,9 +58,9 @@ class attackTests(tests.common.common):
 
 	@mock.patch('random.randint', side_effect=randintMock)
 	def test_attack_json(self, randintMockFun):
-		self.move_to_attack(self.rpgJSON)
-		self.rpgJSON.setAction([_('ATTACK_COMMAND')])
-		output = self.rpgJSON._runAction()
+		self.move_to_attack(self.rpg)
+		self.rpg.setAction([_('ATTACK_COMMAND')])
+		output = self.rpg._runAction(True)
 		# The player deals 2 damage points because of 4 attack - 2 defence
 		# The rat deals 0 damage points because of 2 attack - 2 defence
 		expected = {
@@ -84,9 +84,9 @@ class attackTests(tests.common.common):
 
 	@mock.patch('random.randint', side_effect=randintMock_Big)
 	def test_attack_kill_enemy_text(self, randintMockFun):
-		self.move_to_attack(self.rpgText)
-		self.rpgText.setAction([_('ATTACK_COMMAND')])
-		output = self.rpgText._runAction()
+		self.move_to_attack(self.rpg)
+		self.rpg.setAction([_('ATTACK_COMMAND')])
+		output = self.rpg._runAction()
 		# The player deals 30 damage points because of (4 attack - 2 defence) * 15 from the mock
 		# The rat deals 0 damage points because of (2 attack - 2 defence) * 15 from the mock
 		expected = '\n'.join([
@@ -97,9 +97,9 @@ class attackTests(tests.common.common):
 
 	@mock.patch('random.randint', side_effect=randintMock_Big)
 	def test_attack_kill_enemy_json(self, randintMockFun):
-		self.move_to_attack(self.rpgJSON)
-		self.rpgJSON.setAction([_('ATTACK_COMMAND')])
-		output = self.rpgJSON._runAction()
+		self.move_to_attack(self.rpg)
+		self.rpg.setAction([_('ATTACK_COMMAND')])
+		output = self.rpg._runAction(True)
 		# The player deals 30 damage points because of (4 attack - 2 defence) * 15 from the mock
 		# The rat deals 0 damage points because of (2 attack - 2 defence) * 15 from the mock
 		expected = {
@@ -114,7 +114,7 @@ class attackTests(tests.common.common):
 			},
 			'attackResult': {
 				'damagesToPlayer': None,
-				'winner': self.rpgJSON._player,
+				'winner': self.rpg._player,
 				'damagesToEnemy': 30,
 				'fightFinished': True
 			}
@@ -123,9 +123,9 @@ class attackTests(tests.common.common):
 
 	@mock.patch('random.randint', side_effect=randintMock_Big)
 	def test_attack_kill_player_text(self, randintMockFun):
-		self.move_to_big_rat_attack(self.rpgText)
-		self.rpgText.setAction([_('ATTACK_COMMAND')])
-		output = self.rpgText._runAction()
+		self.move_to_big_rat_attack(self.rpg)
+		self.rpg.setAction([_('ATTACK_COMMAND')])
+		output = self.rpg._runAction()
 		# The player deals 30 damage points because of (4 attack - 2 defence) * 15 from mock
 		# The rat deals 30 damage points because of (4 attack - 2 defence) * 15 from mock
 		# The giant rat kills the player
@@ -138,9 +138,9 @@ class attackTests(tests.common.common):
 
 	@mock.patch('random.randint', side_effect=randintMock_Big)
 	def test_attack_kill_player_json(self, randintMockFun):
-		self.move_to_big_rat_attack(self.rpgJSON)
-		self.rpgJSON.setAction([_('ATTACK_COMMAND')])
-		output = self.rpgJSON._runAction()
+		self.move_to_big_rat_attack(self.rpg)
+		self.rpg.setAction([_('ATTACK_COMMAND')])
+		output = self.rpg._runAction(True)
 		# The player deals 30 damage points because of (4 attack - 2 defence) * 15 from mock
 		# The rat deals 30 damage points because of (4 attack - 2 defence) * 15 from mock
 		# The giant rat kills the player
