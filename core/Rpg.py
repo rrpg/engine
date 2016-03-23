@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from models.player import player
-from core import command, command_factory, utils, config, fight
+from core import command_factory, fight
 from models.Model import Model
 from models.area import area
 from models.item_container import container
-import readline
-import getpass
 import os
-import json
 from core.localisation import _
 import core.exception
 
