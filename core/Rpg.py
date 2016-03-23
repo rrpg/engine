@@ -55,7 +55,7 @@ class Rpg:
 			raise core.exception.exception(_('ERROR_UNKNOWN_SELECTED_WORLD'))
 
 		Model.setDB(world)
-		isConnected = self._initPlayer(login)
+		self._initPlayer(login)
 
 	def _initPlayer(self, login=None):
 		"""
