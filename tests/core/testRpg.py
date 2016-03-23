@@ -38,39 +38,3 @@ class rpgTests(tests.common.common):
 		self.rpgJSON.setAction(["Unknown action"])
 		output = self.rpgJSON._runAction()
 		self.assertEquals(output,  {'error': {'message': _('ERROR_UNKNOWN_COMMAND'), 'code': 1}})
-
-	def test_parsed_action(self):
-		parsed = Rpg.Rpg.parseTypedAction("some action to parse")
-		self.assertEquals(parsed, ["some", "action", "to", "parse"])
-
-	def test_parsed_action_with_single_quotes(self):
-		parsed = Rpg.Rpg.parseTypedAction("some action 'to parse'")
-		self.assertEquals(parsed, ["some", "action", "to parse"])
-
-	def test_parsed_action_with_double_quotes(self):
-		parsed = Rpg.Rpg.parseTypedAction('some action "to parse"')
-		self.assertEquals(parsed, ["some", "action", "to parse"])
-
-	def test_parsed_action_with_one_single_quote(self):
-		parsed = Rpg.Rpg.parseTypedAction("some action 'to parse")
-		self.assertEquals(parsed, ["some", "action", "to parse"])
-
-	def test_parsed_action_with_three_double_quotes(self):
-		parsed = Rpg.Rpg.parseTypedAction('some "other action" "to parse')
-		self.assertEquals(parsed, ["some", "other action", 'to parse'])
-
-	def test_parsed_action_with_three_single_quotes(self):
-		parsed = Rpg.Rpg.parseTypedAction("some 'other action' 'to parse")
-		self.assertEquals(parsed, ["some", "other action", "to parse"])
-
-	def test_parsed_action_with_one_double_quote(self):
-		parsed = Rpg.Rpg.parseTypedAction('some action "to parse')
-		self.assertEquals(parsed, ["some", "action", 'to parse'])
-
-	def test_double_quote_in_action(self):
-		parsed = Rpg.Rpg.parseTypedAction('test l"arche')
-		self.assertEquals(parsed, ["test", 'l"arche'])
-
-	def test_single_quote_in_action(self):
-		parsed = Rpg.Rpg.parseTypedAction("test l'arche")
-		self.assertEquals(parsed, ["test", "l'arche"])
