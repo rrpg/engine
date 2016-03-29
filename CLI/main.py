@@ -34,22 +34,17 @@ class main:
 		'''
 		This method asks the player to login or to create a new account
 		'''
-		choice = 0
-		print(_('PLAYER_SELECTION'))
-		print("  1 - " + _('CHOICE_NEW_PLAYER'))
-		print("  2 - " + _('CHOICE_EXISTING_PLAYER'))
-		while choice != 1 and choice != 2:
-			try:
-				choice = int(utils.read(_('CHOICE_QUESTION')))
-			except ValueError:
-				# If the typed value is not a valid integer
-				pass
 
-		if choice == 1:
+		choice = self.choiceMenu(
+			_('PLAYER_SELECTION'), _('CHOICE_QUESTION'),
+			[_('CHOICE_NEW_PLAYER'), _('CHOICE_EXISTING_PLAYER')]
+		)
+
+		if choice == 0:
 			(login, genderId, speciesId) = self._interactivePlayerCreation()
 			self._engine.setAction(['create-player', login, genderId, speciesId])
 			print(self._engine._runAction())
-		elif choice == 2:
+		elif choice == 1:
 			login = self._promptLoginFromStdin()
 
 		self._engine._initPlayer(login)
@@ -65,19 +60,11 @@ class main:
 				login = None
 
 		genders = gender.model.loadAll()
-		nbGenders = len(genders)
 
-		print(_('GENDER_SELECTION'))
-		for k, v in enumerate(genders):
-			print(str(k).rjust(3) + ' - ' + v['name'])
-
-		g = -1
-		while g < 0 or g >= nbGenders:
-			g = utils.read(_('GENDER_PROMPT'))
-			try:
-				g = int(g)
-			except:
-				g = -1
+		g = self.choiceMenu(
+			_('GENDER_SELECTION'), _('GENDER_PROMPT'),
+			[g['name'] for g in genders]
+		)
 
 		genderId = genders[g]['id_gender']
 
