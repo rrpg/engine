@@ -72,22 +72,14 @@ class main:
 		nbSpecies = len(sps)
 
 		if nbSpecies == 1:
-			speciesId = sps[0]['id_species']
+			speciesIndex = 0
 		else:
-			print(_('SPECIES_SELECTION'))
-			for k, v in enumerate(sps):
-				print(str(k).rjust(3) + ' - ' + v['name'])
-				print(v['description'])
+			speciesIndex = self.choiceMenu(
+				_('SPECIES_SELECTION'), _('SPECIES_PROMPT'),
+				[g['name'] for g in sps]
+			)
 
-			sp = -1
-			while sp < 0 or sp >= nbSpecies:
-				sp = utils.read(_('SPECIES_PROMPT'))
-				try:
-					sp = int(sp)
-				except:
-					sp = -1
-
-			speciesId = sps[sp]['id_species']
+		speciesId = sps[speciesIndex]['id_species']
 
 		return (login, genderId, speciesId)
 
