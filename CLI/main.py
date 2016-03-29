@@ -130,7 +130,8 @@ class main:
 				print(result)
 				print("")
 
-		self._gameOver()
+		if self._engine.isGameOver():
+			self._gameOver()
 
 	@staticmethod
 	def parseTypedAction(action):
