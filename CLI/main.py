@@ -191,3 +191,18 @@ class main:
 		readline.parse_and_bind('tab: complete')
 		readline.set_completer_delims('')
 		return utils.read(_('COMMAND_PROMPT'))
+
+	def choiceMenu(self, question, prompt, choices):
+		print(question)
+		for k, v in enumerate(choices):
+			print(str(k + 1).rjust(3) + ' - ' + v)
+
+		v = 0
+		while v <= 0 or v >= len(choices) + 1:
+			v = utils.read(prompt)
+			try:
+				v = int(v)
+			except:
+				v = -0
+
+		return v - 1
