@@ -35,6 +35,13 @@ class main:
 			[_('CHOICE_NEW_GAME'), _('CHOICE_LOAD_GAME')]
 		)
 
+		savedGames = saved_game.saved_game.loadAll()
+
+		choiceSave = self.choiceMenu(
+			_('SAVED_GAME_MENU_TITLE'), _('SAVED_GAME_CHOICE_QUESTION'),
+			[self.formatSavedGameName(s) for s in savedGames]
+		)
+
 		# new game
 		if choiceGame == 0:
 			(login, genderId, speciesId) = self._interactivePlayerCreation()
@@ -45,6 +52,16 @@ class main:
 			login = self._promptLoginFromStdin()
 
 		self._engine._initPlayer(login)
+
+	@staticmethod
+	def formatSavedGameName(s):
+		if s['login'] is None:
+			return _('EMPTY_SAVED_GAME')
+		else:
+			data = {
+				'login': s['login']
+			}
+			return _('SAVED_GAME_INFO_{login}').format(**data)
 
 	def _interactivePlayerCreation(self): # pragma: no cover
 		login = None
