@@ -2,8 +2,8 @@
 
 import core
 import core.Rpg
-from core import utils
-from models import player, gender, species
+from core import utils, config
+from models import player, gender, species, saved_game
 from core.localisation import _
 from core import command, command_factory
 import readline
@@ -17,6 +17,7 @@ class main:
 
 		try:
 			self._engine.init(world)
+			self._showMainMenu()
 			self._doInteractiveAuth()
 		except (KeyboardInterrupt, EOFError):
 			print("")
@@ -28,6 +29,12 @@ class main:
 			return
 
 		self.run()
+
+	def _showMainMenu(self):
+		choiceGame = self.choiceMenu(
+			_('MAIN_MENU_TITLE'), _('CHOICE_QUESTION'),
+			[_('CHOICE_NEW_GAME'), _('CHOICE_LOAD_GAME')]
+		)
 
 	def _doInteractiveAuth(self): # pragma: no cover
 		'''
