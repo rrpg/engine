@@ -18,7 +18,7 @@ class main:
 		try:
 			self._engine.init(world, login)
 			if login is None:
-				login = self._doInteractiveAuth()
+				self._doInteractiveAuth()
 		except (KeyboardInterrupt, EOFError):
 			print("")
 			return
@@ -48,7 +48,6 @@ class main:
 			login = self._promptLoginFromStdin()
 
 		self._engine._initPlayer(login)
-		return login
 
 	def _interactivePlayerCreation(self): # pragma: no cover
 		login = None
