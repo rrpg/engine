@@ -19,10 +19,6 @@ def main(argv):
 		dest="debug", help="Enable debug mode", action="store_true"
 	)
 	parser.add_argument(
-		"-l", "--login",
-		dest="login", help="Player login", metavar="LOGIN"
-	)
-	parser.add_argument(
 		"-w", "--world",
 		dest="world", help="World to load", metavar="WORLD"
 	)
@@ -31,11 +27,7 @@ def main(argv):
 
 	world = '' if args.world is None else str(args.world)
 
-	login = None
-	if args.login is not None:
-		login = args.login
-
-	CLI.main.main(args.debug, world, login)
+	CLI.main.main(args.debug, world)
 
 if __name__ == "__main__":
 	main(sys.argv[1:])

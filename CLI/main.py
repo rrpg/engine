@@ -12,13 +12,12 @@ import readline
 class main:
 	_debug = False
 
-	def __init__(self, debug=False, world='', login=None):
+	def __init__(self, debug=False, world=''):
 		self._engine = core.Rpg.Rpg(debug)
 
 		try:
-			self._engine.init(world, login)
-			if login is None:
-				self._doInteractiveAuth()
+			self._engine.init(world)
+			self._doInteractiveAuth()
 		except (KeyboardInterrupt, EOFError):
 			print("")
 			return
