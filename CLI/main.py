@@ -191,3 +191,12 @@ class main:
 				v = -0
 
 		return v - 1
+
+	def yesNoQuestion(self, question):
+		v = None
+		yesNo = {'yes': _('ANSWER_YES'), 'no': _('ANSWER_NO')}
+		questionDataFormat = {'choices': '({yes}/{no})'.format(**yesNo)}
+		while v not in yesNo.values():
+			v = utils.read(question.format(**questionDataFormat))
+
+		return v == _('ANSWER_YES')
