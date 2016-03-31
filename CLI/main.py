@@ -30,12 +30,17 @@ class main:
 		self.run()
 
 	def _showMainMenu(self):
-		choiceGame = self.choiceMenu(
-			_('MAIN_MENU_TITLE'), _('CHOICE_QUESTION'),
-			[_('CHOICE_NEW_GAME'), _('CHOICE_LOAD_GAME')]
-		)
-
 		savedGames = saved_game.saved_game.loadAll()
+		hasExistingGames = len(
+			[s for s in savedGames if s['login'] is not None]
+		) > 0
+
+		choiceGame = 0
+		if hasExistingGames:
+			choiceGame = self.choiceMenu(
+				_('MAIN_MENU_TITLE'), _('CHOICE_QUESTION'),
+				[_('CHOICE_NEW_GAME'), _('CHOICE_LOAD_GAME')]
+			)
 
 		choiceSave = self.choiceMenu(
 			_('SAVED_GAME_MENU_TITLE'), _('SAVED_GAME_CHOICE_QUESTION'),
