@@ -53,15 +53,25 @@ class main:
 			savedGameLogin = savedGames[choiceSave]['login']
 
 			# new game
-			if choiceGame == 0 and \
-				savedGamesLogin is not None and \
-				not self.yesNoQuestion(_('OVERWRITE_SAVEDGAME_QUESTION_{choices}')):
-					choiceSave = None
-
+			if choiceGame == 0:
+				# saved game used
+				if savedGameLogin is not None:
+					# no overwrite, let's choose another saved game
+					if not self.yesNoQuestion(_('OVERWRITE_SAVEDGAME_QUESTION_{choices}')):
+						choiceSave = None
+					# overwrite the saved game
+					else:
+						newGame = True
+				# unused save slot
+				else:
+					newGame = True
 			# load game
-			elif choiceGame == 1 and \
-				savedGameLogin is None:
+			elif choiceGame == 1:
+				# no saved game exists in this slot
+				if savedGameLogin is None:
 					choiceSave = None
+				else:
+					newGame = False
 
 		# new game
 		if choiceGame == 0:
