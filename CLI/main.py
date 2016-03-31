@@ -42,10 +42,26 @@ class main:
 				[_('CHOICE_NEW_GAME'), _('CHOICE_LOAD_GAME')]
 			)
 
-		choiceSave = self.choiceMenu(
-			_('SAVED_GAME_MENU_TITLE'), _('SAVED_GAME_CHOICE_QUESTION'),
-			[self.formatSavedGameName(s) for s in savedGames]
-		)
+		choiceSave = None
+		while choiceSave is None:
+			choiceSave = self.choiceMenu(
+				_('SAVED_GAME_MENU_TITLE'),
+				_('SAVED_GAME_CHOICE_QUESTION'),
+				[self.formatSavedGameName(s) for s in savedGames]
+			)
+
+			savedGameLogin = savedGames[choiceSave]['login']
+
+			# new game
+			if choiceGame == 0 and \
+				savedGamesLogin is not None and \
+				not self.yesNoQuestion(_('OVERWRITE_SAVEDGAME_QUESTION_{choices}')):
+					choiceSave = None
+
+			# load game
+			elif choiceGame == 1 and \
+				savedGameLogin is None:
+					choiceSave = None
 
 		# new game
 		if choiceGame == 0:
