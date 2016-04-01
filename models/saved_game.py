@@ -12,6 +12,10 @@ class saved_game:
 
 
 	@staticmethod
+	def updateSavedGame(saveId, data):
+		model.update(data, ('id_saved_game = ?', [saveId]))
+
+	@staticmethod
 	def cleanSavedGame(saveId):
 		savedGame = model.loadById(saveId)
 		if savedGame['id_player'] is not None:
