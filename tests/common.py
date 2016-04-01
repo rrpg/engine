@@ -2,6 +2,7 @@
 from __future__ import absolute_import
 import unittest
 import os
+import sqlite3
 
 import core.config
 from core import Rpg
@@ -15,7 +16,7 @@ class common(unittest.TestCase):
 		db = os.path.realpath(self.dbFile)
 		if os.path.exists(db):
 			os.remove(db)
-		import sqlite3
+
 		con = sqlite3.connect(db)
 		f = open(os.path.realpath(os.path.dirname(__file__) + "/../database/structure.sql"),'r')
 		s = f.read()
