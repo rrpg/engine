@@ -42,7 +42,7 @@ class Rpg:
 		Model.setDB(world)
 		self.initPlayer(login)
 
-	def initPlayer(self, login):
+	def initPlayer(self, login=None):
 		"""
 		Method to init the player with a login.
 		"""
