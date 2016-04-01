@@ -22,7 +22,9 @@ class createPlayer(core.command.command):
 		if str(speciesId) not in sps:
 			raise player.exception(_('ERROR_SIGNUP_INVALID_SPECIES'))
 
-		self._player.createNewPlayer(login, speciesId, genderId)
+		playerId = self._player.createNewPlayer(
+			login, speciesId, genderId
+		)
 		return login
 
 	def render(self, data):

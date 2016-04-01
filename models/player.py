@@ -36,7 +36,7 @@ class player(character.character):
 		}
 
 		self._model['id_character'] = character.model.insert(self._model)
-		model.insert(self._model)
+		return model.insert(self._model)
 
 	def isAlive(self):
 		return self._model['stat_current_hp'] > 0
