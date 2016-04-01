@@ -2,17 +2,22 @@
 
 import core.command
 from core.localisation import _
-from models import player, gender, species
+from models import player, gender, species, saved_game
 
 class createPlayer(core.command.command):
 	def run(self):
-		if len(self._args) < 3:
+		if len(self._args) < 4:
 			raise core.command.exception(_('ERROR_SIGNUP_NOT_ENOUGH_ARGUMENTS'))
 
 		errors = dict()
-		(login, genderId, speciesId) = self._args
+		(savedGameId, login, genderId, speciesId) = self._args
+
 		if len(player.model.loadBy({'login': login})):
 			raise player.exception(_('ERROR_SIGNUP_LOGIN_ALREADY_USED'))
+
+		savedGame = saved_game.saved_game.loadById(savedGameId)
+		if savedGame is None:
+			raise saved_game.exception(_('ERROR_SIGNUP_INVALID_SAVED_GAME_ID'))
 
 		genders = [str(g['id_gender']) for g in gender.model.loadAll()]
 		if str(genderId) not in genders:
@@ -24,6 +29,16 @@ class createPlayer(core.command.command):
 
 		playerId = self._player.createNewPlayer(
 			login, speciesId, genderId
+		)
+
+		p = player.player.loadById(playerId)
+		saved_game.saved_game.cleanSavedGame(savedGameId)
+		saved_game.saved_game.updateSavedGame(
+			savedGameId,
+			{
+				'id_player': playerId,
+				'id_character': p['id_character']
+			}
 		)
 		return login
 
