@@ -16,7 +16,7 @@ class main:
 		self._engine = core.Rpg.Rpg(debug)
 
 		try:
-			self._engine.init(world)
+			self._engine.initWorld(world)
 			self._showMainMenu()
 		except (KeyboardInterrupt, EOFError):
 			print("")

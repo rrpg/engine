@@ -27,7 +27,7 @@ class Rpg:
 		area.resetChangedAreas()
 		container.resetChangedContainers()
 
-	def init(self, world):
+	def initWorld(self, world):
 		"""
 		Method to init the Rpg's world.
 		"""
