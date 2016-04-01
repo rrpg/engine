@@ -145,6 +145,10 @@ class Model(object):
 		cls._defaultDB = db
 
 	@classmethod
+	def getDB(cls):
+		return cls._defaultDB
+
+	@classmethod
 	def disconnect(cls, db):
 		db.commit()
 		db.close()
