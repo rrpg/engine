@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import core
 from models.Model import Model
 from models import character, player
 import sqlite3
@@ -61,3 +62,7 @@ class model(Model):
 			"
 
 		return Model.fetchAllRows(query)
+
+
+class exception(core.exception.exception):
+	pass
