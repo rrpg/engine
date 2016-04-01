@@ -10,6 +10,9 @@ class saved_game:
 	def loadAll():
 		return model.loadAll()
 
+	@staticmethod
+	def loadById(savedGameId):
+		return model.loadById(savedGameId)
 
 	@staticmethod
 	def updateSavedGame(saveId, data):
