@@ -20,27 +20,21 @@ class Rpg:
 		- self._debug
 		- self._action
 		"""
-		self._player = None
+		self.initPlayer()
 		self._debug = debug
 		self._action = []
 		fight.fight.stopFight()
 		area.resetChangedAreas()
 		container.resetChangedContainers()
 
-	def init(self, world, login=None):
+	def init(self, world):
 		"""
-		Method to init the Rpg with a world, a player's login and action. The
-		action is optional, but the login can be None (for
-		unauthentified actions such as createPlayer for example).
-
-		Will raise an core.exception.exception if no login is provided
-		and the provided action needs player.
+		Method to init the Rpg's world.
 		"""
 		if os.path.isfile(world) is False:
 			raise core.exception.exception(_('ERROR_UNKNOWN_SELECTED_WORLD'))
 
 		Model.setDB(world)
-		self.initPlayer(login)
 
 	def initPlayer(self, login=None):
 		"""
