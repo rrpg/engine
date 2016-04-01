@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from models.Model import Model
+from models import character, player
 import sqlite3
 
 
@@ -9,6 +10,24 @@ class saved_game:
 	def loadAll():
 		return model.loadAll()
 
+
+	@staticmethod
+	def cleanSavedGame(saveId):
+		savedGame = model.loadById(saveId)
+		if savedGame['id_player'] is not None:
+			model.update(
+				{
+					'id_player': None,
+					'id_character': None
+				},
+				('id_saved_game = ?', [saveId])
+			)
+			player.model.delete(
+				('id_player = ?', [savedGame['id_player']])
+			)
+			character.model.delete(
+				('id_character = ?', [savedGame['id_character']])
+			)
 
 class model(Model):
 	"""
