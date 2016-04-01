@@ -24,10 +24,7 @@ class Model(object):
 
 	@classmethod
 	def getClass(cls):
-		if cls._table is None:
-			cls._table = cls.__module__.split('.').pop()
-
-		return cls._table
+		return cls.__module__.split('.').pop()
 
 	#public:
 	@staticmethod
