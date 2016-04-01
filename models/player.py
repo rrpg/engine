@@ -15,6 +15,10 @@ class player(character.character):
 	def isConnected(self):
 		return self._model is not None
 
+	@staticmethod
+	def loadById(idPlayer):
+		return model.loadById(idPlayer)
+
 	#~ Method to connect the player
 	def connect(self, login):
 		self._login = login
