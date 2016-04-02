@@ -2,8 +2,8 @@
 
 import core
 import core.Rpg
-from core import utils
-from models import player, gender, species
+from core import utils, config
+from models import player, gender, species, saved_game
 from core.localisation import _
 from core import command, command_factory
 import readline
@@ -17,7 +17,7 @@ class main:
 
 		try:
 			self._engine.init(world)
-			self._doInteractiveAuth()
+			self._showMainMenu()
 		except (KeyboardInterrupt, EOFError):
 			print("")
 			return
@@ -29,21 +29,19 @@ class main:
 
 		self.run()
 
-	def _doInteractiveAuth(self): # pragma: no cover
-		'''
-		This method asks the player to login or to create a new account
-		'''
-
-		choice = self.choiceMenu(
-			_('PLAYER_SELECTION'), _('CHOICE_QUESTION'),
-			[_('CHOICE_NEW_PLAYER'), _('CHOICE_EXISTING_PLAYER')]
+	def _showMainMenu(self):
+		choiceGame = self.choiceMenu(
+			_('MAIN_MENU_TITLE'), _('CHOICE_QUESTION'),
+			[_('CHOICE_NEW_GAME'), _('CHOICE_LOAD_GAME')]
 		)
 
-		if choice == 0:
+		# new game
+		if choiceGame == 0:
 			(login, genderId, speciesId) = self._interactivePlayerCreation()
 			self._engine.setAction(['create-player', login, genderId, speciesId])
 			print(self._engine._runAction())
-		elif choice == 1:
+		# load game
+		else:
 			login = self._promptLoginFromStdin()
 
 		self._engine._initPlayer(login)
@@ -184,3 +182,12 @@ class main:
 				v = -0
 
 		return v - 1
+
+	def yesNoQuestion(self, question):
+		v = None
+		yesNo = {'yes': _('ANSWER_YES'), 'no': _('ANSWER_NO')}
+		questionDataFormat = {'choices': '({yes}/{no})'.format(**yesNo)}
+		while v not in yesNo.values():
+			v = utils.read(question.format(**questionDataFormat))
+
+		return v == _('ANSWER_YES')
