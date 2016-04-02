@@ -17,7 +17,8 @@ class model(Model):
 
 	fields = (
 		'id_saved_game',
-		'id_player'
+		'id_player',
+		'id_character'
 	)
 
 	@staticmethod
