@@ -35,12 +35,14 @@ class main:
 			[s for s in savedGames if s['login'] is not None]
 		) > 0
 
+		newGame = True
 		choiceGame = 0
 		if hasExistingGames:
 			choiceGame = self.choiceMenu(
 				_('MAIN_MENU_TITLE'), _('CHOICE_QUESTION'),
 				[_('CHOICE_NEW_GAME'), _('CHOICE_LOAD_GAME')]
 			)
+			newGame = choiceGame == 0
 
 		choiceSave = None
 		savedGameLogin = None
@@ -54,25 +56,17 @@ class main:
 			savedGameLogin = savedGames[choiceSave]['login']
 
 			# new game
-			if choiceGame == 0:
-				# saved game used
-				if savedGameLogin is not None:
-					# no overwrite, let's choose another saved game
-					if not self.yesNoQuestion(_('OVERWRITE_SAVEDGAME_QUESTION_{choices}')):
-						choiceSave = None
-					# overwrite the saved game
-					else:
-						newGame = True
-				# unused save slot
-				else:
-					newGame = True
-			# load game
-			elif choiceGame == 1:
-				# no saved game exists in this slot
-				if savedGameLogin is None:
+			# and saved game used
+			# and no overwrite, let's choose another saved game
+			if newGame \
+				and savedGameLogin is not None \
+				and not self.yesNoQuestion(_('OVERWRITE_SAVEDGAME_QUESTION_{choices}')):
 					choiceSave = None
-				else:
-					newGame = False
+			# load game
+			# and no saved game exists in this slot
+			elif not newGame \
+				and savedGameLogin is None:
+					choiceSave = None
 
 		# new game
 		if savedGameLogin is None:
