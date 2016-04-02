@@ -80,7 +80,7 @@ class main:
 			self._engine.setAction(['create-player', login, genderId, speciesId])
 			print(self._engine._runAction())
 
-		self._engine._initPlayer(savedGameLogin)
+		self._engine.initPlayer(savedGameLogin)
 
 	@staticmethod
 	def formatSavedGameName(s):

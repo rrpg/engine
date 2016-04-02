@@ -40,9 +40,9 @@ class Rpg:
 			raise core.exception.exception(_('ERROR_UNKNOWN_SELECTED_WORLD'))
 
 		Model.setDB(world)
-		self._initPlayer(login)
+		self.initPlayer(login)
 
-	def _initPlayer(self, login):
+	def initPlayer(self, login):
 		"""
 		Method to init the player with a login.
 		"""
