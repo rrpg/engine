@@ -43,6 +43,7 @@ class main:
 			)
 
 		choiceSave = None
+		savedGameLogin = None
 		while choiceSave is None:
 			choiceSave = self.choiceMenu(
 				_('SAVED_GAME_MENU_TITLE'),
@@ -74,15 +75,12 @@ class main:
 					newGame = False
 
 		# new game
-		if choiceGame == 0:
-			(login, genderId, speciesId) = self._interactivePlayerCreation()
+		if savedGameLogin is None:
+			(savedGameLogin, genderId, speciesId) = self._interactivePlayerCreation()
 			self._engine.setAction(['create-player', login, genderId, speciesId])
 			print(self._engine._runAction())
-		# load game
-		else:
-			login = self._promptLoginFromStdin()
 
-		self._engine._initPlayer(login)
+		self._engine._initPlayer(savedGameLogin)
 
 	@staticmethod
 	def formatSavedGameName(s):
@@ -126,16 +124,6 @@ class main:
 		speciesId = sps[speciesIndex]['id_species']
 
 		return (login, genderId, speciesId)
-
-	def _promptLoginFromStdin(self): # pragma: no cover
-		'''
-		Ask the player to type his login
-		'''
-		login = ''
-		while login == '':
-			login = utils.read(_('LOGIN_PROMPT'))
-
-		return login
 
 	def _gameOver(self): # pragma: no cover
 		print(_('GAME_OVER_TEXT'))
