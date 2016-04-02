@@ -18,7 +18,6 @@ class main:
 		try:
 			self._engine.init(world)
 			self._showMainMenu()
-			self._doInteractiveAuth()
 		except (KeyboardInterrupt, EOFError):
 			print("")
 			return
@@ -36,21 +35,13 @@ class main:
 			[_('CHOICE_NEW_GAME'), _('CHOICE_LOAD_GAME')]
 		)
 
-	def _doInteractiveAuth(self): # pragma: no cover
-		'''
-		This method asks the player to login or to create a new account
-		'''
-
-		choice = self.choiceMenu(
-			_('PLAYER_SELECTION'), _('CHOICE_QUESTION'),
-			[_('CHOICE_NEW_PLAYER'), _('CHOICE_EXISTING_PLAYER')]
-		)
-
-		if choice == 0:
+		# new game
+		if choiceGame == 0:
 			(login, genderId, speciesId) = self._interactivePlayerCreation()
 			self._engine.setAction(['create-player', login, genderId, speciesId])
 			print(self._engine._runAction())
-		elif choice == 1:
+		# load game
+		else:
 			login = self._promptLoginFromStdin()
 
 		self._engine._initPlayer(login)
