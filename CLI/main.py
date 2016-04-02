@@ -17,7 +17,21 @@ class main:
 
 		try:
 			self._engine.initWorld(world)
-			self._showMainMenu()
+			(saveId, newGame, login) = self._showMainMenu()
+
+			# new game
+			if newGame:
+				(login, genderId, speciesId) = self._interactivePlayerCreation()
+				self._engine.setAction([
+					'create-player',
+					saveId,
+					login,
+					genderId,
+					speciesId
+				])
+				print(self._engine._runAction())
+
+			self._engine.initPlayer(login)
 		except (KeyboardInterrupt, EOFError):
 			print("")
 			return
@@ -68,13 +82,11 @@ class main:
 				and savedGameLogin is None:
 					choiceSave = None
 
-		# new game
-		if savedGameLogin is None:
-			(savedGameLogin, genderId, speciesId) = self._interactivePlayerCreation()
-			self._engine.setAction(['create-player', login, genderId, speciesId])
-			print(self._engine._runAction())
-
-		self._engine.initPlayer(savedGameLogin)
+		return (
+			savedGames[choiceSave]['id_saved_game'],
+			newGame,
+			savedGameLogin
+		)
 
 	@staticmethod
 	def formatSavedGameName(s):
