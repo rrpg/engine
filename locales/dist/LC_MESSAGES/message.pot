@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:57+0000\n"
+"POT-Creation-Date: 2016-04-03 15:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,40 +17,92 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: core/Rpg.py:55 tests/core/testRpg.py:19
-msgid "ERROR_UNKNOWN_SELECTED_WORLD"
-msgstr ""
-
-#: core/Rpg.py:81
-msgid "PLAYER_SELECTION"
-msgstr ""
-
-#: core/Rpg.py:82
-msgid "CHOICE_NEW_PLAYER"
-msgstr ""
-
-#: core/Rpg.py:83
-msgid "CHOICE_EXISTING_PLAYER"
-msgstr ""
-
-#: core/Rpg.py:86
+#: CLI/main.py:56
 msgid "CHOICE_QUESTION"
 msgstr ""
 
-#: core/Rpg.py:106 core/commands/createPlayer.py:45
+#: CLI/main.py:56
+msgid "MAIN_MENU_TITLE"
+msgstr ""
+
+#: CLI/main.py:57
+msgid "CHOICE_LOAD_GAME"
+msgstr ""
+
+#: CLI/main.py:57
+msgid "CHOICE_NEW_GAME"
+msgstr ""
+
+#: CLI/main.py:65
+msgid "SAVED_GAME_MENU_TITLE"
+msgstr ""
+
+#: CLI/main.py:66
+msgid "SAVED_GAME_CHOICE_QUESTION"
+msgstr ""
+
+#: CLI/main.py:77
+#, python-brace-format
+msgid "OVERWRITE_SAVEDGAME_QUESTION_{choices}"
+msgstr ""
+
+#: CLI/main.py:94
+msgid "EMPTY_SAVED_GAME"
+msgstr ""
+
+#: CLI/main.py:99
+#, python-brace-format
+msgid "SAVED_GAME_INFO_{login}"
+msgstr ""
+
+#: CLI/main.py:104
 msgid "LOGIN_PROMPT"
 msgstr ""
 
-#: core/Rpg.py:115 tests/core/testRpg.py:34
-msgid "ERROR_INVALID_FORMAT_ACTION"
+#: CLI/main.py:107 core/commands/createPlayer.py:16
+#: tests/core/commands/testCreatePlayer.py:60
+#: tests/core/commands/testCreatePlayer.py:66
+msgid "ERROR_SIGNUP_LOGIN_ALREADY_USED"
 msgstr ""
 
-#: core/Rpg.py:119
+#: CLI/main.py:113
+msgid "GENDER_PROMPT"
+msgstr ""
+
+#: CLI/main.py:113
+msgid "GENDER_SELECTION"
+msgstr ""
+
+#: CLI/main.py:126
+msgid "SPECIES_PROMPT"
+msgstr ""
+
+#: CLI/main.py:126
+msgid "SPECIES_SELECTION"
+msgstr ""
+
+#: CLI/main.py:135
 msgid "GAME_OVER_TEXT"
 msgstr ""
 
-#: core/Rpg.py:218
+#: CLI/main.py:211
 msgid "COMMAND_PROMPT"
+msgstr ""
+
+#: CLI/main.py:230
+msgid "ANSWER_NO"
+msgstr ""
+
+#: CLI/main.py:230 CLI/main.py:235
+msgid "ANSWER_YES"
+msgstr ""
+
+#: core/Rpg.py:35 tests/core/testRpg.py:19
+msgid "ERROR_UNKNOWN_SELECTED_WORLD"
+msgstr ""
+
+#: core/Rpg.py:53 tests/core/testRpg.py:32
+msgid "ERROR_INVALID_FORMAT_ACTION"
 msgstr ""
 
 #: core/command_factory.py:44 core/commands/help.py:38
@@ -84,6 +136,8 @@ msgid "TALK_COMMAND"
 msgstr ""
 
 #: core/command_factory.py:46 core/commands/help.py:26
+#: tests/core/commands/testAttack.py:25 tests/core/commands/testAttack.py:27
+#: tests/core/commands/testAttack.py:31 tests/core/commands/testAttack.py:33
 #: tests/core/commands/testEnter.py:21 tests/core/commands/testEnter.py:28
 #: tests/core/commands/testHelp.py:18 tests/core/commands/testHelp.py:67
 #: tests/core/commands/testLook.py:145 tests/core/commands/testLook.py:147
@@ -254,6 +308,10 @@ msgid "SAVE_COMMAND"
 msgstr ""
 
 #: core/command_factory.py:57 core/commands/help.py:74
+#: tests/core/commands/testAttack.py:37 tests/core/commands/testAttack.py:42
+#: tests/core/commands/testAttack.py:49 tests/core/commands/testAttack.py:62
+#: tests/core/commands/testAttack.py:88 tests/core/commands/testAttack.py:101
+#: tests/core/commands/testAttack.py:128 tests/core/commands/testAttack.py:144
 #: tests/core/commands/testHelp.py:48 tests/core/commands/testHelp.py:103
 msgid "ATTACK_COMMAND"
 msgstr ""
@@ -274,30 +332,33 @@ msgid "ERROR_DENIED_COMMAND_WHILE_FIGHTING"
 msgstr ""
 
 #: core/command_factory.py:98 core/command_factory.py:111
-#: tests/core/testRpg.py:39 tests/core/testRpg.py:44
+#: tests/core/testRpg.py:37 tests/core/testRpg.py:42
 msgid "ERROR_UNKNOWN_COMMAND"
 msgstr ""
 
-#: core/commands/attack.py:19
+#: core/commands/attack.py:19 tests/core/commands/testAttack.py:39
+#: tests/core/commands/testAttack.py:44
 msgid "ERROR_FIGHT_NOT_FIGHTING"
 msgstr ""
 
-#: core/commands/attack.py:30
+#: core/commands/attack.py:30 tests/core/commands/testAttack.py:54
+#: tests/core/commands/testAttack.py:93 tests/core/commands/testAttack.py:135
 #, python-brace-format
 msgid "ATTACK_CONFIRM_PLAYER_TO_ENEMY_{enemy}_{damages}"
 msgstr ""
 
 #: core/commands/attack.py:31 core/commands/move.py:74
+#: tests/core/commands/testAttack.py:55 tests/core/commands/testAttack.py:136
 #, python-brace-format
 msgid "ATTACK_CONFIRM_ENEMY_TO_PLAYER_{enemy}_{damages}"
 msgstr ""
 
-#: core/commands/attack.py:32
+#: core/commands/attack.py:32 tests/core/commands/testAttack.py:94
 #, python-brace-format
 msgid "ATTACK_VICTORY_{enemy}"
 msgstr ""
 
-#: core/commands/attack.py:33
+#: core/commands/attack.py:33 tests/core/commands/testAttack.py:137
 #, python-brace-format
 msgid "ATTACK_LOST_{enemy}"
 msgstr ""
@@ -311,44 +372,27 @@ msgstr ""
 msgid "PLAYER_AUTHENTICATION_CONFIRMATION"
 msgstr ""
 
-#: core/commands/createPlayer.py:23 tests/core/commands/testCreatePlayer.py:15
-#: tests/core/commands/testCreatePlayer.py:20
+#: core/commands/createPlayer.py:10 tests/core/commands/testCreatePlayer.py:36
+#: tests/core/commands/testCreatePlayer.py:42
 msgid "ERROR_SIGNUP_NOT_ENOUGH_ARGUMENTS"
 msgstr ""
 
-#: core/commands/createPlayer.py:28 core/commands/createPlayer.py:48
-#: tests/core/commands/testCreatePlayer.py:25
-#: tests/core/commands/testCreatePlayer.py:30
-msgid "ERROR_SIGNUP_LOGIN_ALREADY_USED"
+#: core/commands/createPlayer.py:20 tests/core/commands/testCreatePlayer.py:48
+#: tests/core/commands/testCreatePlayer.py:54
+msgid "ERROR_SIGNUP_INVALID_SAVED_GAME_ID"
 msgstr ""
 
-#: core/commands/createPlayer.py:32 tests/core/commands/testCreatePlayer.py:35
-#: tests/core/commands/testCreatePlayer.py:40
+#: core/commands/createPlayer.py:24 tests/core/commands/testCreatePlayer.py:72
+#: tests/core/commands/testCreatePlayer.py:78
 msgid "ERROR_SIGNUP_INVALID_GENDER"
 msgstr ""
 
-#: core/commands/createPlayer.py:36 tests/core/commands/testCreatePlayer.py:45
-#: tests/core/commands/testCreatePlayer.py:50
+#: core/commands/createPlayer.py:28 tests/core/commands/testCreatePlayer.py:84
+#: tests/core/commands/testCreatePlayer.py:90
 msgid "ERROR_SIGNUP_INVALID_SPECIES"
 msgstr ""
 
-#: core/commands/createPlayer.py:54
-msgid "GENDER_SELECTION"
-msgstr ""
-
-#: core/commands/createPlayer.py:60
-msgid "GENDER_PROMPT"
-msgstr ""
-
-#: core/commands/createPlayer.py:74
-msgid "SPECIES_SELECTION"
-msgstr ""
-
-#: core/commands/createPlayer.py:81
-msgid "SPECIES_PROMPT"
-msgstr ""
-
-#: core/commands/createPlayer.py:94 tests/core/commands/testCreatePlayer.py:55
+#: core/commands/createPlayer.py:47 tests/core/commands/testCreatePlayer.py:96
 msgid "PLAYER_CREATION_CONFIRMATION"
 msgstr ""
 
@@ -805,17 +849,18 @@ msgstr ""
 msgid "DIRECTION_KEY_NORTH"
 msgstr ""
 
-#: models/area.py:22 tests/core/commands/testLook.py:147
-#: tests/core/commands/testLook.py:156 tests/core/commands/testMove.py:31
-#: tests/core/commands/testMove.py:36 tests/core/commands/testMove.py:43
-#: tests/core/commands/testMove.py:45 tests/core/commands/testMove.py:51
-#: tests/core/commands/testMove.py:53 tests/core/commands/testMove.py:58
-#: tests/core/commands/testMove.py:68 tests/core/commands/testMove.py:79
-#: tests/core/commands/testMove.py:89
+#: models/area.py:22 tests/core/commands/testAttack.py:27
+#: tests/core/commands/testLook.py:147 tests/core/commands/testLook.py:156
+#: tests/core/commands/testMove.py:31 tests/core/commands/testMove.py:36
+#: tests/core/commands/testMove.py:43 tests/core/commands/testMove.py:45
+#: tests/core/commands/testMove.py:51 tests/core/commands/testMove.py:53
+#: tests/core/commands/testMove.py:58 tests/core/commands/testMove.py:68
+#: tests/core/commands/testMove.py:79 tests/core/commands/testMove.py:89
 msgid "DIRECTION_KEY_EAST"
 msgstr ""
 
-#: models/area.py:23 tests/core/commands/testEnter.py:21
+#: models/area.py:23 tests/core/commands/testAttack.py:25
+#: tests/core/commands/testAttack.py:31 tests/core/commands/testEnter.py:21
 #: tests/core/commands/testEnter.py:28 tests/core/commands/testLook.py:21
 #: tests/core/commands/testLook.py:40 tests/core/commands/testLook.py:92
 #: tests/core/commands/testLook.py:98 tests/core/commands/testLook.py:145
@@ -831,10 +876,11 @@ msgstr ""
 msgid "DIRECTION_KEY_SOUTH"
 msgstr ""
 
-#: models/area.py:24 tests/core/commands/testMove.py:60
-#: tests/core/commands/testMove.py:62 tests/core/commands/testMove.py:70
-#: tests/core/commands/testMove.py:72 tests/core/commands/testMove.py:77
-#: tests/core/commands/testMove.py:81 tests/core/commands/testMove.py:87
+#: models/area.py:24 tests/core/commands/testAttack.py:33
+#: tests/core/commands/testMove.py:60 tests/core/commands/testMove.py:62
+#: tests/core/commands/testMove.py:70 tests/core/commands/testMove.py:72
+#: tests/core/commands/testMove.py:77 tests/core/commands/testMove.py:81
+#: tests/core/commands/testMove.py:87
 msgid "DIRECTION_KEY_WEST"
 msgstr ""
 
@@ -880,7 +926,7 @@ msgstr ""
 msgid "ERROR_PLACE_GENERATION"
 msgstr ""
 
-#: models/player.py:25 tests/core/commands/testAuthenticate.py:25
+#: models/player.py:29 tests/core/commands/testAuthenticate.py:25
 #: tests/core/commands/testAuthenticate.py:30
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
 msgstr ""
