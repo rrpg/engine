@@ -13,7 +13,10 @@ class saved_game:
 
 	@staticmethod
 	def loadById(savedGameId):
-		return model.loadById(savedGameId)
+		savedGame = model.loadById(savedGameId)
+		if savedGame == {}:
+			return None
+		return savedGame
 
 	@staticmethod
 	def updateSavedGame(saveId, data):
