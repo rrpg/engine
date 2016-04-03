@@ -10,6 +10,7 @@ from models.saved_game import saved_game
 class createPlayerTests(tests.common.common):
 	login = None
 	idSavedGame = 1
+	incorrectIdSavedGame = 42
 
 	def compareSavedGamesSaveOk(self):
 		saves = saved_game.loadAll()
@@ -39,6 +40,18 @@ class createPlayerTests(tests.common.common):
 		self.rpg.setAction(['create-player'])
 		output = self.rpg._runAction(True)
 		self.assertEquals(output, {"error": {"message": _('ERROR_SIGNUP_NOT_ENOUGH_ARGUMENTS'), "code": 1}})
+		self.compareSavedGamesSaveKo()
+
+	def test_unknown_saved_game_text(self):
+		self.rpg.setAction(['create-player', self.incorrectIdSavedGame, 'TEST_PLAYER_NOT_CREATED', 1, 1])
+		output = self.rpg._runAction()
+		self.assertEquals(output, _('ERROR_SIGNUP_INVALID_SAVED_GAME_ID'))
+		self.compareSavedGamesSaveKo()
+
+	def test_unknown_saved_game_json(self):
+		self.rpg.setAction(['create-player', self.incorrectIdSavedGame, 'TEST_PLAYER_NOT_CREATED', 1, 1])
+		output = self.rpg._runAction(True)
+		self.assertEquals(output, {"error": {"message": _('ERROR_SIGNUP_INVALID_SAVED_GAME_ID'), "code": 1}})
 		self.compareSavedGamesSaveKo()
 
 	def test_login_already_used_text(self):
