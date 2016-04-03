@@ -35,7 +35,8 @@ class common(unittest.TestCase):
 
 	def initialiseClient(self):
 		self.rpg = Rpg.Rpg()
-		self.rpg.init(self.dbFile, self.login)
+		self.rpg.initWorld(self.dbFile)
+		self.rpg.initPlayer(self.login)
 
 	def getInventory(self):
 		return self.rpg._player.getInventory()

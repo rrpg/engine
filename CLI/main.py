@@ -16,8 +16,22 @@ class main:
 		self._engine = core.Rpg.Rpg(debug)
 
 		try:
-			self._engine.init(world)
-			self._showMainMenu()
+			self._engine.initWorld(world)
+			(saveId, newGame, login) = self._showMainMenu()
+
+			# new game
+			if newGame:
+				(login, genderId, speciesId) = self._interactivePlayerCreation()
+				self._engine.setAction([
+					'create-player',
+					saveId,
+					login,
+					genderId,
+					speciesId
+				])
+				print(self._engine._runAction())
+
+			self._engine.initPlayer(login)
 		except (KeyboardInterrupt, EOFError):
 			print("")
 			return
@@ -30,21 +44,59 @@ class main:
 		self.run()
 
 	def _showMainMenu(self):
-		choiceGame = self.choiceMenu(
-			_('MAIN_MENU_TITLE'), _('CHOICE_QUESTION'),
-			[_('CHOICE_NEW_GAME'), _('CHOICE_LOAD_GAME')]
+		savedGames = saved_game.saved_game.loadAll()
+		hasExistingGames = len(
+			[s for s in savedGames if s['login'] is not None]
+		) > 0
+
+		newGame = True
+		choiceGame = 0
+		if hasExistingGames:
+			choiceGame = self.choiceMenu(
+				_('MAIN_MENU_TITLE'), _('CHOICE_QUESTION'),
+				[_('CHOICE_NEW_GAME'), _('CHOICE_LOAD_GAME')]
+			)
+			newGame = choiceGame == 0
+
+		choiceSave = None
+		savedGameLogin = None
+		while choiceSave is None:
+			choiceSave = self.choiceMenu(
+				_('SAVED_GAME_MENU_TITLE'),
+				_('SAVED_GAME_CHOICE_QUESTION'),
+				[self.formatSavedGameName(s) for s in savedGames]
+			)
+
+			savedGameLogin = savedGames[choiceSave]['login']
+
+			# new game
+			# and saved game used
+			# and no overwrite, let's choose another saved game
+			if newGame \
+				and savedGameLogin is not None \
+				and not self.yesNoQuestion(_('OVERWRITE_SAVEDGAME_QUESTION_{choices}')):
+					choiceSave = None
+			# load game
+			# and no saved game exists in this slot
+			elif not newGame \
+				and savedGameLogin is None:
+					choiceSave = None
+
+		return (
+			savedGames[choiceSave]['id_saved_game'],
+			newGame,
+			savedGameLogin
 		)
 
-		# new game
-		if choiceGame == 0:
-			(login, genderId, speciesId) = self._interactivePlayerCreation()
-			self._engine.setAction(['create-player', login, genderId, speciesId])
-			print(self._engine._runAction())
-		# load game
+	@staticmethod
+	def formatSavedGameName(s):
+		if s['login'] is None:
+			return _('EMPTY_SAVED_GAME')
 		else:
-			login = self._promptLoginFromStdin()
-
-		self._engine._initPlayer(login)
+			data = {
+				'login': s['login']
+			}
+			return _('SAVED_GAME_INFO_{login}').format(**data)
 
 	def _interactivePlayerCreation(self): # pragma: no cover
 		login = None
@@ -78,16 +130,6 @@ class main:
 		speciesId = sps[speciesIndex]['id_species']
 
 		return (login, genderId, speciesId)
-
-	def _promptLoginFromStdin(self): # pragma: no cover
-		'''
-		Ask the player to type his login
-		'''
-		login = ''
-		while login == '':
-			login = utils.read(_('LOGIN_PROMPT'))
-
-		return login
 
 	def _gameOver(self): # pragma: no cover
 		print(_('GAME_OVER_TEXT'))

@@ -127,6 +127,16 @@ class Model(object):
 		Model.disconnect(db)
 
 	@classmethod
+	def delete(cls, where, db=None):
+		db = cls.connect(db)
+		c = db.cursor()
+
+		query = "DELETE FROM %(table)s WHERE %(where)s" %\
+			{'table': cls.getClass(), 'where': where[0]}
+		c.execute(query, where[1])
+		cls.disconnect(db)
+
+	@classmethod
 	def connect(cls, db=None):
 		if db is None:
 			db = cls._defaultDB

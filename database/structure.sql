@@ -140,4 +140,13 @@ CREATE TABLE creature_can_drop (
 	PRIMARY KEY (id_creature, id_item)
 );
 
+CREATE TABLE saved_game (
+	id_saved_game INTEGER PRIMARY KEY AUTOINCREMENT,
+	id_player INT REFERENCES player (id_player),
+	id_character INT REFERENCES `character` (id_character)
+);
+
+INSERT INTO saved_game (id_player, id_character) VALUES
+	(NULL, NULL), (NULL, NULL), (NULL, NULL);
+
 COMMIT;

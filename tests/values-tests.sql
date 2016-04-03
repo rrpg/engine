@@ -85,4 +85,6 @@ INSERT INTO `character` (name, id_species, id_gender, id_area) VALUES ('TEST_PLA
 INSERT INTO player (id_character, login) VALUES (2, 'TEST_PLAYER');
 
 
+UPDATE saved_game SET id_player = 1, id_character = 2 WHERE id_saved_game = 1;
+
 COMMIT;
