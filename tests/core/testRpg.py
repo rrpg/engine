@@ -15,7 +15,6 @@ class rpgTests(tests.common.common):
 		rpgEngine = Rpg.Rpg()
 		try:
 			rpgEngine.initWorld("some/unexisting/world")
-			rpgEngine.initPlayer("uselessLogin")
 		except core.exception.exception as e:
 			self.assertEquals(str(e), _('ERROR_UNKNOWN_SELECTED_WORLD'))
 
