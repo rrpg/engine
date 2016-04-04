@@ -54,6 +54,8 @@ class model(character.model):
 
 		pm = pm[0]
 		cm = character.model.loadById(pm['id_character'])
+		cm['id_player'] = pm['id_player']
+		cm['login'] = pm['login']
 
 		return cm
 
