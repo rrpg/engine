@@ -27,7 +27,7 @@ class player(character.character):
 		return True
 
 	def createNewPlayer(self, login, speciesId, genderId):
-		self._model = {
+		m = {
 			'login': login,
 			'name': login,
 			'id_species': speciesId,
@@ -35,8 +35,9 @@ class player(character.character):
 			'id_area': settings.get('START_CELL_ID')
 		}
 
-		self._model['id_character'] = character.model.insert(self._model)
-		self._model['id_player'] = model.insert(self._model)
+		m['id_character'] = character.model.insert(m)
+		model.insert(m)
+		self._model = model.loadByLogin(login)
 
 	def isAlive(self):
 		return self._model['stat_current_hp'] > 0
