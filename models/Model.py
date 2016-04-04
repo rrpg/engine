@@ -24,14 +24,11 @@ class Model(object):
 
 	@classmethod
 	def getClass(cls):
-		if cls._table is None:
-			cls._table = cls.__module__.split('.').pop()
-
-		return cls._table
+		return cls.__module__.split('.').pop()
 
 	#public:
-	@staticmethod
-	def fetchAllRows(query, params={}, db=None):
+	@classmethod
+	def fetchAllRows(cls, query, params={}, db=None):
 		"""
 		c.fetchAllRows(query, params) -> list()
 
@@ -45,7 +42,7 @@ class Model(object):
 			an empty list if there's no result.
 		"""
 
-		db = Model.connect(db)
+		db = cls.connect(db)
 		c = db.cursor()
 		result = []
 		currentRow = {}
@@ -57,13 +54,13 @@ class Model(object):
 		result = c.fetchall()
 		resultList = list()
 		for r in result:
-			resultList.append(Model._createRow(r, column_names))
+			resultList.append(cls._createRow(r, column_names))
 
 		db.close()
 		return resultList
 
-	@staticmethod
-	def fetchOneRow(query, params={},db=None):
+	@classmethod
+	def fetchOneRow(cls, query, params={},db=None):
 		"""
 		c.fetchOneRow(query, params) -> dict()
 
@@ -77,7 +74,7 @@ class Model(object):
 			an empty dict if there's no result.
 		"""
 
-		db = Model.connect(db)
+		db = cls.connect(db)
 		c = db.cursor()
 		result = dict()
 		nbCols = 0
@@ -87,7 +84,7 @@ class Model(object):
 		#~ Get the colums names
 		column_names = [d[0] for d in c.description]
 		if r is not None:
-			result = Model._createRow(r, column_names)
+			result = cls._createRow(r, column_names)
 
 		db.close()
 		return result
@@ -97,25 +94,24 @@ class Model(object):
 		"""
 		Insert a new row in the database
 		"""
-		db = Model.connect(db)
+		db = cls.connect(db)
 		c = db.cursor()
 
 		fields = cls.filterFields(fields)
 		fieldsNames = list(map(lambda x: '"' + x + '"', fields.keys()))
 		values = ['?'] * len(fieldsNames)
-
 		query = "INSERT INTO %s (%s) VALUES (%s)" % (
 			cls.getClass(), ','.join(fieldsNames), ','.join(values)
 		)
 
 		c.execute(query, list(fields.values()))
-		Model.disconnect(db)
+		cls.disconnect(db)
 
 		return c.lastrowid
 
 	@classmethod
 	def update(cls, fields, where, db=None):
-		db = Model.connect(db)
+		db = cls.connect(db)
 		c = db.cursor()
 
 		fields = cls.filterFields(fields)
@@ -124,7 +120,7 @@ class Model(object):
 		query = "UPDATE %(table)s SET %(values)s WHERE %(where)s" %\
 			{'table': cls.getClass(), 'values': ','.join(fieldsNames), 'where': where[0]}
 		c.execute(query, list(fields.values()) + where[1])
-		Model.disconnect(db)
+		cls.disconnect(db)
 
 	@classmethod
 	def delete(cls, where, db=None):
@@ -147,6 +143,10 @@ class Model(object):
 	@classmethod
 	def setDB(cls, db):
 		cls._defaultDB = db
+
+	@classmethod
+	def getDB(cls):
+		return cls._defaultDB
 
 	@classmethod
 	def disconnect(cls, db):
@@ -172,7 +172,7 @@ class Model(object):
 				%(table)s\
 		" % {'fields': fields, 'table': cls.getClass()}
 
-		return Model.fetchAllRows(query, db=db)
+		return cls.fetchAllRows(query, db=db)
 
 	@classmethod
 	def loadById(cls, id, fields=None, db=None):
@@ -188,7 +188,7 @@ class Model(object):
 				%(where)s\
 		" % {'fields': fields, 'table': table, 'where': 'id_' + table + ' = ?'}
 
-		return Model.fetchOneRow(query, [id], db)
+		return cls.fetchOneRow(query, [id], db)
 
 	@classmethod
 	def loadBy(cls, filters, fields=None, db=None):
@@ -210,7 +210,7 @@ class Model(object):
 			'where': ' AND '.join(filtersNames)
 		}
 
-		return Model.fetchAllRows(query, filters.values(), db=db)
+		return cls.fetchAllRows(query, filters.values(), db=db)
 
 	@classmethod
 	def prepareFieldsForSelect(cls, fields=None):
