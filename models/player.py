@@ -15,10 +15,6 @@ class player(character.character):
 	def isConnected(self):
 		return self._model is not None
 
-	@staticmethod
-	def loadById(idPlayer):
-		return model.loadById(idPlayer)
-
 	#~ Method to connect the player
 	def connect(self, login):
 		self._login = login
@@ -40,7 +36,7 @@ class player(character.character):
 		}
 
 		self._model['id_character'] = character.model.insert(self._model)
-		return model.insert(self._model)
+		self._model['id_player'] = model.insert(self._model)
 
 	def isAlive(self):
 		return self._model['stat_current_hp'] > 0

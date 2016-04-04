@@ -27,17 +27,16 @@ class createPlayer(core.command.command):
 		if str(speciesId) not in sps:
 			raise player.exception(_('ERROR_SIGNUP_INVALID_SPECIES'))
 
-		playerId = self._player.createNewPlayer(
+		self._player.createNewPlayer(
 			login, speciesId, genderId
 		)
 
-		p = player.player.loadById(playerId)
 		saved_game.saved_game.cleanSavedGame(savedGameId)
 		saved_game.saved_game.updateSavedGame(
 			savedGameId,
 			{
-				'id_player': playerId,
-				'id_character': p['id_character']
+				'id_player': self._player._model['id_player'],
+				'id_character': self._player._model['id_character']
 			}
 		)
 		return login
