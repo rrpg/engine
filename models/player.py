@@ -3,6 +3,7 @@ import core.exception
 from models import character
 from models.Model import Model
 import datetime
+import json
 from models.settings import settings
 from core.localisation import _
 
@@ -41,6 +42,9 @@ class player(character.character):
 
 	def isAlive(self):
 		return self._model['stat_current_hp'] > 0
+
+	def getSnapshot(self):
+		return json.dumps(self._model)
 
 
 class model(character.model):
