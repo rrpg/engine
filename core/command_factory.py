@@ -65,9 +65,9 @@ class factory:
 	}
 
 	@staticmethod
-	def create(p, commandFull):
+	def create(p, commandFull, savedGameId=None):
 		"""
-		command.factory.create(p, commandFull) -> command.command
+		command.factory.create(p, commandFull, savedGameId=None) -> command.command
 
 		Create the desired command.
 
@@ -99,6 +99,7 @@ class factory:
 
 		cmd.setArgs(commandFull)
 		cmd.setPlayer(p)
+		cmd.setSavedGameId(savedGameId)
 		return cmd
 
 	@staticmethod

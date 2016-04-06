@@ -78,7 +78,8 @@ class Rpg:
 		try:
 			c = command_factory.factory.create(
 				self._player,
-				self._action
+				self._action,
+				self._savedGame['id_saved_game']
 			)
 
 			if c == command_factory.quit:
