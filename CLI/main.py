@@ -32,7 +32,7 @@ class main:
 				])
 				print(self._engine._runAction())
 
-			self._engine.initPlayer(login)
+			self._engine.initPlayer()
 		except (KeyboardInterrupt, EOFError):
 			print("")
 			return

@@ -22,7 +22,7 @@ class Rpg:
 		- self._action
 		"""
 		self._savedGame = None
-		self.initPlayer()
+		self._player = player()
 		self._debug = debug
 		self._action = []
 		fight.fight.stopFight()
@@ -51,14 +51,16 @@ class Rpg:
 
 		self._savedGame = savedGame
 
-	def initPlayer(self, login=None):
+	def initPlayer(self):
 		"""
-		Method to init the player with a login.
+		Method to init the player with the current saved game's data.
 		"""
-		self._player = player()
+		if self._savedGame is None:
+			raise core.exception.exception(_('ERROR_SAVED_GAME_NEEDED_TO_INIT_PLAYER'))
 
-		if login is not None:
-			self._player.connect(login)
+		playerData = player.decodeSnapshot(self._savedGame['snapshot_player'])
+		if playerData is not None:
+			self._player.connect(playerData['login'])
 
 	def setAction(self, action):
 		'''
