@@ -4,6 +4,7 @@ from models.player import player
 from core import command_factory, fight
 from models.Model import Model
 from models.area import area
+from models import saved_game
 from models.item_container import container
 import os
 from core.localisation import _
@@ -20,6 +21,7 @@ class Rpg:
 		- self._debug
 		- self._action
 		"""
+		self._savedGame = None
 		self.initPlayer()
 		self._debug = debug
 		self._action = []
@@ -35,6 +37,19 @@ class Rpg:
 			raise core.exception.exception(_('ERROR_UNKNOWN_SELECTED_WORLD'))
 
 		Model.setDB(world)
+
+	def initSavedGame(self, savedGameId):
+		"""
+		Method to init the saved game to play on.
+		"""
+
+		savedGame = saved_game.saved_game.loadById(savedGameId)
+		if savedGame is None:
+			raise saved_game.exception(
+				_('ERROR_RRPG_INIT_INVALID_SAVED_GAME_ID')
+			)
+
+		self._savedGame = savedGame
 
 	def initPlayer(self, login=None):
 		"""

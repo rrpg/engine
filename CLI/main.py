@@ -18,6 +18,7 @@ class main:
 		try:
 			self._engine.initWorld(world)
 			(saveId, newGame, login) = self._showMainMenu()
+			self._engine.initSavedGame(saveId)
 
 			# new game
 			if newGame:
