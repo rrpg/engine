@@ -46,6 +46,14 @@ class player(character.character):
 	def getSnapshot(self):
 		return json.dumps(self._model)
 
+	@staticmethod
+	def decodeSnapshot(snapshot):
+		try:
+			s = json.loads(snapshot)
+		except:
+			s = None
+		return s
+
 
 class model(character.model):
 	fields = ['id_player', 'login', 'id_character']
