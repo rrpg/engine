@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from models.player import player
 from core import command_factory, fight
+from models.player import player
 from models.Model import Model
 from models.area import area
 from models import saved_game
