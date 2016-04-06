@@ -36,7 +36,8 @@ class createPlayer(core.command.command):
 			savedGameId,
 			{
 				'id_player': self._player._model['id_player'],
-				'id_character': self._player._model['id_character']
+				'id_character': self._player._model['id_character'],
+				'snapshot_player':  self._player.getSnapshot()
 			}
 		)
 		return login
