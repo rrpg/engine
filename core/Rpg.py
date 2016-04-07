@@ -51,6 +51,25 @@ class Rpg:
 
 		self._savedGame = savedGame
 
+	def createPlayer(self, login, genderId, speciesId):
+		"""
+		Method to create a new player and update the current saved
+		game's data.
+		"""
+		self._player.createNewPlayer(login, speciesId, genderId)
+
+		savedGameId = self._savedGame['id_saved_game']
+		saved_game.saved_game.cleanSavedGame(savedGameId)
+		saved_game.saved_game.updateSavedGame(
+			savedGameId,
+			{
+				'id_player': self._player._model['id_player'],
+				'id_character': self._player._model['id_character'],
+				'snapshot_player':  self._player.getSnapshot()
+			}
+		)
+		self._savedGame = saved_game.saved_game.loadById(savedGameId)
+
 	def initPlayer(self):
 		"""
 		Method to init the player with the current saved game's data.
