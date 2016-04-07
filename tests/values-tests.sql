@@ -83,9 +83,13 @@ INSERT INTO creature_area_type (id_creature, id_area_type, probability)
 -- For UT
 INSERT INTO `character` (name, id_species, id_gender, id_area) VALUES ('TEST_PLAYER', 1, 1, 2);
 INSERT INTO player (id_character, login) VALUES (2, 'TEST_PLAYER');
+INSERT INTO `character` (name, id_species, id_gender) VALUES ('TEST_PLAYER2', 1, 1);
+INSERT INTO player (id_character, login) VALUES (2, 'TEST_PLAYER2');
 
 
 UPDATE saved_game SET id_player = 1, id_character = 2, snapshot_player = '{"id_gender": 1, "name": "TEST_PLAYER", "id_character": 2, "id_player": 1, "stat_defence": 2, "stat_attack": 4, "stat_max_hp": 20, "inventory": null, "id_area": 1, "stat_current_hp": 20, "login": "TEST_PLAYER", "stat_speed": 2, "id_species": 1, "stat_luck": 10}'
 WHERE id_saved_game = 1;
+UPDATE saved_game SET id_player = 2, id_character = 3, snapshot_player = '{"id_gender": 1, "name": "TEST_PLAYER2bis", "id_character": 3, "id_player": 2, "stat_defence": 2, "stat_attack": 4, "stat_max_hp": 20, "inventory": null, "id_area": 1, "stat_current_hp": 20, "login": "TEST_PLAYER2bis", "stat_speed": 2, "id_species": 1, "stat_luck": 10}'
+WHERE id_saved_game = 2;
 
 COMMIT;

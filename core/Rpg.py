@@ -61,6 +61,8 @@ class Rpg:
 		playerData = player.decodeSnapshot(self._savedGame['snapshot_player'])
 		if playerData is not None:
 			self._player.connect(playerData['login'])
+		else:
+			raise core.exception.exception(_('ERROR_NON_EMPTY_SAVED_GAME_NEEDED_TO_INIT_PLAYER'))
 
 	def setAction(self, action):
 		'''
