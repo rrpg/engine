@@ -33,7 +33,6 @@ class rpgTests(tests.common.common):
 	def test_load_player_with_no_save(self):
 		rpgEngine = Rpg.Rpg()
 		rpgEngine.initWorld(self.dbFile)
-		self.assertRaises(core.exception.exception, rpgEngine.initPlayer)
 		with self.assertRaises(core.exception.exception) as raised:
 			rpgEngine.initPlayer()
 		self.assertEquals(str(raised.exception), _('ERROR_SAVED_GAME_NEEDED_TO_INIT_PLAYER'))
