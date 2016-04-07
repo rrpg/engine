@@ -111,7 +111,7 @@ class main:
 
 		genderId = genders[g]['id_gender']
 
-		sps = species.model.getSpecies()
+		sps = species.model.loadAll()
 		nbSpecies = len(sps)
 
 		if nbSpecies == 1:
