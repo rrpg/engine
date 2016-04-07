@@ -9,7 +9,7 @@ from core import Rpg
 
 
 class common(unittest.TestCase):
-	login = 'TEST_PLAYER'
+	initPlayer = True
 
 	def setUp(self):
 		self.dbFile = "/tmp/rpg.db"
@@ -33,10 +33,13 @@ class common(unittest.TestCase):
 
 		self.initialiseClient()
 
-	def initialiseClient(self):
+	def initialiseClient(self, initPlayer=True):
 		self.rpg = Rpg.Rpg()
 		self.rpg.initWorld(self.dbFile)
-		self.rpg.initPlayer(self.login)
+		self.rpg.initSavedGame(1)
+
+		if self.initPlayer:
+			self.rpg.initPlayer()
 
 	def getInventory(self):
 		return self.rpg._player.getInventory()

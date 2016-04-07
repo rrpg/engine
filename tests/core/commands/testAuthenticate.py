@@ -7,7 +7,7 @@ import json
 
 
 class authenticateTest(tests.common.common):
-	login = None
+	initPlayer = False
 
 	def test_not_enough_argument_provided_text(self):
 		self.rpg.setAction(['authenticate'])

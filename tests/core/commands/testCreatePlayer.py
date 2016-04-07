@@ -8,7 +8,7 @@ from models.saved_game import saved_game
 
 
 class createPlayerTests(tests.common.common):
-	login = None
+	initPlayer = False
 	idSavedGame = 1
 	incorrectIdSavedGame = 42
 

@@ -21,7 +21,7 @@ class rpgTests(tests.common.common):
 	def test_invalid_world(self):
 		rpgEngine = Rpg.Rpg()
 		rpgEngine.initWorld("tests/invalidDB")
-		self.assertRaises(sqlite3.OperationalError, rpgEngine.initPlayer, "uselessLogin")
+		self.assertRaises(sqlite3.OperationalError, rpgEngine.initSavedGame, 1)
 
 	def test_invalid_action_format(self):
 		with self.assertRaises(TypeError) as raised:
