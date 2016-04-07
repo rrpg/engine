@@ -23,13 +23,8 @@ class main:
 			# new game
 			if newGame:
 				(login, genderId, speciesId) = self._interactivePlayerCreation()
-				self._engine.setAction([
-					'create-player',
-					login,
-					genderId,
-					speciesId
-				])
-				print(self._engine._runAction())
+				self._engine.createPlayer(login, genderId, speciesId)
+				print(_('PLAYER_CREATION_CONFIRMATION'))
 
 			self._engine.initPlayer()
 		except (KeyboardInterrupt, EOFError):
@@ -116,7 +111,7 @@ class main:
 
 		genderId = genders[g]['id_gender']
 
-		sps = species.model.getSpecies()
+		sps = species.model.loadAll()
 		nbSpecies = len(sps)
 
 		if nbSpecies == 1:

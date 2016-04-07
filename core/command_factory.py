@@ -20,7 +20,7 @@ Today, the available commands are:
 """
 import core.command
 from core.commands import look, talk, move, enter, exit, take, drop, inventory,\
-	help, createPlayer, open, stats, attack, save
+	help, open, stats, attack, save
 from core.localisation import _
 import sys
 
@@ -55,10 +55,6 @@ class factory:
 		_('ATTACK_COMMAND'): {'allowed_while_fighting': True, 'command': 'attack'}
 	}
 
-	mapping_anonymous = {
-		'create-player': 'createPlayer'
-	}
-
 	@staticmethod
 	def create(p, commandFull, savedGameId=None):
 		"""
@@ -78,7 +74,9 @@ class factory:
 
 		if cmd in (_('QUIT_COMMAND'), _('QUIT_SHORT_COMMAND')):
 			return quit
-		elif p.isConnected() and cmd in factory.mapping.keys():
+		elif not p.isConnected():
+			raise core.command.exception(_('ERROR_CONNECTED_PLAYER_NEEDED_FOR_COMMAND'))
+		elif cmd in factory.mapping.keys():
 			cmd = factory.mapping[cmd]
 			module = sys.modules['core.commands.' + cmd['command']]
 
@@ -86,9 +84,6 @@ class factory:
 				raise core.command.exception(_('ERROR_DENIED_COMMAND_WHILE_FIGHTING'))
 
 			cmd = getattr(module, cmd['command'])()
-		elif cmd in factory.mapping_anonymous.keys():
-			module = sys.modules['core.commands.' + factory.mapping_anonymous[cmd]]
-			cmd = getattr(module, factory.mapping_anonymous[cmd])()
 		else:
 			raise core.command.exception(_('ERROR_UNKNOWN_COMMAND'))
 
