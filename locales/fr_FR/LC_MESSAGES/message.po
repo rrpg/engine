@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-07 14:22+0100\n"
+"POT-Creation-Date: 2016-04-07 16:44+0100\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -99,23 +99,27 @@ msgstr "non"
 msgid "ANSWER_YES"
 msgstr "oui"
 
-#: core/Rpg.py:37 tests/core/testRpg.py:22
+#: core/Rpg.py:37 tests/core/testRpg.py:24
 msgid "ERROR_UNKNOWN_SELECTED_WORLD"
 msgstr "Le monde choisi n'existe pas"
 
-#: core/Rpg.py:49 tests/core/testRpg.py:29
+#: core/Rpg.py:49 tests/core/testRpg.py:31
 msgid "ERROR_RRPG_INIT_INVALID_SAVED_GAME_ID"
 msgstr "La sauvegarde choisie n'existe pas"
 
-#: core/Rpg.py:59 tests/core/testRpg.py:37
+#: core/Rpg.py:59 tests/core/testRpg.py:38
 msgid "ERROR_SAVED_GAME_NEEDED_TO_INIT_PLAYER"
 msgstr "Une sauvegarde est requise pour initialiser le joueur"
 
-#: core/Rpg.py:70 tests/core/testRpg.py:47
+#: core/Rpg.py:65 tests/core/testRpg.py:46
+msgid "ERROR_NON_EMPTY_SAVED_GAME_NEEDED_TO_INIT_PLAYER"
+msgstr "Une sauvegarde non vide est requise pour initialiser le joueur, ou un joueur doit être créé si une sauvegarde vide est choisie"
+
+#: core/Rpg.py:72 tests/core/testRpg.py:64
 msgid "ERROR_INVALID_FORMAT_ACTION"
 msgstr "L'action doit être une liste de strings"
 
-#: core/command_factory.py:44 core/commands/help.py:38
+#: core/command_factory.py:42 core/commands/help.py:38
 #: tests/core/commands/testHelp.py:24 tests/core/commands/testHelp.py:79
 #: tests/core/commands/testLook.py:11 tests/core/commands/testLook.py:37
 #: tests/core/commands/testLook.py:54 tests/core/commands/testLook.py:59
@@ -135,7 +139,7 @@ msgstr "L'action doit être une liste de strings"
 msgid "LOOK_COMMAND"
 msgstr "regarder"
 
-#: core/command_factory.py:45 core/commands/help.py:22
+#: core/command_factory.py:43 core/commands/help.py:22
 #: tests/core/commands/testHelp.py:16 tests/core/commands/testHelp.py:63
 #: tests/core/commands/testTalk.py:11 tests/core/commands/testTalk.py:16
 #: tests/core/commands/testTalk.py:21 tests/core/commands/testTalk.py:26
@@ -145,7 +149,7 @@ msgstr "regarder"
 msgid "TALK_COMMAND"
 msgstr "demander"
 
-#: core/command_factory.py:46 core/commands/help.py:26
+#: core/command_factory.py:44 core/commands/help.py:26
 #: tests/core/commands/testAttack.py:25 tests/core/commands/testAttack.py:27
 #: tests/core/commands/testAttack.py:31 tests/core/commands/testAttack.py:33
 #: tests/core/commands/testEnter.py:21 tests/core/commands/testEnter.py:28
@@ -170,7 +174,7 @@ msgstr "demander"
 msgid "MOVE_COMMAND"
 msgstr "marcher"
 
-#: core/command_factory.py:47 core/commands/help.py:30
+#: core/command_factory.py:45 core/commands/help.py:30
 #: tests/core/commands/testEnter.py:11 tests/core/commands/testEnter.py:16
 #: tests/core/commands/testEnter.py:23 tests/core/commands/testEnter.py:30
 #: tests/core/commands/testEnter.py:35 tests/core/commands/testEnter.py:40
@@ -183,7 +187,7 @@ msgstr "marcher"
 msgid "ENTER_COMMAND"
 msgstr "entrer"
 
-#: core/command_factory.py:48 core/commands/help.py:34
+#: core/command_factory.py:46 core/commands/help.py:34
 #: tests/core/commands/testExit.py:10 tests/core/commands/testExit.py:15
 #: tests/core/commands/testExit.py:20 tests/core/commands/testExit.py:25
 #: tests/core/commands/testExit.py:30 tests/core/commands/testExit.py:35
@@ -193,7 +197,7 @@ msgstr "entrer"
 msgid "EXIT_COMMAND"
 msgstr "sortir"
 
-#: core/command_factory.py:49 core/commands/help.py:51
+#: core/command_factory.py:47 core/commands/help.py:51
 #: tests/core/commands/testDrop.py:48 tests/core/commands/testDrop.py:60
 #: tests/core/commands/testDrop.py:114 tests/core/commands/testDrop.py:121
 #: tests/core/commands/testDrop.py:128 tests/core/commands/testDrop.py:135
@@ -236,7 +240,7 @@ msgstr "sortir"
 msgid "TAKE_COMMAND"
 msgstr "prendre"
 
-#: core/command_factory.py:50 core/commands/help.py:61
+#: core/command_factory.py:48 core/commands/help.py:61
 #: tests/core/commands/testDrop.py:14 tests/core/commands/testDrop.py:23
 #: tests/core/commands/testDrop.py:32 tests/core/commands/testDrop.py:41
 #: tests/core/commands/testDrop.py:53 tests/core/commands/testDrop.py:65
@@ -260,7 +264,7 @@ msgstr "prendre"
 msgid "DROP_COMMAND"
 msgstr "déposer"
 
-#: core/command_factory.py:51 core/commands/help.py:42
+#: core/command_factory.py:49 core/commands/help.py:42
 #: tests/core/commands/testHelp.py:26 tests/core/commands/testHelp.py:83
 #: tests/core/commands/testInventory.py:11
 #: tests/core/commands/testInventory.py:16
@@ -274,24 +278,24 @@ msgstr "déposer"
 msgid "INVENTORY_COMMAND"
 msgstr "inventaire"
 
-#: core/command_factory.py:52 core/commands/help.py:42
+#: core/command_factory.py:50 core/commands/help.py:42
 #: tests/core/commands/testHelp.py:26 tests/core/commands/testHelp.py:83
 msgid "INVENTORY_SHORT_COMMAND"
 msgstr "inv"
 
-#: core/command_factory.py:53 core/commands/help.py:70
+#: core/command_factory.py:51 core/commands/help.py:70
 #: tests/core/commands/testHelp.py:46 tests/core/commands/testHelp.py:99
 #: tests/core/commands/testStats.py:12 tests/core/commands/testStats.py:35
 msgid "STATS_COMMAND"
 msgstr "stats"
 
-#: core/command_factory.py:54 core/commands/help.py:82
+#: core/command_factory.py:52 core/commands/help.py:82
 #: tests/core/commands/testHelp.py:13 tests/core/commands/testHelp.py:52
 #: tests/core/commands/testHelp.py:59 tests/core/commands/testHelp.py:111
 msgid "HELP_COMMAND"
 msgstr "aide"
 
-#: core/command_factory.py:55 core/commands/help.py:46
+#: core/command_factory.py:53 core/commands/help.py:46
 #: tests/core/commands/testHelp.py:28 tests/core/commands/testHelp.py:87
 #: tests/core/commands/testOpen.py:11 tests/core/commands/testOpen.py:16
 #: tests/core/commands/testOpen.py:21 tests/core/commands/testOpen.py:26
@@ -308,7 +312,7 @@ msgstr "aide"
 msgid "OPEN_COMMAND"
 msgstr "ouvrir"
 
-#: core/command_factory.py:56 core/commands/help.py:78
+#: core/command_factory.py:54 core/commands/help.py:78
 #: tests/core/commands/testHelp.py:50 tests/core/commands/testHelp.py:107
 #: tests/core/commands/testSave.py:18 tests/core/commands/testSave.py:28
 #: tests/core/commands/testSave.py:77 tests/core/commands/testSave.py:96
@@ -317,7 +321,7 @@ msgstr "ouvrir"
 msgid "SAVE_COMMAND"
 msgstr "sauvegarder"
 
-#: core/command_factory.py:57 core/commands/help.py:74
+#: core/command_factory.py:55 core/commands/help.py:74
 #: tests/core/commands/testAttack.py:37 tests/core/commands/testAttack.py:42
 #: tests/core/commands/testAttack.py:49 tests/core/commands/testAttack.py:62
 #: tests/core/commands/testAttack.py:88 tests/core/commands/testAttack.py:101
@@ -326,23 +330,23 @@ msgstr "sauvegarder"
 msgid "ATTACK_COMMAND"
 msgstr "attaquer"
 
-#: core/command_factory.py:84 core/commands/help.py:86
+#: core/command_factory.py:79 core/commands/help.py:86
 #: tests/core/commands/testHelp.py:54 tests/core/commands/testHelp.py:115
 #: tests/core/commands/testQuit.py:11 tests/core/commands/testQuit.py:16
 msgid "QUIT_COMMAND"
 msgstr "quitter"
 
-#: core/command_factory.py:84 core/commands/help.py:86
+#: core/command_factory.py:79 core/commands/help.py:86
 #: tests/core/commands/testHelp.py:54 tests/core/commands/testHelp.py:115
 msgid "QUIT_SHORT_COMMAND"
 msgstr "q"
 
-#: core/command_factory.py:91
+#: core/command_factory.py:86
 msgid "ERROR_DENIED_COMMAND_WHILE_FIGHTING"
 msgstr "Vous ne pouvez pas utiliser cette commande durant un combat"
 
-#: core/command_factory.py:98 core/command_factory.py:112
-#: tests/core/testRpg.py:52 tests/core/testRpg.py:57
+#: core/command_factory.py:93 tests/core/testRpg.py:69
+#: tests/core/testRpg.py:74
 msgid "ERROR_UNKNOWN_COMMAND"
 msgstr "Commande inconnue"
 
@@ -372,15 +376,6 @@ msgstr "Vous terrassez {enemy}"
 #, python-brace-format
 msgid "ATTACK_LOST_{enemy}"
 msgstr "{enemy} vous achève et continue sa route"
-
-#: core/commands/authenticate.py:17 tests/core/commands/testAuthenticate.py:15
-#: tests/core/commands/testAuthenticate.py:20
-msgid "ERROR_AUTHENTICATE_ARGUMENTS_NUMBER"
-msgstr "Un argument est requis (identifiant)"
-
-#: core/commands/authenticate.py:26 tests/core/commands/testAuthenticate.py:35
-msgid "PLAYER_AUTHENTICATION_CONFIRMATION"
-msgstr "Identifiant correct"
 
 #: core/commands/createPlayer.py:10 tests/core/commands/testCreatePlayer.py:34
 #: tests/core/commands/testCreatePlayer.py:40
@@ -938,7 +933,12 @@ msgstr "Type de lieu inconnu"
 msgid "ERROR_PLACE_GENERATION"
 msgstr "Une erreur est survenue lors du chargement du lieu..."
 
-#: models/player.py:26 tests/core/commands/testAuthenticate.py:25
-#: tests/core/commands/testAuthenticate.py:30
+#: models/player.py:26 tests/core/testRpg.py:54
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
 msgstr "Identifiant incorrect"
+
+#~ msgid "ERROR_AUTHENTICATE_ARGUMENTS_NUMBER"
+#~ msgstr "Un argument est requis (identifiant)"
+
+#~ msgid "PLAYER_AUTHENTICATION_CONFIRMATION"
+#~ msgstr "Identifiant correct"
