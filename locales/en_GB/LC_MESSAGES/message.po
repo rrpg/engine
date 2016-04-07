@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-03 15:58+0100\n"
+"POT-Creation-Date: 2016-04-07 14:22+0100\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,92 +17,100 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: CLI/main.py:56
+#: CLI/main.py:57
 msgid "CHOICE_QUESTION"
 msgstr "Your choice? "
 
-#: CLI/main.py:56
+#: CLI/main.py:57
 msgid "MAIN_MENU_TITLE"
 msgstr "rRpg"
 
-#: CLI/main.py:57
+#: CLI/main.py:58
 msgid "CHOICE_LOAD_GAME"
 msgstr "Load an existing game"
 
-#: CLI/main.py:57
+#: CLI/main.py:58
 msgid "CHOICE_NEW_GAME"
 msgstr "Start a new game"
 
-#: CLI/main.py:65
+#: CLI/main.py:66
 msgid "SAVED_GAME_MENU_TITLE"
 msgstr "Choose a save game slot"
 
-#: CLI/main.py:66
+#: CLI/main.py:67
 msgid "SAVED_GAME_CHOICE_QUESTION"
 msgstr "Which slot? "
 
-#: CLI/main.py:77
+#: CLI/main.py:78
 #, python-brace-format
 msgid "OVERWRITE_SAVEDGAME_QUESTION_{choices}"
 msgstr "Are you sure you want to overwrite this saved game? {choices} "
 
-#: CLI/main.py:94
+#: CLI/main.py:95
 msgid "EMPTY_SAVED_GAME"
 msgstr "Empty saved game"
 
-#: CLI/main.py:99
+#: CLI/main.py:100
 #, python-brace-format
 msgid "SAVED_GAME_INFO_{login}"
 msgstr "{login}"
 
-#: CLI/main.py:104
+#: CLI/main.py:105
 msgid "LOGIN_PROMPT"
 msgstr "Login: "
 
-#: CLI/main.py:107 core/commands/createPlayer.py:16
-#: tests/core/commands/testCreatePlayer.py:60
-#: tests/core/commands/testCreatePlayer.py:66
+#: CLI/main.py:108 core/commands/createPlayer.py:16
+#: tests/core/commands/testCreatePlayer.py:46
+#: tests/core/commands/testCreatePlayer.py:52
 msgid "ERROR_SIGNUP_LOGIN_ALREADY_USED"
 msgstr "This login is already used"
 
-#: CLI/main.py:113
+#: CLI/main.py:114
 msgid "GENDER_PROMPT"
 msgstr "Gender: "
 
-#: CLI/main.py:113
+#: CLI/main.py:114
 msgid "GENDER_SELECTION"
 msgstr "Gender selection"
 
-#: CLI/main.py:126
+#: CLI/main.py:127
 msgid "SPECIES_PROMPT"
 msgstr "Species: "
 
-#: CLI/main.py:126
+#: CLI/main.py:127
 msgid "SPECIES_SELECTION"
 msgstr "Species selection"
 
-#: CLI/main.py:135
+#: CLI/main.py:136
 msgid "GAME_OVER_TEXT"
 msgstr ""
 "You have been defeated. Your name shall be remembered for ever.... Or not"
 
-#: CLI/main.py:211
+#: CLI/main.py:212
 msgid "COMMAND_PROMPT"
 msgstr "Command: "
 
-#: CLI/main.py:230
+#: CLI/main.py:231
 msgid "ANSWER_NO"
 msgstr "no"
 
-#: CLI/main.py:230 CLI/main.py:235
+#: CLI/main.py:231 CLI/main.py:236
 msgid "ANSWER_YES"
 msgstr "yes"
 
-#: core/Rpg.py:35 tests/core/testRpg.py:19
+#: core/Rpg.py:37 tests/core/testRpg.py:22
 msgid "ERROR_UNKNOWN_SELECTED_WORLD"
 msgstr "Unknown selected world"
 
-#: core/Rpg.py:53 tests/core/testRpg.py:32
+#: core/Rpg.py:49 tests/core/testRpg.py:29
+msgid "ERROR_RRPG_INIT_INVALID_SAVED_GAME_ID"
+msgstr "The chosen saved game does not exist"
+
+#: core/Rpg.py:59 tests/core/testRpg.py:37
+msgid "ERROR_SAVED_GAME_NEEDED_TO_INIT_PLAYER"
+msgstr "A saved game is needed to initialise the player"
+
+#: core/Rpg.py:70 tests/core/testRpg.py:47
 msgid "ERROR_INVALID_FORMAT_ACTION"
 msgstr "The action must be a list of strings"
 
@@ -332,8 +340,8 @@ msgstr "q"
 msgid "ERROR_DENIED_COMMAND_WHILE_FIGHTING"
 msgstr "You can't use this command while fighting"
 
-#: core/command_factory.py:98 core/command_factory.py:111
-#: tests/core/testRpg.py:37 tests/core/testRpg.py:42
+#: core/command_factory.py:98 core/command_factory.py:112
+#: tests/core/testRpg.py:52 tests/core/testRpg.py:57
 msgid "ERROR_UNKNOWN_COMMAND"
 msgstr "Unknown command"
 
@@ -373,27 +381,22 @@ msgstr "One argument is required (Login)"
 msgid "PLAYER_AUTHENTICATION_CONFIRMATION"
 msgstr "Player connected"
 
-#: core/commands/createPlayer.py:10 tests/core/commands/testCreatePlayer.py:36
-#: tests/core/commands/testCreatePlayer.py:42
+#: core/commands/createPlayer.py:10 tests/core/commands/testCreatePlayer.py:34
+#: tests/core/commands/testCreatePlayer.py:40
 msgid "ERROR_SIGNUP_NOT_ENOUGH_ARGUMENTS"
 msgstr "More arguments are required to create a player"
 
-#: core/commands/createPlayer.py:20 tests/core/commands/testCreatePlayer.py:48
-#: tests/core/commands/testCreatePlayer.py:54
-msgid "ERROR_SIGNUP_INVALID_SAVED_GAME_ID"
-msgstr "The selected saved game does not exist"
-
-#: core/commands/createPlayer.py:24 tests/core/commands/testCreatePlayer.py:72
-#: tests/core/commands/testCreatePlayer.py:78
+#: core/commands/createPlayer.py:20 tests/core/commands/testCreatePlayer.py:58
+#: tests/core/commands/testCreatePlayer.py:64
 msgid "ERROR_SIGNUP_INVALID_GENDER"
 msgstr "Invalid gender"
 
-#: core/commands/createPlayer.py:28 tests/core/commands/testCreatePlayer.py:84
-#: tests/core/commands/testCreatePlayer.py:90
+#: core/commands/createPlayer.py:24 tests/core/commands/testCreatePlayer.py:70
+#: tests/core/commands/testCreatePlayer.py:76
 msgid "ERROR_SIGNUP_INVALID_SPECIES"
 msgstr "Invalid species"
 
-#: core/commands/createPlayer.py:47 tests/core/commands/testCreatePlayer.py:96
+#: core/commands/createPlayer.py:43 tests/core/commands/testCreatePlayer.py:82
 msgid "PLAYER_CREATION_CONFIRMATION"
 msgstr "Player created"
 
@@ -763,11 +766,11 @@ msgstr "A container type must be provided"
 msgid "ITEMS_IN_CONTAINER_%s"
 msgstr "Items in container %s"
 
-#: core/commands/save.py:24 tests/core/commands/testSave.py:216
+#: core/commands/save.py:25 tests/core/commands/testSave.py:216
 msgid "ERROR_SAVE_NO_SAVE_POINT"
 msgstr "There is no save point here"
 
-#: core/commands/save.py:31
+#: core/commands/save.py:36
 msgid "SAVE_CONFIRMATION_OK"
 msgstr "Game saved"
 
@@ -936,16 +939,7 @@ msgstr "Unknown place type"
 msgid "ERROR_PLACE_GENERATION"
 msgstr "An error occured during the place loading"
 
-#: models/player.py:29 tests/core/commands/testAuthenticate.py:25
+#: models/player.py:26 tests/core/commands/testAuthenticate.py:25
 #: tests/core/commands/testAuthenticate.py:30
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
 msgstr "Invalid login"
-
-#~ msgid "PLAYER_SELECTION"
-#~ msgstr "Player selection"
-
-#~ msgid "CHOICE_NEW_PLAYER"
-#~ msgstr "Create a new player"
-
-#~ msgid "CHOICE_EXISTING_PLAYER"
-#~ msgstr "Choose an existing player"

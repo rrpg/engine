@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-03 15:58+0100\n"
+"POT-Creation-Date: 2016-04-07 14:22+0100\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,92 +18,100 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: CLI/main.py:56
+#: CLI/main.py:57
 msgid "CHOICE_QUESTION"
 msgstr "Votre choix : "
 
-#: CLI/main.py:56
+#: CLI/main.py:57
 msgid "MAIN_MENU_TITLE"
 msgstr "rRpg"
 
-#: CLI/main.py:57
+#: CLI/main.py:58
 msgid "CHOICE_LOAD_GAME"
 msgstr "Charger une partie"
 
-#: CLI/main.py:57
+#: CLI/main.py:58
 msgid "CHOICE_NEW_GAME"
 msgstr "Commencer une nouvelle partie"
 
-#: CLI/main.py:65
+#: CLI/main.py:66
 msgid "SAVED_GAME_MENU_TITLE"
 msgstr "Choisissez une partie"
 
-#: CLI/main.py:66
+#: CLI/main.py:67
 msgid "SAVED_GAME_CHOICE_QUESTION"
 msgstr "Votre choix ? "
 
-#: CLI/main.py:77
+#: CLI/main.py:78
 #, python-brace-format
 msgid "OVERWRITE_SAVEDGAME_QUESTION_{choices}"
 msgstr "Ecraser la partie ? {choices} "
 
-#: CLI/main.py:94
+#: CLI/main.py:95
 msgid "EMPTY_SAVED_GAME"
 msgstr "Vide"
 
-#: CLI/main.py:99
+#: CLI/main.py:100
 #, python-brace-format
 msgid "SAVED_GAME_INFO_{login}"
 msgstr "{login}"
 
-#: CLI/main.py:104
+#: CLI/main.py:105
 msgid "LOGIN_PROMPT"
 msgstr "Identifiant : "
 
-#: CLI/main.py:107 core/commands/createPlayer.py:16
-#: tests/core/commands/testCreatePlayer.py:60
-#: tests/core/commands/testCreatePlayer.py:66
+#: CLI/main.py:108 core/commands/createPlayer.py:16
+#: tests/core/commands/testCreatePlayer.py:46
+#: tests/core/commands/testCreatePlayer.py:52
 msgid "ERROR_SIGNUP_LOGIN_ALREADY_USED"
 msgstr "Identifiant déjà utilisé"
 
-#: CLI/main.py:113
+#: CLI/main.py:114
 msgid "GENDER_PROMPT"
 msgstr "Sexe : "
 
-#: CLI/main.py:113
+#: CLI/main.py:114
 msgid "GENDER_SELECTION"
 msgstr "Choix du sexe"
 
-#: CLI/main.py:126
+#: CLI/main.py:127
 msgid "SPECIES_PROMPT"
 msgstr "Espèce : "
 
-#: CLI/main.py:126
+#: CLI/main.py:127
 msgid "SPECIES_SELECTION"
 msgstr "Choix de l'espèce"
 
-#: CLI/main.py:135
+#: CLI/main.py:136
 msgid "GAME_OVER_TEXT"
 msgstr ""
 "Vous avez été vaincu. Peut être que quelqu'un se souviendra de votre nom..."
 
-#: CLI/main.py:211
+#: CLI/main.py:212
 msgid "COMMAND_PROMPT"
 msgstr "Commande : "
 
-#: CLI/main.py:230
+#: CLI/main.py:231
 msgid "ANSWER_NO"
 msgstr "non"
 
-#: CLI/main.py:230 CLI/main.py:235
+#: CLI/main.py:231 CLI/main.py:236
 msgid "ANSWER_YES"
 msgstr "oui"
 
-#: core/Rpg.py:35 tests/core/testRpg.py:19
+#: core/Rpg.py:37 tests/core/testRpg.py:22
 msgid "ERROR_UNKNOWN_SELECTED_WORLD"
 msgstr "Le monde choisi n'existe pas"
 
-#: core/Rpg.py:53 tests/core/testRpg.py:32
+#: core/Rpg.py:49 tests/core/testRpg.py:29
+msgid "ERROR_RRPG_INIT_INVALID_SAVED_GAME_ID"
+msgstr "La sauvegarde choisie n'existe pas"
+
+#: core/Rpg.py:59 tests/core/testRpg.py:37
+msgid "ERROR_SAVED_GAME_NEEDED_TO_INIT_PLAYER"
+msgstr "Une sauvegarde est requise pour initialiser le joueur"
+
+#: core/Rpg.py:70 tests/core/testRpg.py:47
 msgid "ERROR_INVALID_FORMAT_ACTION"
 msgstr "L'action doit être une liste de strings"
 
@@ -333,8 +341,8 @@ msgstr "q"
 msgid "ERROR_DENIED_COMMAND_WHILE_FIGHTING"
 msgstr "Vous ne pouvez pas utiliser cette commande durant un combat"
 
-#: core/command_factory.py:98 core/command_factory.py:111
-#: tests/core/testRpg.py:37 tests/core/testRpg.py:42
+#: core/command_factory.py:98 core/command_factory.py:112
+#: tests/core/testRpg.py:52 tests/core/testRpg.py:57
 msgid "ERROR_UNKNOWN_COMMAND"
 msgstr "Commande inconnue"
 
@@ -374,27 +382,22 @@ msgstr "Un argument est requis (identifiant)"
 msgid "PLAYER_AUTHENTICATION_CONFIRMATION"
 msgstr "Identifiant correct"
 
-#: core/commands/createPlayer.py:10 tests/core/commands/testCreatePlayer.py:36
-#: tests/core/commands/testCreatePlayer.py:42
+#: core/commands/createPlayer.py:10 tests/core/commands/testCreatePlayer.py:34
+#: tests/core/commands/testCreatePlayer.py:40
 msgid "ERROR_SIGNUP_NOT_ENOUGH_ARGUMENTS"
 msgstr "Des arguments supplémentaires sont requis pour créer un joueur"
 
-#: core/commands/createPlayer.py:20 tests/core/commands/testCreatePlayer.py:48
-#: tests/core/commands/testCreatePlayer.py:54
-msgid "ERROR_SIGNUP_INVALID_SAVED_GAME_ID"
-msgstr "La sauvegarde choisie n'existe pas"
-
-#: core/commands/createPlayer.py:24 tests/core/commands/testCreatePlayer.py:72
-#: tests/core/commands/testCreatePlayer.py:78
+#: core/commands/createPlayer.py:20 tests/core/commands/testCreatePlayer.py:58
+#: tests/core/commands/testCreatePlayer.py:64
 msgid "ERROR_SIGNUP_INVALID_GENDER"
 msgstr "Le genre choisi est invalide"
 
-#: core/commands/createPlayer.py:28 tests/core/commands/testCreatePlayer.py:84
-#: tests/core/commands/testCreatePlayer.py:90
+#: core/commands/createPlayer.py:24 tests/core/commands/testCreatePlayer.py:70
+#: tests/core/commands/testCreatePlayer.py:76
 msgid "ERROR_SIGNUP_INVALID_SPECIES"
 msgstr "L'espèce choisie est invalide"
 
-#: core/commands/createPlayer.py:47 tests/core/commands/testCreatePlayer.py:96
+#: core/commands/createPlayer.py:43 tests/core/commands/testCreatePlayer.py:82
 msgid "PLAYER_CREATION_CONFIRMATION"
 msgstr "Le joueur a été créé avec succès"
 
@@ -762,11 +765,11 @@ msgstr "Un type de conteneur doit être spécifié"
 msgid "ITEMS_IN_CONTAINER_%s"
 msgstr "%s:"
 
-#: core/commands/save.py:24 tests/core/commands/testSave.py:216
+#: core/commands/save.py:25 tests/core/commands/testSave.py:216
 msgid "ERROR_SAVE_NO_SAVE_POINT"
 msgstr "Il n'y a pas de point de sauvegarde ici"
 
-#: core/commands/save.py:31
+#: core/commands/save.py:36
 msgid "SAVE_CONFIRMATION_OK"
 msgstr "Progression sauvegardée"
 
@@ -935,16 +938,7 @@ msgstr "Type de lieu inconnu"
 msgid "ERROR_PLACE_GENERATION"
 msgstr "Une erreur est survenue lors du chargement du lieu..."
 
-#: models/player.py:29 tests/core/commands/testAuthenticate.py:25
+#: models/player.py:26 tests/core/commands/testAuthenticate.py:25
 #: tests/core/commands/testAuthenticate.py:30
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
 msgstr "Identifiant incorrect"
-
-#~ msgid "PLAYER_SELECTION"
-#~ msgstr "Choix du personnage"
-
-#~ msgid "CHOICE_NEW_PLAYER"
-#~ msgstr "Nouveau personnage"
-
-#~ msgid "CHOICE_EXISTING_PLAYER"
-#~ msgstr "Personnage existant"
