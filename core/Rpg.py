@@ -98,6 +98,8 @@ class Rpg:
 		"""
 		Method to execute when an action is set and ready to be executed.
 		"""
+		if self._savedGame is None:
+			raise core.exception.exception(_('ERROR_SAVED_GAME_NEEDED_TO_RUN_ACTION'))
 
 		c = command_factory.factory.create(
 			self._player,

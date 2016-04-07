@@ -111,6 +111,13 @@ class rpgTests(tests.common.common):
 		self.rpg.createPlayer('TEST_PLAYER_SOME', '1', '1')
 		self.compareSavedGamesSaveOk()
 
+	def test_command_with_no_saved_game(self):
+		rpgEngine = Rpg.Rpg()
+		rpgEngine.setAction([_('LOOK_COMMAND')])
+		with self.assertRaises(core.exception.exception) as raised:
+			rpgEngine._runAction(True)
+		self.assertEquals(str(raised.exception), _('ERROR_SAVED_GAME_NEEDED_TO_RUN_ACTION'))
+
 	def test_command_with_no_player(self):
 		rpgEngine = Rpg.Rpg()
 		rpgEngine.initWorld(self.dbFile)
