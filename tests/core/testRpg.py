@@ -24,11 +24,8 @@ class rpgTests(tests.common.common):
 		self.assertRaises(sqlite3.OperationalError, rpgEngine.initPlayer, "uselessLogin")
 
 	def test_invalid_action_format(self):
-		rpgEngine = Rpg.Rpg()
-		rpgEngine.initWorld(self.dbFile)
-		rpgEngine.initPlayer(self.login)
 		with self.assertRaises(TypeError) as raised:
-			rpgEngine.setAction("not list action")
+			self.rpg.setAction("Not list action")
 		self.assertEquals(str(raised.exception), _('ERROR_INVALID_FORMAT_ACTION'))
 
 	def test_invalid_action_text(self):
