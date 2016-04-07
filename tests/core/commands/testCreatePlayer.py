@@ -14,7 +14,7 @@ class createPlayerTests(tests.common.common):
 		saves = saved_game.loadAll()
 		expectedSaves = [
 			{'id_saved_game': 1, 'login': 'TEST_PLAYER_SOME'},
-			{'id_saved_game': 2, 'login': None},
+			{'id_saved_game': 2, 'login': 'TEST_PLAYER2'},
 			{'id_saved_game': 3, 'login': None}
 		]
 		self.assertEquals(saves, expectedSaves)
@@ -23,7 +23,7 @@ class createPlayerTests(tests.common.common):
 		saves = saved_game.loadAll()
 		expectedSaves = [
 			{'id_saved_game': 1, 'login': 'TEST_PLAYER'},
-			{'id_saved_game': 2, 'login': None},
+			{'id_saved_game': 2, 'login': 'TEST_PLAYER2'},
 			{'id_saved_game': 3, 'login': None}
 		]
 		self.assertEquals(saves, expectedSaves)
