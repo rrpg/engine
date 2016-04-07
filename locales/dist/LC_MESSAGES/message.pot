@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-07 16:44+0100\n"
+"POT-Creation-Date: 2016-04-07 23:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,104 +17,110 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: CLI/main.py:57
+#: CLI/main.py:27
+msgid "PLAYER_CREATION_CONFIRMATION"
+msgstr ""
+
+#: CLI/main.py:51
 msgid "CHOICE_QUESTION"
 msgstr ""
 
-#: CLI/main.py:57
+#: CLI/main.py:51
 msgid "MAIN_MENU_TITLE"
 msgstr ""
 
-#: CLI/main.py:58
+#: CLI/main.py:52
 msgid "CHOICE_LOAD_GAME"
 msgstr ""
 
-#: CLI/main.py:58
+#: CLI/main.py:52
 msgid "CHOICE_NEW_GAME"
 msgstr ""
 
-#: CLI/main.py:66
+#: CLI/main.py:60
 msgid "SAVED_GAME_MENU_TITLE"
 msgstr ""
 
-#: CLI/main.py:67
+#: CLI/main.py:61
 msgid "SAVED_GAME_CHOICE_QUESTION"
 msgstr ""
 
-#: CLI/main.py:78
+#: CLI/main.py:72
 #, python-brace-format
 msgid "OVERWRITE_SAVEDGAME_QUESTION_{choices}"
 msgstr ""
 
-#: CLI/main.py:95
+#: CLI/main.py:89
 msgid "EMPTY_SAVED_GAME"
 msgstr ""
 
-#: CLI/main.py:100
+#: CLI/main.py:94
 #, python-brace-format
 msgid "SAVED_GAME_INFO_{login}"
 msgstr ""
 
-#: CLI/main.py:105
+#: CLI/main.py:99
 msgid "LOGIN_PROMPT"
 msgstr ""
 
-#: CLI/main.py:108 core/commands/createPlayer.py:16
-#: tests/core/commands/testCreatePlayer.py:46
-#: tests/core/commands/testCreatePlayer.py:52
+#: CLI/main.py:102 models/player.py:32 tests/core/testRpg.py:95
 msgid "ERROR_SIGNUP_LOGIN_ALREADY_USED"
 msgstr ""
 
-#: CLI/main.py:114
+#: CLI/main.py:108
 msgid "GENDER_PROMPT"
 msgstr ""
 
-#: CLI/main.py:114
+#: CLI/main.py:108
 msgid "GENDER_SELECTION"
 msgstr ""
 
-#: CLI/main.py:127
+#: CLI/main.py:121
 msgid "SPECIES_PROMPT"
 msgstr ""
 
-#: CLI/main.py:127
+#: CLI/main.py:121
 msgid "SPECIES_SELECTION"
 msgstr ""
 
-#: CLI/main.py:136
+#: CLI/main.py:130
 msgid "GAME_OVER_TEXT"
 msgstr ""
 
-#: CLI/main.py:212
+#: CLI/main.py:206
 msgid "COMMAND_PROMPT"
 msgstr ""
 
-#: CLI/main.py:231
+#: CLI/main.py:225
 msgid "ANSWER_NO"
 msgstr ""
 
-#: CLI/main.py:231 CLI/main.py:236
+#: CLI/main.py:225 CLI/main.py:230
 msgid "ANSWER_YES"
 msgstr ""
 
-#: core/Rpg.py:37 tests/core/testRpg.py:24
+#: core/Rpg.py:37 tests/core/testRpg.py:26
 msgid "ERROR_UNKNOWN_SELECTED_WORLD"
 msgstr ""
 
-#: core/Rpg.py:49 tests/core/testRpg.py:31
+#: core/Rpg.py:49 tests/core/testRpg.py:33
 msgid "ERROR_RRPG_INIT_INVALID_SAVED_GAME_ID"
 msgstr ""
 
-#: core/Rpg.py:59 tests/core/testRpg.py:38
+#: core/Rpg.py:78 tests/core/testRpg.py:40
 msgid "ERROR_SAVED_GAME_NEEDED_TO_INIT_PLAYER"
 msgstr ""
 
-#: core/Rpg.py:65 tests/core/testRpg.py:46
+#: core/Rpg.py:84 tests/core/testRpg.py:48
 msgid "ERROR_NON_EMPTY_SAVED_GAME_NEEDED_TO_INIT_PLAYER"
 msgstr ""
 
-#: core/Rpg.py:72 tests/core/testRpg.py:64
+#: core/Rpg.py:91 tests/core/testRpg.py:66
 msgid "ERROR_INVALID_FORMAT_ACTION"
+msgstr ""
+
+#: core/Rpg.py:102 tests/core/testRpg.py:119
+msgid "ERROR_SAVED_GAME_NEEDED_TO_RUN_ACTION"
 msgstr ""
 
 #: core/command_factory.py:42 core/commands/help.py:38
@@ -134,6 +140,7 @@ msgstr ""
 #: tests/core/commands/testSave.py:104 tests/core/commands/testSave.py:191
 #: tests/core/commands/testSave.py:203 tests/core/commands/testSave.py:223
 #: tests/core/commands/testSave.py:226 tests/core/commands/testTake.py:147
+#: tests/core/testRpg.py:116 tests/core/testRpg.py:125
 msgid "LOOK_COMMAND"
 msgstr ""
 
@@ -328,23 +335,26 @@ msgstr ""
 msgid "ATTACK_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:79 core/commands/help.py:86
+#: core/command_factory.py:75 core/commands/help.py:86
 #: tests/core/commands/testHelp.py:54 tests/core/commands/testHelp.py:115
 #: tests/core/commands/testQuit.py:11 tests/core/commands/testQuit.py:16
 msgid "QUIT_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:79 core/commands/help.py:86
+#: core/command_factory.py:75 core/commands/help.py:86
 #: tests/core/commands/testHelp.py:54 tests/core/commands/testHelp.py:115
 msgid "QUIT_SHORT_COMMAND"
 msgstr ""
 
-#: core/command_factory.py:86
+#: core/command_factory.py:78 tests/core/testRpg.py:128
+msgid "ERROR_CONNECTED_PLAYER_NEEDED_FOR_COMMAND"
+msgstr ""
+
+#: core/command_factory.py:84
 msgid "ERROR_DENIED_COMMAND_WHILE_FIGHTING"
 msgstr ""
 
-#: core/command_factory.py:93 tests/core/testRpg.py:69
-#: tests/core/testRpg.py:74
+#: core/command_factory.py:88 tests/core/testRpg.py:72
 msgid "ERROR_UNKNOWN_COMMAND"
 msgstr ""
 
@@ -373,25 +383,6 @@ msgstr ""
 #: core/commands/attack.py:33 tests/core/commands/testAttack.py:137
 #, python-brace-format
 msgid "ATTACK_LOST_{enemy}"
-msgstr ""
-
-#: core/commands/createPlayer.py:10 tests/core/commands/testCreatePlayer.py:34
-#: tests/core/commands/testCreatePlayer.py:40
-msgid "ERROR_SIGNUP_NOT_ENOUGH_ARGUMENTS"
-msgstr ""
-
-#: core/commands/createPlayer.py:20 tests/core/commands/testCreatePlayer.py:58
-#: tests/core/commands/testCreatePlayer.py:64
-msgid "ERROR_SIGNUP_INVALID_GENDER"
-msgstr ""
-
-#: core/commands/createPlayer.py:24 tests/core/commands/testCreatePlayer.py:70
-#: tests/core/commands/testCreatePlayer.py:76
-msgid "ERROR_SIGNUP_INVALID_SPECIES"
-msgstr ""
-
-#: core/commands/createPlayer.py:43 tests/core/commands/testCreatePlayer.py:82
-msgid "PLAYER_CREATION_CONFIRMATION"
 msgstr ""
 
 #: core/commands/drop.py:20 tests/core/commands/testDrop.py:75
@@ -924,6 +915,14 @@ msgstr ""
 msgid "ERROR_PLACE_GENERATION"
 msgstr ""
 
-#: models/player.py:26 tests/core/testRpg.py:54
+#: models/player.py:26 tests/core/testRpg.py:56
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
+msgstr ""
+
+#: models/player.py:35 tests/core/testRpg.py:101
+msgid "ERROR_SIGNUP_INVALID_GENDER"
+msgstr ""
+
+#: models/player.py:38 tests/core/testRpg.py:107
+msgid "ERROR_SIGNUP_INVALID_SPECIES"
 msgstr ""
