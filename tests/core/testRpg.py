@@ -11,6 +11,8 @@ import sqlite3
 
 
 class rpgTests(tests.common.common):
+	idSavedGame = 1
+
 	def test_unknown_world(self):
 		rpgEngine = Rpg.Rpg()
 		try:
@@ -21,7 +23,7 @@ class rpgTests(tests.common.common):
 	def test_invalid_world(self):
 		rpgEngine = Rpg.Rpg()
 		rpgEngine.initWorld("tests/invalidDB")
-		self.assertRaises(sqlite3.OperationalError, rpgEngine.initSavedGame, 1)
+		self.assertRaises(sqlite3.OperationalError, rpgEngine.initSavedGame, self.idSavedGame)
 
 	def test_invalid_action_format(self):
 		with self.assertRaises(TypeError) as raised:
