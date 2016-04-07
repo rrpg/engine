@@ -96,12 +96,3 @@ class factory:
 		cmd.setPlayer(p)
 		cmd.setSavedGameId(savedGameId)
 		return cmd
-
-	@staticmethod
-	def commandNeedPlayer(cmd):
-		if cmd in factory.mapping.keys():
-			return True
-		elif cmd in factory.mapping_anonymous.keys():
-			return False
-		else:
-			raise core.command.exception(_('ERROR_UNKNOWN_COMMAND'))
