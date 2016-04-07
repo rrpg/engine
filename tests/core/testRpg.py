@@ -12,6 +12,7 @@ import sqlite3
 
 class rpgTests(tests.common.common):
 	idSavedGame = 1
+	idEmptySavedGame = 3
 	incorrectIdSavedGame = 42
 
 	def test_unknown_world(self):
@@ -35,6 +36,14 @@ class rpgTests(tests.common.common):
 		with self.assertRaises(core.exception.exception) as raised:
 			rpgEngine.initPlayer()
 		self.assertEquals(str(raised.exception), _('ERROR_SAVED_GAME_NEEDED_TO_INIT_PLAYER'))
+
+	def test_load_player_with_empty_save(self):
+		rpgEngine = Rpg.Rpg()
+		rpgEngine.initWorld(self.dbFile)
+		rpgEngine.initSavedGame(self.idEmptySavedGame)
+		with self.assertRaises(core.exception.exception) as raised:
+			rpgEngine.initPlayer()
+		self.assertEquals(str(raised.exception), _('ERROR_NON_EMPTY_SAVED_GAME_NEEDED_TO_INIT_PLAYER'))
 
 	def test_invalid_world(self):
 		rpgEngine = Rpg.Rpg()
