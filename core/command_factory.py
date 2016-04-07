@@ -74,7 +74,9 @@ class factory:
 
 		if cmd in (_('QUIT_COMMAND'), _('QUIT_SHORT_COMMAND')):
 			return quit
-		elif p.isConnected() and cmd in factory.mapping.keys():
+		elif not p.isConnected():
+			raise core.command.exception(_('ERROR_CONNECTED_PLAYER_NEEDED_FOR_COMMAND'))
+		elif cmd in factory.mapping.keys():
 			cmd = factory.mapping[cmd]
 			module = sys.modules['core.commands.' + cmd['command']]
 
