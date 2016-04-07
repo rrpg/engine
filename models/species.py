@@ -4,7 +4,7 @@ from models.Model import Model
 
 
 class model(Model):
-	fields = ['id_species', 'description', 'name_m', 'name_f']
+	fields = ['id_species', 'description', 'name']
 
 	@staticmethod
 	def getSpecies():
