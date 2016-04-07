@@ -65,15 +65,11 @@ class rpgTests(tests.common.common):
 			self.rpg.setAction("Not list action")
 		self.assertEquals(str(raised.exception), _('ERROR_INVALID_FORMAT_ACTION'))
 
-	def test_invalid_action_text(self):
+	def test_invalid_action(self):
 		self.rpg.setAction(["Unknown action"])
-		output = self.rpg._runAction()
-		self.assertEquals(output, _('ERROR_UNKNOWN_COMMAND'))
-
-	def test_invalid_action_json(self):
-		self.rpg.setAction(["Unknown action"])
-		output = self.rpg._runAction(True)
-		self.assertEquals(output,  {'error': {'message': _('ERROR_UNKNOWN_COMMAND'), 'code': 1}})
+		with self.assertRaises(core.exception.exception) as raised:
+			self.rpg._runAction()
+		self.assertEquals(str(raised.exception), _('ERROR_UNKNOWN_COMMAND'))
 
 	def compareSavedGamesSaveOk(self):
 		saves = saved_game.loadAll()
@@ -114,3 +110,12 @@ class rpgTests(tests.common.common):
 	def test_ok(self):
 		self.rpg.createPlayer('TEST_PLAYER_SOME', '1', '1')
 		self.compareSavedGamesSaveOk()
+
+	def test_command_with_no_player(self):
+		rpgEngine = Rpg.Rpg()
+		rpgEngine.initWorld(self.dbFile)
+		rpgEngine.initSavedGame(self.idEmptySavedGame)
+		rpgEngine.setAction([_('LOOK_COMMAND')])
+		with self.assertRaises(core.exception.exception) as raised:
+			rpgEngine._runAction(True)
+		self.assertEquals(str(raised.exception), _('ERROR_CONNECTED_PLAYER_NEEDED_FOR_COMMAND'))

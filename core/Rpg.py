@@ -98,13 +98,14 @@ class Rpg:
 		"""
 		Method to execute when an action is set and ready to be executed.
 		"""
-		try:
-			c = command_factory.factory.create(
-				self._player,
-				self._action,
-				self._savedGame['id_saved_game']
-			)
 
+		c = command_factory.factory.create(
+			self._player,
+			self._action,
+			self._savedGame['id_saved_game']
+		)
+
+		try:
 			if c == command_factory.quit:
 				return c
 
