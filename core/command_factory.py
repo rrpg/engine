@@ -55,10 +55,6 @@ class factory:
 		_('ATTACK_COMMAND'): {'allowed_while_fighting': True, 'command': 'attack'}
 	}
 
-	mapping_anonymous = {
-		'create-player': 'createPlayer'
-	}
-
 	@staticmethod
 	def create(p, commandFull, savedGameId=None):
 		"""
@@ -86,9 +82,6 @@ class factory:
 				raise core.command.exception(_('ERROR_DENIED_COMMAND_WHILE_FIGHTING'))
 
 			cmd = getattr(module, cmd['command'])()
-		elif cmd in factory.mapping_anonymous.keys():
-			module = sys.modules['core.commands.' + factory.mapping_anonymous[cmd]]
-			cmd = getattr(module, factory.mapping_anonymous[cmd])()
 		else:
 			raise core.command.exception(_('ERROR_UNKNOWN_COMMAND'))
 
