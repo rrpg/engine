@@ -11,20 +11,7 @@ class createPlayer(core.command.command):
 
 		(login, genderId, speciesId) = self._args
 
-		if len(player.model.loadBy({'login': login})):
-			raise player.exception(_('ERROR_SIGNUP_LOGIN_ALREADY_USED'))
-
-		genders = [str(g['id_gender']) for g in gender.model.loadAll()]
-		if str(genderId) not in genders:
-			raise player.exception(_('ERROR_SIGNUP_INVALID_GENDER'))
-
-		sps = [str(s['id_species']) for s in species.model.getSpecies()]
-		if str(speciesId) not in sps:
-			raise player.exception(_('ERROR_SIGNUP_INVALID_SPECIES'))
-
-		self._player.createNewPlayer(
-			login, speciesId, genderId
-		)
+		self._player.createNewPlayer(login, speciesId, genderId)
 
 		saved_game.saved_game.cleanSavedGame(self._savedGameId)
 		saved_game.saved_game.updateSavedGame(

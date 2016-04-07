@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import core.exception
-from models import character
+from models import character, gender, species
 from models.Model import Model
 import datetime
 import json
@@ -28,6 +28,15 @@ class player(character.character):
 		return True
 
 	def createNewPlayer(self, login, speciesId, genderId):
+		if len(model.loadBy({'login': login})):
+			raise exception(_('ERROR_SIGNUP_LOGIN_ALREADY_USED'))
+
+		if gender.model.loadById(genderId) == {}:
+			raise exception(_('ERROR_SIGNUP_INVALID_GENDER'))
+
+		if species.model.loadById(speciesId) == {}:
+			raise exception(_('ERROR_SIGNUP_INVALID_SPECIES'))
+
 		m = {
 			'login': login,
 			'name': login,
