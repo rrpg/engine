@@ -18,20 +18,20 @@ class main:
 		try:
 			self._engine.initWorld(world)
 			(saveId, newGame, login) = self._showMainMenu()
+			self._engine.initSavedGame(saveId)
 
 			# new game
 			if newGame:
 				(login, genderId, speciesId) = self._interactivePlayerCreation()
 				self._engine.setAction([
 					'create-player',
-					saveId,
 					login,
 					genderId,
 					speciesId
 				])
 				print(self._engine._runAction())
 
-			self._engine.initPlayer(login)
+			self._engine.initPlayer()
 		except (KeyboardInterrupt, EOFError):
 			print("")
 			return

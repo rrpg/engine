@@ -29,7 +29,8 @@ class saved_game:
 			model.update(
 				{
 					'id_player': None,
-					'id_character': None
+					'id_character': None,
+					'snapshot_player': None
 				},
 				('id_saved_game = ?', [saveId])
 			)
@@ -48,7 +49,8 @@ class model(Model):
 	fields = (
 		'id_saved_game',
 		'id_player',
-		'id_character'
+		'id_character',
+		'snapshot_player'
 	)
 
 	@staticmethod

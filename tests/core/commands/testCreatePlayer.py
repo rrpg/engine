@@ -8,9 +8,7 @@ from models.saved_game import saved_game
 
 
 class createPlayerTests(tests.common.common):
-	login = None
-	idSavedGame = 1
-	incorrectIdSavedGame = 42
+	initPlayer = False
 
 	def compareSavedGamesSaveOk(self):
 		saves = saved_game.loadAll()
@@ -42,62 +40,50 @@ class createPlayerTests(tests.common.common):
 		self.assertEquals(output, {"error": {"message": _('ERROR_SIGNUP_NOT_ENOUGH_ARGUMENTS'), "code": 1}})
 		self.compareSavedGamesSaveKo()
 
-	def test_unknown_saved_game_text(self):
-		self.rpg.setAction(['create-player', self.incorrectIdSavedGame, 'TEST_PLAYER_NOT_CREATED', 1, 1])
-		output = self.rpg._runAction()
-		self.assertEquals(output, _('ERROR_SIGNUP_INVALID_SAVED_GAME_ID'))
-		self.compareSavedGamesSaveKo()
-
-	def test_unknown_saved_game_json(self):
-		self.rpg.setAction(['create-player', self.incorrectIdSavedGame, 'TEST_PLAYER_NOT_CREATED', 1, 1])
-		output = self.rpg._runAction(True)
-		self.assertEquals(output, {"error": {"message": _('ERROR_SIGNUP_INVALID_SAVED_GAME_ID'), "code": 1}})
-		self.compareSavedGamesSaveKo()
-
 	def test_login_already_used_text(self):
-		self.rpg.setAction(['create-player', self.idSavedGame, 'TEST_PLAYER', 1, 1])
+		self.rpg.setAction(['create-player', 'TEST_PLAYER', 1, 1])
 		output = self.rpg._runAction()
 		self.assertEquals(output, _('ERROR_SIGNUP_LOGIN_ALREADY_USED'))
 		self.compareSavedGamesSaveKo()
 
 	def test_login_already_used_json(self):
-		self.rpg.setAction(['create-player', self.idSavedGame, 'TEST_PLAYER', 1, 1])
+		self.rpg.setAction(['create-player', 'TEST_PLAYER', 1, 1])
 		output = self.rpg._runAction(True)
 		self.assertEquals(output, {"error": {"message": _('ERROR_SIGNUP_LOGIN_ALREADY_USED'), "code": 1}})
 		self.compareSavedGamesSaveKo()
 
 	def test_invalid_gender_text(self):
-		self.rpg.setAction(['create-player', self.idSavedGame, 'TEST_PLAYER_SOME', 'some gender', 1])
+		self.rpg.setAction(['create-player', 'TEST_PLAYER_SOME', 'some gender', 1])
 		output = self.rpg._runAction()
 		self.assertEquals(output, _('ERROR_SIGNUP_INVALID_GENDER'))
 		self.compareSavedGamesSaveKo()
 
 	def test_invalid_gender_json(self):
-		self.rpg.setAction(['create-player', self.idSavedGame, 'TEST_PLAYER_SOME', 'some gender', 1])
+		self.rpg.setAction(['create-player', 'TEST_PLAYER_SOME', 'some gender', 1])
 		output = self.rpg._runAction(True)
 		self.assertEquals(output, {"error": {"message": _('ERROR_SIGNUP_INVALID_GENDER'), "code": 1}})
 		self.compareSavedGamesSaveKo()
 
 	def test_invalid_species_text(self):
-		self.rpg.setAction(['create-player', self.idSavedGame, 'TEST_PLAYER_SOME', '1', 'some species'])
+		self.rpg.setAction(['create-player', 'TEST_PLAYER_SOME', '1', 'some species'])
 		output = self.rpg._runAction()
 		self.assertEquals(output, _('ERROR_SIGNUP_INVALID_SPECIES'))
 		self.compareSavedGamesSaveKo()
 
 	def test_invalid_species_json(self):
-		self.rpg.setAction(['create-player', self.idSavedGame, 'TEST_PLAYER_SOME', '1', 'some species'])
+		self.rpg.setAction(['create-player', 'TEST_PLAYER_SOME', '1', 'some species'])
 		output = self.rpg._runAction(True)
 		self.assertEquals(output, {"error": {"message": _('ERROR_SIGNUP_INVALID_SPECIES'), "code": 1}})
 		self.compareSavedGamesSaveKo()
 
 	def test_text(self):
-		self.rpg.setAction(['create-player', self.idSavedGame, 'TEST_PLAYER_SOME', '1', '1'])
+		self.rpg.setAction(['create-player', 'TEST_PLAYER_SOME', '1', '1'])
 		output = self.rpg._runAction()
 		self.assertEquals(output, _('PLAYER_CREATION_CONFIRMATION'))
 		self.compareSavedGamesSaveOk()
 
 	def test_json(self):
-		self.rpg.setAction(['create-player', self.idSavedGame, 'TEST_PLAYER_SOME', '1', '1'])
+		self.rpg.setAction(['create-player', 'TEST_PLAYER_SOME', '1', '1'])
 		output = self.rpg._runAction(True)
 		self.assertEquals(output, 'TEST_PLAYER_SOME')
 		self.compareSavedGamesSaveOk()

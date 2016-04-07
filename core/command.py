@@ -32,6 +32,16 @@ class command():
 		"""
 		self._player = p
 
+	def setSavedGameId(self, savedGameId):
+		"""
+		c.setSavedGameId(savedGameId)
+
+		Define the current savedGame id in the command's context.
+
+		@params integer
+		"""
+		self._savedGameId = savedGameId
+
 
 class completer:
 	"""

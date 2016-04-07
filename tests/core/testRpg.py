@@ -11,6 +11,9 @@ import sqlite3
 
 
 class rpgTests(tests.common.common):
+	idSavedGame = 1
+	incorrectIdSavedGame = 42
+
 	def test_unknown_world(self):
 		rpgEngine = Rpg.Rpg()
 		try:
@@ -18,17 +21,29 @@ class rpgTests(tests.common.common):
 		except core.exception.exception as e:
 			self.assertEquals(str(e), _('ERROR_UNKNOWN_SELECTED_WORLD'))
 
+	def test_invalid_saved_game_id(self):
+		rpgEngine = Rpg.Rpg()
+		rpgEngine.initWorld(self.dbFile)
+		with self.assertRaises(core.exception.exception) as raised:
+			rpgEngine.initSavedGame(self.incorrectIdSavedGame)
+		self.assertEquals(str(raised.exception), _('ERROR_RRPG_INIT_INVALID_SAVED_GAME_ID'))
+
+	def test_load_player_with_no_save(self):
+		rpgEngine = Rpg.Rpg()
+		rpgEngine.initWorld(self.dbFile)
+		self.assertRaises(core.exception.exception, rpgEngine.initPlayer)
+		with self.assertRaises(core.exception.exception) as raised:
+			rpgEngine.initPlayer()
+		self.assertEquals(str(raised.exception), _('ERROR_SAVED_GAME_NEEDED_TO_INIT_PLAYER'))
+
 	def test_invalid_world(self):
 		rpgEngine = Rpg.Rpg()
 		rpgEngine.initWorld("tests/invalidDB")
-		self.assertRaises(sqlite3.OperationalError, rpgEngine.initPlayer, "uselessLogin")
+		self.assertRaises(sqlite3.OperationalError, rpgEngine.initSavedGame, self.idSavedGame)
 
 	def test_invalid_action_format(self):
-		rpgEngine = Rpg.Rpg()
-		rpgEngine.initWorld(self.dbFile)
-		rpgEngine.initPlayer(self.login)
 		with self.assertRaises(TypeError) as raised:
-			rpgEngine.setAction("not list action")
+			self.rpg.setAction("Not list action")
 		self.assertEquals(str(raised.exception), _('ERROR_INVALID_FORMAT_ACTION'))
 
 	def test_invalid_action_text(self):

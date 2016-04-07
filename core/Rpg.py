@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from models.player import player
 from core import command_factory, fight
+from models.player import player
 from models.Model import Model
 from models.area import area
+from models import saved_game
 from models.item_container import container
 import os
 from core.localisation import _
@@ -20,7 +21,8 @@ class Rpg:
 		- self._debug
 		- self._action
 		"""
-		self.initPlayer()
+		self._savedGame = None
+		self._player = player()
 		self._debug = debug
 		self._action = []
 		fight.fight.stopFight()
@@ -36,14 +38,29 @@ class Rpg:
 
 		Model.setDB(world)
 
-	def initPlayer(self, login=None):
+	def initSavedGame(self, savedGameId):
 		"""
-		Method to init the player with a login.
+		Method to init the saved game to play on.
 		"""
-		self._player = player()
 
-		if login is not None:
-			self._player.connect(login)
+		savedGame = saved_game.saved_game.loadById(savedGameId)
+		if savedGame is None:
+			raise saved_game.exception(
+				_('ERROR_RRPG_INIT_INVALID_SAVED_GAME_ID')
+			)
+
+		self._savedGame = savedGame
+
+	def initPlayer(self):
+		"""
+		Method to init the player with the current saved game's data.
+		"""
+		if self._savedGame is None:
+			raise core.exception.exception(_('ERROR_SAVED_GAME_NEEDED_TO_INIT_PLAYER'))
+
+		playerData = player.decodeSnapshot(self._savedGame['snapshot_player'])
+		if playerData is not None:
+			self._player.connect(playerData['login'])
 
 	def setAction(self, action):
 		'''
@@ -63,7 +80,8 @@ class Rpg:
 		try:
 			c = command_factory.factory.create(
 				self._player,
-				self._action
+				self._action,
+				self._savedGame['id_saved_game']
 			)
 
 			if c == command_factory.quit:

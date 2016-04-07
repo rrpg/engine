@@ -3,6 +3,7 @@
 import core.command
 from core.localisation import _
 from models.area import area
+from models.saved_game import saved_game
 from models.item_container import container
 
 
@@ -24,6 +25,10 @@ class save(core.command.command):
 			raise core.command.exception(_('ERROR_SAVE_NO_SAVE_POINT'))
 
 		self._player.saveProgress()
+		saved_game.updateSavedGame(
+			self._savedGameId,
+			{'snapshot_player': self._player.getSnapshot()}
+		)
 		area.saveChangedAreas()
 		container.saveChangedContainers()
 

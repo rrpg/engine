@@ -7,7 +7,7 @@ import json
 
 
 class listGendersTests(tests.common.common):
-	login = None
+	initPlayer = False
 
 	def test_text(self):
 		self.rpg.setAction(['list-genders'])
