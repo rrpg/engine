@@ -20,7 +20,7 @@ Today, the available commands are:
 """
 import core.command
 from core.commands import look, talk, move, enter, exit, take, drop, inventory,\
-	help, createPlayer, open, stats, attack, save
+	help, open, stats, attack, save
 from core.localisation import _
 import sys
 

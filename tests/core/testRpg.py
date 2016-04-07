@@ -5,7 +5,9 @@ import tests.common
 import core
 from core.localisation import _
 from core import Rpg
-import models.settings
+import models.player
+from models.saved_game import saved_game
+
 import json
 import sqlite3
 
@@ -72,3 +74,43 @@ class rpgTests(tests.common.common):
 		self.rpg.setAction(["Unknown action"])
 		output = self.rpg._runAction(True)
 		self.assertEquals(output,  {'error': {'message': _('ERROR_UNKNOWN_COMMAND'), 'code': 1}})
+
+	def compareSavedGamesSaveOk(self):
+		saves = saved_game.loadAll()
+		expectedSaves = [
+			{'id_saved_game': 1, 'login': 'TEST_PLAYER_SOME'},
+			{'id_saved_game': 2, 'login': 'TEST_PLAYER2'},
+			{'id_saved_game': 3, 'login': None}
+		]
+		self.assertEquals(saves, expectedSaves)
+
+	def compareSavedGamesSaveKo(self):
+		saves = saved_game.loadAll()
+		expectedSaves = [
+			{'id_saved_game': 1, 'login': 'TEST_PLAYER'},
+			{'id_saved_game': 2, 'login': 'TEST_PLAYER2'},
+			{'id_saved_game': 3, 'login': None}
+		]
+		self.assertEquals(saves, expectedSaves)
+
+	def test_login_already_used(self):
+		with self.assertRaises(models.player.exception) as raised:
+			self.rpg.createPlayer('TEST_PLAYER', 1, 1)
+		self.assertEquals(str(raised.exception), _('ERROR_SIGNUP_LOGIN_ALREADY_USED'))
+		self.compareSavedGamesSaveKo()
+
+	def test_invalid_gender(self):
+		with self.assertRaises(models.player.exception) as raised:
+			self.rpg.createPlayer('TEST_PLAYER_SOME', 'some gender', 1)
+		self.assertEquals(str(raised.exception), _('ERROR_SIGNUP_INVALID_GENDER'))
+		self.compareSavedGamesSaveKo()
+
+	def test_invalid_species(self):
+		with self.assertRaises(models.player.exception) as raised:
+			self.rpg.createPlayer('TEST_PLAYER_SOME', 1, 'some species')
+		self.assertEquals(str(raised.exception), _('ERROR_SIGNUP_INVALID_SPECIES'))
+		self.compareSavedGamesSaveKo()
+
+	def test_ok(self):
+		self.rpg.createPlayer('TEST_PLAYER_SOME', '1', '1')
+		self.compareSavedGamesSaveOk()
