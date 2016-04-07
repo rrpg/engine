@@ -78,7 +78,7 @@ class factory:
 
 		if cmd in (_('QUIT_COMMAND'), _('QUIT_SHORT_COMMAND')):
 			return quit
-		elif cmd in factory.mapping.keys():
+		elif p.isConnected() and cmd in factory.mapping.keys():
 			cmd = factory.mapping[cmd]
 			module = sys.modules['core.commands.' + cmd['command']]
 
@@ -86,7 +86,7 @@ class factory:
 				raise core.command.exception(_('ERROR_DENIED_COMMAND_WHILE_FIGHTING'))
 
 			cmd = getattr(module, cmd['command'])()
-		elif not p.isConnected() and cmd in factory.mapping_anonymous.keys():
+		elif cmd in factory.mapping_anonymous.keys():
 			module = sys.modules['core.commands.' + factory.mapping_anonymous[cmd]]
 			cmd = getattr(module, factory.mapping_anonymous[cmd])()
 		else:
@@ -96,12 +96,3 @@ class factory:
 		cmd.setPlayer(p)
 		cmd.setSavedGameId(savedGameId)
 		return cmd
-
-	@staticmethod
-	def commandNeedPlayer(cmd):
-		if cmd in factory.mapping.keys():
-			return True
-		elif cmd in factory.mapping_anonymous.keys():
-			return False
-		else:
-			raise core.command.exception(_('ERROR_UNKNOWN_COMMAND'))
