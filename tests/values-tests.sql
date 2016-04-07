@@ -92,4 +92,11 @@ WHERE id_saved_game = 1;
 UPDATE saved_game SET id_player = 2, id_character = 3, snapshot_player = '{"id_gender": 1, "name": "TEST_PLAYER2bis", "id_character": 3, "id_player": 2, "stat_defence": 2, "stat_attack": 4, "stat_max_hp": 20, "inventory": null, "id_area": 1, "stat_current_hp": 20, "login": "TEST_PLAYER2bis", "stat_speed": 2, "id_species": 1, "stat_luck": 10}'
 WHERE id_saved_game = 2;
 
+CREATE TABLE fake_model(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	field1 int,
+	field2 VARCHAR(32)
+);
+INSERT INTO fake_model (field1, field2) VALUES (3, 'three'), (42, 'forty-two');
+
 COMMIT;
