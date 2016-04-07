@@ -15,14 +15,12 @@ Today, the available commands are:
 - stats,
 - help,
 - quit,
-- authenticate,
 - attack
 - save
 """
 import core.command
 from core.commands import look, talk, move, enter, exit, take, drop, inventory,\
-	help, createPlayer, listSpecies, listGenders, open, authenticate,\
-	stats, attack, save
+	help, createPlayer, open, stats, attack, save
 from core.localisation import _
 import sys
 
@@ -58,10 +56,7 @@ class factory:
 	}
 
 	mapping_anonymous = {
-		'create-player': 'createPlayer',
-		'authenticate': 'authenticate',
-		'list-species': 'listSpecies',
-		'list-genders': 'listGenders'
+		'create-player': 'createPlayer'
 	}
 
 	@staticmethod
