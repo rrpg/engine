@@ -9,7 +9,6 @@ class createPlayer(core.command.command):
 		if len(self._args) < 3:
 			raise core.command.exception(_('ERROR_SIGNUP_NOT_ENOUGH_ARGUMENTS'))
 
-		errors = dict()
 		(login, genderId, speciesId) = self._args
 
 		if len(player.model.loadBy({'login': login})):
