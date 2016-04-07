@@ -25,7 +25,6 @@ class main:
 				(login, genderId, speciesId) = self._interactivePlayerCreation()
 				self._engine.setAction([
 					'create-player',
-					saveId,
 					login,
 					genderId,
 					speciesId
