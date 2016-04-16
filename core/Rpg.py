@@ -24,7 +24,7 @@ class Rpg:
 		self._savedGame = None
 		self._player = player()
 		self._debug = debug
-		self._action = []
+		self._action = None
 		fight.fight.stopFight()
 		area.resetChangedAreas()
 		container.resetChangedContainers()
