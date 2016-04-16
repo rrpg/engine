@@ -110,6 +110,8 @@ class Rpg:
 				self._savedGame['id_saved_game']
 			)
 
+			self._action = None
+
 			if c == command_factory.quit:
 				return c
 
