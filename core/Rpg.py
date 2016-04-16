@@ -100,6 +100,8 @@ class Rpg:
 		"""
 		if self._savedGame is None:
 			raise core.exception.exception(_('ERROR_SAVED_GAME_NEEDED_TO_RUN_ACTION'))
+		elif not self._player.isConnected():
+			raise core.exception.exception(_('ERROR_CONNECTED_PLAYER_NEEDED_FOR_COMMAND'))
 
 		try:
 			c = command_factory.factory.create(
