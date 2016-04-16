@@ -65,11 +65,15 @@ class rpgTests(tests.common.common):
 			self.rpg.setAction("Not list action")
 		self.assertEquals(str(raised.exception), _('ERROR_INVALID_FORMAT_ACTION'))
 
-	def test_invalid_action(self):
+	def test_invalid_action_text(self):
 		self.rpg.setAction(["Unknown action"])
-		with self.assertRaises(core.exception.exception) as raised:
-			self.rpg._runAction()
-		self.assertEquals(str(raised.exception), _('ERROR_UNKNOWN_COMMAND'))
+		output = self.rpg._runAction()
+		self.assertEquals(output,  _('ERROR_UNKNOWN_COMMAND'))
+
+	def test_invalid_action_json(self):
+		self.rpg.setAction(["Unknown action"])
+		output = self.rpg._runAction(True)
+		self.assertEquals(output,  {'error': {'message': _('ERROR_UNKNOWN_COMMAND'), 'code': 1}})
 
 	def compareSavedGamesSaveOk(self):
 		saves = saved_game.loadAll()
