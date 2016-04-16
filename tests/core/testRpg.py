@@ -130,3 +130,8 @@ class rpgTests(tests.common.common):
 		with self.assertRaises(core.exception.exception) as raised:
 			rpgEngine._runAction(True)
 		self.assertEquals(str(raised.exception), _('ERROR_CONNECTED_PLAYER_NEEDED_FOR_COMMAND'))
+
+	def test_run_action_with_no_action(self):
+		with self.assertRaises(core.exception.exception) as raised:
+			self.rpg._runAction()
+		self.assertEquals(str(raised.exception), _('ERROR_NO_ACTION_SET'))
