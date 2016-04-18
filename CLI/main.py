@@ -39,10 +39,11 @@ class main:
 		self.run()
 
 	def _showMainMenu(self):
-		savedGames = saved_game.saved_game.loadAll()
-		hasExistingGames = len(
-			[s for s in savedGames if s['login'] is not None]
-		) > 0
+		savedGames = saved_game.saved_game.parseSavedGames(
+			saved_game.saved_game.loadAll()
+		)
+		hasExistingGames = savedGames['has_existing_games']
+		savedGames = savedGames['saved_games']
 
 		newGame = True
 		choiceGame = 0
@@ -85,7 +86,7 @@ class main:
 
 	@staticmethod
 	def formatSavedGameName(s):
-		if s['login'] is None:
+		if s['id_player'] is None:
 			return _('EMPTY_SAVED_GAME')
 		else:
 			data = {
