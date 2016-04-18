@@ -63,7 +63,8 @@ class main:
 				[self.formatSavedGameName(s) for s in savedGames]
 			)
 
-			savedGameLogin = savedGames[choiceSave]['login']
+			if savedGames[choiceSave]['id_player'] is not None:
+				savedGameLogin = savedGames[choiceSave]['login']
 
 			# new game
 			# and saved game used
