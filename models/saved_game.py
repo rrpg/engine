@@ -19,6 +19,18 @@ class saved_game:
 		return savedGame
 
 	@staticmethod
+	def initFile(fileName, dbStructure):
+		db = sqlite3.connect(fileName)
+		c = db.cursor()
+		f = open(dbStructure, 'r')
+		print(f)
+		sql = f.read()
+		c.executescript(sql)
+		f.close()
+		db.commit()
+		db.close()
+
+	@staticmethod
 	def updateSavedGame(saveId, data):
 		model.update(data, ('id_saved_game = ?', [saveId]))
 

@@ -12,6 +12,9 @@ rootPath = os.path.dirname(__file__) + '/..'
 externalPath = rootPath + '/externals'
 localesDir = rootPath + '/locales'
 
+nexusDb = os.path.expanduser('~') + '/.rrpg/nexus.db'
+nexusDbStructure = rootPath + '/database/nexus.sql'
+
 generator = {}
 generator['dungeon'] = {
 	'path': externalPath + '/dungeon-generator',

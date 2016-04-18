@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from core import command_factory, fight
+from core import command_factory, fight, config
 from models.player import player
 from models.Model import Model
 from models.area import area
@@ -25,9 +25,25 @@ class Rpg:
 		self._player = player()
 		self._debug = debug
 		self._action = None
+		self._initNexus()
 		fight.fight.stopFight()
 		area.resetChangedAreas()
 		container.resetChangedContainers()
+
+	def _initNexus(self):
+		"""
+		Method to init the nexus file, containing the different saved game info
+		"""
+
+		nexusDir = os.path.dirname(config.nexusDb)
+		if not os.path.isdir(nexusDir):
+			os.makedirs(nexusDir)
+
+		if os.path.isfile(config.nexusDb) is False:
+			saved_game.saved_game.initFile(
+				config.nexusDb,
+				config.nexusDbStructure
+			)
 
 	def initWorld(self, world):
 		"""
