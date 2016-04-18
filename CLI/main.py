@@ -51,7 +51,7 @@ class main:
 				_('MAIN_MENU_TITLE'), _('CHOICE_QUESTION'),
 				[_('CHOICE_NEW_GAME'), _('CHOICE_LOAD_GAME')]
 			)
-			newGame = choiceGame == 0
+			newGame = (choiceGame == 0)
 
 		choiceSave = None
 		savedGameLogin = None
