@@ -58,7 +58,8 @@ class rpgTests(tests.common.common):
 	def test_invalid_world(self):
 		rpgEngine = Rpg.Rpg()
 		rpgEngine.initWorld("tests/invalidDB")
-		self.assertRaises(sqlite3.OperationalError, rpgEngine.initSavedGame, self.idSavedGame)
+		rpgEngine.initSavedGame(self.idSavedGame)
+		self.assertRaises(sqlite3.OperationalError, rpgEngine.initPlayer)
 
 	def test_invalid_action_format(self):
 		with self.assertRaises(TypeError) as raised:

@@ -44,6 +44,7 @@ class Rpg:
 				config.nexusDb,
 				config.nexusDbStructure
 			)
+		saved_game.model.setDB(config.nexusDb)
 
 	def initWorld(self, world):
 		"""
