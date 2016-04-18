@@ -72,6 +72,7 @@ class main:
 				and savedGameLogin is not None \
 				and not self.yesNoQuestion(_('OVERWRITE_SAVEDGAME_QUESTION_{choices}')):
 					choiceSave = None
+					savedGameLogin = None
 			# load game
 			# and no saved game exists in this slot
 			elif not newGame \
