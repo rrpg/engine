@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-07 23:57+0100\n"
+"POT-Creation-Date: 2016-04-19 13:19+0100\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -22,110 +22,118 @@ msgstr ""
 msgid "PLAYER_CREATION_CONFIRMATION"
 msgstr "Le joueur a été créé avec succès"
 
-#: CLI/main.py:51
+#: CLI/main.py:52
 msgid "CHOICE_QUESTION"
 msgstr "Votre choix : "
 
-#: CLI/main.py:51
+#: CLI/main.py:52
 msgid "MAIN_MENU_TITLE"
 msgstr "rRpg"
 
-#: CLI/main.py:52
+#: CLI/main.py:53
 msgid "CHOICE_LOAD_GAME"
 msgstr "Charger une partie"
 
-#: CLI/main.py:52
+#: CLI/main.py:53
 msgid "CHOICE_NEW_GAME"
 msgstr "Commencer une nouvelle partie"
 
-#: CLI/main.py:60
+#: CLI/main.py:61
 msgid "SAVED_GAME_MENU_TITLE"
 msgstr "Choisissez une partie"
 
-#: CLI/main.py:61
+#: CLI/main.py:62
 msgid "SAVED_GAME_CHOICE_QUESTION"
 msgstr "Votre choix ? "
 
-#: CLI/main.py:72
+#: CLI/main.py:74
 #, python-brace-format
 msgid "OVERWRITE_SAVEDGAME_QUESTION_{choices}"
 msgstr "Ecraser la partie ? {choices} "
 
-#: CLI/main.py:89
+#: CLI/main.py:92
 msgid "EMPTY_SAVED_GAME"
 msgstr "Vide"
 
-#: CLI/main.py:94
+#: CLI/main.py:97
 #, python-brace-format
 msgid "SAVED_GAME_INFO_{login}"
 msgstr "{login}"
 
-#: CLI/main.py:99
+#: CLI/main.py:102
 msgid "LOGIN_PROMPT"
 msgstr "Identifiant : "
 
-#: CLI/main.py:102 models/player.py:32 tests/core/testRpg.py:95
+#: CLI/main.py:105 models/player.py:32 tests/core/testRpg.py:130
 msgid "ERROR_SIGNUP_LOGIN_ALREADY_USED"
 msgstr "Identifiant déjà utilisé"
 
-#: CLI/main.py:108
+#: CLI/main.py:111
 msgid "GENDER_PROMPT"
 msgstr "Sexe : "
 
-#: CLI/main.py:108
+#: CLI/main.py:111
 msgid "GENDER_SELECTION"
 msgstr "Choix du sexe"
 
-#: CLI/main.py:121
+#: CLI/main.py:124
 msgid "SPECIES_PROMPT"
 msgstr "Espèce : "
 
-#: CLI/main.py:121
+#: CLI/main.py:124
 msgid "SPECIES_SELECTION"
 msgstr "Choix de l'espèce"
 
-#: CLI/main.py:130
+#: CLI/main.py:133
 msgid "GAME_OVER_TEXT"
 msgstr ""
 "Vous avez été vaincu. Peut être que quelqu'un se souviendra de votre nom..."
 
-#: CLI/main.py:206
+#: CLI/main.py:209
 msgid "COMMAND_PROMPT"
 msgstr "Commande : "
 
-#: CLI/main.py:225
+#: CLI/main.py:228
 msgid "ANSWER_NO"
 msgstr "non"
 
-#: CLI/main.py:225 CLI/main.py:230
+#: CLI/main.py:228 CLI/main.py:233
 msgid "ANSWER_YES"
 msgstr "oui"
 
-#: core/Rpg.py:37 tests/core/testRpg.py:26
+#: core/Rpg.py:54 tests/core/testRpg.py:26
 msgid "ERROR_UNKNOWN_SELECTED_WORLD"
 msgstr "Le monde choisi n'existe pas"
 
-#: core/Rpg.py:49 tests/core/testRpg.py:33
+#: core/Rpg.py:66 tests/core/testRpg.py:33
 msgid "ERROR_RRPG_INIT_INVALID_SAVED_GAME_ID"
 msgstr "La sauvegarde choisie n'existe pas"
 
-#: core/Rpg.py:78 tests/core/testRpg.py:40
+#: core/Rpg.py:95 tests/core/testRpg.py:40
 msgid "ERROR_SAVED_GAME_NEEDED_TO_INIT_PLAYER"
 msgstr "Une sauvegarde est requise pour initialiser le joueur"
 
-#: core/Rpg.py:84 tests/core/testRpg.py:48
+#: core/Rpg.py:101 tests/core/testRpg.py:48
 msgid "ERROR_NON_EMPTY_SAVED_GAME_NEEDED_TO_INIT_PLAYER"
 msgstr ""
 "Une sauvegarde non vide est requise pour initialiser le joueur, ou un joueur "
 "doit être créé si une sauvegarde vide est choisie"
 
-#: core/Rpg.py:91 tests/core/testRpg.py:66
+#: core/Rpg.py:108 tests/core/testRpg.py:67
 msgid "ERROR_INVALID_FORMAT_ACTION"
 msgstr "L'action doit être une liste de strings"
 
-#: core/Rpg.py:102 tests/core/testRpg.py:119
+#: core/Rpg.py:119 tests/core/testRpg.py:154
 msgid "ERROR_SAVED_GAME_NEEDED_TO_RUN_ACTION"
 msgstr "Une sauvegarde doit être initialisée pour pouvoir lancer une commande"
+
+#: core/Rpg.py:121 tests/core/testRpg.py:163
+msgid "ERROR_CONNECTED_PLAYER_NEEDED_FOR_COMMAND"
+msgstr "Un joueur doit être chargé pour pouvoir lancer une commande"
+
+#: core/Rpg.py:123 tests/core/testRpg.py:168
+msgid "ERROR_NO_ACTION_SET"
+msgstr "Une action est requise"
 
 #: core/command_factory.py:42 core/commands/help.py:38
 #: tests/core/commands/testHelp.py:24 tests/core/commands/testHelp.py:79
@@ -144,7 +152,7 @@ msgstr "Une sauvegarde doit être initialisée pour pouvoir lancer une commande"
 #: tests/core/commands/testSave.py:104 tests/core/commands/testSave.py:191
 #: tests/core/commands/testSave.py:203 tests/core/commands/testSave.py:223
 #: tests/core/commands/testSave.py:226 tests/core/commands/testTake.py:147
-#: tests/core/testRpg.py:116 tests/core/testRpg.py:125
+#: tests/core/testRpg.py:151 tests/core/testRpg.py:160
 msgid "LOOK_COMMAND"
 msgstr "regarder"
 
@@ -350,15 +358,12 @@ msgstr "quitter"
 msgid "QUIT_SHORT_COMMAND"
 msgstr "q"
 
-#: core/command_factory.py:78 tests/core/testRpg.py:128
-msgid "ERROR_CONNECTED_PLAYER_NEEDED_FOR_COMMAND"
-msgstr "Un joueur doit être chargé pour pouvoir lancer une commande"
-
-#: core/command_factory.py:84
+#: core/command_factory.py:82
 msgid "ERROR_DENIED_COMMAND_WHILE_FIGHTING"
 msgstr "Vous ne pouvez pas utiliser cette commande durant un combat"
 
-#: core/command_factory.py:88 tests/core/testRpg.py:72
+#: core/command_factory.py:86 tests/core/testRpg.py:72
+#: tests/core/testRpg.py:77
 msgid "ERROR_UNKNOWN_COMMAND"
 msgstr "Commande inconnue"
 
@@ -930,19 +935,10 @@ msgstr "Une erreur est survenue lors du chargement du lieu..."
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
 msgstr "Identifiant incorrect"
 
-#: models/player.py:35 tests/core/testRpg.py:101
+#: models/player.py:35 tests/core/testRpg.py:136
 msgid "ERROR_SIGNUP_INVALID_GENDER"
 msgstr "Le genre choisi est invalide"
 
-#: models/player.py:38 tests/core/testRpg.py:107
+#: models/player.py:38 tests/core/testRpg.py:142
 msgid "ERROR_SIGNUP_INVALID_SPECIES"
 msgstr "L'espèce choisie est invalide"
-
-#~ msgid "ERROR_SIGNUP_NOT_ENOUGH_ARGUMENTS"
-#~ msgstr "Des arguments supplémentaires sont requis pour créer un joueur"
-
-#~ msgid "ERROR_AUTHENTICATE_ARGUMENTS_NUMBER"
-#~ msgstr "Un argument est requis (identifiant)"
-
-#~ msgid "PLAYER_AUTHENTICATION_CONFIRMATION"
-#~ msgstr "Identifiant correct"
