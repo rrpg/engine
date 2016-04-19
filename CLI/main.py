@@ -39,10 +39,11 @@ class main:
 		self.run()
 
 	def _showMainMenu(self):
-		savedGames = saved_game.saved_game.loadAll()
-		hasExistingGames = len(
-			[s for s in savedGames if s['login'] is not None]
-		) > 0
+		savedGames = saved_game.saved_game.parseSavedGames(
+			saved_game.saved_game.loadAll()
+		)
+		hasExistingGames = savedGames['has_existing_games']
+		savedGames = savedGames['saved_games']
 
 		newGame = True
 		choiceGame = 0
@@ -51,7 +52,7 @@ class main:
 				_('MAIN_MENU_TITLE'), _('CHOICE_QUESTION'),
 				[_('CHOICE_NEW_GAME'), _('CHOICE_LOAD_GAME')]
 			)
-			newGame = choiceGame == 0
+			newGame = (choiceGame == 0)
 
 		choiceSave = None
 		savedGameLogin = None
@@ -62,7 +63,8 @@ class main:
 				[self.formatSavedGameName(s) for s in savedGames]
 			)
 
-			savedGameLogin = savedGames[choiceSave]['login']
+			if savedGames[choiceSave]['id_player'] is not None:
+				savedGameLogin = savedGames[choiceSave]['login']
 
 			# new game
 			# and saved game used
@@ -71,6 +73,7 @@ class main:
 				and savedGameLogin is not None \
 				and not self.yesNoQuestion(_('OVERWRITE_SAVEDGAME_QUESTION_{choices}')):
 					choiceSave = None
+					savedGameLogin = None
 			# load game
 			# and no saved game exists in this slot
 			elif not newGame \
@@ -85,7 +88,7 @@ class main:
 
 	@staticmethod
 	def formatSavedGameName(s):
-		if s['login'] is None:
+		if s['id_player'] is None:
 			return _('EMPTY_SAVED_GAME')
 		else:
 			data = {

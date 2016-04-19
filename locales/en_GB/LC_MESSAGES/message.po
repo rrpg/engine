@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-07 23:57+0100\n"
+"POT-Creation-Date: 2016-04-19 13:19+0100\n"
 "PO-Revision-Date: 2014-03-07 22:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -21,110 +21,118 @@ msgstr ""
 msgid "PLAYER_CREATION_CONFIRMATION"
 msgstr "Player created"
 
-#: CLI/main.py:51
+#: CLI/main.py:52
 msgid "CHOICE_QUESTION"
 msgstr "Your choice? "
 
-#: CLI/main.py:51
+#: CLI/main.py:52
 msgid "MAIN_MENU_TITLE"
 msgstr "rRpg"
 
-#: CLI/main.py:52
+#: CLI/main.py:53
 msgid "CHOICE_LOAD_GAME"
 msgstr "Load an existing game"
 
-#: CLI/main.py:52
+#: CLI/main.py:53
 msgid "CHOICE_NEW_GAME"
 msgstr "Start a new game"
 
-#: CLI/main.py:60
+#: CLI/main.py:61
 msgid "SAVED_GAME_MENU_TITLE"
 msgstr "Choose a save game slot"
 
-#: CLI/main.py:61
+#: CLI/main.py:62
 msgid "SAVED_GAME_CHOICE_QUESTION"
 msgstr "Which slot? "
 
-#: CLI/main.py:72
+#: CLI/main.py:74
 #, python-brace-format
 msgid "OVERWRITE_SAVEDGAME_QUESTION_{choices}"
 msgstr "Are you sure you want to overwrite this saved game? {choices} "
 
-#: CLI/main.py:89
+#: CLI/main.py:92
 msgid "EMPTY_SAVED_GAME"
 msgstr "Empty saved game"
 
-#: CLI/main.py:94
+#: CLI/main.py:97
 #, python-brace-format
 msgid "SAVED_GAME_INFO_{login}"
 msgstr "{login}"
 
-#: CLI/main.py:99
+#: CLI/main.py:102
 msgid "LOGIN_PROMPT"
 msgstr "Login: "
 
-#: CLI/main.py:102 models/player.py:32 tests/core/testRpg.py:95
+#: CLI/main.py:105 models/player.py:32 tests/core/testRpg.py:130
 msgid "ERROR_SIGNUP_LOGIN_ALREADY_USED"
 msgstr "This login is already used"
 
-#: CLI/main.py:108
+#: CLI/main.py:111
 msgid "GENDER_PROMPT"
 msgstr "Gender: "
 
-#: CLI/main.py:108
+#: CLI/main.py:111
 msgid "GENDER_SELECTION"
 msgstr "Gender selection"
 
-#: CLI/main.py:121
+#: CLI/main.py:124
 msgid "SPECIES_PROMPT"
 msgstr "Species: "
 
-#: CLI/main.py:121
+#: CLI/main.py:124
 msgid "SPECIES_SELECTION"
 msgstr "Species selection"
 
-#: CLI/main.py:130
+#: CLI/main.py:133
 msgid "GAME_OVER_TEXT"
 msgstr ""
 "You have been defeated. Your name shall be remembered for ever.... Or not"
 
-#: CLI/main.py:206
+#: CLI/main.py:209
 msgid "COMMAND_PROMPT"
 msgstr "Command: "
 
-#: CLI/main.py:225
+#: CLI/main.py:228
 msgid "ANSWER_NO"
 msgstr "no"
 
-#: CLI/main.py:225 CLI/main.py:230
+#: CLI/main.py:228 CLI/main.py:233
 msgid "ANSWER_YES"
 msgstr "yes"
 
-#: core/Rpg.py:37 tests/core/testRpg.py:26
+#: core/Rpg.py:54 tests/core/testRpg.py:26
 msgid "ERROR_UNKNOWN_SELECTED_WORLD"
 msgstr "Unknown selected world"
 
-#: core/Rpg.py:49 tests/core/testRpg.py:33
+#: core/Rpg.py:66 tests/core/testRpg.py:33
 msgid "ERROR_RRPG_INIT_INVALID_SAVED_GAME_ID"
 msgstr "The chosen saved game does not exist"
 
-#: core/Rpg.py:78 tests/core/testRpg.py:40
+#: core/Rpg.py:95 tests/core/testRpg.py:40
 msgid "ERROR_SAVED_GAME_NEEDED_TO_INIT_PLAYER"
 msgstr "A saved game is needed to initialise the player"
 
-#: core/Rpg.py:84 tests/core/testRpg.py:48
+#: core/Rpg.py:101 tests/core/testRpg.py:48
 msgid "ERROR_NON_EMPTY_SAVED_GAME_NEEDED_TO_INIT_PLAYER"
 msgstr ""
 "A non empty saved game is required to init the player, or a player needs to "
 "be created after choosing an empty saved game"
 
-#: core/Rpg.py:91 tests/core/testRpg.py:66
+#: core/Rpg.py:108 tests/core/testRpg.py:67
 msgid "ERROR_INVALID_FORMAT_ACTION"
 msgstr "The action must be a list of strings"
 
-#: core/Rpg.py:102 tests/core/testRpg.py:119
+#: core/Rpg.py:119 tests/core/testRpg.py:154
 msgid "ERROR_SAVED_GAME_NEEDED_TO_RUN_ACTION"
 msgstr "A saved game must be initialised before running an action"
+
+#: core/Rpg.py:121 tests/core/testRpg.py:163
+msgid "ERROR_CONNECTED_PLAYER_NEEDED_FOR_COMMAND"
+msgstr "A player must be loaded to run a command"
+
+#: core/Rpg.py:123 tests/core/testRpg.py:168
+msgid "ERROR_NO_ACTION_SET"
+msgstr "An action needs to be set"
 
 #: core/command_factory.py:42 core/commands/help.py:38
 #: tests/core/commands/testHelp.py:24 tests/core/commands/testHelp.py:79
@@ -143,7 +151,7 @@ msgstr "A saved game must be initialised before running an action"
 #: tests/core/commands/testSave.py:104 tests/core/commands/testSave.py:191
 #: tests/core/commands/testSave.py:203 tests/core/commands/testSave.py:223
 #: tests/core/commands/testSave.py:226 tests/core/commands/testTake.py:147
-#: tests/core/testRpg.py:116 tests/core/testRpg.py:125
+#: tests/core/testRpg.py:151 tests/core/testRpg.py:160
 msgid "LOOK_COMMAND"
 msgstr "look"
 
@@ -349,15 +357,12 @@ msgstr "quit"
 msgid "QUIT_SHORT_COMMAND"
 msgstr "q"
 
-#: core/command_factory.py:78 tests/core/testRpg.py:128
-msgid "ERROR_CONNECTED_PLAYER_NEEDED_FOR_COMMAND"
-msgstr "A player must be loaded to run a command"
-
-#: core/command_factory.py:84
+#: core/command_factory.py:82
 msgid "ERROR_DENIED_COMMAND_WHILE_FIGHTING"
 msgstr "You can't use this command while fighting"
 
-#: core/command_factory.py:88 tests/core/testRpg.py:72
+#: core/command_factory.py:86 tests/core/testRpg.py:72
+#: tests/core/testRpg.py:77
 msgid "ERROR_UNKNOWN_COMMAND"
 msgstr "Unknown command"
 
@@ -931,19 +936,10 @@ msgstr "An error occured during the place loading"
 msgid "ERROR_CONNECT_INVALID_CREDENTIALS"
 msgstr "Invalid login"
 
-#: models/player.py:35 tests/core/testRpg.py:101
+#: models/player.py:35 tests/core/testRpg.py:136
 msgid "ERROR_SIGNUP_INVALID_GENDER"
 msgstr "Invalid gender"
 
-#: models/player.py:38 tests/core/testRpg.py:107
+#: models/player.py:38 tests/core/testRpg.py:142
 msgid "ERROR_SIGNUP_INVALID_SPECIES"
 msgstr "Invalid species"
-
-#~ msgid "ERROR_SIGNUP_NOT_ENOUGH_ARGUMENTS"
-#~ msgstr "More arguments are required to create a player"
-
-#~ msgid "ERROR_AUTHENTICATE_ARGUMENTS_NUMBER"
-#~ msgstr "One argument is required (Login)"
-
-#~ msgid "PLAYER_AUTHENTICATION_CONFIRMATION"
-#~ msgstr "Player connected"

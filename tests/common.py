@@ -28,8 +28,24 @@ class common(unittest.TestCase):
 		con.executescript(s)
 		f.close()
 
-		con.commit()
-		con.close()
+		core.config.nexusDb = '/tmp/nexus-rrpg.db'
+		dbNexus = os.path.realpath(core.config.nexusDb)
+		if os.path.exists(dbNexus):
+			os.remove(dbNexus)
+
+		conNexus = sqlite3.connect(dbNexus)
+		f = open(os.path.realpath(os.path.dirname(__file__) + "/../database/nexus.sql"),'r')
+		s = f.read()
+		conNexus.executescript(s)
+		f.close()
+
+		f = open(os.path.realpath(os.path.dirname(__file__) + "/values-nexus-tests.sql"),'r')
+		s = f.read()
+		conNexus.executescript(s)
+		f.close()
+
+		conNexus.commit()
+		conNexus.close()
 
 		self.initialiseClient()
 

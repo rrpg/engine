@@ -19,6 +19,18 @@ class saved_game:
 		return savedGame
 
 	@staticmethod
+	def initFile(fileName, dbStructure):
+		db = sqlite3.connect(fileName)
+		c = db.cursor()
+		f = open(dbStructure, 'r')
+		print(f)
+		sql = f.read()
+		c.executescript(sql)
+		f.close()
+		db.commit()
+		db.close()
+
+	@staticmethod
 	def updateSavedGame(saveId, data):
 		model.update(data, ('id_saved_game = ?', [saveId]))
 
@@ -41,6 +53,23 @@ class saved_game:
 				('id_character = ?', [savedGame['id_character']])
 			)
 
+	@staticmethod
+	def parseSavedGames(savedGames):
+		ret = {
+			'has_existing_games': False,
+			'saved_games': []
+		}
+		for s in savedGames:
+			if s['id_player'] is None:
+				save = s
+			else:
+				save = player.player.decodeSnapshot(s['snapshot_player'])
+				save['id_saved_game'] = s['id_saved_game']
+				ret['has_existing_games'] = True
+			ret['saved_games'].append(save)
+
+		return ret
+
 class model(Model):
 	"""
 	Class to interact with the values in the database.
@@ -52,21 +81,6 @@ class model(Model):
 		'id_character',
 		'snapshot_player'
 	)
-
-	@staticmethod
-	def loadAll():
-		query = "\
-			SELECT\
-				id_saved_game,\
-				login\
-			FROM\
-				saved_game sg\
-				LEFT JOIN player p\
-					ON sg.id_player = p.id_player\
-			ORDER BY id_saved_game\
-			"
-
-		return Model.fetchAllRows(query)
 
 
 class exception(core.exception.exception):

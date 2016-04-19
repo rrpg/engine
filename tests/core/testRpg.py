@@ -58,7 +58,8 @@ class rpgTests(tests.common.common):
 	def test_invalid_world(self):
 		rpgEngine = Rpg.Rpg()
 		rpgEngine.initWorld("tests/invalidDB")
-		self.assertRaises(sqlite3.OperationalError, rpgEngine.initSavedGame, self.idSavedGame)
+		rpgEngine.initSavedGame(self.idSavedGame)
+		self.assertRaises(sqlite3.OperationalError, rpgEngine.initPlayer)
 
 	def test_invalid_action_format(self):
 		with self.assertRaises(TypeError) as raised:
@@ -78,18 +79,48 @@ class rpgTests(tests.common.common):
 	def compareSavedGamesSaveOk(self):
 		saves = saved_game.loadAll()
 		expectedSaves = [
-			{'id_saved_game': 1, 'login': 'TEST_PLAYER_SOME'},
-			{'id_saved_game': 2, 'login': 'TEST_PLAYER2'},
-			{'id_saved_game': 3, 'login': None}
+			{
+				'id_saved_game': 1,
+				'snapshot_player': '{"id_gender": 1, "name": "TEST_PLAYER_SOME", "id_character": 4, "id_player": 3, "stat_defence": 2, "stat_attack": 4, "stat_max_hp": 20, "inventory": null, "id_area": 1, "stat_current_hp": 20, "login": "TEST_PLAYER_SOME", "stat_speed": 2, "id_species": 1, "stat_luck": 10}',
+				'id_player': 3,
+				'id_character': 4
+			},
+			{
+				'id_saved_game': 2,
+				'snapshot_player': '{"id_gender": 1, "name": "TEST_PLAYER2bis", "id_character": 3, "id_player": 2, "stat_defence": 2, "stat_attack": 4, "stat_max_hp": 20, "inventory": null, "id_area": 1, "stat_current_hp": 20, "login": "TEST_PLAYER2bis", "stat_speed": 2, "id_species": 1, "stat_luck": 10}',
+				'id_player': 2,
+				'id_character': 3
+			},
+			{
+				'id_saved_game': 3,
+				'snapshot_player': '',
+				'id_player': None,
+				'id_character': None
+			}
 		]
 		self.assertEquals(saves, expectedSaves)
 
 	def compareSavedGamesSaveKo(self):
 		saves = saved_game.loadAll()
 		expectedSaves = [
-			{'id_saved_game': 1, 'login': 'TEST_PLAYER'},
-			{'id_saved_game': 2, 'login': 'TEST_PLAYER2'},
-			{'id_saved_game': 3, 'login': None}
+			{
+				'id_saved_game': 1,
+				'snapshot_player': '{"id_gender": 1, "name": "TEST_PLAYER", "id_character": 2, "id_player": 1, "stat_defence": 2, "stat_attack": 4, "stat_max_hp": 20, "inventory": null, "id_area": 1, "stat_current_hp": 20, "login": "TEST_PLAYER", "stat_speed": 2, "id_species": 1, "stat_luck": 10}',
+				'id_player': 1,
+				'id_character': 2
+			},
+			{
+				'id_saved_game': 2,
+				'snapshot_player': '{"id_gender": 1, "name": "TEST_PLAYER2bis", "id_character": 3, "id_player": 2, "stat_defence": 2, "stat_attack": 4, "stat_max_hp": 20, "inventory": null, "id_area": 1, "stat_current_hp": 20, "login": "TEST_PLAYER2bis", "stat_speed": 2, "id_species": 1, "stat_luck": 10}',
+				'id_player': 2,
+				'id_character': 3
+			},
+			{
+				'id_saved_game': 3,
+				'snapshot_player': '',
+				'id_player': None,
+				'id_character': None
+			}
 		]
 		self.assertEquals(saves, expectedSaves)
 
